@@ -31,184 +31,45 @@
 						<a href="index.html" class="logo">Igor Szuniewicz</a>
 					</header>
 
-			<nav id="nav">
-    <ul class="links">
-        <li class="active"><a href="index.html">Portfolio</a></li>
-        <li><a href="generic.html">Skills & Tools</a></li>
-        <li><a href="elements.html">Contact</a></li>
-    </ul>
-    <ul class="icons">
-        <li><a href="https://open.spotify.com/artist/6jEBXZZOeunaMzMnnHYvd6" class="icon brands fa-spotify" target="_blank" rel="noopener noreferrer"><span class="label">Spotify</span></a></li>
-        <li><a href="https://igorszuniewicz.itch.io/" class="icon brands fa-itch-io" target="_blank" rel="noopener noreferrer"><span class="label">itch.io</span></a></li>
-        <li><a href="https://www.youtube.com/channel/UCBd0ahIfWQhw1jZ9vxwb3Sg" class="icon brands fa-youtube" target="_blank" rel="noopener noreferrer"><span class="label">YouTube</span></a></li>
-    </ul>
-</nav>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="index.html">Home</a></li>
+							<li><a href="generic.html">Generic</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+						<ul class="actions stacked">
+							<li><a href="#" class="button large">Log In</a></li>
+						</ul>
+					</nav>
 
 				<!-- Main -->
 					<div id="main">
-<!-- W sekcji Featured Post -->
-<article class="post featured">
-    <header class="major">
-        <h2>Recent Projects</h2>
-        <p>Explore my latest work in interactive audio and sound design</p>
-    </header>
-    
-    <div class="slideshow-container">
-        <!-- Dodaj tyle obrazów ile potrzebujesz -->
-        <div class="slide fade">
-            <img src="images/project1.png" class="image main" alt="Project 1">
-        </div>
-        
-        <div class="slide fade">
-            <img src="images/project2.png" class="image main" alt="Project 2">
-        </div>
-        
-        <div class="slide fade">
-            <img src="images/project3.png" class="image main" alt="Project 3">
-        </div>
-    </div>
-    
-    <!-- Punkty nawigacyjne -->
-    <div class="dots" style="text-align:center; margin-top:20px">
-        <span class="dot"></span> 
-        <span class="dot"></span> 
-        <span class="dot"></span> 
-    </div>
-</article>
+						
+						<!-- Other sections ... -->
 
-<style>
-.slideshow-container {
-    position: relative;
-    max-width: 100%;
-    margin: auto;
-    overflow: hidden;
-}
+						<!-- Sekcja Recent Projects z sliderem -->
+						<section id="recent-projects">
+							<header class="major">
+								<h2>Recent Projects</h2>
+							</header>
+							<div class="slider">
+								<img src="images/project1.png" alt="Projekt 1" class="slide active">
+								<img src="images/project2.png" alt="Projekt 2" class="slide">
+								<img src="images/project3.png" alt="Projekt 3" class="slide">
+								<img src="images/project4.png" alt="Projekt 4" class="slide">
+								<img src="images/project5.png" alt="Projekt 5" class="slide">
+							</div>
+						</section>
 
-.slide {
-    display: none;
-    animation: slideRight 1.5s ease-in-out;
-}
-
-@keyframes slideRight {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-.slide-active {
-    display: block;
-}
-
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 5px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
-
-.active-dot {
-    background-color: #717171;
-}
-</style>
-
-<script>
-$(document).ready(function(){
-    let slideIndex = 0;
-    const slides = $(".slide");
-    const dots = $(".dot");
-    
-    // Inicjalizacja
-    showSlides();
-    
-    function showSlides() {
-        // Ukryj wszystkie slajdy
-        slides.removeClass("slide-active");
-        
-        // Zresetuj kropki
-        dots.removeClass("active-dot");
-        
-        // Pokaż aktualny slajd
-        $(slides[slideIndex]).addClass("slide-active");
-        $(dots[slideIndex]).addClass("active-dot");
-        
-        // Zwiększ index i zresetuj jeśli trzeba
-        slideIndex++;
-        if (slideIndex >= slides.length) { slideIndex = 0; }
-        
-        // Zmiana slajdu co 4 sekundy
-        setTimeout(showSlides, 4000); 
-    }
-    
-    // Kliknięcie na kropki
-    dots.click(function(){
-        slideIndex = $(this).index();
-        showSlides();
-    });
-});
-</script>
-
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										<h2>Dynamic Music System</h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic02.jpg" alt="Music System" /></a>
-									<p>Wwise-integrated adaptive music solution for Unreal Engine 5 with dynamic transitions and interactive layers.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Details</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2>3D Audio Plugin Suite</h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic03.jpg" alt="Audio Plugins" /></a>
-									<p>Custom VST plugins featuring HRTF-based spatialization and real-time convolution reverb.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Details</a></li>
-									</ul>
-								</article>
-							</section>
-
-						<!-- Footer -->
-							<footer>
-								<div class="pagination">
-									<a href="#" class="page active">1</a>
-								</div>
-							</footer>
+						<!-- Inne sekcje ... -->
 
 					</div>
 
 				<!-- Footer -->
 					<footer id="footer">
-						<section class="split contact">
-							<section class="alt">
-								<h3>Location</h3>
-								<p>Warsaw, Poland</p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="mailto:contact@example.com">contact@igorszuniewicz.com</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-									<li><a href="#" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-									<li><a href="#" class="icon brands alt fa-soundcloud"><span class="label">SoundCloud</span></a></li>
-								</ul>
-							</section>
-						</section>
+						<p>&copy; Igor Szuniewicz. All rights reserved.</p>
 					</footer>
-
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Igor Szuniewicz 2023</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
 
 			</div>
 
@@ -220,6 +81,8 @@ $(document).ready(function(){
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<!-- Dołączony slider.js -->
+			<script src="assets/js/slider.js"></script>
 
 	</body>
 </html>
