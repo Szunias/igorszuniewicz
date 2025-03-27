@@ -4576,6 +4576,30 @@ input, select, textarea {
 		width: 20rem;
 		z-index: 10002;
 	}
+/* Slider - Recent Projects */
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* dostosuj w razie potrzeby */
+  height: 400px; /* dostosuj wysokość według potrzeb */
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slider .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slider .slide.active {
+  opacity: 1;
+}
+
 
 		#navPanel .links {
 			list-style: none;
