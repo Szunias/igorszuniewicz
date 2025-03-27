@@ -18,8 +18,9 @@
              width: 100%;
              max-width: 600px;
              height: 850px;
-             margin: 20px auto;
+             margin: 20px auto 70px; /* dodany dolny odstęp */
              overflow: hidden;
+             z-index: 3; /* zapewnia, że zawartość slidera będzie nad innymi elementami */
         }
 
         .slide {
@@ -41,13 +42,13 @@
             color: #333;
             text-align: center;
             position: relative;
-            z-index: 2;
+            z-index: 4; /* wyższy niż slider-nav, aby tytuł był widoczny */
         }
 
         .slide a {
             display: block;
             position: relative;
-            z-index: 2;
+            z-index: 4;
         }
         .slide a img {
             width: 100%;
@@ -65,7 +66,7 @@
             margin-top: 10px;
             padding: 0 10px;
             position: relative;
-            z-index: 2;
+            z-index: 4;
         }
 
         .slider-nav {
@@ -87,6 +88,13 @@
         }
         .slider-nav.next {
             right: -70px;
+        }
+        
+        /* Styl przycisku, by nie nachodził na slider */
+        .actions.special {
+            position: relative;
+            z-index: 1;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -116,173 +124,4 @@
                 <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
                 <li><a href="#" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
                 <li><a href="#" class="icon brands fa-soundcloud"><span class="label">SoundCloud</span></a></li>
-            </ul>
-        </nav>
-
-        <div id="main">
-
-            <article class="post featured">
-                <header class="major">
-                    <h2>Recent Projects</h2>
-                    <p>Explore my latest work in interactive audio and sound design</p>
-                </header>
-
-                <div class="slider">
-                    <!-- 0. Spotify (dwa wiersze) -->
-                    <div class="slide active">
-                        <h3>Spotify<br>&nbsp;</h3>
-                        <a href="https://youtu.be/9ZgLOSiQwjI?list=OLAK5uy_nzJk7hAZgv6WRFDY8TJHN7YUJrvjCn2Ro&t=80" target="_blank">
-                            <img src="images/single.png" alt="Spotify">
-                        </a>
-                        <p class="slide-description">A hybrid of cinematic textures and electronic energy. Click to view the project.</p>
-                    </div>
-
-                    <!-- 1. Ray Animation Music Composition -->
-                    <div class="slide">
-                        <h3>Ray Animation<br>Music Composition</h3>
-                        <a href="https://youtu.be/NhH4dNcfxZg?t=131" target="_blank">
-                            <img src="images/project5.png" alt="Ray Animation Music Composition">
-                        </a>
-                        <p class="slide-description">Original score for a dreamy character journey. Click to view the project.</p>
-                    </div>
-
-                    <!-- 2. Akantilado Animation Sound Design -->
-                    <div class="slide">
-                        <h3>Akantilado Animation<br>Sound Design</h3>
-                        <a href="https://www.youtube.com/watch?v=ALQy5r7B1Bw" target="_blank">
-                            <img src="images/project4.png" alt="Akantilado Animation Sound Design">
-                        </a>
-                        <p class="slide-description">Detailed foley and atmosphere for an emotional short. Click to view the project.</p>
-                    </div>
-
-                    <!-- 3. Amorak Sound Design -->
-                    <div class="slide">
-                        <h3>Amorak<br>Sound Design</h3>
-                        <a href="https://youtu.be/VZgEK1CjlNM" target="_blank">
-                            <img src="images/amorak(1).jpg" alt="Amorak Sound Design">
-                        </a>
-                        <p class="slide-description">Creature vocalizations and ambient layers for a dark fantasy world. Click to view the project.</p>
-                    </div>
-
-                    <!-- 4. NotTodayDarling audio design &amp; programming -->
-                    <div class="slide">
-                        <h3>NotTodayDarling<br>audio design &amp; programming</h3>
-                        <a href="https://freyaspes.itch.io/not-today-darling/devlog/907907/week-06-3-2-1-start" target="_blank">
-                            <img src="images/nottoday.jpg" alt="NotTodayDarling audio design &amp; programming">
-                        </a>
-                        <p class="slide-description">Retro-inspired audio for a fast-paced narrative game. Click to view the project.</p>
-                    </div>
-
-                    <div class="slider-nav prev">&#x25C0;</div>
-                    <div class="slider-nav next">&#x25B6;</div>
-                </div>
-
-                <ul class="actions special">
-                    <li><a href="#" class="button large">View Case Study</a></li>
-                </ul>
-            </article>
-
-            <section class="posts">
-                <article>
-                    <header>
-                        <h2>Dynamic Music System</h2>
-                    </header>
-                    <a href="#" class="image fit"><img src="images/maxresdefault.jpg" alt="Music System" /></a>
-                    <p>Wwise-integrated adaptive music solution for Unreal Engine 5 with dynamic transitions and interactive layers.</p>
-                    <ul class="actions special">
-                        <li><a href="#" class="button">Details</a></li>
-                    </ul>
-                </article>
-                <article>
-                    <header>
-                        <h2>3D Audio Plugin Suite</h2>
-                    </header>
-                    <a href="#" class="image fit"><img src="images/plugins.jpg" alt="Audio Plugins" /></a>
-                    <p>Custom VST plugins featuring HRTF-based spatialization and real-time convolution reverb.</p>
-                    <ul class="actions special">
-                        <li><a href="#" class="button">Details</a></li>
-                    </ul>
-                </article>
-            </section>
-
-            <footer>
-                <div class="pagination">
-                    <a href="#" class="page active">1</a>
-                </div>
-            </footer>
-        </div>
-
-        <footer id="footer">
-            <section class="split contact">
-                <section class="alt">
-                    <h3>Location</h3>
-                    <p>Belgium West Flanders</p>
-                </section>
-                <section>
-                    <h3>Email</h3>
-                    <p><a href="mailto:szunio2004@gmail.com">szunio2004@gmail.com</a></p>
-                </section>
-                <section>
-                    <h3>Social</h3>
-                    <ul class="icons alt">
-                        <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-                        <li><a href="#" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                        <li><a href="#" class="icon brands alt fa-soundcloud"><span class="label">SoundCloud</span></a></li>
-                    </ul>
-                </section>
-            </section>
-        </footer>
-        <div id="copyright">
-            <ul>
-                <li>&copy; Igor Szuniewicz 2025</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const slides = document.querySelectorAll('.slider .slide');
-      let currentSlide = 0;
-      const totalSlides = slides.length;
-
-      // Upewnij się, że pierwszy slajd jest aktywny
-      slides[0].classList.add('active');
-
-      function goToSlide(index) {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (index + totalSlides) % totalSlides;
-        slides[currentSlide].classList.add('active');
-      }
-
-      // Auto-rotacja co 5 sekund
-      setInterval(function() {
-        goToSlide(currentSlide + 1);
-      }, 5000);
-
-      // Obsługa kliknięć strzałek
-      const prevButton = document.querySelector('.slider-nav.prev');
-      const nextButton = document.querySelector('.slider-nav.next');
-
-      if (prevButton) {
-        prevButton.addEventListener('click', function() {
-          goToSlide(currentSlide - 1);
-        });
-      }
-      if (nextButton) {
-        nextButton.addEventListener('click', function() {
-          goToSlide(currentSlide + 1);
-        });
-      }
-    });
-    </script>
-</body>
-</html>
+            </
