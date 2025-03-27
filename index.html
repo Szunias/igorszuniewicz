@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    <!-- Slider-specific style - nadpisuje ewentualne konflikty -->
+
+    <!-- Slider style (nadpisuje ewentualne konflikty) -->
     <style>
         /* Slider container – dopasowany do pionowych obrazków */
         .slider {
@@ -43,7 +44,7 @@
             position: relative;
             z-index: 2;
         }
-        /* Link i obrazek – obrazek dopasowuje się z zachowaniem proporcji */
+        /* Link i obrazek */
         .slide a {
             display: block;
             position: relative;
@@ -81,6 +82,7 @@
 <body class="is-preload">
     <!-- Wrapper -->
     <div id="wrapper" class="fade-in">
+
         <!-- Intro -->
         <div id="intro">
             <h1>Igor Szuniewicz</h1>
@@ -90,10 +92,12 @@
                 <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
             </ul>
         </div>
+
         <!-- Header -->
         <header id="header">
             <a href="index.html" class="logo">Igor Szuniewicz</a>
         </header>
+
         <!-- Nav -->
         <nav id="nav">
             <ul class="links">
@@ -107,43 +111,58 @@
                 <li><a href="#" class="icon brands fa-soundcloud"><span class="label">SoundCloud</span></a></li>
             </ul>
         </nav>
+
         <!-- Main -->
         <div id="main">
+
             <!-- Featured Post z sekcją Recent Projects -->
             <article class="post featured">
                 <header class="major">
                     <h2>Recent Projects</h2>
                     <p>Explore my latest work in interactive audio and sound design</p>
                 </header>
-                <!-- Slider z trzema slajdami (zmienione) -->
+
+                <!-- Slider z czterema slajdami -->
                 <div class="slider">
+                    <!-- 1. Amorak Sound Design (pierwszy, aktywny) -->
                     <div class="slide active">
-                        <h3>Akantilado Animation Sound Design</h3>
-                        <a href="https://www.youtube.com/watch?v=ALQy5r7B1Bw" target="_blank">
-                            <img src="images/project4.png" alt="Akantilado Animation Sound Design">
+                        <h3>Amorak Sound Design</h3>
+                        <a href="#" target="_blank">
+                            <img src="images/amorak.png" alt="Amorak Sound Design">
                         </a>
                     </div>
+                    <!-- 2. Ray Animation Music Composition -->
                     <div class="slide">
                         <h3>Ray Animation Music Composition</h3>
                         <a href="https://youtu.be/NhH4dNcfxZg?t=131" target="_blank">
                             <img src="images/project5.png" alt="Ray Animation Music Composition">
                         </a>
                     </div>
-                    <!-- Nowy slajd: NotTodayDarling audio design & implementation -->
+                    <!-- 3. Akantilado Animation Sound Design -->
+                    <div class="slide">
+                        <h3>Akantilado Animation Sound Design</h3>
+                        <a href="https://www.youtube.com/watch?v=ALQy5r7B1Bw" target="_blank">
+                            <img src="images/project4.png" alt="Akantilado Animation Sound Design">
+                        </a>
+                    </div>
+                    <!-- 4. NotTodayDarling audio design & implementation -->
                     <div class="slide">
                         <h3>NotTodayDarling audio design &amp; implementation</h3>
                         <a href="https://freyaspes.itch.io/not-today-darling" target="_blank">
                             <img src="images/nottoday.jpg" alt="NotTodayDarling audio design & implementation">
                         </a>
                     </div>
-                    <!-- Nawigacja – strzałki -->
+
+                    <!-- Strzałki nawigacji -->
                     <div class="slider-nav prev">&#10094;</div>
                     <div class="slider-nav next">&#10095;</div>
                 </div>
+
                 <ul class="actions special">
                     <li><a href="#" class="button large">View Case Study</a></li>
                 </ul>
             </article>
+
             <!-- Pozostałe sekcje, np. Posts -->
             <section class="posts">
                 <article>
@@ -167,13 +186,16 @@
                     </ul>
                 </article>
             </section>
+
             <!-- Footer wewnętrzny -->
             <footer>
                 <div class="pagination">
                     <a href="#" class="page active">1</a>
                 </div>
             </footer>
+
         </div>
+
         <!-- Globalny Footer -->
         <footer id="footer">
             <section class="split contact">
@@ -202,6 +224,7 @@
             </ul>
         </div>
     </div>
+
     <!-- Skrypty -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
@@ -210,7 +233,39 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <!-- Skrypt slidera – fade effect oraz kliknięcia w strzałki, jeśli dodałeś -->
-    <script src="assets/js/slider.js"></script>
+
+    <!-- Skrypt slidera – obsługa fade effect + klikania w strzałki -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const slides = document.querySelectorAll('.slider .slide');
+      let currentSlide = 0;
+
+      // Ustaw aktualny slajd (podczas ładowania)
+      slides[currentSlide].classList.add('active');
+
+      // Wyszukaj przyciski Next/Prev
+      const prevButton = document.querySelector('.slider-nav.prev');
+      const nextButton = document.querySelector('.slider-nav.next');
+
+      // Funkcja do zmiany slajdu (przód/tył)
+      function goToSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }
+
+      // Obsługa przycisków
+      if (prevButton) {
+        prevButton.addEventListener('click', function() {
+          goToSlide(currentSlide - 1);
+        });
+      }
+      if (nextButton) {
+        nextButton.addEventListener('click', function() {
+          goToSlide(currentSlide + 1);
+        });
+      }
+    });
+    </script>
 </body>
 </html>
