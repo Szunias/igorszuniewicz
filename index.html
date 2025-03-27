@@ -10,36 +10,36 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<!-- Slider-specific style - umieszczone na końcu, by nadpisać ewentualne konflikty -->
+		<!-- Slider-specific style - nadpisuje ewentualne konflikty -->
 		<style>
-			/* Slider container */
+			/* Slider container – ustawiony do wyświetlania slajdów z efektem fade */
 			.slider {
 				position: relative;
 				width: 100%;
-				max-width: 800px; /* większa szerokość slidera */
-				height: 500px; /* większa wysokość slidera */
+				max-width: 800px; /* zmień, jeśli chcesz większy slider */
+				height: 500px;  /* zmień, jeśli chcesz większy slider */
 				margin: 20px auto;
 				overflow: hidden;
 			}
-			/* Kontener na slajdy – flexbox, który przesuwa wszystkie slajdy */
-			.slides {
-				display: flex;
-				transition: transform 0.5s ease-in-out;
-				height: 100%;
-			}
-			/* Pojedynczy slajd */
+			/* Każdy slajd jest absolutnie pozycjonowany i pokrywa cały obszar slidera */
 			.slide {
-				min-width: 100%;
-				box-sizing: border-box;
-				text-align: center;
-				padding: 10px;
-				position: relative;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				transition: opacity 1s ease-in-out;
+			}
+			.slide.active {
+				opacity: 1;
 			}
 			/* Tytuł nad obrazkiem */
 			.slide h3 {
-				margin-bottom: 10px;
+				margin: 10px 0;
 				font-size: 1.5em;
 				color: #333;
+				text-align: center;
 				position: relative;
 				z-index: 2;
 			}
@@ -56,14 +56,14 @@
 				border: 2px solid #ddd;
 				display: block;
 			}
-			/* Strzałki nawigacyjne */
+			/* Nawigacja – strzałki */
 			.slider-nav {
 				position: absolute;
 				top: 50%;
 				transform: translateY(-50%);
 				font-size: 2em;
 				color: #fff;
-				background-color: rgba(0, 0, 0, 0.5);
+				background-color: rgba(0,0,0,0.5);
 				padding: 10px;
 				cursor: pointer;
 				user-select: none;
@@ -108,7 +108,7 @@
 			</nav>
 			<!-- Main -->
 			<div id="main">
-				<!-- Featured Post z sliderem -->
+				<!-- Featured Post z sliderem Recent Projects -->
 				<article class="post featured">
 					<header class="major">
 						<h2>Recent Projects</h2>
@@ -116,37 +116,35 @@
 					</header>
 					<!-- Slider -->
 					<div class="slider">
-						<div class="slides">
-							<div class="slide">
-								<h3>Project 1</h3>
-								<a href="https://www.youtube.com" target="_blank">
-									<img src="images/project1.png" alt="Project 1">
-								</a>
-							</div>
-							<div class="slide">
-								<h3>Project 2</h3>
-								<a href="#" target="_blank">
-									<img src="images/project2.png" alt="Project 2">
-								</a>
-							</div>
-							<div class="slide">
-								<h3>Project 3</h3>
-								<a href="#" target="_blank">
-									<img src="images/project3.png" alt="Project 3">
-								</a>
-							</div>
-							<div class="slide">
-								<h3>Project 4</h3>
-								<a href="#" target="_blank">
-									<img src="images/project4.png" alt="Project 4">
-								</a>
-							</div>
-							<div class="slide">
-								<h3>Project 5</h3>
-								<a href="#" target="_blank">
-									<img src="images/project5.png" alt="Project 5">
-								</a>
-							</div>
+						<div class="slide active">
+							<h3>Project 1</h3>
+							<a href="https://www.youtube.com" target="_blank">
+								<img src="images/project1.png" alt="Project 1">
+							</a>
+						</div>
+						<div class="slide">
+							<h3>Project 2</h3>
+							<a href="#" target="_blank">
+								<img src="images/project2.png" alt="Project 2">
+							</a>
+						</div>
+						<div class="slide">
+							<h3>Project 3</h3>
+							<a href="#" target="_blank">
+								<img src="images/project3.png" alt="Project 3">
+							</a>
+						</div>
+						<div class="slide">
+							<h3>Project 4</h3>
+							<a href="#" target="_blank">
+								<img src="images/project4.png" alt="Project 4">
+							</a>
+						</div>
+						<div class="slide">
+							<h3>Project 5</h3>
+							<a href="#" target="_blank">
+								<img src="images/project5.png" alt="Project 5">
+							</a>
 						</div>
 						<!-- Nawigacja – strzałki -->
 						<div class="slider-nav prev">&#10094;</div>
@@ -156,7 +154,7 @@
 						<li><a href="#" class="button large">View Case Study</a></li>
 					</ul>
 				</article>
-				<!-- Posts -->
+				<!-- Pozostałe sekcje, np. Posts -->
 				<section class="posts">
 					<article>
 						<header>
@@ -222,36 +220,37 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
-		<!-- Skrypt slidera -->
+		<!-- Skrypt slidera – fade effect -->
 		<script>
 			document.addEventListener("DOMContentLoaded", function(){
-				const slidesContainer = document.querySelector('.slides');
 				const slides = document.querySelectorAll('.slide');
 				const prevBtn = document.querySelector('.slider-nav.prev');
 				const nextBtn = document.querySelector('.slider-nav.next');
 				let currentSlide = 0;
 				let slideInterval = setInterval(nextSlide, 5000);
-
-				function updateSlider(){
-					slidesContainer.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+				
+				function showSlide(index){
+					slides.forEach((slide, i) => {
+						slide.classList.toggle("active", i === index);
+					});
 				}
-
+				
 				function nextSlide(){
 					currentSlide = (currentSlide + 1) % slides.length;
-					updateSlider();
+					showSlide(currentSlide);
 				}
-
+				
 				function prevSlide(){
 					currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-					updateSlider();
+					showSlide(currentSlide);
 				}
-
+				
 				nextBtn.addEventListener('click', function(){
 					clearInterval(slideInterval);
 					nextSlide();
 					slideInterval = setInterval(nextSlide, 5000);
 				});
-
+				
 				prevBtn.addEventListener('click', function(){
 					clearInterval(slideInterval);
 					prevSlide();
