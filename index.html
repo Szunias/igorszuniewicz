@@ -227,4 +227,62 @@
                     <ul class="icons alt">
                         <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
                         <li><a href="#" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                        <li><a
+                        <li><a href="#" class="icon brands alt fa-soundcloud"><span class="label">SoundCloud</span></a></li>
+                    </ul>
+                </section>
+            </section>
+        </footer>
+        <div id="copyright">
+            <ul>
+                <li>&copy; Igor Szuniewicz 2025</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const slides = document.querySelectorAll('.slider .slide');
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+
+      // Upewnij się, że pierwszy slajd jest aktywny
+      slides[0].classList.add('active');
+
+      function goToSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (index + totalSlides) % totalSlides;
+        slides[currentSlide].classList.add('active');
+      }
+
+      // Auto-rotacja co 5 sekund
+      setInterval(function() {
+        goToSlide(currentSlide + 1);
+      }, 5000);
+
+      // Obsługa kliknięć strzałek
+      const prevButton = document.querySelector('.slider-nav.prev');
+      const nextButton = document.querySelector('.slider-nav.next');
+
+      if (prevButton) {
+        prevButton.addEventListener('click', function() {
+          goToSlide(currentSlide - 1);
+        });
+      }
+      if (nextButton) {
+        nextButton.addEventListener('click', function() {
+          goToSlide(currentSlide + 1);
+        });
+      }
+    });
+    </script>
+</body>
+</html>
