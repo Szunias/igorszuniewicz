@@ -128,9 +128,9 @@
                 </header>
 
                 <div class="slider">
-                    <!-- 0. Spotify -->
+                    <!-- 0. Spotify (dwa wiersze) -->
                     <div class="slide active">
-                        <h3>Spotify</h3>
+                        <h3>Spotify<br>&nbsp;</h3>
                         <a href="https://youtu.be/9ZgLOSiQwjI?list=OLAK5uy_nzJk7hAZgv6WRFDY8TJHN7YUJrvjCn2Ro&t=80" target="_blank">
                             <img src="images/single.png" alt="Spotify">
                         </a>
@@ -139,7 +139,7 @@
 
                     <!-- 1. Ray Animation Music Composition -->
                     <div class="slide">
-                        <h3>Ray Animation Music Composition</h3>
+                        <h3>Ray Animation<br>Music Composition</h3>
                         <a href="https://youtu.be/NhH4dNcfxZg?t=131" target="_blank">
                             <img src="images/project5.png" alt="Ray Animation Music Composition">
                         </a>
@@ -148,7 +148,7 @@
 
                     <!-- 2. Akantilado Animation Sound Design -->
                     <div class="slide">
-                        <h3>Akantilado Animation Sound Design</h3>
+                        <h3>Akantilado Animation<br>Sound Design</h3>
                         <a href="https://www.youtube.com/watch?v=ALQy5r7B1Bw" target="_blank">
                             <img src="images/project4.png" alt="Akantilado Animation Sound Design">
                         </a>
@@ -157,16 +157,16 @@
 
                     <!-- 3. Amorak Sound Design -->
                     <div class="slide">
-                        <h3>Amorak Sound Design</h3>
+                        <h3>Amorak<br>Sound Design</h3>
                         <a href="https://youtu.be/VZgEK1CjlNM" target="_blank">
-                            <img src="images/amorak (1).jpg" alt="Amorak Sound Design">
+                            <img src="images/amorak(1).jpg" alt="Amorak Sound Design">
                         </a>
                         <p class="slide-description">Creature vocalizations and ambient layers for a dark fantasy world. Click to view the project.</p>
                     </div>
 
                     <!-- 4. NotTodayDarling audio design &amp; programming -->
                     <div class="slide">
-                        <h3>NotTodayDarling audio design &amp; programming</h3>
+                        <h3>NotTodayDarling<br>audio design &amp; programming</h3>
                         <a href="https://freyaspes.itch.io/not-today-darling/devlog/907907/week-06-3-2-1-start" target="_blank">
                             <img src="images/nottoday.jpg" alt="NotTodayDarling audio design &amp; programming">
                         </a>
@@ -227,62 +227,4 @@
                     <ul class="icons alt">
                         <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
                         <li><a href="#" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                        <li><a href="#" class="icon brands alt fa-soundcloud"><span class="label">SoundCloud</span></a></li>
-                    </ul>
-                </section>
-            </section>
-        </footer>
-        <div id="copyright">
-            <ul>
-                <li>&copy; Igor Szuniewicz 2025</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const slides = document.querySelectorAll('.slider .slide');
-      let currentSlide = 0;
-      const totalSlides = slides.length;
-
-      // Upewnij się, że pierwszy slajd jest aktywny
-      slides[0].classList.add('active');
-
-      function goToSlide(index) {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (index + totalSlides) % totalSlides;
-        slides[currentSlide].classList.add('active');
-      }
-
-      // Auto-rotacja co 5 sekund
-      setInterval(function() {
-        goToSlide(currentSlide + 1);
-      }, 5000);
-
-      // Obsługa kliknięć strzałek
-      const prevButton = document.querySelector('.slider-nav.prev');
-      const nextButton = document.querySelector('.slider-nav.next');
-
-      if (prevButton) {
-        prevButton.addEventListener('click', function() {
-          goToSlide(currentSlide - 1);
-        });
-      }
-      if (nextButton) {
-        nextButton.addEventListener('click', function() {
-          goToSlide(currentSlide + 1);
-        });
-      }
-    });
-    </script>
-</body>
-</html>
+                        <li><a
