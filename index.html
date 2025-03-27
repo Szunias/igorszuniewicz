@@ -57,25 +57,26 @@
             display: block;
         }
         /* Nawigacja – strzałki: większe, jaśniejsze i umieszczone dalej od slidera */
-        .slider-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2.5em;
-            color: #000;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 50%;
-            box-shadow: 0 0 5px rgba(0,0,0,0.3);
-            z-index: 10;
-        }
-        .slider-nav.prev {
-            left: -50px;
-        }
-        .slider-nav.next {
-            right: -50px;
-        }
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3em; /* Większe strzałki */
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px 20px; /* Większy obszar klikalny */
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+.slider-nav.prev {
+    left: -50px; /* Możesz dodatkowo przesunąć bardziej w lewo, jeśli chcesz */
+}
+.slider-nav.next {
+    right: -50px; /* Możesz też przesunąć w prawo */
+}
+
     </style>
 </head>
 <body class="is-preload">
