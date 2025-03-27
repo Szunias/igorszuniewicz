@@ -56,27 +56,26 @@
             border: 2px solid #ddd;
             display: block;
         }
-        /* Nawigacja – strzałki: większe, jaśniejsze i umieszczone dalej od slidera */
-.slider-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 3em; /* Większe strzałki */
-    color: #000;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 15px 20px; /* Większy obszar klikalny */
-    cursor: pointer;
-    border-radius: 50%;
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    z-index: 10;
-}
-.slider-nav.prev {
-    left: -50px; /* Możesz dodatkowo przesunąć bardziej w lewo, jeśli chcesz */
-}
-.slider-nav.next {
-    right: -50px; /* Możesz też przesunąć w prawo */
-}
-
+        /* Nawigacja – strzałki */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5em;
+            color: #000;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+        .slider-nav.prev {
+            left: -50px;
+        }
+        .slider-nav.next {
+            right: -50px;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -116,7 +115,7 @@
                     <h2>Recent Projects</h2>
                     <p>Explore my latest work in interactive audio and sound design</p>
                 </header>
-                <!-- Slider z dwoma slajdami -->
+                <!-- Slider z trzema slajdami (zmienione) -->
                 <div class="slider">
                     <div class="slide active">
                         <h3>Akantilado Animation Sound Design</h3>
@@ -128,6 +127,13 @@
                         <h3>Ray Animation Music Composition</h3>
                         <a href="#" target="_blank">
                             <img src="images/project5.png" alt="Ray Animation Music Composition">
+                        </a>
+                    </div>
+                    <!-- Nowy slajd: NotTodayDarling audio design & implementation -->
+                    <div class="slide">
+                        <h3>NotTodayDarling audio design &amp; implementation</h3>
+                        <a href="#" target="_blank">
+                            <img src="images/nottoday.png" alt="NotTodayDarling audio design & implementation">
                         </a>
                     </div>
                     <!-- Nawigacja – strzałki -->
@@ -173,11 +179,11 @@
             <section class="split contact">
                 <section class="alt">
                     <h3>Location</h3>
-                    <p>Warsaw, Poland</p>
+                    <p>Belgium West Flanders</p>
                 </section>
                 <section>
                     <h3>Email</h3>
-                    <p><a href="mailto:contact@example.com">contact@igorszuniewicz.com</a></p>
+                    <p><a href="mailto:szunio2004@gmail.com">szunio2004@gmail.com</a></p>
                 </section>
                 <section>
                     <h3>Social</h3>
@@ -204,43 +210,7 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <!-- Skrypt slidera – fade effect -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function(){
-            const slides = document.querySelectorAll('.slide');
-            const prevBtn = document.querySelector('.slider-nav.prev');
-            const nextBtn = document.querySelector('.slider-nav.next');
-            let currentSlide = 0;
-            let slideInterval = setInterval(nextSlide, 5000);
-            
-            function showSlide(index){
-                slides.forEach((slide, i) => {
-                    slide.classList.toggle("active", i === index);
-                });
-            }
-            
-            function nextSlide(){
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            }
-            
-            function prevSlide(){
-                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                showSlide(currentSlide);
-            }
-            
-            nextBtn.addEventListener('click', function(){
-                clearInterval(slideInterval);
-                nextSlide();
-                slideInterval = setInterval(nextSlide, 5000);
-            });
-            
-            prevBtn.addEventListener('click', function(){
-                clearInterval(slideInterval);
-                prevSlide();
-                slideInterval = setInterval(nextSlide, 5000);
-            });
-        });
-    </script>
+    <!-- Skrypt slidera – fade effect oraz kliknięcia w strzałki, jeśli dodałeś -->
+    <script src="assets/js/slider.js"></script>
 </body>
 </html>
