@@ -10,18 +10,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<!-- Slider-specific style - nadpisuje ewentualne konflikty -->
+		<!-- Slider-specific style -->
 		<style>
-			/* Slider container – ustawiony do wyświetlania slajdów z efektem fade */
+			/* Slider container – większy rozmiar */
 			.slider {
 				position: relative;
 				width: 100%;
-				max-width: 800px; /* zmień, jeśli chcesz większy slider */
-				height: 500px;  /* zmień, jeśli chcesz większy slider */
+				max-width: 1000px; /* slider większy */
+				height: 600px;    /* slider większy */
 				margin: 20px auto;
 				overflow: hidden;
 			}
-			/* Każdy slajd jest absolutnie pozycjonowany i pokrywa cały obszar slidera */
+			/* Każdy slajd jest absolutnie pozycjonowany, nakładają się na siebie */
 			.slide {
 				position: absolute;
 				top: 0;
@@ -37,13 +37,13 @@
 			/* Tytuł nad obrazkiem */
 			.slide h3 {
 				margin: 10px 0;
-				font-size: 1.5em;
+				font-size: 1.8em;
 				color: #333;
 				text-align: center;
 				position: relative;
 				z-index: 2;
 			}
-			/* Link i obrazek – upewnij się, że link jest klikalny */
+			/* Link i obrazek – obrazek ma wypełniać cały slider */
 			.slide a {
 				display: block;
 				position: relative;
@@ -56,24 +56,24 @@
 				border: 2px solid #ddd;
 				display: block;
 			}
-			/* Nawigacja – strzałki */
+			/* Nawigacja – strzałki: ustawione nieco na zewnątrz slidera */
 			.slider-nav {
 				position: absolute;
 				top: 50%;
 				transform: translateY(-50%);
-				font-size: 2em;
+				font-size: 2.5em;
 				color: #fff;
-				background-color: rgba(0,0,0,0.5);
+				background-color: rgba(0, 0, 0, 0.5);
 				padding: 10px;
 				cursor: pointer;
 				user-select: none;
 				z-index: 10;
 			}
 			.slider-nav.prev {
-				left: 10px;
+				left: -40px;  /* strzałka po lewej poza sliderem */
 			}
 			.slider-nav.next {
-				right: 10px;
+				right: -40px; /* strzałka po prawej poza sliderem */
 			}
 		</style>
 	</head>
@@ -108,13 +108,13 @@
 			</nav>
 			<!-- Main -->
 			<div id="main">
-				<!-- Featured Post z sliderem Recent Projects -->
+				<!-- Featured Post z sekcją Recent Projects -->
 				<article class="post featured">
 					<header class="major">
 						<h2>Recent Projects</h2>
 						<p>Explore my latest work in interactive audio and sound design</p>
 					</header>
-					<!-- Slider -->
+					<!-- Slider z efektem fade -->
 					<div class="slider">
 						<div class="slide active">
 							<h3>Project 1</h3>
@@ -254,9 +254,3 @@
 				prevBtn.addEventListener('click', function(){
 					clearInterval(slideInterval);
 					prevSlide();
-					slideInterval = setInterval(nextSlide, 5000);
-				});
-			});
-		</script>
-	</body>
-</html>
