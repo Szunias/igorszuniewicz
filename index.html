@@ -46,18 +46,109 @@
 
 				<!-- Main -->
 					<div id="main">
+<!-- W sekcji Featured Post -->
+<article class="post featured">
+    <header class="major">
+        <h2>Recent Projects</h2>
+        <p>Explore my latest work in interactive audio and sound design</p>
+    </header>
+    
+    <div class="slideshow-container">
+        <!-- Dodaj tyle obrazów ile potrzebujesz -->
+        <div class="slide fade">
+            <img src="images/projects/project1.jpg" class="image main" alt="Project 1">
+        </div>
+        
+        <div class="slide fade">
+            <img src="images/projects/project2.jpg" class="image main" alt="Project 2">
+        </div>
+        
+        <div class="slide fade">
+            <img src="image/projects/project3.jpg" class="image main" alt="Project 3">
+        </div>
+    </div>
+    
+    <!-- Punkty nawigacyjne -->
+    <div class="dots" style="text-align:center; margin-top:20px">
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+    </div>
+</article>
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<h2>Recent Projects</h2>
-									<p>Explore my latest work in interactive audio and sound design</p>
-								</header>
-								<a href="#" class="image main"><img src="images/pic01.jpg" alt="Project Showcase" /></a>
-								<ul class="actions special">
-									<li><a href="#" class="button large">View Case Study</a></li>
-								</ul>
-							</article>
+<style>
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    animation: slideRight 1.5s ease-in-out;
+}
+
+@keyframes slideRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.slide-active {
+    display: block;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active-dot {
+    background-color: #717171;
+}
+</style>
+
+<script>
+$(document).ready(function(){
+    let slideIndex = 0;
+    const slides = $(".slide");
+    const dots = $(".dot");
+    
+    // Inicjalizacja
+    showSlides();
+    
+    function showSlides() {
+        // Ukryj wszystkie slajdy
+        slides.removeClass("slide-active");
+        
+        // Zresetuj kropki
+        dots.removeClass("active-dot");
+        
+        // Pokaż aktualny slajd
+        $(slides[slideIndex]).addClass("slide-active");
+        $(dots[slideIndex]).addClass("active-dot");
+        
+        // Zwiększ index i zresetuj jeśli trzeba
+        slideIndex++;
+        if (slideIndex >= slides.length) { slideIndex = 0; }
+        
+        // Zmiana slajdu co 4 sekundy
+        setTimeout(showSlides, 4000); 
+    }
+    
+    // Kliknięcie na kropki
+    dots.click(function(){
+        slideIndex = $(this).index();
+        showSlides();
+    });
+});
+</script>
 
 						<!-- Posts -->
 							<section class="posts">
