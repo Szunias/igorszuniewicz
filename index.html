@@ -15,8 +15,8 @@
 			.slider {
 				position: relative;
 				width: 100%;
-				max-width: 800px; /* większa szerokość slidera */
-				height: 500px; /* większa wysokość slidera */
+				max-width: 800px; /* zwiększona szerokość slidera */
+				height: 500px; /* zwiększona wysokość slidera */
 				margin: 0 auto;
 				overflow: hidden;
 			}
@@ -33,14 +33,17 @@
 			}
 			.slide h3 {
 				margin-bottom: 10px;
+				font-size: 1.5em;
+				color: #333;
 			}
 			.slide a img {
 				width: 100%;
 				height: auto;
 				max-height: 400px;
 				object-fit: cover;
+				border: 2px solid #ddd;
 			}
-			/* Nawigacja (strzałki) */
+			/* Nawigacja – strzałki */
 			.slider-nav {
 				position: absolute;
 				top: 50%;
@@ -104,7 +107,7 @@
 						<h2>Recent Projects</h2>
 						<p>Explore my latest work in interactive audio and sound design</p>
 					</header>
-					<!-- Nowy slider -->
+					<!-- Slider -->
 					<div class="slider">
 						<div class="slides">
 							<div class="slide">
@@ -138,7 +141,7 @@
 								</a>
 							</div>
 						</div>
-						<!-- Nawigacja -->
+						<!-- Nawigacja – strzałki -->
 						<div class="slider-nav prev">&#10094;</div>
 						<div class="slider-nav next">&#10095;</div>
 					</div>
@@ -238,6 +241,7 @@
 					currentSlide = (currentSlide + 1) % slides.length;
 					updateSlider();
 				}
+
 				function prevSlide(){
 					currentSlide = (currentSlide - 1 + slides.length) % slides.length;
 					updateSlider();
