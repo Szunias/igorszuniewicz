@@ -18,11 +18,11 @@
              width: 100%;
              max-width: 600px;
              height: 850px;
-             margin: 20px auto 70px; /* dodany dolny odstęp */
+             margin: 20px auto 70px; /* dolny odstęp, aby View Case Study nie zasłaniał slidera */
              overflow: hidden;
-             z-index: 3; /* zapewnia, że zawartość slidera będzie nad innymi elementami */
+             z-index: 3;
         }
-
+        /* Każdy slajd ustawiony jako flexbox, aby układ był kolumnowy */
         .slide {
             position: absolute;
             top: 0;
@@ -31,21 +31,23 @@
             height: 100%;
             opacity: 0;
             transition: opacity 1s ease-in-out;
+            display: flex;
+            flex-direction: column;
         }
         .slide.active {
             opacity: 1;
         }
-
+        /* Tytuł u góry */
         .slide h3 {
             margin: 10px 0;
             font-size: 1.8em;
             color: #333;
             text-align: center;
-            position: relative;
-            z-index: 4; /* wyższy niż slider-nav, aby tytuł był widoczny */
+            z-index: 4;
         }
-
+        /* Kontener obrazu – zajmuje całą dostępną przestrzeń */
         .slide a {
+            flex: 1;
             display: block;
             position: relative;
             z-index: 4;
@@ -57,18 +59,14 @@
             border: 2px solid #ddd;
             display: block;
         }
-
-        /* Opis pod obrazkiem */
+        /* Opis na dole slajdu */
         .slide-description {
             font-size: 1em;
             color: #555;
             text-align: center;
-            margin-top: 10px;
-            padding: 0 10px;
-            position: relative;
+            margin: 10px 0;
             z-index: 4;
         }
-
         .slider-nav {
             position: absolute;
             top: 50%;
@@ -89,8 +87,7 @@
         .slider-nav.next {
             right: -70px;
         }
-        
-        /* Styl przycisku, by nie nachodził na slider */
+        /* Styl przycisku View Case Study */
         .actions.special {
             position: relative;
             z-index: 1;
@@ -136,7 +133,7 @@
                 </header>
 
                 <div class="slider">
-                    <!-- 0. Spotify (dwa wiersze) -->
+                    <!-- 0. Spotify (tytuł podzielony na dwie linie) -->
                     <div class="slide active">
                         <h3>Spotify<br>&nbsp;</h3>
                         <a href="https://youtu.be/9ZgLOSiQwjI?list=OLAK5uy_nzJk7hAZgv6WRFDY8TJHN7YUJrvjCn2Ro&t=80" target="_blank">
@@ -176,7 +173,7 @@
                     <div class="slide">
                         <h3>NotTodayDarling<br>audio design &amp; programming</h3>
                         <a href="https://freyaspes.itch.io/not-today-darling/devlog/907907/week-06-3-2-1-start" target="_blank">
-                            <img src="images/nottoday.jpg" alt="NotTodayDarling audio design &amp; programming">
+                            <img src="images/nottodaydar.png" alt="NotTodayDarling audio design &amp; programming">
                         </a>
                         <p class="slide-description">Retro-inspired audio for a fast-paced narrative game. Click to view the project.</p>
                     </div>
