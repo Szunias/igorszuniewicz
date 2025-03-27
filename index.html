@@ -11,19 +11,17 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-    <!-- Slider-specific style - nadpisuje ewentualne konflikty -->
+    <!-- Slider-specific style -->
     <style>
-        /* Slider container – dopasowany do pionowych obrazków */
         .slider {
              position: relative;
              width: 100%;
-             max-width: 600px; /* mniejsza szerokość slidera */
-             height: 850px;    /* wysokość dopasowana do pionowych obrazków */
+             max-width: 600px;
+             height: 850px;
              margin: 20px auto;
              overflow: hidden;
         }
 
-        /* Każdy slajd – efekt fade */
         .slide {
             position: absolute;
             top: 0;
@@ -37,7 +35,6 @@
             opacity: 1;
         }
 
-        /* Tytuł nad obrazkiem */
         .slide h3 {
             margin: 10px 0;
             font-size: 1.8em;
@@ -47,7 +44,6 @@
             z-index: 2;
         }
 
-        /* Link i obrazek – obrazek dopasowuje się z zachowaniem proporcji */
         .slide a {
             display: block;
             position: relative;
@@ -61,12 +57,19 @@
             display: block;
         }
 
-        /* Nawigacja – strzałki: większe, wygląd klasycznych strzałek */
+        .slide-description {
+            font-size: 1em;
+            color: #555;
+            text-align: center;
+            margin-top: 10px;
+            padding: 0 10px;
+        }
+
         .slider-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 3em; /* większe strzałki */
+            font-size: 3em;
             color: #000;
             background-color: rgba(255, 255, 255, 0.9);
             padding: 10px 15px;
@@ -77,18 +80,16 @@
             user-select: none;
         }
         .slider-nav.prev {
-            left: -70px; /* przesunięte nieco dalej w lewo */
+            left: -70px;
         }
         .slider-nav.next {
-            right: -70px; /* przesunięte nieco dalej w prawo */
+            right: -70px;
         }
     </style>
 </head>
 <body class="is-preload">
-    <!-- Wrapper -->
     <div id="wrapper" class="fade-in">
 
-        <!-- Intro -->
         <div id="intro">
             <h1>Igor Szuniewicz</h1>
             <p>Composer | Audio Engineer | Software Developer<br />
@@ -98,12 +99,10 @@
             </ul>
         </div>
 
-        <!-- Header -->
         <header id="header">
             <a href="index.html" class="logo">Igor Szuniewicz</a>
         </header>
 
-        <!-- Nav -->
         <nav id="nav">
             <ul class="links">
                 <li class="active"><a href="index.html">Portfolio</a></li>
@@ -117,50 +116,62 @@
             </ul>
         </nav>
 
-        <!-- Main -->
         <div id="main">
 
-            <!-- Featured Post z sekcją Recent Projects -->
             <article class="post featured">
                 <header class="major">
                     <h2>Recent Projects</h2>
                     <p>Explore my latest work in interactive audio and sound design</p>
                 </header>
 
-                <!-- Slider z czterema slajdami w żądanej kolejności -->
                 <div class="slider">
-                    <!-- 1. Ray Animation Music Composition (aktywny slajd) -->
+                    <!-- 0. Most recent single -->
                     <div class="slide active">
+                        <h3>Most Recent Single</h3>
+                        <a href="https://youtu.be/9ZgLOSiQwjI?list=OLAK5uy_nzJk7hAZgv6WRFDY8TJHN7YUJrvjCn2Ro&t=80" target="_blank">
+                            <img src="images/single.png" alt="Most Recent Single">
+                        </a>
+                        <p class="slide-description">A hybrid of cinematic textures and electronic energy. Click to view the project.</p>
+                    </div>
+
+                    <!-- 1. Ray Animation Music Composition -->
+                    <div class="slide">
                         <h3>Ray Animation Music Composition</h3>
                         <a href="https://youtu.be/NhH4dNcfxZg?t=131" target="_blank">
                             <img src="images/project5.png" alt="Ray Animation Music Composition">
                         </a>
+                        <p class="slide-description">Original score for a dreamy character journey. Click to view the project.</p>
                     </div>
+
                     <!-- 2. Akantilado Animation Sound Design -->
                     <div class="slide">
                         <h3>Akantilado Animation Sound Design</h3>
                         <a href="https://www.youtube.com/watch?v=ALQy5r7B1Bw" target="_blank">
                             <img src="images/project4.png" alt="Akantilado Animation Sound Design">
                         </a>
+                        <p class="slide-description">Detailed foley and atmosphere for an emotional short. Click to view the project.</p>
                     </div>
+
                     <!-- 3. NotTodayDarling -->
                     <div class="slide">
                         <h3>NotTodayDarling audio design &amp; programming</h3>
                         <a href="https://freyaspes.itch.io/not-today-darling/devlog/907907/week-06-3-2-1-start" target="_blank">
                             <img src="images/nottoday.jpg" alt="NotTodayDarling audio design & implementation">
                         </a>
+                        <p class="slide-description">Retro-inspired audio for a fast-paced narrative game. Click to view the project.</p>
                     </div>
+
                     <!-- 4. Amorak Sound Design -->
                     <div class="slide">
                         <h3>Amorak Sound Design</h3>
                         <a href="#" target="_blank">
                             <img src="images/amorak.png" alt="Amorak Sound Design">
                         </a>
+                        <p class="slide-description">Creature vocalizations and ambient layers for a dark fantasy world. Click to view the project.</p>
                     </div>
 
-                    <!-- Strzałki nawigacji: większe, jak klasyczne strzałki -->
-                    <div class="slider-nav prev">&#x25C0;</div> <!-- ◀ -->
-                    <div class="slider-nav next">&#x25B6;</div> <!-- ▶ -->
+                    <div class="slider-nav prev">&#x25C0;</div>
+                    <div class="slider-nav next">&#x25B6;</div>
                 </div>
 
                 <ul class="actions special">
@@ -168,7 +179,6 @@
                 </ul>
             </article>
 
-            <!-- Pozostałe sekcje, np. Posts -->
             <section class="posts">
                 <article>
                     <header>
@@ -192,7 +202,6 @@
                 </article>
             </section>
 
-            <!-- Footer wewnętrzny -->
             <footer>
                 <div class="pagination">
                     <a href="#" class="page active">1</a>
@@ -200,7 +209,6 @@
             </footer>
         </div>
 
-        <!-- Globalny Footer -->
         <footer id="footer">
             <section class="split contact">
                 <section class="alt">
@@ -224,12 +232,11 @@
         <div id="copyright">
             <ul>
                 <li>&copy; Igor Szuniewicz 2025</li>
-          
             </ul>
         </div>
     </div>
 
-    <!-- Skrypty -->
+    <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
     <script src="assets/js/jquery.scrolly.min.js"></script>
@@ -238,29 +245,24 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <!-- Skrypt slidera – auto-rotacja i obsługa strzałek -->
     <script>
     document.addEventListener("DOMContentLoaded", function() {
       const slides = document.querySelectorAll('.slider .slide');
       let currentSlide = 0;
       const totalSlides = slides.length;
 
-      // Ustaw pierwszy slajd jako aktywny (już w HTML jest "active", ale to nie zaszkodzi)
       slides[0].classList.add('active');
 
-      // Funkcja przejścia do konkretnego indexu
       function goToSlide(index) {
         slides[currentSlide].classList.remove('active');
         currentSlide = (index + totalSlides) % totalSlides;
         slides[currentSlide].classList.add('active');
       }
 
-      // Auto-rotacja co 5 sekund
       setInterval(function() {
         goToSlide(currentSlide + 1);
       }, 5000);
 
-      // Obsługa kliknięć strzałek
       const prevButton = document.querySelector('.slider-nav.prev');
       const nextButton = document.querySelector('.slider-nav.next');
 
