@@ -1,311 +1,311 @@
 <!DOCTYPE HTML>
 <!--
-    Massively by HTML5 UP
-    html5up.net | @ajlkn
+Massively by HTML5 UP
+html5up.net | @ajlkn
 -->
 <html>
 <head>
-    <title>Igor Szuniewicz - Portfolio</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<title>Igor Szuniewicz - Portfolio</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-    <!-- Slider-specific style -->
-    <style>
-        .slider {
-             position: relative;
-             width: 100%;
-             max-width: 600px;
-             height: 850px;
-             margin: 20px auto 70px; /* dolny odstęp, aby View Case Study nie zasłaniał slidera */
-             overflow: hidden;
-             z-index: 3;
-        }
-        /* Każdy slajd ustawiony jako flexbox, aby układ był kolumnowy */
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            display: flex;
-            flex-direction: column;
-        }
-        .slide.active {
-            opacity: 1;
-        }
-        /* Tytuł u góry */
-        .slide h3 {
-            margin: 10px 0;
-            font-size: 1.8em;
-            color: #333;
-            text-align: center;
-            z-index: 4;
-        }
-        /* Kontener obrazu – zajmuje całą dostępną przestrzeń */
-        .slide a {
-            flex: 1;
-            display: block;
-            position: relative;
-            z-index: 4;
-        }
-        .slide a img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border: 2px solid #ddd;
-            display: block;
-        }
-        /* Opis na dole slajdu */
-        .slide-description {
-            font-size: 1em;
-            color: #555;
-            text-align: center;
-            margin: 10px 0;
-            z-index: 4;
-        }
-        .slider-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 3em;
-            color: #000;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 50%;
-            box-shadow: 0 0 5px rgba(0,0,0,0.3);
-            z-index: 10;
-            user-select: none;
-        }
-        .slider-nav.prev {
-            left: -70px;
-        }
-        .slider-nav.next {
-            right: -70px;
-        }
-        /* Styl przycisku View Case Study */
-        .actions.special {
-            position: relative;
-            z-index: 1;
-            margin-top: 20px;
-        }
-    </style>
+<!-- Slider-specific style -->
+<style>
+.slider {
+position: relative;
+width: 100%;
+max-width: 600px;
+height: 850px;
+margin: 20px auto 70px; /* dolny odstęp, aby View Case Study nie zasłaniał slidera */
+overflow: hidden;
+z-index: 3;
+}
+/* Każdy slajd ustawiony jako flexbox, aby układ był kolumnowy */
+.slide {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+opacity: 0;
+transition: opacity 1s ease-in-out;
+display: flex;
+flex-direction: column;
+}
+.slide.active {
+opacity: 1;
+}
+/* Tytuł u góry */
+.slide h3 {
+margin: 10px 0;
+font-size: 1.8em;
+color: #333;
+text-align: center;
+z-index: 4;
+}
+/* Kontener obrazu – zajmuje całą dostępną przestrzeń */
+.slide a {
+flex: 1;
+display: block;
+position: relative;
+z-index: 4;
+}
+.slide a img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+border: 2px solid #ddd;
+display: block;
+}
+/* Opis na dole slajdu */
+.slide-description {
+font-size: 1em;
+color: #555;
+text-align: center;
+margin: 10px 0;
+z-index: 4;
+}
+.slider-nav {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+font-size: 3em;
+color: transparent; /* Ukrycie guzików */
+background-color: rgba(255, 255, 255, 0.9);
+padding: 10px 15px;
+cursor: pointer;
+border-radius: 50%;
+box-shadow: 0 0 5px rgba(0,0,0,0.3);
+z-index: 10;
+user-select: none;
+}
+.slider-nav.prev {
+left: -70px;
+}
+.slider-nav.next {
+right: -70px;
+}
+/* Styl przycisku View Case Study */
+.actions.special {
+position: relative;
+z-index: 1;
+margin-top: 20px;
+}
+</style>
 </head>
 <body class="is-preload">
-    <div id="wrapper" class="fade-in">
+<div id="wrapper" class="fade-in">
 
-        <div id="intro">
-            <h1>Igor Szuniewicz</h1>
-            <p>Composer | Audio Engineer | Software Developer<br />
-            Technical Sound Design • Interactive Music Systems • Game Audio</p>
-            <ul class="actions">
-                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-            </ul>
-        </div>
+<div id="intro">
+<h1>Igor Szuniewicz</h1>
+<p>Composer | Audio Engineer | Software Developer<br />
+Technical Sound Design • Interactive Music Systems • Game Audio</p>
+<ul class="actions">
+<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+</ul>
+</div>
 
-        <header id="header">
-            <a href="index.html" class="logo">Igor Szuniewicz</a>
-        </header>
+<header id="header">
+<a href="index.html" class="logo">Igor Szuniewicz</a>
+</header>
 
-        <nav id="nav">
-            <ul class="links">
-                <li class="active"><a href="index.html">Portfolio</a></li>
-                <li><a href="generic.html">Skills &amp; Tools</a></li>
-                <li><a href="elements.html">Contact</a></li>
-            </ul>
-            <ul class="icons">
-                <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-                <li><a href="#" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                <li><a href="#" class="icon brands fa-soundcloud"><span class="label">SoundCloud</span></a></li>
-            </ul>
-        </nav>
+<nav id="nav">
+<ul class="links">
+<li class="active"><a href="index.html">Portfolio</a></li>
+<li><a href="generic.html">Skills & Tools</a></li>
+<li><a href="elements.html">Contact</a></li>
+</ul>
+<ul class="icons">
+<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+<li><a href="#" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+<li><a href="#" class="icon brands fa-soundcloud"><span class="label">SoundCloud</span></a></li>
+</ul>
+</nav>
 
-        <div id="main">
+<div id="main">
 
-            <article class="post featured">
-                <header class="major">
-                    <h2>Recent Projects</h2>
-                    <p>Explore my latest work in interactive audio and sound design (Site in development)</p>
-                </header>
+<article class="post featured">
+<header class="major">
+<h2>Recent Projects</h2>
+<p>Explore my latest work in interactive audio and sound design (Site in development)</p>
+</header>
 
-                <div class="slider">
-                    <!-- 0. Most Recent Single -->
-                    <div class="slide active">
-                        <h3>Most Recent Single<br>&nbsp;</h3>
-                        <a href="https://youtu.be/9ZgLOSiQwjI?list=OLAK5uy_nzJk7hAZgv6WRFDY8TJHN7YUJrvjCn2Ro&t=80" target="_blank">
-                            <img src="images/epkam.png" alt="Most Recent Single">
-                        </a>
-                        <p class="slide-description">Click to view the project.</p>
-                    </div>
+<div class="slider">
+<!-- 0. Most Recent Single -->
+<div class="slide active">
+<h3>Most Recent Single<br>&nbsp;</h3>
+<a href="https://youtu.be/9ZgLOSiQwjI?list=OLAK5uy_nzJk7hAZgv6WRFDY8TJHN7YUJrvjCn2Ro&t=80" target="_blank">
+<img src="images/epkam.png" alt="Most Recent Single">
+</a>
+<p class="slide-description">Click to view the project.</p>
+</div>
 
-                    <!-- 1. Ray Animation Music Composition -->
-                    <div class="slide">
-                        <h3>Ray Animation<br>Music Composition</h3>
-                        <a href="https://youtu.be/NhH4dNcfxZg?t=131" target="_blank">
-                            <img src="images/project5.png" alt="Ray Animation Music Composition">
-                        </a>
-                        <p class="slide-description">Original score for a dreamy character journey. Click to view the project.</p>
-                    </div>
+<!-- 1. Ray Animation Music Composition -->
+<div class="slide">
+<h3>Ray Animation<br>Music Composition</h3>
+<a href="https://youtu.be/NhH4dNcfxZg?t=131" target="_blank">
+<img src="images/project5.png" alt="Ray Animation Music Composition">
+</a>
+<p class="slide-description">Original score for a dreamy character journey. Click to view the project.</p>
+</div>
 
-                    <!-- 2. Akantilado Animation Sound Design -->
-                    <div class="slide">
-                        <h3>Akantilado Animation<br>Sound Design</h3>
-                        <a href="https://www.youtube.com/watch?v=ALQy5r7B1Bw" target="_blank">
-                            <img src="images/project4.png" alt="Akantilado Animation Sound Design">
-                        </a>
-                        <p class="slide-description">Sound done in collaboration with 3rd year students making full 3D animations in 6 months!. Click to view the project.</p>
-                    </div>
+<!-- 2. Akantilado Animation Sound Design -->
+<div class="slide">
+<h3>Akantilado Animation<br>Sound Design</h3>
+<a href="https://www.youtube.com/watch?v=ALQy5r7B1Bw" target="_blank">
+<img src="images/project4.png" alt="Akantilado Animation Sound Design">
+</a>
+<p class="slide-description">Sound done in collaboration with 3rd year students making full 3D animations in 6 months!. Click to view the project.</p>
+</div>
 
-                    <!-- 3. Amorak Sound Design -->
-                    <div class="slide">
-                        <h3>Amorak<br>Sound Design</h3>
-                        <a href="https://youtu.be/VZgEK1CjlNM" target="_blank">
-                            <img src="images/amorak.png" alt="Amorak Sound Design">
-                        </a>
-                        <p class="slide-description">Entire sound design for 3D animation "Amorak". Click to view the project.</p>
-                    </div>
+<!-- 3. Amorak Sound Design -->
+<div class="slide">
+<h3>Amorak<br>Sound Design</h3>
+<a href="https://youtu.be/VZgEK1CjlNM" target="_blank">
+<img src="images/amorak.png" alt="Amorak Sound Design">
+</a>
+<p class="slide-description">Entire sound design for 3D animation "Amorak". Click to view the project.</p>
+</div>
 
-                    <!-- 4. NotTodayDarling implementation/code -->
-                    <div class="slide">
-                        <h3>NotTodayDarling<br>implementation/code</h3>
-                        <a href="https://freyaspes.itch.io/not-today-darling/devlog/907907/week-06-3-2-1-start" target="_blank">
-                            <img src="images/nottodaydar.png" alt="NotTodayDarling audio design/code">
-                        </a>
-                        <p class="slide-description">Retro-inspired audio for a fast-paced narrative game. Click to view the project.</p>
-                    </div>
-                    
-                    <!-- 5. Pause & Deserve -->
-                    <div class="slide">
-                        <h3>Pause &amp; Deserve<br>Horror Game Development</h3>
-                        <a href="#" target="_blank">
-                            <img src="images/deserve.png" alt="Pause &amp; Deserve">
-                        </a>
-                        <p class="slide-description">Full solo project in horror game development. Click to view the project.</p>
-                    </div>
+<!-- 4. NotTodayDarling implementation/code -->
+<div class="slide">
+<h3>NotTodayDarling<br>implementation/code</h3>
+<a href="https://freyaspes.itch.io/not-today-darling/devlog/907907/week-06-3-2-1-start" target="_blank">
+<img src="images/nottodaydar.png" alt="NotTodayDarling audio design/code">
+</a>
+<p class="slide-description">Retro-inspired audio for a fast-paced narrative game. Click to view the project.</p>
+</div>
 
-                    <!-- 6. Richter - Animation Sound Design -->
-                    <div class="slide">
-                        <h3>Richter<br>Animation Sound Design</h3>
-                        <a href="#" target="_blank">
-                            <img src="images/richter.png" alt="Richter - Animation Audio Design Solo Recordings">
-                        </a>
-                        <p class="slide-description">Sound Design for 3D animation recorded with SINGLE microphone and adjusted with post processing!. Click to view the project.</p>
-                    </div>
+<!-- 5. Pause & Deserve -->
+<div class="slide">
+<h3>Pause & Deserve<br>Horror Game Development</h3>
+<a href="#" target="_blank">
+<img src="images/deserve.png" alt="Pause & Deserve">
+</a>
+<p class="slide-description">Full solo project in horror game development. Click to view the project.</p>
+</div>
 
-                    <div class="slider-nav prev">&#x25C0;</div>
-                    <div class="slider-nav next">&#x25B6;</div>
-                </div>
+<!-- 6. Richter - Animation Sound Design -->
+<div class="slide">
+<h3>Richter<br>Animation Sound Design</h3>
+<a href="#" target="_blank">
+<img src="images/richter.png" alt="Richter - Animation Audio Design Solo Recordings">
+</a>
+<p class="slide-description">Sound Design for 3D animation recorded with SINGLE microphone and adjusted with post processing!. Click to view the project.</p>
+</div>
 
-                <ul class="actions special">
-                    <li><a href="#" class="button large">View Case Study</a></li>
-                </ul>
-            </article>
+<div class="slider-nav prev">&#x25C0;</div>
+<div class="slider-nav next">&#x25B6;</div>
+</div>
 
-            <section class="posts">
-                <article>
-                    <header>
-                        <h2>Dynamic Music System</h2>
-                    </header>
-                    <a href="#" class="image fit"><img src="images/maxresdefault.jpg" alt="Music System" /></a>
-                    <p>Wwise-integrated adaptive music solution for Unreal Engine 5 with dynamic transitions and interactive layers.</p>
-                    <ul class="actions special">
-                        <li><a href="#" class="button">Details</a></li>
-                    </ul>
-                </article>
-                <article>
-                    <header>
-                        <h2>3D Audio Plugin Suite</h2>
-                    </header>
-                    <a href="#" class="image fit"><img src="images/plugins.jpg" alt="Audio Plugins" /></a>
-                    <p>Custom VST plugins featuring HRTF-based spatialization and real-time convolution reverb.</p>
-                    <ul class="actions special">
-                        <li><a href="#" class="button">Details</a></li>
-                    </ul>
-                </article>
-            </section>
+<ul class="actions special">
+<li><a href="#" class="button large">View Case Study</a></li>
+</ul>
+</article>
 
-            <footer>
-                <div class="pagination">
-                    <a href="#" class="page active">1</a>
-                </div>
-            </footer>
-        </div>
+<section class="posts">
+<article>
+<header>
+<h2>Dynamic Music System</h2>
+</header>
+<a href="#" class="image fit"><img src="images/maxresdefault.jpg" alt="Music System" /></a>
+<p>Wwise-integrated adaptive music solution for Unreal Engine 5 with dynamic transitions and interactive layers.</p>
+<ul class="actions special">
+<li><a href="#" class="button">Details</a></li>
+</ul>
+</article>
+<article>
+<header>
+<h2>3D Audio Plugin Suite</h2>
+</header>
+<a href="#" class="image fit"><img src="images/plugins.jpg" alt="Audio Plugins" /></a>
+<p>Custom VST plugins featuring HRTF-based spatialization and real-time convolution reverb.</p>
+<ul class="actions special">
+<li><a href="#" class="button">Details</a></li>
+</ul>
+</article>
+</section>
 
-        <footer id="footer">
-            <section class="split contact">
-                <section class="alt">
-                    <h3>Location</h3>
-                    <p>Belgium West Flanders</p>
-                </section>
-                <section>
-                    <h3>Email</h3>
-                    <p><a href="mailto:szunio2004@gmail.com">szunio2004@gmail.com</a></p>
-                </section>
-                <section>
-                    <h3>Social</h3>
-                    <ul class="icons alt">
-                        <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-                        <li><a href="#" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                        <li><a href="#" class="icon brands alt fa-soundcloud"><span class="label">SoundCloud</span></a></li>
-                    </ul>
-                </section>
-            </section>
-        </footer>
-        <div id="copyright">
-            <ul>
-                <li>&copy; Igor Szuniewicz 2025</li>
-            </ul>
-        </div>
-    </div>
+<footer>
+<div class="pagination">
+<a href="#" class="page active">1</a>
+</div>
+</footer>
+</div>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+<footer id="footer">
+<section class="split contact">
+<section class="alt">
+<h3>Location</h3>
+<p>Belgium West Flanders</p>
+</section>
+<section>
+<h3>Email</h3>
+<p><a href="mailto:szunio2004@gmail.com">szunio2004@gmail.com</a></p>
+</section>
+<section>
+<h3>Social</h3>
+<ul class="icons alt">
+<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+<li><a href="#" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+<li><a href="#" class="icon brands alt fa-soundcloud"><span class="label">SoundCloud</span></a></li>
+</ul>
+</section>
+</section>
+</footer>
+<div id="copyright">
+<ul>
+<li>&copy; Igor Szuniewicz 2025</li>
+</ul>
+</div>
+</div>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const slides = document.querySelectorAll('.slider .slide');
-      let currentSlide = 0;
-      const totalSlides = slides.length;
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 
-      // Upewnij się, że pierwszy slajd jest aktywny
-      slides[0].classList.add('active');
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+const slides = document.querySelectorAll('.slider .slide');
+let currentSlide = 0;
+const totalSlides = slides.length;
 
-      function goToSlide(index) {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (index + totalSlides) % totalSlides;
-        slides[currentSlide].classList.add('active');
-      }
+// Upewnij się, że pierwszy slajd jest aktywny
+slides[0].classList.add('active');
 
-      // Auto-rotacja co 5 sekund
-      setInterval(function() {
-        goToSlide(currentSlide + 1);
-      }, 5000);
+function goToSlide(index) {
+slides[currentSlide].classList.remove('active');
+currentSlide = (index + totalSlides) % totalSlides;
+slides[currentSlide].classList.add('active');
+}
 
-      // Obsługa kliknięć strzałek
-      const prevButton = document.querySelector('.slider-nav.prev');
-      const nextButton = document.querySelector('.slider-nav.next');
+// Auto-rotacja co 5 sekund
+setInterval(function() {
+goToSlide(currentSlide + 1);
+}, 5000);
 
-      if (prevButton) {
-        prevButton.addEventListener('click', function() {
-          goToSlide(currentSlide - 1);
-        });
-      }
-      if (nextButton) {
-        nextButton.addEventListener('click', function() {
-          goToSlide(currentSlide + 1);
-        });
-      }
-    });
-    </script>
+// Obsługa kliknięć strzałek
+const prevButton = document.querySelector('.slider-nav.prev');
+const nextButton = document.querySelector('.slider-nav.next');
+
+if (prevButton) {
+prevButton.addEventListener('click', function() {
+goToSlide(currentSlide - 1);
+});
+}
+if (nextButton) {
+nextButton.addEventListener('click', function() {
+goToSlide(currentSlide + 1);
+});
+}
+});
+</script>
 </body>
 </html>
