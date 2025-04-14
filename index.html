@@ -6,6 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        .slideshow-container {
+          position: relative;
+          margin: 2em auto;
+          max-width: 100%;
+        }
+        .slide {
+          display: none;
+        }
+        .active-slide {
+          display: block;
+        }
+        .prev, .next {
+          cursor: pointer;
+          position: absolute;
+          top: 50%;
+          width: auto;
+          padding: 1em;
+          color: white;
+          font-weight: bold;
+          font-size: 1.5em;
+          transition: 0.3s;
+          user-select: none;
+        }
+        .prev { left: 0; }
+        .next { right: 0; }
+        .slide-caption {
+          text-align: center;
+          padding-top: 0.5em;
+        }
+    </style>
 </head>
 <body class="is-preload">
 
@@ -49,6 +80,23 @@
                 <h2 class="major">Work</h2>
                 <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
                 <p>Here are some of the projects I've worked on, showcasing my skills in sound design, audio engineering, game sound integration, and music composition.</p>
+
+                <div class="slideshow-container">
+                    <div class="slide active-slide">
+                        <img src="images/proj1.jpg" style="width:100%">
+                        <div class="slide-caption">Projekt 1 – Opis projektu 1</div>
+                    </div>
+                    <div class="slide">
+                        <img src="images/proj2.jpg" style="width:100%">
+                        <div class="slide-caption">Projekt 2 – Opis projektu 2</div>
+                    </div>
+                    <div class="slide">
+                        <img src="images/proj3.jpg" style="width:100%">
+                        <div class="slide-caption">Projekt 3 – Opis projektu 3</div>
+                    </div>
+                    <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+                    <a class="next" onclick="changeSlide(1)">&#10095;</a>
+                </div>
             </article>
 
             <!-- About -->
@@ -81,25 +129,16 @@
                         <li><input type="reset" value="Reset" /></li>
                     </ul>
                 </form>
-                <ul class="icons">
-                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-                    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-                    <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-                </ul>
             </article>
 
         </div>
 
         <!-- Footer -->
         <footer id="footer">
-            <p class="copyright">&copy; Igor Szuniewicz. All rights reserved.</p>
+            <p class="copyright">&copy; Igor Szuniewicz</p>
         </footer>
 
     </div>
-
-    <!-- BG -->
-    <div id="bg"></div>
 
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
@@ -107,6 +146,23 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        let slideIndex = 0;
+        const slides = document.getElementsByClassName("slide");
 
+        function showSlide(n) {
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active-slide");
+            }
+            slides[n].classList.add("active-slide");
+        }
+
+        function changeSlide(n) {
+            slideIndex += n;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+            showSlide(slideIndex);
+        }
+    </script>
 </body>
 </html>
