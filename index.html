@@ -1,153 +1,112 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Igor Szuniewicz</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<head>
+    <title>Igor Szuniewicz - Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-				<!-- Main -->
-					<section id="main">
-						<header>
-							<h1>Igor Szuniewicz</h1>
-							<p>Sound Designer | Audio Technician | Game Sound Integrator | Composer</p>
-						</header>
+        <!-- Header -->
+        <header id="header">
+            <div class="logo">
+                <span class="icon fa-gem"></span>
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <h1>Igor Szuniewicz</h1>
+                    <p>Sound Designer | Audio Technician | Game Sound Integrator | Composer</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#intro">Intro</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
 
-						<!-- Slideshow -->
-						<div class="slideshow-container">
-							<div class="slide fade">
-								<img src="images/proj1.jpg" style="width:100%">
-								<div class="text">Projekt 1 – opis projektu 1</div>
-							</div>
+        <!-- Main -->
+        <div id="main">
 
-							<div class="slide fade">
-								<img src="images/proj2.jpg" style="width:100%">
-								<div class="text">Projekt 2 – opis projektu 2</div>
-							</div>
+            <!-- Intro -->
+            <article id="intro">
+                <h2 class="major">Intro</h2>
+                <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+                <p>Welcome to my portfolio! I specialize in creating immersive soundscapes, ensuring high-quality audio production, integrating sound into game engines, and composing original music for various media projects.</p>
+                <p>Feel free to explore my work and get in touch for collaborations or inquiries.</p>
+            </article>
 
-							<div class="slide fade">
-								<img src="images/proj3.jpg" style="width:100%">
-								<div class="text">Projekt 3 – opis projektu 3</div>
-							</div>
+            <!-- Work -->
+            <article id="work">
+                <h2 class="major">Work</h2>
+                <span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+                <p>Here are some of the projects I've worked on, showcasing my skills in sound design, audio engineering, game sound integration, and music composition.</p>
+            </article>
 
-							<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-							<a class="next" onclick="plusSlides(1)">&#10095;</a>
-						</div>
-						<br>
+            <!-- About -->
+            <article id="about">
+                <h2 class="major">About</h2>
+                <span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+                <p>I am a passionate sound designer, audio technician, game sound integrator, and composer with experience in various media projects. My goal is to create unique and immersive audio experiences that enhance the overall quality of the project.</p>
+            </article>
 
-						<div style="text-align:center">
-							<span class="dot" onclick="currentSlide(1)"></span>
-							<span class="dot" onclick="currentSlide(2)"></span>
-							<span class="dot" onclick="currentSlide(3)"></span>
-						</div>
+            <!-- Contact -->
+            <article id="contact">
+                <h2 class="major">Contact</h2>
+                <form method="post" action="#">
+                    <div class="fields">
+                        <div class="field half">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" />
+                        </div>
+                        <div class="field half">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" />
+                        </div>
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" value="Send Message" class="primary" /></li>
+                        <li><input type="reset" value="Reset" /></li>
+                    </ul>
+                </form>
+                <ul class="icons">
+                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                </ul>
+            </article>
 
-					</section>
+        </div>
 
-			</div>
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">&copy; Igor Szuniewicz. All rights reserved.</p>
+        </footer>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script>
-				let slideIndex = 1;
-				showSlides(slideIndex);
+    </div>
 
-				function plusSlides(n) {
-				  showSlides(slideIndex += n);
-				}
+    <!-- BG -->
+    <div id="bg"></div>
 
-				function currentSlide(n) {
-				  showSlides(slideIndex = n);
-				}
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
 
-				function showSlides(n) {
-				  let i;
-				  let slides = document.getElementsByClassName("slide");
-				  let dots = document.getElementsByClassName("dot");
-				  if (n > slides.length) {slideIndex = 1}    
-				  if (n < 1) {slideIndex = slides.length}
-				  for (i = 0; i < slides.length; i++) {
-					  slides[i].style.display = "none";  
-				  }
-				  for (i = 0; i < dots.length; i++) {
-					  dots[i].className = dots[i].className.replace(" active", "");
-				  }
-				  slides[slideIndex-1].style.display = "block";  
-				  dots[slideIndex-1].className += " active";
-				}
-			</script>
-
-		<!-- Optional CSS -->
-			<style>
-				.slideshow-container {
-				  position: relative;
-				  margin: auto;
-				  max-width: 800px;
-				}
-
-				.slide {
-				  display: none;
-				}
-
-				.fade {
-				  animation-name: fade;
-				  animation-duration: 1.5s;
-				}
-
-				@keyframes fade {
-				  from {opacity: .4} 
-				  to {opacity: 1}
-				}
-
-				.prev, .next {
-				  cursor: pointer;
-				  position: absolute;
-				  top: 50%;
-				  width: auto;
-				  padding: 16px;
-				  margin-top: -22px;
-				  color: white;
-				  font-weight: bold;
-				  font-size: 18px;
-				  transition: 0.6s ease;
-				  border-radius: 0 3px 3px 0;
-				  user-select: none;
-				}
-
-				.next {
-				  right: 0;
-				  border-radius: 3px 0 0 3px;
-				}
-
-				.text {
-				  color: #f2f2f2;
-				  font-size: 15px;
-				  padding: 8px 12px;
-				  position: absolute;
-				  bottom: 8px;
-				  width: 100%;
-				  text-align: center;
-				}
-
-				.dot {
-				  cursor: pointer;
-				  height: 15px;
-				  width: 15px;
-				  margin: 0 2px;
-				  background-color: #bbb;
-				  border-radius: 50%;
-				  display: inline-block;
-				  transition: background-color 0.6s ease;
-				}
-
-				.active, .dot:hover {
-				  background-color: #717171;
-				}
-			</style>
-
-	</body>
+</body>
 </html>
