@@ -135,17 +135,6 @@ body p {
     border-bottom: 1px solid #333;
 }
 
-/* Ensure text in CV box is visible */
-#cv-section .box ul li,
-#cv-section .box ul li strong {
-    color: #e0e0e0 !important; /* Ensure education text is clearly visible */
-}
-
-#cv-section .box h4 {
-    color: #ffffff !important; /* Ensure headings in box are visible */
-}
-
-
 /* Scholarly Output Section Placeholder */
 #scholarly-output-section {
     padding: 3em 0;
@@ -228,10 +217,10 @@ body p {
         font-size: 2.5rem;
     }
     .slider-nav.prev {
-        left: 5px; /* Adjust slider nav for smaller screens */
+        left: -30px; /* Adjust slider nav for smaller screens */
     }
     .slider-nav.next {
-        right: 5px; /* Adjust slider nav for smaller screens */
+        right: -30px; /* Adjust slider nav for smaller screens */
     }
 }
 
@@ -276,4 +265,5 @@ body p {
     z-index: 4;
     max-width: 90%;
 }
+
 
