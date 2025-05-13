@@ -1,0 +1,269 @@
+/* Custom CSS for Igor Szuniewicz Portfolio Redesign */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@300;400;700&display=swap');
+
+/* General Professional Enhancements */
+body {
+    font-family: 'Roboto', sans-serif; /* New body font */
+    color: #ccc; /* Lighter text on dark background for better readability */
+    font-weight: 300; /* Default to lighter weight for Roboto */
+}
+
+#wrapper {
+    background-color: #1a2027; /* Slightly adjusted dark background */
+}
+
+/* Navigation Enhancements */
+#nav ul.links li a, #nav .icons a {
+    font-family: 'Montserrat', sans-serif; /* Headings/Nav font */
+    font-weight: 700;
+    color: #e0e0e0; /* Lighter nav links */
+    transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+}
+
+#nav ul.links li.active a, #nav ul.links li a:hover, #nav .icons a:hover {
+    color: #18bfef; /* Accent color for active/hover states */
+    border-bottom-color: #18bfef;
+}
+
+#header .logo {
+    font-family: 'Montserrat', sans-serif; /* Headings/Nav font */
+    font-weight: 900;
+    color: #ffffff; /* Brighter logo text */
+}
+
+/* Introduction Section */
+#intro {
+    color: #f0f0f0; /* Brighter intro text */
+    background-color: rgba(0,0,0,0.3); /* Subtle background for intro text block */
+    padding: 2em;
+    border-radius: 8px;
+}
+
+#intro h1 {
+    font-family: 'Montserrat', sans-serif; /* Headings/Nav font */
+    font-weight: 900;
+    font-size: 3.5rem; /* Slightly smaller for balance */
+    color: #ffffff;
+    letter-spacing: 0.05em; /* Adjusted letter spacing for Montserrat */
+}
+
+#intro p {
+    font-family: 'Roboto', sans-serif; /* Body font */
+    font-size: 1.15rem;
+    color: #d0d0d0;
+    max-width: 700px; /* Constrain width for readability */
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8; /* Improved line height for Roboto */
+}
+
+/* Section Styling */
+.major > h2, .post > header > h2, article > header > h2, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif; /* Headings/Nav font */
+    font-weight: 700; /* Default heading weight */
+    color: #ffffff; /* White headings for sections */
+    letter-spacing: 0.05em; /* Adjusted letter spacing */
+}
+
+.major > p, .post > header > p, article > header > p, p {
+    font-family: 'Roboto', sans-serif; /* Body font */
+    color: #b0b0b0; /* Lighter paragraph text in section headers */
+    line-height: 1.8; /* Improved line height for Roboto */
+}
+
+/* Ensure original theme's specific heading styles are also updated if they don't inherit */
+body h1, body h2, body h3, body h4, body h5, body h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+body p {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.8;
+}
+
+
+/* Project Showcase - Thematic Grid (Placeholder, to be refined) */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2em;
+    padding: 2em 0;
+}
+
+.project-card {
+    background-color: #2a313a;
+    border: 1px solid #3a414a;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.project-card .image.fit img {
+    border-bottom: 1px solid #3a414a;
+}
+
+.project-card-content {
+    padding: 1.5em;
+}
+
+.project-card-content h3 {
+    font-family: 'Montserrat', sans-serif; /* Headings/Nav font */
+    color: #18bfef; /* Accent color for project titles */
+    margin-top: 0;
+    font-weight: 700;
+}
+
+.project-card-content p {
+    font-family: 'Roboto', sans-serif; /* Body font */
+    color: #c0c0c0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* CV Section Placeholder */
+#cv-section {
+    padding: 3em 0;
+    background-color: #222831;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+/* Scholarly Output Section Placeholder */
+#scholarly-output-section {
+    padding: 3em 0;
+}
+
+/* Extra-Curricular Section Placeholder */
+#extra-curricular-section {
+    padding: 3em 0;
+    background-color: #222831;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+/* Video Section Placeholder */
+#video-section {
+    padding: 3em 0;
+    text-align: center;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 800px; /* Max width for the video */
+    margin: 0 auto;
+    border: 2px solid #333;
+    border-radius: 8px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* QR Code Styling */
+#qr-code-container {
+    text-align: center;
+    padding: 2em 0;
+}
+
+#qr-code-container img {
+    max-width: 200px;
+    border: 5px solid #fff;
+    border-radius: 8px;
+}
+
+/* Footer Enhancements */
+#footer {
+    background-color: #161a1f; /* Darker footer */
+    color: #a0a0a0;
+}
+
+#footer h3 {
+    font-family: 'Montserrat', sans-serif; /* Headings/Nav font */
+    color: #e0e0e0;
+    font-weight: 700;
+}
+
+#footer .icons.alt a {
+    color: #a0a0a0;
+}
+
+#footer .icons.alt a:hover {
+    color: #18bfef;
+}
+
+#copyright {
+    background-color: #101418; /* Even darker copyright */
+    color: #888;
+    font-family: 'Roboto', sans-serif; /* Body font */
+}
+
+/* Responsive adjustments for slider if kept, or new project display */
+@media screen and (max-width: 736px) {
+    #intro h1 {
+        font-size: 2.5rem;
+    }
+    .slider-nav.prev {
+        left: -30px; /* Adjust slider nav for smaller screens */
+    }
+    .slider-nav.next {
+        right: -30px; /* Adjust slider nav for smaller screens */
+    }
+}
+
+/* Utility class for sections */
+.content-section {
+    padding: 4em 0;
+    border-bottom: 1px solid #303841; /* Separator line between sections */
+}
+
+.content-section:last-child {
+    border-bottom: none;
+}
+
+.content-section .major {
+    margin-bottom: 3em;
+}
+
+/* Ensure button text also uses a clear font if needed */
+.button {
+    font-family: 'Montserrat', sans-serif; /* Headings/Nav font for buttons */
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* Slider specific text */
+.slide h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin: 10px 0 15px 0;
+    font-size: 1.5em; 
+    color: #18bfef; 
+    text-align: center;
+    z-index: 4;
+}
+
+.slide-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95em;
+    color: #c0c0c0;
+    text-align: center;
+    margin: 10px 0;
+    z-index: 4;
+    max-width: 90%;
+}
+
+

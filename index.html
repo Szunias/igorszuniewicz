@@ -5,95 +5,12 @@
 -->
 <html>
 <head>
-    <title>Igor Szuniewicz - Portfolio</title>
+    <title>Igor Szuniewicz - Professional Portfolio</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/custom-styles.css" /> 
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-
-    <!-- Slider-specific style -->
-    <style>
-        .slider {
-             position: relative;
-             width: 100%;
-             max-width: 600px;
-             height: 850px;
-             margin: 20px auto 70px; /* dolny odstęp, aby View Case Study nie zasłaniał slidera */
-             overflow: hidden;
-             z-index: 3;
-        }
-        /* Każdy slajd ustawiony jako flexbox, aby układ był kolumnowy */
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            display: flex;
-            flex-direction: column;
-        }
-        .slide.active {
-            opacity: 1;
-        }
-        /* Tytuł u góry */
-        .slide h3 {
-            margin: 10px 0;
-            font-size: 1.8em;
-            color: #333;
-            text-align: center;
-            z-index: 4;
-        }
-        /* Kontener obrazu – zajmuje całą dostępną przestrzeń */
-        .slide a {
-            flex: 1;
-            display: block;
-            position: relative;
-            z-index: 4;
-        }
-        .slide a img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border: 2px solid #ddd;
-            display: block;
-        }
-        /* Opis na dole slajdu */
-        .slide-description {
-            font-size: 1em;
-            color: #555;
-            text-align: center;
-            margin: 10px 0;
-            z-index: 4;
-        }
-        .slider-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 3em;
-            color: #000;
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 50%;
-            box-shadow: 0 0 5px rgba(0,0,0,0.3);
-            z-index: 10;
-            user-select: none;
-        }
-        .slider-nav.prev {
-            left: -70px;
-        }
-        .slider-nav.next {
-            right: -70px;
-        }
-        /* Styl przycisku View Case Study */
-        .actions.special {
-            position: relative;
-            z-index: 1;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body class="is-preload">
     <div id="wrapper" class="fade-in">
@@ -101,9 +18,9 @@
         <div id="intro">
             <h1>Igor Szuniewicz</h1>
             <p>Composer | Audio Engineer | Software Developer<br />
-            Technical Sound Design • Interactive Music Systems • Game Audio</p>
+            Specializing in Technical Sound Design, Interactive Music Systems, and Game Audio. Welcome to my portfolio.</p>
             <ul class="actions">
-                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+                <li><a href="#nav" class="button icon solid solo fa-arrow-down scrolly">Explore My Work</a></li>
             </ul>
         </div>
 
@@ -113,154 +30,265 @@
 
         <nav id="nav">
             <ul class="links">
-                <li class="active"><a href="index.html">Portfolio</a></li>
-                <li><a href="generic.html">Skills &amp; Tools</a></li>
-                <li><a href="elements.html">Contact</a></li>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="#cv-section" class="scrolly">About Me (CV)</a></li>
+                <li><a href="#projects-showcase" class="scrolly">Projects</a></li>
+                <li><a href="#scholarly-output-section" class="scrolly">Scholarly Output</a></li>
+                <li><a href="#extra-curricular-section" class="scrolly">Extra-Curricular</a></li>
+                <li><a href="#contact-section" class="scrolly">Contact</a></li>
             </ul>
             <ul class="icons">
-                <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-                <li><a href="#" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                <li><a href="#" class="icon brands fa-soundcloud"><span class="label">SoundCloud</span></a></li>
+                <li><a href="https://github.com/Szunias" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+                <li><a href="https://www.linkedin.com/in/igor-szuniewicz-a6877a2a3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://open.spotify.com/artist/6jEBXZZOeunaMzMnnHYvd6" class="icon brands fa-spotify" target="_blank"><span class="label">Spotify</span></a></li>
             </ul>
         </nav>
 
         <div id="main">
-
-            <article class="post featured">
+            <!-- Introduction Section -->
+            <section class="post">
                 <header class="major">
-                    <h2>Recent Projects</h2>
-                    <p>Explore my latest work in interactive audio and sound design (Site in development)</p>
+                    <span class="date">Welcome</span>
+                    <h2>Introduction</h2>
+                    <p>A brief insight into who I am and my passion for audio and technology.</p>
                 </header>
+                <p>Hello! I am Igor Szuniewicz, a dedicated Composer, Audio Engineer, and Software Developer with a strong focus on creating immersive auditory experiences. My work spans technical sound design, the development of interactive music systems, and comprehensive game audio solutions. I thrive on blending creative artistry with technical precision to bring projects to life. This portfolio showcases my journey, skills, and the projects I am most proud of.</p>
+            </section>
+            <hr />
 
-                <div class="slider">
-                    <!-- 0. Most Recent Single -->
-                    <div class="slide active">
-                        <h3>Most Recent Single<br>&nbsp;</h3>
-                        <a href="https://youtu.be/9ZgLOSiQwjI?list=OLAK5uy_nzJk7hAZgv6WRFDY8TJHN7YUJrvjCn2Ro&t=80" target="_blank">
-                            <img src="images/epkam.png" alt="Most Recent Single">
-                        </a>
-                        <p class="slide-description">Click to view the project.</p>
+            <!-- Curriculum Vitae (CV) Section -->
+            <section id="cv-section" class="post">
+                <header class="major">
+                    <h2>About Me / Curriculum Vitae</h2>
+                    <p>A quasi-chronological overview of my life, education, and professional work.</p>
+                </header>
+                
+                <div class="box">
+                    <div class="row">
+                        <div class="col-6 col-12-small">
+                            <h4>Education</h4>
+                            <ul>
+                                <li><strong>Howest University of Applied Sciences, Digital Arts and Entertainment:</strong> Game Development - Game Sound Integration (Ongoing)</li>
+                                <li><strong>Billingual Copernicus Highschool:</strong> Profile - Maths & Physics (Graduated)</li>
+                            </ul>
+                            <h4>Work Experience</h4>
+                            <ul><li>Details to be added.</li></ul>
+                        </div>
+                        <div class="col-6 col-12-small">
+                            <h4>Key Skills (Example)</h4>
+                            <ul>
+                                <li>Sound Design & Implementation</li>
+                                <li>Music Composition & Production</li>
+                                <li>Audio Middleware: Wwise, FMOD</li>
+                                <li>Game Engines: Unreal Engine, Unity</li>
+                                <li>Programming: C++, Python, C#</li>
+                                <li>DAWs: Reaper, Pro Tools, Logic Pro</li>
+                                <li>VST/Audio Plugin Development</li>
+                            </ul>
+                        </div>
                     </div>
-
-                    <!-- 1. Ray Animation Music Composition -->
-                    <div class="slide">
-                        <h3>Ray Animation<br>Music Composition</h3>
-                        <a href="https://youtu.be/NhH4dNcfxZg?t=131" target="_blank">
-                            <img src="images/project5.png" alt="Ray Animation Music Composition">
-                        </a>
-                        <p class="slide-description">Original score for a dreamy character journey. Click to view the project.</p>
-                    </div>
-
-                    <!-- 2. Akantilado Animation Sound Design -->
-                    <div class="slide">
-                        <h3>Akantilado Animation<br>Sound Design</h3>
-                        <a href="https://www.youtube.com/watch?v=ALQy5r7B1Bw" target="_blank">
-                            <img src="images/project4.png" alt="Akantilado Animation Sound Design">
-                        </a>
-                        <p class="slide-description">Sound done in collaboration with 3rd year students making full 3D animations in 6 months!. Click to view the project.</p>
-                    </div>
-
-                    <!-- 3. Amorak Sound Design -->
-                    <div class="slide">
-                        <h3>Amorak<br>Sound Design</h3>
-                        <a href="https://youtu.be/VZgEK1CjlNM" target="_blank">
-                            <img src="images/amorak.png" alt="Amorak Sound Design">
-                        </a>
-                        <p class="slide-description">Entire sound design for 3D animation "Amorak". Click to view the project.</p>
-                    </div>
-
-                    <!-- 4. NotTodayDarling implementation/code -->
-                    <div class="slide">
-                        <h3>NotTodayDarling<br>implementation/code</h3>
-                        <a href="https://freyaspes.itch.io/not-today-darling/devlog/907907/week-06-3-2-1-start" target="_blank">
-                            <img src="images/nottodaydar.png" alt="NotTodayDarling audio design/code">
-                        </a>
-                        <p class="slide-description">Retro-inspired audio for a fast-paced narrative game. Click to view the project.</p>
-                    </div>
-                    
-                    <!-- 5. Pause & Deserve -->
-                    <div class="slide">
-                        <h3>Pause &amp; Deserve<br>Horror Game Development</h3>
-                        <a href="#" target="_blank">
-                            <img src="images/deserve.png" alt="Pause &amp; Deserve">
-                        </a>
-                        <p class="slide-description">Full solo project in horror game development. Click to view the project.</p>
-                    </div>
-
-                    <!-- 6. Richter - Animation Sound Design -->
-                    <div class="slide">
-                        <h3>Richter<br>Animation Sound Design</h3>
-                        <a href="#" target="_blank">
-                            <img src="images/richter.png" alt="Richter - Animation Audio Design Solo Recordings">
-                        </a>
-                        <p class="slide-description">Sound Design for 3D animation recorded with SINGLE microphone and adjusted with post processing!. Click to view the project.</p>
-                    </div>
-
-                    <div class="slider-nav prev">&#x25C0;</div>
-                    <div class="slider-nav next">&#x25B6;</div>
                 </div>
-
-                <ul class="actions special">
-                    <li><a href="#" class="button large">View Case Study</a></li>
+                 <ul class="actions" style="text-align: center; margin-top: 2em;">
+                    <li><a href="#" class="button">Download Full CV (PDF)</a></li>
                 </ul>
-            </article>
-
-            <section class="posts">
-                <article>
-                    <header>
-                        <h2>Dynamic Music System</h2>
-                    </header>
-                    <a href="#" class="image fit"><img src="images/maxresdefault.jpg" alt="Music System" /></a>
-                    <p>Wwise-integrated adaptive music solution for Unreal Engine 5 with dynamic transitions and interactive layers.</p>
-                    <ul class="actions special">
-                        <li><a href="#" class="button">Details</a></li>
-                    </ul>
-                </article>
-                <article>
-                    <header>
-                        <h2>3D Audio Plugin Suite</h2>
-                    </header>
-                    <a href="#" class="image fit"><img src="images/plugins.jpg" alt="Audio Plugins" /></a>
-                    <p>Custom VST plugins featuring HRTF-based spatialization and real-time convolution reverb.</p>
-                    <ul class="actions special">
-                        <li><a href="#" class="button">Details</a></li>
-                    </ul>
-                </article>
             </section>
+            <hr />
 
-            <footer>
-                <div class="pagination">
-                    <a href="#" class="page active">1</a>
+            <!-- Scholarly Output / School Projects Section -->
+            <section id="scholarly-output-section" class="post">
+                <header class="major">
+                    <h2>Scholarly Output & School Projects</h2>
+                    <p>A showcase of significant academic projects and developments in audio technology during my studies.</p>
+                </header>
+                <div class="posts">
+                    <article>
+                        <header>
+                            <span class="date">School Project</span>
+                            <h3><a href="https://youtu.be/NhH4dNcfxZg?t=131" target="_blank">Ray Animation Music Composition</a></h3>
+                        </header>
+                        <a href="https://youtu.be/NhH4dNcfxZg?t=131" target="_blank" class="image fit"><img src="images/project5.png" alt="Ray Animation Music Composition" /></a>
+                        <p>As a school project, I composed an original score for "Ray," a captivating 3D animation. The focus was on creating an atmospheric and emotionally resonant soundscape to enhance the narrative of a character embarking on a dreamy and introspective journey. This involved close collaboration with the animation team to synchronize musical cues with visual storytelling elements.</p>
+                        <ul class="actions special">
+                            <li><a href="https://youtu.be/NhH4dNcfxZg?t=131" target="_blank" class="button">View Project</a></li>
+                        </ul>
+                    </article>
+                    <article>
+                        <header>
+                            <span class="date">School Project</span>
+                            <h3><a href="https://www.youtube.com/watch?v=ALQy5r7B1Bw" target="_blank">Akantilado Animation Sound Design</a></h3>
+                        </header>
+                        <a href="https://www.youtube.com/watch?v=ALQy5r7B1Bw" target="_blank" class="image fit"><img src="images/project4.png" alt="Akantilado Animation Sound Design" /></a>
+                        <p>This school project involved a collaborative effort to produce the complete sound design for the 3D animation "Akantilado." My role included creating and implementing sound effects, foley, and ambiences to bring the animated world to life, working closely with the team to achieve a cohesive and immersive auditory experience.</p>
+                        <ul class="actions special">
+                            <li><a href="https://www.youtube.com/watch?v=ALQy5r7B1Bw" target="_blank" class="button">View Project</a></li>
+                        </ul>
+                    </article>
+                    <article>
+                        <header>
+                            <span class="date">School Project</span>
+                            <h3><a href="https://youtu.be/VZgEK1CjlNM" target="_blank">Amorak Animation Sound Design</a></h3>
+                        </header>
+                        <a href="https://youtu.be/VZgEK1CjlNM" target="_blank" class="image fit"><img src="images/amorak.png" alt="Amorak Sound Design" /></a>
+                        <p>For the school project "Amorak," a 3D animation, I was responsible for the complete sound design. This encompassed creating unique soundscapes, character sounds, and environmental audio to complement the visual narrative and enhance the overall viewer experience. The project emphasized creative sound synthesis and foley work.</p>
+                        <ul class="actions special">
+                            <li><a href="https://youtu.be/VZgEK1CjlNM" target="_blank" class="button">View Project</a></li>
+                        </ul>
+                    </article>
+                    <article>
+                        <header>
+                            <span class="date">School Project</span>
+                            <h3><a href="https://freyaspes.itch.io/not-today-darling/devlog/907907/week-06-3-2-1-start" target="_blank">NotTodayDarling - Game Audio Implementation</a></h3>
+                        </header>
+                        <a href="https://freyaspes.itch.io/not-today-darling/devlog/907907/week-06-3-2-1-start" target="_blank" class="image fit"><img src="images/nottodaydar.png" alt="NotTodayDarling audio design/code" /></a>
+                        <p>In this school project, I contributed to the audio design and implementation for "NotTodayDarling," a narrative game with a distinctive retro-inspired aesthetic. My work involved creating and integrating sound effects and music that matched the game’s style, utilizing game audio middleware and scripting to achieve dynamic and interactive soundscapes.</p>
+                        <ul class="actions special">
+                            <li><a href="https://freyaspes.itch.io/not-today-darling/devlog/907907/week-06-3-2-1-start" target="_blank" class="button">View Devlog</a></li>
+                        </ul>
+                    </article>
+                    <article>
+                        <header>
+                            <span class="date">School Project</span>
+                            <h3><a href="#">Pause & Deserve - Solo Horror Game Dev</a></h3>
+                        </header>
+                        <a href="#" class="image fit"><img src="images/deserve.png" alt="Pause & Deserve Horror Game" /></a>
+                        <p>"Pause & Deserve" was an ambitious solo school project where I undertook the development of a horror game. This involved all aspects from concept and design to programming and audio implementation. The project focused on creating a suspenseful atmosphere through sound design, environmental storytelling, and gameplay mechanics.</p>
+                        <ul class="actions special">
+                            <li><a href="#" class="button disabled">Details Pending</a></li>
+                        </ul>
+                    </article>
+                    <article>
+                        <header>
+                            <span class="date">School Project</span>
+                            <h3><a href="#">Richter Animation Sound Design</a></h3>
+                        </header>
+                        <a href="#" class="image fit"><img src="images/richter.png" alt="Richter - Animation Audio Design" /></a>
+                        <p>This school project challenged me to create the sound design for a 3D animation titled "Richter," with the constraint of using minimal recording equipment. It emphasized resourcefulness and creativity in sound sourcing, foley performance, and synthesis to build a compelling audio environment for the animation.</p>
+                        <ul class="actions special">
+                            <li><a href="#" class="button disabled">Details Pending</a></li>
+                        </ul>
+                    </article>
                 </div>
-            </footer>
-        </div>
-
-        <footer id="footer">
-            <section class="split contact">
-                <section class="alt">
-                    <h3>Location</h3>
-                    <p>Belgium West Flanders</p>
-                </section>
-                <section>
-                    <h3>Email</h3>
-                    <p><a href="mailto:szunio2004@gmail.com">szunio2004@gmail.com</a></p>
-                </section>
-                <section>
-                    <h3>Social</h3>
-                    <ul class="icons alt">
-                        <li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-                        <li><a href="#" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                        <li><a href="#" class="icon brands alt fa-soundcloud"><span class="label">SoundCloud</span></a></li>
-                    </ul>
-                </section>
             </section>
-        </footer>
+            <hr />
+
+            <!-- Thematic Projects Showcase (Other/Professional) -->
+            <section id="projects-showcase" class="post">
+                <header class="major">
+                    <h2>Other Projects & Technical Work</h2>
+                    <p>A selection of other important projects, highlighting my involvement and key contributions outside of school work or more focused on technical development.</p>
+                </header>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <a href="#" class="image fit"><img src="images/maxresdefault.jpg" alt="Dynamic Music System" /></a>
+                        <div class="project-card-content">
+                            <h3>Dynamic Music System (Wwise & UE5)</h3>
+                            <p>Developed a Wwise-integrated adaptive music solution for Unreal Engine 5. This system features dynamic transitions and interactive layers, showcasing skills in system design, Wwise implementation, and UE5 integration for responsive game audio.</p>
+                            <ul class="actions special">
+                                <li><a href="#" class="button small disabled">Details Pending</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                        <a href="#" class="image fit"><img src="images/plugins.jpg" alt="Audio Plugins" /></a>
+                        <div class="project-card-content">
+                            <h3>3D Audio Plugin Suite (VST Development)</h3>
+                            <p>Created a suite of custom VST plugins focusing on 3D audio. This involved DSP algorithm development for HRTF-based spatialization and real-time convolution reverb, C++ programming, and designing the user interface for the plugins.</p>
+                            <ul class="actions special">
+                                <li><a href="#" class="button small disabled">Details Pending</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="project-card">
+                         <a href="#" class="image fit"><img src="images/pic07.jpg" alt="Placeholder Project" /></a> 
+                        <div class="project-card-content">
+                            <h3>Placeholder Project Title</h3>
+                            <p>Description of project to be added.</p>
+                            <ul class="actions special">
+                                <li><a href="#" class="button small">Details</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            <hr />
+
+            <!-- Extra-Curricular Projects Section -->
+            <section id="extra-curricular-section" class="post">
+                <header class="major">
+                    <h2>Extra-Curricular Projects & Music</h2>
+                    <p>Passionate endeavors, musical releases, and collaborations beyond formal work and studies.</p>
+                </header>
+                 <div class="box">
+                    <div class="row">
+                        <div class="col-12">
+                            <article style="display: flex; align-items: center; margin-bottom: 1.5em;">
+                                <a href="https://youtu.be/9ZgLOSiQwjI?list=OLAK5uy_nzJk7hAZgv6WRFDY8TJHN7YUJrvjCn2Ro&t=80" target="_blank" style="margin-right: 1.5em; flex-shrink: 0;"><img src="images/epkam.png" alt="Spotify Single" style="width:100px; height:100px; object-fit:cover; border-radius:4px;"/></a>
+                                <div>
+                                    <h4><a href="https://open.spotify.com/artist/6jEBXZZOeunaMzMnnHYvd6" target="_blank">My Music on Spotify</a></h4>
+                                    <p>My latest musical release, available on Spotify and other platforms. This track showcases my personal composition and production style. You can listen to it <a href="https://open.spotify.com/artist/6jEBXZZOeunaMzMnnHYvd6" target="_blank">here on Spotify</a>.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <p>Further details on game jams, open-source contributions, workshops, or community activities can be added here.</p>
+                    <ul>
+                        <li>Placeholder for another extra-curricular project.</li>
+                    </ul>
+                </div>
+            </section>
+            <hr />
+
+            <!-- Video / Showreel Section -->
+            <section id="video-section" class="post">
+                <header class="major">
+                    <h2>Showreel</h2>
+                    <p>A two-minute highlight reel of my career's key moments and projects.</p>
+                </header>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </section>
+            
+            <!-- Contact Section -->
+            <section id="contact-section" class="post">
+                 <footer id="footer">
+                    <section class="split contact">
+                        <section class="alt">
+                            <h3>Location</h3>
+                            <p>Belgium West Flanders</p>
+                        </section>
+                        <section>
+                            <h3>Email</h3>
+                            <p><a href="mailto:szunio2004@gmail.com">szunio2004@gmail.com</a></p>
+                        </section>
+                        <section>
+                            <h3>Social & Professional Links</h3>
+                            <ul class="icons alt">
+                                <li><a href="https://github.com/Szunias" class="icon brands alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+                                <li><a href="https://www.linkedin.com/in/igor-szuniewicz-a6877a2a3?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="icon brands alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+                                <li><a href="https://open.spotify.com/artist/6jEBXZZOeunaMzMnnHYvd6" class="icon brands alt fa-spotify" target="_blank"><span class="label">Spotify</span></a></li>
+                                <li><a href="#" class="icon solid fa-file-alt" target="_blank"><span class="label">CV (PDF)</span></a></li>
+                            </ul>
+                        </section>
+                    </section>
+                    <section id="qr-code-container">
+                        <h3>Quick Access (QR Code)</h3>
+                        <img src="images/website_qr_code.png" alt="QR Code for Website" />
+                        <p>Scan for quick access to this portfolio.</p>
+                    </section>
+                </footer>
+            </section>
+
+        </div> <!-- End #main -->
+
         <div id="copyright">
             <ul>
-                <li>&copy; Igor Szuniewicz 2025</li>
+                <li>&copy; Igor Szuniewicz 2025. All rights reserved.</li>
+                <li>Design based on <a href="https://html5up.net">HTML5 UP</a> Massively.</li>
             </ul>
         </div>
-    </div>
+
+    </div> <!-- End #wrapper -->
 
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
@@ -271,41 +299,6 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const slides = document.querySelectorAll('.slider .slide');
-      let currentSlide = 0;
-      const totalSlides = slides.length;
-
-      // Upewnij się, że pierwszy slajd jest aktywny
-      slides[0].classList.add('active');
-
-      function goToSlide(index) {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (index + totalSlides) % totalSlides;
-        slides[currentSlide].classList.add('active');
-      }
-
-      // Auto-rotacja co 5 sekund
-      setInterval(function() {
-        goToSlide(currentSlide + 1);
-      }, 5000);
-
-      // Obsługa kliknięć strzałek
-      const prevButton = document.querySelector('.slider-nav.prev');
-      const nextButton = document.querySelector('.slider-nav.next');
-
-      if (prevButton) {
-        prevButton.addEventListener('click', function() {
-          goToSlide(currentSlide - 1);
-        });
-      }
-      if (nextButton) {
-        nextButton.addEventListener('click', function() {
-          goToSlide(currentSlide + 1);
-        });
-      }
-    });
-    </script>
 </body>
 </html>
+
