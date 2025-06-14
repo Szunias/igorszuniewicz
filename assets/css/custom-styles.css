@@ -58,6 +58,11 @@ body {
 }
 
 /* Section Styling */
+
+h2#amagas
+{
+    color:#212931;
+}
 .major > h2, .post > header > h2, article > header > h2, h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif; /* Headings/Nav font */
     font-weight: 700; /* Default heading weight */
