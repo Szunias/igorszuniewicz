@@ -2150,6 +2150,8 @@ input, select, textarea {
 			height: 2.5rem;
 			line-height: 2.5rem;
 			padding: 0 1.5rem;
+    		color: #ffffff !important;;
+			box-shadow: inset 0 0 0 2px #ffffff;
 		}
 
 		input[type="submit"].large,
@@ -2621,7 +2623,10 @@ input, select, textarea {
 		.image.fit {
 			display: block;
 			margin: 2.5rem 0;
-			width: 100%;
+			width: 50%;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 3em;
 		}
 
 			.image.fit:first-child {
@@ -4242,6 +4247,8 @@ input, select, textarea {
 					-ms-align-items: center;
 					align-items: center;
 					padding: 3.15rem 4rem;
+					 flex-direction: column; /* Stack items vertically */
+ 					 gap: 1.5rem; /* Adjust this value to control the space between text and icons */
 				}
 
 					#footer > section.split.contact > section > * {
@@ -4257,7 +4264,6 @@ input, select, textarea {
 						-webkit-flex-grow: 0;
 						-ms-flex-grow: 0;
 						flex-grow: 0;
-						width: 6rem;
 					}
 
 					#footer > section.split.contact > section > :last-child {
@@ -4283,7 +4289,7 @@ input, select, textarea {
 						-moz-align-items: -moz-flex-start;
 						-webkit-align-items: -webkit-flex-start;
 						-ms-align-items: -ms-flex-start;
-						align-items: flex-start;
+						align-items: center;
 					}
 
 						#footer > section.split.contact > section.alt > :last-child {
@@ -4294,6 +4300,7 @@ input, select, textarea {
 		#footer h3,
 		#footer p {
 			font-size: 0.8rem;
+			text-align: center;
 		}
 
 		@media screen and (max-width: 980px) {
@@ -4594,6 +4601,7 @@ input, select, textarea {
   height: 100%;
   opacity: 0;
   transition: opacity 1s ease-in-out;
+  
 }
 
 .slider .slide.active {

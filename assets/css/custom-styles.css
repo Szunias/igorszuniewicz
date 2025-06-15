@@ -58,11 +58,6 @@ body {
 }
 
 /* Section Styling */
-
-h2#amagas
-{
-    color:#212931;
-}
 .major > h2, .post > header > h2, article > header > h2, h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif; /* Headings/Nav font */
     font-weight: 700; /* Default heading weight */
@@ -72,9 +67,11 @@ h2#amagas
 
 .major > p, .post > header > p, article > header > p, p {
     font-family: 'Roboto', sans-serif; /* Body font */
-    color: #b0b0b0; /* Lighter paragraph text in section headers */
+    color: #616161; /* Lighter paragraph text in section headers */
     line-height: 1.8; /* Improved line height for Roboto */
 }
+
+
 
 /* Ensure original theme's specific heading styles are also updated if they don't inherit */
 body h1, body h2, body h3, body h4, body h5, body h6 {
@@ -124,6 +121,7 @@ body p {
     margin-top: 0;
     font-weight: 700;
 }
+
 
 .project-card-content p {
     font-family: 'Roboto', sans-serif; /* Body font */
@@ -282,3 +280,19 @@ body p {
     max-width: 90%;
 }
 
+#bgColor {
+ color: #212931;
+}
+
+#bgWhite {
+    color: #c0c0c0;
+}
+
+#Center{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a.slide{
+
+}
