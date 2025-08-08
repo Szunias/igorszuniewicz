@@ -5,10 +5,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="assets/css/custom-styles.css" />
+  <link rel="stylesheet" href="assets/css/custom-styles.css?v=20250209" />
+  <style>
+    /* Hard override of template background on this page */
+    body, #wrapper, #main { background: transparent !important; }
+    #wrapper > .bg, #wrapper > .bg.fixed { display: none !important; }
+  </style>
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
-<body class="is-preload">
+<body class="is-preload" style="background: transparent !important;">
   <div id="wrapper" class="fade-in">
     <header id="header">
       <a href="index.html" class="logo">Igor Szuniewicz</a>
@@ -67,7 +72,17 @@
       </ul>
     </div>
   </div>
-  <script src="assets/js/enhancements.js"></script>
+  <script src="assets/js/enhancements.js?v=20250209"></script>
+  <script>
+    // Inline hard override in case template injects .bg after load
+    (function(){
+      function nuke(){
+        document.querySelectorAll('#wrapper > .bg, #wrapper > .bg.fixed').forEach(el=>{ el.style.display='none'; });
+        document.body.style.background='transparent';
+      }
+      nuke(); setTimeout(nuke,200); setTimeout(nuke,1200);
+    })();
+  </script>
   <script src="assets/js/theme-toggle.js"></script>
 </body>
 </html>

@@ -25,6 +25,11 @@ html, body { overflow-x: hidden; background: transparent !important; }
 #wrapper { background-color: transparent !important; }
 #main { background-color: transparent !important; }
 body { background-color: transparent !important; }
+/* Force-hide theme background layers if present */
+body > #wrapper > .bg, #wrapper > .bg, #wrapper > .bg.fixed { display: none !important; }
+
+/* Extra: prevent noscript.css from setting background if noscript loads */
+noscript body { background: transparent !important; }
 
 /* Intro spacing to avoid overlap and raise heading */
 #intro {

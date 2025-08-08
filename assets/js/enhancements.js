@@ -23,6 +23,25 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   markVisibleNow();
 
+  // Kill theme background that may be injected by template (#wrapper > .bg)
+  function removeTemplateBackground() {
+    document.querySelectorAll('#wrapper > .bg, #wrapper > .bg.fixed').forEach((el) => {
+      try { el.style.setProperty('display','none','important'); } catch(_) {}
+    });
+    try { document.body.style.background = 'transparent'; } catch(_) {}
+  }
+  removeTemplateBackground();
+  // Observe dynamic insertions from template scripts
+  const wrap = document.getElementById('wrapper');
+  if (wrap && 'MutationObserver' in window) {
+    const mo = new MutationObserver(removeTemplateBackground);
+    mo.observe(wrap, { childList: true, subtree: false });
+    // safety: run a few times after load
+    setTimeout(removeTemplateBackground, 300);
+    setTimeout(removeTemplateBackground, 1200);
+    setTimeout(removeTemplateBackground, 3000);
+  }
+
   // Smooth page fade transitions
   // Intercept internal links and fade out before navigation
   const progress = document.createElement('div');
