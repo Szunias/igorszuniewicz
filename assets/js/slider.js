@@ -1,10 +1,40 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const slides = document.querySelectorAll('.slider .slide');
+  const slider = document.querySelector('.slider');
+  if (!slider) return;
+
+  const slides = slider.querySelectorAll('.slide');
+  const prevBtn = slider.querySelector('.slider-nav.prev');
+  const nextBtn = slider.querySelector('.slider-nav.next');
   let currentSlide = 0;
-  
-  setInterval(() => {
+
+  function goToSlide(index) {
     slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
+    currentSlide = (index + slides.length) % slides.length;
     slides[currentSlide].classList.add('active');
-  }, 5000); // zmiana co 5 sekund
+  }
+
+  let autoTimer = setInterval(() => {
+    goToSlide(currentSlide + 1);
+  }, 5000);
+
+  function resetTimer() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => {
+      goToSlide(currentSlide + 1);
+    }, 5000);
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      goToSlide(currentSlide - 1);
+      resetTimer();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      goToSlide(currentSlide + 1);
+      resetTimer();
+    });
+  }
 });

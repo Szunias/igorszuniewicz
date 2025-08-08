@@ -1,11 +1,13 @@
 /* Custom CSS for Igor Szuniewicz Portfolio Redesign */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@300;400;600;700&display=swap');
 
 /* General Professional Enhancements */
 body {
-    font-family: 'Roboto', sans-serif; /* New body font */
-    color: #ccc; /* Lighter text on dark background for better readability */
-    font-weight: 300; /* Default to lighter weight for Roboto */
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    color: #ccc;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 #wrapper {
@@ -14,7 +16,7 @@ body {
 
 /* Navigation Enhancements */
 #nav ul.links li a, #nav .icons a {
-    font-family: 'Montserrat', sans-serif; /* Headings/Nav font */
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     color: #e0e0e0; /* Lighter nav links */
     transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
@@ -26,7 +28,7 @@ body {
 }
 
 #header .logo {
-    font-family: 'Montserrat', sans-serif; /* Headings/Nav font */
+    font-family: 'Poppins', sans-serif;
     font-weight: 900;
     color: #ffffff; /* Brighter logo text */
 }
@@ -40,7 +42,7 @@ body {
 }
 
 #intro h1 {
-    font-family: 'Montserrat', sans-serif; /* Headings/Nav font */
+    font-family: 'Poppins', sans-serif;
     font-weight: 900;
     font-size: 3.5rem; /* Slightly smaller for balance */
     color: #ffffff;
@@ -48,7 +50,7 @@ body {
 }
 
 #intro p {
-    font-family: 'Roboto', sans-serif; /* Body font */
+    font-family: 'Inter', sans-serif;
     font-size: 1.15rem;
     color: #d0d0d0;
     max-width: 700px; /* Constrain width for readability */
@@ -59,14 +61,14 @@ body {
 
 /* Section Styling */
 .major > h2, .post > header > h2, article > header > h2, h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif; /* Headings/Nav font */
+    font-family: 'Poppins', sans-serif;
     font-weight: 700; /* Default heading weight */
     color: #ffffff; /* White headings for sections */
     letter-spacing: 0.05em; /* Adjusted letter spacing */
 }
 
 .major > p, .post > header > p, article > header > p, p {
-    font-family: 'Roboto', sans-serif; /* Body font */
+    font-family: 'Inter', sans-serif;
     color: #616161; /* Lighter paragraph text in section headers */
     line-height: 1.8; /* Improved line height for Roboto */
 }
@@ -75,13 +77,13 @@ body {
 
 /* Ensure original theme's specific heading styles are also updated if they don't inherit */
 body h1, body h2, body h3, body h4, body h5, body h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     letter-spacing: 0.05em;
 }
 
 body p {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
     line-height: 1.8;
 }
 
@@ -116,7 +118,7 @@ body p {
 }
 
 .project-card-content h3 {
-    font-family: 'Montserrat', sans-serif; /* Headings/Nav font */
+    font-family: 'Poppins', sans-serif; /* Headings/Nav font */
     color: #18bfef; /* Accent color for project titles */
     margin-top: 0;
     font-weight: 700;
@@ -124,7 +126,7 @@ body p {
 
 
 .project-card-content p {
-    font-family: 'Roboto', sans-serif; /* Body font */
+    font-family: 'Inter', sans-serif; /* Body font */
     color: #c0c0c0;
     font-size: 0.95rem;
     line-height: 1.6;
@@ -222,7 +224,7 @@ body p {
 #copyright {
     background-color: #101418; /* Even darker copyright */
     color: #888;
-    font-family: 'Roboto', sans-serif; /* Body font */
+    font-family: 'Inter', sans-serif; /* Body font */
 }
 
 /* Responsive adjustments for slider if kept, or new project display */
@@ -254,14 +256,14 @@ body p {
 
 /* Ensure button text also uses a clear font if needed */
 .button {
-    font-family: 'Montserrat', sans-serif; /* Headings/Nav font for buttons */
+    font-family: 'Poppins', sans-serif; /* Headings/Nav font for buttons */
     font-weight: 700;
     letter-spacing: 0.05em;
 }
 
 /* Slider specific text */
 .slide h3 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     margin: 10px 0 15px 0;
     font-size: 1.5em; 
@@ -271,7 +273,7 @@ body p {
 }
 
 .slide-description {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 0.95em;
     color: #c0c0c0;
     text-align: center;
@@ -308,3 +310,75 @@ a.slide{
 .posts .image.fit {
     width: 100%;
 }
+
+/* Layout enhancements for wider screens */
+@media (min-width: 1200px) {
+  #main {
+    max-width: 85rem;
+  }
+}
+
+/* Page fade transitions */
+#wrapper { transition: opacity 250ms ease; }
+body.page-exit #wrapper { opacity: 0; }
+
+/* Reveal-on-scroll animations: default visible; hide only when JS enables */
+.reveal-enabled [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.reveal-enabled [data-reveal].in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Micro-interactions */
+.button {
+  transition: transform 150ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+.button:hover, .button:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+#nav .icons a, .icons.alt a {
+  transition: transform 150ms ease, color 200ms ease;
+}
+#nav .icons a:hover, .icons.alt a:hover {
+  transform: scale(1.08);
+}
+
+.project-card {
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+  border-color: #4a5160;
+}
+
+/* Theme toggle styling */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.theme-toggle .label { font-size: 0.9rem; }
+
+/* Light/Dark themes */
+body[data-theme="dark"] #wrapper { background-color: #1a2027; }
+body[data-theme="dark"] #main { background-color: #1a2027; }
+body[data-theme="dark"] #main h1, body[data-theme="dark"] #main h2, body[data-theme="dark"] #main h3 { color: #ffffff; }
+body[data-theme="dark"] #main p { color: #c0c0c0; }
+body[data-theme="dark"] .project-card { background-color: #2a313a; }
+body[data-theme="dark"] #footer { background-color: #161a1f; }
+
+body[data-theme="light"] #wrapper { background-color: #f3f5f7; }
+body[data-theme="light"] #main { background-color: #ffffff; }
+body[data-theme="light"] #main h1, body[data-theme="light"] #main h2, body[data-theme="light"] #main h3 { color: #212931; }
+body[data-theme="light"] #main p { color: #444; }
+body[data-theme="light"] .project-card { background-color: #ffffff; border-color: #e3e6ea; }
+body[data-theme="light"] #footer { background-color: #eef1f4; color: #333; }
