@@ -12,7 +12,7 @@ body {
 }
 
 html { scrollbar-gutter: stable; }
-html, body { overflow-x: hidden; }
+html, body { overflow-x: hidden; background: transparent !important; }
 /* Global downscale on desktop to reduce perceived size */
 @media (min-width: 981px) {
   html { font-size: 12pt !important; }
@@ -24,6 +24,7 @@ html, body { overflow-x: hidden; }
 /* Ensure wrapper and main don't mask interactive background */
 #wrapper { background-color: transparent !important; }
 #main { background-color: transparent !important; }
+body { background-color: transparent !important; }
 
 /* Intro spacing to avoid overlap and raise heading */
 #intro {
@@ -393,6 +394,19 @@ body.page-enter #wrapper { opacity: 0; transform: translateY(16px) scale(0.988);
 
 /* Equalizer bars overlay */
 .bg-eq { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.12; mix-blend-mode: soft-light; }
+
+/* Click visual audio-ripple */
+.click-fx { position: fixed; inset: 0; z-index: 100; pointer-events: none; overflow: hidden; }
+.click-fx .ripple {
+  position: absolute; width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid rgba(24,191,239,0.6);
+  box-shadow: 0 0 18px rgba(24,191,239,0.35);
+  transform: translate(-50%, -50%) scale(1);
+  animation: rippleOut 650ms ease-out forwards;
+}
+.click-fx .r2 { border-color: rgba(154,108,255,0.5); animation-delay: 60ms; }
+.click-fx .r3 { border-color: rgba(40,120,160,0.5); animation-delay: 120ms; }
+@keyframes rippleOut { to { transform: translate(-50%, -50%) scale(16); opacity: 0; } }
 .bg-orbs .orb {
   position: absolute; width: 420px; height: 420px; border-radius: 50%;
   filter: blur(60px); opacity: 0.18; mix-blend-mode: screen;

@@ -90,6 +90,23 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   document.body.appendChild(glow);
 
+  // Visual audio-like ripple on clicks
+  const clickFx = document.createElement('div');
+  clickFx.className = 'click-fx';
+  document.body.appendChild(clickFx);
+  window.addEventListener('pointerdown', (e) => {
+    // ignore right/middle clicks
+    if (e.button !== 0) return;
+    for (let i=0;i<3;i++){
+      const node = document.createElement('span');
+      node.className = 'ripple ' + (i===1?'r2': i===2?'r3':'');
+      node.style.left = e.clientX + 'px';
+      node.style.top = e.clientY + 'px';
+      clickFx.appendChild(node);
+      setTimeout(() => node.remove(), 900);
+    }
+  }, { passive: true });
+
   // Intro overlay on first visit (session-based)
   try {
     const seen = sessionStorage.getItem('intro-seen');
