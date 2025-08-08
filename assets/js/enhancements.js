@@ -2,6 +2,17 @@ document.addEventListener('DOMContentLoaded', function() {
   // Enable reveal only if JS loads
   document.body.classList.add('reveal-enabled');
 
+  function markVisibleNow() {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    document.querySelectorAll('[data-reveal]').forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < vh * 0.9 && rect.bottom > 0) {
+        el.classList.add('in-view');
+      }
+    });
+  }
+  markVisibleNow();
+
   // Smooth page fade transitions
   // Intercept internal links and fade out before navigation
   document.querySelectorAll('a[href]').forEach(a => {
@@ -29,6 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('in-view'));
   }
+
+  window.addEventListener('scroll', markVisibleNow, { passive: true });
 });
 
 document.addEventListener('DOMContentLoaded', function() {

@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
       const cardType = card.getAttribute('data-type');
       const show = type === 'all' || type === cardType;
       card.style.display = show ? '' : 'none';
+      if (show) {
+        const img = card.querySelector('img[data-src]');
+        if (img && !img.src) { img.src = img.getAttribute('data-src'); }
+      }
     });
   }
 
