@@ -67,14 +67,25 @@ document.addEventListener('DOMContentLoaded', function() {
           <img src="images/project5.png" style="top:46%;left:10%"/>
           <img src="images/nottodaydar.png" style="top:16%;left:12%"/>
         </div>
+        <div class="intro-sub">
+          <span>Composer</span>
+          <span>|</span>
+          <span>Audio Engineer</span>
+          <span>|</span>
+          <span>Game Developer</span>
+        </div>
       `;
       overlay.appendChild(ring);
+      // During intro, temporarily elevate gradient behind overlay
+      const introGrad = grad.cloneNode(true);
+      introGrad.style.zIndex = '1000';
+      document.body.appendChild(introGrad);
       document.body.appendChild(overlay);
       setTimeout(() => {
         overlay.classList.add('intro-fade');
         sessionStorage.setItem('intro-seen','1');
-        setTimeout(() => { overlay.remove(); document.body.classList.remove('intro-lock'); }, 800);
-      }, 2000);
+        setTimeout(() => { overlay.remove(); introGrad.remove(); document.body.classList.remove('intro-lock'); }, 900);
+      }, 2200);
     }
   } catch(_) {}
   window.addEventListener('pointermove', (e) => {

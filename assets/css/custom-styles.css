@@ -8,6 +8,7 @@ body {
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: transparent !important;
 }
 
 html { scrollbar-gutter: stable both-edges; }
@@ -19,9 +20,8 @@ html { scrollbar-gutter: stable both-edges; }
   html { font-size: 11pt !important; }
 }
 
-#wrapper {
-    background-color: #1a2027; /* Slightly adjusted dark background */
-}
+/* Ensure wrapper doesn't mask interactive background */
+#wrapper { background-color: transparent !important; }
 
 /* Navigation Enhancements */
 #nav ul.links li a, #nav .icons a {
@@ -404,14 +404,23 @@ body.page-enter #wrapper { opacity: 0; transform: translateY(16px) scale(0.988);
 }
 .intro-ring {
   position: relative;
-  width: min(64vmin, 680px);
-  height: min(64vmin, 680px);
+  width: min(72vmin, 780px);
+  height: min(72vmin, 780px);
   border-radius: 50%;
 }
-.intro-ring .items { position:absolute; inset:0; transform: rotate(0deg); animation: spinAccel 1800ms cubic-bezier(.3,.9,.6,1) forwards; }
+.intro-ring .items { position:absolute; inset:0; transform: rotate(0deg); animation: spinAccel 2200ms cubic-bezier(.25,.8,.35,1) forwards; }
 @keyframes spinAccel { to { transform: rotate(360deg); } }
 .intro-ring .items img { position: absolute; width: 16%; height: 16%; object-fit: cover; border-radius: 10px; box-shadow: 0 10px 24px rgba(0,0,0,0.35); z-index: 1; }
-.intro-title { position: absolute; inset: 0; display:flex; align-items:center; justify-content:center; color:#eaf7ff; font-family: 'Poppins', sans-serif; font-weight:800; letter-spacing:0.10em; text-transform:uppercase; font-size: clamp(18px, 3.2vmin, 30px); text-shadow:0 2px 10px rgba(0,0,0,0.45); z-index: 2; }
+.intro-title { position: absolute; inset: 0; display:flex; align-items:center; justify-content:center; color:#eaf7ff; font-family: 'Poppins', sans-serif; font-weight:800; letter-spacing:0.22em; text-transform:uppercase; font-size: clamp(18px, 3vmin, 28px); text-shadow:0 2px 10px rgba(0,0,0,0.45); z-index: 2; animation: titleIn 900ms ease-out both; }
+@keyframes titleIn { from { opacity: 0; transform: scale(0.96); letter-spacing: 0.4em; } to { opacity: 1; transform: scale(1); letter-spacing: 0.18em; } }
+
+/* Intro subtitle sequence */
+.intro-sub { position:absolute; left:0; right:0; bottom: -8%; display:flex; gap:10px; justify-content:center; font-family:'Inter',sans-serif; font-weight:600; color:#cfefff; text-shadow:0 2px 8px rgba(0,0,0,0.35); }
+.intro-sub span { opacity:0; transform: translateY(8px); animation: subIn 600ms ease forwards; }
+.intro-sub span:nth-child(1) { animation-delay: 550ms; }
+.intro-sub span:nth-child(2) { animation-delay: 900ms; }
+.intro-sub span:nth-child(3) { animation-delay: 1250ms; }
+@keyframes subIn { to { opacity:1; transform: translateY(0); } }
 .intro-fade { animation: overlayFade 600ms ease forwards; }
 @keyframes overlayFade { to { opacity: 0; visibility: hidden; } }
 
