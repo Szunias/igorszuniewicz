@@ -25,6 +25,22 @@ html, body { overflow-x: hidden; }
 #wrapper { background-color: transparent !important; }
 #main { background-color: transparent !important; }
 
+/* Intro spacing to avoid overlap and raise heading */
+#intro {
+  padding-top: 0vh !important;
+}
+#intro h1 {
+  margin-top: -0.5rem !important;
+  margin-bottom: 0.75rem !important;
+}
+#intro .section-pills {
+  margin-top: 1.25rem !important;
+  flex-wrap: wrap;
+  row-gap: 8px;
+  column-gap: 10px;
+  justify-content: center;
+}
+
 /* Navigation Enhancements */
 #nav ul.links li a, #nav .icons a {
     font-family: 'Poppins', sans-serif;
@@ -372,11 +388,11 @@ body.page-enter #wrapper { opacity: 0; transform: translateY(16px) scale(0.988);
 
 /* Audio-themed waves layer */
 .bg-waves {
-  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.18; mix-blend-mode: screen;
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.12; mix-blend-mode: screen;
 }
 
 /* Equalizer bars overlay */
-.bg-eq { position: fixed; inset: 0; z-index: 0; pointer-events: none; mix-blend-mode: screen; }
+.bg-eq { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.12; mix-blend-mode: soft-light; }
 .bg-orbs .orb {
   position: absolute; width: 420px; height: 420px; border-radius: 50%;
   filter: blur(60px); opacity: 0.18; mix-blend-mode: screen;
@@ -419,6 +435,7 @@ body.page-enter #wrapper { opacity: 0; transform: translateY(16px) scale(0.988);
   border-radius: 50%;
 }
 .intro-ring .items { position:absolute; inset:0; transform: rotate(0deg); animation: spinAccel 2200ms cubic-bezier(.25,.8,.35,1) forwards; }
+.intro-ring .items.icons i { position:absolute; font-size: min(6vmin, 56px); color:#d4f3ff; text-shadow:0 6px 18px rgba(0,0,0,0.45); opacity:0.9; }
 @keyframes spinAccel { to { transform: rotate(360deg); } }
 .intro-ring .items img { position: absolute; width: 16%; height: 16%; object-fit: cover; border-radius: 10px; box-shadow: 0 10px 24px rgba(0,0,0,0.35); z-index: 1; }
 .intro-title { position: absolute; inset: 0; display:flex; align-items:center; justify-content:center; color:#eaf7ff; font-family: 'Poppins', sans-serif; font-weight:800; letter-spacing:0.22em; text-transform:uppercase; font-size: clamp(18px, 3vmin, 28px); text-shadow:0 2px 10px rgba(0,0,0,0.45); z-index: 2; animation: titleIn 900ms ease-out both; }
@@ -511,12 +528,16 @@ body.intro-lock #wrapper { opacity: 0 !important; pointer-events: none; }
   border: 1px solid rgba(255,255,255,0.12);
   color: #e8f6fb !important;
   transition: background 200ms ease, transform 150ms ease, border-color 200ms ease;
+  white-space: nowrap;
 }
 .section-pills a:hover {
   background: rgba(24,191,239,0.18);
   border-color: rgba(24,191,239,0.55);
   transform: translateY(-1px);
 }
+/* Prevent fontawesome pseudo from overlapping in pills */
+.section-pills a.icon:before { display: none !important; }
+.section-pills a .label, .section-pills a span { display: inline; position: static; clip: auto; width: auto; height: auto; }
 
 /* Reveal-on-scroll animations: default visible; hide only when JS enables */
 .reveal-enabled [data-reveal] {

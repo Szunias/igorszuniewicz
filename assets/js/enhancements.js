@@ -4,6 +4,14 @@ document.addEventListener('DOMContentLoaded', function() {
   document.body.classList.add('page-enter');
   setTimeout(() => document.body.classList.remove('page-enter'), 420);
 
+  // Connection/motion heuristics for slow networks/devices
+  const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const saveData = !!(conn && conn.saveData);
+  const slowNet = !!(conn && /(^2g$|^slow-2g$)/i.test(conn.effectiveType || ''));
+  const prefersReduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const perfLite = saveData || slowNet || prefersReduced;
+  if (perfLite) document.body.classList.add('perf-lite');
+
   function markVisibleNow() {
     const vh = window.innerHeight || document.documentElement.clientHeight;
     document.querySelectorAll('[data-reveal]').forEach((el) => {
@@ -71,12 +79,15 @@ document.addEventListener('DOMContentLoaded', function() {
   defs.appendChild(makeGrad('gradWave3', '#ff6ea9', '#9a6cff'));
   waves.appendChild(defs); waves.appendChild(path1); waves.appendChild(path2); waves.appendChild(path3);
   document.body.appendChild(grad);
-  document.body.appendChild(orbs);
-  document.body.appendChild(waves);
+  if (!perfLite) document.body.appendChild(orbs);
+  if (!perfLite) document.body.appendChild(waves);
   // Equalizer bars
-  const eq = document.createElement('canvas');
-  eq.className = 'bg-eq';
-  document.body.appendChild(eq);
+  let eq, ctx;
+  if (!perfLite) {
+    eq = document.createElement('canvas');
+    eq.className = 'bg-eq';
+    document.body.appendChild(eq);
+  }
   document.body.appendChild(glow);
 
   // Intro overlay on first visit (session-based)
@@ -89,24 +100,23 @@ document.addEventListener('DOMContentLoaded', function() {
       const ring = document.createElement('div');
       ring.className = 'intro-ring';
       ring.innerHTML = `
-        <div class="intro-title">IGOR SZUNIEWICZ</div>
-        <div class="items">
-          <img src="images/maxresdefault.jpg" style="top:2%;left:41%"/>
-          <img src="images/project4.png" style="top:18%;left:74%"/>
-          <img src="images/amorak.png" style="top:46%;left:80%"/>
-          <img src="images/plugins.jpg" style="top:76%;left:62%"/>
-          <img src="images/richter.png" style="top:78%;left:25%"/>
-          <img src="images/project5.png" style="top:46%;left:10%"/>
-          <img src="images/nottodaydar.png" style="top:16%;left:12%"/>
+        <div class=\"intro-title\">IGOR SZUNIEWICZ</div>
+        <div class=\"items icons\">
+          <i class=\"icon solid fa-music\" style=\"top:2%;left:41%\"></i>
+          <i class=\"icon solid fa-headphones\" style=\"top:18%;left:74%\"></i>
+          <i class=\"icon solid fa-wave-square\" style=\"top:46%;left:80%\"></i>
+          <i class=\"icon solid fa-sliders-h\" style=\"top:76%;left:62%\"></i>
+          <i class=\"icon solid fa-microphone\" style=\"top:78%;left:25%\"></i>
+          <i class=\"icon solid fa-compact-disc\" style=\"top:46%;left:10%\"></i>
+          <i class=\"icon solid fa-guitar\" style=\"top:16%;left:12%\"></i>
         </div>
-        <div class="intro-sub">
+        <div class=\"intro-sub\">
           <span>Composer</span>
           <span>|</span>
           <span>Audio Engineer</span>
           <span>|</span>
           <span>Game Developer</span>
-        </div>
-      `;
+        </div>`;
       overlay.appendChild(ring);
       // During intro, temporarily elevate gradient behind overlay
       const introGrad = grad.cloneNode(true);
@@ -120,9 +130,11 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 2200);
     }
   } catch(_) {}
-  const ctx = eq.getContext('2d');
-  function resizeCanvas(){ eq.width = window.innerWidth; eq.height = window.innerHeight; }
-  resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+  if (!perfLite && eq) {
+    ctx = eq.getContext('2d');
+    function resizeCanvas(){ eq.width = Math.floor(window.innerWidth * 0.75); eq.height = Math.floor(window.innerHeight * 0.75); }
+    resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+  }
 
   let mouseX = 0, mouseY = 0;
   window.addEventListener('pointermove', (e) => {
@@ -150,31 +162,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Render equalizer bars
   function renderEQ(){
+    if (!eq || !ctx) { return; }
     const t = performance.now() / 1000;
     const w = eq.width, h = eq.height;
     ctx.clearRect(0,0,w,h);
-    const bars = Math.min(48, Math.floor(w / 26));
-    const gap = Math.max(8, w/(bars*8));
-    const bw = Math.max(6, (w - (bars-1)*gap) / bars);
+    const bars = Math.min(36, Math.floor(w / 32));
+    const gap = Math.max(12, w/(bars*7));
+    const bw = Math.max(4, (w - (bars-1)*gap) / bars);
     for(let i=0;i<bars;i++){
       const f = i/bars;
-      const amp = 0.25 + 0.45*Math.abs(Math.sin(t*1.2 + f*3.6 + mouseX/30));
-      const bh = (h*0.12) + (h*0.32)*amp + (mouseY/100)*14;
+      const amp = 0.14 + 0.24*Math.abs(Math.sin(t*0.9 + f*3.0 + mouseX/40));
+      const bh = (h*0.08) + (h*0.20)*amp + (mouseY/150)*10;
       const x = i*(bw+gap);
       const y = h - bh - 10;
       const grd = ctx.createLinearGradient(x, y, x, y+bh);
-      grd.addColorStop(0, 'rgba(255,110,169,0.35)');
-      grd.addColorStop(0.5,'rgba(154,108,255,0.35)');
-      grd.addColorStop(1, 'rgba(24,191,239,0.35)');
+      grd.addColorStop(0, 'rgba(24,60,92,0.24)');
+      grd.addColorStop(0.5,'rgba(18,50,82,0.20)');
+      grd.addColorStop(1, 'rgba(12,36,68,0.16)');
       ctx.fillStyle = grd;
       ctx.fillRect(x, y, bw, bh);
-      // subtle reflection
-      ctx.fillStyle = 'rgba(24,191,239,0.05)';
-      ctx.fillRect(x, h-10, bw, 4);
+      // subtle base line
+      ctx.fillStyle = 'rgba(12,28,46,0.06)';
+      ctx.fillRect(x, h-10, bw, 3);
     }
     requestAnimationFrame(renderEQ);
   }
-  renderEQ();
+  if (!perfLite) renderEQ();
 
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
