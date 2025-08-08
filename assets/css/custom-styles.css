@@ -21,8 +21,9 @@ html, body { overflow-x: hidden; }
   html { font-size: 11pt !important; }
 }
 
-/* Ensure wrapper doesn't mask interactive background */
+/* Ensure wrapper and main don't mask interactive background */
 #wrapper { background-color: transparent !important; }
+#main { background-color: transparent !important; }
 
 /* Navigation Enhancements */
 #nav ul.links li a, #nav .icons a {

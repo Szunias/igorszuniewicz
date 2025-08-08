@@ -12,8 +12,9 @@
     @media screen and (max-width: 1680px) { html { font-size: 12pt; } }
     @media screen and (max-width: 1280px) { html { font-size: 11pt; } }
     @media screen and (max-width: 360px) { html { font-size: 10pt; } }
-    /* Reserve space for scrollbar to avoid layout shift vs homepage */
-    html { scrollbar-gutter: stable both-edges; }
+    /* Prevent left white stripe and horizontal scroll */
+    html { scrollbar-gutter: stable; }
+    html, body { overflow-x: hidden; background: transparent !important; }
   </style>
   <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 </head>

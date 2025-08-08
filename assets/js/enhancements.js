@@ -153,24 +153,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const t = performance.now() / 1000;
     const w = eq.width, h = eq.height;
     ctx.clearRect(0,0,w,h);
-    const bars = Math.min(64, Math.floor(w / 20));
-    const gap = Math.max(6, w/(bars*10));
-    const bw = Math.max(8, (w - (bars-1)*gap) / bars);
+    const bars = Math.min(48, Math.floor(w / 26));
+    const gap = Math.max(8, w/(bars*8));
+    const bw = Math.max(6, (w - (bars-1)*gap) / bars);
     for(let i=0;i<bars;i++){
       const f = i/bars;
-      const amp = 0.35 + 0.65*Math.abs(Math.sin(t*1.4 + f*4 + mouseX/20));
-      const bh = (h*0.15) + (h*0.4)*amp + (mouseY/100)*20;
+      const amp = 0.25 + 0.45*Math.abs(Math.sin(t*1.2 + f*3.6 + mouseX/30));
+      const bh = (h*0.12) + (h*0.32)*amp + (mouseY/100)*14;
       const x = i*(bw+gap);
       const y = h - bh - 10;
       const grd = ctx.createLinearGradient(x, y, x, y+bh);
-      grd.addColorStop(0, 'rgba(255,110,169,0.55)');
-      grd.addColorStop(0.5,'rgba(154,108,255,0.55)');
-      grd.addColorStop(1, 'rgba(24,191,239,0.55)');
+      grd.addColorStop(0, 'rgba(255,110,169,0.35)');
+      grd.addColorStop(0.5,'rgba(154,108,255,0.35)');
+      grd.addColorStop(1, 'rgba(24,191,239,0.35)');
       ctx.fillStyle = grd;
       ctx.fillRect(x, y, bw, bh);
-      // reflection glow
-      ctx.fillStyle = 'rgba(24,191,239,0.08)';
-      ctx.fillRect(x, h-10, bw, 6);
+      // subtle reflection
+      ctx.fillStyle = 'rgba(24,191,239,0.05)';
+      ctx.fillRect(x, h-10, bw, 4);
     }
     requestAnimationFrame(renderEQ);
   }
