@@ -91,6 +91,26 @@
         .slider-nav.next {
             right: 10px;
         }
+
+        /* Larger slider on wide screens */
+        @media (min-width: 980px) {
+            .slider {
+                max-width: 1100px;
+                min-height: 600px;
+            }
+            .slide a img {
+                max-height: 520px;
+            }
+        }
+        @media (min-width: 1280px) {
+            .slider {
+                max-width: 1200px;
+                min-height: 650px;
+            }
+            .slide a img {
+                max-height: 580px;
+            }
+        }
     </style>
 </head>
 <body class="is-preload">

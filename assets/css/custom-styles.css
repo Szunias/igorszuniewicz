@@ -296,3 +296,15 @@ body p {
 a.slide{
 
 }
+
+/* Image sizing fixes (desktop): ensure full-width images for .image.fit */
+.image.fit {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Keep images responsive within cards and posts */
+.project-card .image.fit,
+.posts .image.fit {
+    width: 100%;
+}
