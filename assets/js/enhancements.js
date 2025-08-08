@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Enable reveal only if JS loads
   document.body.classList.add('reveal-enabled');
+  document.body.classList.add('page-enter');
+  setTimeout(() => document.body.classList.remove('page-enter'), 50);
 
   function markVisibleNow() {
     const vh = window.innerHeight || document.documentElement.clientHeight;
@@ -22,9 +24,19 @@ document.addEventListener('DOMContentLoaded', function() {
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; // allow new tab etc.
       e.preventDefault();
       document.body.classList.add('page-exit');
-      setTimeout(() => { window.location.href = href; }, 180);
+      setTimeout(() => { window.location.href = href; }, 260);
     });
   });
+  // Interactive background glow tracking cursor
+  const glow = document.createElement('div');
+  glow.className = 'bg-glow';
+  document.body.appendChild(glow);
+  window.addEventListener('pointermove', (e) => {
+    const x = (e.clientX / window.innerWidth) * 100;
+    const y = (e.clientY / window.innerHeight) * 100;
+    glow.style.setProperty('--mx', x + '%');
+    glow.style.setProperty('--my', y + '%');
+  }, { passive: true });
 
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {

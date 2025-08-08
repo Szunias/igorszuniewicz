@@ -16,15 +16,15 @@
         .slider {
              position: relative;
              width: 100%;
-             max-width: 700px; 
+             max-width: 900px; 
              height: auto; 
-             min-height: 500px; 
+             min-height: 520px; 
              margin: 30px auto 80px;
              overflow: hidden;
              z-index: 3;
              background-color: #2a313a; 
              border-radius: 8px;
-             padding: 1em;
+             padding: 1em 1em 5.5em; /* reserve space for captions */
         }
         .slide {
             position: absolute;
@@ -44,28 +44,40 @@
             opacity: 1;
         }
         .slide h3 {
-            margin: 10px 0 15px 0;
-            font-size: 1.5em; 
+            position: absolute;
+            left: 0; right: 0; bottom: 62px;
+            margin: 0;
+            padding: 0 1.2rem;
+            font-size: 1.25em; 
             color: #18bfef; 
             text-align: center;
             z-index: 4;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.45);
         }
         .slide a img {
             max-width: 100%;
-            max-height: 350px; 
+            max-height: calc(100% - 150px); 
             object-fit: contain;
             border: none; 
-            border-radius: 4px;
+            border-radius: 6px;
             display: block;
             margin-bottom: 10px;
+            box-shadow: 0 14px 26px rgba(0,0,0,0.25);
         }
         .slide-description {
+            position: absolute;
+            left: 0; right: 0; bottom: 16px;
             font-size: 0.95em;
-            color: #c0c0c0;
+            color: #e8f6fb;
             text-align: center;
-            margin: 10px 0;
+            margin: 0;
             z-index: 4;
             max-width: 90%;
+            margin-inline: auto;
+            padding: 0.4rem 0.8rem;
+            background: linear-gradient(180deg, rgba(12,18,24,0.0), rgba(12,18,24,0.35));
+            border-radius: 6px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.45);
         }
         .slider-nav {
             position: absolute;
@@ -96,19 +108,19 @@
         @media (min-width: 980px) {
             .slider {
                 max-width: 1100px;
-                min-height: 600px;
+                min-height: 580px;
             }
             .slide a img {
-                max-height: 520px;
+                max-height: calc(100% - 160px);
             }
         }
         @media (min-width: 1280px) {
             .slider {
                 max-width: 1200px;
-                min-height: 650px;
+                min-height: 620px;
             }
             .slide a img {
-                max-height: 580px;
+                max-height: calc(100% - 170px);
             }
         }
     </style>
@@ -270,17 +282,27 @@
             </section>
 
             <!-- Compact CTA instead of long sections to keep homepage concise -->
-            <section class="post" data-reveal>
+            <section class="post explore-more" data-reveal>
                 <header class="major">
                     <h2 id="bgColor">Explore More</h2>
                     <p>Browse the full portfolio or learn more about my background.</p>
                 </header>
                 <ul class="actions special">
-                    <li><a class="button" href="projects/index.html">All Projects</a></li>
-                    <li><a class="button" href="scholarly.html">Scholarly</a></li>
-                    <li><a class="button" href="about.html">About</a></li>
-                    <li><a class="button" href="contact.html">Contact</a></li>
+                    <li><a class="button primary" href="projects/index.html">Explore More</a></li>
                 </ul>
+                <div class="section-pills">
+                    <a href="projects/index.html" class="icon solid fa-folder-open"><span>All Projects</span></a>
+                    <a href="scholarly.html" class="icon solid fa-graduation-cap"><span>Scholarly</span></a>
+                    <a href="about.html" class="icon solid fa-user"><span>About</span></a>
+                    <a href="contact.html" class="icon solid fa-envelope"><span>Contact</span></a>
+                </div>
+                <div class="peek-stage" aria-hidden="true">
+                    <img src="images/maxresdefault.jpg" alt="" loading="lazy" decoding="async"/>
+                    <img src="images/project4.png" alt="" loading="lazy" decoding="async"/>
+                    <img src="images/amorak.png" alt="" loading="lazy" decoding="async"/>
+                    <img src="images/plugins.jpg" alt="" loading="lazy" decoding="async"/>
+                    <img src="images/richter.png" alt="" loading="lazy" decoding="async"/>
+                </div>
             </section>
             
             <!-- Contact Section -->
