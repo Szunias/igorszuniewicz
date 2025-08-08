@@ -12,6 +12,7 @@ body {
 }
 
 html { scrollbar-gutter: stable; }
+html, body { overflow-x: hidden; }
 /* Global downscale on desktop to reduce perceived size */
 @media (min-width: 981px) {
   html { font-size: 12pt !important; }
@@ -370,8 +371,11 @@ body.page-enter #wrapper { opacity: 0; transform: translateY(16px) scale(0.988);
 
 /* Audio-themed waves layer */
 .bg-waves {
-  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.22;
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.18; mix-blend-mode: screen;
 }
+
+/* Equalizer bars overlay */
+.bg-eq { position: fixed; inset: 0; z-index: 0; pointer-events: none; mix-blend-mode: screen; }
 .bg-orbs .orb {
   position: absolute; width: 420px; height: 420px; border-radius: 50%;
   filter: blur(60px); opacity: 0.18; mix-blend-mode: screen;
