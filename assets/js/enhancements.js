@@ -43,8 +43,28 @@ document.addEventListener('DOMContentLoaded', function() {
   orbs.innerHTML = '<div class="orb blue" style="top:10%;left:8%"></div>'+
                    '<div class="orb cyan" style="top:60%;left:75%"></div>'+
                    '<div class="orb teal" style="top:75%;left:15%"></div>';
+  // SVG waves
+  const waves = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  waves.setAttribute('class', 'bg-waves');
+  waves.setAttribute('viewBox', '0 0 1200 600');
+  waves.setAttribute('preserveAspectRatio', 'none');
+  const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path1.setAttribute('fill', 'url(#gradWave)');
+  path1.setAttribute('opacity', '0.6');
+  const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path2.setAttribute('fill', 'url(#gradWave)');
+  path2.setAttribute('opacity', '0.35');
+  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+  const lg = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+  lg.setAttribute('id', 'gradWave');
+  lg.setAttribute('x1', '0%'); lg.setAttribute('x2', '100%'); lg.setAttribute('y1', '0%'); lg.setAttribute('y2', '0%');
+  const s1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop'); s1.setAttribute('offset','0%'); s1.setAttribute('stop-color','#18bfef'); s1.setAttribute('stop-opacity','0.6');
+  const s2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop'); s2.setAttribute('offset','100%'); s2.setAttribute('stop-color','#58b6ff'); s2.setAttribute('stop-opacity','0.2');
+  lg.appendChild(s1); lg.appendChild(s2); defs.appendChild(lg);
+  waves.appendChild(defs); waves.appendChild(path1); waves.appendChild(path2);
   document.body.appendChild(grad);
   document.body.appendChild(orbs);
+  document.body.appendChild(waves);
   document.body.appendChild(glow);
 
   // Intro overlay on first visit (session-based)
@@ -93,6 +113,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const y = (e.clientY / window.innerHeight) * 100;
     glow.style.setProperty('--mx', x + '%');
     glow.style.setProperty('--my', y + '%');
+    // animate waves like audio oscillation
+    const t = performance.now() / 1000;
+    const amp1 = 18 + (y/100)*8, amp2 = 26 + (x/100)*10;
+    const build = (amp, phase) => {
+      let d = 'M 0 300 ';
+      for (let i=0;i<=1200;i+=20){
+        const yy = 300 + Math.sin((i/1200)*Math.PI*4 + t*1.2 + phase)*amp;
+        d += `L ${i} ${yy} `;
+      }
+      d += 'L 1200 600 L 0 600 Z';
+      return d;
+    }
+    path1.setAttribute('d', build(amp1, 0));
+    path2.setAttribute('d', build(amp2, Math.PI/2));
   }, { passive: true });
 
   if ('IntersectionObserver' in window) {
