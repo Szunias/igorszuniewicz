@@ -4,6 +4,19 @@
   <title>About — Igor Szuniewicz</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <script>
+    // Early remover to prevent template background from flashing in
+    (function(){
+      function killBg(){
+        var els = document.querySelectorAll('#wrapper > .bg, #wrapper > .bg.fixed');
+        if (els && els.length){ els.forEach(function(e){ try{ e.remove(); }catch(_){} }); }
+        document.documentElement.style.background = 'transparent';
+        document.body && (document.body.style.background = 'transparent');
+      }
+      var it = setInterval(killBg, 50);
+      window.addEventListener('load', function(){ killBg(); clearInterval(it); });
+    })();
+  </script>
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/custom-styles.css?v=20250209" />
   <style>

@@ -4,6 +4,18 @@
   <title>Scholarly Output — Igor Szuniewicz</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <script>
+    (function(){
+      function killBg(){
+        var els = document.querySelectorAll('#wrapper > .bg, #wrapper > .bg.fixed');
+        if (els && els.length){ els.forEach(function(e){ try{ e.remove(); }catch(_){} }); }
+        document.documentElement.style.background = 'transparent';
+        document.body && (document.body.style.background = 'transparent');
+      }
+      var it = setInterval(killBg, 50);
+      window.addEventListener('load', function(){ killBg(); clearInterval(it); });
+    })();
+  </script>
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/custom-styles.css" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>

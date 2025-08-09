@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
   document.body.classList.add('reveal-enabled');
   document.body.classList.add('page-enter');
   setTimeout(() => document.body.classList.remove('page-enter'), 420);
+  // Ensure template preload overlay goes away even without theme JS
+  document.body.classList.remove('is-preload');
 
   // Connection/motion heuristics for slow networks/devices
   const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
@@ -110,17 +112,20 @@ document.addEventListener('DOMContentLoaded', function() {
   document.body.appendChild(glow);
 
   // Visual audio-like ripple on clicks
+  // Click ripple (forced on all pages, independent of perfLite)
   const clickFx = document.createElement('div');
   clickFx.className = 'click-fx';
   document.body.appendChild(clickFx);
   window.addEventListener('pointerdown', (e) => {
-    // ignore right/middle clicks
     if (e.button !== 0) return;
+    const rect = document.documentElement.getBoundingClientRect();
+    const baseX = e.clientX - rect.left;
+    const baseY = e.clientY - rect.top;
     for (let i=0;i<3;i++){
       const node = document.createElement('span');
       node.className = 'ripple ' + (i===1?'r2': i===2?'r3':'');
-      node.style.left = e.clientX + 'px';
-      node.style.top = e.clientY + 'px';
+      node.style.left = baseX + 'px';
+      node.style.top = baseY + 'px';
       clickFx.appendChild(node);
       setTimeout(() => node.remove(), 900);
     }
