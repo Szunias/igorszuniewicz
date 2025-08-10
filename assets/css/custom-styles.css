@@ -74,6 +74,8 @@ body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !
 
 /* Navbar reset to theme look (no glass container) */
 #nav { position: relative; top: auto; z-index: 100; background: transparent; backdrop-filter: none; border: 0; border-radius: 0; margin: -4rem auto 0 auto; box-shadow: none; width: calc(100% - 4rem); max-width: 72rem; overflow: visible !important; }
+#nav .links a { white-space: nowrap; font-size: 0.95rem; }
+#nav .links { gap: 1.25rem; }
 
 /* Layout tweaks */
 #nav ul.links { gap: 0; }
@@ -110,12 +112,22 @@ body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !
 
 /* Language switcher */
 .lang-switch { position: relative; display: inline-flex; align-items: center; margin-left: 10px; }
-.lang-toggle { display: inline-flex; align-items: center; gap:6px; background: rgba(255,255,255,0.10); color:#eaf7ff; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 4px 10px; font-weight:600; cursor:pointer; font-size: .85rem; }
+.lang-toggle { display: inline-flex; align-items: center; gap:8px; background: rgba(255,255,255,0.10); color:#eaf7ff; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 4px 10px; font-weight:600; cursor:pointer; font-size: .85rem; }
 .lang-flag { font-size: 1rem; line-height: 1; }
 .lang-menu { position: absolute; right:0; top: 120%; background: rgba(10,16,22,0.98); border:1px solid rgba(255,255,255,0.1); border-radius:10px; box-shadow:0 12px 30px rgba(0,0,0,0.35); padding:6px; display:none; min-width: 180px; z-index: 2000; }
 .lang-menu button { display:flex; align-items:center; gap:8px; background:transparent; color:#d9f2ff; border:0; padding:6px 10px; border-radius:8px; cursor:pointer; width:100%; text-align:left; }
 .lang-menu button:hover { background: rgba(24,191,239,0.12); }
 .lang-switch.open .lang-menu { display:block; }
+
+/* Keep full labels visible */
+#nav .links a { max-width: none !important; text-overflow: clip !important; overflow: visible !important; }
+
+/* Language switch toast */
+.lang-toast { position: fixed; top: 14px; left: 50%; transform: translateX(-50%) translateY(-16px); background: rgba(12,18,24,0.92); color:#e9f7ff; border:1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 8px 14px; font-weight:600; letter-spacing:.2px; opacity:0; pointer-events:none; transition: opacity .25s ease, transform .25s ease; z-index: 3000; box-shadow: 0 10px 24px rgba(0,0,0,0.35);} 
+.lang-toast.visible { opacity:1; transform: translateX(-50%) translateY(0); }
+
+/* Language badge (current language) */
+.lang-badge { position: fixed; top: 14px; right: 16px; z-index: 3100; background: rgba(10,16,22,0.92); color:#e9f7ff; border:1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 6px 10px; font-weight:700; letter-spacing:.2px; box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
 
 #nav ul.links li.active a, #nav ul.links li a:hover, #nav .icons a:hover {
     color: #18bfef; /* Accent color for active/hover states */

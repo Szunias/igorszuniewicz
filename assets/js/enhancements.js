@@ -110,9 +110,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const clickFx = document.querySelector('.click-fx') || (()=>{ const d=document.createElement('div'); d.className='click-fx'; document.body.appendChild(d); return d; })();
   window.addEventListener('pointerdown', (e) => {
     if (e.button !== 0) return;
-    const rect = document.documentElement.getBoundingClientRect();
-    const baseX = e.clientX - rect.left;
-    const baseY = e.clientY - rect.top;
+    // Use viewport coordinates directly so ripples align with the cursor
+    const baseX = e.clientX;
+    const baseY = e.clientY;
     for (let i=0;i<3;i++){
       const node = document.createElement('span');
       node.className = 'ripple ' + (i===1?'r2': i===2?'r3':'');
@@ -325,26 +325,181 @@ document.addEventListener('DOMContentLoaded', function() {
 
   window.addEventListener('scroll', markVisibleNow, { passive: true });
 
-  // Language switcher (PL/NL) — persists in localStorage
+  // Language switcher (PL/NL/EN) + lightweight i18n + toast
   const LANG_KEY='site-lang';
   const toggleBtn = document.getElementById('lang-toggle');
   const menu = document.querySelector('.lang-switch .lang-menu');
   const label = document.getElementById('lang-label');
-  function setLang(l){
+  // Toast element
+  const toast = document.createElement('div');
+  toast.className = 'lang-toast';
+  document.body.appendChild(toast);
+  // Persistent language badge in top-right
+  const langBadge = document.querySelector('.lang-badge') || (()=>{ const b=document.createElement('div'); b.className='lang-badge'; document.body.appendChild(b); return b; })();
+
+  // Minimal i18n map for common UI strings (extend as needed)
+  const I18N = {
+    nav_home: { pl: 'Główna', nl: 'Home', en: 'Home' },
+    nav_about: { pl: 'O mnie', nl: 'Over mij', en: 'About' },
+    nav_projects: { pl: 'Projekty', nl: 'Projecten', en: 'Projects' },
+    nav_all: { pl: 'Wszystkie', nl: 'Alle', en: 'All' },
+    nav_scholarly: { pl: 'Naukowe', nl: 'Wetenschappelijk', en: 'Scholarly' },
+    nav_extra: { pl: 'Dodatkowe', nl: 'Extra', en: 'Extra' },
+    nav_contact: { pl: 'Kontakt', nl: 'Contact', en: 'Contact' },
+    intro_title: { pl: 'Wprowadzenie', nl: 'Introductie', en: 'Introduction' },
+    intro_lead: {
+      pl: 'Krótki wgląd w to, kim jestem i moja pasja do dźwięku oraz technologii.',
+      nl: 'Een korte blik op wie ik ben en mijn passie voor audio en technologie.',
+      en: 'A brief insight into who I am and my passion for audio and technology.'
+    },
+    cv_title: { pl: 'O mnie / CV', nl: 'Over mij / CV', en: 'About Me / Curriculum Vitae' },
+    cv_lead: {
+      pl: 'Pół-chronologiczny przegląd mojego życia, edukacji i pracy zawodowej.',
+      nl: 'Een quasi-chronologisch overzicht van mijn leven, opleiding en werk.',
+      en: 'A quasi-chronological overview of my life, education, and professional work.'
+    },
+    intro_paragraph: {
+      pl: 'Cześć! Nazywam się Igor Szuniewicz. Jestem kompozytorem, inżynierem dźwięku i programistą, skoncentrowanym na tworzeniu immersyjnych doświadczeń audio. Moja praca obejmuje techniczny sound design, rozwój interaktywnych systemów muzycznych oraz kompleksowe rozwiązania audio do gier. Łączę twórczą wrażliwość z precyzją techniczną, aby projekty ożywały. To portfolio prezentuje moją drogę, umiejętności i projekty, z których jestem najbardziej dumny.',
+      nl: 'Hallo! Ik ben Igor Szuniewicz. Ik ben componist, audio-engineer en softwareontwikkelaar met focus op meeslepende audio-ervaringen. Mijn werk omvat technisch sounddesign, de ontwikkeling van interactieve muzieksystemen en complete game-audio oplossingen. Ik combineer creativiteit met technische precisie om projecten tot leven te brengen. Dit portfolio toont mijn traject, vaardigheden en projecten waar ik het meest trots op ben.',
+      en: 'Hello! I am Igor Szuniewicz, a dedicated Composer, Audio Engineer, and Software Developer with a strong focus on creating immersive auditory experiences. My work spans technical sound design, the development of interactive music systems, and comprehensive game audio solutions. I thrive on blending creative artistry with technical precision to bring projects to life. This portfolio showcases my journey, skills, and the projects I am most proud of.'
+    },
+    showcase_title: { pl: 'Przegląd projektów', nl: 'Projectoverzicht', en: 'Projects Showcase' },
+    showcase_lead: { pl: 'Wybrane najważniejsze projekty i mój wkład.', nl: 'Een selectie van mijn belangrijkste projecten met mijn rol.', en: 'A selection of my most important projects, highlighting my involvement and key contributions.' },
+    explore_lead: { pl: 'Przeglądaj pełne portfolio lub dowiedz się więcej o mnie.', nl: 'Bekijk het volledige portfolio of lees meer over mijn achtergrond.', en: 'Browse the full portfolio or learn more about my background.' },
+    footer_location: { pl: 'Lokalizacja', nl: 'Locatie', en: 'Location' },
+    footer_email: { pl: 'Email', nl: 'E-mail', en: 'Email' },
+    footer_social: { pl: 'Linki społecznościowe i zawodowe', nl: 'Sociale & professionele links', en: 'Social & Professional Links' },
+    footer_qr_title: { pl: 'Szybki dostęp (QR kod)', nl: 'Snelle toegang (QR-code)', en: 'Quick Access (QR Code)' },
+    footer_qr_hint: { pl: 'Zeskanuj, aby szybko otworzyć to portfolio.', nl: 'Scan voor snelle toegang tot dit portfolio.', en: 'Scan for quick access to this portfolio.' },
+    toast_switched: { pl: 'Przełączono na polski', nl: 'Gewisseld naar Nederlands', en: 'Switched to English' },
+    all_projects_title: { pl: 'Wszystkie projekty', nl: 'Alle projecten', en: 'All Projects' },
+    all_projects_lead: { pl: 'Filtruj i sortuj, aby przeglądać prace.', nl: 'Filter en sorteer om werk te verkennen.', en: 'Filter and sort to explore selected works.' },
+    label_filter: { pl: 'Filtr:', nl: 'Filter:', en: 'Filter:' },
+    label_sort: { pl: 'Sortuj:', nl: 'Sorteer:', en: 'Sort:' },
+    opt_newest: { pl: 'Najnowsze', nl: 'Nieuwste', en: 'Newest' },
+    opt_oldest: { pl: 'Najstarsze', nl: 'Oudste', en: 'Oldest' },
+    opt_title_az: { pl: 'Tytuł A–Z', nl: 'Titel A–Z', en: 'Title A–Z' },
+    opt_title_za: { pl: 'Tytuł Z–A', nl: 'Titel Z–A', en: 'Title Z–A' },
+    filter_all: { pl: 'Wszystkie', nl: 'Alle', en: 'All' },
+    filter_music: { pl: 'Muzyka', nl: 'Muziek', en: 'Music' },
+    filter_sound: { pl: 'Sound Design', nl: 'Sounddesign', en: 'Sound Design' },
+    filter_gameaudio: { pl: 'Audio w grach', nl: 'Game-audio', en: 'Game Audio' },
+    learn_more: { pl: 'Więcej →', nl: 'Meer →', en: 'Learn more →' }
+  };
+
+  function translatePage(lang){
+    // Nav links by href
+    document.querySelectorAll('#nav a[href$="index.html"], #nav a[href$="../index.html"]').forEach(a=> a.textContent = I18N.nav_home[lang]);
+    document.querySelectorAll('#nav a[href$="about.html"]').forEach(a=> a.textContent = I18N.nav_about[lang]);
+    document.querySelectorAll('#nav a[href*="projects/index.html"]').forEach((a) => {
+      const text = a.textContent.trim().toLowerCase();
+      const isAll = /all|wszystkie|alle|projecten/.test(text) || a.closest('.links')?.children?.length<=2;
+      a.textContent = isAll ? I18N.nav_all[lang] : I18N.nav_projects[lang];
+    });
+    document.querySelectorAll('#nav a[href$="scholarly.html"]').forEach(a=> a.textContent = I18N.nav_scholarly[lang]);
+    document.querySelectorAll('#nav a[href$="extras.html"]').forEach(a=> a.textContent = I18N.nav_extra[lang]);
+    document.querySelectorAll('#nav a[href$="contact.html"]').forEach(a=> a.textContent = I18N.nav_contact[lang]);
+    document.querySelectorAll('#nav a[href*="#projects-showcase"]').forEach(a=> a.textContent = I18N.nav_projects[lang]);
+
+    // Index-specific headers
+    const introH2 = document.querySelector('#main > section.post header.major h2');
+    if (introH2) introH2.textContent = I18N.intro_title[lang];
+    const introLead = document.querySelector('section.post header.major p');
+    if (introLead && introLead.closest('section.post') && introLead.closest('#cv-section')===null) introLead.textContent = I18N.intro_lead[lang];
+    const introP = document.querySelector('#main > section.post p:not(header p)');
+    if (introP) introP.textContent = I18N.intro_paragraph[lang];
+    const cvH2 = document.querySelector('#cv-section header.major h2');
+    if (cvH2) cvH2.textContent = I18N.cv_title[lang];
+    const cvLead = document.querySelector('#cv-section header.major p');
+    if (cvLead) cvLead.textContent = I18N.cv_lead[lang];
+
+    // Tooltip CTA
+    document.querySelectorAll('.tip-popover .tip-action').forEach(a=> a.textContent = I18N.learn_more[lang]);
+
+    // All Projects page UI
+    if (location.pathname.endsWith('/projects/index.html') || document.querySelector('#projects-list')){
+      const h2 = document.querySelector('header.major h2'); if (h2) h2.textContent = I18N.all_projects_title[lang];
+      const lead = document.querySelector('header.major p'); if (lead) lead.textContent = I18N.all_projects_lead[lang];
+      const filterStrong = Array.from(document.querySelectorAll('strong')).find(s=>/filter|filtr|sorteer/i.test(s.textContent));
+      const labels = document.querySelectorAll('.row strong');
+      if (labels[0]) labels[0].textContent = I18N.label_filter[lang];
+      if (labels[1]) labels[1].textContent = I18N.label_sort[lang];
+      const b = (sel,val)=>{ const el=document.querySelector(sel); if (el) el.textContent=val; };
+      b('button[data-filter="all"]', I18N.filter_all[lang]);
+      b('button[data-filter="music"]', I18N.filter_music[lang]);
+      b('button[data-filter="sound-design"]', I18N.filter_sound[lang]);
+      b('button[data-filter="game-audio"]', I18N.filter_gameaudio[lang]);
+      const sel = document.getElementById('sort-select');
+      if (sel){
+        const opts = sel.options;
+        if (opts[0]) opts[0].textContent = I18N.opt_newest[lang];
+        if (opts[1]) opts[1].textContent = I18N.opt_oldest[lang];
+        if (opts[2]) opts[2].textContent = I18N.opt_title_az[lang];
+        if (opts[3]) opts[3].textContent = I18N.opt_title_za[lang];
+      }
+    }
+
+    // Projects Showcase (index)
+    if (document.getElementById('projects-showcase')){
+      const sh2 = document.querySelector('#projects-showcase h2'); if (sh2) sh2.textContent = I18N.showcase_title[lang];
+      const sLead = document.querySelector('#projects-showcase > p, #projects-showcase header.major + p');
+      if (sLead) sLead.textContent = I18N.showcase_lead[lang];
+    }
+
+    // Explore More section on index
+    if (document.querySelector('.explore-more')){
+      const exH2 = document.querySelector('.explore-more header.major h2');
+      if (exH2) exH2.textContent = lang==='pl' ? 'Zobacz więcej' : lang==='nl' ? 'Ontdek meer' : 'Explore More';
+      document.querySelectorAll('.explore-more a.button.primary').forEach(a=>{
+        a.textContent = lang==='pl' ? 'Zobacz więcej' : lang==='nl' ? 'Ontdek meer' : 'Explore More';
+      });
+      document.querySelectorAll('.explore-more a .label, .explore-more a span').forEach(s=>{
+        const t = s.textContent.trim().toLowerCase();
+        if (/all|wszystkie|alle/.test(t)) s.textContent = lang==='pl' ? 'Wszystkie projekty' : lang==='nl' ? 'Alle projecten' : 'All Projects';
+        if (/scholarly|naukowe|wetenschappelijk/.test(t)) s.textContent = lang==='pl' ? 'Naukowe' : lang==='nl' ? 'Wetenschappelijk' : 'Scholarly';
+      });
+    }
+
+    // Footer
+    const f = document.getElementById('footer');
+    if (f){
+      const heads = f.querySelectorAll('h3');
+      heads.forEach(h=>{
+        const t=h.textContent.trim().toLowerCase();
+        if (/location|lokalizacja|locatie/.test(t)) h.textContent = I18N.footer_location[lang];
+        if (/email|e-mail/.test(t)) h.textContent = I18N.footer_email[lang];
+        if (/social/.test(t)) h.textContent = I18N.footer_social[lang];
+        if (/quick access|qr/.test(t)) h.textContent = I18N.footer_qr_title[lang];
+      });
+      const qrHint = f.querySelector('#qr-code-container p'); if (qrHint) qrHint.textContent = I18N.footer_qr_hint[lang];
+    }
+  }
+
+  function showLangToast(lang){
+    const text = { pl: I18N.toast_switched.pl, nl: I18N.toast_switched.nl, en: I18N.toast_switched.en }[lang] || 'Language changed';
+    toast.textContent = text;
+    toast.classList.add('visible');
+    setTimeout(()=> toast.classList.remove('visible'), 1600);
+  }
+  function setLang(l, opts){
+    const silent = opts && opts.silent;
     localStorage.setItem(LANG_KEY,l);
     label.textContent = l.toUpperCase();
-    toggleBtn.querySelector('.lang-flag').textContent = (l==='nl'?'🇧🇪':'🇵🇱');
+    toggleBtn.querySelector('.lang-flag').textContent = (l==='nl'?'🇧🇪': l==='en'?'🇬🇧':'🇵🇱');
     document.documentElement.setAttribute('lang', l);
     document.documentElement.dataset.lang = l;
+    translatePage(l);
+    if (!silent) showLangToast(l);
+    // update badge
+    langBadge.textContent = (l==='nl'?'🇧🇪 NL': l==='en'?'🇬🇧 EN':'🇵🇱 PL');
   }
   if (toggleBtn && menu){
-    const current = localStorage.getItem(LANG_KEY) || 'pl';
-    setLang(current);
+    const current = localStorage.getItem(LANG_KEY) || 'en';
+    setLang(current, { silent: true });
     toggleBtn.addEventListener('click', (e)=>{ e.preventDefault(); document.querySelector('.lang-switch').classList.toggle('open'); menu.style.display = menu.style.display==='block'?'none':'block'; });
     menu.addEventListener('click', (e)=>{
       const btn = e.target.closest('button[data-lang]'); if (!btn) return; setLang(btn.getAttribute('data-lang')); document.querySelector('.lang-switch').classList.remove('open');
       menu.style.display='none';
-      // optional: here we could swap text via i18n map
     });
     document.addEventListener('click', (e)=>{ if (!e.target.closest('.lang-switch')){ document.querySelector('.lang-switch').classList.remove('open'); menu.style.display='none'; } });
   }
