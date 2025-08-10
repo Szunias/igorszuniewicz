@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function() {
   let currentSlide = 0;
 
   function goToSlide(index) {
+    // guard
+    if (!slides.length) return;
     slides[currentSlide].classList.remove('active');
     currentSlide = (index + slides.length) % slides.length;
     slides[currentSlide].classList.add('active');

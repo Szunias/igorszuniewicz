@@ -618,3 +618,10 @@ body[data-theme="light"] #main h1, body[data-theme="light"] #main h2, body[data-
 body[data-theme="light"] #main p { color: #444; }
 body[data-theme="light"] .project-card { background-color: #ffffff; border-color: #e3e6ea; }
 body[data-theme="light"] #footer { background-color: #eef1f4; color: #333; }
+
+/* Project pages hero images smaller */
+.image.main img { max-width: 680px; margin: 0 auto; display: block; }
+.post .image.fit img { max-width: 680px; margin-left: auto; margin-right: auto; }
+@media (max-width: 980px) {
+  .image.main img, .post .image.fit img { max-width: 90%; }
+}
