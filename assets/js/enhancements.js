@@ -193,9 +193,17 @@ document.addEventListener('DOMContentLoaded', function() {
     path3.setAttribute('d', build(amp3, Math.PI, 6));
   }, { passive: true });
 
-  // Render equalizer bars
+  // Render equalizer bars (suspend when tab hidden or idle)
+  let rafId = null;
+  let lastActivity = performance.now();
+  ['pointermove','scroll','keydown','click'].forEach(evt=>window.addEventListener(evt,()=>{ lastActivity = performance.now(); },{passive:true}));
+
   function renderEQ(){
     if (!eq || !ctx) { return; }
+    if (document.hidden) { rafId = requestAnimationFrame(renderEQ); return; }
+    if (performance.now() - lastActivity > 20000) { // idle > 20s, skip heavy draw
+      rafId = requestAnimationFrame(renderEQ); return;
+    }
     const t = performance.now() / 1000;
     const w = eq.width, h = eq.height;
     ctx.clearRect(0,0,w,h);
@@ -218,9 +226,14 @@ document.addEventListener('DOMContentLoaded', function() {
       ctx.fillStyle = 'rgba(12,28,46,0.06)';
       ctx.fillRect(x, h-10, bw, 3);
     }
-    requestAnimationFrame(renderEQ);
+    rafId = requestAnimationFrame(renderEQ);
   }
   if (!perfLite) renderEQ();
+
+  document.addEventListener('visibilitychange', ()=>{
+    if (document.hidden && rafId){ cancelAnimationFrame(rafId); rafId = null; }
+    else if (!rafId && !perfLite) { renderEQ(); }
+  });
 
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {

@@ -381,9 +381,14 @@ a.slide{
 }
 
 /* Page fade transitions */
-#wrapper { transition: opacity 180ms ease, transform 180ms ease; }
+#wrapper { transition: opacity 180ms ease, transform 180ms ease; will-change: opacity, transform; }
 body.page-exit #wrapper { opacity: 0; transform: translateY(4px); }
 body.page-enter #wrapper { opacity: 0; transform: translateY(4px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-enabled [data-reveal] { transition: none !important; transform: none !important; }
+  #wrapper { transition: none !important; }
+}
 
 /* Interactive background glow */
 .bg-glow {
