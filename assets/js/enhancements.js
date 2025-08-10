@@ -62,31 +62,22 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(() => { window.location.href = href; }, 220);
     });
   });
-  // Interactive background glow tracking cursor
-  const glow = document.createElement('div');
-  glow.className = 'bg-glow';
-  const grad = document.createElement('div');
-  grad.className = 'bg-gradient';
-  const orbs = document.createElement('div');
-  orbs.className = 'bg-orbs';
-  orbs.innerHTML = '<div class="orb blue" style="top:10%;left:8%"></div>'+
-                   '<div class="orb cyan" style="top:60%;left:75%"></div>'+
-                   '<div class="orb teal" style="top:75%;left:15%"></div>';
+  // Background layers (reuse if present to avoid duplicates)
+  const glow = document.querySelector('.bg-glow') || (()=>{ const d=document.createElement('div'); d.className='bg-glow'; return d; })();
+  const grad = document.querySelector('.bg-gradient') || (()=>{ const d=document.createElement('div'); d.className='bg-gradient'; return d; })();
+  const orbs = document.querySelector('.bg-orbs') || (()=>{ const d=document.createElement('div'); d.className='bg-orbs'; d.innerHTML='<div class="orb blue" style="top:10%;left:8%"></div><div class="orb cyan" style="top:60%;left:75%"></div><div class="orb teal" style="top:75%;left:15%"></div>'; return d; })();
   // SVG waves
-  const waves = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  waves.setAttribute('class', 'bg-waves');
-  waves.setAttribute('viewBox', '0 0 1200 600');
-  waves.setAttribute('preserveAspectRatio', 'none');
-  const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  const waves = document.querySelector('svg.bg-waves') || (function(){ const s=document.createElementNS('http://www.w3.org/2000/svg','svg'); s.setAttribute('class','bg-waves'); s.setAttribute('viewBox','0 0 1200 600'); s.setAttribute('preserveAspectRatio','none'); return s; })();
+  const path1 = waves.querySelector('path:nth-of-type(1)') || document.createElementNS('http://www.w3.org/2000/svg', 'path');
   path1.setAttribute('fill', 'url(#gradWave1)');
   path1.setAttribute('opacity', '0.75');
-  const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  const path2 = waves.querySelector('path:nth-of-type(2)') || document.createElementNS('http://www.w3.org/2000/svg', 'path');
   path2.setAttribute('fill', 'url(#gradWave2)');
   path2.setAttribute('opacity', '0.55');
-  const path3 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  const path3 = waves.querySelector('path:nth-of-type(3)') || document.createElementNS('http://www.w3.org/2000/svg', 'path');
   path3.setAttribute('fill', 'url(#gradWave3)');
   path3.setAttribute('opacity', '0.40');
-  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+  const defs = waves.querySelector('defs') || document.createElementNS('http://www.w3.org/2000/svg', 'defs');
   const makeGrad = (id, c1, c2) => {
     const g = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
     g.setAttribute('id', id);
@@ -95,16 +86,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const b = document.createElementNS('http://www.w3.org/2000/svg', 'stop'); b.setAttribute('offset','100%'); b.setAttribute('stop-color', c2); b.setAttribute('stop-opacity','0.4');
     g.appendChild(a); g.appendChild(b); return g;
   };
-  defs.appendChild(makeGrad('gradWave1', '#18bfef', '#58b6ff'));
-  defs.appendChild(makeGrad('gradWave2', '#9a6cff', '#18bfef'));
-  defs.appendChild(makeGrad('gradWave3', '#ff6ea9', '#9a6cff'));
-  waves.appendChild(defs); waves.appendChild(path1); waves.appendChild(path2); waves.appendChild(path3);
-  document.body.appendChild(grad);
-  if (!perfLite) document.body.appendChild(orbs);
-  document.body.appendChild(waves); // keep waves (very light)
+  if (!waves.querySelector('#gradWave1')) defs.appendChild(makeGrad('gradWave1', '#18bfef', '#58b6ff'));
+  if (!waves.querySelector('#gradWave2')) defs.appendChild(makeGrad('gradWave2', '#9a6cff', '#18bfef'));
+  if (!waves.querySelector('#gradWave3')) defs.appendChild(makeGrad('gradWave3', '#ff6ea9', '#9a6cff'));
+  if (!waves.querySelector('defs')) waves.appendChild(defs);
+  if (!path1.parentNode) waves.appendChild(path1);
+  if (!path2.parentNode) waves.appendChild(path2);
+  if (!path3.parentNode) waves.appendChild(path3);
+  if (!grad.parentNode) document.body.appendChild(grad);
+  if (!perfLite && !orbs.parentNode) document.body.appendChild(orbs);
+  if (!waves.parentNode) document.body.appendChild(waves); // keep waves (very light)
   // Equalizer bars
-  let eq, ctx;
-  if (!perfLite) {
+  let eq = document.querySelector('canvas.bg-eq'), ctx;
+  if (!perfLite && !eq) {
     eq = document.createElement('canvas');
     eq.className = 'bg-eq';
     document.body.appendChild(eq);
@@ -113,9 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Visual audio-like ripple on clicks
   // Click ripple (forced on all pages, independent of perfLite)
-  const clickFx = document.createElement('div');
-  clickFx.className = 'click-fx';
-  document.body.appendChild(clickFx);
+  const clickFx = document.querySelector('.click-fx') || (()=>{ const d=document.createElement('div'); d.className='click-fx'; document.body.appendChild(d); return d; })();
   window.addEventListener('pointerdown', (e) => {
     if (e.button !== 0) return;
     const rect = document.documentElement.getBoundingClientRect();
