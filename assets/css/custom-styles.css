@@ -8,11 +8,11 @@ body {
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: transparent !important;
+    background-color: #0b141a !important;
 }
 
 html { scrollbar-gutter: stable; }
-html, body { overflow-x: hidden; background: transparent !important; }
+html, body { overflow-x: hidden; background: #0b141a !important; }
 /* Global downscale on desktop to reduce perceived size */
 @media (min-width: 981px) {
   html { font-size: 12pt !important; }
@@ -24,7 +24,6 @@ html, body { overflow-x: hidden; background: transparent !important; }
 /* Ensure wrapper and main don't mask interactive background */
 #wrapper { background-color: transparent !important; }
 #main { background-color: transparent !important; }
-body { background-color: transparent !important; }
 /* Force-hide theme background layers if present */
 body > #wrapper > .bg, #wrapper > .bg, #wrapper > .bg.fixed { display: none !important; }
 
