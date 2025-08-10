@@ -235,6 +235,41 @@ document.addEventListener('DOMContentLoaded', function() {
     else if (!rafId && !perfLite) { renderEQ(); }
   });
 
+  // Floating popover for CV tooltips (positioned near cursor)
+  const pop = document.createElement('div'); pop.className='tip-popover';
+  const popContent = document.createElement('div'); pop.appendChild(popContent);
+  document.body.appendChild(pop);
+
+  function showTip(target, x, y){
+    const text = target.getAttribute('data-tip');
+    const url = target.getAttribute('data-tip-url');
+    if (!text){ hideTip(); return; }
+    popContent.innerHTML = '';
+    const span = document.createElement('div'); span.textContent = text; popContent.appendChild(span);
+    if (url){ const a = document.createElement('a'); a.href=url; a.target='_blank'; a.rel='noopener'; a.className='tip-action'; a.textContent='Learn more →'; popContent.appendChild(a); }
+    const pad = 14; const vw = window.innerWidth; const vh = window.innerHeight; const rect = pop.getBoundingClientRect();
+    let px = x + pad, py = y + pad;
+    // Prevent overflow
+    pop.style.transform = 'translate(-9999px,-9999px)'; // reset for correct measurements
+    requestAnimationFrame(()=>{
+      const bw = pop.offsetWidth || 260; const bh = pop.offsetHeight || 80;
+      if (px + bw > vw - 8) px = vw - bw - 8;
+      if (py + bh > vh - 8) py = y - bh - pad;
+      if (py < 8) py = 8;
+      pop.style.left = px + 'px'; pop.style.top = py + 'px';
+      pop.style.transform = 'none';
+      pop.classList.add('visible');
+    });
+  }
+  function hideTip(){ pop.classList.remove('visible'); pop.style.transform='translate(-9999px,-9999px)'; }
+
+  let tipTarget=null;
+  document.body.addEventListener('pointerenter', (e)=>{
+    const t = e.target.closest('#cv-section .box [data-tip]'); if (!t) return; tipTarget=t; showTip(t, e.clientX, e.clientY);
+  }, true);
+  document.body.addEventListener('pointermove', (e)=>{ if (!tipTarget) return; showTip(tipTarget, e.clientX, e.clientY); }, true);
+  document.body.addEventListener('pointerleave', (e)=>{ if (e.target===tipTarget){ tipTarget=null; hideTip(); } }, true);
+
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
