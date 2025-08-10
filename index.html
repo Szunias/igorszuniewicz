@@ -22,9 +22,9 @@
              margin: 30px auto 80px;
              overflow: hidden;
              z-index: 3;
-             background-color: #2a313a; 
-             border-radius: 8px;
-             padding: 1em 1em 5.5em; /* reserve space for captions */
+              background: transparent; 
+              border-radius: 8px;
+              padding: 1em 1em 3em; /* reserve space for captions */
         }
         .slide {
             position: absolute;
@@ -58,7 +58,7 @@
         }
         .slide a img {
             max-width: 100%;
-            max-height: calc(100% - 150px); 
+            max-height: 55vh; 
             object-fit: contain;
             border: none; 
             border-radius: 6px;
@@ -112,9 +112,7 @@
                 max-width: 1100px;
                 min-height: 580px;
             }
-            .slide a img {
-                max-height: calc(100% - 160px);
-            }
+            .slide a img { max-height: 58vh; }
         }
         @media (min-width: 1280px) {
             .slider {
@@ -220,7 +218,7 @@
                 </header>
 
                 <article class="post featured" style="padding:0; margin-bottom: 2em;">
-                    <div class="slider">
+            <div class="slider" style="scroll-margin-top: 80px;">
                         <div class="slide active">
                             <h3>Most Recent Single</h3>
                             <a href="https://youtu.be/9ZgLOSiQwjI?list=OLAK5uy_nzJk7hAZgv6WRFDY8TJHN7YUJrvjCn2Ro&t=80" target="_blank"><img src="images/epkam.png" alt="Most Recent Single" loading="eager" decoding="async"></a>

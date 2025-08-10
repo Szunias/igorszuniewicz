@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Enable reveal only if JS loads
   document.body.classList.add('reveal-enabled');
   document.body.classList.add('page-enter');
-  setTimeout(() => document.body.classList.remove('page-enter'), 420);
+  setTimeout(() => document.body.classList.remove('page-enter'), 180);
   // Ensure template preload overlay goes away even without theme JS
   document.body.classList.remove('is-preload');
 
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
       progress.style.width = '35%';
       document.body.classList.add('page-exit');
       setTimeout(() => { progress.style.width = '70%'; }, 120);
-      setTimeout(() => { window.location.href = href; }, 340);
+      setTimeout(() => { window.location.href = href; }, 220);
     });
   });
   // Interactive background glow tracking cursor
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
   waves.appendChild(defs); waves.appendChild(path1); waves.appendChild(path2); waves.appendChild(path3);
   document.body.appendChild(grad);
   if (!perfLite) document.body.appendChild(orbs);
-  if (!perfLite) document.body.appendChild(waves);
+  document.body.appendChild(waves); // keep waves (very light)
   // Equalizer bars
   let eq, ctx;
   if (!perfLite) {
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
   } catch(_) {}
   if (!perfLite && eq) {
     ctx = eq.getContext('2d');
-    function resizeCanvas(){ eq.width = Math.floor(window.innerWidth * 0.75); eq.height = Math.floor(window.innerHeight * 0.75); }
+    function resizeCanvas(){ eq.width = Math.floor(window.innerWidth * 0.6); eq.height = Math.floor(window.innerHeight * 0.5); }
     resizeCanvas(); window.addEventListener('resize', resizeCanvas);
   }
 
