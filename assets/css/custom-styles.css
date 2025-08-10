@@ -73,6 +73,29 @@ body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !
     transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 }
 
+/* Navbar reset to theme look (no glass container) */
+#nav { position: relative; top: auto; z-index: 100; background: transparent; backdrop-filter: none; border: 0; border-radius: 0; margin: -4rem auto 0 auto; box-shadow: none; width: calc(100% - 4rem); max-width: 72rem; }
+
+/* Layout tweaks */
+#nav ul.links { gap: 0; }
+#nav ul.links li { background: transparent !important; } /* keep theme layout */
+
+/* Animated underline */
+#nav ul.links li a{ position: relative; text-decoration: none; }
+#nav ul.links li a::after{
+  content: ''; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px;
+  background: linear-gradient(90deg,#18bfef,#9a6cff);
+  transform: scaleX(0); transform-origin: center; transition: transform .22s ease;
+}
+#nav ul.links li a:hover::after{ transform: scaleX(1); }
+#nav ul.links li.active{ background: transparent !important; }
+#nav ul.links li.active a{ color: #9adfff !important; }
+#nav ul.links li.active a::after{ transform: scaleX(1); }
+
+/* Icons hover micro-interaction */
+#nav .icons a { opacity: 0.9; transform: translateY(0); transition: transform .15s ease, opacity .15s ease, filter .2s ease; }
+#nav .icons a:hover { transform: translateY(-1px) scale(1.05); opacity: 1; filter: drop-shadow(0 0 6px rgba(24,191,239,0.35)); }
+
 #nav ul.links li.active a, #nav ul.links li a:hover, #nav .icons a:hover {
     color: #18bfef; /* Accent color for active/hover states */
     border-bottom-color: #18bfef;
