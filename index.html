@@ -123,6 +123,13 @@
                 max-height: calc(100% - 170px);
             }
         }
+        /* Hard overrides: bars/overlays */
+        #wrapper.fade-in:before { display: none !important; opacity: 0 !important; background: transparent !important; }
+        #wrapper > .bg, #wrapper > .bg.fixed { display: none !important; background: transparent !important; height:0 !important; }
+        #main { background: transparent !important; }
+        #main > * { border-top: 0 !important; }
+        hr, hr.major { display: none !important; }
+        #projects-showcase.post, #projects-showcase .post.featured { background: transparent !important; border: 0 !important; margin-bottom: 0 !important; }
     </style>
 </head>
 <body class="is-preload">
@@ -211,13 +218,13 @@
             <hr />
             
             <!-- Thematic Projects Showcase (with Slider Restored) -->
-            <section id="projects-showcase" class="post" data-reveal>
+            <section id="projects-showcase" class="post" data-reveal style="border-top:0; background: transparent;">
                 <header class="major">
                     <h2 id="bgColor">Projects Showcase</h2>
                     <p>A selection of my most important projects, highlighting my involvement and key contributions.</p>
                 </header>
 
-                <article class="post featured" style="padding:0; margin-bottom: 2em;">
+                <article class="post featured" style="padding:0; margin-bottom: 0; border:0; background: transparent;">
             <div class="slider" style="scroll-margin-top: 80px;">
                         <div class="slide active">
                             <h3>Most Recent Single</h3>

@@ -179,10 +179,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // animate waves like audio oscillation
     const t = performance.now() / 1000;
     const amp1 = 22 + (y/100)*10, amp2 = 30 + (x/100)*12, amp3 = 16 + ((x+y)/200)*8;
-    const build = (amp, phase, freq) => {
+  const build = (amp, phase, freq) => {
       let d = 'M 0 300 ';
       for (let i=0;i<=1200;i+=20){
-        const yy = 300 + Math.sin((i/1200)*Math.PI*freq + t*1.2 + phase)*amp;
+        const yy = 300 + Math.sin((i/1200)*Math.PI*freq + t*1.2 + phase)*amp + Math.sin((i/1200)*Math.PI*2 + t*0.4)*6;
         d += `L ${i} ${yy} `;
       }
       d += 'L 1200 600 L 0 600 Z';

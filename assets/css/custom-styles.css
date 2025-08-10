@@ -35,11 +35,20 @@ noscript body { background: transparent !important; }
 #main > * { border-top: 0 !important; }
 hr, hr.major { display: none !important; }
 
+/* Also kill posts grid borders that can create bars */
+#main > .posts > article { border: 0 !important; }
+
+/* Kill theme preload overlay */
+body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !important; }
+#wrapper.fade-in:before { background: transparent !important; display: none !important; }
+
 /* Intro spacing to avoid overlap and raise heading */
 #intro {
   padding-top: 0vh !important;
   position: relative;
   transform: translateY(-28vh);
+  background: transparent !important;
+  margin-bottom: 0 !important;
 }
 #intro h1 {
   margin-top: -0.5rem !important;
@@ -84,12 +93,10 @@ hr, hr.major { display: none !important; }
 }
 
 /* Override intro background block to avoid dark bar behind hero after translate */
-#intro {
-  background: transparent !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  border-radius: 0 !important;
-}
+#intro { padding-left: 0 !important; padding-right: 0 !important; border-radius: 0 !important; }
+
+/* Soft blend at the bottom of hero to prevent visible bar during scroll */
+#intro:after { content: none !important; }
 
 #intro h1 {
     font-family: 'Poppins', sans-serif;
@@ -395,10 +402,11 @@ body.page-enter #wrapper { opacity: 0; transform: translateY(4px); }
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background: radial-gradient(1200px 800px at 10% 10%, rgba(22, 80, 130, 0.55), transparent 60%),
-              radial-gradient(1100px 700px at 85% 15%, rgba(18, 140, 200, 0.38), transparent 65%),
-              radial-gradient(900px 700px at 50% 90%, rgba(18, 60, 100, 0.35), transparent 65%),
-              linear-gradient(180deg, #0b1015, #141b23 40%, #0f141c);
+  background: 
+    radial-gradient(1400px 900px at 10% 8%, rgba(30, 100, 150, 0.45), transparent 60%),
+    radial-gradient(1200px 800px at 85% 20%, rgba(24, 160, 220, 0.32), transparent 65%),
+    radial-gradient(1000px 700px at 50% 100%, rgba(24, 160, 220, 0.20), transparent 60%),
+    linear-gradient(180deg, #0d1820 0%, #0f1f29 50%, #132836 100%);
   animation: bgDrift 28s ease-in-out infinite alternate;
 }
 @keyframes bgDrift {
@@ -412,6 +420,8 @@ body.page-enter #wrapper { opacity: 0; transform: translateY(4px); }
 /* Audio-themed waves layer */
 .bg-waves {
   position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.12; mix-blend-mode: screen;
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.0) 82%);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.0) 82%);
 }
 
 /* Equalizer bars overlay */
@@ -642,3 +652,9 @@ body[data-theme="light"] #footer { background-color: #eef1f4; color: #333; }
 @media (max-width: 980px) {
   .image.main img, .post .image.fit img { max-width: 90%; }
 }
+
+/* Final hard overrides: never paint section backgrounds from theme */
+body[data-theme="dark"] #main,
+body[data-theme="light"] #main { background: transparent !important; }
+body[data-theme="dark"] #wrapper,
+body[data-theme="light"] #wrapper { background: transparent !important; }
