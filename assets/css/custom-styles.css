@@ -73,7 +73,7 @@ body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !
 }
 
 /* Navbar reset to theme look (no glass container) */
-#nav { position: relative; top: auto; z-index: 100; background: transparent; backdrop-filter: none; border: 0; border-radius: 0; margin: -4rem auto 0 auto; box-shadow: none; width: calc(100% - 4rem); max-width: 72rem; }
+#nav { position: relative; top: auto; z-index: 100; background: transparent; backdrop-filter: none; border: 0; border-radius: 0; margin: -4rem auto 0 auto; box-shadow: none; width: calc(100% - 4rem); max-width: 72rem; overflow: visible !important; }
 
 /* Layout tweaks */
 #nav ul.links { gap: 0; }
@@ -91,9 +91,31 @@ body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !
 #nav ul.links li.active a{ color: #9adfff !important; }
 #nav ul.links li.active a::after{ transform: scaleX(1); }
 
+/* Nav icons */
+#nav ul.links li a .nav-icon{ margin-right: 8px; opacity: .9; }
+
+/* Projects preview on hover */
+.nav-preview {
+  position: fixed; inset: auto auto auto auto; transform: translate(-9999px,-9999px);
+  pointer-events: none; z-index: 3000; opacity: 0; transition: opacity .15s ease, transform .15s ease;
+  background: rgba(10,16,22,.96); border: 1px solid rgba(255,255,255,.08); border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.45); padding: 10px; display: grid; grid-template-columns: repeat(3, 90px); gap: 8px;
+}
+.nav-preview.visible { opacity: 1; transform: none; }
+.nav-preview img{ width:90px; height:60px; object-fit: cover; border-radius: 8px; }
+
 /* Icons hover micro-interaction */
 #nav .icons a { opacity: 0.9; transform: translateY(0); transition: transform .15s ease, opacity .15s ease, filter .2s ease; }
 #nav .icons a:hover { transform: translateY(-1px) scale(1.05); opacity: 1; filter: drop-shadow(0 0 6px rgba(24,191,239,0.35)); }
+
+/* Language switcher */
+.lang-switch { position: relative; display: inline-flex; align-items: center; margin-left: 10px; }
+.lang-toggle { display: inline-flex; align-items: center; gap:6px; background: rgba(255,255,255,0.10); color:#eaf7ff; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 4px 10px; font-weight:600; cursor:pointer; font-size: .85rem; }
+.lang-flag { font-size: 1rem; line-height: 1; }
+.lang-menu { position: absolute; right:0; top: 120%; background: rgba(10,16,22,0.98); border:1px solid rgba(255,255,255,0.1); border-radius:10px; box-shadow:0 12px 30px rgba(0,0,0,0.35); padding:6px; display:none; min-width: 180px; z-index: 2000; }
+.lang-menu button { display:flex; align-items:center; gap:8px; background:transparent; color:#d9f2ff; border:0; padding:6px 10px; border-radius:8px; cursor:pointer; width:100%; text-align:left; }
+.lang-menu button:hover { background: rgba(24,191,239,0.12); }
+.lang-switch.open .lang-menu { display:block; }
 
 #nav ul.links li.active a, #nav ul.links li a:hover, #nav .icons a:hover {
     color: #18bfef; /* Accent color for active/hover states */
@@ -243,10 +265,10 @@ body p {
 #cv-section .box [data-tip]::before{ content: none !important; }
 
 /* New floating popover (global) */
-.tip-popover{ position: fixed; left: 0; top: 0; transform: translate(-9999px,-9999px); opacity: 0; pointer-events: none;
+.tip-popover{ position: fixed; left: -9999px; top: -9999px; opacity: 0; pointer-events: auto;
   max-width: min(320px, 90vw); background: rgba(10,16,22,0.98); color: #d9f2ff; border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 10px; padding: 10px 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.45); z-index: 3000; transition: opacity .18s ease, transform .18s ease; }
-.tip-popover.visible{ opacity: 1; }
+  border-radius: 10px; padding: 10px 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.45); z-index: 3000; transition: opacity .18s ease; visibility: hidden; }
+.tip-popover.visible{ opacity: 1; visibility: visible; }
 .tip-popover .tip-action{ display:inline-block; margin-top:8px; background: linear-gradient(90deg,#18bfef,#9a6cff); color:#0b1218; font-weight:600; font-size:.85rem; padding:6px 12px; border-radius:999px; text-decoration:none; }
 .tip-popover .tip-action:hover{ filter: brightness(1.05); }
 

@@ -235,11 +235,15 @@ document.addEventListener('DOMContentLoaded', function() {
     else if (!rafId && !perfLite) { renderEQ(); }
   });
 
+  // Guard: avoid double init of backgrounds/previews on PJAX-like reloads
+  if (window.__ui_initialized__) return; window.__ui_initialized__ = true;
+
   // Floating popover for CV tooltips (positioned near cursor)
   const pop = document.createElement('div'); pop.className='tip-popover';
   const popContent = document.createElement('div'); pop.appendChild(popContent);
   document.body.appendChild(pop);
 
+  let popPinned = false; let lastPos={x:0,y:0};
   function showTip(target, x, y){
     const text = target.getAttribute('data-tip');
     const url = target.getAttribute('data-tip-url');
@@ -247,28 +251,62 @@ document.addEventListener('DOMContentLoaded', function() {
     popContent.innerHTML = '';
     const span = document.createElement('div'); span.textContent = text; popContent.appendChild(span);
     if (url){ const a = document.createElement('a'); a.href=url; a.target='_blank'; a.rel='noopener'; a.className='tip-action'; a.textContent='Learn more →'; popContent.appendChild(a); }
-    const pad = 14; const vw = window.innerWidth; const vh = window.innerHeight; const rect = pop.getBoundingClientRect();
+    const pad = 14; const vw = window.innerWidth; const vh = window.innerHeight;
     let px = x + pad, py = y + pad;
-    // Prevent overflow
-    pop.style.transform = 'translate(-9999px,-9999px)'; // reset for correct measurements
-    requestAnimationFrame(()=>{
-      const bw = pop.offsetWidth || 260; const bh = pop.offsetHeight || 80;
-      if (px + bw > vw - 8) px = vw - bw - 8;
-      if (py + bh > vh - 8) py = y - bh - pad;
-      if (py < 8) py = 8;
-      pop.style.left = px + 'px'; pop.style.top = py + 'px';
-      pop.style.transform = 'none';
-      pop.classList.add('visible');
-    });
+    const bw = pop.offsetWidth || 260; const bh = pop.offsetHeight || 80;
+    if (px + bw > vw - 8) px = vw - bw - 8;
+    if (py + bh > vh - 8) py = y - bh - pad;
+    if (py < 8) py = 8;
+    pop.style.left = px + 'px'; pop.style.top = py + 'px';
+    pop.classList.add('visible');
+    lastPos={x:px,y:py};
   }
-  function hideTip(){ pop.classList.remove('visible'); pop.style.transform='translate(-9999px,-9999px)'; }
+  function hideTip(){ if (popPinned) return; pop.classList.remove('visible'); pop.style.left='-9999px'; pop.style.top='-9999px'; }
 
   let tipTarget=null;
   document.body.addEventListener('pointerenter', (e)=>{
-    const t = e.target.closest('#cv-section .box [data-tip]'); if (!t) return; tipTarget=t; showTip(t, e.clientX, e.clientY);
+    const t = e.target.closest('#cv-section .box [data-tip]'); if (!t) return; tipTarget=t; if (!popPinned) showTip(t, e.clientX, e.clientY);
   }, true);
-  document.body.addEventListener('pointermove', (e)=>{ if (!tipTarget) return; showTip(tipTarget, e.clientX, e.clientY); }, true);
+  document.body.addEventListener('pointermove', (e)=>{ if (!tipTarget || popPinned) return; showTip(tipTarget, e.clientX, e.clientY); }, true);
   document.body.addEventListener('pointerleave', (e)=>{ if (e.target===tipTarget){ tipTarget=null; hideTip(); } }, true);
+  document.body.addEventListener('click', (e)=>{
+    const t = e.target.closest('#cv-section .box [data-tip]');
+    if (t){
+      if (!popPinned){ popPinned=true; } else { popPinned=false; hideTip(); }
+    } else if (!e.target.closest('.tip-popover')) {
+      popPinned=false; hideTip();
+    }
+  });
+
+  // Nav: small preview for Projects link
+  const navPrev = document.createElement('div'); navPrev.className='nav-preview'; navPrev.style.visibility='hidden';
+  navPrev.innerHTML = `
+    <img src="images/project5.png" alt="">
+    <img src="images/project4.png" alt="">
+    <img src="images/amorak.png" alt="">
+    <img src="images/plugins.jpg" alt="">
+    <img src="images/maxresdefault.jpg" alt="">
+    <img src="images/nottodaydar.png" alt="">
+  `;
+  document.body.appendChild(navPrev);
+  const projectsLink = document.querySelector('#nav ul.links a[href*="projects/index.html"]');
+  let prevTimer=null;
+  function showNavPrev(){
+    const rect = projectsLink.getBoundingClientRect();
+    let x = rect.left; let y = rect.bottom + 10;
+    navPrev.style.left = x + 'px'; navPrev.style.top = y + 'px';
+    navPrev.style.transform = 'none';
+    navPrev.style.visibility='visible';
+    navPrev.classList.add('visible');
+  }
+  function hideNavPrev(){
+    navPrev.classList.remove('visible'); navPrev.style.visibility='hidden';
+  }
+  if (projectsLink){
+    projectsLink.addEventListener('pointerenter', ()=>{ prevTimer = setTimeout(showNavPrev, 140); });
+    projectsLink.addEventListener('pointerleave', ()=>{ if (prevTimer){ clearTimeout(prevTimer); prevTimer=null; } hideNavPrev(); });
+    window.addEventListener('scroll', hideNavPrev, { passive:true });
+  }
 
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
@@ -286,6 +324,30 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   window.addEventListener('scroll', markVisibleNow, { passive: true });
+
+  // Language switcher (PL/NL) — persists in localStorage
+  const LANG_KEY='site-lang';
+  const toggleBtn = document.getElementById('lang-toggle');
+  const menu = document.querySelector('.lang-switch .lang-menu');
+  const label = document.getElementById('lang-label');
+  function setLang(l){
+    localStorage.setItem(LANG_KEY,l);
+    label.textContent = l.toUpperCase();
+    toggleBtn.querySelector('.lang-flag').textContent = (l==='nl'?'🇧🇪':'🇵🇱');
+    document.documentElement.setAttribute('lang', l);
+    document.documentElement.dataset.lang = l;
+  }
+  if (toggleBtn && menu){
+    const current = localStorage.getItem(LANG_KEY) || 'pl';
+    setLang(current);
+    toggleBtn.addEventListener('click', (e)=>{ e.preventDefault(); document.querySelector('.lang-switch').classList.toggle('open'); menu.style.display = menu.style.display==='block'?'none':'block'; });
+    menu.addEventListener('click', (e)=>{
+      const btn = e.target.closest('button[data-lang]'); if (!btn) return; setLang(btn.getAttribute('data-lang')); document.querySelector('.lang-switch').classList.remove('open');
+      menu.style.display='none';
+      // optional: here we could swap text via i18n map
+    });
+    document.addEventListener('click', (e)=>{ if (!e.target.closest('.lang-switch')){ document.querySelector('.lang-switch').classList.remove('open'); menu.style.display='none'; } });
+  }
 });
 
 document.addEventListener('DOMContentLoaded', function() {
