@@ -485,7 +485,18 @@ document.addEventListener('DOMContentLoaded', function() {
     filter_sound: { pl: 'Sound Design', nl: 'Sounddesign', en: 'Sound Design' },
     filter_gameaudio: { pl: 'Audio w grach', nl: 'Game-audio', en: 'Game Audio' },
     learn_more: { pl: 'Więcej →', nl: 'Meer →', en: 'Learn more →' },
-    more_label: { pl: 'Więcej', nl: 'Meer', en: 'More' }
+    more_label: { pl: 'Więcej', nl: 'Meer', en: 'More' },
+    // Extras page
+    extras_title: { pl: 'Dodatkowe aktywności i muzyka', nl: 'Extra-curriculaire & Muziek', en: 'Extra-Curricular & Music' },
+    extras_lead: { pl: 'Projekty pasji, wydania muzyczne i współprace.', nl: 'Passieprojecten, muziekuitgaven en samenwerkingen.', en: 'Passion projects, music releases, and collaborations.' },
+    extras_spotify_title: { pl: 'Moja muzyka na Spotify', nl: 'Mijn muziek op Spotify', en: 'My Music on Spotify' },
+    extras_spotify_lead: { pl: 'Wybrane utwory i wydania odzwierciedlające mój styl i kierunek brzmieniowy.', nl: 'Geselecteerde tracks en releases die mijn esthetiek en soundrichting weerspiegelen.', en: 'Selected tracks and releases reflecting my aesthetic and sound direction.' },
+    // Contact page
+    contact_title: { pl: 'Kontakt', nl: 'Contact', en: 'Contact' },
+    contact_lead: { pl: 'Współpracujmy. Jestem otwarty na projekty i staże.', nl: 'Laten we samenwerken. Ik sta open voor projecten en stages.', en: 'Let’s collaborate. I’m open to project opportunities and internships.' },
+    contact_email_label: { pl: 'Email:', nl: 'E‑mail:', en: 'Email:' },
+    contact_location_label: { pl: 'Lokalizacja:', nl: 'Locatie:', en: 'Location:' },
+    contact_reachout: { pl: 'Śmiało napisz z krótkim opisem. Lubię projekty łączące kreatywną wizję z rozwiązywaniem problemów technicznych.', nl: 'Stuur gerust een korte briefing. Ik werk graag aan projecten die creatieve intentie combineren met technische probleemoplossing.', en: 'Feel free to reach out with a short brief. I enjoy projects that combine creative intent with technical problem‑solving.' }
   };
 
   function translatePage(lang){
@@ -577,6 +588,31 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('[data-i18n]').forEach(el=>{ const key=el.getAttribute('data-i18n'); const map=A[key]; if (!map) return; const val=map[lang]||map['en']; if (/^<.*>/.test(val)) el.innerHTML=val; else el.textContent=val; });
     }
 
+    // Extras page translations
+    if (location.pathname.endsWith('/extras.html') || /extras\.html$/i.test(location.pathname)){
+      const h2 = document.querySelector('#main header.major h2'); if (h2) h2.textContent = I18N.extras_title[lang];
+      const lead = document.querySelector('#main header.major p'); if (lead) lead.textContent = I18N.extras_lead[lang];
+      const a = document.querySelector('#main article h4 a'); if (a) a.textContent = I18N.extras_spotify_title[lang];
+      const p2 = document.querySelector('#main article p'); if (p2) p2.textContent = I18N.extras_spotify_lead[lang];
+      // Page <title>
+      try { document.title = (lang==='pl'?'Aktywności dodatkowe — Igor Szuniewicz': lang==='nl'?'Extra‑curriculair — Igor Szuniewicz':'Extra-Curricular — Igor Szuniewicz'); } catch(_){}
+    }
+
+    // Contact page translations
+    if (location.pathname.endsWith('/contact.html') || /contact\.html$/i.test(location.pathname)){
+      const h2 = document.querySelector('#main header.major h2'); if (h2) h2.textContent = I18N.contact_title[lang];
+      const lead = document.querySelector('#main header.major p'); if (lead) lead.textContent = I18N.contact_lead[lang];
+      const box = document.querySelector('#main .box');
+      if (box){
+        const ps = box.querySelectorAll('p');
+        if (ps[0]){ const strong = ps[0].querySelector('strong'); if (strong) strong.textContent = I18N.contact_email_label[lang] + ' '; }
+        if (ps[1]){ const strong = ps[1].querySelector('strong'); if (strong) strong.textContent = I18N.contact_location_label[lang] + ' '; }
+        if (ps[2]) ps[2].textContent = I18N.contact_reachout[lang];
+      }
+      // Page <title>
+      try { document.title = (lang==='pl'?'Kontakt — Igor Szuniewicz': lang==='nl'?'Contact — Igor Szuniewicz':'Contact — Igor Szuniewicz'); } catch(_){ }
+    }
+
     // CV section on homepage translations
     if (document.querySelector('#cv-section')){
       const CV = {
@@ -592,12 +628,19 @@ document.addEventListener('DOMContentLoaded', function() {
         s6: { en:'DAWs: Reaper, Pro Tools, Logic Pro', pl:'DAWy: Reaper, Pro Tools, Logic Pro', nl:'DAW’s: Reaper, Pro Tools, Logic Pro' },
         s7: { en:'VST/Audio Plugin Development', pl:'Rozwój wtyczek VST/Audio', nl:'VST/Audio plug‑in ontwikkeling' }
       };
-      // Tooltip text per skill item
+      // Tooltip text per item
       const CV_TIPS = {
-        t2: { en:'Writing, arranging, and producing music for media.', pl:'Pisanie, aranżacja i produkcja muzyki do mediów.', nl:'Schrijven, arrangeren en produceren van muziek voor media.' },
+        // Skills (right column)
         t1: { en:'Designing cohesive SFX palettes, mixing, and implementation across engines.', pl:'Projektowanie spójnych palet SFX, miks i implementacja w silnikach.', nl:'Ontwerp van samenhangende SFX‑paletten, mix en implementatie in engines.' },
+        t2: { en:'Writing, arranging, and producing music for media.', pl:'Pisanie, aranżacja i produkcja muzyki do mediów.', nl:'Schrijven, arrangeren en produceren van muziek voor media.' },
         t3: { en:'Middleware bridges audio authoring with game engines. Wwise/FMOD expose runtime control for mixing, states, parameters.', pl:'Middleware łączy autorstwo audio z silnikami gier. Wwise/FMOD dają sterowanie w runtime: miks, stany, parametry.', nl:'Middleware verbindt audio‑authoring met game‑engines. Wwise/FMOD bieden runtime‑sturing voor mix, states en parameters.' },
-        t4: { en:'Experience with Blueprints/C++ in UE, and C# scripting in Unity.', pl:'Doświadczenie w Blueprints/C++ w UE oraz skrypty C# w Unity.', nl:'Ervaring met Blueprints/C++ in UE en C#‑scripting in Unity.' }
+        t4: { en:'Experience with Blueprints/C++ in UE, and C# scripting in Unity.', pl:'Doświadczenie w Blueprints/C++ w UE oraz skrypty C# w Unity.', nl:'Ervaring met Blueprints/C++ in UE en C#‑scripting in Unity.' },
+        t5: { en:'Practical C++ for DSP/tools, Python for pipelines, C# for tooling.', pl:'Praktyczne C++ do DSP/narzędzi, Python do pipeline’ów, C# do narzędzi.', nl:'Praktische C++ voor DSP/tools, Python voor pipelines, C# voor tooling.' },
+        t6: { en:'Efficient workflows in DAWs for sound design and music.', pl:'Efektywne workflow w DAW‑ach dla sound designu i muzyki.', nl:'Efficiënte workflows in DAW’s voor sounddesign en muziek.' },
+        t7: { en:'DSP, GUI, and performance optimization for real‑time audio.', pl:'DSP, GUI i optymalizacja wydajności dla dźwięku czasu rzeczywistego.', nl:'DSP, GUI en prestatie‑optimalisatie voor real‑time audio.' },
+        // Education (left column)
+        e1: { en:'Howest DAE — world‑class program in game development, with audio integration track.', pl:'Howest DAE — światowej klasy program z tworzenia gier ze ścieżką integracji audio.', nl:'Howest DAE — toonaangevend gamedevelopment‑programma met audio‑integratietrack.' },
+        e2: { en:'Bilingual curriculum with emphasis on mathematics and physics.', pl:'Program dwujęzyczny z naciskiem na matematykę i fizykę.', nl:'Tweetalig curriculum met nadruk op wiskunde en natuurkunde.' }
       };
       const map = {
         edu_title: '#cv-section .col-6:nth-of-type(1) h4',
@@ -619,13 +662,18 @@ document.addEventListener('DOMContentLoaded', function() {
       // Ensure "More" chips exist after innerHTML replacements
       document.querySelectorAll('#cv-section .box [data-tip]').forEach((el)=>{
         // Translate tooltips (data-tip) and update opened drawer text
-        const idx = Array.prototype.indexOf.call(el.parentNode.children, el) + 1;
-        // Map known tips by item index (only for a few key items)
-        if (el.closest('.col-6:nth-of-type(2)')){ // skills column
-          if (idx===1 && CV_TIPS.t1) el.setAttribute('data-tip', CV_TIPS.t1[lang]||CV_TIPS.t1.en);
-          if (idx===2 && CV_TIPS.t2) el.setAttribute('data-tip', CV_TIPS.t2[lang]||CV_TIPS.t2.en);
-          if (idx===3 && CV_TIPS.t3) el.setAttribute('data-tip', CV_TIPS.t3[lang]||CV_TIPS.t3.en);
-          if (idx===5 && CV_TIPS.t4) el.setAttribute('data-tip', CV_TIPS.t4[lang]||CV_TIPS.t4.en);
+        const liIndex = (function(){
+          const listItems = Array.from(el.parentNode.querySelectorAll(':scope > li'));
+          return listItems.indexOf(el) + 1;
+        })();
+        if (el.closest('.col-6:nth-of-type(2)')){ // skills column (right)
+          const mapTips = {1:'t1',2:'t2',3:'t3',4:'t4',5:'t5',6:'t6',7:'t7'};
+          const key = mapTips[liIndex];
+          if (key && CV_TIPS[key]) el.setAttribute('data-tip', CV_TIPS[key][lang] || CV_TIPS[key].en);
+        } else if (el.closest('.col-6:nth-of-type(1)')) { // education (left)
+          const mapEdu = {1:'e1',2:'e2'};
+          const key = mapEdu[liIndex];
+          if (key && CV_TIPS[key]) el.setAttribute('data-tip', CV_TIPS[key][lang] || CV_TIPS[key].en);
         }
         if (!el.querySelector('.cv-more-chip')){
           const chip = document.createElement('button'); chip.type='button'; chip.className='cv-more-chip';
