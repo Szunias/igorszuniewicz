@@ -154,6 +154,12 @@ body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !
 .lang-badge-menu .flag-svg { width: 26px; height: 16px; display: inline-block; position: relative; top: -2px; vertical-align: middle; }
 .lang-badge-menu .label { color:#e9f7ff; opacity:.98; display:inline-flex; align-items:center; }
 
+/* One-time nudge to show language switch */
+.lang-nudge { position: absolute; right: 0; top: 44px; background: rgba(12,18,24,0.95); color:#e9f7ff; border:1px solid rgba(255,255,255,0.14); padding:6px 10px; border-radius:10px; font-size:.85rem; display:flex; gap:8px; align-items:center; opacity:0; transform: translateY(-6px); transition: opacity .2s ease, transform .2s ease; pointer-events:none; box-shadow:0 12px 30px rgba(0,0,0,0.35); }
+.lang-nudge.show { opacity:1; transform: translateY(0); }
+.lang-nudge .ico { font-size:1rem; }
+.lang-nudge .arrow { opacity:.9; }
+
 #nav ul.links li.active a, #nav ul.links li a:hover, #nav .icons a:hover {
     color: #18bfef; /* Accent color for active/hover states */
     border-bottom-color: #18bfef;

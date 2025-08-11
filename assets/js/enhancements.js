@@ -592,6 +592,13 @@ document.addEventListener('DOMContentLoaded', function() {
         s6: { en:'DAWs: Reaper, Pro Tools, Logic Pro', pl:'DAWy: Reaper, Pro Tools, Logic Pro', nl:'DAW’s: Reaper, Pro Tools, Logic Pro' },
         s7: { en:'VST/Audio Plugin Development', pl:'Rozwój wtyczek VST/Audio', nl:'VST/Audio plug‑in ontwikkeling' }
       };
+      // Tooltip text per skill item
+      const CV_TIPS = {
+        t2: { en:'Writing, arranging, and producing music for media.', pl:'Pisanie, aranżacja i produkcja muzyki do mediów.', nl:'Schrijven, arrangeren en produceren van muziek voor media.' },
+        t1: { en:'Designing cohesive SFX palettes, mixing, and implementation across engines.', pl:'Projektowanie spójnych palet SFX, miks i implementacja w silnikach.', nl:'Ontwerp van samenhangende SFX‑paletten, mix en implementatie in engines.' },
+        t3: { en:'Middleware bridges audio authoring with game engines. Wwise/FMOD expose runtime control for mixing, states, parameters.', pl:'Middleware łączy autorstwo audio z silnikami gier. Wwise/FMOD dają sterowanie w runtime: miks, stany, parametry.', nl:'Middleware verbindt audio‑authoring met game‑engines. Wwise/FMOD bieden runtime‑sturing voor mix, states en parameters.' },
+        t4: { en:'Experience with Blueprints/C++ in UE, and C# scripting in Unity.', pl:'Doświadczenie w Blueprints/C++ w UE oraz skrypty C# w Unity.', nl:'Ervaring met Blueprints/C++ in UE en C#‑scripting in Unity.' }
+      };
       const map = {
         edu_title: '#cv-section .col-6:nth-of-type(1) h4',
         skills_title: '#cv-section .col-6:nth-of-type(2) h4',
@@ -611,6 +618,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Ensure "More" chips exist after innerHTML replacements
       document.querySelectorAll('#cv-section .box [data-tip]').forEach((el)=>{
+        // Translate tooltips (data-tip) and update opened drawer text
+        const idx = Array.prototype.indexOf.call(el.parentNode.children, el) + 1;
+        // Map known tips by item index (only for a few key items)
+        if (el.closest('.col-6:nth-of-type(2)')){ // skills column
+          if (idx===1 && CV_TIPS.t1) el.setAttribute('data-tip', CV_TIPS.t1[lang]||CV_TIPS.t1.en);
+          if (idx===2 && CV_TIPS.t2) el.setAttribute('data-tip', CV_TIPS.t2[lang]||CV_TIPS.t2.en);
+          if (idx===3 && CV_TIPS.t3) el.setAttribute('data-tip', CV_TIPS.t3[lang]||CV_TIPS.t3.en);
+          if (idx===5 && CV_TIPS.t4) el.setAttribute('data-tip', CV_TIPS.t4[lang]||CV_TIPS.t4.en);
+        }
         if (!el.querySelector('.cv-more-chip')){
           const chip = document.createElement('button'); chip.type='button'; chip.className='cv-more-chip';
           chip.innerHTML = '<span class="label">'+(I18N.more_label[lang]||'More')+'</span><span class="chev">▾</span>';
@@ -625,6 +641,11 @@ document.addEventListener('DOMContentLoaded', function() {
             (url?'<a class="cv-drawer-link" target="_blank" rel="noopener" href="'+url+'">'+(I18N.learn_more[lang]||'Learn more →')+'</a>':'')+
             '</div>';
           el.parentNode.insertBefore(drawer, el.nextSibling);
+        } else {
+          // Update existing drawer content and link label
+          const d = el.nextElementSibling;
+          const t = d.querySelector('.cv-drawer-text'); if (t) t.textContent = el.getAttribute('data-tip')||'';
+          const a = d.querySelector('.cv-drawer-link'); if (a) a.textContent = I18N.learn_more[lang]||'Learn more →';
         }
       });
     }
@@ -722,6 +743,19 @@ document.addEventListener('DOMContentLoaded', function() {
   badgeMenu.addEventListener('click', (e)=>{ const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); syncActive(); badgeMenu.classList.remove('open'); });
   syncActive();
   document.addEventListener('click', (e)=>{ if (!e.target.closest('.lang-badge-wrap')) badgeMenu.classList.remove('open'); });
+
+  // One-time post-load nudge pointing to the language switcher (not during intro)
+  (function(){
+    const show = ()=>{
+      if (!document.getElementById('projects-showcase')) return; // tylko na głównej
+      const n=document.createElement('div'); n.className='lang-nudge';
+      n.innerHTML='<span class="ico">🌍</span><span class="txt">Different language?</span><span class="arrow">↗</span>';
+      badgeWrap.appendChild(n);
+      requestAnimationFrame(()=> n.classList.add('show'));
+      setTimeout(()=>{ n.classList.remove('show'); setTimeout(()=>n.remove(), 400); }, 2600);
+    };
+    window.addEventListener('load', ()=> setTimeout(show, 800));
+  })();
 });
 
 document.addEventListener('DOMContentLoaded', function() {
