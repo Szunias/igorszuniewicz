@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Guard: avoid double init of backgrounds/previews on PJAX-like reloads
   if (window.__ui_initialized__) return; window.__ui_initialized__ = true;
 
-  // Floating popover for CV tooltips (positioned near cursor)
+  // Floating popover for CV tooltips (positioned via icon click)
   const pop = document.createElement('div'); pop.className='tip-popover';
   const popContent = document.createElement('div'); pop.appendChild(popContent);
   document.body.appendChild(pop);
@@ -263,20 +263,41 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   function hideTip(){ if (popPinned) return; pop.classList.remove('visible'); pop.style.left='-9999px'; pop.style.top='-9999px'; }
 
-  let tipTarget=null;
-  document.body.addEventListener('pointerenter', (e)=>{
-    const t = e.target.closest('#cv-section .box [data-tip]'); if (!t) return; tipTarget=t; if (!popPinned) showTip(t, e.clientX, e.clientY);
-  }, true);
-  document.body.addEventListener('pointermove', (e)=>{ if (!tipTarget || popPinned) return; showTip(tipTarget, e.clientX, e.clientY); }, true);
-  document.body.addEventListener('pointerleave', (e)=>{ if (e.target===tipTarget){ tipTarget=null; hideTip(); } }, true);
-  document.body.addEventListener('click', (e)=>{
-    const t = e.target.closest('#cv-section .box [data-tip]');
-    if (t){
-      if (!popPinned){ popPinned=true; } else { popPinned=false; hideTip(); }
-    } else if (!e.target.closest('.tip-popover')) {
-      popPinned=false; hideTip();
+  // Replace popovers with smooth inline drawers
+  document.querySelectorAll('#cv-section .box [data-tip]').forEach((el)=>{
+    // create modern chip button instead of icon
+    if (!el.querySelector('.cv-more-chip')){
+      const chip = document.createElement('button');
+      chip.type='button'; chip.className='cv-more-chip'; chip.setAttribute('aria-label','More info');
+      chip.innerHTML = '<span class="label">More</span><span class="chev">▾</span>';
+      el.appendChild(chip);
+    }
+    // create drawer
+    if (!el.nextElementSibling || !el.nextElementSibling.classList.contains('cv-drawer')){
+      const drawer = document.createElement('div');
+      drawer.className='cv-drawer';
+      const text = el.getAttribute('data-tip') || '';
+      const url = el.getAttribute('data-tip-url');
+      drawer.innerHTML = '<div class="cv-drawer-inner">'+
+        '<div class="cv-drawer-text">'+ text +'</div>'+
+        (url?'<a class="cv-drawer-link" target="_blank" rel="noopener" href="'+url+'">Learn more →</a>':'')+
+        '</div>';
+      el.parentNode.insertBefore(drawer, el.nextSibling);
     }
   });
+
+  document.body.addEventListener('click', (e)=>{
+    const chip = e.target.closest('.cv-more-chip');
+    if (chip){
+      const host = chip.closest('[data-tip]');
+      const drawer = host.nextElementSibling && host.nextElementSibling.classList.contains('cv-drawer') ? host.nextElementSibling : null;
+      if (drawer){ drawer.classList.toggle('open'); chip.classList.toggle('expanded'); }
+      return;
+    }
+    if (!e.target.closest('.cv-drawer') && !e.target.closest('.cv-info-icon')){
+      document.querySelectorAll('.cv-drawer.open').forEach(d=> d.classList.remove('open'));
+    }
+  }, true);
 
   // Nav: small preview for Projects link
   const navPrev = document.createElement('div'); navPrev.className='nav-preview'; navPrev.style.visibility='hidden';

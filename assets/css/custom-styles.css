@@ -268,6 +268,25 @@ body p {
 #cv-section .box:hover{ box-shadow: 0 30px 70px rgba(0,0,0,0.45); border-color: rgba(24,191,239,0.35); }
 #cv-section .box:hover::before{ opacity: 1; }
 #cv-section .box .row > div { position: relative; }
+#cv-section .box [data-tip] { position: relative; padding-right: 66px; }
+#cv-section .box .cv-more-chip {
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  height: 28px; padding: 0 12px; border-radius: 999px; border: 1px solid rgba(24,191,239,0.6);
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(90deg, rgba(24,191,239,0.22), rgba(154,108,255,0.18));
+  color: #d9f2ff; font-weight: 800; font-size: .8rem; letter-spacing:.2px; cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.25), inset 0 0 10px rgba(255,255,255,0.06);
+}
+#cv-section .box .cv-more-chip:hover { filter: brightness(1.05); transform: translateY(-50%) scale(1.03); }
+#cv-section .box .cv-more-chip .chev { transition: transform .25s ease; }
+#cv-section .box .cv-more-chip.expanded .chev { transform: rotate(180deg); }
+
+/* Smooth drawers under CV items */
+.cv-drawer { max-height: 0; overflow: hidden; transition: max-height .35s ease, opacity .35s ease, transform .35s ease; opacity: 0; transform: translateY(-4px); }
+.cv-drawer.open { max-height: 240px; opacity: 1; transform: translateY(0); }
+.cv-drawer-inner { background: linear-gradient(180deg, rgba(12,18,26,0.85), rgba(12,18,26,0.75)); border: 1px solid rgba(24,191,239,0.2); border-radius: 10px; padding: 10px 12px; margin: 8px 0 2px 0; box-shadow: 0 12px 24px rgba(0,0,0,0.25); }
+.cv-drawer-text { color: #d9f2ff; font-size: 0.95rem; line-height: 1.4; }
+.cv-drawer-link { display: inline-block; margin-top: 6px; color: #18bfef; font-weight: 700; }
 #cv-section .box .row > div + div::before {
   content: '';
   position: absolute; left: -1px; top: 10%; bottom: 10%; width: 1px;
