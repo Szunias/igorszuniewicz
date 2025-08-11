@@ -137,10 +137,11 @@ body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !
 
 /* Dropdown menu for top-right language badge */
 .lang-badge-wrap { position: fixed; top: 14px; right: 16px; z-index: 2147483647; }
-.lang-badge-menu { position: absolute; right: 0; top: 42px; background: rgba(10,16,22,0.98); border:1px solid rgba(255,255,255,0.14); border-radius: 10px; padding: 6px; min-width: 160px; box-shadow: 0 16px 40px rgba(0,0,0,0.45); opacity: 0; transform: translateY(-6px); pointer-events: none; transition: opacity .18s ease, transform .18s ease; }
+.lang-badge-menu { position: absolute; right: 0; top: 42px; background: rgba(10,16,22,0.98); border:1px solid rgba(255,255,255,0.14); border-radius: 10px; padding: 6px; min-width: 180px; box-shadow: 0 16px 40px rgba(0,0,0,0.45); opacity: 0; transform: translateY(-6px); pointer-events: none; transition: opacity .18s ease, transform .18s ease; }
 .lang-badge-menu.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
-.lang-badge-menu button { width: 100%; display: flex; align-items: center; gap: 10px; background: transparent; color: #e9f7ff; border: 0; padding: 8px 10px; border-radius: 8px; cursor: pointer; }
-.lang-badge-menu button:hover { background: rgba(24,191,239,0.12); }
+.lang-badge-menu button { width: 100%; display: flex; align-items: center; gap: 10px; background: rgba(24,191,239,0.12); color: #e9f7ff; border: 0; padding: 10px 12px; border-radius: 10px; cursor: pointer; font-weight: 800; letter-spacing: .2px; }
+.lang-badge-menu button:hover { background: rgba(24,191,239,0.2); }
+.lang-badge-menu button.active { background: rgba(24,191,239,0.3); }
 
 #nav ul.links li.active a, #nav ul.links li a:hover, #nav .icons a:hover {
     color: #18bfef; /* Accent color for active/hover states */
@@ -156,7 +157,7 @@ body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !
 /* Audio marquee under logo on scroll top */
 .logo-audio { position: fixed; left: 50%; transform: translateX(-50%); top: 110px; z-index: 50; pointer-events: none; opacity: 0; transition: opacity .3s ease, transform .3s ease; }
 .logo-audio.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
-.logo-audio canvas { width: 420px; height: 70px; filter: drop-shadow(0 12px 34px rgba(24,191,239,0.38)); }
+.logo-audio canvas, .logo-audio svg { width: 1000px; height: 180px; filter: drop-shadow(0 16px 42px rgba(24,191,239,0.45)); }
 
 /* Introduction Section */
 #intro {

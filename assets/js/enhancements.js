@@ -129,23 +129,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const wrap=document.createElement('div'); wrap.className='logo-audio';
     const canvas=document.createElement('canvas'); wrap.appendChild(canvas); document.body.appendChild(wrap);
     const ctx=canvas.getContext('2d');
-    function size(){ canvas.width=900; canvas.height=120; } size();
-    const particles=Array.from({length:38}).map((_,i)=>({
-      r: 8+Math.random()*26,
+    function size(){ canvas.width=1400; canvas.height=220; } size();
+    const particles=Array.from({length:180}).map((_,i)=>({
+      r: 28+Math.random()*60,
       a: Math.random()*Math.PI*2,
-      s: 0.004 + Math.random()*0.006,
+      s: 0.0025 + Math.random()*0.0085,
       hue: 190 + Math.random()*160
     }));
+    // Interactivity: react to mouse position and wheel energy
+    let energy=1;
+    window.addEventListener('wheel', (e)=>{ energy = Math.min(3, energy + Math.abs(e.deltaY)*0.002); }, {passive:true});
+    window.addEventListener('pointermove', (e)=>{ const vx=(e.clientX/window.innerWidth-0.5); particles.forEach(p=>{ p.hue = 190 + 160*(0.5+vx); }); }, {passive:true});
+
     function draw(){
       const w=canvas.width, h=canvas.height; ctx.clearRect(0,0,w,h);
       ctx.save(); ctx.translate(w/2,h*0.55);
       particles.forEach(p=>{
-        p.a+=p.s; const x=Math.cos(p.a)*p.r*10; const y=Math.sin(p.a)*p.r*0.7;
-        const g=ctx.createRadialGradient(x,y,0,x,y,6);
-        g.addColorStop(0,`hsla(${p.hue},80%,70%,0.9)`); g.addColorStop(1,'rgba(0,0,0,0)');
-        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,6,0,Math.PI*2); ctx.fill();
+        p.a+=p.s*energy; const x=Math.cos(p.a)*p.r*10; const y=Math.sin(p.a)*p.r*0.7;
+        const size = 8 + (p.r*0.06);
+        const g=ctx.createRadialGradient(x,y,0,x,y,size);
+        g.addColorStop(0,`hsla(${p.hue},85%,72%,0.95)`); g.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,size,0,Math.PI*2); ctx.fill();
       });
-      ctx.restore(); requestAnimationFrame(draw);
+      ctx.restore(); energy = Math.max(1, energy*0.985); requestAnimationFrame(draw);
     }
     draw();
     function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome=!!document.getElementById('projects-showcase'); wrap.classList.toggle('visible', onHome && y<140); if(!onHome) wrap.classList.remove('visible'); }
@@ -406,8 +412,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Use width/height 100% so parent spans can size the flag
     if (lang==='pl') return '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2"><rect width="3" height="1" fill="#fff"/><rect y="1" width="3" height="1" fill="#dc143c"/></svg>';
     if (lang==='nl') return '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2"><rect width="3" height="2" fill="#21468B"/><rect width="3" height="1.333" fill="#fff"/><rect width="3" height="0.666" fill="#AE1C28"/></svg>';
-    // simplified UK flag (no diagonals) to keep size tiny
-    return '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 12"><rect width="18" height="12" fill="#012169"/><rect x="0" y="5" width="18" height="2" fill="#fff"/><rect x="8" y="0" width="2" height="12" fill="#fff"/><rect x="0" y="5.5" width="18" height="1" fill="#C8102E"/><rect x="8.5" y="0" width="1" height="12" fill="#C8102E"/></svg>';
+    // UK flag (Union Jack) simplified with diagonals
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 12">\
+      <rect width="18" height="12" fill="#012169"/>\
+      <path d="M0,0 L18,12 M18,0 L0,12" stroke="#fff" stroke-width="3"/>\
+      <path d="M0,0 L18,12 M18,0 L0,12" stroke="#C8102E" stroke-width="1.2"/>\
+      <rect x="0" y="5" width="18" height="2" fill="#fff"/>\
+      <rect x="8" y="0" width="2" height="12" fill="#fff"/>\
+      <rect x="0" y="5.5" width="18" height="1" fill="#C8102E"/>\
+      <rect x="8.5" y="0" width="1" height="12" fill="#C8102E"/>\
+    </svg>';
   }
 
   // Minimal i18n map for common UI strings (extend as needed)
@@ -621,7 +635,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Allow clicking the top-right badge to cycle language
   // Badge opens dropdown; select language from menu
   langBadge.addEventListener('click', ()=>{ badgeMenu.classList.toggle('open'); });
-  badgeMenu.addEventListener('click', (e)=>{ const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); badgeMenu.classList.remove('open'); });
+  function syncActive(){ const current=localStorage.getItem(LANG_KEY)||'en'; badgeMenu.querySelectorAll('button').forEach(btn=>{ btn.classList.toggle('active', btn.getAttribute('data-lang')===current); }); }
+  badgeMenu.addEventListener('click', (e)=>{ const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); syncActive(); badgeMenu.classList.remove('open'); });
+  syncActive();
   document.addEventListener('click', (e)=>{ if (!e.target.closest('.lang-badge-wrap')) badgeMenu.classList.remove('open'); });
 });
 
