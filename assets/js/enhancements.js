@@ -577,6 +577,58 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('[data-i18n]').forEach(el=>{ const key=el.getAttribute('data-i18n'); const map=A[key]; if (!map) return; const val=map[lang]||map['en']; if (/^<.*>/.test(val)) el.innerHTML=val; else el.textContent=val; });
     }
 
+    // CV section on homepage translations
+    if (document.querySelector('#cv-section')){
+      const CV = {
+        edu_title: { en:'Education', pl:'Edukacja', nl:'Opleiding' },
+        skills_title: { en:'Key Skills', pl:'Kluczowe umiejętności', nl:'Belangrijkste vaardigheden' },
+        edu_1: { en:'<strong>Howest University of Applied Sciences, Digital Arts and Entertainment:</strong> Game Development - Game Sound Integration (Ongoing)', pl:'<strong>Howest University of Applied Sciences, Digital Arts and Entertainment:</strong> Game Development — Game Sound Integration (w trakcie)', nl:'<strong>Howest University of Applied Sciences, Digital Arts and Entertainment:</strong> Game Development — Game Sound Integration (lopend)' },
+        edu_2: { en:'<strong>Bilingual Copernicus Highschool:</strong> Profile - Maths & Physics (Graduated)', pl:'<strong>Bilingual Copernicus Highschool:</strong> Profil — Matematyka i Fizyka (ukończone)', nl:'<strong>Bilingual Copernicus Highschool:</strong> Profiel — Wiskunde & Natuurkunde (afgestudeerd)' },
+        s1: { en:'Sound Design & Implementation', pl:'Sound design i implementacja', nl:'Sounddesign & Implementatie' },
+        s2: { en:'Music Composition & Production', pl:'Kompozycja i produkcja muzyki', nl:'Muziekcompositie & -productie' },
+        s3: { en:'Audio Middleware: Wwise, FMOD', pl:'Middleware audio: Wwise, FMOD', nl:'Audio-middleware: Wwise, FMOD' },
+        s4: { en:'Game Engines: Unreal Engine, Unity', pl:'Silniki: Unreal Engine, Unity', nl:'Game-engines: Unreal Engine, Unity' },
+        s5: { en:'Programming: C++, Python, C#', pl:'Programowanie: C++, Python, C#', nl:'Programmeren: C++, Python, C#' },
+        s6: { en:'DAWs: Reaper, Pro Tools, Logic Pro', pl:'DAWy: Reaper, Pro Tools, Logic Pro', nl:'DAW’s: Reaper, Pro Tools, Logic Pro' },
+        s7: { en:'VST/Audio Plugin Development', pl:'Rozwój wtyczek VST/Audio', nl:'VST/Audio plug‑in ontwikkeling' }
+      };
+      const map = {
+        edu_title: '#cv-section .col-6:nth-of-type(1) h4',
+        skills_title: '#cv-section .col-6:nth-of-type(2) h4',
+        edu_1: '#cv-section .col-6:nth-of-type(1) ul li:nth-of-type(1)',
+        edu_2: '#cv-section .col-6:nth-of-type(1) ul li:nth-of-type(2)',
+        s1: '#cv-section .col-6:nth-of-type(2) ul li:nth-of-type(1)',
+        s2: '#cv-section .col-6:nth-of-type(2) ul li:nth-of-type(2)',
+        s3: '#cv-section .col-6:nth-of-type(2) ul li:nth-of-type(3)',
+        s4: '#cv-section .col-6:nth-of-type(2) ul li:nth-of-type(4)',
+        s5: '#cv-section .col-6:nth-of-type(2) ul li:nth-of-type(5)',
+        s6: '#cv-section .col-6:nth-of-type(2) ul li:nth-of-type(6)',
+        s7: '#cv-section .col-6:nth-of-type(2) ul li:nth-of-type(7)'
+      };
+      Object.entries(map).forEach(([key, sel])=>{
+        const el=document.querySelector(sel); if(!el) return; const val=(CV[key]||{})[lang]; if(!val) return; if(/^<.*>/.test(val)) el.innerHTML=val; else el.textContent=val;
+      });
+
+      // Ensure "More" chips exist after innerHTML replacements
+      document.querySelectorAll('#cv-section .box [data-tip]').forEach((el)=>{
+        if (!el.querySelector('.cv-more-chip')){
+          const chip = document.createElement('button'); chip.type='button'; chip.className='cv-more-chip';
+          chip.innerHTML = '<span class="label">'+(I18N.more_label[lang]||'More')+'</span><span class="chev">▾</span>';
+          el.appendChild(chip);
+        }
+        if (!el.nextElementSibling || !el.nextElementSibling.classList.contains('cv-drawer')){
+          const drawer = document.createElement('div'); drawer.className='cv-drawer';
+          const text = el.getAttribute('data-tip') || '';
+          const url = el.getAttribute('data-tip-url');
+          drawer.innerHTML = '<div class="cv-drawer-inner">'+
+            '<div class="cv-drawer-text">'+ text +'</div>'+
+            (url?'<a class="cv-drawer-link" target="_blank" rel="noopener" href="'+url+'">'+(I18N.learn_more[lang]||'Learn more →')+'</a>':'')+
+            '</div>';
+          el.parentNode.insertBefore(drawer, el.nextSibling);
+        }
+      });
+    }
+
     // Projects Showcase (index)
     if (document.getElementById('projects-showcase')){
       const sh2 = document.querySelector('#projects-showcase h2'); if (sh2) sh2.textContent = I18N.showcase_title[lang];
