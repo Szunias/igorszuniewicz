@@ -931,8 +931,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Geo/locale based language suggestion (privacy‑friendly, fast, one‑time)
   (function(){
-    const SUGG_KEY = 'lang-suggest-seen';
-    if (localStorage.getItem(SUGG_KEY)==='1') return;
+    const SUGG_KEY = 'lang-suggest-seen-v2';
+    const force = /[?&]forceLangPrompt=1/i.test(location.search);
+    if (!force && localStorage.getItem(SUGG_KEY)==='1') return;
     const current = localStorage.getItem(LANG_KEY) || 'en';
     // Decide preferred by browser first
     const navPref = (navigator.languages && navigator.languages[0]) || navigator.language || '';
@@ -942,6 +943,15 @@ document.addEventListener('DOMContentLoaded', function() {
       try {
         return timeout(1200, fetch('https://ipapi.co/json/').then(r=> r.ok ? r.json() : null).then(j=> j && j.country_code ? j.country_code : null));
       } catch(_) { return Promise.resolve(null); }
+    }
+    function timeZoneCountry(){
+      try {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (/Europe\/Warsaw/i.test(tz)) return 'PL';
+        if (/Europe\/(Brussels|Amsterdam|Luxembourg)/i.test(tz)) return 'BE';
+        if (/Europe\/Amsterdam/i.test(tz)) return 'NL';
+      } catch(_){}
+      return null;
     }
     function decideTarget(country, nav){
       if (nav && nav!==current) return nav; // trust browser preference first
@@ -971,15 +981,19 @@ document.addEventListener('DOMContentLoaded', function() {
       box.addEventListener('mouseenter', ()=>{ if (hideT){ clearTimeout(hideT); hideT=null; } });
       box.addEventListener('mouseleave', ()=>{ if (!hideT) hideT=setTimeout(fadeOut, 1400); });
       const done=()=>{ localStorage.setItem(SUGG_KEY,'1'); fadeOut(); }
-      yes.addEventListener('click', ()=>{ setLang(target); done(); });
+      yes.addEventListener('click', ()=>{ setLang(target); try{ if (typeof syncActive==='function') syncActive(); }catch(_){} done(); });
       no.addEventListener('click', done);
     }
     // Try browser first, then IP country quick check
-    if (navLang && navLang!==current) { showPrompt(navLang); localStorage.setItem('lang-suggest-seen','1'); return; }
+    if (navLang && navLang!==current) { showPrompt(navLang); return; }
     fetchCountry().then(cc=>{
       const target = decideTarget(cc, navLang);
-      if (target && target!==current){ showPrompt(target); localStorage.setItem(SUGG_KEY,'1'); }
-    }).catch(()=>{});
+      if (target && target!==current){ showPrompt(target); }
+    }).catch(()=>{
+      const tz = timeZoneCountry();
+      const target = decideTarget(tz, navLang);
+      if (target && target!==current) showPrompt(target);
+    });
   })();
 });
 
