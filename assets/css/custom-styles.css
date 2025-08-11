@@ -251,6 +251,8 @@ body p {
     gap: 2em;
     padding: 2em 0;
 }
+/* Normalize slider images as well */
+#projects-showcase .slider .slide a img { width: 100%; height: auto; max-height: none; }
 
 .project-card {
   position: relative;
@@ -272,7 +274,7 @@ body p {
 .project-card:hover::before{ opacity: 1; }
 
 .project-card .image.fit { margin: 0; }
-.project-card .image.fit img { transition: transform 0.6s ease; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.project-card .image.fit img { transition: transform 0.6s ease; border-bottom: 1px solid rgba(255,255,255,0.08); display:block; width:100%; height:auto; }
 .project-card:hover .image.fit img { transform: scale(1.04); }
 
 .project-card-content { padding: 1.75em; }
@@ -575,7 +577,9 @@ a.slide{
   box-shadow: 0 18px 40px rgba(0,0,0,0.28); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 #projects-list .project-card:hover { transform: translateY(-4px); box-shadow: 0 26px 60px rgba(0,0,0,0.34); border-color: rgba(24,191,239,0.28); }
-#projects-list .project-card .image.fit img { border-radius: 0; }
+#projects-list .project-card .image.fit { position: relative; }
+#projects-list .project-card .image.fit::before{ content:''; display:block; width:100%; padding-top: 62%; }
+#projects-list .project-card .image.fit img { position:absolute; inset:0; width:100%; height:100%; object-fit: cover; object-position: center; border-radius: 0; }
 #projects-list .project-card .project-card-content { padding: 12px 14px; }
 #projects-list .project-card h3 { font-family: 'Poppins', sans-serif; font-weight: 800; color:#eaf7ff; margin: 0 0 6px; font-size: 1.05rem; }
 #projects-list .project-card p { color:#cfe7f8; font-size: .92rem; }
