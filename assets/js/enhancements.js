@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       function waveFrom(centerX){
-        const speed = 0.35; // ms per px
+        const speed = 0.28; // ms per px (szybsza fala)
         ordered.forEach((r)=>{
           const rx = parseFloat(r.getAttribute('x')) + parseFloat(r.getAttribute('width'))/2;
           const ry = parseFloat(r.getAttribute('y'));
@@ -224,9 +224,10 @@ document.addEventListener('DOMContentLoaded', function() {
           const delay = Math.abs(rx - centerX) * speed;
           const overlay = document.createElementNS(svgNS,'rect');
           overlay.setAttribute('x', String(rx - rw/2)); overlay.setAttribute('y', String(ry)); overlay.setAttribute('width', String(rw)); overlay.setAttribute('height', String(rh)); overlay.setAttribute('rx', r.getAttribute('rx')||'8');
-          overlay.setAttribute('fill','url(#wave)'); overlay.style.opacity='0'; overlay.style.transition='opacity 220ms ease';
+          overlay.setAttribute('fill','url(#wave)'); overlay.style.opacity='0'; overlay.style.transition='opacity 180ms ease, transform 260ms ease';
+          overlay.style.transform='translateY(0)';
           svg.appendChild(overlay);
-          setTimeout(()=>{ overlay.style.opacity='0.55'; setTimeout(()=>{ overlay.style.opacity='0'; setTimeout(()=> overlay.remove(), 240); }, 180); }, delay);
+          setTimeout(()=>{ overlay.style.opacity='0.5'; overlay.style.transform='translateY(2px)'; setTimeout(()=>{ overlay.style.opacity='0'; setTimeout(()=> overlay.remove(), 200); }, 160); }, delay);
         });
       }
       size(); window.addEventListener('resize', size);
@@ -917,13 +918,68 @@ document.addEventListener('DOMContentLoaded', function() {
   (function(){
     const show = ()=>{
       if (!document.getElementById('projects-showcase')) return; // tylko na głównej
+      // Skip if suggestion system already showed a prompt
+      if (localStorage.getItem('lang-suggest-seen')==='1') return;
       const n=document.createElement('div'); n.className='lang-nudge';
       n.innerHTML='<span class="ico">🌍</span><span class="txt">Different language?</span><span class="arrow">↗</span>';
       badgeWrap.appendChild(n);
       requestAnimationFrame(()=> n.classList.add('show'));
-      setTimeout(()=>{ n.classList.remove('show'); setTimeout(()=>n.remove(), 400); }, 2600);
+      setTimeout(()=>{ n.classList.remove('show'); setTimeout(()=>n.remove(), 400); }, 2200);
     };
     window.addEventListener('load', ()=> setTimeout(show, 800));
+  })();
+
+  // Geo/locale based language suggestion (privacy‑friendly, fast, one‑time)
+  (function(){
+    const SUGG_KEY = 'lang-suggest-seen';
+    if (localStorage.getItem(SUGG_KEY)==='1') return;
+    const current = localStorage.getItem(LANG_KEY) || 'en';
+    // Decide preferred by browser first
+    const navPref = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+    const navLang = /^pl/i.test(navPref) ? 'pl' : /^nl|^nl-BE|^nl-NL/i.test(navPref) ? 'nl' : /^en/i.test(navPref) ? 'en' : '';
+    const timeout = (ms, p)=> Promise.race([p, new Promise((_,rej)=> setTimeout(()=>rej(new Error('timeout')), ms))]);
+    function fetchCountry(){
+      try {
+        return timeout(1200, fetch('https://ipapi.co/json/').then(r=> r.ok ? r.json() : null).then(j=> j && j.country_code ? j.country_code : null));
+      } catch(_) { return Promise.resolve(null); }
+    }
+    function decideTarget(country, nav){
+      if (nav && nav!==current) return nav; // trust browser preference first
+      const cc = (country||'').toUpperCase();
+      if (cc==='PL') return 'pl';
+      if (cc==='NL' || cc==='BE') return 'nl';
+      return 'en';
+    }
+    const STR = {
+      pl: { q:'Wykryto polskie ustawienia. Przełączyć na polski?', yes:'Tak', no:'Nie' },
+      nl: { q:'Gedetecteerde NL/BE instellingen. Overschakelen naar Nederlands?', yes:'Ja', no:'Nee' },
+      en: { q:'Detected your locale. Switch language?', yes:'Yes', no:'No thanks' }
+    };
+    function showPrompt(target){
+      if (!target || target===current) return;
+      // Compact glassy toast under fixed switcher
+      const box = document.createElement('div');
+      box.style.cssText='position:fixed;right:14px;top:104px;z-index:2147483647;background:rgba(10,16,22,0.88);backdrop-filter: blur(6px) saturate(1.2);color:#e9f7ff;border:1px solid rgba(255,255,255,0.14);padding:8px 10px;border-radius:12px;display:flex;gap:8px;align-items:center;box-shadow:0 10px 24px rgba(0,0,0,0.35);max-width:min(86vw,380px);font-size:.92rem;opacity:0;transform:translateY(-4px);transition:opacity .22s ease, transform .22s ease';
+      const ico=document.createElement('span'); ico.textContent='🌐'; ico.style.cssText='font-size:1rem;opacity:.95'; box.appendChild(ico);
+      const span=document.createElement('span'); span.textContent = STR[target]?.q || STR.en.q; span.style.cssText='font-weight:700;letter-spacing:.2px;'; box.appendChild(span);
+      const yes=document.createElement('button'); yes.textContent=STR[target]?.yes||'Yes'; yes.style.cssText='margin-left:4px;background:#18bfef;color:#041018;border:0;border-radius:10px;padding:6px 10px;font-weight:800;cursor:pointer;'; box.appendChild(yes);
+      const no=document.createElement('button'); no.textContent=STR[target]?.no||'No'; no.style.cssText='background:transparent;color:#e9f7ff;border:1px solid rgba(255,255,255,0.18);border-radius:10px;padding:6px 10px;font-weight:700;cursor:pointer;'; box.appendChild(no);
+      document.body.appendChild(box);
+      requestAnimationFrame(()=>{ box.style.opacity='1'; box.style.transform='translateY(0)'; });
+      let hideT = setTimeout(fadeOut, 2400);
+      function fadeOut(){ if (!box.isConnected) return; box.style.opacity='0'; box.style.transform='translateY(-4px)'; setTimeout(()=>{ box.remove(); }, 220); }
+      box.addEventListener('mouseenter', ()=>{ if (hideT){ clearTimeout(hideT); hideT=null; } });
+      box.addEventListener('mouseleave', ()=>{ if (!hideT) hideT=setTimeout(fadeOut, 1400); });
+      const done=()=>{ localStorage.setItem(SUGG_KEY,'1'); fadeOut(); }
+      yes.addEventListener('click', ()=>{ setLang(target); done(); });
+      no.addEventListener('click', done);
+    }
+    // Try browser first, then IP country quick check
+    if (navLang && navLang!==current) { showPrompt(navLang); localStorage.setItem('lang-suggest-seen','1'); return; }
+    fetchCountry().then(cc=>{
+      const target = decideTarget(cc, navLang);
+      if (target && target!==current){ showPrompt(target); localStorage.setItem(SUGG_KEY,'1'); }
+    }).catch(()=>{});
   })();
 });
 
