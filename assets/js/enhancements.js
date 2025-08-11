@@ -123,19 +123,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, { passive: true });
 
-  // Neo-piano banner: gradient glass keys, centered, large, with strong click animation
+  // Neo-piano banner: gradient glass keys with shorter neon accidentals for clear piano feel
   (function(){
     try {
       const wrap=document.createElement('div'); wrap.className='logo-audio'; document.body.appendChild(wrap);
       const svgNS='http://www.w3.org/2000/svg';
       const svg=document.createElementNS(svgNS,'svg'); wrap.appendChild(svg);
-      let keys=[]; // store rects
-      const keyCount=22; // wide strip
+      let keys=[]; // white/long keys
+      let accs=[]; // accidentals (short neon caps)
+      const keyCount=21; // multiple of 7 for proper pattern
       function size(){
         const cssW=Math.min(window.innerWidth*0.98, 1400);
-        const cssH=220; svg.style.width=cssW+'px'; svg.style.height=cssH+'px';
+        const cssH=240; svg.style.width=cssW+'px'; svg.style.height=cssH+'px';
         svg.setAttribute('viewBox','0 0 '+cssW+' '+cssH);
-        svg.innerHTML=''; keys=[];
+        svg.innerHTML=''; keys=[]; accs=[];
         const margin=24; const areaW=cssW - margin*2; const areaH=cssH - 40;
         const kW = areaW / keyCount; const kH = areaH; const yBase = 24;
         // defs
@@ -150,7 +151,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         const shine=document.createElementNS(svgNS,'linearGradient'); shine.setAttribute('id','shine'); shine.setAttribute('x1','0'); shine.setAttribute('y1','0'); shine.setAttribute('x2','1'); shine.setAttribute('y2','0');
         shine.innerHTML='<stop offset="0%" stop-color="#ffffff" stop-opacity="0"/><stop offset="50%" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>';
-        defs.appendChild(shine); svg.appendChild(defs);
+        const accG=document.createElementNS(svgNS,'linearGradient'); accG.setAttribute('id','acc'); accG.setAttribute('x1','0'); accG.setAttribute('y1','0'); accG.setAttribute('x2','1'); accG.setAttribute('y2','1');
+        accG.innerHTML='<stop offset="0%" stop-color="#0fe3ff" stop-opacity="0.9"/><stop offset="100%" stop-color="#c96cff" stop-opacity="0.9"/>';
+        defs.appendChild(shine); defs.appendChild(accG); svg.appendChild(defs);
         // background glass rail
         const rail=document.createElementNS(svgNS,'rect'); rail.setAttribute('x',String(margin-12)); rail.setAttribute('y',String(yBase-10)); rail.setAttribute('width',String(areaW+24)); rail.setAttribute('height',String(kH+20)); rail.setAttribute('rx','16'); rail.setAttribute('fill','rgba(10,16,22,0.35)'); rail.setAttribute('stroke','rgba(255,255,255,0.08)'); svg.appendChild(rail);
         // keys
@@ -159,18 +162,33 @@ document.addEventListener('DOMContentLoaded', function() {
           r.setAttribute('x',String(x)); r.setAttribute('y',String(yBase)); r.setAttribute('width',String(kW-4)); r.setAttribute('height',String(kH)); r.setAttribute('rx','10');
           r.setAttribute('fill','url(#kp'+i+')'); r.setAttribute('stroke','rgba(0,0,0,0.25)'); r.setAttribute('stroke-width','1');
           r.style.transition='transform 120ms ease, filter 200ms ease';
-          svg.appendChild(r); keys.push(r);
+          svg.appendChild(r); keys.push(r); r.dataset.index=String(i);
           // soft hover
-          r.addEventListener('pointerenter', ()=>{ r.style.transform='translateY(3px)'; r.style.filter='drop-shadow(0 12px 28px rgba(24,191,239,0.35))'; setTimeout(()=>{ r.style.transform=''; r.style.filter=''; }, 160); });
+          r.addEventListener('pointerenter', ()=>{ r.style.transform='translateY(3px)'; r.style.filter='drop-shadow(0 12px 28px rgba(24,191,239,0.35))'; setTimeout(()=>{ r.style.transform=''; r.style.filter=''; }, 140); });
           // strong click
           r.addEventListener('pointerdown', (e)=>{ strongPress(r, e); });
         }
+        // accidentals pattern per octave (after white indices 0,1,3,4,5)
+        const pattern=[0,1,3,4,5]; const groups=Math.floor(keyCount/7);
+        const bW = kW*0.56; const bH = kH*0.56; const yAcc = yBase + kH*0.08;
+        for(let g=0; g<groups; g++){
+          pattern.forEach(p=>{
+            const base = g*7 + p; if (base>=keyCount-1) return;
+            const cx = margin + (base+1)*kW; const x = cx - bW/2;
+            const acc=document.createElementNS(svgNS,'rect');
+            acc.setAttribute('x', String(x)); acc.setAttribute('y', String(yAcc)); acc.setAttribute('width', String(bW)); acc.setAttribute('height', String(bH)); acc.setAttribute('rx','8');
+            acc.setAttribute('fill','url(#acc)'); acc.setAttribute('stroke','rgba(255,255,255,0.09)'); acc.style.transition='transform 120ms ease, filter 200ms ease';
+            svg.appendChild(acc); accs.push(acc);
+            acc.addEventListener('pointerenter', ()=>{ acc.style.transform='translateY(2px)'; acc.style.filter='drop-shadow(0 10px 22px rgba(24,191,239,0.5))'; setTimeout(()=>{ acc.style.transform=''; acc.style.filter=''; }, 130); });
+            acc.addEventListener('pointerdown', (e)=>{ strongPress(acc, e, true); });
+          });
+        }
         // sweeping holographic shine across all keys
-        const bar=document.createElementNS(svgNS,'rect'); bar.setAttribute('x',String(margin-140)); bar.setAttribute('y',String(yBase)); bar.setAttribute('width','140'); bar.setAttribute('height',String(kH)); bar.setAttribute('fill','url(#shine)'); bar.setAttribute('opacity','0.35'); svg.appendChild(bar);
-        const anim=document.createElementNS(svgNS,'animate'); anim.setAttribute('attributeName','x'); anim.setAttribute('from',String(margin-140)); anim.setAttribute('to',String(margin+areaW)); anim.setAttribute('dur','5.5s'); anim.setAttribute('repeatCount','indefinite'); bar.appendChild(anim);
+        const bar=document.createElementNS(svgNS,'rect'); bar.setAttribute('x',String(margin-180)); bar.setAttribute('y',String(yBase)); bar.setAttribute('width','180'); bar.setAttribute('height',String(kH)); bar.setAttribute('fill','url(#shine)'); bar.setAttribute('opacity','0.3'); svg.appendChild(bar);
+        const anim=document.createElementNS(svgNS,'animate'); anim.setAttribute('attributeName','x'); anim.setAttribute('from',String(margin-180)); anim.setAttribute('to',String(margin+areaW)); anim.setAttribute('dur','6s'); anim.setAttribute('repeatCount','indefinite'); bar.appendChild(anim);
       }
-      function strongPress(el, ev){
-        el.style.transform='translateY(8px)'; el.style.filter='drop-shadow(0 18px 44px rgba(24,191,239,0.85))';
+      function strongPress(el, ev, isAcc){
+        el.style.transform='translateY(9px)'; el.style.filter='drop-shadow(0 20px 50px rgba(24,191,239,0.9))';
         setTimeout(()=>{ el.style.transform=''; el.style.filter=''; }, 260);
         // expanding neon ring
         const cx = parseFloat(el.getAttribute('x')) + parseFloat(el.getAttribute('width'))/2;
@@ -180,6 +198,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const a1=document.createElementNS(svgNS,'animate'); a1.setAttribute('attributeName','r'); a1.setAttribute('from','4'); a1.setAttribute('to','58'); a1.setAttribute('dur','560ms'); a1.setAttribute('fill','freeze');
         const a2=document.createElementNS(svgNS,'animate'); a2.setAttribute('attributeName','opacity'); a2.setAttribute('from','0.95'); a2.setAttribute('to','0'); a2.setAttribute('dur','560ms'); a2.setAttribute('fill','freeze'); a2.addEventListener('endEvent', ()=> circ.remove());
         circ.appendChild(a1); circ.appendChild(a2); a1.beginElement(); a2.beginElement();
+        // nudge neighbor keys for tactile feel (only for long keys)
+        if (!isAcc && el.dataset && el.dataset.index){
+          const i = parseInt(el.dataset.index,10); const left = keys[i-1]; const right = keys[i+1];
+          [left,right].forEach(k=>{ if(!k) return; k.style.transform='translateY(3px)'; k.style.filter='drop-shadow(0 10px 24px rgba(24,191,239,0.5))'; setTimeout(()=>{ k.style.transform=''; k.style.filter=''; }, 160); });
+        }
       }
       size(); window.addEventListener('resize', size);
       function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome=!!document.getElementById('projects-showcase'); const vis = onHome && y<140; wrap.classList.toggle('visible', vis); }
