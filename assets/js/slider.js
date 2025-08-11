@@ -6,12 +6,16 @@ document.addEventListener("DOMContentLoaded", function() {
   const prevBtn = slider.querySelector('.slider-nav.prev');
   const nextBtn = slider.querySelector('.slider-nav.next');
   let currentSlide = 0;
+  let isTransitioning = false;
   // Ensure single active slide at start
   slides.forEach((s,i)=>{ s.classList.toggle('active', i===0); });
 
   function goToSlide(index) {
     // guard
     if (!slides.length) return;
+    if (isTransitioning) return;
+    if (index === currentSlide) return;
+    isTransitioning = true;
     // hide previous fully before showing next
     slides[currentSlide].classList.remove('active');
     slides[currentSlide].style.transition = 'opacity 350ms ease-in-out';
@@ -20,10 +24,11 @@ document.addEventListener("DOMContentLoaded", function() {
     currentSlide = (index + slides.length) % slides.length;
     slides[currentSlide].classList.add('active');
     slides[currentSlide].style.opacity='1'; slides[currentSlide].style.visibility='visible'; slides[currentSlide].style.pointerEvents='auto';
+    setTimeout(()=>{ isTransitioning = false; }, 420);
   }
 
   let autoTimer = setInterval(() => {
-    goToSlide(currentSlide + 1);
+    if (!isTransitioning) goToSlide(currentSlide + 1);
   }, 5000);
 
   function resetTimer() {

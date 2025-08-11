@@ -194,24 +194,21 @@ document.addEventListener('DOMContentLoaded', function() {
         ordered = [...keys, ...accs].sort((a,b)=> (parseFloat(a.getAttribute('x'))+parseFloat(a.getAttribute('width'))/2) - (parseFloat(b.getAttribute('x'))+parseFloat(b.getAttribute('width'))/2));
       }
       function strongPress(el, ev, isAcc){
-        // softer, more minimal press
-        el.style.transform='translateY(5px)'; el.style.filter='drop-shadow(0 14px 34px rgba(24,191,239,0.65))';
-        setTimeout(()=>{ el.style.transform=''; el.style.filter=''; }, 200);
-        // expanding neon ring
-        const cx = parseFloat(el.getAttribute('x')) + parseFloat(el.getAttribute('width'))/2;
-        const cy = parseFloat(el.getAttribute('y')) + parseFloat(el.getAttribute('height'))*0.66;
-        const circ = document.createElementNS(svgNS,'circle'); circ.setAttribute('cx',String(cx)); circ.setAttribute('cy',String(cy)); circ.setAttribute('r','3'); circ.setAttribute('fill','none'); circ.setAttribute('stroke','#ff6ea9'); circ.setAttribute('stroke-width','2.5'); circ.setAttribute('opacity','0.9');
-        svg.appendChild(circ);
-        const a1=document.createElementNS(svgNS,'animate'); a1.setAttribute('attributeName','r'); a1.setAttribute('from','3'); a1.setAttribute('to','52'); a1.setAttribute('dur','460ms'); a1.setAttribute('fill','freeze');
-        const a2=document.createElementNS(svgNS,'animate'); a2.setAttribute('attributeName','opacity'); a2.setAttribute('from','0.9'); a2.setAttribute('to','0'); a2.setAttribute('dur','460ms'); a2.setAttribute('fill','freeze'); a2.addEventListener('endEvent', ()=> circ.remove());
-        circ.appendChild(a1); circ.appendChild(a2); a1.beginElement(); a2.beginElement();
-        // nudge neighbor keys for tactile feel (only for long keys)
+        // minimal press + micro-shake
+        el.style.transform='translateY(4px)'; el.style.filter='drop-shadow(0 10px 24px rgba(24,191,239,0.55))';
+        setTimeout(()=>{ el.style.transform='translateY(0)'; el.style.filter=''; }, 160);
+        // thin underline flash instead of big ring
+        const x = parseFloat(el.getAttribute('x')); const y = parseFloat(el.getAttribute('y')); const w = parseFloat(el.getAttribute('width')); const h = parseFloat(el.getAttribute('height'));
+        const line = document.createElementNS(svgNS,'rect'); line.setAttribute('x', String(x + w*0.15)); line.setAttribute('y', String(y + h - 6)); line.setAttribute('width', String(w*0.7)); line.setAttribute('height', '3'); line.setAttribute('rx','2'); line.setAttribute('fill','#9a6cff'); line.setAttribute('opacity','0.0');
+        svg.appendChild(line);
+        requestAnimationFrame(()=>{ line.style.transition='opacity 140ms ease, transform 240ms ease'; line.style.opacity='0.85'; line.style.transform='translateY(2px)'; setTimeout(()=>{ line.style.opacity='0'; setTimeout(()=> line.remove(), 200); }, 160); });
+        // nudge neighbors subtelnie
         if (!isAcc && el.dataset && el.dataset.index){
           const i = parseInt(el.dataset.index,10); const left = keys[i-1]; const right = keys[i+1];
-          [left,right].forEach(k=>{ if(!k) return; k.style.transform='translateY(3px)'; k.style.filter='drop-shadow(0 10px 24px rgba(24,191,239,0.5))'; setTimeout(()=>{ k.style.transform=''; k.style.filter=''; }, 160); });
+          [left,right].forEach(k=>{ if(!k) return; k.style.transform='translateY(2px)'; setTimeout(()=>{ k.style.transform=''; }, 120); });
         }
-        // propagate a color wave across all keys
-        waveFrom(cx);
+        // propagate a soft color wave
+        const cx = x + w/2; waveFrom(cx);
       }
 
       function waveFrom(centerX){
