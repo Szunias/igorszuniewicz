@@ -691,6 +691,74 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
+    // Individual project pages (title/lead/sections)
+    if (location.pathname.includes('/projects/')){
+      const P = {
+        amorak: {
+          title: { en:'Amorak — Sound Design', pl:'Amorak — Sound design', nl:'Amorak — Sounddesign' },
+          lead: { en:'Complete sound design for the 3D animation "Amorak".', pl:'Kompletny sound design do animacji 3D „Amorak”.', nl:'Volledig sounddesign voor de 3D‑animatie “Amorak”.' },
+          overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
+          gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
+          showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' }
+        },
+        'not-today-darling': {
+          title: { en:'Not Today, Darling! — Game Audio', pl:'Not Today, Darling! — Audio do gry', nl:'Not Today, Darling! — Game‑audio' },
+          lead: { en:'Retro‑inspired audio design and implementation for a narrative game.', pl:'Retro‑inspirowany sound design i implementacja do gry narracyjnej.', nl:'Retro‑geïnspireerd sounddesign en implementatie voor een verhalende game.' },
+          overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
+          gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
+          showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' }
+        },
+        akantilado: {
+          title: { en:'Akantilado — Sound Design', pl:'Akantilado — Sound design', nl:'Akantilado — Sounddesign' },
+          lead: { en:'Complete foley and ambience for 3D animation.', pl:'Kompletny foley i ambience do animacji 3D.', nl:'Complete foley en ambience voor 3D‑animatie.' },
+          overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
+          gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
+          showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' }
+        },
+        ray: {
+          title: { en:'Ray — Music Composition', pl:'Ray — Kompozycja muzyki', nl:'Ray — Muziekcompositie' },
+          lead: { en:'Original score supporting narrative beats.', pl:'Oryginalna muzyka wspierająca narrację.', nl:'Originele score die de narratieve beats ondersteunt.' },
+          overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
+          gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
+          showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' }
+        },
+        'pause-and-deserve': {
+          title: { en:'Pause & Deserve — Solo Game', pl:'Pause & Deserve — Gra solo', nl:'Pause & Deserve — Solo game' },
+          lead: { en:'Horror game concept and audio design.', pl:'Koncept gry grozy i sound design.', nl:'Horrorgame‑concept en sounddesign.' },
+          overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
+          gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
+          showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' }
+        },
+        richter: {
+          title: { en:'Richter — Sound Design', pl:'Richter — Sound design', nl:'Richter — Sounddesign' },
+          lead: { en:'Sound design with minimal recording gear.', pl:'Sound design przy minimalnym sprzęcie.', nl:'Sounddesign met minimale opname‑gear.' },
+          overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
+          gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
+          showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' }
+        },
+        'dynamic-music-system': {
+          title: { en:'Dynamic Music System (Wwise & UE5)', pl:'System muzyki dynamicznej (Wwise & UE5)', nl:'Dynamisch muzieksysteem (Wwise & UE5)' },
+          lead: { en:'Adaptive music system with transitions, interactive layers, and game‑state reactivity.', pl:'Adaptacyjny system muzyki z przejściami, warstwami i reakcją na stan gry.', nl:'Adaptief muzieksysteem met overgangen, interactieve lagen en game‑state‑reacties.' },
+          overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
+          gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
+          showcase: { en:'Showcase Video', pl:'Wideo pokazowe', nl:'Showcase‑video' }
+        }
+      };
+      const path = location.pathname.split('/').pop().replace('.html','');
+      const M = P[path];
+      if (M){
+        const h2 = document.querySelector('#main header.major h2'); if (h2) h2.textContent = M.title[lang] || M.title.en;
+        const lead = document.querySelector('#main header.major p'); if (lead) lead.textContent = M.lead[lang] || M.lead.en;
+        const labels = Array.from(document.querySelectorAll('#main h3#bgColor'));
+        const order = ['overview','showcase','gallery'];
+        labels.forEach((h3,idx)=>{ const key = order[idx]; if (key && M[key]) h3.textContent = M[key][lang] || M[key].en; });
+        // Specific assets tweaks
+        if (path==='not-today-darling'){
+          const hero = document.querySelector('.image.main img'); if (hero){ hero.src='../images/NotTodayGameLogo.png'; hero.alt='Not Today, Darling!'; }
+        }
+      }
+    }
+
     // Hero roles & pills (index)
     if (document.getElementById('intro')){
       const roles = document.querySelector('#intro p');
