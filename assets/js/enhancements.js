@@ -125,43 +125,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Subtle audio-reactive marquee under logo (appears at top; hides on scroll)
   (function(){
-    const canvas = document.createElement('canvas');
-    const wrap = document.createElement('div'); wrap.className='logo-audio'; wrap.appendChild(canvas);
-    document.body.appendChild(wrap);
-    const ctx = canvas.getContext('2d');
-    function size(){ canvas.width=840; canvas.height=140; }
-    size();
+    // Waveform ribbon under logo (sine bezier path)
+    const svgNS='http://www.w3.org/2000/svg';
+    const svg=document.createElementNS(svgNS,'svg');
+    const wrap=document.createElement('div'); wrap.className='logo-audio'; wrap.appendChild(svg); document.body.appendChild(wrap);
+    svg.setAttribute('width','900'); svg.setAttribute('height','120');
+    svg.setAttribute('viewBox','0 0 900 120'); svg.setAttribute('preserveAspectRatio','none');
+    const grad=document.createElementNS(svgNS,'linearGradient'); grad.setAttribute('id','lg1'); grad.setAttribute('x1','0%'); grad.setAttribute('x2','100%');
+    const s1=document.createElementNS(svgNS,'stop'); s1.setAttribute('offset','0%'); s1.setAttribute('stop-color','#18bfef'); s1.setAttribute('stop-opacity','0.9');
+    const s2=document.createElementNS(svgNS,'stop'); s2.setAttribute('offset','50%'); s2.setAttribute('stop-color','#9a6cff'); s2.setAttribute('stop-opacity','0.8');
+    const s3=document.createElementNS(svgNS,'stop'); s3.setAttribute('offset','100%'); s3.setAttribute('stop-color','#ff6ea9'); s3.setAttribute('stop-opacity','0.8');
+    grad.appendChild(s1); grad.appendChild(s2); grad.appendChild(s3);
+    const defs=document.createElementNS(svgNS,'defs'); defs.appendChild(grad); svg.appendChild(defs);
+    const path=document.createElementNS(svgNS,'path'); path.setAttribute('fill','none'); path.setAttribute('stroke','url(#lg1)'); path.setAttribute('stroke-width','4'); path.setAttribute('stroke-linecap','round'); svg.appendChild(path);
     let t=0; function draw(){
-      const w=canvas.width, h=canvas.height; ctx.clearRect(0,0,w,h);
-      // glowing background ribbon
-      const bgGrad = ctx.createLinearGradient(0,0,w,0);
-      bgGrad.addColorStop(0,'rgba(24,191,239,0.12)'); bgGrad.addColorStop(0.5,'rgba(154,108,255,0.12)'); bgGrad.addColorStop(1,'rgba(255,110,169,0.12)');
-      ctx.fillStyle = bgGrad; ctx.fillRect(0,h*0.35,w,h*0.3);
-      const bars=72; const mid=h*0.5;
-      for(let i=0;i<bars;i++){
-        const f=i/bars; const env = (1 - Math.abs(2*f-1));
-        const amp = 18 + 38*Math.abs(Math.sin(t*0.08 + f*3.6)) * (0.4 + 0.6*env);
-        const x = (w/bars)*i + 4; const bw = (w/bars)-6; const y = mid - amp/2;
-        const grd = ctx.createLinearGradient(x,y,x,y+amp);
-        grd.addColorStop(0,'rgba(24,191,239,0.95)');
-        grd.addColorStop(0.5,'rgba(154,108,255,0.85)');
-        grd.addColorStop(1,'rgba(255,110,169,0.8)');
-        ctx.fillStyle = grd; ctx.fillRect(x,y,bw,amp);
-        // glow overlay
-        ctx.fillStyle = 'rgba(24,191,239,0.12)'; ctx.fillRect(x, mid-1, bw, 2);
+      const w=900, h=120; const mid=h*0.6; const amp=18; const len=24; let d=`M0 ${mid}`;
+      for(let i=0;i<=len;i++){
+        const x=(w/len)*i; const y=mid + Math.sin((i/len)*Math.PI*2 + t*0.05)*amp + Math.sin((i/len)*Math.PI*6 + t*0.02)*amp*0.3;
+        const px=(w/len)*(i-0.5); const py=mid + Math.sin(((i-0.5)/len)*Math.PI*2 + t*0.05)*amp;
+        d += ` Q ${px} ${py} ${x} ${y}`;
       }
+      path.setAttribute('d', d);
       t+=1; requestAnimationFrame(draw);
     }
     draw();
-    function onScroll(){
-      const y=window.scrollY||document.documentElement.scrollTop;
-      const onHome = !!document.getElementById('projects-showcase');
-      wrap.classList.toggle('visible', onHome && y<140);
-      if (!onHome) wrap.classList.remove('visible');
-    }
-    onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
-    // Also run on soft page transitions
-    window.addEventListener('pageshow', onScroll);
+    function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome = !!document.getElementById('projects-showcase'); wrap.classList.toggle('visible', onHome && y<140); if (!onHome) wrap.classList.remove('visible'); }
+    onScroll(); window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('pageshow', onScroll);
   })();
 
   // Intro overlay on first visit (session-based)
@@ -525,6 +514,21 @@ document.addEventListener('DOMContentLoaded', function() {
         if (opts[2]) opts[2].textContent = I18N.opt_title_az[lang];
         if (opts[3]) opts[3].textContent = I18N.opt_title_za[lang];
       }
+    }
+
+    // Hero roles & pills (index)
+    if (document.getElementById('intro')){
+      const roles = document.querySelector('#intro p');
+      if (roles){
+        roles.textContent = lang==='pl' ? 'Kompozytor | Inżynier dźwięku | Programista' : lang==='nl' ? 'Componist | Audio Engineer | Softwareontwikkelaar' : 'Composer | Audio Engineer | Software Developer';
+      }
+      document.querySelectorAll('#intro .section-pills a span').forEach(s=>{
+        const t=s.textContent.toLowerCase();
+        if (/all projects|wszystkie|alle/.test(t)) s.textContent = lang==='pl'?'Wszystkie projekty': lang==='nl'?'Alle projecten':'All Projects';
+        else if (/scholarly|naukowe|wetenschappelijk/.test(t)) s.textContent = lang==='pl'?'Naukowe': lang==='nl'?'Wetenschappelijk':'Scholarly';
+        else if (/about|o mnie|over/.test(t)) s.textContent = lang==='pl'?'O mnie': lang==='nl'?'Over mij':'About';
+        else if (/contact|kontakt/.test(t)) s.textContent = lang==='pl'?'Kontakt': lang==='nl'?'Contact':'Contact';
+      });
     }
 
     // Projects Showcase (index)
