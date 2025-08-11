@@ -20,6 +20,14 @@ html, body { overflow-x: hidden; background: #0b141a !important; }
 @media (min-width: 1280px) {
   html { font-size: 11pt !important; }
 }
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  #intro h1 { font-size: 2rem !important; }
+  #intro .section-pills a { font-size: .9rem; padding: 8px 12px; }
+  .slider { min-height: 420px; }
+  .projects-controls { padding: 10px; }
+  #projects-list { grid-template-columns: 1fr; }
+}
 
 /* Ensure wrapper and main don't mask interactive background */
 #wrapper { background-color: transparent !important; }

@@ -125,33 +125,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Subtle audio-reactive marquee under logo (appears at top; hides on scroll)
   (function(){
-    // Particles orbiting note icons (audio-themed), subtle and elegant
+    // Layered audio waveform (canvas) — interactive and more prominent
     const wrap=document.createElement('div'); wrap.className='logo-audio';
     const canvas=document.createElement('canvas'); wrap.appendChild(canvas); document.body.appendChild(wrap);
     const ctx=canvas.getContext('2d');
-    function size(){ canvas.width=1400; canvas.height=220; } size();
-    const particles=Array.from({length:180}).map((_,i)=>({
-      r: 28+Math.random()*60,
-      a: Math.random()*Math.PI*2,
-      s: 0.0025 + Math.random()*0.0085,
-      hue: 190 + Math.random()*160
-    }));
-    // Interactivity: react to mouse position and wheel energy
-    let energy=1;
-    window.addEventListener('wheel', (e)=>{ energy = Math.min(3, energy + Math.abs(e.deltaY)*0.002); }, {passive:true});
-    window.addEventListener('pointermove', (e)=>{ const vx=(e.clientX/window.innerWidth-0.5); particles.forEach(p=>{ p.hue = 190 + 160*(0.5+vx); }); }, {passive:true});
+    const DPR=Math.min(window.devicePixelRatio||1,2);
+    function size(){
+      const cssW=Math.min(window.innerWidth*0.9, 1400);
+      const cssH=180;
+      canvas.style.width=cssW+'px'; canvas.style.height=cssH+'px';
+      canvas.width=Math.floor(cssW*DPR); canvas.height=Math.floor(cssH*DPR);
+    }
+    size(); window.addEventListener('resize', size);
+    let t=0, mx=0.5, energy=1;
+    window.addEventListener('pointermove', (e)=>{ mx=e.clientX/window.innerWidth; }, {passive:true});
+    window.addEventListener('wheel', (e)=>{ energy=Math.min(3, energy + Math.abs(e.deltaY)*0.002); }, {passive:true});
 
+    function wave(yBase, amp, speed, freq, stops, alpha){
+      const w=canvas.width, h=canvas.height; const k=freq*2*Math.PI/w;
+      ctx.beginPath();
+      for(let x=0;x<=w;x+=4*DPR){
+        const ph=t*speed + x*k*(1+mx*0.5);
+        const y=yBase + Math.sin(ph)*amp + Math.sin(ph*0.45)*amp*0.35;
+        if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      const grd=ctx.createLinearGradient(0,h*0.5,w,h*0.5);
+      stops.forEach(([o,c])=>grd.addColorStop(o,c));
+      ctx.strokeStyle=grd; ctx.globalAlpha=alpha; ctx.lineWidth=3*DPR; ctx.stroke();
+    }
     function draw(){
       const w=canvas.width, h=canvas.height; ctx.clearRect(0,0,w,h);
-      ctx.save(); ctx.translate(w/2,h*0.55);
-      particles.forEach(p=>{
-        p.a+=p.s*energy; const x=Math.cos(p.a)*p.r*10; const y=Math.sin(p.a)*p.r*0.7;
-        const size = 8 + (p.r*0.06);
-        const g=ctx.createRadialGradient(x,y,0,x,y,size);
-        g.addColorStop(0,`hsla(${p.hue},85%,72%,0.95)`); g.addColorStop(1,'rgba(0,0,0,0)');
-        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,size,0,Math.PI*2); ctx.fill();
-      });
-      ctx.restore(); energy = Math.max(1, energy*0.985); requestAnimationFrame(draw);
+      ctx.save();
+      wave(h*0.58, 26*DPR*energy, 0.06, 0.010, [[0,'#18bfef'],[0.5,'#9a6cff'],[1,'#ff6ea9']], 0.95);
+      wave(h*0.58, 42*DPR*energy, 0.045, 0.008, [[0,'rgba(24,191,239,0.65)'],[1,'rgba(154,108,255,0.65)']], 0.8);
+      wave(h*0.58, 58*DPR*energy, 0.03,  0.006, [[0,'rgba(24,191,239,0.35)'],[1,'rgba(255,110,169,0.35)']], 0.7);
+      ctx.restore();
+      energy=Math.max(1, energy*0.985); t+=1; requestAnimationFrame(draw);
     }
     draw();
     function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome=!!document.getElementById('projects-showcase'); wrap.classList.toggle('visible', onHome && y<140); if(!onHome) wrap.classList.remove('visible'); }
