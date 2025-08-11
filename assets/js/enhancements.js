@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function() {
   toast.className = 'lang-toast';
   document.body.appendChild(toast);
   // Persistent language badge in top-right
-  const langBadge = document.querySelector('.lang-badge') || (()=>{ const b=document.createElement('div'); b.className='lang-badge'; document.body.appendChild(b); return b; })();
+  const langBadge = document.querySelector('.lang-badge') || (()=>{ const b=document.createElement('div'); b.className='lang-badge'; b.innerHTML = '<span class="flag">🇬🇧</span><span class="code">EN</span>'; b.style.cssText='position:fixed;top:14px;right:16px;z-index:2147483647;background:rgba(10,16,22,.92);color:#e9f7ff;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:6px 10px;font-weight:700;display:inline-flex;align-items:center;gap:6px;letter-spacing:.2px'; document.body.appendChild(b); return b; })();
 
   // Minimal i18n map for common UI strings (extend as needed)
   const I18N = {
@@ -491,7 +491,9 @@ document.addEventListener('DOMContentLoaded', function() {
     translatePage(l);
     if (!silent) showLangToast(l);
     // update badge
-    langBadge.textContent = (l==='nl'?'🇧🇪 NL': l==='en'?'🇬🇧 EN':'🇵🇱 PL');
+    const f = (l==='nl'?'🇧🇪': l==='en'?'🇬🇧':'🇵🇱');
+    const c = l.toUpperCase();
+    langBadge.innerHTML = '<span class="flag">'+f+'</span><span class="code">'+c+'</span>';
   }
   if (toggleBtn && menu){
     const current = localStorage.getItem(LANG_KEY) || 'en';

@@ -127,7 +127,8 @@ body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !
 .lang-toast.visible { opacity:1; transform: translateX(-50%) translateY(0); }
 
 /* Language badge (current language) */
-.lang-badge { position: fixed; top: 14px; right: 16px; z-index: 3100; background: rgba(10,16,22,0.92); color:#e9f7ff; border:1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 6px 10px; font-weight:700; letter-spacing:.2px; box-shadow: 0 10px 24px rgba(0,0,0,0.35); }
+.lang-badge { position: fixed; top: 14px; right: 16px; z-index: 99999; background: rgba(10,16,22,0.92); color:#e9f7ff; border:1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 6px 10px; font-weight:700; letter-spacing:.2px; box-shadow: 0 10px 24px rgba(0,0,0,0.35); display: inline-flex; align-items: center; gap: 6px; font-size: 0.95rem; font-family: 'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif; }
+.lang-badge .flag { font-size: 1.1rem; line-height: 1; }
 
 #nav ul.links li.active a, #nav ul.links li a:hover, #nav .icons a:hover {
     color: #18bfef; /* Accent color for active/hover states */
@@ -214,7 +215,7 @@ body p {
   background: rgba(18, 24, 30, 0.72);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 12px;
-  overflow: hidden;
+    overflow: hidden;
   transform: translateY(0);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   box-shadow: 0 12px 30px rgba(0,0,0,0.25);
