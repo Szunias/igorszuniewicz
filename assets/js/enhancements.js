@@ -555,6 +555,18 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
+    // About page translations (minimal)
+    if (location.pathname.endsWith('/about.html') || document.querySelector('.about-hero')){
+      const h2 = document.querySelector('.about-hero h2'); if (h2) h2.textContent = lang==='pl'?'O mnie': lang==='nl'?'Over mij':'About Me';
+      const roles = document.querySelector('.about-hero .roles'); if (roles) roles.textContent = lang==='pl'?'Kompozytor, Inżynier dźwięku i Programista – dźwięk interaktywny': lang==='nl'?'Componist, Audio Engineer en Softwareontwikkelaar — interactieve audio':'Composer, Audio Engineer, and Software Developer focused on interactive sound.';
+      // Keep paragraph in EN to avoid over-translation unless PL/NL requested later
+      const edu = document.querySelector('.about-card h4'); if (edu && edu.textContent.trim().toLowerCase()==='education'){ edu.textContent = lang==='pl'?'Edukacja': lang==='nl'?'Opleiding':'Education'; }
+      document.querySelectorAll('.about-card h4').forEach(h=>{
+        const t=h.textContent.trim().toLowerCase();
+        if (t==='competencies') h.textContent = (lang==='pl'?'Kompetencje': lang==='nl'?'Competenties':'Competencies');
+      });
+    }
+
     // Projects Showcase (index)
     if (document.getElementById('projects-showcase')){
       const sh2 = document.querySelector('#projects-showcase h2'); if (sh2) sh2.textContent = I18N.showcase_title[lang];
