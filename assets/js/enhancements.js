@@ -415,7 +415,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // Persistent language badge in top-right
   const badgeWrap = document.querySelector('.lang-badge-wrap') || (()=>{ const w=document.createElement('div'); w.className='lang-badge-wrap'; document.body.appendChild(w); return w; })();
   const langBadge = document.querySelector('.lang-badge') || (()=>{ const b=document.createElement('div'); b.className='lang-badge'; b.style.cssText='background:rgba(10,16,22,.92);color:#e9f7ff;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:6px 10px;font-weight:700;display:inline-flex;align-items:center;gap:6px;letter-spacing:.2px;cursor:pointer;'; badgeWrap.appendChild(b); return b; })();
-  const badgeMenu = document.querySelector('.lang-badge-menu') || (()=>{ const m=document.createElement('div'); m.className='lang-badge-menu'; m.innerHTML='<button data-lang="en"><span>🇬🇧</span>English</button><button data-lang="pl"><span>🇵🇱</span>Polski</button><button data-lang="nl"><span>🇧🇪</span>Nederlands</button>'; badgeWrap.appendChild(m); return m; })();
+  const badgeMenu = document.querySelector('.lang-badge-menu') || (()=>{ 
+    const m=document.createElement('div'); m.className='lang-badge-menu';
+    const items=[{l:'en',label:'English'},{l:'pl',label:'Polski'},{l:'nl',label:'Nederlands'}];
+    items.forEach(it=>{ const b=document.createElement('button'); b.setAttribute('data-lang', it.l); b.innerHTML = '<span class="flag-svg">'+flagSvg(it.l)+'</span><span class="label">'+it.label+'</span>'; m.appendChild(b); });
+    badgeWrap.appendChild(m); return m; })();
 
   function flagSvg(lang){
     // Use width/height 100% so parent spans can size the flag
@@ -557,14 +561,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // About page translations (minimal)
     if (location.pathname.endsWith('/about.html') || document.querySelector('.about-hero')){
-      const h2 = document.querySelector('.about-hero h2'); if (h2) h2.textContent = lang==='pl'?'O mnie': lang==='nl'?'Over mij':'About Me';
-      const roles = document.querySelector('.about-hero .roles'); if (roles) roles.textContent = lang==='pl'?'Kompozytor, Inżynier dźwięku i Programista – dźwięk interaktywny': lang==='nl'?'Componist, Audio Engineer en Softwareontwikkelaar — interactieve audio':'Composer, Audio Engineer, and Software Developer focused on interactive sound.';
-      // Keep paragraph in EN to avoid over-translation unless PL/NL requested later
-      const edu = document.querySelector('.about-card h4'); if (edu && edu.textContent.trim().toLowerCase()==='education'){ edu.textContent = lang==='pl'?'Edukacja': lang==='nl'?'Opleiding':'Education'; }
-      document.querySelectorAll('.about-card h4').forEach(h=>{
-        const t=h.textContent.trim().toLowerCase();
-        if (t==='competencies') h.textContent = (lang==='pl'?'Kompetencje': lang==='nl'?'Competenties':'Competencies');
-      });
+      const A = {
+        about_title: { en:'About Me', pl:'O mnie', nl:'Over mij' },
+        about_roles: { en:'Composer, Audio Engineer, and Software Developer focused on interactive sound.', pl:'Kompozytor, Inżynier dźwięku i Programista — dźwięk interaktywny', nl:'Componist, Audio Engineer en Softwareontwikkelaar — interactieve audio' },
+        about_paragraph: { en:'I am an ambitious student at the intersection of audio and technology. My work combines composition, technical sound design, and real‑time systems. I strive to build tools and music systems that are expressive, robust, and production‑ready. I value clear communication, iterative prototyping, and measurable impact in games and media.', pl:'Jestem ambitnym studentem na styku audio i technologii. Łączę kompozycję, techniczny sound design i systemy czasu rzeczywistego. Tworzę narzędzia i systemy muzyczne, które są ekspresyjne, niezawodne i gotowe do produkcji. Cenię jasną komunikację, iteracyjne prototypowanie i mierzalny efekt w grach i mediach.', nl:'Ik ben een ambitieuze student op het snijvlak van audio en technologie. Ik combineer compositie, technisch sounddesign en real-time systemen. Ik bouw tools en muzieksystemen die expressief, robuust en production‑ready zijn. Ik hecht waarde aan duidelijke communicatie, iteratief prototypen en meetbare impact in games en media.' },
+        about_edu_title: { en:'Education', pl:'Edukacja', nl:'Opleiding' },
+        about_edu_1: { en:'<strong>Howest — Digital Arts and Entertainment</strong>: Game Development — Game Sound Integration (ongoing)', pl:'<strong>Howest — Digital Arts and Entertainment</strong>: Game Development — Game Sound Integration (w trakcie)', nl:'<strong>Howest — Digital Arts and Entertainment</strong>: Game Development — Game Sound Integration (lopend)' },
+        about_edu_2: { en:'<strong>Bilingual Copernicus Highschool</strong>: Maths & Physics (graduated)', pl:'<strong>Bilingual Copernicus Highschool</strong>: Matematyka i Fizyka (ukończone)', nl:'<strong>Bilingual Copernicus Highschool</strong>: Wiskunde & Natuurkunde (afgestudeerd)' },
+        about_comp_title: { en:'Competencies', pl:'Kompetencje', nl:'Competenties' },
+        about_comp_1: { en:'Wwise / FMOD, Unreal Engine / Unity', pl:'Wwise / FMOD, Unreal Engine / Unity', nl:'Wwise / FMOD, Unreal Engine / Unity' },
+        about_comp_2: { en:'DSP and VST development in C++', pl:'DSP i rozwój VST w C++', nl:'DSP en VST-ontwikkeling in C++' },
+        about_comp_3: { en:'Music composition and production (Reaper, Pro Tools, Logic)', pl:'Kompozycja i produkcja muzyki (Reaper, Pro Tools, Logic)', nl:'Muziekcompositie en -productie (Reaper, Pro Tools, Logic)' },
+        about_comp_4: { en:'Python and C# for tooling and pipelines', pl:'Python i C# do narzędzi i pipeline’ów', nl:'Python en C# voor tooling en pipelines' }
+      };
+      document.querySelectorAll('[data-i18n]').forEach(el=>{ const key=el.getAttribute('data-i18n'); const map=A[key]; if (!map) return; const val=map[lang]||map['en']; if (/^<.*>/.test(val)) el.innerHTML=val; else el.textContent=val; });
     }
 
     // Projects Showcase (index)
@@ -655,7 +665,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Allow clicking the top-right badge to cycle language
   // Badge opens dropdown; select language from menu
-  langBadge.addEventListener('click', ()=>{ badgeMenu.classList.toggle('open'); });
+  langBadge.addEventListener('click', ()=>{ syncActive(); badgeMenu.classList.toggle('open'); });
   function syncActive(){ const current=localStorage.getItem(LANG_KEY)||'en'; badgeMenu.querySelectorAll('button').forEach(btn=>{ btn.classList.toggle('active', btn.getAttribute('data-lang')===current); }); }
   badgeMenu.addEventListener('click', (e)=>{ const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); syncActive(); badgeMenu.classList.remove('open'); });
   syncActive();

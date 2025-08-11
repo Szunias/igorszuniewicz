@@ -148,9 +148,11 @@ body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !
 .lang-badge-wrap { position: fixed; top: 14px; right: 16px; z-index: 2147483647; }
 .lang-badge-menu { position: absolute; right: 0; top: 42px; background: rgba(10,16,22,0.98); border:1px solid rgba(255,255,255,0.14); border-radius: 10px; padding: 6px; min-width: 180px; box-shadow: 0 16px 40px rgba(0,0,0,0.45); opacity: 0; transform: translateY(-6px); pointer-events: none; transition: opacity .18s ease, transform .18s ease; }
 .lang-badge-menu.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
-.lang-badge-menu button { width: 100%; display: flex; align-items: center; gap: 10px; background: rgba(24,191,239,0.12); color: #e9f7ff; border: 0; padding: 10px 12px; border-radius: 10px; cursor: pointer; font-weight: 800; letter-spacing: .2px; }
-.lang-badge-menu button:hover { background: rgba(24,191,239,0.2); }
+.lang-badge-menu button { width: 100%; display: flex; align-items: center; gap: 10px; background: rgba(24,191,239,0.18); color: #e9f7ff; border: 0; padding: 10px 12px; border-radius: 10px; cursor: pointer; font-weight: 800; letter-spacing: .2px; line-height: 1.2; }
+.lang-badge-menu button:hover { background: rgba(24,191,239,0.35); }
 .lang-badge-menu button.active { background: rgba(24,191,239,0.3); }
+.lang-badge-menu .flag-svg { width: 26px; height: 16px; display: inline-block; position: relative; top: -2px; vertical-align: middle; }
+.lang-badge-menu .label { color:#e9f7ff; opacity:.98; display:inline-flex; align-items:center; }
 
 #nav ul.links li.active a, #nav ul.links li a:hover, #nav .icons a:hover {
     color: #18bfef; /* Accent color for active/hover states */
@@ -548,15 +550,11 @@ a.slide{
   border-radius: 12px; padding: 12px 14px; margin-bottom: 1.25rem !important;
   box-shadow: 0 16px 40px rgba(0,0,0,0.28);
 }
-.projects-controls strong { color: #d9f2ff; margin-right: 8px; }
-.projects-controls .button.small { 
-  background: rgba(24,191,239,0.18); border: 1px solid rgba(24,191,239,0.45);
-  color:#eaf7ff; border-radius: 999px; padding: 6px 12px; font-weight: 800; letter-spacing:.2px; margin-right: 6px;
-}
+.projects-controls strong { color: #d9f2ff; margin-right: 8px; display:flex; align-items:center; }
+.projects-controls > div { display:flex; align-items:center; gap:8px; flex-wrap: wrap; }
+.projects-controls .button.small { background: rgba(24,191,239,0.18); border: 1px solid rgba(24,191,239,0.45); color:#eaf7ff; border-radius: 999px; padding: 0 12px; font-weight: 800; letter-spacing:.2px; margin-right: 6px; height: 34px; display:inline-flex; align-items:center; }
 .projects-controls .button.small.primary, .projects-controls .button.small:hover { background: rgba(24,191,239,0.3); }
-.projects-controls select { 
-  background: rgba(10,16,22,0.85); color:#eaf7ff; border:1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 6px 10px;
-}
+.projects-controls select { background: rgba(10,16,22,0.85); color:#eaf7ff; border:1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 6px 10px; height: 34px; line-height: 1.2; }
 
 #projects-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
 #projects-list .project-card { 
