@@ -48,5 +48,21 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initial state
   applyFilter('all');
   sortSelect && applySort(sortSelect.value);
+
+  // Lazy-load any remaining thumbnails that use data-src
+  const lazyImgs = Array.from(list.querySelectorAll('img[data-src]'));
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if (e.isIntersecting) {
+          const img = e.target; img.src = img.dataset.src; img.removeAttribute('data-src');
+          io.unobserve(img);
+        }
+      });
+    }, { rootMargin: '160px' });
+    lazyImgs.forEach(img=> io.observe(img));
+  } else {
+    lazyImgs.forEach(img=> { img.src = img.dataset.src; img.removeAttribute('data-src'); });
+  }
 });
 

@@ -76,6 +76,8 @@ body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !
 #nav { position: relative; top: auto; z-index: 100; background: transparent; backdrop-filter: none; border: 0; border-radius: 0; margin: -4rem auto 0 auto; box-shadow: none; width: calc(100% - 4rem); max-width: 72rem; overflow: visible !important; }
 #nav .links a { white-space: nowrap; font-size: 0.95rem; }
 #nav .links { gap: 1.25rem; }
+#nav .links a, #nav .icons a { color: #d9f2ff !important; opacity: 0.9; }
+#nav .links a:hover { opacity: 1; }
 
 /* Layout tweaks */
 #nav ul.links { gap: 0; }
@@ -112,8 +114,9 @@ body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !
 
 /* Language switcher */
 .lang-switch { position: relative; display: inline-flex; align-items: center; margin-left: 10px; }
-.lang-toggle { display: inline-flex; align-items: center; gap:8px; background: rgba(24,191,239,0.22); color:#0b141a; border: 1px solid rgba(24,191,239,0.65); border-radius: 999px; padding: 6px 12px; font-weight:800; cursor:pointer; font-size: .9rem; text-transform: uppercase; letter-spacing:.4px; }
-.lang-toggle:hover { background: rgba(24,191,239,0.32); }
+.lang-toggle { display: inline-flex; align-items: center; gap:10px; background: rgba(24,191,239,0.25); color:#05131a; border: 2px solid rgba(24,191,239,0.75); border-radius: 999px; padding: 8px 14px; font-weight:800; cursor:pointer; font-size: .95rem; text-transform: uppercase; letter-spacing:.4px; }
+.lang-toggle:hover { background: rgba(24,191,239,0.38); }
+.lang-toggle::after { content: '▾'; opacity: .9; font-weight: 900; }
 .lang-flag { font-size: 1rem; line-height: 1; }
 .lang-menu { position: absolute; right:0; top: 120%; background: rgba(10,16,22,0.98); border:1px solid rgba(255,255,255,0.1); border-radius:10px; box-shadow:0 12px 30px rgba(0,0,0,0.35); padding:6px; display:none; min-width: 180px; z-index: 2000; }
 .lang-menu button { display:flex; align-items:center; gap:8px; background:transparent; color:#d9f2ff; border:0; padding:6px 10px; border-radius:8px; cursor:pointer; width:100%; text-align:left; }
@@ -128,8 +131,9 @@ body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !
 .lang-toast.visible { opacity:1; transform: translateX(-50%) translateY(0); }
 
 /* Language badge (current language) */
-.lang-badge { position: fixed; top: 14px; right: 16px; z-index: 99999; background: rgba(10,16,22,0.92); color:#e9f7ff; border:1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 6px 10px; font-weight:700; letter-spacing:.2px; box-shadow: 0 10px 24px rgba(0,0,0,0.35); display: inline-flex; align-items: center; gap: 6px; font-size: 0.95rem; font-family: 'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif; }
-.lang-badge .flag { width: 22px; height: 14px; display: inline-block; }
+.lang-badge { position: fixed; top: 14px; right: 16px; z-index: 99999; background: rgba(10,16,22,0.92); color:#e9f7ff; border:1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 6px 12px; font-weight:700; letter-spacing:.2px; box-shadow: 0 10px 24px rgba(0,0,0,0.35); display: inline-flex; align-items: center; gap: 8px; font-size: 0.98rem; line-height: 1; font-family: 'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif; }
+.lang-badge .flag { width: 30px; height: 20px; display: inline-block; position: relative; top: -1px; }
+.lang-badge .code { line-height: 1; }
 
 #nav ul.links li.active a, #nav ul.links li a:hover, #nav .icons a:hover {
     color: #18bfef; /* Accent color for active/hover states */
