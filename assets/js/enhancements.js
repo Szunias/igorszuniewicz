@@ -142,8 +142,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const kW = areaW / keyCount; const kH = areaH; const yBase = 24;
         // defs
         const defs=document.createElementNS(svgNS,'defs');
-        // palette gradients per key
-        const colors=['#18bfef','#58b6ff','#9a6cff','#ff6ea9','#ff8a66'];
+        // palette gradients per key (slightly cooler cyan + deeper violet to match theme)
+        const colors=['#18bfef','#4fb3ff','#7f6cff','#ff6ea9','#14d4e2'];
         for(let i=0;i<keyCount;i++){
           const g=document.createElementNS(svgNS,'linearGradient'); const id='kp'+i; g.setAttribute('id',id); g.setAttribute('x1','0'); g.setAttribute('y1','0'); g.setAttribute('x2','0'); g.setAttribute('y2','1');
           const c1=colors[i%colors.length]; const c2=colors[(i+2)%colors.length];
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
           });
         }
         // sweeping holographic shine across all keys
-        const bar=document.createElementNS(svgNS,'rect'); bar.setAttribute('x',String(margin-180)); bar.setAttribute('y',String(yBase)); bar.setAttribute('width','180'); bar.setAttribute('height',String(kH)); bar.setAttribute('fill','url(#shine)'); bar.setAttribute('opacity','0.3'); svg.appendChild(bar);
+        const bar=document.createElementNS(svgNS,'rect'); bar.setAttribute('x',String(margin-180)); bar.setAttribute('y',String(yBase)); bar.setAttribute('width','180'); bar.setAttribute('height',String(kH)); bar.setAttribute('fill','url(#shine)'); bar.setAttribute('opacity','0.28'); svg.appendChild(bar);
         const anim=document.createElementNS(svgNS,'animate'); anim.setAttribute('attributeName','x'); anim.setAttribute('from',String(margin-180)); anim.setAttribute('to',String(margin+areaW)); anim.setAttribute('dur','6s'); anim.setAttribute('repeatCount','indefinite'); bar.appendChild(anim);
 
         // build ordered list for wave propagation
@@ -230,7 +230,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }
       size(); window.addEventListener('resize', size);
-      function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome=!!document.getElementById('projects-showcase'); const vis = onHome && y<140; wrap.classList.toggle('visible', vis); }
+      function onScroll(){
+        const y=window.scrollY||document.documentElement.scrollTop; const onHome=!!document.getElementById('projects-showcase');
+        const vis = onHome && y<140; wrap.classList.toggle('visible', vis);
+        // ensure no click-blocking when hidden
+        try { svg.style.pointerEvents = vis ? 'auto' : 'none'; } catch(_){}
+      }
       onScroll(); window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('pageshow', onScroll);
     } catch(e){ console && console.warn && console.warn('neo piano disabled', e); }
   })();
