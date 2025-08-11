@@ -123,86 +123,68 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, { passive: true });
 
-  // Top piano-keys animation (replaces waveform). Hides on scroll; shows on homepage
+  // Neo-piano banner: gradient glass keys, centered, large, with strong click animation
   (function(){
     try {
       const wrap=document.createElement('div'); wrap.className='logo-audio'; document.body.appendChild(wrap);
       const svgNS='http://www.w3.org/2000/svg';
       const svg=document.createElementNS(svgNS,'svg'); wrap.appendChild(svg);
-      let keysWhite=[]; let keysBlack=[];
-      const OCT_WHITE=7; const OCT_BLACK_PATTERN=[0,1,3,4,5];
-      const octaves=2;
-      function build(){
-        const cssW=Math.min(window.innerWidth*0.9, 1400);
-        const cssH=180; svg.style.width=cssW+'px'; svg.style.height=cssH+'px';
-        svg.setAttribute('viewBox', '0 0 '+cssW+' '+cssH);
-        svg.innerHTML=''; keysWhite=[]; keysBlack=[];
-        const margin=16; const areaW=cssW - margin*2; const whiteCount=OCT_WHITE*octaves; const wW=areaW/whiteCount; const wH=cssH-26; const bW=wW*0.6; const bH=wH*0.62;
+      let keys=[]; // store rects
+      const keyCount=22; // wide strip
+      function size(){
+        const cssW=Math.min(window.innerWidth*0.98, 1400);
+        const cssH=220; svg.style.width=cssW+'px'; svg.style.height=cssH+'px';
+        svg.setAttribute('viewBox','0 0 '+cssW+' '+cssH);
+        svg.innerHTML=''; keys=[];
+        const margin=24; const areaW=cssW - margin*2; const areaH=cssH - 40;
+        const kW = areaW / keyCount; const kH = areaH; const yBase = 24;
         // defs
         const defs=document.createElementNS(svgNS,'defs');
-        const gradW=document.createElementNS(svgNS,'linearGradient'); gradW.setAttribute('id','kw'); gradW.setAttribute('x1','0'); gradW.setAttribute('y1','0'); gradW.setAttribute('x2','0'); gradW.setAttribute('y2','1'); gradW.innerHTML='<stop offset="0%" stop-color="#f7fbff"/><stop offset="100%" stop-color="#cfe6f3"/>';
-        const gradB=document.createElementNS(svgNS,'linearGradient'); gradB.setAttribute('id','kb'); gradB.setAttribute('x1','0'); gradB.setAttribute('y1','0'); gradB.setAttribute('x2','0'); gradB.setAttribute('y2','1'); gradB.innerHTML='<stop offset="0%" stop-color="#0e1821"/><stop offset="100%" stop-color="#071018"/>';
-        const holoGrad=document.createElementNS(svgNS,'linearGradient'); holoGrad.setAttribute('id','holo'); holoGrad.setAttribute('x1','0'); holoGrad.setAttribute('y1','0'); holoGrad.setAttribute('x2','1'); holoGrad.setAttribute('y2','0');
-        holoGrad.innerHTML='<stop offset="0%" stop-color="#18bfef" stop-opacity="0"/><stop offset="50%" stop-color="#9a6cff" stop-opacity="0.55"/><stop offset="100%" stop-color="#ff6ea9" stop-opacity="0"/>';
-        defs.appendChild(gradW); defs.appendChild(gradB); defs.appendChild(holoGrad); svg.appendChild(defs);
-        // white keys
-        for(let i=0;i<whiteCount;i++){
-          const x=margin + i*wW; const r=document.createElementNS(svgNS,'rect');
-          r.setAttribute('x',x); r.setAttribute('y',26); r.setAttribute('width',wW-2); r.setAttribute('height',wH);
-          r.setAttribute('rx','4'); r.setAttribute('fill','url(#kw)'); r.setAttribute('stroke','rgba(17,40,60,0.35)'); r.setAttribute('stroke-width','1');
+        // palette gradients per key
+        const colors=['#18bfef','#58b6ff','#9a6cff','#ff6ea9','#ff8a66'];
+        for(let i=0;i<keyCount;i++){
+          const g=document.createElementNS(svgNS,'linearGradient'); const id='kp'+i; g.setAttribute('id',id); g.setAttribute('x1','0'); g.setAttribute('y1','0'); g.setAttribute('x2','0'); g.setAttribute('y2','1');
+          const c1=colors[i%colors.length]; const c2=colors[(i+2)%colors.length];
+          g.innerHTML = '<stop offset="0%" stop-color="'+c1+'" stop-opacity="0.85"/><stop offset="100%" stop-color="'+c2+'" stop-opacity="0.35"/>';
+          defs.appendChild(g);
+        }
+        const shine=document.createElementNS(svgNS,'linearGradient'); shine.setAttribute('id','shine'); shine.setAttribute('x1','0'); shine.setAttribute('y1','0'); shine.setAttribute('x2','1'); shine.setAttribute('y2','0');
+        shine.innerHTML='<stop offset="0%" stop-color="#ffffff" stop-opacity="0"/><stop offset="50%" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>';
+        defs.appendChild(shine); svg.appendChild(defs);
+        // background glass rail
+        const rail=document.createElementNS(svgNS,'rect'); rail.setAttribute('x',String(margin-12)); rail.setAttribute('y',String(yBase-10)); rail.setAttribute('width',String(areaW+24)); rail.setAttribute('height',String(kH+20)); rail.setAttribute('rx','16'); rail.setAttribute('fill','rgba(10,16,22,0.35)'); rail.setAttribute('stroke','rgba(255,255,255,0.08)'); svg.appendChild(rail);
+        // keys
+        for(let i=0;i<keyCount;i++){
+          const x = margin + i*kW + 2; const r=document.createElementNS(svgNS,'rect');
+          r.setAttribute('x',String(x)); r.setAttribute('y',String(yBase)); r.setAttribute('width',String(kW-4)); r.setAttribute('height',String(kH)); r.setAttribute('rx','10');
+          r.setAttribute('fill','url(#kp'+i+')'); r.setAttribute('stroke','rgba(0,0,0,0.25)'); r.setAttribute('stroke-width','1');
           r.style.transition='transform 120ms ease, filter 200ms ease';
-          svg.appendChild(r); keysWhite.push(r);
-      r.addEventListener('pointerenter', ()=> pressKey(r,false));
-      r.addEventListener('pointerdown', ()=> pressKeyClick(r,false));
+          svg.appendChild(r); keys.push(r);
+          // soft hover
+          r.addEventListener('pointerenter', ()=>{ r.style.transform='translateY(3px)'; r.style.filter='drop-shadow(0 12px 28px rgba(24,191,239,0.35))'; setTimeout(()=>{ r.style.transform=''; r.style.filter=''; }, 160); });
+          // strong click
+          r.addEventListener('pointerdown', (e)=>{ strongPress(r, e); });
         }
-        // black keys
-        for(let oc=0; oc<octaves; oc++){
-          OCT_BLACK_PATTERN.forEach(bp=>{
-            const wi = oc*OCT_WHITE + bp; const x = margin + (wi+1)*wW - bW/2; const r=document.createElementNS(svgNS,'rect');
-            r.setAttribute('x',x); r.setAttribute('y',26); r.setAttribute('width',bW); r.setAttribute('height',bH);
-            r.setAttribute('rx','3'); r.setAttribute('fill','url(#kb)'); r.setAttribute('stroke','rgba(255,255,255,0.08)'); r.setAttribute('stroke-width','1');
-            r.style.transition='transform 120ms ease, filter 200ms ease';
-            svg.appendChild(r); keysBlack.push(r);
-            r.addEventListener('pointerenter', ()=> pressKey(r,true));
-            r.addEventListener('pointerdown', ()=> pressKeyClick(r,true));
-          });
-        }
-        // holographic sweeping shine overlay
-        const shine=document.createElementNS(svgNS,'rect');
-        shine.setAttribute('x', String(margin-120)); shine.setAttribute('y','26'); shine.setAttribute('width','120'); shine.setAttribute('height', String(wH));
-        shine.setAttribute('fill','url(#holo)'); shine.setAttribute('opacity','0.7'); svg.appendChild(shine);
-        const anim=document.createElementNS(svgNS,'animate'); anim.setAttribute('attributeName','x'); anim.setAttribute('from', String(margin-120)); anim.setAttribute('to', String(margin+areaW)); anim.setAttribute('dur','6s'); anim.setAttribute('repeatCount','indefinite'); shine.appendChild(anim);
+        // sweeping holographic shine across all keys
+        const bar=document.createElementNS(svgNS,'rect'); bar.setAttribute('x',String(margin-140)); bar.setAttribute('y',String(yBase)); bar.setAttribute('width','140'); bar.setAttribute('height',String(kH)); bar.setAttribute('fill','url(#shine)'); bar.setAttribute('opacity','0.35'); svg.appendChild(bar);
+        const anim=document.createElementNS(svgNS,'animate'); anim.setAttribute('attributeName','x'); anim.setAttribute('from',String(margin-140)); anim.setAttribute('to',String(margin+areaW)); anim.setAttribute('dur','5.5s'); anim.setAttribute('repeatCount','indefinite'); bar.appendChild(anim);
       }
-      function pressKey(el, isBlack){
-        if (!el) return; el.style.transform='translateY(3px)'; el.style.filter='drop-shadow(0 8px 18px rgba(24,191,239,0.35))';
-        setTimeout(()=>{ el.style.transform=''; el.style.filter=''; }, 160);
-      }
-      function pressKeyClick(el, isBlack){
-        if (!el) return;
-        // Stronger press + brighter glow
-        el.style.transform='translateY(6px)'; el.style.filter='drop-shadow(0 14px 36px rgba(24,191,239,0.75))';
+      function strongPress(el, ev){
+        el.style.transform='translateY(8px)'; el.style.filter='drop-shadow(0 18px 44px rgba(24,191,239,0.85))';
         setTimeout(()=>{ el.style.transform=''; el.style.filter=''; }, 260);
-        // Ripple circle
+        // expanding neon ring
         const cx = parseFloat(el.getAttribute('x')) + parseFloat(el.getAttribute('width'))/2;
-        const cy = parseFloat(el.getAttribute('y')) + (isBlack? parseFloat(el.getAttribute('height'))*0.7 : parseFloat(el.getAttribute('height'))*0.9);
-        const circ = document.createElementNS(svgNS,'circle');
-        circ.setAttribute('cx', String(cx)); circ.setAttribute('cy', String(cy)); circ.setAttribute('r','3');
-        circ.setAttribute('fill','none'); circ.setAttribute('stroke','url(#holo)'); circ.setAttribute('stroke-width','3'); circ.setAttribute('opacity','1');
+        const cy = parseFloat(el.getAttribute('y')) + parseFloat(el.getAttribute('height'))*0.66;
+        const circ = document.createElementNS(svgNS,'circle'); circ.setAttribute('cx',String(cx)); circ.setAttribute('cy',String(cy)); circ.setAttribute('r','4'); circ.setAttribute('fill','none'); circ.setAttribute('stroke','#ff6ea9'); circ.setAttribute('stroke-width','3'); circ.setAttribute('opacity','0.95');
         svg.appendChild(circ);
-        const a1=document.createElementNS(svgNS,'animate'); a1.setAttribute('attributeName','r'); a1.setAttribute('from','3'); a1.setAttribute('to','46'); a1.setAttribute('dur','520ms'); a1.setAttribute('fill','freeze');
-        const a2=document.createElementNS(svgNS,'animate'); a2.setAttribute('attributeName','opacity'); a2.setAttribute('from','1'); a2.setAttribute('to','0'); a2.setAttribute('dur','520ms'); a2.setAttribute('fill','freeze');
-        a2.addEventListener('endEvent', ()=> circ.remove());
+        const a1=document.createElementNS(svgNS,'animate'); a1.setAttribute('attributeName','r'); a1.setAttribute('from','4'); a1.setAttribute('to','58'); a1.setAttribute('dur','560ms'); a1.setAttribute('fill','freeze');
+        const a2=document.createElementNS(svgNS,'animate'); a2.setAttribute('attributeName','opacity'); a2.setAttribute('from','0.95'); a2.setAttribute('to','0'); a2.setAttribute('dur','560ms'); a2.setAttribute('fill','freeze'); a2.addEventListener('endEvent', ()=> circ.remove());
         circ.appendChild(a1); circ.appendChild(a2); a1.beginElement(); a2.beginElement();
       }
-      build(); window.addEventListener('resize', build);
-      // random arpeggio
-      let rndTimer=null; function start(){ if (rndTimer) return; rndTimer=setInterval(()=>{
-        const pool = Math.random()<0.55 ? keysBlack : keysWhite; const el = pool[Math.floor(Math.random()*pool.length)]; pressKey(el, pool===keysBlack);
-      }, 360);} function stop(){ if (rndTimer){ clearInterval(rndTimer); rndTimer=null; } }
-      start();
-      function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome=!!document.getElementById('projects-showcase'); const vis = onHome && y<140; wrap.classList.toggle('visible', vis); if(!vis) stop(); else start(); if (vis) wrap.style.pointerEvents='auto'; }
+      size(); window.addEventListener('resize', size);
+      function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome=!!document.getElementById('projects-showcase'); const vis = onHome && y<140; wrap.classList.toggle('visible', vis); }
       onScroll(); window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('pageshow', onScroll);
-    } catch(e){ console && console.warn && console.warn('piano banner disabled', e); }
+    } catch(e){ console && console.warn && console.warn('neo piano disabled', e); }
   })();
 
   // Intro overlay on first visit (session-based)
