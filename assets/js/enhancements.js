@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(() => { window.location.href = href; }, 220);
     });
   });
+  // Allow external links to open normally (no intercept)
   // Background layers (reuse if present to avoid duplicates)
   const glow = document.querySelector('.bg-glow') || (()=>{ const d=document.createElement('div'); d.className='bg-glow'; return d; })();
   const grad = document.querySelector('.bg-gradient') || (()=>{ const d=document.createElement('div'); d.className='bg-gradient'; return d; })();
@@ -911,6 +912,28 @@ document.addEventListener('DOMContentLoaded', function() {
   if (fixed){ fixed.addEventListener('click', (e)=>{ const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); syncActive(); }); }
   syncActive();
   // no dropdown behavior anymore
+
+  // Social icons hover preview / tooltip (GitHub, LinkedIn, Spotify)
+  (function(){
+    const iconLinks = Array.from(document.querySelectorAll('#nav .icons a, #footer .icons a'));
+    if (!iconLinks.length) return;
+    const tip = document.createElement('div');
+    tip.className='nav-tip';
+    tip.style.cssText='position:fixed;z-index:2147483600;background:rgba(10,16,22,0.95);color:#e9f7ff;border:1px solid rgba(255,255,255,0.14);padding:6px 8px;border-radius:8px;font-size:.85rem;pointer-events:none;opacity:0;transform:translateY(-4px);transition:opacity .16s ease, transform .16s ease;box-shadow:0 8px 22px rgba(0,0,0,0.35)';
+    document.body.appendChild(tip);
+    function show(text, x, y){ tip.textContent=text; tip.style.left=(x+10)+'px'; tip.style.top=(y+12)+'px'; tip.style.opacity='1'; tip.style.transform='translateY(0)'; }
+    function hide(){ tip.style.opacity='0'; tip.style.transform='translateY(-4px)'; }
+    iconLinks.forEach(a=>{
+      let label='';
+      if (/github\.com/i.test(a.href)) label='GitHub — code & repos';
+      else if (/linkedin\.com/i.test(a.href)) label='LinkedIn — profile & network';
+      else if (/spotify\.com/i.test(a.href)) label='Spotify — artist page';
+      if (!label) return;
+      a.addEventListener('mouseenter', (e)=> show(label, e.clientX, e.clientY));
+      a.addEventListener('mousemove', (e)=> show(label, e.clientX, e.clientY));
+      a.addEventListener('mouseleave', hide);
+    });
+  })();
 
   // One-time post-load nudge pointing to the language switcher (not during intro)
   (function(){
