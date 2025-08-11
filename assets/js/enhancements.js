@@ -123,6 +123,47 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, { passive: true });
 
+  // Subtle audio-reactive marquee under logo (appears at top; hides on scroll)
+  (function(){
+    const canvas = document.createElement('canvas');
+    const wrap = document.createElement('div'); wrap.className='logo-audio'; wrap.appendChild(canvas);
+    document.body.appendChild(wrap);
+    const ctx = canvas.getContext('2d');
+    function size(){ canvas.width=840; canvas.height=140; }
+    size();
+    let t=0; function draw(){
+      const w=canvas.width, h=canvas.height; ctx.clearRect(0,0,w,h);
+      // glowing background ribbon
+      const bgGrad = ctx.createLinearGradient(0,0,w,0);
+      bgGrad.addColorStop(0,'rgba(24,191,239,0.12)'); bgGrad.addColorStop(0.5,'rgba(154,108,255,0.12)'); bgGrad.addColorStop(1,'rgba(255,110,169,0.12)');
+      ctx.fillStyle = bgGrad; ctx.fillRect(0,h*0.35,w,h*0.3);
+      const bars=72; const mid=h*0.5;
+      for(let i=0;i<bars;i++){
+        const f=i/bars; const env = (1 - Math.abs(2*f-1));
+        const amp = 18 + 38*Math.abs(Math.sin(t*0.08 + f*3.6)) * (0.4 + 0.6*env);
+        const x = (w/bars)*i + 4; const bw = (w/bars)-6; const y = mid - amp/2;
+        const grd = ctx.createLinearGradient(x,y,x,y+amp);
+        grd.addColorStop(0,'rgba(24,191,239,0.95)');
+        grd.addColorStop(0.5,'rgba(154,108,255,0.85)');
+        grd.addColorStop(1,'rgba(255,110,169,0.8)');
+        ctx.fillStyle = grd; ctx.fillRect(x,y,bw,amp);
+        // glow overlay
+        ctx.fillStyle = 'rgba(24,191,239,0.12)'; ctx.fillRect(x, mid-1, bw, 2);
+      }
+      t+=1; requestAnimationFrame(draw);
+    }
+    draw();
+    function onScroll(){
+      const y=window.scrollY||document.documentElement.scrollTop;
+      const onHome = !!document.getElementById('projects-showcase');
+      wrap.classList.toggle('visible', onHome && y<140);
+      if (!onHome) wrap.classList.remove('visible');
+    }
+    onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+    // Also run on soft page transitions
+    window.addEventListener('pageshow', onScroll);
+  })();
+
   // Intro overlay on first visit (session-based)
   try {
     const seen = sessionStorage.getItem('intro-seen');
@@ -426,7 +467,8 @@ document.addEventListener('DOMContentLoaded', function() {
     filter_music: { pl: 'Muzyka', nl: 'Muziek', en: 'Music' },
     filter_sound: { pl: 'Sound Design', nl: 'Sounddesign', en: 'Sound Design' },
     filter_gameaudio: { pl: 'Audio w grach', nl: 'Game-audio', en: 'Game Audio' },
-    learn_more: { pl: 'Więcej →', nl: 'Meer →', en: 'Learn more →' }
+    learn_more: { pl: 'Więcej →', nl: 'Meer →', en: 'Learn more →' },
+    more_label: { pl: 'Więcej', nl: 'Meer', en: 'More' }
   };
 
   function translatePage(lang){
@@ -444,19 +486,23 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('#nav a[href*="#projects-showcase"]').forEach(a=> a.textContent = I18N.nav_projects[lang]);
 
     // Index-specific headers
-    const introH2 = document.querySelector('#main > section.post header.major h2');
-    if (introH2) introH2.textContent = I18N.intro_title[lang];
-    const introLead = document.querySelector('section.post header.major p');
-    if (introLead && introLead.closest('section.post') && introLead.closest('#cv-section')===null) introLead.textContent = I18N.intro_lead[lang];
-    const introP = document.querySelector('#main > section.post p:not(header p)');
-    if (introP) introP.textContent = I18N.intro_paragraph[lang];
+    // Intro block translations – apply only on homepage (has projects-showcase)
+    if (document.getElementById('projects-showcase')){
+      const introH2 = document.querySelector('#main > section.post header.major h2');
+      if (introH2) introH2.textContent = I18N.intro_title[lang];
+      const introLead = document.querySelector('#main > section.post header.major p');
+      if (introLead) introLead.textContent = I18N.intro_lead[lang];
+      const introP = document.querySelector('#main > section.post p:not(header p)');
+      if (introP) introP.textContent = I18N.intro_paragraph[lang];
+    }
     const cvH2 = document.querySelector('#cv-section header.major h2');
     if (cvH2) cvH2.textContent = I18N.cv_title[lang];
     const cvLead = document.querySelector('#cv-section header.major p');
     if (cvLead) cvLead.textContent = I18N.cv_lead[lang];
 
-    // Tooltip CTA
+    // Tooltip CTA and chips
     document.querySelectorAll('.tip-popover .tip-action').forEach(a=> a.textContent = I18N.learn_more[lang]);
+    document.querySelectorAll('.cv-more-chip .label').forEach(el=> el.textContent = I18N.more_label[lang]);
 
     // All Projects page UI
     if (location.pathname.endsWith('/projects/index.html') || document.querySelector('#projects-list')){
@@ -484,14 +530,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Projects Showcase (index)
     if (document.getElementById('projects-showcase')){
       const sh2 = document.querySelector('#projects-showcase h2'); if (sh2) sh2.textContent = I18N.showcase_title[lang];
-      const sLead = document.querySelector('#projects-showcase > p, #projects-showcase header.major + p');
+      const sLead = document.querySelector('#projects-showcase header.major p');
       if (sLead) sLead.textContent = I18N.showcase_lead[lang];
+      // Translate two highlighted project cards
+      const m1 = document.querySelector('#projects-showcase .projects-grid article:nth-of-type(1)');
+      if (m1){
+        const h = m1.querySelector('h3'); if (h) h.textContent = (lang==='pl'?'System muzyki dynamicznej (Wwise & UE5)': lang==='nl'?'Dynamisch muzieksysteem (Wwise & UE5)':'Dynamic Music System (Wwise & UE5)');
+        const p = m1.querySelector('p'); if (p) p.textContent = (lang==='pl'?'Wwise + UE5: adaptacyjna muzyka z płynnymi przejściami i warstwami.': lang==='nl'?'Wwise + UE5: adaptieve muziek met soepele overgangen en lagen.':'Wwise + UE5: adaptive music with smooth transitions and layers.');
+        const b = m1.querySelector('.actions .button.small'); if (b) b.textContent = (lang==='pl'?'Szczegóły': lang==='nl'?'Details':'Details');
+      }
+      const m2 = document.querySelector('#projects-showcase .projects-grid article:nth-of-type(2)');
+      if (m2){
+        const h = m2.querySelector('h3'); if (h) h.textContent = (lang==='pl'?'Zestaw wtyczek 3D Audio (VST)': lang==='nl'?'3D Audio Plugin Suite (VST)':'3D Audio Plugin Suite (VST Development)');
+        const p = m2.querySelector('p'); if (p) p.textContent = (lang==='pl'?'Własne VST do audio 3D: HRTF, konwolucja, UI i C++.': lang==='nl'?'Eigen VST voor 3D-audio: HRTF, convolutie, UI en C++.':'Custom VST plugins for 3D audio: HRTF, convolution, UI, C++.');
+        const b = m2.querySelector('.actions .button.small'); if (b) b.textContent = (lang==='pl'?'Szczegóły': lang==='nl'?'Details':'Details');
+      }
     }
 
     // Explore More section on index
     if (document.querySelector('.explore-more')){
       const exH2 = document.querySelector('.explore-more header.major h2');
       if (exH2) exH2.textContent = lang==='pl' ? 'Zobacz więcej' : lang==='nl' ? 'Ontdek meer' : 'Explore More';
+      const exLead = document.querySelector('.explore-more header.major p');
+      if (exLead) exLead.textContent = I18N.explore_lead[lang];
       document.querySelectorAll('.explore-more a.button.primary').forEach(a=>{
         a.textContent = lang==='pl' ? 'Zobacz więcej' : lang==='nl' ? 'Ontdek meer' : 'Explore More';
       });
@@ -526,8 +587,11 @@ document.addEventListener('DOMContentLoaded', function() {
   function setLang(l, opts){
     const silent = opts && opts.silent;
     localStorage.setItem(LANG_KEY,l);
-    label.textContent = l.toUpperCase();
-    toggleBtn.querySelector('.lang-flag').textContent = (l==='nl'?'🇧🇪': l==='en'?'🇬🇧':'🇵🇱');
+    if (label) label.textContent = l.toUpperCase();
+    if (toggleBtn) {
+      const lf = toggleBtn.querySelector('.lang-flag');
+      if (lf) lf.textContent = (l==='nl'?'🇧🇪': l==='en'?'🇬🇧':'🇵🇱');
+    }
     document.documentElement.setAttribute('lang', l);
     document.documentElement.dataset.lang = l;
     translatePage(l);
@@ -536,9 +600,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const c = l.toUpperCase();
     langBadge.innerHTML = '<span class="flag" style="display:inline-block;vertical-align:middle">'+flagSvg(l)+'</span><span class="code">'+c+'</span>';
   }
-  if (toggleBtn && menu){
+  {
     const current = localStorage.getItem(LANG_KEY) || 'en';
     setLang(current, { silent: true });
+  }
+  if (toggleBtn && menu){
     toggleBtn.addEventListener('click', (e)=>{ e.preventDefault(); document.querySelector('.lang-switch').classList.toggle('open'); menu.style.display = menu.style.display==='block'?'none':'block'; });
     menu.addEventListener('click', (e)=>{
       const btn = e.target.closest('button[data-lang]'); if (!btn) return; setLang(btn.getAttribute('data-lang')); document.querySelector('.lang-switch').classList.remove('open');
