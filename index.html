@@ -35,18 +35,20 @@
             height: 100%;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 350ms ease-in-out;
             display: flex;
             flex-direction: column;
             align-items: center; 
             justify-content: center; 
             padding: 1em;
             pointer-events: none; /* prevent clicks on hidden slides */
+            z-index: 0;
         }
         .slide.active {
             opacity: 1;
             visibility: visible;
             pointer-events: auto; /* only active slide is clickable */
+            z-index: 1;
         }
         .slide h3 {
             position: absolute;
@@ -249,9 +251,9 @@
                             <p class="slide-description">Complete sound design for the 3D animation "Amorak".</p>
                         </div>
                         <div class="slide">
-                            <h3>NotTodayDarling Implementation/Code</h3>
-                            <a href="projects/not-today-darling.html"><img src="images/nottodaydar.png" alt="NotTodayDarling audio design/code" loading="lazy" decoding="async"></a>
-                            <p class="slide-description">Retro-inspired audio implementation for a narrative game.</p>
+                            <h3>Not Today, Darling! — Game Audio</h3>
+                            <a href="https://freyaspes.itch.io/not-today-darling" target="_blank" rel="noopener"><img src="images/NotTodayGameScreenshot.png" srcset="images/NotTodayGameScreenshot.png 1x, images/NotTodayGameLogo.png 2x" alt="Not Today, Darling!" loading="lazy" decoding="async"></a>
+                            <p class="slide-description">Local‑multiplayer side‑scroller. Click to view on itch.io.</p>
                         </div>
                         <div class="slide">
                             <h3>Pause & Deserve Horror Game</h3>

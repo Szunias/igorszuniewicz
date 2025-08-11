@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     try { document.body.style.background = 'transparent'; } catch(_) {}
   }
+  // removed floating hero name (reverted)
   removeTemplateBackground();
   // Observe dynamic insertions from template scripts
   const wrap = document.getElementById('wrapper');
@@ -212,19 +213,19 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       function waveFrom(centerX){
-        const speed = 0.28; // ms per px (szybsza fala)
+        const speed = 0.25; // ms per px (szybsza fala)
         ordered.forEach((r)=>{
           const rx = parseFloat(r.getAttribute('x')) + parseFloat(r.getAttribute('width'))/2;
           const ry = parseFloat(r.getAttribute('y'));
           const rw = parseFloat(r.getAttribute('width'));
           const rh = parseFloat(r.getAttribute('height'));
           const delay = Math.abs(rx - centerX) * speed;
-          const overlay = document.createElementNS(svgNS,'rect');
-          overlay.setAttribute('x', String(rx - rw/2)); overlay.setAttribute('y', String(ry)); overlay.setAttribute('width', String(rw)); overlay.setAttribute('height', String(rh)); overlay.setAttribute('rx', r.getAttribute('rx')||'8');
-          overlay.setAttribute('fill','url(#wave)'); overlay.style.opacity='0'; overlay.style.transition='opacity 180ms ease, transform 260ms ease';
-          overlay.style.transform='translateY(0)';
-          svg.appendChild(overlay);
-          setTimeout(()=>{ overlay.style.opacity='0.5'; overlay.style.transform='translateY(2px)'; setTimeout(()=>{ overlay.style.opacity='0'; setTimeout(()=> overlay.remove(), 200); }, 160); }, delay);
+          // multi-color sweeping gradient bar
+          const bar = document.createElementNS(svgNS,'rect');
+          bar.setAttribute('x', String(rx - rw/2)); bar.setAttribute('y', String(ry)); bar.setAttribute('width', String(rw)); bar.setAttribute('height', String(rh)); bar.setAttribute('rx', r.getAttribute('rx')||'8');
+          bar.setAttribute('fill','url(#wave)'); bar.style.opacity='0'; bar.style.transition='opacity 160ms ease, transform 220ms ease';
+          bar.style.transform='translateY(0)'; svg.appendChild(bar);
+          setTimeout(()=>{ bar.style.opacity='0.65'; bar.style.transform='translateY(1px)'; setTimeout(()=>{ bar.style.opacity='0'; setTimeout(()=> bar.remove(), 160); }, 140); }, delay);
         });
       }
       size(); window.addEventListener('resize', size);
@@ -423,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <img src="${base}images/amorak.png" alt="">
     <img src="${base}images/plugins.jpg" alt="">
     <img src="${base}images/maxresdefault.jpg" alt="">
-    <img src="${base}images/nottodaydar.png" alt="">
+    <img src="${base}images/NotTodayGameLogo.png" alt="">
   `;
   document.body.appendChild(navPrev);
   const projectsLink = document.querySelector('#nav ul.links a[href*="projects/index.html"]');

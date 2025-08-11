@@ -8,7 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
   let currentSlide = 0;
   let isTransitioning = false;
   // Ensure single active slide at start
-  slides.forEach((s,i)=>{ s.classList.toggle('active', i===0); });
+  slides.forEach((s,i)=>{
+    s.classList.toggle('active', i===0);
+    if (i!==0){ s.style.opacity='0'; s.style.visibility='hidden'; s.style.pointerEvents='none'; }
+  });
 
   function goToSlide(index) {
     // guard
@@ -17,14 +20,18 @@ document.addEventListener("DOMContentLoaded", function() {
     if (index === currentSlide) return;
     isTransitioning = true;
     // hide previous fully before showing next
-    slides[currentSlide].classList.remove('active');
-    slides[currentSlide].style.transition = 'opacity 350ms ease-in-out';
+    const prev = slides[currentSlide];
+    prev.classList.remove('active');
+    prev.style.transition = 'opacity 250ms ease-in-out';
+    prev.style.opacity = '0'; prev.style.visibility='hidden'; prev.style.pointerEvents='none';
     // ensure only one visible at a time
     slides.forEach((s,i)=>{ if (i!==currentSlide) { s.style.opacity = '0'; s.style.visibility='hidden'; s.style.pointerEvents='none'; }});
     currentSlide = (index + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-    slides[currentSlide].style.opacity='1'; slides[currentSlide].style.visibility='visible'; slides[currentSlide].style.pointerEvents='auto';
-    setTimeout(()=>{ isTransitioning = false; }, 420);
+    const next = slides[currentSlide];
+    next.style.transition = 'opacity 250ms ease-in-out';
+    next.classList.add('active');
+    next.style.opacity='1'; next.style.visibility='visible'; next.style.pointerEvents='auto';
+    setTimeout(()=>{ isTransitioning = false; }, 280);
   }
 
   let autoTimer = setInterval(() => {
