@@ -335,7 +335,14 @@ document.addEventListener('DOMContentLoaded', function() {
   toast.className = 'lang-toast';
   document.body.appendChild(toast);
   // Persistent language badge in top-right
-  const langBadge = document.querySelector('.lang-badge') || (()=>{ const b=document.createElement('div'); b.className='lang-badge'; b.innerHTML = '<span class="flag">🇬🇧</span><span class="code">EN</span>'; b.style.cssText='position:fixed;top:14px;right:16px;z-index:2147483647;background:rgba(10,16,22,.92);color:#e9f7ff;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:6px 10px;font-weight:700;display:inline-flex;align-items:center;gap:6px;letter-spacing:.2px'; document.body.appendChild(b); return b; })();
+  const langBadge = document.querySelector('.lang-badge') || (()=>{ const b=document.createElement('div'); b.className='lang-badge'; b.style.cssText='position:fixed;top:14px;right:16px;z-index:2147483647;background:rgba(10,16,22,.92);color:#e9f7ff;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:6px 10px;font-weight:700;display:inline-flex;align-items:center;gap:6px;letter-spacing:.2px;cursor:pointer;'; document.body.appendChild(b); return b; })();
+
+  function flagSvg(lang){
+    if (lang==='pl') return '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" viewBox="0 0 3 2"><rect width="3" height="1" fill="#fff"/><rect y="1" width="3" height="1" fill="#dc143c"/></svg>';
+    if (lang==='nl') return '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" viewBox="0 0 3 2"><rect width="3" height="2" fill="#21468B"/><rect width="3" height="1.333" fill="#fff"/><rect width="3" height="0.666" fill="#AE1C28"/></svg>';
+    // simplified UK flag (no diagonals) to keep size tiny
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" viewBox="0 0 18 12"><rect width="18" height="12" fill="#012169"/><rect x="0" y="5" width="18" height="2" fill="#fff"/><rect x="8" y="0" width="2" height="12" fill="#fff"/><rect x="0" y="5.5" width="18" height="1" fill="#C8102E"/><rect x="8.5" y="0" width="1" height="12" fill="#C8102E"/></svg>';
+  }
 
   // Minimal i18n map for common UI strings (extend as needed)
   const I18N = {
@@ -491,9 +498,8 @@ document.addEventListener('DOMContentLoaded', function() {
     translatePage(l);
     if (!silent) showLangToast(l);
     // update badge
-    const f = (l==='nl'?'🇧🇪': l==='en'?'🇬🇧':'🇵🇱');
     const c = l.toUpperCase();
-    langBadge.innerHTML = '<span class="flag">'+f+'</span><span class="code">'+c+'</span>';
+    langBadge.innerHTML = '<span class="flag" style="display:inline-block;vertical-align:middle">'+flagSvg(l)+'</span><span class="code">'+c+'</span>';
   }
   if (toggleBtn && menu){
     const current = localStorage.getItem(LANG_KEY) || 'en';
@@ -505,6 +511,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.addEventListener('click', (e)=>{ if (!e.target.closest('.lang-switch')){ document.querySelector('.lang-switch').classList.remove('open'); menu.style.display='none'; } });
   }
+
+  // Allow clicking the top-right badge to cycle language
+  langBadge.addEventListener('click', ()=>{
+    const order=['en','pl','nl'];
+    const cur = (localStorage.getItem(LANG_KEY) || 'en');
+    const next = order[(order.indexOf(cur)+1)%order.length];
+    setLang(next);
+  });
 });
 
 document.addEventListener('DOMContentLoaded', function() {
