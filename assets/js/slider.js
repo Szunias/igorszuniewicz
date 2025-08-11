@@ -12,11 +12,14 @@ document.addEventListener("DOMContentLoaded", function() {
   function goToSlide(index) {
     // guard
     if (!slides.length) return;
-    // fade out current and force reflow to avoid caption overlap
+    // hide previous fully before showing next
     slides[currentSlide].classList.remove('active');
-    void slides[currentSlide].offsetWidth;
+    slides[currentSlide].style.transition = 'opacity 350ms ease-in-out';
+    // ensure only one visible at a time
+    slides.forEach((s,i)=>{ if (i!==currentSlide) { s.style.opacity = '0'; s.style.visibility='hidden'; s.style.pointerEvents='none'; }});
     currentSlide = (index + slides.length) % slides.length;
     slides[currentSlide].classList.add('active');
+    slides[currentSlide].style.opacity='1'; slides[currentSlide].style.visibility='visible'; slides[currentSlide].style.pointerEvents='auto';
   }
 
   let autoTimer = setInterval(() => {

@@ -637,15 +637,15 @@ body.page-enter #wrapper { opacity: 0; transform: translateY(4px); }
 /* Click visual audio-ripple */
 .click-fx { position: fixed; inset: 0; z-index: 100; pointer-events: none; overflow: hidden; }
 .click-fx .ripple {
-  position: absolute; width: 14px; height: 14px; border-radius: 50%;
-  border: 2px solid rgba(24,191,239,0.6);
-  box-shadow: 0 0 18px rgba(24,191,239,0.35);
+  position: absolute; width: 10px; height: 10px; border-radius: 50%;
+  border: 1.5px solid rgba(24,191,239,0.45);
+  box-shadow: 0 0 10px rgba(24,191,239,0.25);
   transform: translate(-50%, -50%) scale(1);
-  animation: rippleOut 650ms ease-out forwards;
+  animation: rippleOut 520ms ease-out forwards;
 }
-.click-fx .r2 { border-color: rgba(154,108,255,0.5); animation-delay: 60ms; }
-.click-fx .r3 { border-color: rgba(40,120,160,0.5); animation-delay: 120ms; }
-@keyframes rippleOut { to { transform: translate(-50%, -50%) scale(16); opacity: 0; } }
+.click-fx .r2 { border-color: rgba(154,108,255,0.4); animation-delay: 50ms; }
+.click-fx .r3 { border-color: rgba(40,120,160,0.4); animation-delay: 100ms; }
+@keyframes rippleOut { to { transform: translate(-50%, -50%) scale(10); opacity: 0; } }
 .bg-orbs .orb {
   position: absolute; width: 420px; height: 420px; border-radius: 50%;
   filter: blur(60px); opacity: 0.18; mix-blend-mode: screen;
