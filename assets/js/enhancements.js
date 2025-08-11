@@ -123,48 +123,86 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, { passive: true });
 
-  // Subtle audio-reactive marquee under logo (appears at top; hides on scroll)
+  // Top piano-keys animation (replaces waveform). Hides on scroll; shows on homepage
   (function(){
-    // Layered audio waveform (canvas) — interactive and more prominent
-    const wrap=document.createElement('div'); wrap.className='logo-audio';
-    const canvas=document.createElement('canvas'); wrap.appendChild(canvas); document.body.appendChild(wrap);
-    const ctx=canvas.getContext('2d');
-    const DPR=Math.min(window.devicePixelRatio||1,2);
-    function size(){
-      const cssW=Math.min(window.innerWidth*0.9, 1400);
-      const cssH=180;
-      canvas.style.width=cssW+'px'; canvas.style.height=cssH+'px';
-      canvas.width=Math.floor(cssW*DPR); canvas.height=Math.floor(cssH*DPR);
-    }
-    size(); window.addEventListener('resize', size);
-    let t=0, mx=0.5, energy=1;
-    window.addEventListener('pointermove', (e)=>{ mx=e.clientX/window.innerWidth; }, {passive:true});
-    window.addEventListener('wheel', (e)=>{ energy=Math.min(3, energy + Math.abs(e.deltaY)*0.002); }, {passive:true});
-
-    function wave(yBase, amp, speed, freq, stops, alpha){
-      const w=canvas.width, h=canvas.height; const k=freq*2*Math.PI/w;
-      ctx.beginPath();
-      for(let x=0;x<=w;x+=4*DPR){
-        const ph=t*speed + x*k*(1+mx*0.5);
-        const y=yBase + Math.sin(ph)*amp + Math.sin(ph*0.45)*amp*0.35;
-        if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    try {
+      const wrap=document.createElement('div'); wrap.className='logo-audio'; document.body.appendChild(wrap);
+      const svgNS='http://www.w3.org/2000/svg';
+      const svg=document.createElementNS(svgNS,'svg'); wrap.appendChild(svg);
+      let keysWhite=[]; let keysBlack=[];
+      const OCT_WHITE=7; const OCT_BLACK_PATTERN=[0,1,3,4,5];
+      const octaves=2;
+      function build(){
+        const cssW=Math.min(window.innerWidth*0.9, 1400);
+        const cssH=180; svg.style.width=cssW+'px'; svg.style.height=cssH+'px';
+        svg.setAttribute('viewBox', '0 0 '+cssW+' '+cssH);
+        svg.innerHTML=''; keysWhite=[]; keysBlack=[];
+        const margin=16; const areaW=cssW - margin*2; const whiteCount=OCT_WHITE*octaves; const wW=areaW/whiteCount; const wH=cssH-26; const bW=wW*0.6; const bH=wH*0.62;
+        // defs
+        const defs=document.createElementNS(svgNS,'defs');
+        const gradW=document.createElementNS(svgNS,'linearGradient'); gradW.setAttribute('id','kw'); gradW.setAttribute('x1','0'); gradW.setAttribute('y1','0'); gradW.setAttribute('x2','0'); gradW.setAttribute('y2','1'); gradW.innerHTML='<stop offset="0%" stop-color="#f7fbff"/><stop offset="100%" stop-color="#cfe6f3"/>';
+        const gradB=document.createElementNS(svgNS,'linearGradient'); gradB.setAttribute('id','kb'); gradB.setAttribute('x1','0'); gradB.setAttribute('y1','0'); gradB.setAttribute('x2','0'); gradB.setAttribute('y2','1'); gradB.innerHTML='<stop offset="0%" stop-color="#0e1821"/><stop offset="100%" stop-color="#071018"/>';
+        const holoGrad=document.createElementNS(svgNS,'linearGradient'); holoGrad.setAttribute('id','holo'); holoGrad.setAttribute('x1','0'); holoGrad.setAttribute('y1','0'); holoGrad.setAttribute('x2','1'); holoGrad.setAttribute('y2','0');
+        holoGrad.innerHTML='<stop offset="0%" stop-color="#18bfef" stop-opacity="0"/><stop offset="50%" stop-color="#9a6cff" stop-opacity="0.55"/><stop offset="100%" stop-color="#ff6ea9" stop-opacity="0"/>';
+        defs.appendChild(gradW); defs.appendChild(gradB); defs.appendChild(holoGrad); svg.appendChild(defs);
+        // white keys
+        for(let i=0;i<whiteCount;i++){
+          const x=margin + i*wW; const r=document.createElementNS(svgNS,'rect');
+          r.setAttribute('x',x); r.setAttribute('y',26); r.setAttribute('width',wW-2); r.setAttribute('height',wH);
+          r.setAttribute('rx','4'); r.setAttribute('fill','url(#kw)'); r.setAttribute('stroke','rgba(17,40,60,0.35)'); r.setAttribute('stroke-width','1');
+          r.style.transition='transform 120ms ease, filter 200ms ease';
+          svg.appendChild(r); keysWhite.push(r);
+      r.addEventListener('pointerenter', ()=> pressKey(r,false));
+      r.addEventListener('pointerdown', ()=> pressKeyClick(r,false));
+        }
+        // black keys
+        for(let oc=0; oc<octaves; oc++){
+          OCT_BLACK_PATTERN.forEach(bp=>{
+            const wi = oc*OCT_WHITE + bp; const x = margin + (wi+1)*wW - bW/2; const r=document.createElementNS(svgNS,'rect');
+            r.setAttribute('x',x); r.setAttribute('y',26); r.setAttribute('width',bW); r.setAttribute('height',bH);
+            r.setAttribute('rx','3'); r.setAttribute('fill','url(#kb)'); r.setAttribute('stroke','rgba(255,255,255,0.08)'); r.setAttribute('stroke-width','1');
+            r.style.transition='transform 120ms ease, filter 200ms ease';
+            svg.appendChild(r); keysBlack.push(r);
+            r.addEventListener('pointerenter', ()=> pressKey(r,true));
+            r.addEventListener('pointerdown', ()=> pressKeyClick(r,true));
+          });
+        }
+        // holographic sweeping shine overlay
+        const shine=document.createElementNS(svgNS,'rect');
+        shine.setAttribute('x', String(margin-120)); shine.setAttribute('y','26'); shine.setAttribute('width','120'); shine.setAttribute('height', String(wH));
+        shine.setAttribute('fill','url(#holo)'); shine.setAttribute('opacity','0.7'); svg.appendChild(shine);
+        const anim=document.createElementNS(svgNS,'animate'); anim.setAttribute('attributeName','x'); anim.setAttribute('from', String(margin-120)); anim.setAttribute('to', String(margin+areaW)); anim.setAttribute('dur','6s'); anim.setAttribute('repeatCount','indefinite'); shine.appendChild(anim);
       }
-      const grd=ctx.createLinearGradient(0,h*0.5,w,h*0.5);
-      stops.forEach(([o,c])=>grd.addColorStop(o,c));
-      ctx.strokeStyle=grd; ctx.globalAlpha=alpha; ctx.lineWidth=3*DPR; ctx.stroke();
-    }
-    function draw(){
-      const w=canvas.width, h=canvas.height; ctx.clearRect(0,0,w,h);
-      ctx.save();
-      wave(h*0.58, 26*DPR*energy, 0.06, 0.010, [[0,'#18bfef'],[0.5,'#9a6cff'],[1,'#ff6ea9']], 0.95);
-      wave(h*0.58, 42*DPR*energy, 0.045, 0.008, [[0,'rgba(24,191,239,0.65)'],[1,'rgba(154,108,255,0.65)']], 0.8);
-      wave(h*0.58, 58*DPR*energy, 0.03,  0.006, [[0,'rgba(24,191,239,0.35)'],[1,'rgba(255,110,169,0.35)']], 0.7);
-      ctx.restore();
-      energy=Math.max(1, energy*0.985); t+=1; requestAnimationFrame(draw);
-    }
-    draw();
-    function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome=!!document.getElementById('projects-showcase'); wrap.classList.toggle('visible', onHome && y<140); if(!onHome) wrap.classList.remove('visible'); }
-    onScroll(); window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('pageshow', onScroll);
+      function pressKey(el, isBlack){
+        if (!el) return; el.style.transform='translateY(3px)'; el.style.filter='drop-shadow(0 8px 18px rgba(24,191,239,0.35))';
+        setTimeout(()=>{ el.style.transform=''; el.style.filter=''; }, 160);
+      }
+      function pressKeyClick(el, isBlack){
+        if (!el) return;
+        // Stronger press + brighter glow
+        el.style.transform='translateY(6px)'; el.style.filter='drop-shadow(0 14px 36px rgba(24,191,239,0.75))';
+        setTimeout(()=>{ el.style.transform=''; el.style.filter=''; }, 260);
+        // Ripple circle
+        const cx = parseFloat(el.getAttribute('x')) + parseFloat(el.getAttribute('width'))/2;
+        const cy = parseFloat(el.getAttribute('y')) + (isBlack? parseFloat(el.getAttribute('height'))*0.7 : parseFloat(el.getAttribute('height'))*0.9);
+        const circ = document.createElementNS(svgNS,'circle');
+        circ.setAttribute('cx', String(cx)); circ.setAttribute('cy', String(cy)); circ.setAttribute('r','3');
+        circ.setAttribute('fill','none'); circ.setAttribute('stroke','url(#holo)'); circ.setAttribute('stroke-width','3'); circ.setAttribute('opacity','1');
+        svg.appendChild(circ);
+        const a1=document.createElementNS(svgNS,'animate'); a1.setAttribute('attributeName','r'); a1.setAttribute('from','3'); a1.setAttribute('to','46'); a1.setAttribute('dur','520ms'); a1.setAttribute('fill','freeze');
+        const a2=document.createElementNS(svgNS,'animate'); a2.setAttribute('attributeName','opacity'); a2.setAttribute('from','1'); a2.setAttribute('to','0'); a2.setAttribute('dur','520ms'); a2.setAttribute('fill','freeze');
+        a2.addEventListener('endEvent', ()=> circ.remove());
+        circ.appendChild(a1); circ.appendChild(a2); a1.beginElement(); a2.beginElement();
+      }
+      build(); window.addEventListener('resize', build);
+      // random arpeggio
+      let rndTimer=null; function start(){ if (rndTimer) return; rndTimer=setInterval(()=>{
+        const pool = Math.random()<0.55 ? keysBlack : keysWhite; const el = pool[Math.floor(Math.random()*pool.length)]; pressKey(el, pool===keysBlack);
+      }, 360);} function stop(){ if (rndTimer){ clearInterval(rndTimer); rndTimer=null; } }
+      start();
+      function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome=!!document.getElementById('projects-showcase'); const vis = onHome && y<140; wrap.classList.toggle('visible', vis); if(!vis) stop(); else start(); if (vis) wrap.style.pointerEvents='auto'; }
+      onScroll(); window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('pageshow', onScroll);
+    } catch(e){ console && console.warn && console.warn('piano banner disabled', e); }
   })();
 
   // Intro overlay on first visit (session-based)
@@ -414,12 +452,29 @@ document.addEventListener('DOMContentLoaded', function() {
   } catch(_){}
   // Persistent language badge in top-right
   const badgeWrap = document.querySelector('.lang-badge-wrap') || (()=>{ const w=document.createElement('div'); w.className='lang-badge-wrap'; document.body.appendChild(w); return w; })();
-  const langBadge = document.querySelector('.lang-badge') || (()=>{ const b=document.createElement('div'); b.className='lang-badge'; b.style.cssText='background:rgba(10,16,22,.92);color:#e9f7ff;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:6px 10px;font-weight:700;display:inline-flex;align-items:center;gap:6px;letter-spacing:.2px;cursor:pointer;'; badgeWrap.appendChild(b); return b; })();
-  const badgeMenu = document.querySelector('.lang-badge-menu') || (()=>{ 
-    const m=document.createElement('div'); m.className='lang-badge-menu';
-    const items=[{l:'en',label:'English'},{l:'pl',label:'Polski'},{l:'nl',label:'Nederlands'}];
-    items.forEach(it=>{ const b=document.createElement('button'); b.setAttribute('data-lang', it.l); b.innerHTML = '<span class="flag-svg">'+flagSvg(it.l)+'</span><span class="label">'+it.label+'</span>'; m.appendChild(b); });
-    badgeWrap.appendChild(m); return m; })();
+  const langBadge = document.querySelector('.lang-badge') || (()=>{ const b=document.createElement('div'); b.className='lang-badge'; badgeWrap.appendChild(b); return b; })();
+  const badgeMenu = document.querySelector('.lang-badge-menu') || (()=>{ const m=document.createElement('div'); m.className='lang-badge-menu'; badgeWrap.appendChild(m); return m; })();
+  // Fixed always-visible switcher (separate from old dropdown CSS)
+  const fixedLang = document.getElementById('lang-fixed') || (function(){
+    const box = document.createElement('div');
+    box.id = 'lang-fixed';
+    box.style.cssText = 'position:fixed;top:14px;right:14px;z-index:2147483647;display:flex;gap:8px;background:rgba(10,16,22,.92);border:1px solid rgba(255,255,255,.14);padding:6px;border-radius:999px;backdrop-filter:saturate(1.2) blur(4px)';
+    const langs = ['en','pl','nl'];
+    langs.forEach(l=>{
+      const btn = document.createElement('button');
+      btn.type='button'; btn.setAttribute('data-lang', l);
+      const flagWrap = document.createElement('span');
+      flagWrap.style.cssText='width:24px;height:16px;display:inline-flex;align-items:center;justify-content:center;';
+      flagWrap.innerHTML = flagSvg(l);
+      const label = document.createElement('span');
+      label.textContent = l.toUpperCase();
+      label.style.cssText='margin-left:6px;font-weight:800;letter-spacing:.2px;line-height:1;color:#e9f7ff;display:inline-block;';
+      btn.appendChild(flagWrap);
+      btn.appendChild(label);
+      btn.style.cssText='display:inline-flex;align-items:center;gap:8px;padding:8px 12px;background:transparent;border:0;border-radius:999px;cursor:pointer;line-height:1;';
+      box.appendChild(btn);
+    });
+    document.body.appendChild(box); return box; })();
 
   function flagSvg(lang){
     // Use width/height 100% so parent spans can size the flag
@@ -700,9 +755,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Projects Showcase (index)
     if (document.getElementById('projects-showcase')){
+      // Home page title per language
+      try { document.title = (lang==='pl'?'Igor Szuniewicz — Portfolio': lang==='nl'?'Igor Szuniewicz — Portfolio':'Igor Szuniewicz - Professional Portfolio'); } catch(_){ }
       const sh2 = document.querySelector('#projects-showcase h2'); if (sh2) sh2.textContent = I18N.showcase_title[lang];
       const sLead = document.querySelector('#projects-showcase header.major p');
       if (sLead) sLead.textContent = I18N.showcase_lead[lang];
+      // Slider (titles + descriptions)
+      const sliderTexts = [
+        { h:{en:'Most Recent Single', pl:'Najnowszy singiel', nl:'Meest recente single'}, d:{en:'My latest musical release. Click to listen.', pl:'Mój najnowszy utwór. Kliknij, aby posłuchać.', nl:'Mijn nieuwste release. Klik om te luisteren.'}},
+        { h:{en:'Ray Animation Music Composition', pl:'Ray Animation — kompozycja muzyki', nl:'Ray Animation — muziekcompositie'}, d:{en:'Original score for a dreamy character journey.', pl:'Oryginalna muzyka do onirycznej podróży bohatera.', nl:'Originele score voor een dromerige personagereis.'}},
+        { h:{en:'Akantilado Animation Sound Design', pl:'Akantilado — sound design', nl:'Akantilado — sounddesign'}, d:{en:'Collaborative sound design for a 3D animation.', pl:'Współtworzony sound design do animacji 3D.', nl:'Samenwerking aan sounddesign voor een 3D‑animatie.'}},
+        { h:{en:'Amorak Sound Design', pl:'Amorak — sound design', nl:'Amorak — sounddesign'}, d:{en:'Complete sound design for the 3D animation "Amorak".', pl:'Kompletny sound design do animacji 3D „Amorak”.', nl:'Volledig sounddesign voor de 3D‑animatie “Amorak”.'}},
+        { h:{en:'NotTodayDarling Implementation/Code', pl:'NotTodayDarling — implementacja/kod', nl:'NotTodayDarling — implementatie/code'}, d:{en:'Retro-inspired audio implementation for a narrative game.', pl:'Retro‑inspirowana implementacja audio do gry narracyjnej.', nl:'Retro‑geïnspireerde audio‑implementatie voor een verhalende game.'}},
+        { h:{en:'Pause & Deserve Horror Game', pl:'Pause & Deserve — gra grozy', nl:'Pause & Deserve — horror game'}, d:{en:'Solo horror game development project.', pl:'Solowy projekt tworzenia gry grozy.', nl:'Solo‑project: ontwikkeling van een horror game.'}},
+        { h:{en:'Richter Animation Sound Design', pl:'Richter — sound design', nl:'Richter — sounddesign'}, d:{en:'Sound Design for 3D animation using minimal recording gear.', pl:'Sound design do animacji 3D z użyciem minimalnego sprzętu.', nl:'Sounddesign voor 3D‑animatie met minimale opname‑gear.'}}
+      ];
+      const slides = document.querySelectorAll('#projects-showcase .slider .slide');
+      slides.forEach((slide, i)=>{
+        const t = sliderTexts[i]; if (!t) return;
+        const h = slide.querySelector('h3'); if (h) h.textContent = (t.h[lang]||t.h.en);
+        const p = slide.querySelector('.slide-description'); if (p) p.textContent = (t.d[lang]||t.d.en);
+      });
       // Translate two highlighted project cards
       const m1 = document.querySelector('#projects-showcase .projects-grid article:nth-of-type(1)');
       if (m1){
@@ -784,13 +857,26 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', (e)=>{ if (!e.target.closest('.lang-switch')){ document.querySelector('.lang-switch').classList.remove('open'); menu.style.display='none'; } });
   }
 
-  // Allow clicking the top-right badge to cycle language
-  // Badge opens dropdown; select language from menu
-  langBadge.addEventListener('click', ()=>{ syncActive(); badgeMenu.classList.toggle('open'); });
-  function syncActive(){ const current=localStorage.getItem(LANG_KEY)||'en'; badgeMenu.querySelectorAll('button').forEach(btn=>{ btn.classList.toggle('active', btn.getAttribute('data-lang')===current); }); }
-  badgeMenu.addEventListener('click', (e)=>{ const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); syncActive(); badgeMenu.classList.remove('open'); });
+  // Inline menu: highlight active and switch directly
+  function syncActive(){
+    const current=localStorage.getItem(LANG_KEY)||'en';
+    // old dropdown (if exists)
+    badgeMenu.querySelectorAll('button').forEach(btn=>{ const on = btn.getAttribute('data-lang')===current; btn.classList.toggle('active', on); btn.style.background = on ? 'rgba(24,191,239,0.18)' : 'transparent'; });
+    // fixed switcher
+    const fixed = document.getElementById('lang-fixed');
+    if (fixed){
+      fixed.querySelectorAll('button').forEach(btn=>{
+        const on = btn.getAttribute('data-lang')===current;
+        btn.style.background = on ? 'rgba(24,191,239,0.22)' : 'transparent';
+        btn.style.outline = on ? '1px solid rgba(24,191,239,0.45)' : 'none';
+      });
+    }
+  }
+  badgeMenu.addEventListener('click', (e)=>{ const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); syncActive(); });
+  const fixed = document.getElementById('lang-fixed');
+  if (fixed){ fixed.addEventListener('click', (e)=>{ const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); syncActive(); }); }
   syncActive();
-  document.addEventListener('click', (e)=>{ if (!e.target.closest('.lang-badge-wrap')) badgeMenu.classList.remove('open'); });
+  // no dropdown behavior anymore
 
   // One-time post-load nudge pointing to the language switcher (not during intro)
   (function(){

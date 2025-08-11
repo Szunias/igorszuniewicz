@@ -6,11 +6,15 @@ document.addEventListener("DOMContentLoaded", function() {
   const prevBtn = slider.querySelector('.slider-nav.prev');
   const nextBtn = slider.querySelector('.slider-nav.next');
   let currentSlide = 0;
+  // Ensure single active slide at start
+  slides.forEach((s,i)=>{ s.classList.toggle('active', i===0); });
 
   function goToSlide(index) {
     // guard
     if (!slides.length) return;
+    // fade out current and force reflow to avoid caption overlap
     slides[currentSlide].classList.remove('active');
+    void slides[currentSlide].offsetWidth;
     currentSlide = (index + slides.length) % slides.length;
     slides[currentSlide].classList.add('active');
   }
@@ -39,4 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
       resetTimer();
     });
   }
+  // Pause on hover to reduce rapid transitions
+  slider.addEventListener('mouseenter', ()=> clearInterval(autoTimer));
+  slider.addEventListener('mouseleave', ()=> resetTimer());
 });
