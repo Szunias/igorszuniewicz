@@ -643,6 +643,52 @@ document.addEventListener('DOMContentLoaded', function() {
         if (opts[2]) opts[2].textContent = I18N.opt_title_az[lang];
         if (opts[3]) opts[3].textContent = I18N.opt_title_za[lang];
       }
+
+      // Translate individual project cards (titles + blurbs)
+      const CARDS = {
+        'Dynamic Music System': {
+          h: { en:'Dynamic Music System (Wwise & UE5)', pl:'System muzyki dynamicznej (Wwise & UE5)', nl:'Dynamisch muzieksysteem (Wwise & UE5)' },
+          p: { en:'Adaptive music with states, layers, and beat-accurate transitions.', pl:'Adaptacyjna muzyka ze stanami, warstwami i przejściami w takcie.', nl:'Adaptieve muziek met states, lagen en beat‑nauwkeurige overgangen.' }
+        },
+        'Akantilado': {
+          h: { en:'Akantilado — Sound Design', pl:'Akantilado — Sound design', nl:'Akantilado — Sounddesign' },
+          p: { en:'Complete foley and ambience for 3D animation.', pl:'Kompletny foley i ambience do animacji 3D.', nl:'Complete foley en ambience voor 3D‑animatie.' }
+        },
+        'Amorak': {
+          h: { en:'Amorak — Sound Design', pl:'Amorak — Sound design', nl:'Amorak — Sounddesign' },
+          p: { en:'Soundscapes and character audio for animation.', pl:'Soundscapes i audio postaci do animacji.', nl:'Soundscapes en character‑audio voor animatie.' }
+        },
+        'Ray': {
+          h: { en:'Ray — Music Composition', pl:'Ray — Kompozycja muzyki', nl:'Ray — Muziekcompositie' },
+          p: { en:'Original score supporting narrative beats.', pl:'Oryginalna muzyka wspierająca rytm narracji.', nl:'Originele score die de narratieve beats ondersteunt.' }
+        },
+        'NotTodayDarling': {
+          h: { en:'Not Today, Darling! — Game Audio', pl:'Not Today, Darling! — Audio do gry', nl:'Not Today, Darling! — Game‑audio' },
+          p: { en:'Retro-inspired audio implementation.', pl:'Retro‑inspirowana implementacja audio.', nl:'Retro‑geïnspireerde audio‑implementatie.' }
+        },
+        'Pause & Deserve': {
+          h: { en:'Pause & Deserve — Solo Game', pl:'Pause & Deserve — Gra solo', nl:'Pause & Deserve — Solo game' },
+          p: { en:'Horror game concept and audio design.', pl:'Koncept gry grozy i sound design.', nl:'Horrorgame‑concept en sounddesign.' }
+        },
+        'Richter': {
+          h: { en:'Richter — Sound Design', pl:'Richter — Sound design', nl:'Richter — Sounddesign' },
+          p: { en:'Sound design with minimal recording gear.', pl:'Sound design przy minimalnym sprzęcie nagraniowym.', nl:'Sounddesign met minimale opname‑gear.' }
+        },
+        '3D Audio Plugin Suite': {
+          h: { en:'3D Audio Plugin Suite', pl:'Zestaw wtyczek 3D Audio', nl:'3D Audio Plugin Suite' },
+          p: { en:'HRTF spatialization and convolution reverb plugins.', pl:'Wtyczki: HRTF i pogłos splotowy.', nl:'Plug‑ins voor HRTF‑spatialisatie en convolution‑reverb.' }
+        }
+      };
+      document.querySelectorAll('#projects-list .project-card').forEach(card=>{
+        const key = card.getAttribute('data-title');
+        const map = key && CARDS[key]; if (!map) return;
+        const h = card.querySelector('h3'); if (h) h.textContent = map.h[lang] || map.h.en;
+        const p = card.querySelector('p'); if (p) p.textContent = map.p[lang] || map.p.en;
+        // Ensure NTD logo image is used
+        if (key==='NotTodayDarling'){
+          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../images/NotTodayGameLogo.png'); img.src = '../images/NotTodayGameLogo.png'; img.alt='Not Today, Darling!'; }
+        }
+      });
     }
 
     // Hero roles & pills (index)
