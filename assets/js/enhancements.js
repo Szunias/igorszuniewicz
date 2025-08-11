@@ -678,6 +678,39 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('[data-i18n]').forEach(el=>{ const key=el.getAttribute('data-i18n'); const map=A[key]; if (!map) return; const val=map[lang]||map['en']; if (/^<.*>/.test(val)) el.innerHTML=val; else el.textContent=val; });
     }
 
+    // Scholarly page translations
+    if (location.pathname.endsWith('/scholarly.html')){
+      const H = {
+        title: { en:'Scholarly Output', pl:'Prace naukowe', nl:'Wetenschappelijke output' },
+        lead: { en:'Selected coursework and academic projects with technical notes.', pl:'Wybrane prace i projekty akademickie z notatkami technicznymi.', nl:'Geselecteerde cursussen en academische projecten met technische notities.' },
+        ray: { en:'Ray — Music Composition', pl:'Ray — Kompozycja muzyki', nl:'Ray — Muziekcompositie' },
+        ak: { en:'Akantilado — Sound Design', pl:'Akantilado — Sound design', nl:'Akantilado — Sounddesign' },
+        am: { en:'Amorak — Sound Design', pl:'Amorak — Sound design', nl:'Amorak — Sounddesign' },
+        ntd: { en:'Not Today, Darling! — Game Audio', pl:'Not Today, Darling! — Audio do gry', nl:'Not Today, Darling! — Game‑audio' },
+        pd: { en:'Pause & Deserve — Solo Game', pl:'Pause & Deserve — Gra solo', nl:'Pause & Deserve — Solo game' },
+        ri: { en:'Richter — Sound Design', pl:'Richter — Sound design', nl:'Richter — Sounddesign' },
+      };
+      const h2 = document.querySelector('#main header.major h2'); if (h2) h2.textContent = H.title[lang];
+      const lead = document.querySelector('#main header.major p'); if (lead) lead.textContent = H.lead[lang];
+      // Update article headings and NTD image/link
+      const map = [
+        ['a[href="projects/ray-animation.html"]','ray'],
+        ['a[href="projects/akantilado.html"]','ak'],
+        ['a[href="projects/amorak.html"]','am'],
+        ['a[href="projects/not-today-darling.html"]','ntd'],
+        ['a[href="projects/pause-and-deserve.html"]','pd'],
+        ['a[href="projects/richter.html"]','ri']
+      ];
+      map.forEach(([sel,key])=>{
+        const a = document.querySelector(sel);
+        if (!a) return;
+        const h = a.closest('article')?.querySelector('header h3 a'); if (h && H[key]) h.textContent = H[key][lang];
+      });
+      // Replace NTD image to logo
+      const ntdImg = document.querySelector('a[href="projects/not-today-darling.html"] img');
+      if (ntdImg) { ntdImg.src = 'images/NotTodayGameLogo.png'; ntdImg.alt='Not Today, Darling!'; }
+    }
+
     // Extras page translations
     if (location.pathname.endsWith('/extras.html') || /extras\.html$/i.test(location.pathname)){
       const h2 = document.querySelector('#main header.major h2'); if (h2) h2.textContent = I18N.extras_title[lang];
@@ -801,7 +834,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { h:{en:'Ray Animation Music Composition', pl:'Ray Animation — kompozycja muzyki', nl:'Ray Animation — muziekcompositie'}, d:{en:'Original score for a dreamy character journey.', pl:'Oryginalna muzyka do onirycznej podróży bohatera.', nl:'Originele score voor een dromerige personagereis.'}},
         { h:{en:'Akantilado Animation Sound Design', pl:'Akantilado — sound design', nl:'Akantilado — sounddesign'}, d:{en:'Collaborative sound design for a 3D animation.', pl:'Współtworzony sound design do animacji 3D.', nl:'Samenwerking aan sounddesign voor een 3D‑animatie.'}},
         { h:{en:'Amorak Sound Design', pl:'Amorak — sound design', nl:'Amorak — sounddesign'}, d:{en:'Complete sound design for the 3D animation "Amorak".', pl:'Kompletny sound design do animacji 3D „Amorak”.', nl:'Volledig sounddesign voor de 3D‑animatie “Amorak”.'}},
-        { h:{en:'NotTodayDarling Implementation/Code', pl:'NotTodayDarling — implementacja/kod', nl:'NotTodayDarling — implementatie/code'}, d:{en:'Retro-inspired audio implementation for a narrative game.', pl:'Retro‑inspirowana implementacja audio do gry narracyjnej.', nl:'Retro‑geïnspireerde audio‑implementatie voor een verhalende game.'}},
+        { h:{en:'Not Today, Darling! — Game Audio', pl:'Not Today, Darling! — audio do gry', nl:'Not Today, Darling! — game‑audio'}, d:{en:'Local‑multiplayer side‑scroller. Click to view on itch.io.', pl:'Lokalny multiplayer side‑scroller. Kliknij, aby zobaczyć na itch.io.', nl:'Lokale multiplayer side‑scroller. Klik om te bekijken op itch.io.'}},
         { h:{en:'Pause & Deserve Horror Game', pl:'Pause & Deserve — gra grozy', nl:'Pause & Deserve — horror game'}, d:{en:'Solo horror game development project.', pl:'Solowy projekt tworzenia gry grozy.', nl:'Solo‑project: ontwikkeling van een horror game.'}},
         { h:{en:'Richter Animation Sound Design', pl:'Richter — sound design', nl:'Richter — sounddesign'}, d:{en:'Sound Design for 3D animation using minimal recording gear.', pl:'Sound design do animacji 3D z użyciem minimalnego sprzętu.', nl:'Sounddesign voor 3D‑animatie met minimale opname‑gear.'}}
       ];
