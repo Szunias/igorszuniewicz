@@ -125,31 +125,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Subtle audio-reactive marquee under logo (appears at top; hides on scroll)
   (function(){
-    // Waveform ribbon under logo (sine bezier path)
-    const svgNS='http://www.w3.org/2000/svg';
-    const svg=document.createElementNS(svgNS,'svg');
-    const wrap=document.createElement('div'); wrap.className='logo-audio'; wrap.appendChild(svg); document.body.appendChild(wrap);
-    svg.setAttribute('width','900'); svg.setAttribute('height','120');
-    svg.setAttribute('viewBox','0 0 900 120'); svg.setAttribute('preserveAspectRatio','none');
-    const grad=document.createElementNS(svgNS,'linearGradient'); grad.setAttribute('id','lg1'); grad.setAttribute('x1','0%'); grad.setAttribute('x2','100%');
-    const s1=document.createElementNS(svgNS,'stop'); s1.setAttribute('offset','0%'); s1.setAttribute('stop-color','#18bfef'); s1.setAttribute('stop-opacity','0.9');
-    const s2=document.createElementNS(svgNS,'stop'); s2.setAttribute('offset','50%'); s2.setAttribute('stop-color','#9a6cff'); s2.setAttribute('stop-opacity','0.8');
-    const s3=document.createElementNS(svgNS,'stop'); s3.setAttribute('offset','100%'); s3.setAttribute('stop-color','#ff6ea9'); s3.setAttribute('stop-opacity','0.8');
-    grad.appendChild(s1); grad.appendChild(s2); grad.appendChild(s3);
-    const defs=document.createElementNS(svgNS,'defs'); defs.appendChild(grad); svg.appendChild(defs);
-    const path=document.createElementNS(svgNS,'path'); path.setAttribute('fill','none'); path.setAttribute('stroke','url(#lg1)'); path.setAttribute('stroke-width','4'); path.setAttribute('stroke-linecap','round'); svg.appendChild(path);
-    let t=0; function draw(){
-      const w=900, h=120; const mid=h*0.6; const amp=18; const len=24; let d=`M0 ${mid}`;
-      for(let i=0;i<=len;i++){
-        const x=(w/len)*i; const y=mid + Math.sin((i/len)*Math.PI*2 + t*0.05)*amp + Math.sin((i/len)*Math.PI*6 + t*0.02)*amp*0.3;
-        const px=(w/len)*(i-0.5); const py=mid + Math.sin(((i-0.5)/len)*Math.PI*2 + t*0.05)*amp;
-        d += ` Q ${px} ${py} ${x} ${y}`;
-      }
-      path.setAttribute('d', d);
-      t+=1; requestAnimationFrame(draw);
+    // Particles orbiting note icons (audio-themed), subtle and elegant
+    const wrap=document.createElement('div'); wrap.className='logo-audio';
+    const canvas=document.createElement('canvas'); wrap.appendChild(canvas); document.body.appendChild(wrap);
+    const ctx=canvas.getContext('2d');
+    function size(){ canvas.width=900; canvas.height=120; } size();
+    const particles=Array.from({length:38}).map((_,i)=>({
+      r: 8+Math.random()*26,
+      a: Math.random()*Math.PI*2,
+      s: 0.004 + Math.random()*0.006,
+      hue: 190 + Math.random()*160
+    }));
+    function draw(){
+      const w=canvas.width, h=canvas.height; ctx.clearRect(0,0,w,h);
+      ctx.save(); ctx.translate(w/2,h*0.55);
+      particles.forEach(p=>{
+        p.a+=p.s; const x=Math.cos(p.a)*p.r*10; const y=Math.sin(p.a)*p.r*0.7;
+        const g=ctx.createRadialGradient(x,y,0,x,y,6);
+        g.addColorStop(0,`hsla(${p.hue},80%,70%,0.9)`); g.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,6,0,Math.PI*2); ctx.fill();
+      });
+      ctx.restore(); requestAnimationFrame(draw);
     }
     draw();
-    function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome = !!document.getElementById('projects-showcase'); wrap.classList.toggle('visible', onHome && y<140); if (!onHome) wrap.classList.remove('visible'); }
+    function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome=!!document.getElementById('projects-showcase'); wrap.classList.toggle('visible', onHome && y<140); if(!onHome) wrap.classList.remove('visible'); }
     onScroll(); window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('pageshow', onScroll);
   })();
 
@@ -399,7 +398,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   } catch(_){}
   // Persistent language badge in top-right
-  const langBadge = document.querySelector('.lang-badge') || (()=>{ const b=document.createElement('div'); b.className='lang-badge'; b.style.cssText='position:fixed;top:14px;right:16px;z-index:2147483647;background:rgba(10,16,22,.92);color:#e9f7ff;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:6px 10px;font-weight:700;display:inline-flex;align-items:center;gap:6px;letter-spacing:.2px;cursor:pointer;'; document.body.appendChild(b); return b; })();
+  const badgeWrap = document.querySelector('.lang-badge-wrap') || (()=>{ const w=document.createElement('div'); w.className='lang-badge-wrap'; document.body.appendChild(w); return w; })();
+  const langBadge = document.querySelector('.lang-badge') || (()=>{ const b=document.createElement('div'); b.className='lang-badge'; b.style.cssText='background:rgba(10,16,22,.92);color:#e9f7ff;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:6px 10px;font-weight:700;display:inline-flex;align-items:center;gap:6px;letter-spacing:.2px;cursor:pointer;'; badgeWrap.appendChild(b); return b; })();
+  const badgeMenu = document.querySelector('.lang-badge-menu') || (()=>{ const m=document.createElement('div'); m.className='lang-badge-menu'; m.innerHTML='<button data-lang="en"><span>🇬🇧</span>English</button><button data-lang="pl"><span>🇵🇱</span>Polski</button><button data-lang="nl"><span>🇧🇪</span>Nederlands</button>'; badgeWrap.appendChild(m); return m; })();
 
   function flagSvg(lang){
     // Use width/height 100% so parent spans can size the flag
@@ -618,12 +619,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Allow clicking the top-right badge to cycle language
-  langBadge.addEventListener('click', ()=>{
-    const order=['en','pl','nl'];
-    const cur = (localStorage.getItem(LANG_KEY) || 'en');
-    const next = order[(order.indexOf(cur)+1)%order.length];
-    setLang(next);
-  });
+  // Badge opens dropdown; select language from menu
+  langBadge.addEventListener('click', ()=>{ badgeMenu.classList.toggle('open'); });
+  badgeMenu.addEventListener('click', (e)=>{ const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); badgeMenu.classList.remove('open'); });
+  document.addEventListener('click', (e)=>{ if (!e.target.closest('.lang-badge-wrap')) badgeMenu.classList.remove('open'); });
 });
 
 document.addEventListener('DOMContentLoaded', function() {
