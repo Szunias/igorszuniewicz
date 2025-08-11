@@ -131,6 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const svg=document.createElementNS(svgNS,'svg'); wrap.appendChild(svg);
       let keys=[]; // white/long keys
       let accs=[]; // accidentals (short neon caps)
+      let ordered=[]; // all rects ordered left->right (for wave)
       const keyCount=21; // multiple of 7 for proper pattern
       function size(){
         const cssW=Math.min(window.innerWidth*0.98, 1400);
@@ -153,7 +154,9 @@ document.addEventListener('DOMContentLoaded', function() {
         shine.innerHTML='<stop offset="0%" stop-color="#ffffff" stop-opacity="0"/><stop offset="50%" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>';
         const accG=document.createElementNS(svgNS,'linearGradient'); accG.setAttribute('id','acc'); accG.setAttribute('x1','0'); accG.setAttribute('y1','0'); accG.setAttribute('x2','1'); accG.setAttribute('y2','1');
         accG.innerHTML='<stop offset="0%" stop-color="#0fe3ff" stop-opacity="0.9"/><stop offset="100%" stop-color="#c96cff" stop-opacity="0.9"/>';
-        defs.appendChild(shine); defs.appendChild(accG); svg.appendChild(defs);
+        const wave=document.createElementNS(svgNS,'linearGradient'); wave.setAttribute('id','wave'); wave.setAttribute('x1','0'); wave.setAttribute('y1','0'); wave.setAttribute('x2','1'); wave.setAttribute('y2','0');
+        wave.innerHTML='<stop offset="0%" stop-color="#18bfef"/><stop offset="50%" stop-color="#9a6cff"/><stop offset="100%" stop-color="#ff6ea9"/>';
+        defs.appendChild(shine); defs.appendChild(accG); defs.appendChild(wave); svg.appendChild(defs);
         // background glass rail
         const rail=document.createElementNS(svgNS,'rect'); rail.setAttribute('x',String(margin-12)); rail.setAttribute('y',String(yBase-10)); rail.setAttribute('width',String(areaW+24)); rail.setAttribute('height',String(kH+20)); rail.setAttribute('rx','16'); rail.setAttribute('fill','rgba(10,16,22,0.35)'); rail.setAttribute('stroke','rgba(255,255,255,0.08)'); svg.appendChild(rail);
         // keys
@@ -186,23 +189,45 @@ document.addEventListener('DOMContentLoaded', function() {
         // sweeping holographic shine across all keys
         const bar=document.createElementNS(svgNS,'rect'); bar.setAttribute('x',String(margin-180)); bar.setAttribute('y',String(yBase)); bar.setAttribute('width','180'); bar.setAttribute('height',String(kH)); bar.setAttribute('fill','url(#shine)'); bar.setAttribute('opacity','0.3'); svg.appendChild(bar);
         const anim=document.createElementNS(svgNS,'animate'); anim.setAttribute('attributeName','x'); anim.setAttribute('from',String(margin-180)); anim.setAttribute('to',String(margin+areaW)); anim.setAttribute('dur','6s'); anim.setAttribute('repeatCount','indefinite'); bar.appendChild(anim);
+
+        // build ordered list for wave propagation
+        ordered = [...keys, ...accs].sort((a,b)=> (parseFloat(a.getAttribute('x'))+parseFloat(a.getAttribute('width'))/2) - (parseFloat(b.getAttribute('x'))+parseFloat(b.getAttribute('width'))/2));
       }
       function strongPress(el, ev, isAcc){
-        el.style.transform='translateY(9px)'; el.style.filter='drop-shadow(0 20px 50px rgba(24,191,239,0.9))';
-        setTimeout(()=>{ el.style.transform=''; el.style.filter=''; }, 260);
+        // softer, more minimal press
+        el.style.transform='translateY(5px)'; el.style.filter='drop-shadow(0 14px 34px rgba(24,191,239,0.65))';
+        setTimeout(()=>{ el.style.transform=''; el.style.filter=''; }, 200);
         // expanding neon ring
         const cx = parseFloat(el.getAttribute('x')) + parseFloat(el.getAttribute('width'))/2;
         const cy = parseFloat(el.getAttribute('y')) + parseFloat(el.getAttribute('height'))*0.66;
-        const circ = document.createElementNS(svgNS,'circle'); circ.setAttribute('cx',String(cx)); circ.setAttribute('cy',String(cy)); circ.setAttribute('r','4'); circ.setAttribute('fill','none'); circ.setAttribute('stroke','#ff6ea9'); circ.setAttribute('stroke-width','3'); circ.setAttribute('opacity','0.95');
+        const circ = document.createElementNS(svgNS,'circle'); circ.setAttribute('cx',String(cx)); circ.setAttribute('cy',String(cy)); circ.setAttribute('r','3'); circ.setAttribute('fill','none'); circ.setAttribute('stroke','#ff6ea9'); circ.setAttribute('stroke-width','2.5'); circ.setAttribute('opacity','0.9');
         svg.appendChild(circ);
-        const a1=document.createElementNS(svgNS,'animate'); a1.setAttribute('attributeName','r'); a1.setAttribute('from','4'); a1.setAttribute('to','58'); a1.setAttribute('dur','560ms'); a1.setAttribute('fill','freeze');
-        const a2=document.createElementNS(svgNS,'animate'); a2.setAttribute('attributeName','opacity'); a2.setAttribute('from','0.95'); a2.setAttribute('to','0'); a2.setAttribute('dur','560ms'); a2.setAttribute('fill','freeze'); a2.addEventListener('endEvent', ()=> circ.remove());
+        const a1=document.createElementNS(svgNS,'animate'); a1.setAttribute('attributeName','r'); a1.setAttribute('from','3'); a1.setAttribute('to','52'); a1.setAttribute('dur','460ms'); a1.setAttribute('fill','freeze');
+        const a2=document.createElementNS(svgNS,'animate'); a2.setAttribute('attributeName','opacity'); a2.setAttribute('from','0.9'); a2.setAttribute('to','0'); a2.setAttribute('dur','460ms'); a2.setAttribute('fill','freeze'); a2.addEventListener('endEvent', ()=> circ.remove());
         circ.appendChild(a1); circ.appendChild(a2); a1.beginElement(); a2.beginElement();
         // nudge neighbor keys for tactile feel (only for long keys)
         if (!isAcc && el.dataset && el.dataset.index){
           const i = parseInt(el.dataset.index,10); const left = keys[i-1]; const right = keys[i+1];
           [left,right].forEach(k=>{ if(!k) return; k.style.transform='translateY(3px)'; k.style.filter='drop-shadow(0 10px 24px rgba(24,191,239,0.5))'; setTimeout(()=>{ k.style.transform=''; k.style.filter=''; }, 160); });
         }
+        // propagate a color wave across all keys
+        waveFrom(cx);
+      }
+
+      function waveFrom(centerX){
+        const speed = 0.35; // ms per px
+        ordered.forEach((r)=>{
+          const rx = parseFloat(r.getAttribute('x')) + parseFloat(r.getAttribute('width'))/2;
+          const ry = parseFloat(r.getAttribute('y'));
+          const rw = parseFloat(r.getAttribute('width'));
+          const rh = parseFloat(r.getAttribute('height'));
+          const delay = Math.abs(rx - centerX) * speed;
+          const overlay = document.createElementNS(svgNS,'rect');
+          overlay.setAttribute('x', String(rx - rw/2)); overlay.setAttribute('y', String(ry)); overlay.setAttribute('width', String(rw)); overlay.setAttribute('height', String(rh)); overlay.setAttribute('rx', r.getAttribute('rx')||'8');
+          overlay.setAttribute('fill','url(#wave)'); overlay.style.opacity='0'; overlay.style.transition='opacity 220ms ease';
+          svg.appendChild(overlay);
+          setTimeout(()=>{ overlay.style.opacity='0.55'; setTimeout(()=>{ overlay.style.opacity='0'; setTimeout(()=> overlay.remove(), 240); }, 180); }, delay);
+        });
       }
       size(); window.addEventListener('resize', size);
       function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome=!!document.getElementById('projects-showcase'); const vis = onHome && y<140; wrap.classList.toggle('visible', vis); }
