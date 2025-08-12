@@ -85,6 +85,14 @@
         { url:'songs/XianClashMainTheme.mp3', type:'audio/mpeg' },
         { url:'songs/XianClashMainTheme.wav', type:'audio/wav' }
       ]
+    },
+    // Run (hard rock / metal)
+    { id:'run', title:'Run — Main Theme', artist:'Igor Szuniewicz', cover:'images/Run.png', tags:['single','metal'], length: 0, date:'2025-02-11',
+      sources:[
+        { url:'songs/RunMainTheme.m4a', type:'audio/mp4' },
+        { url:'songs/RunMainTheme.mp3', type:'audio/mpeg' },
+        { url:'songs/RunMainTheme.wav', type:'audio/wav' }
+      ]
     }
   ];
 
@@ -148,6 +156,10 @@
         function toggleThis(){ if (currentIndex===vi && !audio.paused){ audio.pause(); pbPlay.textContent='▶'; updateCardPlayButtons(); } else { start(vi); } }
         playBtn.addEventListener('click', toggleThis);
         card.addEventListener('dblclick', toggleThis);
+        // Hover preview
+        card.addEventListener('mouseenter', (e)=> showPreview(t, e));
+        card.addEventListener('mousemove', (e)=> positionPreview(e));
+        card.addEventListener('mouseleave', hidePreview);
         wrap.appendChild(card);
         if (!t.length || t.length===0) prefetchDuration(t, vi, card);
       });
@@ -164,6 +176,26 @@
       btn.textContent = (vi===currentIndex && !audio.paused) ? '⏸' : '▶';
     });
   }
+
+  // Album cover hover preview
+  const preview = document.createElement('div');
+  preview.className = 'music-preview';
+  preview.innerHTML = '<img alt=""/><div class="title"></div><div class="desc"></div>';
+  document.body.appendChild(preview);
+  function showPreview(track, ev){
+    const img = preview.querySelector('img');
+    const tt = preview.querySelector('.title');
+    const dd = preview.querySelector('.desc');
+    img.src = track.cover || '';
+    tt.textContent = track.title || '';
+    // Simple generated description by tag
+    const style = (track.tags||[]).includes('metal') ? 'Hard rock / metal' : (track.tags||[]).join(', ');
+    dd.textContent = `${style} — energetic, punchy and riff‑driven. Ideal for action montages and trailers.`;
+    preview.classList.add('visible');
+    positionPreview(ev);
+  }
+  function positionPreview(ev){ if (!preview.classList.contains('visible')) return; const pad=12; const x=Math.min(window.innerWidth-240, ev.clientX+pad); const y=Math.min(window.innerHeight-240, ev.clientY+pad); preview.style.left=x+'px'; preview.style.top=y+'px'; }
+  function hidePreview(){ preview.classList.remove('visible'); preview.style.left='-9999px'; preview.style.top='-9999px'; }
 
   function prefetchDuration(track, index, cardNode){
     try {
