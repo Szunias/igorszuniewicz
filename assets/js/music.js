@@ -63,19 +63,22 @@
     { id:'sp_inflow', title:'Inflow', artist:'Igor Szuniewicz', cover:'images/Inflow_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01',
       sources:[
         { url:'songs/Inflow.m4a', type:'audio/mp4' },
-        { url:'songs/Inflow.mp3', type:'audio/mpeg' }
+        { url:'songs/Inflow.mp3', type:'audio/mpeg' },
+        { url:'songs/Igor Szuniewicz - Inflow.wav', type:'audio/wav' }
       ]
     },
     { id:'sp_astro', title:'Astrophonic Dance', artist:'Igor Szuniewicz', cover:'images/Astrophonic Dance_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01',
       sources:[
         { url:'songs/AstrophonicDance.m4a', type:'audio/mp4' },
-        { url:'songs/AstrophonicDance.mp3', type:'audio/mpeg' }
+        { url:'songs/AstrophonicDance.mp3', type:'audio/mpeg' },
+        { url:'songs/Igor Szuniewicz - Astrophonic Dance.wav', type:'audio/wav' }
       ]
     },
     { id:'sp_cathedral', title:'Cathedral Of Time', artist:'Igor Szuniewicz', cover:'images/Cathedral Of Time_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01',
       sources:[
         { url:'songs/CathedralOfTime.m4a', type:'audio/mp4' },
-        { url:'songs/CathedralOfTime.mp3', type:'audio/mpeg' }
+        { url:'songs/CathedralOfTime.mp3', type:'audio/mpeg' },
+        { url:'songs/Igor Szuniewicz - Cathedral Of Time.wav', type:'audio/wav' }
       ]
     },
     // XianClash entry (film/score)

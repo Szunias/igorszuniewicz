@@ -429,12 +429,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const navPrev = document.createElement('div'); navPrev.className='nav-preview'; navPrev.style.visibility='hidden';
   const base = location.pathname.includes('/projects/') ? '../' : '';
   navPrev.innerHTML = `
-    <img src="${base}images/project5.png" alt="">
+    <img src="${base}images/maxresdefault.jpg" alt="">
     <img src="${base}images/project4.png" alt="">
     <img src="${base}images/amorak.png" alt="">
-    <img src="${base}images/plugins.jpg" alt="">
-    <img src="${base}images/maxresdefault.jpg" alt="">
-    <img src="${base}images/NotTodayGameLogo.png" alt="">
   `;
   document.body.appendChild(navPrev);
   const projectsLink = document.querySelector('#nav ul.links a[href*="projects/index.html"]');
@@ -451,7 +448,7 @@ document.addEventListener('DOMContentLoaded', function() {
     navPrev.classList.remove('visible'); navPrev.style.visibility='hidden';
   }
   if (projectsLink){
-    projectsLink.addEventListener('pointerenter', ()=>{ prevTimer = setTimeout(showNavPrev, 140); });
+    projectsLink.addEventListener('pointerenter', ()=>{ prevTimer = setTimeout(showNavPrev, 80); });
     projectsLink.addEventListener('pointerleave', ()=>{ if (prevTimer){ clearTimeout(prevTimer); prevTimer=null; } hideNavPrev(); });
     window.addEventListener('scroll', hideNavPrev, { passive:true });
   }
