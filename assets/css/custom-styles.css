@@ -679,10 +679,10 @@ body p {
   .player-bar .pb-right { order: 3; }
 }
 
-/* Normalize scale on very large desktops (keep same as 1280+) */
-@media (min-width: 1681px) {
-  html { font-size: 11pt !important; }
-}
+/* Normalize scale across pages: desktop base size */
+@media (min-width: 981px) { html { font-size: 12pt !important; } }
+@media (min-width: 1280px) { html { font-size: 11pt !important; } }
+@media (min-width: 1681px) { html { font-size: 11pt !important; } }
 
 /* Page fade transitions */
 #wrapper { transition: opacity 180ms ease, transform 180ms ease; will-change: opacity, transform; }

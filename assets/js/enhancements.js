@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(removeTemplateBackground, 3000);
   }
 
-  // Smooth page fade transitions
+  // Smooth page fade transitions (hardened: ensure completion and no stuck state)
   // Intercept internal links and fade out before navigation
   if (!isMobile) {
     const progress = document.createElement('div');
@@ -64,8 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         progress.style.width = '35%';
         document.body.classList.add('page-exit');
-        setTimeout(() => { progress.style.width = '70%'; }, 120);
-        setTimeout(() => { window.location.href = href; }, 220);
+        setTimeout(() => { progress.style.width = '70%'; }, 100);
+        const nav = () => { try { window.location.href = href; } catch(_) { location.assign(href); } };
+        // Force navigation even if previous timers are throttled
+        setTimeout(nav, 180);
+        setTimeout(nav, 320);
       });
     });
   } else {

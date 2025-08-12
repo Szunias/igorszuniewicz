@@ -98,6 +98,18 @@
       ]
     }
   ];
+  // New single: Edge Of Life (playful vibe)
+  tracks.push({
+    id:'edgeoflife',
+    title:'Edge Of Life',
+    artist:'Igor Szuniewicz',
+    cover:'images/EdgeOfLife.png',
+    tags:['single','electronic','playful'],
+    length: 0,
+    date:'2024-06-01',
+    year: 2024,
+    sources:[ { url:'songs/EdgeOfLife.wav', type:'audio/wav' } ]
+  });
 
   // Ensure every track is matchable by the "All" filter and normalize tags
   tracks.forEach(function(t){
