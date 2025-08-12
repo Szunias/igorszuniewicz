@@ -67,8 +67,8 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => { progress.style.width = '70%'; }, 100);
         const nav = () => { try { window.location.href = href; } catch(_) { location.assign(href); } };
         // Force navigation even if previous timers are throttled
-        setTimeout(nav, 180);
-        setTimeout(nav, 320);
+        setTimeout(nav, 120);
+        setTimeout(nav, 220);
       });
     });
   } else {
@@ -232,30 +232,38 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       // WebAudio electric-piano like tone
       let audioCtx=null; const getCtx=()=>{ if(!audioCtx){ try{ audioCtx=new (window.AudioContext||window.webkitAudioContext)(); }catch(_){} } return audioCtx; };
-      function epTone(freq){
+      let pianoIR=null; function getPianoIR(c){
+        if (pianoIR) return pianoIR;
+        // Generate lightweight impulse (noise tail) to emulate room reverb
+        const len = Math.floor(c.sampleRate * 0.9);
+        const ir = c.createBuffer(2, len, c.sampleRate);
+        for (let ch=0; ch<2; ch++){
+          const data = ir.getChannelData(ch); let amp=1.0; for (let i=0;i<len;i++){ data[i] = (Math.random()*2-1) * amp; amp *= 0.9993; }
+        }
+        pianoIR = ir; return ir;
+      }
+      function cinematicPianoTone(freq){
         const c=getCtx(); if(!c) return; if (c.state==='suspended') { try{ c.resume(); }catch(_){} }
         const t=c.currentTime;
-        // Simple FM electric-piano: carrier sine modulated by mod sine, with short plucky envelope
-        const carrier=c.createOscillator(); carrier.type='sine'; carrier.frequency.value=freq;
-        const mod=c.createOscillator(); mod.type='sine'; mod.frequency.value=freq*2; // harmonic modulator
-        const modGain=c.createGain(); modGain.gain.value=freq*0.15; // modulation index
-        mod.connect(modGain).connect(carrier.frequency);
-        // light stereo spread for width
-        const panL=c.createStereoPanner?c.createStereoPanner():null; const panR=c.createStereoPanner?c.createStereoPanner():null;
-        const gL=c.createGain(), gR=c.createGain();
-        // amplitude envelope (fast attack, short decay for rapid retrigger)
-        const atk=0.004, dec=0.18, rel=0.12; const peak=0.22;
-        gL.gain.setValueAtTime(0.0001,t); gL.gain.linearRampToValueAtTime(peak,t+atk); gL.gain.exponentialRampToValueAtTime(0.0008,t+atk+dec+rel);
-        gR.gain.setValueAtTime(0.0001,t); gR.gain.linearRampToValueAtTime(peak*0.8,t+atk); gR.gain.exponentialRampToValueAtTime(0.0008,t+atk+dec+rel);
-        if (panL&&panR){ panL.pan.value=-0.15; panR.pan.value=0.15; }
-        // slight detune for chorus effect without heavy nodes
-        const det=c.createOscillator(); det.type='sine'; det.frequency.value=freq*1.003;
-        // Connect graph
-        carrier.connect(gL); det.connect(gR);
-        if (panL&&panR){ gL.connect(panL).connect(c.destination); gR.connect(panR).connect(c.destination); }
-        else { gL.connect(c.destination); gR.connect(c.destination); }
-        carrier.start(t); det.start(t); mod.start(t);
-        carrier.stop(t+atk+dec+rel+0.05); det.stop(t+atk+dec+rel+0.05); mod.stop(t+atk+dec+rel+0.05);
+        // Sources: fundamental + gentle overtone (saw with lowpass) + click
+        const o1=c.createOscillator(); o1.type='triangle'; o1.frequency.value=freq;
+        const o2=c.createOscillator(); o2.type='sawtooth'; o2.frequency.value=freq*2;
+        const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.setValueAtTime(9500,t); lp.Q.value=0.6;
+        const gain=c.createGain(); const gain2=c.createGain();
+        // filter sweep (hammer damping)
+        lp.frequency.exponentialRampToValueAtTime(2200, t+0.45);
+        // amplitude envelope: quick attack, musical decay
+        const atk=0.003, dec=0.45, rel=0.35; const peak=0.26;
+        gain.gain.setValueAtTime(0.0001,t); gain.gain.linearRampToValueAtTime(peak,t+atk); gain.gain.exponentialRampToValueAtTime(0.0006, t+atk+dec+rel);
+        gain2.gain.setValueAtTime(0.09,t); gain2.gain.exponentialRampToValueAtTime(0.0006, t+0.18);
+        // Click transient
+        const noise=c.createBufferSource(); const nb=c.createBuffer(1, c.sampleRate*0.02, c.sampleRate); const nd=nb.getChannelData(0); for (let i=0;i<nd.length;i++){ nd[i]=(Math.random()*2-1)*Math.exp(-i/500); } noise.buffer=nb; const clickG=c.createGain(); clickG.gain.setValueAtTime(0.08,t); clickG.gain.exponentialRampToValueAtTime(0.0001,t+0.02);
+        // Reverb
+        const conv=c.createConvolver(); conv.buffer=getPianoIR(c); const revG=c.createGain(); revG.gain.value=0.18;
+        // Wire graph
+        o1.connect(lp); o2.connect(lp); lp.connect(gain); gain.connect(c.destination); gain.connect(conv).connect(revG).connect(c.destination);
+        noise.connect(clickG).connect(c.destination);
+        o1.start(t); o2.start(t); noise.start(t); o1.stop(t+atk+dec+rel+0.05); o2.stop(t+atk+dec+rel+0.05); noise.stop(t+0.03);
       }
 
       function keyIndexToFreq(i){
@@ -281,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // play tone for this key
         try{
           const idx = ordered.indexOf(el);
-          const f = keyIndexToFreq(Math.max(0, idx)); epTone(f);
+          const f = keyIndexToFreq(Math.max(0, idx)); cinematicPianoTone(f);
         }catch(_){}
         // propagate a soft color wave
         const cx = x + w/2; waveFrom(cx);
