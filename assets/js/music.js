@@ -31,8 +31,17 @@
 
   function showPlayerToast(msg){
     let t = document.querySelector('.player-toast');
-    if (!t){ t = document.createElement('div'); t.className='player-toast'; t.style.cssText='position:fixed;left:50%;transform:translateX(-50%);bottom:84px;background:rgba(12,18,24,0.96);color:#eaf7ff;border:1px solid rgba(255,255,255,0.14);padding:8px 12px;border-radius:10px;font-weight:700;z-index:3000;opacity:0;transition:opacity .18s'; document.body.appendChild(t);} 
-    t.textContent = msg; requestAnimationFrame(()=>{ t.style.opacity='1'; setTimeout(()=>{ t.style.opacity='0'; }, 1400); });
+    if (!t){
+      t = document.createElement('div');
+      t.className='player-toast';
+      t.style.cssText='position:fixed;left:50%;transform:translateX(-50%);top:14px;bottom:auto;background:rgba(12,18,24,0.96);color:#eaf7ff;border:1px solid rgba(255,255,255,0.14);padding:8px 12px;border-radius:10px;font-weight:700;z-index:3000;opacity:0;transition:opacity .18s;pointer-events:none;';
+      document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    requestAnimationFrame(()=>{
+      t.style.opacity='1';
+      setTimeout(()=>{ t.style.opacity='0'; }, 1000);
+    });
   }
 
   /** Seed demo tracks. Replace with your files in /audio */

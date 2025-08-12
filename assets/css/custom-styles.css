@@ -626,6 +626,8 @@ body p {
 .player-bar .pb-btn.pb-play:hover { filter: brightness(1.05); }
 .player-bar .pb-timeline { display:grid; grid-template-columns: auto 1fr auto; align-items:center; gap:10px; position: relative; padding-bottom: 12px; }
 .player-bar .pb-wave { position:absolute; left: 56px; right: 56px; bottom: -2px; height: 22px; width: auto; opacity: .65; filter: drop-shadow(0 4px 10px rgba(24,191,239,.2)); }
+/* Ensure no overlay blocks player buttons */
+.player-toast { pointer-events: none !important; }
 .player-bar .pb-time { color:#cfe7f8; font-variant-numeric: tabular-nums; font-weight:700; opacity:.9; }
 .player-bar .pb-seek { width:100%; appearance:none; -webkit-appearance:none; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.06); outline: none; background-image: linear-gradient(90deg,#18bfef,#9a6cff); background-size: var(--seek, 0%) 100%; background-repeat: no-repeat; }
 .player-bar .pb-vol { width:100%; max-width:180px; appearance:none; -webkit-appearance:none; height: 6px; border-radius: 999px; background: rgba(255,255,255,0.06); outline: none; background-image: linear-gradient(90deg,#18bfef,#9a6cff); background-size: var(--vol, 90%) 100%; background-repeat: no-repeat; }
