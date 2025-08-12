@@ -37,12 +37,38 @@
 
   /** Seed demo tracks. Replace with your files in /audio */
   const tracks = [
+    // Game/film cues
     { id:'ntd', title:'Not Today, Darling! (Theme)', artist:'Igor Szuniewicz', cover:'images/NotTodayGameLogo.png', url:'audio/ntd-theme.mp3', tags:['game','theme'], length: 122, date:'2024-11-01' },
     { id:'ray', title:'Ray Animation — Credits Theme', artist:'Igor Szuniewicz', cover:'images/project5.png', tags:['film','score'], length: 0, date:'2025-01-10',
+      sources:[ { url:'songs/RayCreditsTheme.wav', type:'audio/wav' } ]
+    },
+    { id:'richter', title:'Richter — Main Theme', artist:'Igor Szuniewicz', cover:'images/richter.png', tags:['film','score'], length: 0, date:'2024-06-01',
+      // Drop at least one of these in /songs to enable playback
       sources:[
-        { url:'songs/RayCreditsTheme.wav', type:'audio/wav' }
+        { url:'songs/RichterMainTheme.m4a', type:'audio/mp4' },
+        { url:'songs/RichterMainTheme.mp3', type:'audio/mpeg' },
+        { url:'songs/RichterMainTheme.wav', type:'audio/wav' }
       ]
     },
+    // Spotify catalog (provide local copies in /songs for on-site playback)
+    { id:'sp_inflow', title:'Inflow', artist:'Igor Szuniewicz', cover:'images/covers/inflow.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01',
+      sources:[
+        { url:'songs/Inflow.m4a', type:'audio/mp4' },
+        { url:'songs/Inflow.mp3', type:'audio/mpeg' }
+      ]
+    },
+    { id:'sp_astro', title:'Astrophonic Dance', artist:'Igor Szuniewicz', cover:'images/covers/astrophonic-dance.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01',
+      sources:[
+        { url:'songs/AstrophonicDance.m4a', type:'audio/mp4' },
+        { url:'songs/AstrophonicDance.mp3', type:'audio/mpeg' }
+      ]
+    },
+    { id:'sp_cathedral', title:'Cathedral Of Time', artist:'Igor Szuniewicz', cover:'images/covers/cathedral-of-time.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01',
+      sources:[
+        { url:'songs/CathedralOfTime.m4a', type:'audio/mp4' },
+        { url:'songs/CathedralOfTime.mp3', type:'audio/mpeg' }
+      ]
+    }
   ];
 
   function chooseSource(track){
