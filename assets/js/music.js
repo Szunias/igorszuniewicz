@@ -47,7 +47,7 @@
   /** Seed demo tracks. Replace with your files in /audio */
   const tracks = [
     // Game/film cues
-    { id:'ntd', title:'Not Today, Darling! (Theme)', artist:'Igor Szuniewicz', cover:'images/NotTodayGameLogo.png', url:'audio/ntd-theme.mp3', tags:['game','theme'], length: 122, date:'2025-01-01', year: 2025 },
+    
     { id:'ray', title:'Ray Animation — Credits Theme', artist:'Igor Szuniewicz', cover:'images/project5.png', tags:['film','score'], length: 0, date:'2024-01-10', year: 2024,
       sources:[ { url:'songs/RayCreditsTheme.wav', type:'audio/wav' } ]
     },

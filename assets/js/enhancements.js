@@ -119,6 +119,29 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   document.body.appendChild(glow);
 
+  // Lightweight UI sounds (click/hover) – gentle and subtle
+  (function(){
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) return;
+    let ctx; const getCtx=()=>{ if (!ctx) { try{ ctx=new (window.AudioContext||window.webkitAudioContext)(); }catch(_){} } return ctx; };
+    function blip(freq, dur=0.08, vol=0.06){
+      const c=getCtx(); if(!c) return; const t=c.currentTime; const o=c.createOscillator(); const g=c.createGain();
+      o.type='sine'; o.frequency.value=freq; g.gain.setValueAtTime(0.0001,t); g.gain.linearRampToValueAtTime(vol,t+0.01); g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+      o.connect(g).connect(c.destination); o.start(t); o.stop(t+dur+0.02);
+    }
+    const isInMusic = (node)=> !!(node && (node.closest('.music-page') || node.closest('#player-bar') || node.closest('#music-list')));
+    // Click feedback
+    document.addEventListener('click',(e)=>{
+      const el=e.target.closest('a,button,.button,select,[role="button"],.slider-nav'); if(!el) return;
+      if (isInMusic(el) || el.closest('.mi-play') || el.closest('.pb-btn')) return;
+      blip(880,0.07,0.05);
+    },{passive:true});
+    // Toggle/select change
+    document.addEventListener('change',(e)=>{ if(!e.target) return; if (isInMusic(e.target)) return; if(e.target.matches('select')||e.target.matches('input[type="checkbox"],input[type="radio"]')) blip(660,0.06,0.05); },{passive:true});
+    // Hover subtle hint
+    document.addEventListener('pointerenter',(e)=>{ const el=e.target.closest('a.button, .button, .slider-nav'); if(!el) return; if (isInMusic(el)) return; blip(1200,0.04,0.035); },true);
+  })();
+
   // Visual audio-like ripple on clicks
   // Click ripple (forced on all pages, independent of perfLite)
   const clickFx = document.querySelector('.click-fx') || (()=>{ const d=document.createElement('div'); d.className='click-fx'; document.body.appendChild(d); return d; })();
@@ -207,13 +230,47 @@ document.addEventListener('DOMContentLoaded', function() {
         // build ordered list for wave propagation
         ordered = [...keys, ...accs].sort((a,b)=> (parseFloat(a.getAttribute('x'))+parseFloat(a.getAttribute('width'))/2) - (parseFloat(b.getAttribute('x'))+parseFloat(b.getAttribute('width'))/2));
       }
+      // WebAudio electric-piano like tone
+      let audioCtx=null; const getCtx=()=>{ if(!audioCtx){ try{ audioCtx=new (window.AudioContext||window.webkitAudioContext)(); }catch(_){} } return audioCtx; };
+      function epTone(freq){
+        const c=getCtx(); if(!c) return; if (c.state==='suspended') { try{ c.resume(); }catch(_){} }
+        const t=c.currentTime;
+        // Simple FM electric-piano: carrier sine modulated by mod sine, with short plucky envelope
+        const carrier=c.createOscillator(); carrier.type='sine'; carrier.frequency.value=freq;
+        const mod=c.createOscillator(); mod.type='sine'; mod.frequency.value=freq*2; // harmonic modulator
+        const modGain=c.createGain(); modGain.gain.value=freq*0.15; // modulation index
+        mod.connect(modGain).connect(carrier.frequency);
+        // light stereo spread for width
+        const panL=c.createStereoPanner?c.createStereoPanner():null; const panR=c.createStereoPanner?c.createStereoPanner():null;
+        const gL=c.createGain(), gR=c.createGain();
+        // amplitude envelope (fast attack, short decay for rapid retrigger)
+        const atk=0.004, dec=0.18, rel=0.12; const peak=0.22;
+        gL.gain.setValueAtTime(0.0001,t); gL.gain.linearRampToValueAtTime(peak,t+atk); gL.gain.exponentialRampToValueAtTime(0.0008,t+atk+dec+rel);
+        gR.gain.setValueAtTime(0.0001,t); gR.gain.linearRampToValueAtTime(peak*0.8,t+atk); gR.gain.exponentialRampToValueAtTime(0.0008,t+atk+dec+rel);
+        if (panL&&panR){ panL.pan.value=-0.15; panR.pan.value=0.15; }
+        // slight detune for chorus effect without heavy nodes
+        const det=c.createOscillator(); det.type='sine'; det.frequency.value=freq*1.003;
+        // Connect graph
+        carrier.connect(gL); det.connect(gR);
+        if (panL&&panR){ gL.connect(panL).connect(c.destination); gR.connect(panR).connect(c.destination); }
+        else { gL.connect(c.destination); gR.connect(c.destination); }
+        carrier.start(t); det.start(t); mod.start(t);
+        carrier.stop(t+atk+dec+rel+0.05); det.stop(t+atk+dec+rel+0.05); mod.stop(t+atk+dec+rel+0.05);
+      }
+
+      function keyIndexToFreq(i){
+        // Map left-to-right semitone index to notes starting at C4
+        const baseMidi=60; const midi=baseMidi + i;
+        return 440*Math.pow(2,(midi-69)/12);
+      }
+
       function strongPress(el, ev, isAcc){
         // minimal press + micro-shake
         el.style.transform='translateY(4px)'; el.style.filter='drop-shadow(0 10px 24px rgba(24,191,239,0.55))';
         setTimeout(()=>{ el.style.transform='translateY(0)'; el.style.filter=''; }, 160);
         // thin underline flash instead of big ring
         const x = parseFloat(el.getAttribute('x')); const y = parseFloat(el.getAttribute('y')); const w = parseFloat(el.getAttribute('width')); const h = parseFloat(el.getAttribute('height'));
-        const line = document.createElementNS(svgNS,'rect'); line.setAttribute('x', String(x + w*0.15)); line.setAttribute('y', String(y + h - 6)); line.setAttribute('width', String(w*0.7)); line.setAttribute('height', '3'); line.setAttribute('rx','2'); line.setAttribute('fill','#9a6cff'); line.setAttribute('opacity','0.0');
+        const line = document.createElementNS(svgNS,'rect'); line.setAttribute('x', String(x + w*0.15)); line.setAttribute('y', String(y + h - 6)); line.setAttribute('width', String(w*0.7)); line.setAttribute('height', '3'); line.setAttribute('rx','2'); line.setAttribute('fill','#9a6cff'); line.setAttribute('opacity','0.0'); line.style.pointerEvents='none';
         svg.appendChild(line);
         requestAnimationFrame(()=>{ line.style.transition='opacity 140ms ease, transform 240ms ease'; line.style.opacity='0.85'; line.style.transform='translateY(2px)'; setTimeout(()=>{ line.style.opacity='0'; setTimeout(()=> line.remove(), 200); }, 160); });
         // nudge neighbors subtelnie
@@ -221,6 +278,11 @@ document.addEventListener('DOMContentLoaded', function() {
           const i = parseInt(el.dataset.index,10); const left = keys[i-1]; const right = keys[i+1];
           [left,right].forEach(k=>{ if(!k) return; k.style.transform='translateY(2px)'; setTimeout(()=>{ k.style.transform=''; }, 120); });
         }
+        // play tone for this key
+        try{
+          const idx = ordered.indexOf(el);
+          const f = keyIndexToFreq(Math.max(0, idx)); epTone(f);
+        }catch(_){}
         // propagate a soft color wave
         const cx = x + w/2; waveFrom(cx);
       }
@@ -236,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function() {
           // multi-color sweeping gradient bar
           const bar = document.createElementNS(svgNS,'rect');
           bar.setAttribute('x', String(rx - rw/2)); bar.setAttribute('y', String(ry)); bar.setAttribute('width', String(rw)); bar.setAttribute('height', String(rh)); bar.setAttribute('rx', r.getAttribute('rx')||'8');
-          bar.setAttribute('fill','url(#wave)'); bar.style.opacity='0'; bar.style.transition='opacity 160ms ease, transform 220ms ease';
+          bar.setAttribute('fill','url(#wave)'); bar.style.opacity='0'; bar.style.transition='opacity 160ms ease, transform 220ms ease'; bar.style.pointerEvents='none';
           bar.style.transform='translateY(0)'; svg.appendChild(bar);
           setTimeout(()=>{ bar.style.opacity='0.65'; bar.style.transform='translateY(1px)'; setTimeout(()=>{ bar.style.opacity='0'; setTimeout(()=> bar.remove(), 160); }, 140); }, delay);
         });
@@ -1227,4 +1289,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('in-view'));
   }
 });
+
+// Desktop keyboard click sounds removed per request
 
