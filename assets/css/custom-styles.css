@@ -679,9 +679,9 @@ body p {
   .player-bar .pb-right { order: 3; }
 }
 
-/* Slight global downscale on very large desktops */
+/* Normalize scale on very large desktops (keep same as 1280+) */
 @media (min-width: 1681px) {
-  html { font-size: 15pt !important; }
+  html { font-size: 11pt !important; }
 }
 
 /* Page fade transitions */
