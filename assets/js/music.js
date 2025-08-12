@@ -204,20 +204,27 @@
   preview.className = 'music-preview';
   preview.innerHTML = '<img alt=""/><div class="title"></div><div class="desc"></div>';
   try { document.body.appendChild(preview); } catch(_) {}
+  let previewReq = 0; // increasing token to avoid race conditions
   function showPreview(track, ev){
-    const img = preview.querySelector('img');
+    const myToken = ++previewReq;
     const tt = preview.querySelector('.title');
     const dd = preview.querySelector('.desc');
-    img.src = track.cover || '';
     tt.textContent = track.title || '';
-    // Simple generated description by tag
     const style = (track.tags||[]).includes('metal') ? 'Hard rock / metal' : (track.tags||[]).join(', ');
     dd.textContent = `${style} — energetic, punchy and riff‑driven. Ideal for action montages and trailers.`;
-    preview.classList.add('visible');
-    positionPreview(ev);
+    // Preload cover image to avoid flashing previous artwork
+    const loader = new Image();
+    loader.onload = function(){
+      if (myToken !== previewReq) return; // a newer hover started
+      const img = preview.querySelector('img');
+      img.src = loader.src;
+      preview.classList.add('visible');
+      positionPreview(ev);
+    };
+    loader.src = track.cover || '';
   }
   function positionPreview(ev){ if (!preview.classList.contains('visible')) return; const pad=12; const x=Math.min(window.innerWidth-240, ev.clientX+pad); const y=Math.min(window.innerHeight-240, ev.clientY+pad); preview.style.left=x+'px'; preview.style.top=y+'px'; }
-  function hidePreview(){ preview.classList.remove('visible'); preview.style.left='-9999px'; preview.style.top='-9999px'; }
+  function hidePreview(){ previewReq++; preview.classList.remove('visible'); preview.style.left='-9999px'; preview.style.top='-9999px'; }
 
   function prefetchDuration(track, index, cardNode){
     try {

@@ -639,6 +639,13 @@ document.addEventListener('DOMContentLoaded', function() {
       if (p) p.textContent = I18N.music_lead[lang];
       if (sort) sort.textContent = I18N.music_sort[lang];
     }
+
+    // Hero pills (homepage): translate pill labels
+    document.querySelectorAll('.section-pills a[href$="music.html"] span').forEach(el=> el.textContent = I18N.nav_music[lang]);
+    document.querySelectorAll('.section-pills a[href*="projects/index.html"] span').forEach(el=> el.textContent = I18N.nav_all[lang] + ' ' + I18N.nav_projects[lang]);
+    document.querySelectorAll('.section-pills a[href$="scholarly.html"] span').forEach(el=> el.textContent = I18N.nav_scholarly[lang]);
+    document.querySelectorAll('.section-pills a[href$="about.html"] span').forEach(el=> el.textContent = I18N.nav_about[lang]);
+    document.querySelectorAll('.section-pills a[href$="contact.html"] span').forEach(el=> el.textContent = I18N.nav_contact[lang]);
     // Intro block translations – apply only on homepage (has projects-showcase)
     if (document.getElementById('projects-showcase')){
       const introH2 = document.querySelector('#main > section.post header.major h2');
