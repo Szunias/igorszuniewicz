@@ -609,11 +609,20 @@ body p {
 .music-controls input[type="search"] { background: rgba(10,16,22,0.85); color:#eaf7ff; border:1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 8px 10px; height: 36px; line-height: 1.2; }
 .music-tags { display:flex; gap:10px; flex-wrap:wrap; }
 .music-tags .chip { display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px; background: rgba(255,255,255,0.20); border:1px solid rgba(255,255,255,0.35); color:#eaf7ff; font-weight:900; letter-spacing:.25px; cursor:pointer; opacity:1; }
+.music-tags .chip[data-tag="metal"]{ background: rgba(255,0,72,0.12); border-color: rgba(255,0,72,0.45); }
+.music-tags .chip[data-tag="film"]{ background: rgba(255,166,0,0.12); border-color: rgba(255,166,0,0.45); }
+.music-tags .chip[data-tag="game"]{ background: rgba(24,191,239,0.12); border-color: rgba(24,191,239,0.45); }
+.music-tags .chip[data-tag="electronic"]{ background: rgba(154,108,255,0.12); border-color: rgba(154,108,255,0.45); }
 .music-tags .chip:hover { filter: brightness(1.05); }
 .music-tags .chip.active { background: rgba(24,191,239,0.42); border-color: rgba(24,191,239,0.75); color:#07131a; box-shadow: 0 8px 22px rgba(24,191,239,0.25) inset; }
 .music-list { display:grid; grid-template-columns: 1fr; gap:10px; }
 .music-group { margin-top: 18px; }
-.music-group .group-title { font-family:'Poppins',sans-serif; font-weight:900; color:#eaf7ff; opacity:.9; margin: 4px 0 8px; letter-spacing:.3px; }
+.music-group .group-title { font-family:'Poppins',sans-serif; font-weight:900; color:#eaf7ff; opacity:.9; margin: 10px 0 8px; letter-spacing:.3px; display:inline-flex; align-items:center; gap:10px; padding:6px 10px; border-radius:10px; border:1px solid rgba(255,255,255,0.08); }
+.group-title .emoji { font-size: 1.1em; line-height: 1; }
+.group-title.badge-electronic { background: rgba(154,108,255,0.12); border-color: rgba(154,108,255,0.35); color:#e9e3ff; }
+.group-title.badge-game { background: rgba(24,191,239,0.12); border-color: rgba(24,191,239,0.35); color:#e9f7ff; }
+.group-title.badge-film { background: rgba(255,166,0,0.12); border-color: rgba(255,166,0,0.35); color:#fff3d9; }
+.group-title.badge-metal { background: rgba(255,0,72,0.12); border-color: rgba(255,0,72,0.35); color:#ffd9e3; }
 .music-item { display:grid; grid-template-columns: 64px 1fr auto; gap:12px; align-items:center; background: rgba(12,18,26,0.55); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:10px; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
 .music-item:hover { transform: translateY(-2px); box-shadow: 0 26px 60px rgba(0,0,0,0.34); border-color: rgba(24,191,239,0.28); }
 .music-item .mi-cover { width:64px; height:64px; object-fit:cover; border-radius:8px; }

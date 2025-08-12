@@ -1,6 +1,6 @@
 /* Simple, professional tracklist + player */
 (function(){
-  const isMusic = /\/music\.html(\?|#|$)/.test(location.pathname);
+  const isMusic = !!document.getElementById('music-list');
   if (!isMusic) return;
 
   const listEl = document.getElementById('music-list');
@@ -99,8 +99,14 @@
     }
   ];
 
+  // Ensure every track is matchable by the "All" filter and normalize tags
+  tracks.forEach(function(t){
+    const baseTags = Array.isArray(t.tags) ? t.tags : [];
+    t.tags = Array.from(new Set(['all'].concat(baseTags)));
+  });
+
   // View state must be declared before first applyFilters() call
-  let view = [...tracks];
+  let view = tracks.slice();
   let currentIndex = -1;
 
   function chooseSource(track){
@@ -111,7 +117,7 @@
   }
 
   // Populate filter chips from tags
-  const allTags = Array.from(new Set(tracks.flatMap(t=> t.tags || []))).sort();
+  let allTags = Array.from(new Set([].concat.apply([], tracks.map(function(t){ return t.tags || []; })))).filter(function(tag){ return tag !== 'all'; }).sort();
   const TAG_ALL = 'all';
   let activeTag = TAG_ALL;
   function renderTagChips(){
@@ -124,7 +130,7 @@
   renderTagChips();
   // Ensure default is 'All' and render immediately
   activeTag = TAG_ALL;
-  if (tagsEl){ tagsEl.addEventListener('click', (e)=>{ const b=e.target.closest('.chip'); if(!b) return; activeTag=b.dataset.tag||TAG_ALL; renderTagChips(); applyFilters(); }); }
+  if (tagsEl){ tagsEl.addEventListener('click', (e)=>{ const b=e.target.closest('.chip'); if(!b || !b.dataset) return; activeTag=(b.dataset.tag||TAG_ALL); renderTagChips(); applyFilters(); }); }
   // Initial render with ALL
   applyFilters();
 
@@ -133,41 +139,54 @@
   
 
   function render(){
-    listEl.innerHTML = '';
-    // Group by first tag
-    const groups = new Map();
-    view.forEach((t)=>{ const key=(t.tags&&t.tags[0])?t.tags[0]:'other'; if(!groups.has(key)) groups.set(key, []); groups.get(key).push(t); });
-    let idx = 0;
-    groups.forEach((items, group)=>{
+    try {
+      if (!listEl) return;
+      listEl.innerHTML = '';
       const wrap = document.createElement('div'); wrap.className='music-group';
-      const title = document.createElement('div'); title.className='group-title'; title.textContent = group.charAt(0).toUpperCase()+group.slice(1);
+      const title = document.createElement('div'); title.className='group-title';
+      const group = (activeTag && activeTag !== 'all') ? activeTag : 'all';
+      const pretty = group==='all' ? 'All' : (group.charAt(0).toUpperCase()+group.slice(1));
+      const badgeClass = (group==='electronic')?'badge-electronic':(group==='game')?'badge-game':(group==='film')?'badge-film':(group==='metal')?'badge-metal':'';
+      const emoji = (group==='electronic')?'🎛️':(group==='game')?'🎮':(group==='film')?'🎬':(group==='metal')?'🎸':'🎵';
+      if (badgeClass) title.classList.add(badgeClass);
+      title.innerHTML = '<span class="emoji" aria-hidden="true">'+emoji+'</span><span>'+pretty+'</span>';
       wrap.appendChild(title);
-      items.forEach((t)=>{
+      listEl.appendChild(wrap);
+      let idx = 0;
+      view.forEach(function(t){
         const vi = view.indexOf(t);
         const i = idx++;
         const card = document.createElement('div'); card.className='music-item'; card.tabIndex=0; card.dataset.index=String(vi);
+        const tagsHtml = (Array.isArray(t.tags)?t.tags:[]).map(function(x){ return '<span>'+x+'</span>'; }).join('');
         card.innerHTML = `
-          <img class="mi-cover" src="${t.cover}" alt="" loading="lazy" decoding="async" />
+          <img class="mi-cover" src="${t.cover||''}" alt="" loading="lazy" decoding="async" />
           <div class="mi-meta">
-            <div class="mi-title">${t.title}</div>
-            <div class="mi-sub">${t.artist} • ${fmtTime(t.length)}</div>
-            <div class="mi-tags">${(t.tags||[]).map(x=>`<span>${x}</span>`).join('')}</div>
+            <div class="mi-title">${t.title||'Untitled'}</div>
+            <div class="mi-sub">${t.artist||''} • ${fmtTime(t.length)}</div>
+            <div class="mi-tags">${tagsHtml}</div>
           </div>
           <button class="mi-play" aria-label="Play">▶</button>
         `;
         const playBtn = card.querySelector('.mi-play');
         function toggleThis(){ if (currentIndex===vi && !audio.paused){ audio.pause(); pbPlay.textContent='▶'; updateCardPlayButtons(); } else { start(vi); } }
-        playBtn.addEventListener('click', toggleThis);
+        if (playBtn) playBtn.addEventListener('click', toggleThis);
         card.addEventListener('dblclick', toggleThis);
-        // Hover preview
-        card.addEventListener('mouseenter', (e)=> showPreview(t, e));
-        card.addEventListener('mousemove', (e)=> positionPreview(e));
+        card.addEventListener('mouseenter', function(e){ showPreview(t, e); });
+        card.addEventListener('mousemove', function(e){ positionPreview(e); });
         card.addEventListener('mouseleave', hidePreview);
         wrap.appendChild(card);
         if (!t.length || t.length===0) prefetchDuration(t, vi, card);
       });
-      listEl.appendChild(wrap);
-    });
+    } catch(_e) {
+      try {
+        listEl.innerHTML='';
+        view.forEach(function(t, vi){
+          const card = document.createElement('div'); card.className='music-item'; card.tabIndex=0; card.dataset.index=String(vi);
+          card.innerHTML = '<div class="mi-meta"><div class="mi-title">'+(t.title||'Untitled')+'</div><div class="mi-sub">'+(t.artist||'')+'</div></div><button class="mi-play" aria-label="Play">▶</button>';
+          listEl.appendChild(card);
+        });
+      } catch(__) {}
+    }
   }
 
   function updateCardPlayButtons(){
@@ -184,7 +203,7 @@
   const preview = document.createElement('div');
   preview.className = 'music-preview';
   preview.innerHTML = '<img alt=""/><div class="title"></div><div class="desc"></div>';
-  document.body.appendChild(preview);
+  try { document.body.appendChild(preview); } catch(_) {}
   function showPreview(track, ev){
     const img = preview.querySelector('img');
     const tt = preview.querySelector('.title');
@@ -232,15 +251,21 @@
   }
 
   function applyFilters(){
-    const q = (searchEl.value||'').trim().toLowerCase();
-    const tag = activeTag;
-    view = tracks.filter(t => {
-      const okTag = tag==='all' || (t.tags||[]).includes(tag);
+    const q = (searchEl && searchEl.value ? searchEl.value : '').trim().toLowerCase();
+    const tag = (typeof activeTag === 'string' && activeTag) ? activeTag : 'all';
+    let results = tracks.filter(function(t){
+      const okTag = tag==='all' || (Array.isArray(t.tags) && t.tags.includes(tag));
       if (!okTag) return false;
       if (!q) return true;
-      return (t.title+t.artist+(t.tags||[]).join(' ')).toLowerCase().includes(q);
+      return (String(t.title||'')+String(t.artist||'')+(Array.isArray(t.tags)?t.tags.join(' '):'')).toLowerCase().includes(q);
     });
-    switch (sortEl.value){
+    if (!results || results.length===0) {
+      // Hard fallback: always show full list rather than empty
+      results = tracks.slice();
+    }
+    view = results;
+    const sortVal = (sortEl && sortEl.value) ? sortEl.value : 'new';
+    switch (sortVal){
       case 'az': view.sort((a,b)=> a.title.localeCompare(b.title)); break;
       case 'len': view.sort((a,b)=> (a.length||0)-(b.length||0)); break;
       default: view.sort((a,b)=> new Date(b.date)-new Date(a.date));
@@ -376,8 +401,8 @@
   searchEl.addEventListener('input', applyFilters, { passive: true });
   if (sortEl) sortEl.addEventListener('change', applyFilters);
 
-  // Final safety: ensure view is initialized to all
-  activeTag = TAG_ALL;
-  applyFilters();
+  // Final safety: ensure view is initialized to all, even if select/search are null
+  try { activeTag = TAG_ALL; } catch(_) {}
+  try { applyFilters(); } catch(_){ try { render(); } catch(__){} }
 })();
 

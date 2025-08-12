@@ -556,6 +556,7 @@ document.addEventListener('DOMContentLoaded', function() {
     nav_scholarly: { pl: 'Naukowe', nl: 'Wetenschappelijk', en: 'Scholarly' },
     nav_extra: { pl: 'Dodatkowe', nl: 'Extra', en: 'Extra' },
     nav_contact: { pl: 'Kontakt', nl: 'Contact', en: 'Contact' },
+    nav_music: { pl: 'Muzyka', nl: 'Muziek', en: 'Music' },
     intro_title: { pl: 'Wprowadzenie', nl: 'Introductie', en: 'Introduction' },
     intro_lead: {
       pl: 'Krótki wgląd w to, kim jestem i moja pasja do dźwięku oraz technologii.',
@@ -625,7 +626,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('#nav a[href$="scholarly.html"]').forEach(a=> a.textContent = I18N.nav_scholarly[lang]);
     document.querySelectorAll('#nav a[href$="extras.html"]').forEach(a=> a.textContent = I18N.nav_extra[lang]);
     document.querySelectorAll('#nav a[href$="contact.html"]').forEach(a=> a.textContent = I18N.nav_contact[lang]);
-    document.querySelectorAll('#nav a[href$="music.html"]').forEach(a=> a.textContent = 'Music');
+    document.querySelectorAll('#nav a[href$="music.html"]').forEach(a=> a.textContent = (I18N.nav_music && I18N.nav_music[lang]) ? I18N.nav_music[lang] : 'Music');
     document.querySelectorAll('#nav a[href*="#projects-showcase"]').forEach(a=> a.textContent = I18N.nav_projects[lang]);
 
     // Index-specific headers
