@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
+  const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (window.innerWidth <= 736);
   // Enable reveal only if JS loads
   document.body.classList.add('reveal-enabled');
-  document.body.classList.add('page-enter');
-  setTimeout(() => document.body.classList.remove('page-enter'), 180);
+  if (!isMobile) {
+    document.body.classList.add('page-enter');
+    setTimeout(() => document.body.classList.remove('page-enter'), 180);
+  }
   // Ensure template preload overlay goes away even without theme JS
   document.body.classList.remove('is-preload');
 
@@ -12,7 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const slowNet = !!(conn && /(^2g$|^slow-2g$)/i.test(conn.effectiveType || ''));
   const prefersReduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   const perfLite = saveData || slowNet || prefersReduced;
+  const shouldRenderHeavy = !(perfLite || isMobile);
   if (perfLite) document.body.classList.add('perf-lite');
+  if (isMobile) document.body.classList.add('perf-lite');
 
   function markVisibleNow() {
     const vh = window.innerHeight || document.documentElement.clientHeight;
@@ -28,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Kill theme background that may be injected by template (#wrapper > .bg)
   function removeTemplateBackground() {
     document.querySelectorAll('#wrapper > .bg, #wrapper > .bg.fixed').forEach((el) => {
-      try { el.style.setProperty('display','none','important'); } catch(_) {}
+      try { el.remove(); } catch(_) { try { el.style.setProperty('display','none','important'); } catch(_) {} }
     });
     try { document.body.style.background = 'transparent'; } catch(_) {}
   }
@@ -47,22 +52,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Smooth page fade transitions
   // Intercept internal links and fade out before navigation
-  const progress = document.createElement('div');
-  progress.className = 'page-progress';
-  document.body.appendChild(progress);
-
-  document.querySelectorAll('a[href]').forEach(a => {
-    const href = a.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:')) return;
-    a.addEventListener('click', (e) => {
-      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; // allow new tab etc.
-      e.preventDefault();
-      progress.style.width = '35%';
-      document.body.classList.add('page-exit');
-      setTimeout(() => { progress.style.width = '70%'; }, 120);
-      setTimeout(() => { window.location.href = href; }, 220);
+  if (!isMobile) {
+    const progress = document.createElement('div');
+    progress.className = 'page-progress';
+    document.body.appendChild(progress);
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:')) return;
+      a.addEventListener('click', (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; // allow new tab etc.
+        e.preventDefault();
+        progress.style.width = '35%';
+        document.body.classList.add('page-exit');
+        setTimeout(() => { progress.style.width = '70%'; }, 120);
+        setTimeout(() => { window.location.href = href; }, 220);
+      });
     });
-  });
+  } else {
+    // On mobile, hard-disable template parallax scroll handler to prevent flicker
+    try { if (window.jQuery) { jQuery(window).off('scroll._parallax'); } } catch(_) {}
+  }
   // Allow external links to open normally (no intercept)
   // Background layers (reuse if present to avoid duplicates)
   const glow = document.querySelector('.bg-glow') || (()=>{ const d=document.createElement('div'); d.className='bg-glow'; return d; })();
@@ -96,11 +105,11 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!path2.parentNode) waves.appendChild(path2);
   if (!path3.parentNode) waves.appendChild(path3);
   if (!grad.parentNode) document.body.appendChild(grad);
-  if (!perfLite && !orbs.parentNode) document.body.appendChild(orbs);
+  if (shouldRenderHeavy && !orbs.parentNode) document.body.appendChild(orbs);
   if (!waves.parentNode) document.body.appendChild(waves); // keep waves (very light)
   // Equalizer bars
   let eq = document.querySelector('canvas.bg-eq'), ctx;
-  if (!perfLite && !eq) {
+  if (shouldRenderHeavy && !eq) {
     eq = document.createElement('canvas');
     eq.className = 'bg-eq';
     document.body.appendChild(eq);
@@ -126,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }, { passive: true });
 
   // Neo-piano banner: gradient glass keys with shorter neon accidentals for clear piano feel
-  (function(){
+  if (!isMobile) (function(){
     try {
       const wrap=document.createElement('div'); wrap.className='logo-audio'; document.body.appendChild(wrap);
       const svgNS='http://www.w3.org/2000/svg';
@@ -489,6 +498,20 @@ document.addEventListener('DOMContentLoaded', function() {
   const badgeWrap = document.querySelector('.lang-badge-wrap') || (()=>{ const w=document.createElement('div'); w.className='lang-badge-wrap'; document.body.appendChild(w); return w; })();
   const langBadge = document.querySelector('.lang-badge') || (()=>{ const b=document.createElement('div'); b.className='lang-badge'; badgeWrap.appendChild(b); return b; })();
   const badgeMenu = document.querySelector('.lang-badge-menu') || (()=>{ const m=document.createElement('div'); m.className='lang-badge-menu'; badgeWrap.appendChild(m); return m; })();
+  // Ensure Music link exists in nav
+  try {
+    const navLinks = document.querySelector('#nav .links');
+    if (navLinks && !navLinks.querySelector('a[href$="music.html"]')){
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = (location.pathname.includes('/projects/')?'../':'') + 'music.html';
+      a.textContent = 'Music';
+      li.appendChild(a);
+      const schol = Array.from(navLinks.querySelectorAll('a')).find(x=>/scholarly\.html$/.test(x.getAttribute('href')||''));
+      if (schol && schol.parentElement) navLinks.insertBefore(li, schol.parentElement);
+      else navLinks.appendChild(li);
+    }
+  } catch(_){}
   // Fixed always-visible switcher (separate from old dropdown CSS)
   const fixedLang = document.getElementById('lang-fixed') || (function(){
     const box = document.createElement('div');
@@ -561,6 +584,10 @@ document.addEventListener('DOMContentLoaded', function() {
     footer_social: { pl: 'Linki społecznościowe i zawodowe', nl: 'Sociale & professionele links', en: 'Social & Professional Links' },
     footer_qr_title: { pl: 'Szybki dostęp (QR kod)', nl: 'Snelle toegang (QR-code)', en: 'Quick Access (QR Code)' },
     footer_qr_hint: { pl: 'Zeskanuj, aby szybko otworzyć to portfolio.', nl: 'Scan voor snelle toegang tot dit portfolio.', en: 'Scan for quick access to this portfolio.' },
+    // Music page
+    music_title: { en: 'Music Listening Room', pl: 'Muzyka — Pokój odsłuchowy', nl: 'Muziek — Luisterkamer' },
+    music_lead: { en: 'Stream curated tracks, preview stems, and explore catalog.', pl: 'Słuchaj wybranych utworów, podglądaj stemsy i przeglądaj katalog.', nl: 'Stream geselecteerde tracks, bekijk stems en verken de catalogus.' },
+    music_sort: { en: 'Sort', pl: 'Sortuj', nl: 'Sorteren' },
     toast_switched: { pl: 'Przełączono na polski', nl: 'Gewisseld naar Nederlands', en: 'Switched to English' },
     all_projects_title: { pl: 'Wszystkie projekty', nl: 'Alle projecten', en: 'All Projects' },
     all_projects_lead: { pl: 'Filtruj i sortuj, aby przeglądać prace.', nl: 'Filter en sorteer om werk te verkennen.', en: 'Filter and sort to explore selected works.' },
@@ -601,9 +628,19 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('#nav a[href$="scholarly.html"]').forEach(a=> a.textContent = I18N.nav_scholarly[lang]);
     document.querySelectorAll('#nav a[href$="extras.html"]').forEach(a=> a.textContent = I18N.nav_extra[lang]);
     document.querySelectorAll('#nav a[href$="contact.html"]').forEach(a=> a.textContent = I18N.nav_contact[lang]);
+    document.querySelectorAll('#nav a[href$="music.html"]').forEach(a=> a.textContent = 'Music');
     document.querySelectorAll('#nav a[href*="#projects-showcase"]').forEach(a=> a.textContent = I18N.nav_projects[lang]);
 
     // Index-specific headers
+    // Music page
+    if (location.pathname.endsWith('/music.html') || location.pathname.endsWith('music.html')){
+      const h = document.querySelector('[data-i18n="music.title"], .music-page header.major h2');
+      const p = document.querySelector('[data-i18n="music.lead"], .music-page header.major p');
+      const sort = document.querySelector('#music-sort')?.previousElementSibling?.querySelector('span');
+      if (h) h.textContent = I18N.music_title[lang];
+      if (p) p.textContent = I18N.music_lead[lang];
+      if (sort) sort.textContent = I18N.music_sort[lang];
+    }
     // Intro block translations – apply only on homepage (has projects-showcase)
     if (document.getElementById('projects-showcase')){
       const introH2 = document.querySelector('#main > section.post header.major h2');

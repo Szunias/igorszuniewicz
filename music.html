@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Music — Listening Room</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/custom-styles.css?v=20250210" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+  <div id="wrapper" class="fade-in">
+
+    <header id="header">
+      <a href="index.html" class="logo">Igor Szuniewicz</a>
+    </header>
+
+    <nav id="nav">
+      <ul class="links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects/index.html">Projects</a></li>
+        <li class="active"><a href="music.html">Music</a></li>
+        <li><a href="scholarly.html">Scholarly</a></li>
+        <li><a href="extras.html">Extra</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <ul class="icons"></ul>
+    </nav>
+
+    <div id="main">
+      <section class="post music-page" data-reveal>
+        <header class="major">
+          <h2 data-i18n="music.title">Music Listening Room</h2>
+          <p id="bgWhite" data-i18n="music.lead">Stream curated tracks, preview stems, and explore catalog.</p>
+        </header>
+
+        <div class="music-controls">
+          <div class="left">
+            <input type="search" id="music-search" placeholder="Search…" aria-label="Search" />
+            <select id="music-filter">
+              <option value="all" selected>All</option>
+            </select>
+          </div>
+          <div class="right">
+            <label>
+              <span data-i18n="music.sort">Sort</span>
+              <select id="music-sort">
+                <option value="new">Newest</option>
+                <option value="az">A → Z</option>
+                <option value="len">Length</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div id="music-list" class="music-list" aria-live="polite"></div>
+      </section>
+    </div>
+
+    <footer id="footer">
+      <section class="split contact">
+        <section class="alt">
+          <h3>Location</h3>
+          <p>Belgium West Flanders</p>
+        </section>
+        <section>
+          <h3>Email</h3>
+          <p><a href="mailto:szunio2004@gmail.com">szunio2004@gmail.com</a></p>
+        </section>
+      </section>
+    </footer>
+
+    <div id="copyright">
+      <ul>
+        <li>&copy; Igor Szuniewicz 2025. All rights reserved.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div id="player-bar" class="player-bar" aria-live="polite" aria-atomic="true" hidden>
+    <div class="pb-left">
+      <img class="pb-cover" alt="" />
+      <div class="pb-meta">
+        <div class="pb-title">—</div>
+        <div class="pb-sub">—</div>
+      </div>
+    </div>
+    <div class="pb-center">
+      <div class="pb-controls">
+        <button class="pb-btn pb-prev" aria-label="Previous">⏮</button>
+        <button class="pb-btn pb-play" aria-label="Play/Pause">▶</button>
+        <button class="pb-btn pb-next" aria-label="Next">⏭</button>
+      </div>
+      <div class="pb-timeline">
+        <span class="pb-time pb-current">0:00</span>
+        <input type="range" class="pb-seek" min="0" max="1000" value="0" aria-label="Seek" />
+        <span class="pb-time pb-duration">0:00</span>
+        <canvas class="pb-wave" aria-hidden="true"></canvas>
+      </div>
+    </div>
+    <div class="pb-right">
+      <input type="range" class="pb-vol" min="0" max="1" step="0.01" value="0.9" aria-label="Volume" />
+    </div>
+  </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrollex.min.js"></script>
+  <script src="assets/js/jquery.scrolly.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/enhancements.js?v=20250210"></script>
+  <script src="assets/js/music.js?v=20250210"></script>
+</body>
+</html>
