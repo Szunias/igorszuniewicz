@@ -156,8 +156,12 @@ body.is-preload #wrapper.fade-in:before { opacity: 0 !important; display: none !
 
 /* Ensure nav stays visible on small screens if theme JS isn't loaded */
 @media screen and (max-width: 980px) {
-  #nav { display: block !important; }
+  #nav { display: block !important; margin: 0 auto !important; width: calc(100% - 2rem) !important; opacity: 1 !important; transform: none !important; }
+  #nav .links { flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
 }
+
+/* If main.js isn't loaded, prevent preload styles from hiding nav */
+body.is-preload #intro:not(.hidden) + #header + #nav { opacity: 1 !important; transform: none !important; }
 
 /* One-time nudge to show language switch */
 .lang-nudge { position: absolute; right: 0; top: 78px; background: rgba(12,18,24,0.95); color:#e9f7ff; border:1px solid rgba(255,255,255,0.14); padding:6px 10px; border-radius:10px; font-size:.85rem; display:flex; gap:8px; align-items:center; opacity:0; transform: translateY(-6px); transition: opacity .2s ease, transform .2s ease; pointer-events:none; box-shadow:0 12px 30px rgba(0,0,0,0.35); }
