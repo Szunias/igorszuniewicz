@@ -5,7 +5,7 @@
 
   const listEl = document.getElementById('music-list');
   const searchEl = document.getElementById('music-search');
-  const filterEl = document.getElementById('music-filter');
+  const tagsEl = document.getElementById('music-tags');
   const sortEl = document.getElementById('music-sort');
 
   const playerBar = document.getElementById('player-bar');
@@ -68,8 +68,20 @@
         { url:'songs/CathedralOfTime.m4a', type:'audio/mp4' },
         { url:'songs/CathedralOfTime.mp3', type:'audio/mpeg' }
       ]
+    },
+    // XianClash entry (film/score)
+    { id:'xianclash', title:'Xian Clash — Main Theme', artist:'Igor Szuniewicz', cover:'images/XianClashCover.png', tags:['film','score'], length: 0, date:'2025-02-10',
+      sources:[
+        { url:'songs/XianClashMainTheme.m4a', type:'audio/mp4' },
+        { url:'songs/XianClashMainTheme.mp3', type:'audio/mpeg' },
+        { url:'songs/XianClashMainTheme.wav', type:'audio/wav' }
+      ]
     }
   ];
+
+  // View state must be declared before first applyFilters() call
+  let view = [...tracks];
+  let currentIndex = -1;
 
   function chooseSource(track){
     const order = track.sources && track.sources.length ? track.sources : (track.url ? [{url:track.url}] : []);
@@ -78,42 +90,106 @@
     return playable.length ? playable : order;
   }
 
-  // Populate filter from tags
+  // Populate filter chips from tags
   const allTags = Array.from(new Set(tracks.flatMap(t=> t.tags || []))).sort();
-  allTags.forEach(tag=>{
-    const opt = document.createElement('option'); opt.value=tag; opt.textContent=tag;
-    filterEl.appendChild(opt);
-  });
+  const TAG_ALL = 'all';
+  let activeTag = TAG_ALL;
+  function renderTagChips(){
+    if (!tagsEl) return;
+    tagsEl.innerHTML = '';
+    const make = (value, label)=>{ const b=document.createElement('button'); b.type='button'; b.className='chip'+(activeTag===value?' active':''); b.dataset.tag=value; b.textContent = label; return b; };
+    tagsEl.appendChild(make(TAG_ALL, 'All'));
+    allTags.forEach(tag=> { const lbl = tag.charAt(0).toUpperCase()+tag.slice(1); tagsEl.appendChild(make(tag, lbl)); });
+  }
+  renderTagChips();
+  // Ensure default is 'All' and render immediately
+  activeTag = TAG_ALL;
+  if (tagsEl){ tagsEl.addEventListener('click', (e)=>{ const b=e.target.closest('.chip'); if(!b) return; activeTag=b.dataset.tag||TAG_ALL; renderTagChips(); applyFilters(); }); }
+  // Initial render with ALL
+  applyFilters();
 
   function fmtTime(s){ s=Math.max(0,Math.floor(s||0)); const m=Math.floor(s/60); const r=(s%60).toString().padStart(2,'0'); return m+':'+r; }
 
-  let view = [...tracks];
-  let currentIndex = -1;
+  
 
   function render(){
     listEl.innerHTML = '';
-    view.forEach((t, i)=>{
-      const card = document.createElement('div'); card.className='music-item'; card.tabIndex=0;
-      card.innerHTML = `
-        <img class="mi-cover" src="${t.cover}" alt="" loading="lazy" decoding="async" />
-        <div class="mi-meta">
-          <div class="mi-title">${t.title}</div>
-          <div class="mi-sub">${t.artist} • ${fmtTime(t.length)}</div>
-          <div class="mi-tags">${(t.tags||[]).map(x=>`<span>${x}</span>`).join('')}</div>
-        </div>
-        <button class="mi-play" aria-label="Play">▶</button>
-      `;
-      const playBtn = card.querySelector('.mi-play');
-      function playThis(){ start(i); }
-      playBtn.addEventListener('click', playThis);
-      card.addEventListener('dblclick', playThis);
-      listEl.appendChild(card);
+    // Group by first tag
+    const groups = new Map();
+    view.forEach((t)=>{ const key=(t.tags&&t.tags[0])?t.tags[0]:'other'; if(!groups.has(key)) groups.set(key, []); groups.get(key).push(t); });
+    let idx = 0;
+    groups.forEach((items, group)=>{
+      const wrap = document.createElement('div'); wrap.className='music-group';
+      const title = document.createElement('div'); title.className='group-title'; title.textContent = group.charAt(0).toUpperCase()+group.slice(1);
+      wrap.appendChild(title);
+      items.forEach((t)=>{
+        const vi = view.indexOf(t);
+        const i = idx++;
+        const card = document.createElement('div'); card.className='music-item'; card.tabIndex=0; card.dataset.index=String(vi);
+        card.innerHTML = `
+          <img class="mi-cover" src="${t.cover}" alt="" loading="lazy" decoding="async" />
+          <div class="mi-meta">
+            <div class="mi-title">${t.title}</div>
+            <div class="mi-sub">${t.artist} • ${fmtTime(t.length)}</div>
+            <div class="mi-tags">${(t.tags||[]).map(x=>`<span>${x}</span>`).join('')}</div>
+          </div>
+          <button class="mi-play" aria-label="Play">▶</button>
+        `;
+        const playBtn = card.querySelector('.mi-play');
+        function toggleThis(){ if (currentIndex===vi && !audio.paused){ audio.pause(); pbPlay.textContent='▶'; updateCardPlayButtons(); } else { start(vi); } }
+        playBtn.addEventListener('click', toggleThis);
+        card.addEventListener('dblclick', toggleThis);
+        wrap.appendChild(card);
+        if (!t.length || t.length===0) prefetchDuration(t, vi, card);
+      });
+      listEl.appendChild(wrap);
     });
+  }
+
+  function updateCardPlayButtons(){
+    const items = Array.from(listEl.querySelectorAll('.music-item'));
+    items.forEach((node)=>{
+      const btn = node.querySelector('.mi-play');
+      if (!btn) return;
+      const vi = parseInt(node.dataset.index||'-1',10);
+      btn.textContent = (vi===currentIndex && !audio.paused) ? '⏸' : '▶';
+    });
+  }
+
+  function prefetchDuration(track, index, cardNode){
+    try {
+      const chosen = chooseSource(track)[0];
+      if (!chosen) return;
+      const cacheKey = 'dur:'+chosen.url;
+      const cached = localStorage.getItem(cacheKey);
+      if (cached){
+        const sec = parseInt(cached,10); if (isFinite(sec) && sec>0){ track.length = sec; updateCardDuration(index, cardNode); return; }
+      }
+      const a = new Audio(); a.preload = 'metadata'; a.src = new URL(chosen.url, location.href).toString();
+      a.addEventListener('loadedmetadata', ()=>{
+        if (isFinite(a.duration) && a.duration>0){
+          track.length = Math.round(a.duration);
+          try { localStorage.setItem(cacheKey, String(track.length)); } catch(_){ }
+          updateCardDuration(index, cardNode);
+        }
+      }, { once: true });
+      a.load();
+    } catch(_){}
+  }
+
+  function updateCardDuration(index, cardNode){
+    try {
+      const node = cardNode || listEl.querySelector(`.music-item[data-index="${index}"]`);
+      if (!node) return;
+      const t = view[index]; if (!t) return;
+      const sub = node.querySelector('.mi-sub');
+      if (sub) sub.textContent = `${t.artist} • ${fmtTime(t.length)}`;
+    } catch(_){}
   }
 
   function applyFilters(){
     const q = (searchEl.value||'').trim().toLowerCase();
-    const tag = filterEl.value;
+    const tag = activeTag;
     view = tracks.filter(t => {
       const okTag = tag==='all' || (t.tags||[]).includes(tag);
       if (!okTag) return false;
@@ -159,7 +235,8 @@
     pbPlay.textContent = '⏸';
     // Mark playing item for visual accent
     Array.from(document.querySelectorAll('.music-item')).forEach(n=> n.classList.remove('playing'));
-    const node = listEl.children[i]; if (node) node.classList.add('playing');
+    const node = listEl.querySelector(`.music-item[data-index="${i}"]`);
+    if (node) node.classList.add('playing');
     // Reset waveform paint
     initWave();
   }
@@ -167,6 +244,7 @@
   pbPlay.addEventListener('click', ()=>{
     if (audio.paused) { audio.play().catch(()=>{}); pbPlay.textContent='⏸'; }
     else { audio.pause(); pbPlay.textContent='▶'; }
+    updateCardPlayButtons();
   });
   pbPrev.addEventListener('click', ()=>{ if (view.length===0) return; const i=(currentIndex-1+view.length)%view.length; start(i); });
   pbNext.addEventListener('click', ()=>{ if (view.length===0) return; const i=(currentIndex+1)%view.length; start(i); });
@@ -187,6 +265,8 @@
     }
     drawWaveProgress();
   });
+  audio.addEventListener('pause', ()=>{ pbPlay.textContent='▶'; updateCardPlayButtons(); });
+  audio.addEventListener('play', ()=>{ pbPlay.textContent='⏸'; updateCardPlayButtons(); });
   audio.addEventListener('loadedmetadata', ()=>{
     // If length is unknown (0), fill it from metadata
     try {
@@ -250,9 +330,10 @@
 
   // Hook filters
   searchEl.addEventListener('input', applyFilters, { passive: true });
-  filterEl.addEventListener('change', applyFilters);
-  sortEl.addEventListener('change', applyFilters);
+  if (sortEl) sortEl.addEventListener('change', applyFilters);
 
+  // Final safety: ensure view is initialized to all
+  activeTag = TAG_ALL;
   applyFilters();
 })();
 
