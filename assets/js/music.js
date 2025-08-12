@@ -47,11 +47,11 @@
   /** Seed demo tracks. Replace with your files in /audio */
   const tracks = [
     // Game/film cues
-    { id:'ntd', title:'Not Today, Darling! (Theme)', artist:'Igor Szuniewicz', cover:'images/NotTodayGameLogo.png', url:'audio/ntd-theme.mp3', tags:['game','theme'], length: 122, date:'2024-11-01' },
-    { id:'ray', title:'Ray Animation — Credits Theme', artist:'Igor Szuniewicz', cover:'images/project5.png', tags:['film','score'], length: 0, date:'2025-01-10',
+    { id:'ntd', title:'Not Today, Darling! (Theme)', artist:'Igor Szuniewicz', cover:'images/NotTodayGameLogo.png', url:'audio/ntd-theme.mp3', tags:['game','theme'], length: 122, date:'2025-01-01', year: 2025 },
+    { id:'ray', title:'Ray Animation — Credits Theme', artist:'Igor Szuniewicz', cover:'images/project5.png', tags:['film','score'], length: 0, date:'2024-01-10', year: 2024,
       sources:[ { url:'songs/RayCreditsTheme.wav', type:'audio/wav' } ]
     },
-    { id:'richter', title:'Richter — Main Theme', artist:'Igor Szuniewicz', cover:'images/richter.png', tags:['film','score'], length: 0, date:'2024-06-01',
+    { id:'richter', title:'Richter — Main Theme', artist:'Igor Szuniewicz', cover:'images/richter.png', tags:['film','score'], length: 0, date:'2024-06-01', year: 2024,
       // Drop at least one of these in /songs to enable playback
       sources:[
         { url:'songs/RichterMainTheme.m4a', type:'audio/mp4' },
@@ -60,21 +60,21 @@
       ]
     },
     // Spotify catalog (provide local copies in /songs for on-site playback)
-    { id:'sp_inflow', title:'Inflow', artist:'Igor Szuniewicz', cover:'images/Inflow_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01',
+    { id:'sp_inflow', title:'Inflow', artist:'Igor Szuniewicz', cover:'images/Inflow_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01', year: 2023,
       sources:[
         { url:'songs/Inflow.m4a', type:'audio/mp4' },
         { url:'songs/Inflow.mp3', type:'audio/mpeg' },
         { url:'songs/Igor Szuniewicz - Inflow.wav', type:'audio/wav' }
       ]
     },
-    { id:'sp_astro', title:'Astrophonic Dance', artist:'Igor Szuniewicz', cover:'images/Astrophonic Dance_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01',
+    { id:'sp_astro', title:'Astrophonic Dance', artist:'Igor Szuniewicz', cover:'images/Astrophonic Dance_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01', year: 2023,
       sources:[
         { url:'songs/AstrophonicDance.m4a', type:'audio/mp4' },
         { url:'songs/AstrophonicDance.mp3', type:'audio/mpeg' },
         { url:'songs/Igor Szuniewicz - Astrophonic Dance.wav', type:'audio/wav' }
       ]
     },
-    { id:'sp_cathedral', title:'Cathedral Of Time', artist:'Igor Szuniewicz', cover:'images/Cathedral Of Time_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01',
+    { id:'sp_cathedral', title:'Cathedral Of Time', artist:'Igor Szuniewicz', cover:'images/Cathedral Of Time_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01', year: 2023,
       sources:[
         { url:'songs/CathedralOfTime.m4a', type:'audio/mp4' },
         { url:'songs/CathedralOfTime.mp3', type:'audio/mpeg' },
@@ -82,7 +82,7 @@
       ]
     },
     // XianClash entry (film/score)
-    { id:'xianclash', title:'Xian Clash — Main Theme', artist:'Igor Szuniewicz', cover:'images/XianClashCover.png', tags:['film','score'], length: 0, date:'2025-02-10',
+    { id:'xianclash', title:'Xian Clash — Main Theme', artist:'Igor Szuniewicz', cover:'images/XianClashCover.png', tags:['film','score'], length: 0, date:'2024-02-10', year: 2024,
       sources:[
         { url:'songs/XianClashMainTheme.m4a', type:'audio/mp4' },
         { url:'songs/XianClashMainTheme.mp3', type:'audio/mpeg' },
@@ -90,7 +90,7 @@
       ]
     },
     // Run (hard rock / metal)
-    { id:'run', title:'Run — Main Theme', artist:'Igor Szuniewicz', cover:'images/Run.png', tags:['single','metal'], length: 0, date:'2025-02-11',
+    { id:'run', title:'Run — Main Theme', artist:'Igor Szuniewicz', cover:'images/Run.png', tags:['single','metal'], length: 0, date:'2025-02-11', year: 2025,
       sources:[
         { url:'songs/RunMainTheme.m4a', type:'audio/mp4' },
         { url:'songs/RunMainTheme.mp3', type:'audio/mpeg' },
@@ -165,6 +165,7 @@
             <div class="mi-sub">${t.artist||''} • ${fmtTime(t.length)}</div>
             <div class="mi-tags">${tagsHtml}</div>
           </div>
+          <div class="mi-year">${t.year ? String(t.year) : ''}</div>
           <button class="mi-play" aria-label="Play">▶</button>
         `;
         const playBtn = card.querySelector('.mi-play');
