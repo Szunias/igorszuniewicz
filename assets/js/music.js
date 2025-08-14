@@ -719,16 +719,14 @@
   try { layoutAlbumWall(); } catch(_){}
   function layoutAlbumWall(){
     const wall = document.querySelector('.album-wall'); if (!wall) return;
-    const r1 = wall.querySelector('.album-row.r1'); const r2 = wall.querySelector('.album-row.r2');
+    const r1 = wall.querySelector('.album-row.r1 .strip'); const r2 = wall.querySelector('.album-row.r2 .strip');
     // Populate from tracks if available
     try {
       const srcs = Array.from(new Set((window.__tracks__||[]).map(t=> t.cover).filter(Boolean)));
-      function fill(row, start){ if (!row) return; const tiles=row.querySelectorAll('.tile img'); tiles.forEach((img,idx)=>{ const s=srcs[(start+idx)%srcs.length]; if (s) img.src=s; }); }
-      if (srcs.length){ fill(r1,0); fill(r2,3); }
+      function fill(strip, start){ if (!strip) return; const tiles=strip.querySelectorAll('.set'); tiles.forEach((setNode,setIdx)=>{ const imgs=setNode.querySelectorAll('img'); imgs.forEach((img,idx)=>{ const s=srcs[(start+setIdx*imgs.length+idx)%srcs.length]; if (s) img.src=s; }); }); }
+      if (srcs.length){ fill(r1,0); fill(r2,5); }
     } catch(_){ }
-    // Continuous marquee animation left/right
-    function animateRow(row, dir){ if (!row) return; let x=0; function step(){ x += dir*0.15; row.style.transform='translateX('+x+'px)'; if (x<=-160-14) x=0; if (x>=160+14) x=0; requestAnimationFrame(step);} step(); }
-    animateRow(r1, -1); animateRow(r2, 1);
+    // CSS handles marquee via keyframes on .strip (seamless because of duplicates)
   }
 })();
 
