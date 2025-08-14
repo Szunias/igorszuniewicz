@@ -193,7 +193,7 @@
       const title = document.createElement('div'); title.className='group-title';
       const group = (activeTag && activeTag !== 'all') ? activeTag : 'all';
       const pretty = group==='all' ? 'All' : (group.charAt(0).toUpperCase()+group.slice(1));
-      const badgeClass = (group==='electronic')?'badge-electronic':(group==='game')?'badge-game':(group==='film')?'badge-film':(group==='metal')?'badge-metal':'';
+      const badgeClass = (group==='electronic')?'badge-electronic':(group==='game')?'badge-game':(group==='film')?'badge-film':(group==='metal')?'badge-metal':(group==='playful')?'badge-playful':(group==='score')?'badge-score':(group==='single')?'badge-single':'';
       const emoji = (group==='electronic')?'🎛️':(group==='game')?'🎮':(group==='film')?'🎬':(group==='metal')?'🎸':'🎵';
       if (badgeClass) title.classList.add(badgeClass);
       title.innerHTML = '<span class="emoji" aria-hidden="true">'+emoji+'</span><span>'+pretty+'</span>';
