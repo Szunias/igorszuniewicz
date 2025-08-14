@@ -571,7 +571,15 @@
       Array.from(document.querySelectorAll('.music-item')).forEach(n=> n.classList.remove('playing'));
       if (currentIndex>=0){
         const node = listEl.querySelector(`.music-item[data-index="${currentIndex}"]`);
-        if (node) node.classList.add('playing');
+        if (node){
+          node.classList.add('playing');
+          try {
+            const lang = document.documentElement.getAttribute('lang') || document.documentElement.dataset.lang || 'en';
+            const I = (window.I18N_PUBLIC||{});
+            const badge = (I.music_now_playing && I.music_now_playing[lang]) || 'Now playing';
+            node.setAttribute('data-nowplaying', badge);
+          } catch(_){ node.setAttribute('data-nowplaying','Now playing'); }
+        }
       }
     } catch(_){ }
   }

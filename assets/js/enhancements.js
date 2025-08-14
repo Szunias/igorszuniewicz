@@ -791,6 +791,8 @@ document.addEventListener('DOMContentLoaded', function() {
     music_lead: { en: 'Stream curated tracks, preview stems, and explore catalog.', pl: 'Słuchaj wybranych utworów, podglądaj stemsy i przeglądaj katalog.', nl: 'Stream geselecteerde tracks, bekijk stems en verken de catalogus.' },
     music_sort: { en: 'Sort', pl: 'Sortuj', nl: 'Sorteren' },
     music_hint_click: { en: 'Click for details', pl: 'Kliknij, aby zobaczyć szczegóły', nl: 'Klik voor details' },
+    music_now_playing: { en:'Now playing', pl:'Teraz odtwarzane', nl:'Nu speelt' },
+    music_vol_label: { en:'Volume', pl:'Głośność', nl:'Volume' },
     toast_switched: { pl: 'Przełączono na polski', nl: 'Gewisseld naar Nederlands', en: 'Switched to English' },
     all_projects_title: { pl: 'Wszystkie projekty', nl: 'Alle projecten', en: 'All Projects' },
     all_projects_lead: { pl: 'Filtruj i sortuj, aby przeglądać prace.', nl: 'Filter en sorteer om werk te verkennen.', en: 'Filter and sort to explore selected works.' },
@@ -820,7 +822,7 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   // Expose minimal public i18n for other scripts (read-only)
-  try { window.I18N_PUBLIC = Object.freeze({ music_hint_click: I18N.music_hint_click }); } catch(_){ }
+  try { window.I18N_PUBLIC = Object.freeze({ music_hint_click: I18N.music_hint_click, music_now_playing: I18N.music_now_playing }); } catch(_){ }
 
   function translatePage(lang){
     // Nav links by href
@@ -848,6 +850,10 @@ document.addEventListener('DOMContentLoaded', function() {
       if (sort) sort.textContent = I18N.music_sort[lang];
       // Translate subtle card hints
       document.querySelectorAll('#music-list .music-item .mi-hint').forEach(el=>{ el.textContent = I18N.music_hint_click[lang]; });
+      // Set Now playing badge text via data attribute for CSS content
+      document.querySelectorAll('#music-list .music-item.playing').forEach(el=>{ el.setAttribute('data-nowplaying', I18N.music_now_playing[lang]); });
+      // Volume label in player bar
+      const vr = document.querySelector('#player-bar .pb-vol-label'); if (vr) vr.textContent = I18N.music_vol_label[lang];
       // Also translate open track modal description if present
       try {
         const modal = document.querySelector('.music-modal.open');
