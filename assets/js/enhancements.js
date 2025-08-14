@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // Guard against stuck transition classes on reload/back-forward (BFCache)
+  try {
+    document.body.classList.remove('page-exit');
+    document.body.classList.remove('page-enter');
+    document.body.classList.remove('is-preload');
+  } catch(_) {}
   const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (window.innerWidth <= 736);
   // Enable reveal only if JS loads
   document.body.classList.add('reveal-enabled');
@@ -18,6 +24,34 @@ document.addEventListener('DOMContentLoaded', function() {
   const shouldRenderHeavy = !(perfLite || isMobile);
   if (perfLite) document.body.classList.add('perf-lite');
   if (isMobile) document.body.classList.add('perf-lite');
+
+  // Cross-page persistent zoom (Ctrl + / Ctrl - / Ctrl 0, and Ctrl + wheel)
+  (function persistentZoom(){
+    try {
+      const Z_KEY = 'site-zoom-factor';
+      const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+      const apply = (z) => { try { document.body.style.zoom = String(z); } catch(_) {} };
+      let z = parseFloat(localStorage.getItem(Z_KEY) || '1') || 1;
+      z = clamp(z, 0.5, 2.0); apply(z);
+      function save(zv){ z = clamp(parseFloat(zv)||1, 0.5, 2.0); localStorage.setItem(Z_KEY, String(z)); apply(z); }
+      // Keyboard shortcuts
+      document.addEventListener('keydown', (e)=>{
+        if (!e.ctrlKey) return;
+        const k = e.key;
+        if (k === '+' || k === '=' || k === 'Add') { e.preventDefault(); save(z + 0.1); }
+        else if (k === '-' || k === 'Subtract' || k === '_') { e.preventDefault(); save(z - 0.1); }
+        else if (k === '0' || k === ')') { e.preventDefault(); save(1); }
+      }, { capture: true });
+      // Ctrl + wheel
+      document.addEventListener('wheel', (e)=>{
+        if (!e.ctrlKey) return; e.preventDefault();
+        const delta = e.deltaY || 0;
+        save(z + (delta < 0 ? 0.1 : -0.1));
+      }, { passive: false, capture: true });
+      // If pageshow (bfcache) returns, re-apply
+      window.addEventListener('pageshow', ()=> apply(parseFloat(localStorage.getItem(Z_KEY)||'1')||1));
+    } catch(_){ /* ignore */ }
+  })();
 
   function markVisibleNow() {
     const vh = window.innerHeight || document.documentElement.clientHeight;
@@ -61,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:')) return;
       a.addEventListener('click', (e) => {
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; // allow new tab etc.
+        if (a.target === '_blank') return;
         e.preventDefault();
         progress.style.width = '35%';
         document.body.classList.add('page-exit');
@@ -110,6 +145,25 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!grad.parentNode) document.body.appendChild(grad);
   if (shouldRenderHeavy && !orbs.parentNode) document.body.appendChild(orbs);
   if (!waves.parentNode) document.body.appendChild(waves); // keep waves (very light)
+  // Initialize wave paths so they are visible even before any pointer movement
+  (function initWaves(){
+    try {
+      const t = performance.now() / 1000;
+      const build = (amp, phase, freq) => {
+        let d = 'M 0 300 ';
+        for (let i=0;i<=1200;i+=20){
+          const yy = 300 + Math.sin((i/1200)*Math.PI*freq + t*1.2 + phase)*amp + Math.sin((i/1200)*Math.PI*2 + t*0.4)*6;
+          d += `L ${i} ${yy} `;
+        }
+        d += 'L 1200 600 L 0 600 Z';
+        return d;
+      };
+      const amp1 = 22, amp2 = 30, amp3 = 16;
+      path1.setAttribute('d', build(amp1, 0, 4));
+      path2.setAttribute('d', build(amp2, Math.PI/2, 5));
+      path3.setAttribute('d', build(amp3, Math.PI, 6));
+    } catch(_){}
+  })();
   // Equalizer bars
   let eq = document.querySelector('canvas.bg-eq'), ctx;
   if (shouldRenderHeavy && !eq) {
@@ -118,6 +172,35 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(eq);
   }
   document.body.appendChild(glow);
+
+  // On BFCache restore or hard reload, ensure wrapper is visible and transitions are cleared
+  window.addEventListener('pageshow', function(ev){
+    try {
+      document.body.classList.remove('page-exit');
+      document.body.classList.remove('page-enter');
+      document.body.classList.remove('is-preload');
+      var prog = document.querySelector('.page-progress');
+      if (prog) prog.style.width = '100%';
+      setTimeout(()=>{ if (prog) prog.style.width = '0'; }, 150);
+    } catch(_) {}
+  });
+  window.addEventListener('popstate', function(){
+    try {
+      document.body.classList.remove('page-exit');
+      document.body.classList.remove('page-enter');
+      var prog = document.querySelector('.page-progress');
+      if (prog) prog.style.width = '0';
+    } catch(_) {}
+  });
+  document.addEventListener('visibilitychange', function(){
+    if (!document.hidden){
+      try {
+        document.body.classList.remove('page-exit');
+        var prog = document.querySelector('.page-progress');
+        if (prog) prog.style.width = '0';
+      } catch(_) {}
+    }
+  });
 
   // Lightweight UI sounds (click/hover) – gentle and subtle
   (function(){
@@ -140,6 +223,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('change',(e)=>{ if(!e.target) return; if (isInMusic(e.target)) return; if(e.target.matches('select')||e.target.matches('input[type="checkbox"],input[type="radio"]')) blip(660,0.06,0.05); },{passive:true});
     // Hover subtle hint
     document.addEventListener('pointerenter',(e)=>{ const el=e.target.closest('a.button, .button, .slider-nav'); if(!el) return; if (isInMusic(el)) return; blip(1200,0.04,0.035); },true);
+  })();
+
+  // Contact ambient pointer tracking
+  (function(){
+    const root = document.querySelector('.contact-modern'); if(!root) return;
+    function onMove(e){ const x = (e.clientX||0)/window.innerWidth; root.style.setProperty('--mx', (x*100)+'%'); }
+    window.addEventListener('pointermove', onMove, { passive:true });
   })();
 
   // Visual audio-like ripple on clicks
@@ -245,25 +335,38 @@ document.addEventListener('DOMContentLoaded', function() {
       function cinematicPianoTone(freq){
         const c=getCtx(); if(!c) return; if (c.state==='suspended') { try{ c.resume(); }catch(_){} }
         const t=c.currentTime;
-        // Sources: fundamental + gentle overtone (saw with lowpass) + click
+        // Felt/cinematic: soft triangle + very subdued saw overtone, hammer click, LP + light room conv
         const o1=c.createOscillator(); o1.type='triangle'; o1.frequency.value=freq;
-        const o2=c.createOscillator(); o2.type='sawtooth'; o2.frequency.value=freq*2;
-        const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.setValueAtTime(9500,t); lp.Q.value=0.6;
+        const o2=c.createOscillator(); o2.type='sawtooth'; o2.frequency.value=freq*1.999; // near 2nd harmonic
+        const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.Q.value=0.7; lp.frequency.setValueAtTime(6000,t); lp.frequency.exponentialRampToValueAtTime(1800, t+0.35);
         const gain=c.createGain(); const gain2=c.createGain();
-        // filter sweep (hammer damping)
-        lp.frequency.exponentialRampToValueAtTime(2200, t+0.45);
-        // amplitude envelope: quick attack, musical decay
-        const atk=0.003, dec=0.45, rel=0.35; const peak=0.26;
+        // Envelope: very fast attack, longer musical tail (still allowing fast retrigger)
+        const atk=0.003, dec=0.55, rel=0.35; const peak=0.22;
         gain.gain.setValueAtTime(0.0001,t); gain.gain.linearRampToValueAtTime(peak,t+atk); gain.gain.exponentialRampToValueAtTime(0.0006, t+atk+dec+rel);
-        gain2.gain.setValueAtTime(0.09,t); gain2.gain.exponentialRampToValueAtTime(0.0006, t+0.18);
-        // Click transient
-        const noise=c.createBufferSource(); const nb=c.createBuffer(1, c.sampleRate*0.02, c.sampleRate); const nd=nb.getChannelData(0); for (let i=0;i<nd.length;i++){ nd[i]=(Math.random()*2-1)*Math.exp(-i/500); } noise.buffer=nb; const clickG=c.createGain(); clickG.gain.setValueAtTime(0.08,t); clickG.gain.exponentialRampToValueAtTime(0.0001,t+0.02);
-        // Reverb
-        const conv=c.createConvolver(); conv.buffer=getPianoIR(c); const revG=c.createGain(); revG.gain.value=0.18;
-        // Wire graph
-        o1.connect(lp); o2.connect(lp); lp.connect(gain); gain.connect(c.destination); gain.connect(conv).connect(revG).connect(c.destination);
-        noise.connect(clickG).connect(c.destination);
-        o1.start(t); o2.start(t); noise.start(t); o1.stop(t+atk+dec+rel+0.05); o2.stop(t+atk+dec+rel+0.05); noise.stop(t+0.03);
+        gain2.gain.setValueAtTime(0.06,t); gain2.gain.exponentialRampToValueAtTime(0.0005, t+0.16);
+        // Hammer click (short noise)
+        const noise=c.createBufferSource(); const nb=c.createBuffer(1, c.sampleRate*0.016, c.sampleRate); const nd=nb.getChannelData(0); for (let i=0;i<nd.length;i++){ nd[i]=(Math.random()*2-1)*Math.exp(-i/400); } noise.buffer=nb; const clickG=c.createGain(); clickG.gain.setValueAtTime(0.05,t); clickG.gain.exponentialRampToValueAtTime(0.0001,t+0.018);
+        // Subtle stereo widener
+        // Stereo path: duplicate mono signal to both channels to avoid one-sided audio
+        const merge=c.createChannelMerger(2);
+        const left=c.createGain(), right=c.createGain();
+        left.gain.value=1.0; right.gain.value=1.0;
+        const master=c.createGain(); master.gain.value=0.9; // small headroom to avoid clipping
+        // Reverb (synthetic IR)
+        const conv=c.createConvolver(); conv.normalize = true; conv.buffer=getPianoIR(c); const revG=c.createGain(); revG.gain.value=0.12;
+        // Wire
+        o1.connect(lp); o2.connect(lp); lp.connect(gain);
+        gain.connect(left); gain.connect(right);
+        left.connect(merge,0,0); right.connect(merge,0,1);
+        // Dry to master
+        merge.connect(master);
+        // Reverb send
+        merge.connect(conv); conv.connect(revG).connect(master);
+        // Final output
+        master.connect(c.destination);
+        // Hammer click to master as well
+        noise.connect(clickG).connect(master);
+        o1.start(t); o2.start(t); noise.start(t); o1.stop(t+atk+dec+rel+0.02); o2.stop(t+atk+dec+rel+0.02); noise.stop(t+0.02);
       }
 
       function keyIndexToFreq(i){
@@ -462,6 +565,44 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   function hideTip(){ if (popPinned) return; pop.classList.remove('visible'); pop.style.left='-9999px'; pop.style.top='-9999px'; }
 
+  // Ensure CV chips exist even before i18n runs, and enable hover tooltips
+  function ensureCvChips(){
+    document.querySelectorAll('#cv-section .box [data-tip]').forEach((el)=>{
+      if (!el.querySelector('.cv-more-chip')){
+        const chip = document.createElement('button');
+        chip.type='button'; chip.className='cv-more-chip';
+        chip.innerHTML = '<span class="label">More</span><span class="chev">▾</span>';
+        el.appendChild(chip);
+      }
+      if (!el.nextElementSibling || !el.nextElementSibling.classList.contains('cv-drawer')){
+        const drawer = document.createElement('div');
+        drawer.className='cv-drawer';
+        const text = el.getAttribute('data-tip') || '';
+        const url = el.getAttribute('data-tip-url');
+        drawer.innerHTML = '<div class="cv-drawer-inner">'+
+          '<div class="cv-drawer-text">'+ text +'</div>'+
+          (url?'<a class="cv-drawer-link" target="_blank" rel="noopener" href="'+url+'">Learn more →</a>':'')+
+          '</div>';
+        el.parentNode.insertBefore(drawer, el.nextSibling);
+      }
+    });
+  }
+  ensureCvChips();
+  // Hover tooltips for CV items
+  document.addEventListener('pointerenter', (e)=>{
+    const host = e.target.closest('#cv-section .box [data-tip]');
+    if (!host) return; const p = e;
+    showTip(host, p.clientX||0, p.clientY||0);
+  }, true);
+  document.addEventListener('pointermove', (e)=>{
+    if (!pop.classList.contains('visible')) return;
+    const host = e.target.closest('#cv-section .box [data-tip]');
+    if (!host) return; showTip(host, e.clientX||0, e.clientY||0);
+  }, true);
+  document.addEventListener('pointerleave', (e)=>{
+    if (!e.target.closest('#cv-section .box [data-tip]')) return; hideTip();
+  }, true);
+
   // Replace popovers with smooth inline drawers
   document.querySelectorAll('#cv-section .box [data-tip]').forEach((el)=>{
     // create modern chip button instead of icon
@@ -568,20 +709,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const badgeWrap = document.querySelector('.lang-badge-wrap') || (()=>{ const w=document.createElement('div'); w.className='lang-badge-wrap'; document.body.appendChild(w); return w; })();
   const langBadge = document.querySelector('.lang-badge') || (()=>{ const b=document.createElement('div'); b.className='lang-badge'; badgeWrap.appendChild(b); return b; })();
   const badgeMenu = document.querySelector('.lang-badge-menu') || (()=>{ const m=document.createElement('div'); m.className='lang-badge-menu'; badgeWrap.appendChild(m); return m; })();
-  // Ensure Music link exists in nav
-  try {
-    const navLinks = document.querySelector('#nav .links');
-    if (navLinks && !navLinks.querySelector('a[href$="music.html"]')){
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = (location.pathname.includes('/projects/')?'../':'') + 'music.html';
-      a.textContent = 'Music';
-      li.appendChild(a);
-      const schol = Array.from(navLinks.querySelectorAll('a')).find(x=>/scholarly\.html$/.test(x.getAttribute('href')||''));
-      if (schol && schol.parentElement) navLinks.insertBefore(li, schol.parentElement);
-      else navLinks.appendChild(li);
-    }
-  } catch(_){}
+  // Do not reorder nav items dynamically to avoid confusing order changes
   // Fixed always-visible switcher (separate from old dropdown CSS)
   const fixedLang = document.getElementById('lang-fixed') || (function(){
     const box = document.createElement('div');

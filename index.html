@@ -130,7 +130,7 @@
         }
         /* Hard overrides: bars/overlays */
         #wrapper.fade-in:before { display: none !important; opacity: 0 !important; background: transparent !important; }
-        #wrapper > .bg, #wrapper > .bg.fixed { display: none !important; background: transparent !important; height:0 !important; }
+        /* Keep our custom background visible */
         #main { background: transparent !important; }
         #main > * { border-top: 0 !important; }
         hr, hr.major { display: none !important; }
@@ -138,16 +138,42 @@
     </style>
 </head>
 <body class="is-preload">
+    <div class="bg-gradient"></div>
+    <div class="bg-orbs">
+        <div class="orb blue" style="top:10%;left:8%"></div>
+        <div class="orb cyan" style="top:60%;left:75%"></div>
+        <div class="orb teal" style="top:75%;left:15%"></div>
+    </div>
+    <svg class="bg-waves" viewBox="0 0 1200 600" preserveAspectRatio="none">
+        <defs>
+            <linearGradient id="gradWave1" x1="0%" x2="100%" y1="0%" y2="0%">
+                <stop offset="0%" stop-color="#18bfef" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#58b6ff" stop-opacity="0.3"/>
+            </linearGradient>
+            <linearGradient id="gradWave2" x1="0%" x2="100%" y1="0%" y2="0%">
+                <stop offset="0%" stop-color="#9a6cff" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#18bfef" stop-opacity="0.3"/>
+            </linearGradient>
+            <linearGradient id="gradWave3" x1="0%" x2="100%" y1="0%" y2="0%">
+                <stop offset="0%" stop-color="#ff6ea9" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#9a6cff" stop-opacity="0.25"/>
+            </linearGradient>
+        </defs>
+        <path fill="url(#gradWave1)" opacity="0.6" d="M0 320 L1200 300 L1200 600 L0 600 Z"></path>
+        <path fill="url(#gradWave2)" opacity="0.4" d="M0 340 L1200 330 L1200 600 L0 600 Z"></path>
+        <path fill="url(#gradWave3)" opacity="0.3" d="M0 360 L1200 360 L1200 600 L0 600 Z"></path>
+    </svg>
+    <canvas class="bg-eq"></canvas>
+    <div class="bg-glow"></div>
     <div id="wrapper" class="fade-in">
 
         <div id="intro" style="text-align:center; padding-top: 6vh;">
             <h1 style="margin-bottom: 0.5rem;">Igor Szuniewicz</h1>
             <p style="opacity: 0.85;">Composer | Audio Engineer | Software Developer</p>
             <div class="section-pills" style="margin-top: 1rem;">
-                <a href="projects/index.html" class="icon solid fa-folder-open"><span>All Projects</span></a>
-                <a href="scholarly.html" class="icon solid fa-graduation-cap"><span>Scholarly</span></a>
-                <a href="music.html" class="icon solid fa-music"><span>Music</span></a>
+                <a href="projects/index.html" class="icon solid fa-folder-open"><span>Projects</span></a>
                 <a href="about.html" class="icon solid fa-user"><span>About</span></a>
+                <a href="music.html" class="icon solid fa-music"><span>Music</span></a>
                 <a href="contact.html" class="icon solid fa-envelope"><span>Contact</span></a>
             </div>
         </div>
@@ -161,7 +187,7 @@
                 <li class="active"><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="projects/index.html">Projects</a></li>
-                <li><a href="scholarly.html">Scholarly</a></li>
+                <li><a href="music.html">Music</a></li>
                 <li><a href="extras.html">Extra</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>

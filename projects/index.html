@@ -5,18 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="icon" type="image/svg+xml" href="../images/favicon.svg" />
-  <script>
-    (function(){
-      function killBg(){
-        var els = document.querySelectorAll('#wrapper > .bg, #wrapper > .bg.fixed');
-        if (els && els.length){ els.forEach(function(e){ try{ e.remove(); }catch(_){} }); }
-        document.documentElement.style.background = 'transparent';
-        document.body && (document.body.style.background = 'transparent');
-      }
-      var it = setInterval(killBg, 50);
-      window.addEventListener('load', function(){ killBg(); clearInterval(it); });
-    })();
-  </script>
+  
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20250210" />
   <style>
@@ -25,7 +14,6 @@
   </style>
   <style>
     body, #wrapper, #main { background: transparent !important; }
-    #wrapper > .bg, #wrapper > .bg.fixed { display: none !important; }
   </style>
   <style>
     /* Keep identical scaling and gutters with homepage */
@@ -35,7 +23,6 @@
   <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload" style="background: transparent !important;">
-  <!-- Inline background layers to avoid template overrides -->
   <div class="bg-gradient"></div>
   <div class="bg-orbs">
     <div class="orb blue" style="top:10%;left:8%"></div>
@@ -70,7 +57,11 @@
     <nav id="nav">
       <ul class="links">
         <li><a href="../index.html">Home</a></li>
-        <li class="active"><a href="#">All Projects</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li class="active"><a href="#">Projects</a></li>
+        <li><a href="../music.html">Music</a></li>
+        <li><a href="../extras.html">Extra</a></li>
+        <li><a href="../contact.html">Contact</a></li>
       </ul>
       <ul class="icons"></ul>
     </nav>

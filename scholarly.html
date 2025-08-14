@@ -1,26 +1,43 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>Scholarly Output — Igor Szuniewicz</title>
+  <title>Projects — Igor Szuniewicz</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <script>
-    (function(){
-      function killBg(){
-        var els = document.querySelectorAll('#wrapper > .bg, #wrapper > .bg.fixed');
-        if (els && els.length){ els.forEach(function(e){ try{ e.remove(); }catch(_){} }); }
-        document.documentElement.style.background = 'transparent';
-        document.body && (document.body.style.background = 'transparent');
-      }
-      var it = setInterval(killBg, 50);
-      window.addEventListener('load', function(){ killBg(); clearInterval(it); });
-    })();
-  </script>
+  
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/custom-styles.css?v=20250210" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  <meta http-equiv="refresh" content="0; url=projects/index.html" />
 </head>
 <body class="is-preload">
+  <div class="bg-gradient"></div>
+  <div class="bg-orbs">
+    <div class="orb blue" style="top:10%;left:8%"></div>
+    <div class="orb cyan" style="top:60%;left:75%"></div>
+    <div class="orb teal" style="top:75%;left:15%"></div>
+  </div>
+  <svg class="bg-waves" viewBox="0 0 1200 600" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="gradWave1" x1="0%" x2="100%" y1="0%" y2="0%">
+        <stop offset="0%" stop-color="#18bfef" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#58b6ff" stop-opacity="0.3"/>
+      </linearGradient>
+      <linearGradient id="gradWave2" x1="0%" x2="100%" y1="0%" y2="0%">
+        <stop offset="0%" stop-color="#9a6cff" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#18bfef" stop-opacity="0.3"/>
+      </linearGradient>
+      <linearGradient id="gradWave3" x1="0%" x2="100%" y1="0%" y2="0%">
+        <stop offset="0%" stop-color="#ff6ea9" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#9a6cff" stop-opacity="0.25"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#gradWave1)" opacity="0.6" d="M0 320 L1200 300 L1200 600 L0 600 Z"></path>
+    <path fill="url(#gradWave2)" opacity="0.4" d="M0 340 L1200 330 L1200 600 L0 600 Z"></path>
+    <path fill="url(#gradWave3)" opacity="0.3" d="M0 360 L1200 360 L1200 600 L0 600 Z"></path>
+  </svg>
+  <canvas class="bg-eq"></canvas>
+  <div class="bg-glow"></div>
   <div id="wrapper" class="fade-in">
     <header id="header">
       <a href="index.html" class="logo">Igor Szuniewicz</a>
@@ -29,8 +46,8 @@
       <ul class="links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="projects/index.html">All Projects</a></li>
-        <li class="active"><a href="scholarly.html">Scholarly</a></li>
+        <li><a href="projects/index.html">Projects</a></li>
+        <li><a href="music.html">Music</a></li>
         <li><a href="extras.html">Extra</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>

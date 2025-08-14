@@ -32,7 +32,7 @@ html, body { overflow-x: hidden; background: #0b141a !important; }
 /* Ensure wrapper and main don't mask interactive background */
 #wrapper { background-color: transparent !important; }
 #main { background-color: transparent !important; }
-/* Force-hide theme background layers if present */
+/* Hide theme background layers to show custom gradient/orbs/waves */
 body > #wrapper > .bg, #wrapper > .bg, #wrapper > .bg.fixed { display: none !important; }
 
 /* Extra: prevent noscript.css from setting background if noscript loads */
@@ -648,6 +648,20 @@ body p {
 .music-preview .title { font-family:'Poppins',sans-serif; font-weight:900; margin-bottom:4px; }
 .music-preview .desc { font-size:.9rem; opacity:.95; }
 
+.contact-modern { position: relative; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 18px; }
+.contact-card { background: rgba(12,18,26,0.6); border:1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 14px; box-shadow: 0 16px 40px rgba(0,0,0,0.28); }
+.contact-card h3 { font-family:'Poppins',sans-serif; font-weight:900; margin-top:0; color:#eaf7ff; }
+.contact-card p, .contact-card a { color:#cfe7f8; }
+.contact-card .socials a { font-size:1.3rem; margin-right:10px; color:#d9f2ff; opacity:.9; }
+.contact-card .socials a:hover { opacity:1; filter: drop-shadow(0 0 8px rgba(24,191,239,0.35)); }
+
+#contact-form input, #contact-form textarea { background: rgba(10,16,22,0.9); color:#eaf7ff; border:1px solid rgba(255,255,255,0.16); border-radius:10px; }
+#contact-form .button.primary { background: linear-gradient(90deg,#18bfef,#9a6cff); border:none; color:#07131a; font-weight:900; border-radius:12px; }
+.cf-status { margin-left: 10px; color:#eaf7ff; font-weight:700; }
+
+.contact-modern::before { content:''; position:absolute; inset:-20px -20px auto -20px; height:180px; background: radial-gradient(600px 200px at var(--mx,20%) 40%, rgba(24,191,239,0.18), transparent 60%), radial-gradient(600px 200px at calc(var(--mx,20%) + 30%) 70%, rgba(154,108,255,0.14), transparent 60%); pointer-events:none; filter: blur(10px); opacity:.9; border-radius:16px; }
+
 .player-bar { position: fixed; left: 50%; transform: translate(-50%, 12px); bottom: 16px; width: min(980px, 94vw); 
   background: linear-gradient(180deg, rgba(12,18,26,0.86), rgba(12,18,26,0.92)); 
   border:1px solid rgba(24,191,239,0.18); border-radius: 16px; 
@@ -818,7 +832,7 @@ body.page-enter #wrapper { opacity: 0; transform: translateY(4px); }
 .intro-fade { animation: overlayFade 600ms ease forwards; }
 @keyframes overlayFade { to { opacity: 0; visibility: hidden; } }
 
-/* Force-disable theme's built-in background layer */
+/* Disable theme's built-in background layer */
 #wrapper > .bg { display: none !important; background: none !important; }
 
 /* Lock content visibility during intro */

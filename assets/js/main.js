@@ -114,6 +114,8 @@
 		$window.on('load', function() {
 			window.setTimeout(function() {
 				$body.removeClass('is-preload');
+				// Also clear any exit state that might have lingered
+				$body.removeClass('page-exit page-enter');
 			}, 100);
 		});
 
