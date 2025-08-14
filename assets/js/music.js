@@ -155,6 +155,7 @@
   // View state must be declared before first applyFilters() call
   let view = tracks.slice();
   let currentIndex = -1;
+  let currentTrackId = null;
 
   function chooseSource(track){
     const order = track.sources && track.sources.length ? track.sources : (track.url ? [{url:track.url}] : []);
@@ -203,7 +204,7 @@
       view.forEach(function(t){
         const vi = view.indexOf(t);
         const i = idx++;
-        const card = document.createElement('div'); card.className='music-item'; card.tabIndex=0; card.dataset.index=String(vi);
+        const card = document.createElement('div'); card.className='music-item'; card.tabIndex=0; card.dataset.index=String(vi); if (t.id) card.dataset.id = String(t.id);
         const tagsHtml = (Array.isArray(t.tags)?t.tags:[]).map(function(x){ return '<span>'+x+'</span>'; }).join('');
         card.innerHTML = `
           <img class="mi-cover" src="${t.cover||''}" alt="" loading="lazy" decoding="async" />
@@ -519,6 +520,11 @@
       default: view.sort((a,b)=> new Date(b.date)-new Date(a.date));
     }
     render();
+    // Recompute currentIndex from stable id after view changed
+    if (currentTrackId){
+      const idx = view.findIndex(t=> t && t.id===currentTrackId);
+      currentIndex = idx;
+    }
     markPlayingCard();
     layoutAlbumWall();
   }
@@ -546,6 +552,7 @@
   function start(i){
     currentIndex = i;
     const t = view[i]; if (!t) return;
+    currentTrackId = t && t.id ? t.id : null;
     try { audio.pause(); } catch(_){}
     // Build fallback list and pick first
     fallbackList = chooseSource(t);
@@ -570,8 +577,8 @@
   function markPlayingCard(){
     try {
       Array.from(document.querySelectorAll('.music-item')).forEach(n=> n.classList.remove('playing'));
-      if (currentIndex>=0){
-        const node = listEl.querySelector(`.music-item[data-index="${currentIndex}"]`);
+      if (currentTrackId){
+        const node = listEl.querySelector(`.music-item[data-id="${CSS.escape(String(currentTrackId))}"]`);
         if (node){
           node.classList.add('playing');
           try {
@@ -581,6 +588,9 @@
             node.setAttribute('data-nowplaying', badge);
           } catch(_){ node.setAttribute('data-nowplaying','Now playing'); }
         }
+      } else if (currentIndex>=0){
+        const node = listEl.querySelector(`.music-item[data-index="${currentIndex}"]`);
+        if (node) node.classList.add('playing');
       }
     } catch(_){ }
   }
