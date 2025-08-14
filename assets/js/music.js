@@ -726,7 +726,22 @@
       function fill(strip, start){ if (!strip) return; const tiles=strip.querySelectorAll('.set'); tiles.forEach((setNode,setIdx)=>{ const imgs=setNode.querySelectorAll('img'); imgs.forEach((img,idx)=>{ const s=srcs[(start+setIdx*imgs.length+idx)%srcs.length]; if (s) img.src=s; }); }); }
       if (srcs.length){ fill(r1,0); fill(r2,5); }
     } catch(_){ }
-    // CSS handles marquee via keyframes on .strip (seamless because of duplicates)
+    // JS-driven marquee: translateX resets exactly at half width
+    function startMarquee(strip, dir){
+      if (!strip) return;
+      // duplicate sets already present; assume two .set children side by side
+      let x = 0; const speed = dir > 0 ? 0.25 : -0.25; // px per frame approx (60fps)
+      function step(){
+        x += speed; strip.style.transform = 'translateX(' + x + 'px)';
+        const set = strip.querySelector('.set'); if (set){ const setW = set.getBoundingClientRect().width + 40; // gap 40
+          if (dir > 0 && x >= 0) x = -setW;
+          if (dir < 0 && x <= -setW) x = 0;
+        }
+        requestAnimationFrame(step);
+      }
+      step();
+    }
+    startMarquee(r1, -1); startMarquee(r2, 1);
   }
 })();
 
