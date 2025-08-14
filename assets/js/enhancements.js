@@ -793,6 +793,17 @@ document.addEventListener('DOMContentLoaded', function() {
     music_hint_click: { en: 'Click for details', pl: 'Kliknij, aby zobaczyć szczegóły', nl: 'Klik voor details' },
     music_now_playing: { en:'Now playing', pl:'Teraz odtwarzane', nl:'Nu speelt' },
     music_vol_label: { en:'Volume', pl:'Głośność', nl:'Volume' },
+    music_search: { en:'Search…', pl:'Szukaj…', nl:'Zoeken…' },
+    music_sort_new: { en:'Newest', pl:'Najnowsze', nl:'Nieuwste' },
+    music_sort_az: { en:'A → Z', pl:'A → Z', nl:'A → Z' },
+    music_sort_len: { en:'Length', pl:'Długość', nl:'Lengte' },
+    tag_all: { en:'All', pl:'Wszystkie', nl:'Alle' },
+    tag_electronic: { en:'Electronic', pl:'Electronic', nl:'Electronic' },
+    tag_film: { en:'Film', pl:'Film', nl:'Film' },
+    tag_metal: { en:'Metal', pl:'Metal', nl:'Metal' },
+    tag_playful: { en:'Playful', pl:'Playful', nl:'Speels' },
+    tag_score: { en:'Score', pl:'Score', nl:'Score' },
+    tag_single: { en:'Single', pl:'Singiel', nl:'Single' },
     toast_switched: { pl: 'Przełączono na polski', nl: 'Gewisseld naar Nederlands', en: 'Switched to English' },
     all_projects_title: { pl: 'Wszystkie projekty', nl: 'Alle projecten', en: 'All Projects' },
     all_projects_lead: { pl: 'Filtruj i sortuj, aby przeglądać prace.', nl: 'Filter en sorteer om werk te verkennen.', en: 'Filter and sort to explore selected works.' },
@@ -854,6 +865,21 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('#music-list .music-item.playing').forEach(el=>{ el.setAttribute('data-nowplaying', I18N.music_now_playing[lang]); });
       // Volume label in player bar
       const vr = document.querySelector('#player-bar .pb-vol-label'); if (vr) vr.textContent = I18N.music_vol_label[lang];
+      // Search placeholder
+      const se = document.getElementById('music-search'); if (se) se.setAttribute('placeholder', I18N.music_search[lang]);
+      // Sort options
+      const sel = document.getElementById('music-sort');
+      if (sel && sel.options){
+        if (sel.options[0]) sel.options[0].textContent = I18N.music_sort_new[lang];
+        if (sel.options[1]) sel.options[1].textContent = I18N.music_sort_az[lang];
+        if (sel.options[2]) sel.options[2].textContent = I18N.music_sort_len[lang];
+      }
+      // Tag chips text
+      const LABELS = {
+        all: I18N.tag_all[lang], electronic: I18N.tag_electronic[lang], film: I18N.tag_film[lang], metal: I18N.tag_metal[lang],
+        playful: I18N.tag_playful[lang], score: I18N.tag_score[lang], single: I18N.tag_single[lang]
+      };
+      document.querySelectorAll('#music-tags .chip').forEach(ch=>{ const t=ch.getAttribute('data-tag'); if (t && LABELS[t]) ch.textContent = LABELS[t]; });
       // Also translate open track modal description if present
       try {
         const modal = document.querySelector('.music-modal.open');
