@@ -179,6 +179,11 @@
   // Ensure default is 'All' and render immediately
   activeTag = TAG_ALL;
   if (tagsEl){ tagsEl.addEventListener('click', (e)=>{ const b=e.target.closest('.chip'); if(!b || !b.dataset) return; activeTag=(b.dataset.tag||TAG_ALL); renderTagChips(); applyFilters(); }); }
+  // Genre wheel clicks map to the same tag system
+  document.addEventListener('click', (e)=>{
+    const g = e.target.closest('.genre-wheel .gw-node'); if (!g) return;
+    const tag = g.getAttribute('data-tag') || TAG_ALL; activeTag = tag; renderTagChips(); applyFilters();
+  });
   // Initial render with ALL
   applyFilters();
 

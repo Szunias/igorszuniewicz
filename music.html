@@ -102,8 +102,51 @@
 
         <div class="music-controls">
           <div class="left">
+            <div class="music-finder">
+              <div class="mf-label" data-i18n="music.finder">Browse by style</div>
+              <div class="genre-wheel" aria-label="Categories">
+                <svg viewBox="0 0 220 220" role="group" aria-label="Genres">
+                  <defs>
+                    <linearGradient id="gwGrad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#18bfef"/>
+                      <stop offset="100%" stop-color="#9a6cff"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- Center (All) -->
+                  <g class="gw-node gw-center" data-tag="all" tabindex="0" aria-label="All">
+                    <circle cx="110" cy="110" r="34" />
+                    <text x="110" y="115">All</text>
+                  </g>
+                  <!-- Outer ring, 6 nodes evenly spaced -->
+                  <g class="gw-node" data-tag="electronic" tabindex="0" aria-label="Electronic">
+                    <circle cx="110" cy="40" r="28" />
+                    <text x="110" y="45">Electronic</text>
+                  </g>
+                  <g class="gw-node" data-tag="film" tabindex="0" aria-label="Film">
+                    <circle cx="179" cy="80" r="28" />
+                    <text x="179" y="85">Film</text>
+                  </g>
+                  <g class="gw-node" data-tag="metal" tabindex="0" aria-label="Metal">
+                    <circle cx="179" cy="140" r="28" />
+                    <text x="179" y="145">Metal</text>
+                  </g>
+                  <g class="gw-node" data-tag="playful" tabindex="0" aria-label="Playful">
+                    <circle cx="110" cy="180" r="28" />
+                    <text x="110" y="185">Playful</text>
+                  </g>
+                  <g class="gw-node" data-tag="score" tabindex="0" aria-label="Score">
+                    <circle cx="41" cy="140" r="28" />
+                    <text x="41" y="145">Score</text>
+                  </g>
+                  <g class="gw-node" data-tag="single" tabindex="0" aria-label="Single">
+                    <circle cx="41" cy="80" r="28" />
+                    <text x="41" y="85">Single</text>
+                  </g>
+                </svg>
+              </div>
+              <div id="music-tags" class="music-tags" role="group" aria-label="Filter by tag"></div>
+            </div>
             <input type="search" id="music-search" placeholder="Search…" aria-label="Search" />
-            <div id="music-tags" class="music-tags" role="group" aria-label="Filter by tag"></div>
           </div>
           <div class="right">
             <label>

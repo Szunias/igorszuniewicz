@@ -794,6 +794,7 @@ document.addEventListener('DOMContentLoaded', function() {
     music_now_playing: { en:'Now playing', pl:'Teraz odtwarzane', nl:'Nu speelt' },
     music_vol_label: { en:'Volume', pl:'Głośność', nl:'Volume' },
     music_search: { en:'Search…', pl:'Szukaj…', nl:'Zoeken…' },
+    music_finder: { en:'Browse by style', pl:'Przeglądaj wg stylu', nl:'Bladeren op stijl' },
     music_sort_new: { en:'Newest', pl:'Najnowsze', nl:'Nieuwste' },
     music_sort_az: { en:'A → Z', pl:'A → Z', nl:'A → Z' },
     music_sort_len: { en:'Length', pl:'Długość', nl:'Lengte' },
@@ -859,6 +860,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (h) h.textContent = I18N.music_title[lang];
       if (p) p.textContent = I18N.music_lead[lang];
       if (sort) sort.textContent = I18N.music_sort[lang];
+      const mf = document.querySelector('.music-finder .mf-label'); if (mf) mf.textContent = I18N.music_finder[lang];
       // Translate subtle card hints
       document.querySelectorAll('#music-list .music-item .mi-hint').forEach(el=>{ el.textContent = I18N.music_hint_click[lang]; });
       // Set Now playing badge text via data attribute for CSS content
