@@ -183,6 +183,8 @@
   document.addEventListener('click', (e)=>{
     const g = e.target.closest('.genre-wheel .gw-node'); if (!g) return;
     const tag = g.getAttribute('data-tag') || TAG_ALL; activeTag = tag; renderTagChips(); applyFilters();
+    // Visual hint: briefly open chips to show filter took effect
+    try { const chips = document.querySelector('.music-finder .music-tags'); if (chips) { chips.classList.add('open'); setTimeout(()=> chips.classList.remove('open'), 1200); } } catch(_){ }
   });
   // Toggle tag chips visibility (wheel stays visible)
   document.addEventListener('click', (e)=>{

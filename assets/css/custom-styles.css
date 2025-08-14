@@ -635,22 +635,29 @@ body p {
   .album-wall .tile { width: 140px; height: 140px; }
   .music-page header.major { margin-top: -180px; max-width: 92%; }
 }
-.music-controls { display:flex; justify-content:space-between; align-items:center; gap:12px; background: rgba(12,18,26,0.6); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:10px 12px; box-shadow:0 16px 40px rgba(0,0,0,0.28); margin-bottom: 1rem; }
-.music-controls .left, .music-controls .right { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-.music-finder { display:flex; align-items:center; gap:12px; background: rgba(10,16,22,0.65); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:8px 10px; }
-.music-finder .mf-label { font-family:'Outfit',sans-serif; font-weight:900; letter-spacing:.3px; color:#eaf7ff; opacity:.95; white-space:nowrap; }
-.music-finder .gw-toggle { background: rgba(24,191,239,0.18); color:#eaf7ff; border:1px solid rgba(24,191,239,0.55); border-radius:999px; padding:8px 12px; font-weight:900; cursor:pointer; }
+.music-controls { display:grid; grid-template-columns: 1fr; align-items:start; gap:14px; background: rgba(12,18,26,0.6); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:12px 14px; box-shadow:0 16px 40px rgba(0,0,0,0.28); margin-bottom: 1rem; }
+.music-controls .left, .music-controls .right { display:flex; align-items:flex-start; gap:10px; flex-wrap:wrap; width:100%; justify-content:center; }
+.music-controls .right { align-self:start; justify-content:flex-start; }
+.music-finder { display:grid; grid-template-columns: 1fr auto 1fr; align-items:center; justify-items:center; gap:10px 12px; background: rgba(10,16,22,0.65); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:12px 14px; width:100%; margin: 0 auto; }
+.music-finder .mf-label { grid-column: 1 / span 3; font-family:'Outfit',sans-serif; font-weight:900; letter-spacing:.3px; color:#ffffff; opacity:.98; white-space:nowrap; text-align:center; }
+.music-finder .gw-toggle { grid-column: 1 / span 3; background: linear-gradient(90deg,#18bfef,#9a6cff); color:#07131a; border:none; border-radius:999px; padding:8px 14px; font-weight:900; cursor:pointer; box-shadow:0 8px 18px rgba(24,191,239,0.25); }
 .music-finder .gw-toggle:hover { filter: brightness(1.05); }
-.genre-wheel { position: relative; width: 220px; height: 220px; margin: 0 10px; }
+.music-finder .genre-wheel, .music-finder .music-tags { grid-column: 1 / span 3; }
+.genre-wheel { position: relative; width: 220px; height: 220px; margin: 8px auto 0; }
 .genre-wheel svg { width: 220px; height: 220px; display: block; }
 /* Chips hidden by default; revealed on toggle */
 .music-finder .music-tags { display: none; }
 .music-finder .music-tags.open { display: flex; }
 .genre-wheel .gw-node { cursor: pointer; }
-.genre-wheel circle { fill: rgba(255,255,255,0.08); stroke: rgba(255,255,255,0.2); stroke-width: 1.5; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.25)); }
-.genre-wheel .gw-center circle { fill: url(#gwGrad) #18bfef; stroke: transparent; }
+.genre-wheel circle { fill: rgba(12,18,26,0.72); stroke: rgba(255,255,255,0.14); stroke-width: 2; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35)); }
+.genre-wheel .gw-center circle { fill: url(#gwGrad) #18bfef; stroke: rgba(255,255,255,0.1); stroke-width: 0; filter: drop-shadow(0 10px 22px rgba(24,191,239,0.35)); animation: wheelPulse 2400ms ease-in-out infinite; }
 .genre-wheel text { font-family:'Outfit',sans-serif; font-weight:900; font-size: 12px; text-anchor: middle; dominant-baseline: middle; pointer-events: none; fill:#eaf7ff; }
 .genre-wheel .gw-center text { fill:#07131a; font-weight:900; }
+/* Accessibility: remove default outline box and add gold focus glow */
+.genre-wheel .gw-node { outline: none; }
+.genre-wheel .gw-node:focus circle,
+.genre-wheel .gw-node:hover circle { stroke: rgba(247,215,116,0.95); filter: drop-shadow(0 0 18px rgba(247,215,116,0.55)); }
+@keyframes wheelPulse { 0%{ transform: scale(1); } 50%{ transform: scale(1.03); } 100%{ transform: scale(1); } }
 .music-controls .right label span { color:#eaf7ff; font-weight:800; letter-spacing:.2px; }
 .music-controls select { background: rgba(10,16,22,0.85); color:#eaf7ff; border:1px solid rgba(255,255,255,0.18); min-width: 220px; }
 .music-controls input[type="search"] { background: rgba(10,16,22,0.85); color:#eaf7ff; border:1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 8px 10px; height: 36px; line-height: 1.2; }
