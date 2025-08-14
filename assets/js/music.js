@@ -520,6 +520,7 @@
     }
     render();
     markPlayingCard();
+    layoutAlbumWall();
   }
 
   function loadMeta(i){
@@ -715,5 +716,19 @@
   // Final safety: ensure view is initialized to all, even if select/search are null
   try { activeTag = TAG_ALL; } catch(_) {}
   try { applyFilters(); } catch(_){ try { render(); } catch(__){} }
+  try { layoutAlbumWall(); } catch(_){}
+  function layoutAlbumWall(){
+    const wall = document.querySelector('.album-wall'); if (!wall) return;
+    const r1 = wall.querySelector('.album-row.r1'); const r2 = wall.querySelector('.album-row.r2');
+    // Populate from tracks if available
+    try {
+      const srcs = Array.from(new Set((window.__tracks__||[]).map(t=> t.cover).filter(Boolean)));
+      function fill(row, start){ if (!row) return; const tiles=row.querySelectorAll('.tile img'); tiles.forEach((img,idx)=>{ const s=srcs[(start+idx)%srcs.length]; if (s) img.src=s; }); }
+      if (srcs.length){ fill(r1,0); fill(r2,3); }
+    } catch(_){ }
+    // Continuous marquee animation left/right
+    function animateRow(row, dir){ if (!row) return; let x=0; function step(){ x += dir*0.15; row.style.transform='translateX('+x+'px)'; if (x<=-160-14) x=0; if (x>=160+14) x=0; requestAnimationFrame(step);} step(); }
+    animateRow(r1, -1); animateRow(r2, 1);
+  }
 })();
 
