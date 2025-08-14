@@ -45,13 +45,22 @@
   }
 
   /** Seed demo tracks. Replace with your files in /audio */
+  // expose tracks for i18n translation hooks
   const tracks = [
     // Game/film cues
     
-    { id:'ray', title:'Ray Animation — Credits Theme', artist:'Igor Szuniewicz', cover:'images/project5.png', tags:['film','score'], length: 0, date:'2024-01-10', year: 2024,
+    { id:'ray', title:'Ray Animation — Credits Theme', artist:'Igor Szuniewicz', cover:'images/project5.png', tags:['film','score'], length: 0, date:'2024-01-10', year: 2024, desc:{
+        pl:'Funkowo zabarwiony cue do animacji. Lekki groove i figury basu prowadzą do świetlistej kadencji domykającej ujęcie. Brzmienie klarowne, z wyraźnym motywem i sprężystą sekcją.',
+        en:'Funk‑tinged cue for animation. A light groove and bass figures steer the piece towards a luminous cadence that closes the shot. Clean tone with a recognisable motif and elastic rhythm section.',
+        nl:'Funk‑getinte cue voor animatie. Lichte groove en basfiguren bouwen naar een lichtvolle cadens die de scène afrondt. Helder klankbeeld met herkenbaar motief en veerkrachtige ritmesectie.'
+      },
       sources:[ { url:'songs/RayCreditsTheme.wav', type:'audio/wav' } ]
     },
-    { id:'richter', title:'Richter — Main Theme', artist:'Igor Szuniewicz', cover:'images/richter.png', tags:['film','score'], length: 0, date:'2024-06-01', year: 2024,
+    { id:'richter', title:'Richter — Main Theme', artist:'Igor Szuniewicz', cover:'images/richter.png', tags:['film','score'], length: 0, date:'2024-06-01', year: 2024, desc:{
+        pl:'Sekwencja suspensu do etiudy filmowej: warstwowe smyczki i perkusja akcji wymuszają stałe narastanie, zakończone zdecydowanym, filmowym cięciem.',
+        en:'Suspense sequence for a short film: layered strings and action percussion drive a continuous escalation, resolved with a decisive cinematic cutoff.',
+        nl:'Suspense‑cue voor een korte film: gelaagde strijkers en actiedrums stuwen een constante opbouw, afgesloten met een beslissende filmische stop.'
+      },
       // Drop at least one of these in /songs to enable playback
       sources:[
         { url:'songs/RichterMainTheme.m4a', type:'audio/mp4' },
@@ -60,21 +69,33 @@
       ]
     },
     // Spotify catalog (provide local copies in /songs for on-site playback)
-    { id:'sp_inflow', title:'Inflow', artist:'Igor Szuniewicz', cover:'images/Inflow_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01', year: 2023,
+    { id:'sp_inflow', title:'Inflow', artist:'Igor Szuniewicz', cover:'images/Inflow_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01', year: 2023, desc:{
+        pl:'Kameralny temat fortepianowy, który organicznie rozszerza się do pełnej orkiestracji smyczkowej. Delikatna ekspozycja motywu prowadzi do szerokiej, filmowej kulminacji.',
+        en:'A chamber piano theme that expands organically into full string orchestration. A delicate exposition evolves towards a broad, cinematic climax.',
+        nl:'Een kamerpianothema dat organisch uitgroeit tot volledige strijkerorkestratie. Een fragiele expositie groeit naar een brede, filmische climax.'
+      },
       sources:[
         { url:'songs/Inflow.m4a', type:'audio/mp4' },
         { url:'songs/Inflow.mp3', type:'audio/mpeg' },
         { url:'songs/Igor Szuniewicz - Inflow.wav', type:'audio/wav' }
       ]
     },
-    { id:'sp_astro', title:'Astrophonic Dance', artist:'Igor Szuniewicz', cover:'images/Astrophonic Dance_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01', year: 2023,
+    { id:'sp_astro', title:'Astrophonic Dance', artist:'Igor Szuniewicz', cover:'images/Astrophonic Dance_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01', year: 2023, desc:{
+        pl:'Uptempo elektronika z arpeggiowanymi leadami i szeroką sceną stereo. Syntetyczne faktury łączą się z taneczną pulsacją i lekką, przestrzenną produkcją.',
+        en:'Uptempo electronica with arpeggiated leads and a wide stereo image. Synthetic textures meet a dance‑oriented pulse and spacious production.',
+        nl:'Uptempo electronica met arpeggio‑leads en breed stereobeeld. Synthetische texturen combineren met een dansgerichte puls en luchtige productie.'
+      },
       sources:[
         { url:'songs/AstrophonicDance.m4a', type:'audio/mp4' },
         { url:'songs/AstrophonicDance.mp3', type:'audio/mpeg' },
         { url:'songs/Igor Szuniewicz - Astrophonic Dance.wav', type:'audio/wav' }
       ]
     },
-    { id:'sp_cathedral', title:'Cathedral Of Time', artist:'Igor Szuniewicz', cover:'images/Cathedral Of Time_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01', year: 2023,
+    { id:'sp_cathedral', title:'Cathedral Of Time', artist:'Igor Szuniewicz', cover:'images/Cathedral Of Time_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01', year: 2023, desc:{
+        pl:'Wolnorozwijające się, filmowo‑elektroniczne pejzaże: ciepłe harmonie, duża przestrzeń i kontemplacyjny nastrój podtrzymywany stabilnym pulsem.',
+        en:'Slow‑bloom cinematic‑electronic soundscapes: warm harmonies, generous space and a contemplative mood sustained by a steady pulse.',
+        nl:'Langzaam ontvouwende filmisch‑elektronische landschappen: warme harmonieën, veel ruimte en een contemplatieve sfeer met constante puls.'
+      },
       sources:[
         { url:'songs/CathedralOfTime.m4a', type:'audio/mp4' },
         { url:'songs/CathedralOfTime.mp3', type:'audio/mpeg' },
@@ -82,7 +103,11 @@
       ]
     },
     // XianClash entry (film/score)
-    { id:'xianclash', title:'Xian Clash — Main Theme', artist:'Igor Szuniewicz', cover:'images/XianClashCover.png', tags:['film','score'], length: 0, date:'2024-02-10', year: 2024,
+    { id:'xianclash', title:'Xian Clash — Main Theme', artist:'Igor Szuniewicz', cover:'images/XianClashCover.png', tags:['film','score'], length: 0, date:'2024-02-10', year: 2024, desc:{
+        pl:'Temat do strategicznej gry planszowej: marszowa perkusja, modalne melodie i orkiestracyjna skala budują ceremoniálną potęgę i poczucie taktycznej koncentracji.',
+        en:'Main theme for a strategy title: martial percussion, modal melodies and orchestral scale to convey ceremonial power and tactical focus.',
+        nl:'Hoofdthema voor een strategiespel: marspercussie, modale melodieën en orkestrale schaal voor ceremoniële kracht en tactische focus.'
+      },
       sources:[
         { url:'songs/XianClashMainTheme.m4a', type:'audio/mp4' },
         { url:'songs/XianClashMainTheme.mp3', type:'audio/mpeg' },
@@ -90,7 +115,11 @@
       ]
     },
     // Run (hard rock / metal)
-    { id:'run', title:'Run — Main Theme', artist:'Igor Szuniewicz', cover:'images/Run.png', tags:['single','metal'], length: 0, date:'2025-02-11', year: 2025,
+    { id:'run', title:'Run — Main Theme', artist:'Igor Szuniewicz', cover:'images/Run.png', tags:['single','metal'], length: 0, date:'2025-02-11', year: 2025, desc:{
+        pl:'Energetyczny rock oparty na ciężkich, nisko strojonych riffach i zwartym groove’u sekcji rytmicznej. Produkcja nastawiona na impakt i nieprzerwany pęd.',
+        en:'High‑energy rock built on down‑tuned riffs and a tight rhythmic groove. Production focuses on impact and sustained forward momentum.',
+        nl:'Energieke rock op basis van laag gestemde riffs en strakke ritmische groove. Productie gericht op impact en aanhoudende vaart.'
+      },
       sources:[
         { url:'songs/RunMainTheme.m4a', type:'audio/mp4' },
         { url:'songs/RunMainTheme.mp3', type:'audio/mpeg' },
@@ -108,14 +137,20 @@
     length: 0,
     date:'2024-06-01',
     year: 2024,
-    sources:[ { url:'songs/EdgeOfLife.wav', type:'audio/wav' } ]
+    sources:[ { url:'songs/EdgeOfLife.wav', type:'audio/wav' } ],
+    desc:{
+      pl:'Uplifting indie‑electronica: jasne pianino, pulsujące syntezatory i afirmacyjna progresja. Czyste, przestrzenne brzmienie akcentuje pozytywną energię utworu.',
+      en:'Uplifting indie‑electronic piece: bright piano, pulsing synths and an affirmative progression. Clean, spacious mix emphasises the track’s positive energy.',
+      nl:'Opbeurende indie‑electronica: helder piano, pulserende synths en affirmatieve progressie. Een heldere, ruimtelijke mix benadrukt de positieve energie.'
+    }
   });
 
-  // Ensure every track is matchable by the "All" filter and normalize tags
+  // Ensure every track is matchable by the "All" filter and normalize tags; also expose globally
   tracks.forEach(function(t){
     const baseTags = Array.isArray(t.tags) ? t.tags : [];
     t.tags = Array.from(new Set(['all'].concat(baseTags)));
   });
+  try { window.__tracks__ = tracks; } catch(_){ }
 
   // View state must be declared before first applyFilters() call
   let view = tracks.slice();
@@ -181,15 +216,28 @@
           <button class="mi-play" aria-label="Play">▶</button>
         `;
         const playBtn = card.querySelector('.mi-play');
-        function toggleThis(){ if (currentIndex===vi && !audio.paused){ audio.pause(); pbPlay.textContent='▶'; updateCardPlayButtons(); } else { start(vi); } }
+        function toggleThis(ev){ if (ev) ev.stopPropagation(); if (currentIndex===vi && !audio.paused){ audio.pause(); pbPlay.textContent='▶'; updateCardPlayButtons(); } else { start(vi); } }
         if (playBtn) playBtn.addEventListener('click', toggleThis);
         card.addEventListener('dblclick', toggleThis);
-        card.addEventListener('mouseenter', function(e){ showPreview(t, e); });
-        card.addEventListener('mousemove', function(e){ positionPreview(e); });
-        card.addEventListener('mouseleave', hidePreview);
+        // Non-intrusive hint on hover
+        const hint = document.createElement('div'); hint.className='mi-hint';
+        try {
+          const lang = document.documentElement.getAttribute('lang') || document.documentElement.dataset.lang || 'en';
+          const I = (window.I18N_PUBLIC||{});
+          const txt = (I.music_hint_click && I.music_hint_click[lang]) || 'Click for details';
+          hint.textContent = txt;
+        } catch(_) { hint.textContent = 'Click for details'; }
+        card.appendChild(hint);
+        // Open large modal with details on click
+        card.addEventListener('click', function(e){
+          e.preventDefault();
+          openTrackModal(t, vi);
+        });
         wrap.appendChild(card);
         if (!t.length || t.length===0) prefetchDuration(t, vi, card);
       });
+      // Re-apply playing highlight after rebuild
+      markPlayingCard();
     } catch(_e) {
       try {
         listEl.innerHTML='';
@@ -210,6 +258,186 @@
       const vi = parseInt(node.dataset.index||'-1',10);
       btn.textContent = (vi===currentIndex && !audio.paused) ? '⏸' : '▶';
     });
+  }
+
+  // Right-side sliding panel API
+  let sidePanel = null; let sideCard = null;
+  function closeSidePanel(){ if (!sidePanel) return; sidePanel.classList.remove('open'); const sp=sidePanel; sidePanel=null; sideCard=null; setTimeout(()=> sp.remove(), 240); }
+  function openSidePanel(track, cardNode, index){
+    if (sidePanel && sideCard===cardNode){ closeSidePanel(); return; }
+    if (sidePanel) closeSidePanel();
+    sideCard = cardNode;
+    sidePanel = document.createElement('div'); sidePanel.className='music-sidepanel';
+    // Attach within the music list container so it overlays from right edge of the list
+    const host = document.getElementById('music-list');
+    const rect = cardNode.getBoundingClientRect();
+    const hostRect = host.getBoundingClientRect();
+    const offsetTop = rect.top - hostRect.top; // relative to list container
+    sidePanel.style.top = offsetTop + 'px';
+    sidePanel.style.height = Math.max(rect.height, 120) + 'px';
+    sidePanel.innerHTML = '<div class="msp-inner">'+
+      '<div class="msp-cover"><img src="'+(track.cover||'')+'" alt=""/></div>'+
+      '<div class="msp-meta">'+
+        '<div class="msp-title">'+(track.title||'Untitled')+'</div>'+
+        '<div class="msp-artist">'+(track.artist||'')+'</div>'+
+        '<div class="msp-tags">'+((track.tags||[]).join(' • '))+'</div>'+
+        '<div class="msp-actions"><button class="button small msp-play">Play</button><button class="button small msp-close">Close</button></div>'+
+      '</div>'+
+    '</div>';
+    host.appendChild(sidePanel);
+    // Panel slides in from the right edge of the list container
+    requestAnimationFrame(()=>{
+      const rect2 = cardNode.getBoundingClientRect();
+      const hostRect2 = host.getBoundingClientRect();
+      sidePanel.style.top = (rect2.top - hostRect2.top) + 'px';
+      sidePanel.style.height = Math.max(rect2.height, 120) + 'px';
+      sidePanel.classList.add('open');
+    });
+    sidePanel.querySelector('.msp-close').addEventListener('click', (ev)=>{ ev.stopPropagation(); closeSidePanel(); });
+    sidePanel.querySelector('.msp-play').addEventListener('click', (ev)=>{ ev.stopPropagation(); start(index); });
+    window.addEventListener('scroll', syncPanelToCard, { passive:true });
+    window.addEventListener('resize', syncPanelToCard, { passive:true });
+  }
+  
+  // Large modal window for track details
+  let modalNode = null;
+  // no temporary descriptions
+
+  function openTrackModal(track, index){
+    closeSidePanel();
+    if (modalNode){ closeTrackModal(); }
+    modalNode = document.createElement('div');
+    modalNode.className = 'music-modal';
+    const currentLang = (document.documentElement.getAttribute('lang') || document.documentElement.dataset.lang || 'en');
+    const desc = (typeof track.desc === 'string') ? track.desc : (track.desc ? (track.desc[currentLang] || track.desc['en'] || '') : '');
+    modalNode.innerHTML = '<div class="mm-backdrop"></div>'+
+      '<div class="mm-dialog">'+
+        '<button class="mm-close" aria-label="Close">×</button>'+
+        '<div class="mm-left"><img src="'+(track.cover||'')+'" alt=""/></div>'+
+        '<div class="mm-right">'+
+          '<div class="mm-banner" style="display:none"><span class="mm-banner-text"></span><button class="mm-banner-btn" type="button"></button></div>'+
+          '<h3 class="mm-title">'+(track.title||'Untitled')+'</h3>'+
+          '<div class="mm-artist">'+(track.artist||'')+'</div>'+
+          '<div class="mm-tags">'+((track.tags||[]).join(' • '))+'</div>'+
+          (desc?'<p class="mm-desc">'+desc+'</p>':'')+
+          '<div class="mm-timeline">\
+             <span class="mm-time mm-cur">0:00</span>\
+             <input type="range" class="mm-seek" min="0" max="1000" value="0" aria-label="Seek"/>\
+             <span class="mm-time mm-dur">0:00</span>\
+           </div>'+
+          '<div class="mm-actions">\
+             <button class="mm-prev" aria-label="Previous">⏮</button>\
+             <button class="mm-play" aria-label="Play"><span class="mm-play-label">Play</span></button>\
+             <button class="mm-next" aria-label="Next">⏭</button>\
+           </div>'+
+        '</div>'+
+      '</div>';
+    document.body.appendChild(modalNode);
+    requestAnimationFrame(()=> modalNode.classList.add('open'));
+    modalNode.querySelector('.mm-close').addEventListener('click', closeTrackModal);
+    modalNode.querySelector('.mm-backdrop').addEventListener('click', closeTrackModal);
+    modalNode.querySelector('.mm-play').addEventListener('click', (ev)=>{ ev.stopPropagation();
+      // toggle play/pause for the current track displayed in modal
+      if (currentIndex===index && !audio.paused){
+        audio.pause();
+      } else {
+        start(index);
+      }
+      updateModalPlayLabel();
+      updateModalTimeline();
+    });
+    const mmSeek = modalNode.querySelector('.mm-seek');
+    const mmTimeline = modalNode.querySelector('.mm-timeline');
+    // Tooltip for exact time on hover
+    let mmTip = null;
+    if (mmTimeline){ mmTip = document.createElement('div'); mmTip.className='mm-tooltip'; mmTimeline.appendChild(mmTip); }
+    if (mmSeek) mmSeek.addEventListener('input', (ev)=>{
+      if (!isFinite(audio.duration) || audio.duration<=0) return;
+      const ratio = parseFloat(mmSeek.value)/parseFloat(mmSeek.max||'1000');
+      audio.currentTime = ratio * audio.duration;
+    });
+    if (mmSeek) mmSeek.addEventListener('mousemove', (ev)=>{
+      try {
+        if (!mmTip || !mmTimeline) return;
+        const sRect = mmSeek.getBoundingClientRect();
+        const tRect = mmTimeline.getBoundingClientRect();
+        const x = Math.min(Math.max(ev.clientX - sRect.left, 0), sRect.width);
+        const ratio = sRect.width>0 ? (x/sRect.width) : 0;
+        const secs = isFinite(audio.duration) ? Math.round(ratio * audio.duration) : 0;
+        mmTip.textContent = fmtTime(secs);
+        mmTip.style.left = ((sRect.left - tRect.left) + x) + 'px';
+        mmTip.style.top = ((sRect.top - tRect.top) - 28) + 'px';
+        mmTip.classList.add('show');
+      } catch(_){}
+    });
+    if (mmSeek) mmSeek.addEventListener('mouseleave', ()=>{ if (mmTip) mmTip.classList.remove('show'); });
+    modalNode.querySelector('.mm-prev').addEventListener('click', (ev)=>{ ev.stopPropagation(); navigateModal(-1); });
+    modalNode.querySelector('.mm-next').addEventListener('click', (ev)=>{ ev.stopPropagation(); navigateModal(1); });
+    document.addEventListener('keydown', escClose, { capture:true });
+
+    function navigateModal(dir){
+      if (!Array.isArray(view) || view.length===0) return;
+      const nextIndex = (index + dir + view.length) % view.length;
+      const nextTrack = view[nextIndex]; if (!nextTrack) return;
+      index = nextIndex; // update local index reference
+      updateModalContent(nextTrack);
+      start(nextIndex);
+      updateModalPlayLabel();
+    }
+    function updateModalContent(tk){
+      const lang = (document.documentElement.getAttribute('lang') || document.documentElement.dataset.lang || 'en');
+      const d = (typeof tk.desc==='string') ? tk.desc : (tk.desc ? (tk.desc[lang]||tk.desc['en']||'') : '');
+      const img = modalNode.querySelector('.mm-left img'); if (img) { img.src = tk.cover||''; }
+      const tt = modalNode.querySelector('.mm-title'); if (tt) tt.textContent = tk.title||'Untitled';
+      const ar = modalNode.querySelector('.mm-artist'); if (ar) ar.textContent = tk.artist||'';
+      const tg = modalNode.querySelector('.mm-tags'); if (tg) tg.textContent = (tk.tags||[]).join(' • ');
+      const de = modalNode.querySelector('.mm-desc');
+      if (de) de.textContent = d; else if (d){ const p=document.createElement('p'); p.className='mm-desc'; p.textContent=d; modalNode.querySelector('.mm-right').insertBefore(p, modalNode.querySelector('.mm-actions')); }
+      // reset timeline fill; will update if this track is the one playing
+      const seek = modalNode.querySelector('.mm-seek'); if (seek){ seek.value='0'; seek.style.setProperty('--mmseek','0%'); }
+      updateModalTimeline();
+      updateModalPlayLabel();
+      // Show info banner if different track is currently playing
+      try {
+        const banner = modalNode.querySelector('.mm-banner');
+        const txt = modalNode.querySelector('.mm-banner-text');
+        const btn = modalNode.querySelector('.mm-banner-btn');
+        const cur = view[currentIndex];
+        if (banner && cur){
+          const same = (tk && cur && tk.title===cur.title);
+          if (!audio.paused && !same){
+            banner.style.display='flex';
+            txt.textContent = 'Currently playing: '+(cur.title||'');
+            btn.textContent = 'Switch here';
+            btn.onclick = ()=>{ try { start(index); updateModalPlayLabel(); updateModalTimeline(); } catch(_){ } };
+          } else {
+            banner.style.display='none';
+          }
+        }
+      } catch(_){ }
+    }
+
+    function updateModalPlayLabel(){
+      const btn = modalNode && modalNode.querySelector('.mm-play'); if (!btn) return;
+      const isPlayingThis = (currentIndex === index) && !audio.paused;
+      const label = btn.querySelector('.mm-play-label');
+      if (label) label.textContent = isPlayingThis ? 'Pause' : 'Play';
+      btn.classList.toggle('is-playing', isPlayingThis);
+    }
+    // keep modal controls synced with global audio
+    audio.addEventListener('play', updateModalPlayLabel);
+    audio.addEventListener('pause', updateModalPlayLabel);
+    audio.addEventListener('ended', ()=>{ updateModalPlayLabel(); updateModalTimeline(); });
+  }
+  function escClose(e){ if (e.key==='Escape'){ closeTrackModal(); } }
+  function closeTrackModal(){ if (!modalNode) return; modalNode.classList.remove('open'); const n=modalNode; modalNode=null; setTimeout(()=> n.remove(), 220); document.removeEventListener('keydown', escClose, true); }
+  function syncPanelToCard(){
+    if (!sidePanel || !sideCard) return;
+    const host = document.getElementById('music-list');
+    const rect = sideCard.getBoundingClientRect();
+    const hostRect = host.getBoundingClientRect();
+    sidePanel.style.top = (rect.top - hostRect.top) + 'px';
+    sidePanel.style.height = Math.max(rect.height, 120) + 'px';
   }
 
   // Album cover hover preview
@@ -291,6 +519,7 @@
       default: view.sort((a,b)=> new Date(b.date)-new Date(a.date));
     }
     render();
+    markPlayingCard();
   }
 
   function loadMeta(i){
@@ -301,6 +530,15 @@
     playerBar.hidden = false;
     playerBar.classList.add('open');
     document.documentElement.style.setProperty('--player-visible','1');
+    // update mini timelines fill/labels
+    try {
+      document.querySelectorAll('.music-item .mi-mini-timeline .mi-fill').forEach(f=> f.style.width='0%');
+      const node = listEl.querySelector(`.music-item[data-index="${i}"] .mi-mini-timeline`);
+      if (node){
+        const cur = node.querySelector('.mi-cur'); const dur = node.querySelector('.mi-dur');
+        if (cur) cur.textContent = '0:00'; if (dur && isFinite(t.length)) dur.textContent = fmtTime(t.length);
+      }
+    } catch(_){ }
   }
 
   let fallbackIdx = 0; let fallbackList = [];
@@ -323,16 +561,24 @@
     }
     pbPlay.textContent = '⏸';
     // Mark playing item for visual accent
-    Array.from(document.querySelectorAll('.music-item')).forEach(n=> n.classList.remove('playing'));
-    const node = listEl.querySelector(`.music-item[data-index="${i}"]`);
-    if (node) node.classList.add('playing');
+    markPlayingCard();
     // Reset waveform paint
     initWave();
   }
 
+  function markPlayingCard(){
+    try {
+      Array.from(document.querySelectorAll('.music-item')).forEach(n=> n.classList.remove('playing'));
+      if (currentIndex>=0){
+        const node = listEl.querySelector(`.music-item[data-index="${currentIndex}"]`);
+        if (node) node.classList.add('playing');
+      }
+    } catch(_){ }
+  }
+
   pbPlay.addEventListener('click', ()=>{
-    if (audio.paused) { audio.play().catch(()=>{}); pbPlay.textContent='⏸'; }
-    else { audio.pause(); pbPlay.textContent='▶'; }
+    if (audio.paused) { audio.play().catch(()=>{}); pbPlay.textContent='⏸'; markPlayingCard(); }
+    else { audio.pause(); pbPlay.textContent='▶'; markPlayingCard(); }
     updateCardPlayButtons();
   });
   pbPrev.addEventListener('click', ()=>{ if (view.length===0) return; const i=(currentIndex-1+view.length)%view.length; start(i); });
@@ -353,9 +599,19 @@
       playerBar.style.setProperty('--seek', perc+'%');
     }
     drawWaveProgress();
+    updateModalTimeline();
+    // update mini timeline for currently playing card
+    try {
+      const node = listEl.querySelector(`.music-item[data-index="${currentIndex}"] .mi-mini-timeline`);
+      if (node && isFinite(audio.duration) && audio.duration>0){
+        const fill = node.querySelector('.mi-fill'); const cur = node.querySelector('.mi-cur'); const dur = node.querySelector('.mi-dur');
+        const ratio = audio.currentTime/audio.duration; const perc = Math.max(0, Math.min(100, Math.round(ratio*100)));
+        if (fill) fill.style.width = perc+'%'; if (cur) cur.textContent = fmtTime(audio.currentTime); if (dur) dur.textContent = fmtTime(audio.duration);
+      }
+    } catch(_){ }
   });
-  audio.addEventListener('pause', ()=>{ pbPlay.textContent='▶'; updateCardPlayButtons(); });
-  audio.addEventListener('play', ()=>{ pbPlay.textContent='⏸'; updateCardPlayButtons(); });
+  audio.addEventListener('pause', ()=>{ pbPlay.textContent='▶'; updateCardPlayButtons(); markPlayingCard(); });
+  audio.addEventListener('play', ()=>{ pbPlay.textContent='⏸'; updateCardPlayButtons(); markPlayingCard(); });
   audio.addEventListener('loadedmetadata', ()=>{
     // If length is unknown (0), fill it from metadata
     try {
@@ -397,6 +653,31 @@
     drawWaveProgress();
   }
 
+  function updateModalTimeline(){
+    try {
+      const modal = document.querySelector('.music-modal.open'); if (!modal) return;
+      const cur = modal.querySelector('.mm-cur'); const dur = modal.querySelector('.mm-dur'); const seek = modal.querySelector('.mm-seek');
+      const isModalTrack = (()=>{
+        try { const title = modal.querySelector('.mm-title')?.textContent || ''; const t = view[currentIndex]; return t && t.title===title; } catch(_){ return false; }
+      })();
+      if (isModalTrack){
+        if (cur) cur.textContent = fmtTime(audio.currentTime||0);
+        if (dur) dur.textContent = isFinite(audio.duration) ? fmtTime(audio.duration) : '0:00';
+        if (seek && isFinite(audio.duration) && audio.duration>0){
+          const val = Math.floor((audio.currentTime/audio.duration)*1000);
+          seek.value = String(val);
+          const perc = Math.round((val/1000)*100);
+          modal.querySelector('.mm-timeline .mm-seek').style.setProperty('--mmseek', perc+'%');
+        }
+      } else {
+        // show reset timeline for non-playing track to avoid confusion
+        if (cur) cur.textContent = '0:00';
+        if (dur) dur.textContent = '0:00';
+        if (seek){ seek.value='0'; seek.style.setProperty('--mmseek','0%'); }
+      }
+    } catch(_){ }
+  }
+
   function drawWaveProgress(){
     if (!waveCtx || !waveData) return;
     const w = waveWidth; const h = waveHeight; if (w<=0 || h<=0) return;
@@ -416,6 +697,8 @@
 
   window.addEventListener('resize', ()=>{ initWave(); }, { passive: true });
   audio.addEventListener('ended', ()=>{ pbNext.click(); });
+
+  // (removed) global dim overlay control
 
   // Hook filters
   searchEl.addEventListener('input', applyFilters, { passive: true });

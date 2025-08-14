@@ -238,8 +238,11 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('pointerdown', (e) => {
     if (e.button !== 0) return;
     // Use viewport coordinates directly so ripples align with the cursor
-    const baseX = e.clientX;
-    const baseY = e.clientY;
+    const zoom = (function(){
+      try { const z = parseFloat(getComputedStyle(document.body).zoom||'1'); return isFinite(z)&&z>0?z:1; } catch(_){ return 1; }
+    })();
+    const baseX = (e.clientX||0) / zoom;
+    const baseY = (e.clientY||0) / zoom;
     for (let i=0;i<3;i++){
       const node = document.createElement('span');
       node.className = 'ripple ' + (i===1?'r2': i===2?'r3':'');
@@ -787,6 +790,7 @@ document.addEventListener('DOMContentLoaded', function() {
     music_title: { en: 'Music Listening Room', pl: 'Muzyka — Pokój odsłuchowy', nl: 'Muziek — Luisterkamer' },
     music_lead: { en: 'Stream curated tracks, preview stems, and explore catalog.', pl: 'Słuchaj wybranych utworów, podglądaj stemsy i przeglądaj katalog.', nl: 'Stream geselecteerde tracks, bekijk stems en verken de catalogus.' },
     music_sort: { en: 'Sort', pl: 'Sortuj', nl: 'Sorteren' },
+    music_hint_click: { en: 'Click for details', pl: 'Kliknij, aby zobaczyć szczegóły', nl: 'Klik voor details' },
     toast_switched: { pl: 'Przełączono na polski', nl: 'Gewisseld naar Nederlands', en: 'Switched to English' },
     all_projects_title: { pl: 'Wszystkie projekty', nl: 'Alle projecten', en: 'All Projects' },
     all_projects_lead: { pl: 'Filtruj i sortuj, aby przeglądać prace.', nl: 'Filter en sorteer om werk te verkennen.', en: 'Filter and sort to explore selected works.' },
@@ -815,6 +819,9 @@ document.addEventListener('DOMContentLoaded', function() {
     contact_reachout: { pl: 'Śmiało napisz z krótkim opisem. Lubię projekty łączące kreatywną wizję z rozwiązywaniem problemów technicznych.', nl: 'Stuur gerust een korte briefing. Ik werk graag aan projecten die creatieve intentie combineren met technische probleemoplossing.', en: 'Feel free to reach out with a short brief. I enjoy projects that combine creative intent with technical problem‑solving.' }
   };
 
+  // Expose minimal public i18n for other scripts (read-only)
+  try { window.I18N_PUBLIC = Object.freeze({ music_hint_click: I18N.music_hint_click }); } catch(_){ }
+
   function translatePage(lang){
     // Nav links by href
     document.querySelectorAll('#nav a[href$="index.html"], #nav a[href$="../index.html"]').forEach(a=> a.textContent = I18N.nav_home[lang]);
@@ -839,6 +846,19 @@ document.addEventListener('DOMContentLoaded', function() {
       if (h) h.textContent = I18N.music_title[lang];
       if (p) p.textContent = I18N.music_lead[lang];
       if (sort) sort.textContent = I18N.music_sort[lang];
+      // Translate subtle card hints
+      document.querySelectorAll('#music-list .music-item .mi-hint').forEach(el=>{ el.textContent = I18N.music_hint_click[lang]; });
+      // Also translate open track modal description if present
+      try {
+        const modal = document.querySelector('.music-modal.open');
+        if (modal){
+          const title = modal.querySelector('.mm-title')?.textContent || '';
+          const tracks = window.__tracks__ || [];
+          const t = tracks.find(x=> x && x.title===title);
+          const descEl = modal.querySelector('.mm-desc');
+          if (t && t.desc && descEl){ const d = typeof t.desc==='string'? t.desc : (t.desc[lang]||t.desc['en']||''); if (d) descEl.textContent = d; }
+        }
+      } catch(_){ }
     }
 
     // Hero pills (homepage): translate pill labels
