@@ -639,8 +639,13 @@ body p {
 .music-controls .left, .music-controls .right { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
 .music-finder { display:flex; align-items:center; gap:12px; background: rgba(10,16,22,0.65); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:8px 10px; }
 .music-finder .mf-label { font-family:'Outfit',sans-serif; font-weight:900; letter-spacing:.3px; color:#eaf7ff; opacity:.95; white-space:nowrap; }
+.music-finder .gw-toggle { background: rgba(24,191,239,0.18); color:#eaf7ff; border:1px solid rgba(24,191,239,0.55); border-radius:999px; padding:8px 12px; font-weight:900; cursor:pointer; }
+.music-finder .gw-toggle:hover { filter: brightness(1.05); }
 .genre-wheel { position: relative; width: 220px; height: 220px; margin: 0 10px; }
 .genre-wheel svg { width: 220px; height: 220px; display: block; }
+/* Chips hidden by default; revealed on toggle */
+.music-finder .music-tags { display: none; }
+.music-finder .music-tags.open { display: flex; }
 .genre-wheel .gw-node { cursor: pointer; }
 .genre-wheel circle { fill: rgba(255,255,255,0.08); stroke: rgba(255,255,255,0.2); stroke-width: 1.5; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.25)); }
 .genre-wheel .gw-center circle { fill: url(#gwGrad) #18bfef; stroke: transparent; }

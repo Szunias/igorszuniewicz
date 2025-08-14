@@ -184,6 +184,12 @@
     const g = e.target.closest('.genre-wheel .gw-node'); if (!g) return;
     const tag = g.getAttribute('data-tag') || TAG_ALL; activeTag = tag; renderTagChips(); applyFilters();
   });
+  // Toggle tag chips visibility (wheel stays visible)
+  document.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.gw-toggle'); if (!btn) return;
+    const chips = document.querySelector('.music-finder .music-tags'); if (!chips) return;
+    chips.classList.toggle('open');
+  });
   // Initial render with ALL
   applyFilters();
 
