@@ -155,7 +155,7 @@
     length: 0,
     date:'2025-02-15',
     year: 2025,
-    sources:[ { url:'songs/Cage.wav', type:'audio/wav' } ],
+    sources:[ { url:'songs/Cage.wav' } ],
     desc:{
       pl:'Jeden z moich najmocniejszych utworów — industrial metal / hard rock: ciężkie gitary, masywny groove i surowa energia.',
       en:'One of my heaviest tracks — industrial metal / hard rock: heavy guitars, massive groove and raw energy.',
