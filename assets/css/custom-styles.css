@@ -658,6 +658,82 @@ body p {
 .genre-wheel .gw-node:focus circle,
 .genre-wheel .gw-node:hover circle { stroke: rgba(247,215,116,0.95); filter: drop-shadow(0 0 18px rgba(247,215,116,0.55)); }
 @keyframes wheelPulse { 0%{ transform: scale(1); } 50%{ transform: scale(1.03); } 100%{ transform: scale(1); } }
+
+/* Genre wheel: per‑tag colors and hover animations */
+/* Base colors per tag */
+.genre-wheel .gw-node[data-tag="electronic"] circle { fill: rgba(154,108,255,0.20); stroke: rgba(154,108,255,0.65); }
+.genre-wheel .gw-node[data-tag="film"] circle { fill: rgba(255,166,0,0.18); stroke: rgba(255,166,0,0.65); }
+.genre-wheel .gw-node[data-tag="metal"] circle { fill: rgba(255,0,72,0.18); stroke: rgba(255,0,72,0.65); }
+.genre-wheel .gw-node[data-tag="playful"] circle { fill: rgba(255,110,169,0.20); stroke: rgba(255,110,169,0.65); }
+.genre-wheel .gw-node[data-tag="score"] circle { fill: rgba(88,182,255,0.18); stroke: rgba(88,182,255,0.65); }
+.genre-wheel .gw-node[data-tag="single"] circle { fill: rgba(210,210,210,0.18); stroke: rgba(210,210,210,0.65); }
+/* Brighter labels on hover */
+.genre-wheel .gw-node:hover text, .genre-wheel .gw-node:focus text { fill:#ffffff; filter: drop-shadow(0 0 8px rgba(255,255,255,0.65)); }
+
+/* Electronic: electric dash glow */
+.genre-wheel .gw-node[data-tag="electronic"]:hover circle,
+.genre-wheel .gw-node[data-tag="electronic"]:focus circle {
+  stroke: #b89bff;
+  stroke-width: 3.5;
+  stroke-dasharray: 4 6;
+  animation: elecDash 0.6s linear infinite;
+  fill: rgba(154,108,255,0.34);
+  filter: drop-shadow(0 0 14px rgba(154,108,255,0.75)) drop-shadow(0 0 22px rgba(24,191,239,0.55));
+}
+@keyframes elecDash { to { stroke-dashoffset: -24; } }
+
+/* Film: subtle flicker like projector */
+.genre-wheel .gw-node[data-tag="film"]:hover circle,
+.genre-wheel .gw-node[data-tag="film"]:focus circle {
+  animation: filmFlicker 0.5s steps(2,end) infinite;
+  filter: drop-shadow(0 0 14px rgba(255,205,120,0.75));
+}
+@keyframes filmFlicker {
+  0% { fill: rgba(255,166,0,0.26); stroke-width: 2.4; }
+  50% { fill: rgba(255,210,90,0.38); stroke-width: 3.4; }
+  100% { fill: rgba(255,166,0,0.26); stroke-width: 2.4; }
+}
+
+/* Metal: heavy pulse + slight shake */
+.genre-wheel .gw-node[data-tag="metal"]:hover,
+.genre-wheel .gw-node[data-tag="metal"]:focus {
+  animation: metalShake 0.28s ease-in-out infinite alternate;
+}
+@keyframes metalShake {
+  0% { transform: translate(0,0) rotate(0deg); }
+  100% { transform: translate(1.5px,-1.5px) rotate(-1.2deg); }
+}
+.genre-wheel .gw-node[data-tag="metal"]:hover circle,
+.genre-wheel .gw-node[data-tag="metal"]:focus circle {
+  stroke-width: 3.5;
+  fill: rgba(255,0,72,0.28);
+  filter: drop-shadow(0 0 16px rgba(255,0,72,0.75));
+}
+
+/* Playful: bouncy scale */
+.genre-wheel .gw-node[data-tag="playful"]:hover,
+.genre-wheel .gw-node[data-tag="playful"]:focus {
+  animation: playfulBounce 600ms cubic-bezier(.2,.8,.2,1) infinite alternate;
+}
+@keyframes playfulBounce { from { transform: scale(1); } to { transform: scale(1.12); } }
+
+/* Score: calm blue glow pulse */
+.genre-wheel .gw-node[data-tag="score"]:hover circle,
+.genre-wheel .gw-node[data-tag="score"]:focus circle {
+  animation: scoreGlow 1.1s ease-in-out infinite;
+  filter: drop-shadow(0 0 18px rgba(88,182,255,0.8));
+}
+@keyframes scoreGlow { 0%{ stroke-width:2.2; } 50%{ stroke-width:3.6; } 100%{ stroke-width:2.2; } }
+
+/* Single: soft silver shine (dash sweep) */
+.genre-wheel .gw-node[data-tag="single"]:hover circle,
+.genre-wheel .gw-node[data-tag="single"]:focus circle {
+  stroke-dasharray: 6 10;
+  stroke-width: 3;
+  animation: singleSweep 0.8s linear infinite;
+  filter: drop-shadow(0 0 14px rgba(220,220,220,0.65));
+}
+@keyframes singleSweep { to { stroke-dashoffset: -48; } }
 .music-controls .right label span { color:#eaf7ff; font-weight:800; letter-spacing:.2px; }
 .music-controls select { background: rgba(10,16,22,0.85); color:#eaf7ff; border:1px solid rgba(255,255,255,0.18); min-width: 220px; }
 .music-controls input[type="search"] { background: rgba(10,16,22,0.85); color:#eaf7ff; border:1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 8px 10px; height: 36px; line-height: 1.2; }
