@@ -145,6 +145,24 @@
     }
   });
 
+  // New heavy single: Cage (industrial metal / hard rock)
+  tracks.push({
+    id:'cage',
+    title:'Cage',
+    artist:'Igor Szuniewicz',
+    cover:'images/Cage.png',
+    tags:['single','metal'],
+    length: 0,
+    date:'2025-02-15',
+    year: 2025,
+    sources:[ { url:'songs/Cage.wav', type:'audio/wav' } ],
+    desc:{
+      pl:'Jeden z moich najmocniejszych utworów — industrial metal / hard rock: ciężkie gitary, masywny groove i surowa energia.',
+      en:'One of my heaviest tracks — industrial metal / hard rock: heavy guitars, massive groove and raw energy.',
+      nl:'Een van mijn hardste tracks — industrial metal / hard rock: zware gitaren, massieve groove en rauwe energie.'
+    }
+  });
+
   // Ensure every track is matchable by the "All" filter and normalize tags; also expose globally
   tracks.forEach(function(t){
     const baseTags = Array.isArray(t.tags) ? t.tags : [];
@@ -183,8 +201,6 @@
   document.addEventListener('click', (e)=>{
     const g = e.target.closest('.genre-wheel .gw-node'); if (!g) return;
     const tag = g.getAttribute('data-tag') || TAG_ALL; activeTag = tag; renderTagChips(); applyFilters();
-    // Visual hint: briefly open chips to show filter took effect
-    try { const chips = document.querySelector('.music-finder .music-tags'); if (chips) { chips.classList.add('open'); setTimeout(()=> chips.classList.remove('open'), 1200); } } catch(_){ }
   });
   // Toggle tag chips visibility (wheel stays visible)
   document.addEventListener('click', (e)=>{
@@ -740,31 +756,31 @@
   try { activeTag = TAG_ALL; } catch(_) {}
   try { applyFilters(); } catch(_){ try { render(); } catch(__){} }
   try { layoutAlbumWall(); } catch(_){}
-  function layoutAlbumWall(){
-    const wall = document.querySelector('.album-wall'); if (!wall) return;
-    const r1 = wall.querySelector('.album-row.r1 .strip'); const r2 = wall.querySelector('.album-row.r2 .strip');
+    function layoutAlbumWall(){
+      const wall = document.querySelector('.album-wall'); if (!wall) return;
+      const r1 = wall.querySelector('.album-row.r1 .strip'); const r2 = wall.querySelector('.album-row.r2 .strip');
     // Populate from tracks if available
-    try {
-      const srcs = Array.from(new Set((window.__tracks__||[]).map(t=> t.cover).filter(Boolean)));
+      try {
+        const srcs = Array.from(new Set((window.__tracks__||[]).map(t=> t.cover).filter(Boolean)));
       function fill(strip, start){ if (!strip) return; const tiles=strip.querySelectorAll('.set'); tiles.forEach((setNode,setIdx)=>{ const imgs=setNode.querySelectorAll('img'); imgs.forEach((img,idx)=>{ const s=srcs[(start+setIdx*imgs.length+idx)%srcs.length]; if (s) img.src=s; }); }); }
       if (srcs.length){ fill(r1,0); fill(r2,5); }
-    } catch(_){ }
+      } catch(_){ }
     // JS-driven marquee: translateX resets exactly at half width
     function startMarquee(strip, dir){
-      if (!strip) return;
+        if (!strip) return;
       // duplicate sets already present; assume two .set children side by side
       let x = 0; const speed = dir > 0 ? 0.25 : -0.25; // px per frame approx (60fps)
-      function step(){
+        function step(){
         x += speed; strip.style.transform = 'translateX(' + x + 'px)';
         const set = strip.querySelector('.set'); if (set){ const setW = set.getBoundingClientRect().width + 40; // gap 40
           if (dir > 0 && x >= 0) x = -setW;
           if (dir < 0 && x <= -setW) x = 0;
+          }
+          requestAnimationFrame(step);
         }
-        requestAnimationFrame(step);
+        step();
       }
-      step();
-    }
     startMarquee(r1, -1); startMarquee(r2, 1);
-  }
+    }
 })();
 
