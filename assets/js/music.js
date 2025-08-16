@@ -23,7 +23,7 @@
   let waveCtx = null, waveWidth = 0, waveHeight = 0, waveData = null;
 
   const audio = new Audio();
-  audio.preload = 'auto';
+  audio.preload = 'metadata';
   audio.volume = parseFloat(localStorage.getItem('player-volume') || '0.9');
   pbVol.value = String(audio.volume);
   // initial CSS vars for sliders
@@ -176,9 +176,25 @@
   let currentTrackId = null;
 
   function chooseSource(track){
-    const order = track.sources && track.sources.length ? track.sources : (track.url ? [{url:track.url}] : []);
-    // Prefer playable types by browser
-    const playable = order.filter(s => !s.type || audio.canPlayType(s.type));
+    const order = (track.sources && track.sources.length) ? track.sources : (track.url ? [{ url: track.url }] : []);
+    function inferType(u){
+      try { const url = String(u||'').toLowerCase();
+        if (url.endsWith('.mp3')) return 'audio/mpeg';
+        if (url.endsWith('.m4a') || url.endsWith('.mp4')) return 'audio/mp4';
+        if (url.endsWith('.ogg') || url.endsWith('.oga')) return 'audio/ogg';
+        if (url.endsWith('.wav')) return 'audio/wav';
+      } catch(_){}
+      return '';
+    }
+    const scored = order.map(function(s){
+      const t = s.type || inferType(s.url);
+      let score = 3;
+      if (t==='audio/mpeg' || t==='audio/mp4' || t==='audio/ogg') score = 0; // prefer compressed
+      else if (t==='audio/wav') score = 2; // avoid heavy unless only option
+      else score = 1;
+      return { src: s, type: t, score };
+    });
+    const playable = scored.filter(p => !p.type || audio.canPlayType(p.type)).sort((a,b)=> a.score - b.score).map(p=> p.src);
     return playable.length ? playable : order;
   }
 
@@ -539,6 +555,9 @@
     try {
       const chosen = chooseSource(track)[0];
       if (!chosen) return;
+      // Skip heavy WAV sources to avoid large network usage on page load
+      const isWav = (chosen.type && /audio\/wav/i.test(chosen.type)) || /\.(wav)(\?|$)/i.test(String(chosen.url||''));
+      if (isWav) return;
       const cacheKey = 'dur:'+chosen.url;
       const cached = localStorage.getItem(cacheKey);
       if (cached){

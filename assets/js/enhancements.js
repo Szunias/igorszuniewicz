@@ -91,16 +91,23 @@ document.addEventListener('DOMContentLoaded', function() {
     progress.className = 'page-progress';
     document.body.appendChild(progress);
     document.querySelectorAll('a[href]').forEach(a => {
-      const href = a.getAttribute('href');
-      if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:')) return;
+      const href = a.getAttribute('href') || '';
+      const lower = href.trim().toLowerCase();
+      const isHash = lower.startsWith('#');
+      const isExternal = lower.startsWith('http') || lower.startsWith('//') || lower.startsWith('mailto:') || lower.startsWith('tel:');
+      const isUnsafeScheme = lower.startsWith('javascript:') || lower.startsWith('data:');
+      if (!href || isHash || isExternal || isUnsafeScheme) return;
       a.addEventListener('click', (e) => {
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return; // allow new tab etc.
         if (a.target === '_blank') return;
+        const h = a.getAttribute('href') || '';
+        const l = h.trim().toLowerCase();
+        if (!h || l.startsWith('javascript:') || l.startsWith('data:')) return;
         e.preventDefault();
         progress.style.width = '35%';
         document.body.classList.add('page-exit');
         setTimeout(() => { progress.style.width = '70%'; }, 100);
-        const nav = () => { try { window.location.href = href; } catch(_) { location.assign(href); } };
+        const nav = () => { try { window.location.href = h; } catch(_) { location.assign(h); } };
         // Force navigation even if previous timers are throttled
         setTimeout(nav, 120);
         setTimeout(nav, 220);

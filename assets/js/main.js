@@ -260,6 +260,7 @@
 })(jQuery);
 
 
+<<<<<<< Current (Your changes)
 // Slider Functionality (Added)
 (function($) {
     var $slider = $(".slider");
@@ -289,3 +290,6 @@
         showSlide(currentSlide);
     }
 })(jQuery);
+=======
+// Slider logic handled in assets/js/slider.js to avoid double-binding.
+>>>>>>> Incoming (Background Agent changes)
