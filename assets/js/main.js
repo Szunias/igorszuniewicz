@@ -260,36 +260,4 @@
 })(jQuery);
 
 
-<<<<<<< Current (Your changes)
-// Slider Functionality (Added)
-(function($) {
-    var $slider = $(".slider");
-    if ($slider.length > 0) {
-        var $slides = $slider.find(".slide");
-        var $prevNav = $slider.find(".slider-nav.prev");
-        var $nextNav = $slider.find(".slider-nav.next");
-        var currentSlide = 0;
-
-        function showSlide(index) {
-            $slides.removeClass("active");
-            $slides.eq(index).addClass("active");
-            currentSlide = index;
-        }
-
-        $prevNav.on("click", function() {
-            var newSlide = (currentSlide - 1 + $slides.length) % $slides.length;
-            showSlide(newSlide);
-        });
-
-        $nextNav.on("click", function() {
-            var newSlide = (currentSlide + 1) % $slides.length;
-            showSlide(newSlide);
-        });
-
-        // Initialize first slide
-        showSlide(currentSlide);
-    }
-})(jQuery);
-=======
 // Slider logic handled in assets/js/slider.js to avoid double-binding.
->>>>>>> Incoming (Background Agent changes)

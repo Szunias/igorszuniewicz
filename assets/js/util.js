@@ -6,7 +6,7 @@
 	 */
 	$.fn.navList = function() {
 
-		var	$this = $(this);
+		var	$this = $(this),
 			$a = $this.find('a'),
 			b = [];
 
@@ -95,7 +95,7 @@
 			}, userConfig);
 
 			// Expand "target" if it's not a jQuery object already.
-				if (typeof config.target != 'jQuery')
+				if (!(config.target instanceof jQuery))
 					config.target = $(config.target);
 
 		// Panel.

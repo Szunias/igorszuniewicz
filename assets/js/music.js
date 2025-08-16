@@ -24,8 +24,10 @@
 
   const audio = new Audio();
   audio.preload = 'metadata';
-  audio.volume = parseFloat(localStorage.getItem('player-volume') || '0.9');
-  pbVol.value = String(audio.volume);
+  const savedVol = parseFloat(localStorage.getItem('player-volume') || '');
+  const safeVol = (isFinite(savedVol) ? Math.min(1, Math.max(0, savedVol)) : 0.9);
+  audio.volume = safeVol;
+  pbVol.value = String(safeVol);
   // initial CSS vars for sliders
   try { playerBar.style.setProperty('--vol', Math.round(audio.volume*100)+'%'); } catch(_){}
 
@@ -688,7 +690,7 @@
   });
   pbPrev.addEventListener('click', ()=>{ if (view.length===0) return; const i=(currentIndex-1+view.length)%view.length; start(i); });
   pbNext.addEventListener('click', ()=>{ if (view.length===0) return; const i=(currentIndex+1)%view.length; start(i); });
-  pbVol.addEventListener('input', ()=>{ audio.volume = parseFloat(pbVol.value||'0.9'); localStorage.setItem('player-volume', String(audio.volume)); playerBar.style.setProperty('--vol', Math.round(audio.volume*100)+'%'); });
+  pbVol.addEventListener('input', ()=>{ const v=parseFloat(pbVol.value||'0.9'); const clamped=isFinite(v)?Math.min(1,Math.max(0,v)):0.9; audio.volume = clamped; localStorage.setItem('player-volume', String(clamped)); playerBar.style.setProperty('--vol', Math.round(clamped*100)+'%'); });
   pbSeek.addEventListener('input', ()=>{
     if (!isFinite(audio.duration)) return;
     const ratio = parseFloat(pbSeek.value)/parseFloat(pbSeek.max||'1000');
