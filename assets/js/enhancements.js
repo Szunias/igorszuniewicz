@@ -549,13 +549,22 @@ document.addEventListener('DOMContentLoaded', function() {
   document.body.appendChild(pop);
 
   let popPinned = false; let lastPos={x:0,y:0};
+
+  function isSafeHttpUrl(value){
+    try {
+      const u = new URL(value, location.origin);
+      return u.protocol === 'http:' || u.protocol === 'https:';
+    } catch(_){
+      return false;
+    }
+  }
   function showTip(target, x, y){
     const text = target.getAttribute('data-tip');
     const url = target.getAttribute('data-tip-url');
     if (!text){ hideTip(); return; }
     popContent.innerHTML = '';
     const span = document.createElement('div'); span.textContent = text; popContent.appendChild(span);
-    if (url){ const a = document.createElement('a'); a.href=url; a.target='_blank'; a.rel='noopener'; a.className='tip-action'; a.textContent='Learn more →'; popContent.appendChild(a); }
+    if (url && isSafeHttpUrl(url)){ const a = document.createElement('a'); a.href=url; a.target='_blank'; a.rel='noopener noreferrer'; a.className='tip-action'; a.textContent='Learn more →'; popContent.appendChild(a); }
     const pad = 14; const vw = window.innerWidth; const vh = window.innerHeight;
     let px = x + pad, py = y + pad;
     const bw = pop.offsetWidth || 260; const bh = pop.offsetHeight || 80;
@@ -582,10 +591,13 @@ document.addEventListener('DOMContentLoaded', function() {
         drawer.className='cv-drawer';
         const text = el.getAttribute('data-tip') || '';
         const url = el.getAttribute('data-tip-url');
-        drawer.innerHTML = '<div class="cv-drawer-inner">'+
-          '<div class="cv-drawer-text">'+ text +'</div>'+
-          (url?'<a class="cv-drawer-link" target="_blank" rel="noopener" href="'+url+'">Learn more →</a>':'')+
-          '</div>';
+        const inner = document.createElement('div'); inner.className='cv-drawer-inner';
+        const textDiv = document.createElement('div'); textDiv.className='cv-drawer-text'; textDiv.textContent = text;
+        inner.appendChild(textDiv);
+        if (url && isSafeHttpUrl(url)){
+          const a = document.createElement('a'); a.className='cv-drawer-link'; a.target='_blank'; a.rel='noopener noreferrer'; a.href = url; a.textContent='Learn more →'; inner.appendChild(a);
+        }
+        drawer.appendChild(inner);
         el.parentNode.insertBefore(drawer, el.nextSibling);
       }
     });
@@ -621,10 +633,13 @@ document.addEventListener('DOMContentLoaded', function() {
       drawer.className='cv-drawer';
       const text = el.getAttribute('data-tip') || '';
       const url = el.getAttribute('data-tip-url');
-      drawer.innerHTML = '<div class="cv-drawer-inner">'+
-        '<div class="cv-drawer-text">'+ text +'</div>'+
-        (url?'<a class="cv-drawer-link" target="_blank" rel="noopener" href="'+url+'">Learn more →</a>':'')+
-        '</div>';
+      const inner = document.createElement('div'); inner.className='cv-drawer-inner';
+      const textDiv = document.createElement('div'); textDiv.className='cv-drawer-text'; textDiv.textContent = text;
+      inner.appendChild(textDiv);
+      if (url && isSafeHttpUrl(url)){
+        const a = document.createElement('a'); a.className='cv-drawer-link'; a.target='_blank'; a.rel='noopener noreferrer'; a.href = url; a.textContent='Learn more →'; inner.appendChild(a);
+      }
+      drawer.appendChild(inner);
       el.parentNode.insertBefore(drawer, el.nextSibling);
     }
   });
@@ -1248,10 +1263,12 @@ document.addEventListener('DOMContentLoaded', function() {
           const drawer = document.createElement('div'); drawer.className='cv-drawer';
           const text = el.getAttribute('data-tip') || '';
           const url = el.getAttribute('data-tip-url');
-          drawer.innerHTML = '<div class="cv-drawer-inner">'+
-            '<div class="cv-drawer-text">'+ text +'</div>'+
-            (url?'<a class="cv-drawer-link" target="_blank" rel="noopener" href="'+url+'">'+(I18N.learn_more[lang]||'Learn more →')+'</a>':'')+
-            '</div>';
+          const inner = document.createElement('div'); inner.className='cv-drawer-inner';
+          const textDiv = document.createElement('div'); textDiv.className='cv-drawer-text'; textDiv.textContent = text; inner.appendChild(textDiv);
+          if (url && isSafeHttpUrl(url)){
+            const a = document.createElement('a'); a.className='cv-drawer-link'; a.target='_blank'; a.rel='noopener noreferrer'; a.href = url; a.textContent = (I18N.learn_more[lang]||'Learn more →'); inner.appendChild(a);
+          }
+          drawer.appendChild(inner);
           el.parentNode.insertBefore(drawer, el.nextSibling);
         } else {
           // Update existing drawer content and link label

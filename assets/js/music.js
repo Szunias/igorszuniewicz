@@ -300,7 +300,7 @@
 
   // Right-side sliding panel API
   let sidePanel = null; let sideCard = null;
-  function closeSidePanel(){ if (!sidePanel) return; sidePanel.classList.remove('open'); const sp=sidePanel; sidePanel=null; sideCard=null; setTimeout(()=> sp.remove(), 240); }
+  function closeSidePanel(){ if (!sidePanel) return; sidePanel.classList.remove('open'); window.removeEventListener('scroll', syncPanelToCard); window.removeEventListener('resize', syncPanelToCard); const sp=sidePanel; sidePanel=null; sideCard=null; setTimeout(()=> sp.remove(), 240); }
   function openSidePanel(track, cardNode, index){
     if (sidePanel && sideCard===cardNode){ closeSidePanel(); return; }
     if (sidePanel) closeSidePanel();
@@ -463,12 +463,16 @@
       btn.classList.toggle('is-playing', isPlayingThis);
     }
     // keep modal controls synced with global audio
-    audio.addEventListener('play', updateModalPlayLabel);
-    audio.addEventListener('pause', updateModalPlayLabel);
-    audio.addEventListener('ended', ()=>{ updateModalPlayLabel(); updateModalTimeline(); });
+    const onPlay = updateModalPlayLabel;
+    const onPause = updateModalPlayLabel;
+    function onEnded(){ updateModalPlayLabel(); updateModalTimeline(); }
+    audio.addEventListener('play', onPlay);
+    audio.addEventListener('pause', onPause);
+    audio.addEventListener('ended', onEnded);
+    modalNode._onPlay = onPlay; modalNode._onPause = onPause; modalNode._onEnded = onEnded;
   }
   function escClose(e){ if (e.key==='Escape'){ closeTrackModal(); } }
-  function closeTrackModal(){ if (!modalNode) return; modalNode.classList.remove('open'); const n=modalNode; modalNode=null; setTimeout(()=> n.remove(), 220); document.removeEventListener('keydown', escClose, true); }
+  function closeTrackModal(){ if (!modalNode) return; modalNode.classList.remove('open'); if (modalNode._onPlay){ try { audio.removeEventListener('play', modalNode._onPlay); } catch(_){ } } if (modalNode._onPause){ try { audio.removeEventListener('pause', modalNode._onPause); } catch(_){ } } if (modalNode._onEnded){ try { audio.removeEventListener('ended', modalNode._onEnded); } catch(_){ } } const n=modalNode; modalNode=null; setTimeout(()=> n.remove(), 220); document.removeEventListener('keydown', escClose, true); }
   function syncPanelToCard(){
     if (!sidePanel || !sideCard) return;
     const host = document.getElementById('music-list');
