@@ -89,6 +89,15 @@
               <option value="title-desc">Title Z–A</option>
             </select>
           </div>
+          <div class="proj-view" style="display:flex; align-items:center; gap:.5rem;">
+            <strong>View:</strong>
+            <button class="button small" data-view="grid">Grid</button>
+            <button class="button small" data-view="list">List</button>
+          </div>
+          <div class="proj-search-wrap" style="margin-left:auto; display:flex; align-items:center; gap:.5rem;">
+            <input type="search" id="projects-search" class="proj-search" placeholder="Search projects…" aria-label="Search projects" />
+            <span id="projects-count" class="proj-count" aria-live="polite"></span>
+          </div>
         </div>
 
         <div class="projects-grid" id="projects-list">

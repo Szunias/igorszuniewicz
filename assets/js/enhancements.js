@@ -642,33 +642,61 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, true);
 
-  // Nav: small preview for Projects link
-  const navPrev = document.createElement('div'); navPrev.className='nav-preview'; navPrev.style.visibility='hidden';
+  // Nav previews disabled per request
   const base = location.pathname.includes('/projects/') ? '../' : '';
-  navPrev.innerHTML = `
-    <img src="${base}images/maxresdefault.jpg" alt="">
-    <img src="${base}images/project4.png" alt="">
-    <img src="${base}images/amorak.png" alt="">
-  `;
-  document.body.appendChild(navPrev);
+  // Candidate covers
+  const PROJECT_COVERS = [
+    `${base}images/maxresdefault.jpg`,
+    `${base}images/project4.png`,
+    `${base}images/amorak.png`,
+    `${base}images/richter.png`,
+    `${base}images/plugins.jpg`,
+    `${base}images/project5.png`
+  ];
+  function sampleUnique(arr, n){
+    const a = arr.slice();
+    for (let i=a.length-1; i>0; i--){ const j = Math.floor(Math.random()*(i+1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a.slice(0, Math.max(0, Math.min(n, a.length)));
+  }
+  function setPreviewImages(container, urls){ container.innerHTML = urls.map(u=> `<img src="${u}" alt="">`).join(''); }
   const projectsLink = document.querySelector('#nav ul.links a[href*="projects/index.html"]');
-  let prevTimer=null;
-  function showNavPrev(){
-    const rect = projectsLink.getBoundingClientRect();
-    let x = rect.left; let y = rect.bottom + 10;
-    navPrev.style.left = x + 'px'; navPrev.style.top = y + 'px';
-    navPrev.style.transform = 'none';
-    navPrev.style.visibility='visible';
-    navPrev.classList.add('visible');
+  const navEl = document.getElementById('nav');
+  let navAbsBottom = 0;
+  function computeNavAbsBottom(){
+    try {
+      const nav = document.getElementById('nav');
+      if (!nav) { navAbsBottom = 0; return; }
+      const rect = nav.getBoundingClientRect();
+      navAbsBottom = Math.round(rect.top + window.scrollY + nav.offsetHeight);
+    } catch(_){ navAbsBottom = 0; }
   }
-  function hideNavPrev(){
-    navPrev.classList.remove('visible'); navPrev.style.visibility='hidden';
-  }
+  computeNavAbsBottom();
+  window.addEventListener('resize', computeNavAbsBottom, { passive:true });
+  const HOVER_DELAY = 220;
+  let prevTimer=null; function showNavPrev(){} function hideNavPrev(){}
   if (projectsLink){
-    projectsLink.addEventListener('pointerenter', ()=>{ prevTimer = setTimeout(showNavPrev, 80); });
-    projectsLink.addEventListener('pointerleave', ()=>{ if (prevTimer){ clearTimeout(prevTimer); prevTimer=null; } hideNavPrev(); });
-    window.addEventListener('scroll', hideNavPrev, { passive:true });
+    projectsLink.addEventListener('pointerenter', ()=>{});
+    projectsLink.addEventListener('pointerleave', ()=>{});
   }
+  if (navEl){ navEl.addEventListener('pointerleave', ()=>{}, true); }
+
+  // Nav: small preview for Music link (albums) — subtle grid below nav
+  // Fallback static covers; can be replaced by tracks later if available
+  const MUSIC_FALLBACK_COVERS = [
+    `${base}images/EdgeOfLife.png`,
+    `${base}images/Astrophonic Dance_track_cover.jpg`,
+    `${base}images/Inflow_track_cover.jpg`,
+    `${base}images/Cathedral Of Time_track_cover.jpg`,
+    `${base}images/Run.png`,
+    `${base}images/richter.png`
+  ];
+  const musicLink = document.querySelector('#nav ul.links a[href$="music.html"]');
+  let musicTimer=null; function showNavPrevMusic(){} function hideNavPrevMusic(){}
+  if (musicLink){
+    musicLink.addEventListener('pointerenter', ()=>{});
+    musicLink.addEventListener('pointerleave', ()=>{});
+  }
+  // (removed) eager hydration — previews are filled just-in-time on hover with random picks
 
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {

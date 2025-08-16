@@ -258,6 +258,14 @@
           hint.textContent = txt;
         } catch(_) { hint.textContent = 'Click for details'; }
         card.appendChild(hint);
+        // Hover preview like projects: show album bubble on hover and follow cursor
+        // Preview only when hovering the cover image (not the entire row)
+        const coverEl = card.querySelector('.mi-cover');
+        if (coverEl){
+          coverEl.addEventListener('pointerenter', function(ev){ try { showPreview(t, ev); } catch(_){ } });
+          coverEl.addEventListener('pointermove', function(ev){ try { positionPreview(ev); } catch(_){ } });
+          coverEl.addEventListener('pointerleave', function(){ try { hidePreview(); } catch(_){ } });
+        }
         // Open large modal with details on click
         card.addEventListener('click', function(e){
           e.preventDefault();
@@ -481,8 +489,24 @@
     const tt = preview.querySelector('.title');
     const dd = preview.querySelector('.desc');
     tt.textContent = track.title || '';
-    const style = (track.tags||[]).includes('metal') ? 'Hard rock / metal' : (track.tags||[]).join(', ');
-    dd.textContent = `${style} — energetic, punchy and riff‑driven. Ideal for action montages and trailers.`;
+    // Prefer localized short description if available, else build from tags
+    try {
+      const lang = document.documentElement.getAttribute('lang') || document.documentElement.dataset.lang || 'en';
+      let descText = '';
+      if (track.desc){
+        descText = (typeof track.desc === 'string') ? track.desc : (track.desc[lang] || track.desc['en'] || '');
+      }
+      if (!descText || descText.length === 0){
+        const style = (track.tags||[]).join(', ').replace(/all,?\s*/i,'');
+        descText = style ? style : '';
+      }
+      // Trim to a concise preview length
+      if (descText && descText.length > 160){ descText = descText.slice(0, 157) + '…'; }
+      dd.textContent = descText || '';
+    } catch(_){
+      const style = (track.tags||[]).join(', ');
+      dd.textContent = style || '';
+    }
     // Preload cover image to avoid flashing previous artwork
     const loader = new Image();
     loader.onload = function(){
@@ -494,7 +518,17 @@
     };
     loader.src = track.cover || '';
   }
-  function positionPreview(ev){ if (!preview.classList.contains('visible')) return; const pad=12; const x=Math.min(window.innerWidth-240, ev.clientX+pad); const y=Math.min(window.innerHeight-240, ev.clientY+pad); preview.style.left=x+'px'; preview.style.top=y+'px'; }
+  function positionPreview(ev){
+    if (!preview.classList.contains('visible')) return;
+    const pad = 12;
+    // Measure actual bubble size for accurate clamping
+    const pw = Math.max(1, preview.offsetWidth || 240);
+    const ph = Math.max(1, preview.offsetHeight || 220);
+    const x = Math.min(window.innerWidth - pw - 4, (ev.clientX || 0) + pad);
+    const y = Math.min(window.innerHeight - ph - 4, (ev.clientY || 0) + pad);
+    preview.style.left = x + 'px';
+    preview.style.top = y + 'px';
+  }
   function hidePreview(){ previewReq++; preview.classList.remove('visible'); preview.style.left='-9999px'; preview.style.top='-9999px'; }
 
   function prefetchDuration(track, index, cardNode){
