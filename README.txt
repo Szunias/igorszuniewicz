@@ -30,3 +30,4 @@ Credits:
 		jQuery (jquery.com)
 		Scrollex (github.com/ajlkn/jquery.scrollex)
 		Responsive Tools (github.com/ajlkn/responsive-tools)
+SEO: Added lang attributes, meta descriptions, canonical URLs, Open Graph/Twitter cards, JSON-LD schema, robots.txt, and sitemap.xml across pages. Ensure domain in CNAME remains igorszuniewicz.com.

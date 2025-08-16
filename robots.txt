@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://igorszuniewicz.com/sitemap.xml
