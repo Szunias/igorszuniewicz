@@ -4,6 +4,11 @@
   <title>Music — Listening Room</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap"></noscript>
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
@@ -42,13 +47,14 @@
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
-  <div class="bg-gradient"></div>
-  <div class="bg-orbs">
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <div class="bg-gradient" aria-hidden="true"></div>
+  <div class="bg-orbs" aria-hidden="true">
     <div class="orb blue" style="top:10%;left:8%"></div>
     <div class="orb cyan" style="top:60%;left:75%"></div>
     <div class="orb teal" style="top:75%;left:15%"></div>
   </div>
-  <svg class="bg-waves" viewBox="0 0 1200 600" preserveAspectRatio="none">
+  <svg class="bg-waves" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true" focusable="false">
     <defs>
       <linearGradient id="gradWave1" x1="0%" x2="100%" y1="0%" y2="0%">
         <stop offset="0%" stop-color="#18bfef" stop-opacity="0.6"/>
@@ -67,8 +73,8 @@
     <path fill="url(#gradWave2)" opacity="0.4" d="M0 340 L1200 330 L1200 600 L0 600 Z"></path>
     <path fill="url(#gradWave3)" opacity="0.3" d="M0 360 L1200 360 L1200 600 L0 600 Z"></path>
   </svg>
-  <canvas class="bg-eq"></canvas>
-  <div class="bg-glow"></div>
+  <canvas class="bg-eq" aria-hidden="true"></canvas>
+  <div class="bg-glow" aria-hidden="true"></div>
   <div id="wrapper" class="fade-in">
 
     <header id="header">

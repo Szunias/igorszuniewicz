@@ -5,7 +5,7 @@
 .music-modal .mm-tooltip { position:absolute; top:-28px; transform: translateX(-50%); padding:2px 6px; border-radius:6px; font-size:.8rem; font-weight:700; color:#0b141a; background:#eaf7ff; border:1px solid rgba(24,191,239,0.6); box-shadow: 0 6px 18px rgba(0,0,0,0.25); opacity:0; pointer-events:none; z-index:5; }
 .music-modal .mm-tooltip.show { opacity:1; }
 /* Custom CSS for Igor Szuniewicz Portfolio Redesign */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap');
+/* Google Fonts now preloaded via <link> tags in HTML head (removed @import for performance) */
 
 /* General Professional Enhancements */
 body {
@@ -16,6 +16,15 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-color: #0b141a !important;
 }
+
+/* Skip link (keyboard accessibility) */
+.skip-link{position:absolute;top:-56px;left:0;background:#18bfef;color:#041018;padding:10px 16px;font-weight:800;z-index:2147483647;transition:top .2s ease;box-shadow:0 6px 18px rgba(0,0,0,.35);border-radius:0 0 8px 8px;text-decoration:none;}
+.skip-link:focus,.skip-link:focus-visible{top:0;outline:2px solid #fff;}
+
+/* Unified focus styles */
+a:focus-visible, button:focus-visible, .button:focus-visible, [role="button"]:focus-visible, .chip:focus-visible, .slider-nav:focus-visible {outline:2px solid #f7d774; outline-offset:2px; border-radius:6px;}
+/* Remove default outline where replaced */
+a:focus, button:focus, .button:focus {outline:none;}
 
 html { scrollbar-gutter: stable; }
 html, body { overflow-x: hidden; background: #0b141a !important; }
