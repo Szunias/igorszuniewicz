@@ -641,32 +641,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!e.target.closest('#cv-section .box [data-tip]')) return; hideTip();
   }, true);
 
-  // Replace popovers with smooth inline drawers
-  document.querySelectorAll('#cv-section .box [data-tip]').forEach((el)=>{
-    // create modern chip button instead of icon
-    if (!el.querySelector('.cv-more-chip')){
-      const chip = document.createElement('button');
-      chip.type='button'; chip.className='cv-more-chip'; chip.setAttribute('aria-label','More info');
-      chip.innerHTML = '<span class="label">More</span><span class="chev">▾</span>';
-      el.appendChild(chip);
-    }
-    // create drawer
-    if (!el.nextElementSibling || !el.nextElementSibling.classList.contains('cv-drawer')){
-      const drawer = document.createElement('div');
-      drawer.className='cv-drawer';
-      const text = el.getAttribute('data-tip') || '';
-      const url = el.getAttribute('data-tip-url');
-      const inner = document.createElement('div'); inner.className='cv-drawer-inner';
-      const textDiv = document.createElement('div'); textDiv.className='cv-drawer-text'; textDiv.textContent = text;
-      inner.appendChild(textDiv);
-      if (url && isSafeHttpUrl(url)){
-        const a = document.createElement('a'); a.className='cv-drawer-link'; a.target='_blank'; a.rel='noopener noreferrer'; a.href = url; a.textContent='Learn more →'; inner.appendChild(a);
-      }
-      drawer.appendChild(inner);
-      el.parentNode.insertBefore(drawer, el.nextSibling);
-    }
-  });
-
   document.body.addEventListener('click', (e)=>{
     const chip = e.target.closest('.cv-more-chip');
     if (chip){
@@ -892,6 +866,7 @@ document.addEventListener('DOMContentLoaded', function() {
     extras_lead: { pl: 'Projekty pasji, wydania muzyczne i współprace.', nl: 'Passieprojecten, muziekuitgaven en samenwerkingen.', en: 'Passion projects, music releases, and collaborations.' },
     extras_spotify_title: { pl: 'Moja muzyka na Spotify', nl: 'Mijn muziek op Spotify', en: 'My Music on Spotify' },
     extras_spotify_lead: { pl: 'Wybrane utwory i wydania odzwierciedlające mój styl i kierunek brzmieniowy.', nl: 'Geselecteerde tracks en releases die mijn esthetiek en soundrichting weerspiegelen.', en: 'Selected tracks and releases reflecting my aesthetic and sound direction.' },
+    lang_nudge: { pl: 'Inny język?', nl: 'Andere taal?', en: 'Different language?' },
     // Contact page
     contact_title: { pl: 'Kontakt', nl: 'Contact', en: 'Contact' },
     contact_lead: { pl: 'Współpracujmy. Jestem otwarty na projekty i staże.', nl: 'Laten we samenwerken. Ik sta open voor projecten en stages.', en: 'Let’s collaborate. I’m open to project opportunities and internships.' },
@@ -1261,44 +1236,33 @@ document.addEventListener('DOMContentLoaded', function() {
         const el=document.querySelector(sel); if(!el) return; const val=(CV[key]||{})[lang]; if(!val) return; if(/^<.*>/.test(val)) el.innerHTML=val; else el.textContent=val;
       });
 
-      // Ensure "More" chips exist after innerHTML replacements
+      // Update tooltips and drawer content without recreating elements
       document.querySelectorAll('#cv-section .box [data-tip]').forEach((el)=>{
-        // Translate tooltips (data-tip) and update opened drawer text
-        const liIndex = (function(){
-          const listItems = Array.from(el.parentNode.querySelectorAll(':scope > li'));
-          return listItems.indexOf(el) + 1;
-        })();
-        if (el.closest('.col-6:nth-of-type(2)')){ // skills column (right)
-          const mapTips = {1:'t1',2:'t2',3:'t3',4:'t4',5:'t5',6:'t6',7:'t7'};
-          const key = mapTips[liIndex];
-          if (key && CV_TIPS[key]) el.setAttribute('data-tip', CV_TIPS[key][lang] || CV_TIPS[key].en);
-        } else if (el.closest('.col-6:nth-of-type(1)')) { // education (left)
-          const mapEdu = {1:'e1',2:'e2'};
-          const key = mapEdu[liIndex];
-          if (key && CV_TIPS[key]) el.setAttribute('data-tip', CV_TIPS[key][lang] || CV_TIPS[key].en);
+        const liIndex = Array.from(el.parentNode.children).indexOf(el);
+        let tipKey;
+        if (el.closest('.col-6:nth-of-type(2)')) { // Skills column
+            const mapTips = { 0: 't1', 1: 't2', 2: 't3', 3: 't4', 4: 't5', 5: 't6', 6: 't7' };
+            tipKey = mapTips[liIndex];
+        } else if (el.closest('.col-6:nth-of-type(1)')) { // Education column
+            const mapEdu = { 0: 'e1', 1: 'e2' };
+            tipKey = mapEdu[liIndex];
         }
-        if (!el.querySelector('.cv-more-chip')){
-          const chip = document.createElement('button'); chip.type='button'; chip.className='cv-more-chip';
-          chip.innerHTML = '<span class="label">'+(I18N.more_label[lang]||'More')+'</span><span class="chev">▾</span>';
-          el.appendChild(chip);
+
+        if (tipKey && CV_TIPS[tipKey]) {
+            const tipText = CV_TIPS[tipKey][lang] || CV_TIPS[tipKey].en;
+            el.setAttribute('data-tip', tipText);
+
+            const drawer = el.nextElementSibling;
+            if (drawer && drawer.classList.contains('cv-drawer')) {
+                const textDiv = drawer.querySelector('.cv-drawer-text');
+                if (textDiv) textDiv.textContent = tipText;
+
+                const link = drawer.querySelector('.cv-drawer-link');
+                if (link) link.textContent = I18N.learn_more[lang] || 'Learn more →';
+            }
         }
-        if (!el.nextElementSibling || !el.nextElementSibling.classList.contains('cv-drawer')){
-          const drawer = document.createElement('div'); drawer.className='cv-drawer';
-          const text = el.getAttribute('data-tip') || '';
-          const url = el.getAttribute('data-tip-url');
-          const inner = document.createElement('div'); inner.className='cv-drawer-inner';
-          const textDiv = document.createElement('div'); textDiv.className='cv-drawer-text'; textDiv.textContent = text; inner.appendChild(textDiv);
-          if (url && isSafeHttpUrl(url)){
-            const a = document.createElement('a'); a.className='cv-drawer-link'; a.target='_blank'; a.rel='noopener noreferrer'; a.href = url; a.textContent = (I18N.learn_more[lang]||'Learn more →'); inner.appendChild(a);
-          }
-          drawer.appendChild(inner);
-          el.parentNode.insertBefore(drawer, el.nextSibling);
-        } else {
-          // Update existing drawer content and link label
-          const d = el.nextElementSibling;
-          const t = d.querySelector('.cv-drawer-text'); if (t) t.textContent = el.getAttribute('data-tip')||'';
-          const a = d.querySelector('.cv-drawer-link'); if (a) a.textContent = I18N.learn_more[lang]||'Learn more →';
-        }
+        const chipLabel = el.querySelector('.cv-more-chip .label');
+        if(chipLabel) chipLabel.textContent = I18N.more_label[lang] || 'More';
       });
     }
 
@@ -1456,7 +1420,9 @@ document.addEventListener('DOMContentLoaded', function() {
       // Skip if suggestion system already showed a prompt
       if (localStorage.getItem('lang-suggest-seen')==='1') return;
       const n=document.createElement('div'); n.className='lang-nudge';
-      n.innerHTML='<span class="ico">🌍</span><span class="txt">Different language?</span><span class="arrow">↗</span>';
+      const currentLang = localStorage.getItem(LANG_KEY) || 'en';
+      const nudgeText = (I18N.lang_nudge && I18N.lang_nudge[currentLang]) ? I18N.lang_nudge[currentLang] : 'Different language?';
+      n.innerHTML=`<span class="ico">🌍</span><span class="txt">${nudgeText}</span><span class="arrow">↗</span>`;
       badgeWrap.appendChild(n);
       requestAnimationFrame(()=> n.classList.add('show'));
       setTimeout(()=>{ n.classList.remove('show'); setTimeout(()=>n.remove(), 400); }, 2200);
@@ -1530,24 +1496,6 @@ document.addEventListener('DOMContentLoaded', function() {
       if (target && target!==current) showPrompt(target);
     });
   })();
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
-
-    document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
-  } else {
-    // Fallback: show immediately
-    document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('in-view'));
-  }
 });
 
 // Desktop keyboard click sounds removed per request
