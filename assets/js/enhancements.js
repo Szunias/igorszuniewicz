@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('#wrapper > .bg, #wrapper > .bg.fixed').forEach((el) => {
       try { el.remove(); } catch(_) { try { el.style.setProperty('display','none','important'); } catch(_) {} }
     });
-    try { document.body.style.background = 'transparent'; } catch(_) {}
   }
   // removed floating hero name (reverted)
   removeTemplateBackground();
