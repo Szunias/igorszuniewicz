@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (document.activeElement === prevBtn || document.activeElement === nextBtn) {
       next.focus({preventScroll:true});
     }
-    setTimeout(()=>{ isTransitioning = false; }, 280);
+    setTimeout(()=>{ isTransitioning = false; }, 350);
   }
 
   let autoTimer = setInterval(() => {
