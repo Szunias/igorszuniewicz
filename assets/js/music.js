@@ -44,136 +44,30 @@
     });
   }
 
-  /** Seed demo tracks. Replace with your files in /audio */
-  // expose tracks for i18n translation hooks
-  const tracks = [
-    // Game/film cues
-    
-    { id:'ray', title:'Ray Animation — Credits Theme', artist:'Igor Szuniewicz', cover:'images/project5.png', tags:['film','score'], length: 0, date:'2024-01-10', year: 2024, desc:{
-        pl:'Funkowo zabarwiony cue do animacji. Lekki groove i figury basu prowadzą do świetlistej kadencji domykającej ujęcie. Brzmienie klarowne, z wyraźnym motywem i sprężystą sekcją.',
-        en:'Funk‑tinged cue for animation. A light groove and bass figures steer the piece towards a luminous cadence that closes the shot. Clean tone with a recognisable motif and elastic rhythm section.',
-        nl:'Funk‑getinte cue voor animatie. Lichte groove en basfiguren bouwen naar een lichtvolle cadens die de scène afrondt. Helder klankbeeld met herkenbaar motief en veerkrachtige ritmesectie.'
-      },
-      sources:[ { url:'songs/RayCreditsTheme.wav', type:'audio/wav' } ]
-    },
-    { id:'richter', title:'Richter — Main Theme', artist:'Igor Szuniewicz', cover:'images/richter.png', tags:['film','score'], length: 0, date:'2024-06-01', year: 2024, desc:{
-        pl:'Sekwencja suspensu do etiudy filmowej: warstwowe smyczki i perkusja akcji wymuszają stałe narastanie, zakończone zdecydowanym, filmowym cięciem.',
-        en:'Suspense sequence for a short film: layered strings and action percussion drive a continuous escalation, resolved with a decisive cinematic cutoff.',
-        nl:'Suspense‑cue voor een korte film: gelaagde strijkers en actiedrums stuwen een constante opbouw, afgesloten met een beslissende filmische stop.'
-      },
-      // Drop at least one of these in /songs to enable playback
-      sources:[
-        { url:'songs/RichterMainTheme.m4a', type:'audio/mp4' },
-        { url:'songs/RichterMainTheme.mp3', type:'audio/mpeg' },
-        { url:'songs/RichterMainTheme.wav', type:'audio/wav' }
-      ]
-    },
-    // Spotify catalog (provide local copies in /songs for on-site playback)
-    { id:'sp_inflow', title:'Inflow', artist:'Igor Szuniewicz', cover:'images/Inflow_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01', year: 2023, desc:{
-        pl:'Kameralny temat fortepianowy, który organicznie rozszerza się do pełnej orkiestracji smyczkowej. Delikatna ekspozycja motywu prowadzi do szerokiej, filmowej kulminacji.',
-        en:'A chamber piano theme that expands organically into full string orchestration. A delicate exposition evolves towards a broad, cinematic climax.',
-        nl:'Een kamerpianothema dat organisch uitgroeit tot volledige strijkerorkestratie. Een fragiele expositie groeit naar een brede, filmische climax.'
-      },
-      sources:[
-        { url:'songs/Inflow.m4a', type:'audio/mp4' },
-        { url:'songs/Inflow.mp3', type:'audio/mpeg' },
-        { url:'songs/Igor Szuniewicz - Inflow.wav', type:'audio/wav' }
-      ]
-    },
-    { id:'sp_astro', title:'Astrophonic Dance', artist:'Igor Szuniewicz', cover:'images/Astrophonic Dance_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01', year: 2023, desc:{
-        pl:'Uptempo elektronika z arpeggiowanymi leadami i szeroką sceną stereo. Syntetyczne faktury łączą się z taneczną pulsacją i lekką, przestrzenną produkcją.',
-        en:'Uptempo electronica with arpeggiated leads and a wide stereo image. Synthetic textures meet a dance‑oriented pulse and spacious production.',
-        nl:'Uptempo electronica met arpeggio‑leads en breed stereobeeld. Synthetische texturen combineren met een dansgerichte puls en luchtige productie.'
-      },
-      sources:[
-        { url:'songs/AstrophonicDance.m4a', type:'audio/mp4' },
-        { url:'songs/AstrophonicDance.mp3', type:'audio/mpeg' },
-        { url:'songs/Igor Szuniewicz - Astrophonic Dance.wav', type:'audio/wav' }
-      ]
-    },
-    { id:'sp_cathedral', title:'Cathedral Of Time', artist:'Igor Szuniewicz', cover:'images/Cathedral Of Time_track_cover.jpg', tags:['single','electronic'], length: 0, date:'2023-01-01', year: 2023, desc:{
-        pl:'Wolnorozwijające się, filmowo‑elektroniczne pejzaże: ciepłe harmonie, duża przestrzeń i kontemplacyjny nastrój podtrzymywany stabilnym pulsem.',
-        en:'Slow‑bloom cinematic‑electronic soundscapes: warm harmonies, generous space and a contemplative mood sustained by a steady pulse.',
-        nl:'Langzaam ontvouwende filmisch‑elektronische landschappen: warme harmonieën, veel ruimte en een contemplatieve sfeer met constante puls.'
-      },
-      sources:[
-        { url:'songs/CathedralOfTime.m4a', type:'audio/mp4' },
-        { url:'songs/CathedralOfTime.mp3', type:'audio/mpeg' },
-        { url:'songs/Igor Szuniewicz - Cathedral Of Time.wav', type:'audio/wav' }
-      ]
-    },
-    // XianClash entry (film/score)
-    { id:'xianclash', title:'Xian Clash — Main Theme', artist:'Igor Szuniewicz', cover:'images/XianClashCover.png', tags:['film','score'], length: 0, date:'2024-02-10', year: 2024, desc:{
-        pl:'Temat do strategicznej gry planszowej: marszowa perkusja, modalne melodie i orkiestracyjna skala budują ceremoniálną potęgę i poczucie taktycznej koncentracji.',
-        en:'Main theme for a strategy title: martial percussion, modal melodies and orchestral scale to convey ceremonial power and tactical focus.',
-        nl:'Hoofdthema voor een strategiespel: marspercussie, modale melodieën en orkestrale schaal voor ceremoniële kracht en tactische focus.'
-      },
-      sources:[
-        { url:'songs/XianClashMainTheme.m4a', type:'audio/mp4' },
-        { url:'songs/XianClashMainTheme.mp3', type:'audio/mpeg' },
-        { url:'songs/XianClashMainTheme.wav', type:'audio/wav' }
-      ]
-    },
-    // Run (hard rock / metal)
-    { id:'run', title:'Run — Main Theme', artist:'Igor Szuniewicz', cover:'images/Run.png', tags:['single','metal'], length: 0, date:'2025-02-11', year: 2025, desc:{
-        pl:'Energetyczny rock oparty na ciężkich, nisko strojonych riffach i zwartym groove’u sekcji rytmicznej. Produkcja nastawiona na impakt i nieprzerwany pęd.',
-        en:'High‑energy rock built on down‑tuned riffs and a tight rhythmic groove. Production focuses on impact and sustained forward momentum.',
-        nl:'Energieke rock op basis van laag gestemde riffs en strakke ritmische groove. Productie gericht op impact en aanhoudende vaart.'
-      },
-      sources:[
-        { url:'songs/RunMainTheme.m4a', type:'audio/mp4' },
-        { url:'songs/RunMainTheme.mp3', type:'audio/mpeg' },
-        { url:'songs/RunMainTheme.wav', type:'audio/wav' }
-      ]
-    }
-  ];
-  // New single: Edge Of Life (playful vibe)
-  tracks.push({
-    id:'edgeoflife',
-    title:'Edge Of Life',
-    artist:'Igor Szuniewicz',
-    cover:'images/EdgeOfLife.png',
-    tags:['single','electronic','playful'],
-    length: 0,
-    date:'2024-06-01',
-    year: 2024,
-    sources:[ { url:'songs/EdgeOfLife.wav', type:'audio/wav' } ],
-    desc:{
-      pl:'Uplifting indie‑electronica: jasne pianino, pulsujące syntezatory i afirmacyjna progresja. Czyste, przestrzenne brzmienie akcentuje pozytywną energię utworu.',
-      en:'Uplifting indie‑electronic piece: bright piano, pulsing synths and an affirmative progression. Clean, spacious mix emphasises the track’s positive energy.',
-      nl:'Opbeurende indie‑electronica: helder piano, pulserende synths en affirmatieve progressie. Een heldere, ruimtelijke mix benadrukt de positieve energie.'
-    }
-  });
-
-  // New heavy single: Cage (industrial metal / hard rock)
-  tracks.push({
-    id:'cage',
-    title:'Cage',
-    artist:'Igor Szuniewicz',
-    cover:'images/Cage.png',
-    tags:['single','metal'],
-    length: 0,
-    date:'2025-02-15',
-    year: 2025,
-    sources:[ { url:'songs/Cage.wav' } ],
-    desc:{
-      pl:'Jeden z moich najmocniejszych utworów — industrial metal / hard rock: ciężkie gitary, masywny groove i surowa energia.',
-      en:'One of my heaviest tracks — industrial metal / hard rock: heavy guitars, massive groove and raw energy.',
-      nl:'Een van mijn hardste tracks — industrial metal / hard rock: zware gitaren, massieve groove en rauwe energie.'
-    }
-  });
-
-  // Ensure every track is matchable by the "All" filter and normalize tags; also expose globally
-  tracks.forEach(function(t){
-    const baseTags = Array.isArray(t.tags) ? t.tags : [];
-    t.tags = Array.from(new Set(['all'].concat(baseTags)));
-  });
-  try { window.__tracks__ = tracks; } catch(_){ }
-
-  // View state must be declared before first applyFilters() call
-  let view = tracks.slice();
+  let tracks = [];
+  let view = [];
   let currentIndex = -1;
   let currentTrackId = null;
+
+  function initPlayer(tracks){
+    // expose tracks for i18n translation hooks
+    try { window.__tracks__ = tracks; } catch(_){ }
+    // View state must be declared before first applyFilters() call
+    view = tracks.slice();
+    // Populate filter chips from tags
+    let allTags = Array.from(new Set([].concat.apply([], tracks.map(function(t){ return t.tags || []; })))).filter(function(tag){ return tag !== 'all'; }).sort();
+    renderTagChips(allTags);
+    // Ensure default is 'All' and render immediately
+    activeTag = TAG_ALL;
+    applyFilters();
+    // Hook filters
+    searchEl.addEventListener('input', applyFilters, { passive: true });
+    if (sortEl) sortEl.addEventListener('change', applyFilters);
+    // Final safety: ensure view is initialized to all, even if select/search are null
+    try { activeTag = TAG_ALL; } catch(_) {}
+    try { applyFilters(); } catch(_){ try { render(); } catch(__){} }
+    try { layoutAlbumWall(); } catch(_){}
+  }
 
   function chooseSource(track){
     const order = (track.sources && track.sources.length) ? track.sources : (track.url ? [{ url: track.url }] : []);
@@ -199,24 +93,20 @@
   }
 
   // Populate filter chips from tags
-  let allTags = Array.from(new Set([].concat.apply([], tracks.map(function(t){ return t.tags || []; })))).filter(function(tag){ return tag !== 'all'; }).sort();
   const TAG_ALL = 'all';
   let activeTag = TAG_ALL;
-  function renderTagChips(){
+  function renderTagChips(allTags){
     if (!tagsEl) return;
     tagsEl.innerHTML = '';
     const make = (value, label)=>{ const b=document.createElement('button'); b.type='button'; b.className='chip'+(activeTag===value?' active':''); b.dataset.tag=value; b.textContent = label; return b; };
     tagsEl.appendChild(make(TAG_ALL, 'All'));
     allTags.forEach(tag=> { const lbl = tag.charAt(0).toUpperCase()+tag.slice(1); tagsEl.appendChild(make(tag, lbl)); });
   }
-  renderTagChips();
-  // Ensure default is 'All' and render immediately
-  activeTag = TAG_ALL;
-  if (tagsEl){ tagsEl.addEventListener('click', (e)=>{ const b=e.target.closest('.chip'); if(!b || !b.dataset) return; activeTag=(b.dataset.tag||TAG_ALL); renderTagChips(); applyFilters(); }); }
+  if (tagsEl){ tagsEl.addEventListener('click', (e)=>{ const b=e.target.closest('.chip'); if(!b || !b.dataset) return; activeTag=(b.dataset.tag||TAG_ALL); renderTagChips(Array.from(new Set([].concat.apply([], tracks.map(function(t){ return t.tags || []; })))).filter(function(tag){ return tag !== 'all'; }).sort()); applyFilters(); }); }
   // Genre wheel clicks map to the same tag system
   document.addEventListener('click', (e)=>{
     const g = e.target.closest('.genre-wheel .gw-node'); if (!g) return;
-    const tag = g.getAttribute('data-tag') || TAG_ALL; activeTag = tag; renderTagChips(); applyFilters();
+    const tag = g.getAttribute('data-tag') || TAG_ALL; activeTag = tag; renderTagChips(Array.from(new Set([].concat.apply([], tracks.map(function(t){ return t.tags || []; })))).filter(function(tag){ return tag !== 'all'; }).sort()); applyFilters();
   });
   // Toggle tag chips visibility (wheel stays visible)
   document.addEventListener('click', (e)=>{
@@ -224,8 +114,22 @@
     const chips = document.querySelector('.music-finder .music-tags'); if (!chips) return;
     chips.classList.toggle('open');
   });
-  // Initial render with ALL
-  applyFilters();
+
+  fetch('assets/js/tracks.json')
+    .then(response => response.json())
+    .then(data => {
+      tracks = data;
+      // Ensure every track is matchable by the "All" filter and normalize tags
+      tracks.forEach(function(t){
+        const baseTags = Array.isArray(t.tags) ? t.tags : [];
+        t.tags = Array.from(new Set(['all'].concat(baseTags)));
+      });
+      initPlayer(tracks);
+    })
+    .catch(error => {
+      console.error('Error loading track data:', error);
+      // You could display an error message to the user here
+    });
 
   function fmtTime(s){ s=Math.max(0,Math.floor(s||0)); const m=Math.floor(s/60); const r=(s%60).toString().padStart(2,'0'); return m+':'+r; }
 
@@ -811,7 +715,6 @@
 
   // Final safety: ensure view is initialized to all, even if select/search are null
   try { activeTag = TAG_ALL; } catch(_) {}
-  try { applyFilters(); } catch(_){ try { render(); } catch(__){} }
   try { layoutAlbumWall(); } catch(_){}
     function layoutAlbumWall(){
       const wall = document.querySelector('.album-wall'); if (!wall) return;
