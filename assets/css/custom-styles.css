@@ -273,7 +273,18 @@ hr, hr.major { display: none !important; }
     border-radius: 10px;
     min-width: auto;
     text-align: center;
+    /* Ensure consistent sizing to prevent weird wrapping */
+    flex: 0 0 auto;
+    min-width: 80px;
   }
+  
+  /* Force proper order on mobile */
+  #nav .links li:nth-child(1) { order: 1; } /* HOME */
+  #nav .links li:nth-child(2) { order: 2; } /* ABOUT */
+  #nav .links li:nth-child(3) { order: 3; } /* PROJECTS */
+  #nav .links li:nth-child(4) { order: 4; } /* MUSIC */
+  #nav .links li:nth-child(5) { order: 5; } /* EXTRA */
+  #nav .links li:nth-child(6) { order: 6; } /* CONTACT */
   /* Social icons on their own row, centered */
   #nav .icons { 
     position: static; 
@@ -567,14 +578,24 @@ body p {
 #cv-section.post.in-view .box ul li:nth-child(4){ transition-delay: 240ms; }
 #cv-section.post.in-view .box ul li:nth-child(5){ transition-delay: 300ms; }
 
-/* Ensure text in CV box is visible */
+/* Ensure text in CV box is visible - stronger overrides */
 #cv-section .box ul li,
-#cv-section .box ul li strong {
-    color: #e0e0e0 !important; /* Ensure education text is clearly visible */
+#cv-section .box ul li strong,
+#cv-section .box ul li span,
+#cv-section .box ul li a {
+    color: #ffffff !important; /* Much brighter for better visibility */
+    opacity: 1 !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
 }
 
 #cv-section .box h4 {
     color: #ffffff !important; /* Ensure headings in box are visible */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+}
+
+/* Override any theme styles that might be hiding text */
+#cv-section .box * {
+    color: inherit;
 }
 
 
