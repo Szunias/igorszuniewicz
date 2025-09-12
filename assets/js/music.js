@@ -3,23 +3,32 @@
   const isMusic = !!document.getElementById('music-list');
   if (!isMusic) return;
 
-  const listEl = document.getElementById('music-list');
-  const searchEl = document.getElementById('music-search');
-  const tagsEl = document.getElementById('music-tags');
-  const sortEl = document.getElementById('music-sort');
+  // Cache DOM elements for better performance
+  const elements = {
+    listEl: document.getElementById('music-list'),
+    searchEl: document.getElementById('music-search'),
+    tagsEl: document.getElementById('music-tags'),
+    sortEl: document.getElementById('music-sort'),
+    playerBar: document.getElementById('player-bar')
+  };
 
-  const playerBar = document.getElementById('player-bar');
-  const pbCover = playerBar.querySelector('.pb-cover');
-  const pbTitle = playerBar.querySelector('.pb-title');
-  const pbSub = playerBar.querySelector('.pb-sub');
-  const pbPrev = playerBar.querySelector('.pb-prev');
-  const pbPlay = playerBar.querySelector('.pb-play');
-  const pbNext = playerBar.querySelector('.pb-next');
-  const pbSeek = playerBar.querySelector('.pb-seek');
-  const pbVol = playerBar.querySelector('.pb-vol');
-  const pbCurrent = playerBar.querySelector('.pb-current');
-  const pbDuration = playerBar.querySelector('.pb-duration');
-  const pbWave = playerBar.querySelector('.pb-wave');
+  // Cache player elements
+  if (elements.playerBar) {
+    elements.pbCover = elements.playerBar.querySelector('.pb-cover');
+    elements.pbTitle = elements.playerBar.querySelector('.pb-title');
+    elements.pbSub = elements.playerBar.querySelector('.pb-sub');
+    elements.pbPrev = elements.playerBar.querySelector('.pb-prev');
+    elements.pbPlay = elements.playerBar.querySelector('.pb-play');
+    elements.pbNext = elements.playerBar.querySelector('.pb-next');
+    elements.pbSeek = elements.playerBar.querySelector('.pb-seek');
+    elements.pbVol = elements.playerBar.querySelector('.pb-vol');
+    elements.pbCurrent = elements.playerBar.querySelector('.pb-current');
+    elements.pbDuration = elements.playerBar.querySelector('.pb-duration');
+    elements.pbWave = elements.playerBar.querySelector('.pb-wave');
+  }
+
+  // Use cached elements
+  const { listEl, searchEl, tagsEl, sortEl, playerBar, pbCover, pbTitle, pbSub, pbPrev, pbPlay, pbNext, pbSeek, pbVol, pbCurrent, pbDuration, pbWave } = elements;
   let waveCtx = null, waveWidth = 0, waveHeight = 0, waveData = null;
 
   const audio = new Audio();
@@ -62,8 +71,10 @@
     // Ensure default is 'All' and render immediately
     activeTag = TAG_ALL;
     applyFilters();
-    // Hook filters
-    searchEl.addEventListener('input', applyFilters, { passive: true });
+    // Hook filters with debounced search for better performance
+    const debouncedSearch = window.PerfUtils && window.PerfUtils.debounce ? 
+      window.PerfUtils.debounce(applyFilters, 300) : applyFilters;
+    searchEl.addEventListener('input', debouncedSearch, { passive: true });
     if (sortEl) sortEl.addEventListener('change', applyFilters);
     // Final safety: ensure view is initialized to all, even if select/search are null
     try { activeTag = TAG_ALL; } catch(_) {}
@@ -729,8 +740,10 @@
 
   // (removed) global dim overlay control
 
-  // Hook filters
-  searchEl.addEventListener('input', applyFilters, { passive: true });
+  // Hook filters with debounced search for better performance
+  const debouncedSearch = window.PerfUtils && window.PerfUtils.debounce ? 
+    window.PerfUtils.debounce(applyFilters, 300) : applyFilters;
+  searchEl.addEventListener('input', debouncedSearch, { passive: true });
   if (sortEl) sortEl.addEventListener('change', applyFilters);
 
   // Final safety: ensure view is initialized to all, even if select/search are null

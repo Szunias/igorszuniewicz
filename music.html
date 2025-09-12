@@ -14,6 +14,14 @@
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <!-- Performance optimizations: preload critical resources -->
+  <link rel="preload" as="script" href="assets/js/jquery.min.js" />
+  <link rel="preload" as="script" href="assets/js/performance.js" />
+  <link rel="preload" as="script" href="assets/js/main.js" />
+  <link rel="preload" as="script" href="assets/js/music.js" />
+  <!-- DNS prefetch for external resources -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
   
   <meta name="description" content="Music Listening Room — curated tracks, stems, and catalog by Igor Szuniewicz." />
   <link rel="canonical" href="https://igorszuniewicz.com/music.html" />
@@ -249,6 +257,7 @@
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
+  <script src="assets/js/performance.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/enhancements.js?v=20250212"></script>
   <script src="assets/js/music.js?v=20250212"></script>
