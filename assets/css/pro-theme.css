@@ -47,9 +47,21 @@ p{ color: var(--pro-text-dim); }
 .projects-grid{ gap: 20px; }
 .project-card .image.fit img{ border-radius: 0; }
 .project-card-content{ color: var(--pro-text-dim); }
+.project-card .actions{ display:flex; gap: 10px; }
+.project-card .button.small{ padding: .55rem .9rem; }
 
 /* Hero spacing */
 #intro{ border: 1px solid transparent; }
+
+/* Pro Hero (inspired by tech/ai landing aesthetics) */
+#intro{ position: relative; padding: 4rem 1rem 2rem !important; text-align: center; background: linear-gradient(180deg, rgba(24,191,239,0.06), rgba(154,108,255,0.04) 40%, transparent 100%); border-radius: var(--pro-radius); }
+#intro h1{ font-size: clamp(2.6rem, 6vw, 4.2rem); letter-spacing: .02em; font-weight: 900; }
+#intro .section-pills{ margin-top: 1.25rem; }
+#intro .hero-cta{ margin-top: 1.25rem; display: inline-flex; gap: 10px; }
+#intro .hero-cta .button{ padding: .85rem 1.25rem; }
+
+/* Subtle divider rhythm */
+#main > section.post{ margin-bottom: 2rem; }
 
 /* Forms */
 #contact-form input, #contact-form textarea{ border:1px solid var(--pro-border); }
