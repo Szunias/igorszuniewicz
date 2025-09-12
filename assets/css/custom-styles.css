@@ -115,8 +115,8 @@ hr, hr.major { display: none !important; }
   border-radius: 16px; 
   margin: 0 auto 2rem auto; 
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1); 
-  width: calc(100% - 3rem); 
-  max-width: 56rem; 
+  width: calc(100% - 4rem); 
+  max-width: 72rem; 
   overflow: visible !important; 
   padding: 0.75rem 1.5rem;
 }
@@ -179,6 +179,21 @@ hr, hr.major { display: none !important; }
   display: flex !important;
   margin: 0 !important;
   padding: 0 !important;
+}
+
+/* Desktop: keep links on a single row and take full width; place icons absolutely */
+@media (min-width: 981px) {
+  #nav { position: relative; }
+  #nav .links { flex-wrap: nowrap; justify-content: center; }
+  #nav .links a { flex: 0 0 auto; }
+  #nav .icons { 
+    position: absolute; 
+    right: 14px; 
+    top: 50%; 
+    transform: translateY(-50%);
+    margin: 0; padding: 0; 
+    gap: 12px;
+  }
 }
 
 /* Modern button states - no underline, focus on button background */

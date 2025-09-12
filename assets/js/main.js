@@ -109,6 +109,13 @@
 				$window.trigger('scroll');
 			});
 
+		// Global passive listeners to improve scroll performance on mobile
+		try {
+			window.addEventListener('touchstart', function(){}, { passive: true });
+			window.addEventListener('touchmove', function(){}, { passive: true });
+			window.addEventListener('wheel', function(){}, { passive: true });
+		} catch(_){ }
+
 		return $(this);
 
 	};

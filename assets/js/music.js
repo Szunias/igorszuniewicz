@@ -190,7 +190,7 @@
           <img class="mi-cover" src="${t.cover||''}" alt="" loading="lazy" decoding="async" />
           <div class="mi-meta">
             <div class="mi-title">${t.title||'Untitled'}</div>
-            <div class="mi-sub">${t.artist||''} • ${fmtTime(t.length)}</div>
+            <div class="mi-sub">${(t.artist||'')}${(t.length&&t.length>0)?(' • '+fmtTime(t.length)) : ''}</div>
             <div class="mi-tags">${tagsHtml}</div>
           </div>
           <div class="mi-year">${t.year ? String(t.year) : ''}</div>
@@ -227,6 +227,8 @@
       });
       // Re-apply playing highlight after rebuild
       markPlayingCard();
+      // Prefetch remaining durations idly
+      try { (window.requestIdleCallback||function(cb){return setTimeout(cb,1);})(prefetchAllDurations); } catch(_){ }
     } catch(_e) {
       try {
         listEl.innerHTML='';
@@ -490,9 +492,6 @@
     try {
       const chosen = chooseSource(track)[0];
       if (!chosen) return;
-      // Skip heavy WAV sources to avoid large network usage on page load
-      const isWav = (chosen.type && /audio\/wav/i.test(chosen.type)) || /\.(wav)(\?|$)/i.test(String(chosen.url||''));
-      if (isWav) return;
       const cacheKey = 'dur:'+chosen.url;
       const cached = localStorage.getItem(cacheKey);
       if (cached){
@@ -506,8 +505,31 @@
           updateCardDuration(index, cardNode);
         }
       }, { once: true });
+      // Abort guard to avoid long metadata fetch stalls
+      try { var __abortTimer = setTimeout(()=>{ try { a.src=''; } catch(_){} }, 6000); } catch(_){ }
+      a.addEventListener('loadedmetadata', ()=>{ try { clearTimeout(__abortTimer); } catch(_){} }, { once:true });
       a.load();
-    } catch(_){}
+    } catch(_){}}
+
+  // Prefetch durations for visible items to avoid showing 0:00
+  function prefetchAllDurations(){
+    try {
+      const items = Array.from(document.querySelectorAll('.music-item'));
+      const indices = items.map(n=> parseInt(n.getAttribute('data-index')||'-1',10)).filter(i=> i>=0);
+      let inFlight = 0, ptr = 0; const MAX = 2;
+      function pump(){
+        while (inFlight < MAX && ptr < indices.length){
+          const i = indices[ptr++];
+          const t = view[i]; if (!t || (t.length && t.length>0)) continue;
+          inFlight++;
+          (window.requestIdleCallback || function(cb){ return setTimeout(cb,1); })(()=>{
+            prefetchDuration(t, i);
+            inFlight--; pump();
+          });
+        }
+      }
+      pump();
+    } catch(_){ }
   }
 
   function updateCardDuration(index, cardNode){
@@ -660,6 +682,13 @@
       // Refresh list item subtitle
       render();
     } catch(_){}
+    try {
+      // Persist discovered duration for current source to speed up future renders
+      const first = (fallbackList && fallbackList[0]) ? fallbackList[0] : null;
+      if (first && isFinite(audio.duration) && audio.duration>0){
+        localStorage.setItem('dur:'+first.url, String(Math.round(audio.duration)));
+      }
+    } catch(_){ }
   });
   audio.addEventListener('error', ()=>{
     // Try next fallback source if available
