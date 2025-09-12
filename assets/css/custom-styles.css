@@ -26,6 +26,15 @@ a:focus-visible, button:focus-visible, .button:focus-visible, [role="button"]:fo
 /* Remove default outline where replaced */
 a:focus, button:focus, .button:focus {outline:none;}
 
+/* Enhanced focus for navigation */
+#nav .links a:focus-visible {
+  outline: 2px solid #f7d774;
+  outline-offset: 2px;
+  background: rgba(24, 191, 239, 0.2) !important;
+  border-color: rgba(247, 215, 116, 0.6) !important;
+  transform: translateY(-1px);
+}
+
 html { scrollbar-gutter: stable; }
 html, body { overflow-x: hidden; background: #0b141a !important; }
 /* Global downscale on desktop to reduce perceived size */
@@ -89,37 +98,98 @@ hr, hr.major { display: none !important; }
   #intro { transform: translateY(-16vh); }
 }
 
-/* Navigation Enhancements */
+/* Navigation Enhancements - Redesigned for better UX */
 #nav ul.links li a, #nav .icons a {
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
-    color: #e0e0e0; /* Lighter nav links */
-    transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+    color: #e0e0e0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Navbar reset to theme look (no glass container) */
-#nav { position: relative; top: auto; z-index: 100; background: transparent; backdrop-filter: none; border: 0; border-radius: 0; margin: 0 auto 0 auto; box-shadow: none; width: calc(100% - 4rem); max-width: 72rem; overflow: visible !important; }
-#nav .links { display: flex; justify-content: center; align-items: center; }
-#nav .links a { white-space: nowrap; font-size: 0.95rem; }
-#nav .links { gap: 1.25rem; }
-#nav .links a, #nav .icons a { color: #d9f2ff !important; opacity: 0.9; line-height: 1.2; }
-#nav .links a:hover { opacity: 1; }
+/* Navbar - Modern glass morphism design */
+#nav { 
+  position: relative; top: auto; z-index: 100; 
+  background: rgba(10, 16, 22, 0.85); 
+  backdrop-filter: blur(12px) saturate(1.1); 
+  border: 1px solid rgba(255, 255, 255, 0.08); 
+  border-radius: 16px; 
+  margin: 0 auto 2rem auto; 
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1); 
+  width: calc(100% - 3rem); 
+  max-width: 56rem; 
+  overflow: visible !important; 
+  padding: 0.75rem 1.5rem;
+}
+#nav .links { 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 0.5rem; 
+  flex-wrap: wrap;
+}
+#nav .links a { 
+  white-space: nowrap; 
+  font-size: 1rem; 
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+#nav .links a, #nav .icons a { 
+  color: #e8f6fb !important; 
+  opacity: 0.9; 
+  line-height: 1.3; 
+}
+#nav .links a:hover { 
+  opacity: 1; 
+  background: rgba(24, 191, 239, 0.15);
+  border-color: rgba(24, 191, 239, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(24, 191, 239, 0.2);
+}
 
 /* Layout tweaks */
 #nav ul.links { gap: 0; }
 #nav ul.links li { background: transparent !important; } /* keep theme layout */
 
-/* Animated underline */
-#nav ul.links li a{ position: relative; text-decoration: none; }
-#nav ul.links li a::after{
-  content: ''; position: absolute; left: 0; right: 0; bottom: -8px; height: 2px;
-  background: linear-gradient(90deg,#18bfef,#9a6cff);
-  transform: scaleX(0); transform-origin: center; transition: transform .22s ease;
+/* Modern button states - no underline, focus on button background */
+#nav ul.links li a{ 
+  position: relative; 
+  text-decoration: none; 
 }
-#nav ul.links li a:hover::after{ transform: scaleX(1); }
-#nav ul.links li.active{ background: transparent !important; }
-#nav ul.links li.active a{ color: #9adfff !important; }
-#nav ul.links li.active a::after{ transform: scaleX(1); }
+
+/* Subtle glow effect on hover */
+#nav ul.links li a::before{
+  content: ''; 
+  position: absolute; 
+  inset: 0; 
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(24,191,239,0.2), rgba(154,108,255,0.15));
+  opacity: 0; 
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+#nav ul.links li a:hover::before{ 
+  opacity: 1; 
+}
+
+/* Active state - prominent and clear */
+#nav ul.links li.active{ 
+  background: transparent !important; 
+}
+#nav ul.links li.active a{ 
+  background: linear-gradient(135deg, rgba(24,191,239,0.25), rgba(154,108,255,0.2)) !important;
+  border-color: rgba(24,191,239,0.4) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(24,191,239,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+  transform: translateY(-1px);
+}
+#nav ul.links li.active a::before{ 
+  opacity: 0; 
+}
 
 /* Nav icons */
 #nav ul.links li a .nav-icon{ margin-right: 8px; opacity: .9; }
@@ -175,16 +245,56 @@ hr, hr.major { display: none !important; }
 .lang-badge-menu .flag-svg { width: 26px; height: 16px; display: inline-block; position: relative; top: -2px; vertical-align: middle; }
 .lang-badge-menu .label { color:#e9f7ff; opacity:.98; display:inline-flex; align-items:center; }
 
-/* Ensure nav stays visible on small screens if theme JS isn't loaded */
+/* Responsive navigation for mobile */
 @media screen and (max-width: 980px) {
-  #nav { display: block !important; margin: 0 auto 12px !important; width: calc(100% - 2rem) !important; opacity: 1 !important; transform: none !important; padding-top: 6px; padding-bottom: 4px; }
-  /* Keep links on one row with horizontal scroll instead of wrapping to 2 lines */
-  #nav .links { flex-wrap: nowrap; gap: 0.5rem; justify-content: flex-start; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  #nav { 
+    display: block !important; 
+    margin: 0 auto 1.5rem !important; 
+    width: calc(100% - 2rem) !important; 
+    opacity: 1 !important; 
+    transform: none !important; 
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+  }
+  /* Wrap links on mobile for better touch targets */
+  #nav .links { 
+    flex-wrap: wrap; 
+    gap: 0.5rem; 
+    justify-content: center; 
+    margin-bottom: 0.5rem;
+  }
   #nav .links::-webkit-scrollbar{ display: none; }
   #nav .links li { flex: 0 0 auto; }
-  #nav .links a { font-size: 0.95rem; padding: 0.35rem 0.5rem; }
-  /* Social icons on their own row, centered, no overlap */
-  #nav .icons { position: static; display: flex; width: 100%; justify-content: center; gap: 10px; margin-top: 8px; }
+  #nav .links a { 
+    font-size: 0.9rem; 
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    min-width: auto;
+    text-align: center;
+  }
+  /* Social icons on their own row, centered */
+  #nav .icons { 
+    position: static; 
+    display: flex; 
+    width: 100%; 
+    justify-content: center; 
+    gap: 12px; 
+    margin-top: 0.5rem; 
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  #nav .icons a {
+    padding: 0.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+  #nav .icons a:hover {
+    background: rgba(24, 191, 239, 0.15);
+    border-color: rgba(24, 191, 239, 0.3);
+    transform: translateY(-1px);
+  }
 }
 
 /* If main.js isn't loaded, prevent preload styles from hiding nav */
