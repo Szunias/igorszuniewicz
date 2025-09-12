@@ -116,7 +116,7 @@
 				$body.removeClass('is-preload');
 				// Also clear any exit state that might have lingered
 				$body.removeClass('page-exit page-enter');
-			}, 800);
+			}, 100);
 		});
 
 	// Scrolly.

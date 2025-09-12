@@ -60,7 +60,11 @@ hr, hr.major { display: none !important; }
 /* Also kill posts grid borders that can create bars */
 #main > .posts > article { border: 0 !important; }
 
-/* Let theme handle preload overlay naturally - no custom overrides */
+/* Override theme preload overlay to use transparent background instead of gray */
+#wrapper.fade-in:before {
+  background: transparent !important;
+  opacity: 0 !important;
+}
 
 /* Intro spacing to avoid overlap and raise heading */
 #intro {
