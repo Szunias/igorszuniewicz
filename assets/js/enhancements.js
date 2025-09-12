@@ -12,6 +12,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.classList.add('page-enter');
     setTimeout(() => document.body.classList.remove('page-enter'), 180);
   }
+  // Lightweight pointer-follow background glow
+  try {
+    window.addEventListener('pointermove', (e)=>{
+      document.documentElement.style.setProperty('--mx', (e.clientX||0)+'px');
+      document.documentElement.style.setProperty('--my', (e.clientY||0)+'px');
+    }, { passive: true });
+  } catch(_){ }
   // Ensure template preload overlay goes away even without theme JS
   setTimeout(() => {
     document.body.classList.remove('is-preload');
