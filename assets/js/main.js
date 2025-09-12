@@ -116,7 +116,7 @@
 				$body.removeClass('is-preload');
 				// Also clear any exit state that might have lingered
 				$body.removeClass('page-exit page-enter');
-			}, 100);
+			}, 800);
 		});
 
 	// Scrolly.
@@ -258,6 +258,5 @@
 		}
 
 })(jQuery);
-
 
 // Slider logic handled in assets/js/slider.js to avoid double-binding.

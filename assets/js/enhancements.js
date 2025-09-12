@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => document.body.classList.remove('page-enter'), 180);
   }
   // Ensure template preload overlay goes away even without theme JS
-  document.body.classList.remove('is-preload');
+  setTimeout(() => {
+    document.body.classList.remove('is-preload');
+  }, 100);
 
   // Connection/motion heuristics for slow networks/devices
   const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
@@ -481,29 +483,45 @@ document.addEventListener('DOMContentLoaded', function() {
     resizeCanvas(); window.addEventListener('resize', resizeCanvas);
   }
 
-  let mouseX = 0, mouseY = 0;
+  // Throttled interactive background (waves + glow) for better mobile performance
+  let mouseX = 50, mouseY = 50;
+  let needsWaveUpdate = false;
   window.addEventListener('pointermove', (e) => {
-    const x = (e.clientX / window.innerWidth) * 100;
-    const y = (e.clientY / window.innerHeight) * 100;
-    mouseX = x; mouseY = y;
-    glow.style.setProperty('--mx', x + '%');
-    glow.style.setProperty('--my', y + '%');
-    // animate waves like audio oscillation
-    const t = performance.now() / 1000;
-    const amp1 = 22 + (y/100)*10, amp2 = 30 + (x/100)*12, amp3 = 16 + ((x+y)/200)*8;
-  const build = (amp, phase, freq) => {
-      let d = 'M 0 300 ';
-      for (let i=0;i<=1200;i+=20){
-        const yy = 300 + Math.sin((i/1200)*Math.PI*freq + t*1.2 + phase)*amp + Math.sin((i/1200)*Math.PI*2 + t*0.4)*6;
-        d += `L ${i} ${yy} `;
-      }
-      d += 'L 1200 600 L 0 600 Z';
-      return d;
-    }
-    path1.setAttribute('d', build(amp1, 0, 4));
-    path2.setAttribute('d', build(amp2, Math.PI/2, 5));
-    path3.setAttribute('d', build(amp3, Math.PI, 6));
+    mouseX = (e.clientX / window.innerWidth) * 100;
+    mouseY = (e.clientY / window.innerHeight) * 100;
+    needsWaveUpdate = true; // mark dirty; rAF loop will update
   }, { passive: true });
+
+  function buildWave(amp, phase, freq, t){
+    let d = 'M 0 300 ';
+    for (let i=0;i<=1200;i+=40){ // coarser step (40 vs 20) halves point count
+      const yy = 300 + Math.sin((i/1200)*Math.PI*freq + t*1.2 + phase)*amp + Math.sin((i/1200)*Math.PI*2 + t*0.4)*6;
+      d += `L ${i} ${yy} `;
+    }
+    d += 'L 1200 600 L 0 600 Z';
+    return d;
+  }
+  let lastWaveFrame = 0;
+  function waveLoop(ts){
+    // Update glow every frame (cheap CSS vars)
+    glow.style.setProperty('--mx', mouseX + '%');
+    glow.style.setProperty('--my', mouseY + '%');
+    // Skip wave math if perf-lite or mobile (keep initial shape static)
+    if (!perfLite && !isMobile){
+      if (needsWaveUpdate || ts - lastWaveFrame > 140){ // ~7fps idle animate
+        const t = ts / 1000;
+        const amp1 = 22 + (mouseY/100)*10;
+        const amp2 = 30 + (mouseX/100)*12;
+        const amp3 = 16 + ((mouseX+mouseY)/200)*8;
+        path1.setAttribute('d', buildWave(amp1, 0, 4, t));
+        path2.setAttribute('d', buildWave(amp2, Math.PI/2, 5, t));
+        path3.setAttribute('d', buildWave(amp3, Math.PI, 6, t));
+        lastWaveFrame = ts; needsWaveUpdate = false;
+      }
+    }
+    requestAnimationFrame(waveLoop);
+  }
+  requestAnimationFrame(waveLoop);
 
   // Render equalizer bars (suspend when tab hidden or idle)
   let rafId = null;
