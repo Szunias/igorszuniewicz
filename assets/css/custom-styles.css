@@ -126,6 +126,15 @@ hr, hr.major { display: none !important; }
   align-items: center; 
   gap: 0.5rem; 
   flex-wrap: wrap;
+  /* Isolate from icons to prevent layout interference */
+  flex: 1;
+  min-width: 0;
+}
+
+/* Ensure icons don't interfere with main navigation */
+#nav .icons {
+  flex: 0 0 auto;
+  margin-left: auto;
 }
 #nav .links a { 
   white-space: nowrap; 
@@ -154,6 +163,23 @@ hr, hr.major { display: none !important; }
 /* Layout tweaks */
 #nav ul.links { gap: 0; }
 #nav ul.links li { background: transparent !important; } /* keep theme layout */
+
+/* Force proper navigation layout on all pages */
+#nav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+#nav ul.links {
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#nav ul.icons {
+  display: flex !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
 /* Modern button states - no underline, focus on button background */
 #nav ul.links li a{ 
@@ -571,7 +597,15 @@ body p {
 .about-cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:16px; }
 .about-card { background: rgba(12,18,26,0.6); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:14px; box-shadow:0 16px 40px rgba(0,0,0,0.28); transition: transform .25s ease, box-shadow .25s ease; }
 .about-card:hover{ transform: translateY(-4px); box-shadow:0 26px 60px rgba(0,0,0,0.34); border-color: rgba(24,191,239,0.28); }
-.about-card h4 { font-family:'Poppins',sans-serif; font-weight:800; }
+.about-card h4 { font-family:'Poppins',sans-serif; font-weight:800; color: #ffffff !important; }
+.about-card ul li,
+.about-card ul li strong,
+.about-card p,
+.about-card span {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+}
 #cv-section.post.in-view .box ul li:nth-child(1){ transition-delay: 60ms; }
 #cv-section.post.in-view .box ul li:nth-child(2){ transition-delay: 120ms; }
 #cv-section.post.in-view .box ul li:nth-child(3){ transition-delay: 180ms; }
