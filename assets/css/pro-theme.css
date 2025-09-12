@@ -103,4 +103,23 @@ body::after{
 }
 @keyframes proSpot{ from{ transform: translate3d(-2%, -1%, 0); } to{ transform: translate3d(2%, 1%, 0); } }
 
+/* Pill navigation under hero */
+.section-pills{ gap: 12px !important; }
+.section-pills a{
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 40px; padding: 0 16px; border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--pro-text) !important; backdrop-filter: blur(6px);
+  transition: background .25s ease, border-color .25s ease, transform .15s ease;
+}
+.section-pills a:hover{
+  background: linear-gradient(90deg, rgba(24,191,239,0.18), rgba(154,108,255,0.18));
+  border-color: rgba(24,191,239,0.45);
+  transform: translateY(-1px);
+}
+
+/* Posts spacing & borders */
+.post{ border-radius: var(--pro-radius); border: 1px solid var(--pro-border); }
+
 
