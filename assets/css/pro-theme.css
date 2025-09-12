@@ -1,0 +1,65 @@
+/* Pro Theme – clean, modern, production look
+   Non-destructive: styles enhance existing markup without changing HTML structure. */
+
+:root{
+  --pro-bg: #0a1016;
+  --pro-surface: rgba(18,24,30,0.72);
+  --pro-border: rgba(255,255,255,0.08);
+  --pro-card: rgba(12,18,26,0.6);
+  --pro-text: #e9f7ff;
+  --pro-text-dim: #bcd3e3;
+  --pro-accent: #18bfef;
+  --pro-accent-2: #9a6cff;
+  --pro-shadow: 0 14px 32px rgba(0,0,0,0.35);
+  --pro-radius: 14px;
+  --pro-radius-sm: 10px;
+  --pro-gap: 16px;
+}
+
+/* Layout container */
+#main{ max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
+
+/* Headings */
+h1,h2,h3,h4,h5,h6{ color: var(--pro-text); letter-spacing: .3px; }
+p{ color: var(--pro-text-dim); }
+
+/* Cards */
+.post, .project-card, .contact-card, .about-card, #cv-section .box{
+  background: var(--pro-card) !important;
+  border: 1px solid var(--pro-border) !important;
+  border-radius: var(--pro-radius) !important;
+  box-shadow: var(--pro-shadow) !important;
+}
+
+/* Buttons */
+.button, .actions .button, .button.primary{
+  background: linear-gradient(90deg,var(--pro-accent),var(--pro-accent-2));
+  color: #07131a !important; border: none; border-radius: 12px;
+  font-weight: 900; letter-spacing: .2px; box-shadow: 0 10px 26px rgba(24,191,239,0.28);
+}
+.button:hover{ filter: brightness(1.05); transform: translateY(-1px); }
+
+/* Lists in education / about */
+#cv-section .box ul li, .about-card ul li{ color: var(--pro-text) !important; }
+#cv-section .box ul li strong, .about-card ul li strong{ color: #fff !important; }
+
+/* Project cards grid polish */
+.projects-grid{ gap: 20px; }
+.project-card .image.fit img{ border-radius: 0; }
+.project-card-content{ color: var(--pro-text-dim); }
+
+/* Hero spacing */
+#intro{ border: 1px solid transparent; }
+
+/* Forms */
+#contact-form input, #contact-form textarea{ border:1px solid var(--pro-border); }
+
+/* Footer */
+#footer, #copyright{ border-top: 1px solid var(--pro-border); }
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
+
+
