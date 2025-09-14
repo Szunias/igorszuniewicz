@@ -447,7 +447,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } catch(e){ console && console.warn && console.warn('neo piano disabled', e); }
   })();
 
-  // Minimal animated waveform banner (replacement for piano)
+  // Abstract aurora banner (replacement for piano) — artistic, subtle ribbons
   if (!isMobile && !ENABLE_LOGO_PIANO) (function(){
     try {
       const wrap = document.querySelector('.logo-audio') || (()=>{ const d=document.createElement('div'); d.className='logo-audio'; document.body.appendChild(d); return d; })();
@@ -455,13 +455,28 @@ document.addEventListener('DOMContentLoaded', function() {
       const ctx=cvs.getContext('2d');
       function resize(){ cvs.width = Math.min(window.innerWidth*0.96, 1280); cvs.height = 200; }
       resize(); window.addEventListener('resize', resize);
-      let t=0; function draw(){
+      let t=0;
+      function ribbon(yBase, amp, hueA, hueB, speed, freq){
+        const w=cvs.width; const h=cvs.height;
+        const g=ctx.createLinearGradient(0,0,w,0);
+        g.addColorStop(0, `hsla(${hueA}, 90%, 60%, .65)`);
+        g.addColorStop(1, `hsla(${hueB}, 90%, 65%, .65)`);
+        ctx.beginPath();
+        for(let x=0;x<=w;x+=4){
+          const yy = yBase + Math.sin(x*freq + t*speed)*amp*0.8 + Math.sin(x*freq*0.37 + t*speed*0.6)*amp*0.4;
+          if (x===0) ctx.moveTo(x, yy); else ctx.lineTo(x, yy);
+        }
+        ctx.strokeStyle=g; ctx.lineWidth=22; ctx.lineCap='round'; ctx.lineJoin='round';
+        ctx.shadowColor='rgba(24,191,239,0.35)'; ctx.shadowBlur=20; ctx.globalCompositeOperation='lighter';
+        ctx.stroke(); ctx.globalCompositeOperation='source-over';
+      }
+      function draw(){
         if(!cvs.isConnected) return; ctx.clearRect(0,0,cvs.width,cvs.height);
-        const w=cvs.width, h=cvs.height; const mid=h*0.58; const amp=Math.min(24, h*0.22);
-        const grad=ctx.createLinearGradient(0,0,w,0); grad.addColorStop(0,'rgba(24,191,239,0.85)'); grad.addColorStop(1,'rgba(154,108,255,0.85)');
-        ctx.lineWidth=2; ctx.strokeStyle=grad; ctx.shadowColor='rgba(24,191,239,0.35)'; ctx.shadowBlur=16; ctx.beginPath();
-        for(let x=0; x<=w; x+=2){ const y = mid + Math.sin((x*0.014)+(t*0.06))*amp*Math.sin((x*0.0022)+(t*0.02)); ctx.lineTo(x,y); }
-        ctx.stroke(); t++; requestAnimationFrame(draw);
+        const h=cvs.height; // layered ribbons
+        ribbon(h*0.55, 28, 195, 265, 0.020, 0.012);
+        ribbon(h*0.68, 20, 285, 205, 0.016, 0.015);
+        ribbon(h*0.42, 18, 168, 320, 0.014, 0.010);
+        t++; requestAnimationFrame(draw);
       }
       requestAnimationFrame(draw);
       function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome=!!document.getElementById('projects-showcase'); wrap.classList.toggle('visible', onHome && y<140); }
