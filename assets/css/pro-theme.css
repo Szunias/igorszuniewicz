@@ -66,7 +66,7 @@ p{ color: var(--pro-text-dim); }
 
 /* Pro Hero (inspired by tech/ai landing aesthetics) */
 #intro{ position: relative; padding: 4rem 1rem 2rem !important; text-align: center; background: linear-gradient(180deg, rgba(24,191,239,0.06), rgba(154,108,255,0.04) 40%, transparent 100%); border-radius: var(--pro-radius); }
-#intro h1{ font-size: clamp(2.6rem, 6vw, 4.2rem); letter-spacing: .02em; font-weight: 900; }
+#intro h1{ font-size: clamp(2.6rem, 6vw, 4.2rem); letter-spacing: .02em; font-weight: 900; background: linear-gradient(90deg, #ffffff 0%, #cfe9ff 32%, #cdbaff 68%, #ffffff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 6px 24px rgba(24,191,239,0.18); }
 #intro .section-pills{ margin-top: 1.25rem; }
 #intro .hero-cta{ margin-top: 1.25rem; display: inline-flex; gap: 10px; }
 #intro .hero-cta .button{ padding: .85rem 1.25rem; }
