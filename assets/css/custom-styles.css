@@ -280,6 +280,7 @@ hr, hr.major { display: none !important; }
 
 /* Dropdown menu for top-right language badge */
 .lang-badge-wrap { position: fixed; top: 14px; right: 16px; z-index: 2147483647; }
+#lang-fixed { position: fixed; top: 14px; right: 16px; z-index: 2147483647; display: flex !important; gap: 8px; }
 .lang-badge-menu { position: absolute; right: 0; top: 42px; background: rgba(10,16,22,0.98); border:1px solid rgba(255,255,255,0.14); border-radius: 10px; padding: 6px; min-width: 180px; box-shadow: 0 16px 40px rgba(0,0,0,0.45); opacity: 0; transform: translateY(-6px); pointer-events: none; transition: opacity .18s ease, transform .18s ease; }
 .lang-badge-menu.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .lang-badge-menu button { width: 100%; display: flex; align-items: center; gap: 10px; background: rgba(24,191,239,0.18); color: #e9f7ff; border: 0; padding: 10px 12px; border-radius: 10px; cursor: pointer; font-weight: 800; letter-spacing: .2px; line-height: 1.2; }

@@ -812,6 +812,7 @@ document.addEventListener('DOMContentLoaded', function() {
       box.appendChild(btn);
     });
     document.body.appendChild(box); return box; })();
+  try { fixedLang.style.display='flex'; } catch(_){}
 
   function flagSvg(lang){
     // Use width/height 100% so parent spans can size the flag
@@ -1259,18 +1260,26 @@ document.addEventListener('DOMContentLoaded', function() {
       try { document.title = (lang==='pl'?'Aktywności dodatkowe — Igor Szuniewicz': lang==='nl'?'Extra‑curriculair — Igor Szuniewicz':'Extra-Curricular — Igor Szuniewicz'); } catch(_){}
     }
 
-    // Contact page translations
+    // Contact page translations (current markup)
     if (location.pathname.endsWith('/contact.html') || /contact\.html$/i.test(location.pathname)){
-      const h2 = document.querySelector('#main header.major h2'); if (h2) h2.textContent = I18N.contact_title[lang];
-      const lead = document.querySelector('#main header.major p'); if (lead) lead.textContent = I18N.contact_lead[lang];
-      const box = document.querySelector('#main .box');
-      if (box){
-        const ps = box.querySelectorAll('p');
-        if (ps[0]){ const strong = ps[0].querySelector('strong'); if (strong) strong.textContent = I18N.contact_email_label[lang] + ' '; }
-        if (ps[1]){ const strong = ps[1].querySelector('strong'); if (strong) strong.textContent = I18N.contact_location_label[lang] + ' '; }
-        if (ps[2]) ps[2].textContent = I18N.contact_reachout[lang];
+      const h1 = document.querySelector('#main header.major h1'); if (h1) h1.textContent = (lang==='pl'?'Porozmawiajmy': lang==='nl'?'Laten we praten':'Let\u2019s Connect');
+      const lead = document.querySelector('#main header.major p'); if (lead) lead.textContent = (lang==='pl'?'Napisz krótko, odpowiem w 24\u201348h.': lang==='nl'?'Stuur een bericht, ik antwoord binnen 24\u201348u.':'Drop a message, I reply within 24\u201348h.');
+      const formCard = document.getElementById('contact-form-card');
+      if (formCard){
+        const h3 = formCard.querySelector('h3'); if (h3) h3.textContent = (lang==='pl'?'Szybka wiadomość': lang==='nl'?'Kort bericht':'Quick Message');
+        const n = document.getElementById('cf-name'); if (n) n.setAttribute('placeholder', (lang==='pl'?'Twoje imię': lang==='nl'?'Je naam':'Your name'));
+        const e = document.getElementById('cf-email'); if (e) e.setAttribute('placeholder', (lang==='pl'?'Email': lang==='nl'?'E‑mail':'Email'));
+        const s = document.getElementById('cf-subject'); if (s) s.setAttribute('placeholder', (lang==='pl'?'Temat': lang==='nl'?'Onderwerp':'Subject'));
+        const m = document.getElementById('cf-message'); if (m) m.setAttribute('placeholder', (lang==='pl'?'Twoja wiadomość': lang==='nl'?'Je bericht':'Your message'));
+        const send = document.getElementById('cf-send'); if (send) send.textContent = (lang==='pl'?'Wyślij': lang==='nl'?'Versturen':'Send');
       }
-      // Page <title>
+      const direct = document.getElementById('contact-direct');
+      if (direct){
+        const h3 = direct.querySelector('h3'); if (h3) h3.textContent = (lang==='pl'?'Bezpośrednio': lang==='nl'?'Direct':'Direct');
+        const labels = direct.querySelectorAll('p strong');
+        if (labels[0]) labels[0].textContent = (lang==='pl'?'Email': lang==='nl'?'E‑mail':'Email');
+        if (labels[1]) labels[1].textContent = (lang==='pl'?'Lokalizacja': lang==='nl'?'Locatie':'Location');
+      }
       try { document.title = (lang==='pl'?'Kontakt — Igor Szuniewicz': lang==='nl'?'Contact — Igor Szuniewicz':'Contact — Igor Szuniewicz'); } catch(_){ }
     }
 
@@ -1281,6 +1290,7 @@ document.addEventListener('DOMContentLoaded', function() {
         skills_title: { en:'Key Skills', pl:'Kluczowe umiejętności', nl:'Belangrijkste vaardigheden' },
         edu_1: { en:'<strong>Howest University of Applied Sciences, Digital Arts and Entertainment:</strong> Game Development - Game Sound Integration (Ongoing)', pl:'<strong>Howest University of Applied Sciences, Digital Arts and Entertainment:</strong> Game Development — Game Sound Integration (w trakcie)', nl:'<strong>Howest University of Applied Sciences, Digital Arts and Entertainment:</strong> Game Development — Game Sound Integration (lopend)' },
         edu_2: { en:'<strong>Bilingual Copernicus Highschool:</strong> Profile - Maths & Physics (Graduated)', pl:'<strong>Bilingual Copernicus Highschool:</strong> Profil — Matematyka i Fizyka (ukończone)', nl:'<strong>Bilingual Copernicus Highschool:</strong> Profiel — Wiskunde & Natuurkunde (afgestudeerd)' },
+        edu_3: { en:'<strong>State Music School in Kołobrzeg, First Degree:</strong> Music Theory & Performance (Graduated)', pl:'<strong>Państwowa Szkoła Muzyczna I stopnia w Kołobrzegu:</strong> Teoria muzyki i wykonawstwo (ukończone)', nl:'<strong>Stedelijke Muziekschool in Kołobrzeg, eerste graad:</strong> Muziektheorie en uitvoering (afgestudeerd)' },
         s1: { en:'Sound Design & Implementation', pl:'Sound design i implementacja', nl:'Sounddesign & Implementatie' },
         s2: { en:'Music Composition & Production', pl:'Kompozycja i produkcja muzyki', nl:'Muziekcompositie & -productie' },
         s3: { en:'Audio Middleware: Wwise, FMOD', pl:'Middleware audio: Wwise, FMOD', nl:'Audio-middleware: Wwise, FMOD' },
@@ -1301,13 +1311,15 @@ document.addEventListener('DOMContentLoaded', function() {
         t7: { en:'DSP, GUI, and performance optimization for real‑time audio.', pl:'DSP, GUI i optymalizacja wydajności dla dźwięku czasu rzeczywistego.', nl:'DSP, GUI en prestatie‑optimalisatie voor real‑time audio.' },
         // Education (left column)
         e1: { en:'Howest DAE — world‑class program in game development, with audio integration track.', pl:'Howest DAE — światowej klasy program z tworzenia gier ze ścieżką integracji audio.', nl:'Howest DAE — toonaangevend gamedevelopment‑programma met audio‑integratietrack.' },
-        e2: { en:'Bilingual curriculum with emphasis on mathematics and physics.', pl:'Program dwujęzyczny z naciskiem na matematykę i fizykę.', nl:'Tweetalig curriculum met nadruk op wiskunde en natuurkunde.' }
+        e2: { en:'Bilingual curriculum with emphasis on mathematics and physics.', pl:'Program dwujęzyczny z naciskiem na matematykę i fizykę.', nl:'Tweetalig curriculum met nadruk op wiskunde en natuurkunde.' },
+        e3: { en:'Music theory and performance education in the first‑degree state music school.', pl:'Edukacja z teorii muzyki i wykonawstwa w państwowej szkole muzycznej I stopnia.', nl:'Opleiding in muziektheorie en uitvoering aan de stedelijke muziekschool (eerste graad).' }
       };
       const map = {
         edu_title: '#cv-section .col-6:nth-of-type(1) h4',
         skills_title: '#cv-section .col-6:nth-of-type(2) h4',
         edu_1: '#cv-section .col-6:nth-of-type(1) ul li:nth-of-type(1)',
         edu_2: '#cv-section .col-6:nth-of-type(1) ul li:nth-of-type(2)',
+        edu_3: '#cv-section .col-6:nth-of-type(1) ul li:nth-of-type(3)',
         s1: '#cv-section .col-6:nth-of-type(2) ul li:nth-of-type(1)',
         s2: '#cv-section .col-6:nth-of-type(2) ul li:nth-of-type(2)',
         s3: '#cv-section .col-6:nth-of-type(2) ul li:nth-of-type(3)',
@@ -1332,7 +1344,7 @@ document.addEventListener('DOMContentLoaded', function() {
           const key = mapTips[liIndex];
           if (key && CV_TIPS[key]) el.setAttribute('data-tip', CV_TIPS[key][lang] || CV_TIPS[key].en);
         } else if (el.closest('.col-6:nth-of-type(1)')) { // education (left)
-          const mapEdu = {1:'e1',2:'e2'};
+          const mapEdu = {1:'e1',2:'e2',3:'e3'};
           const key = mapEdu[liIndex];
           if (key && CV_TIPS[key]) el.setAttribute('data-tip', CV_TIPS[key][lang] || CV_TIPS[key].en);
         }
@@ -1429,6 +1441,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const qrHint = f.querySelector('#qr-code-container p'); if (qrHint) qrHint.textContent = I18N.footer_qr_hint[lang];
     }
   }
+
+  // (removed) duplicate contact translations block that referenced undefined 'lang'
 
   function showLangToast(lang){
     const text = { pl: I18N.toast_switched.pl, nl: I18N.toast_switched.nl, en: I18N.toast_switched.en }[lang] || 'Language changed';
