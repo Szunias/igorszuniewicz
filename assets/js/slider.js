@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const nextBtn = slider.querySelector('.slider-nav.next');
   let currentSlide = 0;
   let isTransitioning = false;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   // Accessibility roles/attributes
   slider.setAttribute('role', 'region');
@@ -70,16 +72,19 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(()=>{ isTransitioning = false; }, 350);
   }
 
-  let autoTimer = setInterval(() => {
-    if (!isTransitioning) goToSlide(currentSlide + 1);
-  }, 6000); // slightly slower for readability
-
-  function resetTimer() {
-    clearInterval(autoTimer);
+  let autoTimer = null;
+  function startAuto() {
+    if (autoTimer || reduceMotion || isMobile) return; // don't auto-rotate on mobile or if reduced motion
     autoTimer = setInterval(() => {
-      goToSlide(currentSlide + 1);
+      if (!isTransitioning) goToSlide(currentSlide + 1);
     }, 6000);
   }
+  function stopAuto() {
+    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+  }
+  startAuto();
+
+  function resetTimer() { stopAuto(); startAuto(); }
 
   function prev() { goToSlide(currentSlide - 1); resetTimer(); }
   function next() { goToSlide(currentSlide + 1); resetTimer(); }
@@ -99,8 +104,13 @@ document.addEventListener("DOMContentLoaded", function() {
     else if (e.key==='ArrowRight') { e.preventDefault(); next(); }
   });
 
-  slider.addEventListener('mouseenter', ()=> clearInterval(autoTimer));
+  slider.addEventListener('mouseenter', ()=> stopAuto());
   slider.addEventListener('mouseleave', ()=> resetTimer());
+
+  // Pause when tab is hidden to save battery/CPU
+  document.addEventListener('visibilitychange', ()=>{
+    if (document.hidden) stopAuto(); else startAuto();
+  });
 
   announce();
 });

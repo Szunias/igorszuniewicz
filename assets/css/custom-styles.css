@@ -37,6 +37,8 @@ a:focus, button:focus, .button:focus {outline:none;}
 
 html { scrollbar-gutter: stable; }
 html, body { overflow-x: hidden; background: #0b141a !important; }
+/* Virtualize offscreen content to reduce initial work */
+.post { content-visibility: auto; contain-intrinsic-size: 800px; }
 /* Global downscale on desktop to reduce perceived size */
 @media (min-width: 981px) {
   html { font-size: 12pt !important; }
@@ -736,6 +738,22 @@ body p {
         right: 5px; /* Adjust slider nav for smaller screens */
     }
 }
+
+/* Perf-lite mode: applied on mobile/slow devices via JS */
+.perf-lite .bg-orbs,
+.perf-lite .bg-waves,
+.perf-lite .bg-eq,
+.perf-lite .bg-glow { display: none !important; }
+.perf-lite .bg-gradient { animation: none !important; }
+.perf-lite #nav { backdrop-filter: none !important; background: rgba(10,16,22,0.92) !important; }
+.perf-lite .project-card,
+.perf-lite .slider-nav,
+.perf-lite .explore-more,
+.perf-lite .about-card,
+.perf-lite .projects-controls { box-shadow: none !important; }
+.perf-lite .project-card:hover,
+.perf-lite .about-card:hover { transform: none !important; }
+.perf-lite .button:hover, .perf-lite .button:focus { transform: none !important; box-shadow: none !important; }
 
 /* Utility class for sections */
 .content-section {
