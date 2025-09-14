@@ -1537,3 +1537,6 @@ body[data-theme="dark"] #main,
 body[data-theme="light"] #main { background: transparent !important; }
 body[data-theme="dark"] #wrapper,
 body[data-theme="light"] #wrapper { background: transparent !important; }
+
+/* Capabilities as compact pills */
+.capabilities-pills { margin: .2rem auto .2rem; }
