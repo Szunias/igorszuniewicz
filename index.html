@@ -65,8 +65,8 @@
              width: 100%;
              max-width: 900px; 
              height: auto; 
-             min-height: 520px; 
-             margin: 30px auto 80px;
+             min-height: 380px; 
+             margin: 20px auto 50px;
              overflow: hidden;
              z-index: 3;
               background: transparent; 
@@ -160,18 +160,18 @@
         /* Larger slider on wide screens */
         @media (min-width: 980px) {
             .slider {
-                max-width: 1100px;
-                min-height: 580px;
+                max-width: 1000px;
+                min-height: 420px;
             }
-            .slide a img { max-height: 58vh; }
+            .slide a img { max-height: 46vh; }
         }
         @media (min-width: 1280px) {
             .slider {
-                max-width: 1200px;
-                min-height: 620px;
+                max-width: 1100px;
+                min-height: 460px;
             }
             .slide a img {
-                max-height: calc(100% - 170px);
+                max-height: calc(100% - 140px);
             }
         }
         /* Hard overrides: bars/overlays */
@@ -271,9 +271,9 @@
 
             <!-- Thematic Projects Showcase (moved up under Introduction) -->
             <section id="projects-showcase" class="post" data-reveal style="border-top:0; background: transparent;">
-                <header class="major">
-                    <h2 id="bgColor">Projects</h2>
-                    <p>Selected work.</p>
+                <header class="major" style="--reveal-delay: .06s;">
+                    <h2>Projects Showcase</h2>
+                    <p>A selection of my most important projects, highlighting my involvement and key contributions.</p>
                 </header>
 
                 <article class="post featured" style="padding:0; margin-bottom: 0; border:0; background: transparent;">
@@ -319,49 +319,45 @@
                 </article>
 
                 <div class="projects-grid">
-                    <article class="project-card" data-reveal>
+                    <article class="project-card" data-reveal style="--reveal-delay:.08s;">
                         <a href="projects/dynamic-music-system.html" class="image fit"><img src="images/maxresdefault.jpg" alt="Dynamic Music System" loading="lazy" decoding="async" /></a>
+                        <a href="projects/dynamic-music-system.html" class="stretched-link" aria-label="Dynamic Music System (Wwise & UE5)"></a>
                         <div class="project-card-content">
                             <h3>Dynamic Music System (Wwise & UE5)</h3>
-                            <p>Developed a Wwise-integrated adaptive music solution for Unreal Engine 5. This system features dynamic transitions and interactive layers, showcasing skills in system design, Wwise implementation, and UE5 integration for responsive game audio.</p>
-                            <ul class="actions special">
-                                <li><a href="projects/dynamic-music-system.html" class="button small">Details</a></li>
-                            </ul>
+                            <p>Adaptive music with smooth transitions and layers, integrated with Unreal Engine and Wwise.</p>
                         </div>
                     </article>
-                    <article class="project-card" data-reveal>
+                    <article class="project-card" data-reveal style="--reveal-delay:.12s;">
                         <a href="projects/audio-plugin-suite.html" class="image fit"><img src="images/plugins.jpg" alt="Audio Plugins" loading="lazy" decoding="async" /></a>
+                        <a href="projects/audio-plugin-suite.html" class="stretched-link" aria-label="3D Audio Plugin Suite (VST Development)"></a>
                         <div class="project-card-content">
                             <h3>3D Audio Plugin Suite (VST Development)</h3>
-                            <p>Created a suite of custom VST plugins focusing on 3D audio. This involved DSP algorithm development for HRTF-based spatialization and real-time convolution reverb, C++ programming, and designing the user interface for the plugins.</p>
-                            <ul class="actions special">
-                                <li><a href="projects/audio-plugin-suite.html" class="button small">Details</a></li>
-                            </ul>
+                            <p>Custom VSTs for 3D audio: HRTF, convolution, with focused C++/JUCE implementation.</p>
                         </div>
                     </article>
                 </div>
             </section>
 
             <!-- Feature Grid (Professional Highlights) -->
-            <section id="capabilities" class="post" data-reveal>
+            <section id="capabilities" class="post" data-reveal style="--reveal-delay:.06s;">
                 <header class="major">
                     <h2>Capabilities</h2>
                     <p>Production-ready audio and interactive systems for games and media.</p>
                 </header>
                 <div class="projects-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-                    <article class="project-card" style="padding:16px;">
+                    <article class="project-card" style="padding:16px; --reveal-delay:.08s;" data-reveal>
                         <h3><span class="icon solid fa-gamepad" aria-hidden="true"></span> Game Audio</h3>
                         <p>End-to-end: sound design, implementation, mixing. UE5/Unity, Wwise, FMOD.</p>
                     </article>
-                    <article class="project-card" style="padding:16px;">
+                    <article class="project-card" style="padding:16px; --reveal-delay:.12s;" data-reveal>
                         <h3><span class="icon solid fa-music" aria-hidden="true"></span> Interactive Music</h3>
                         <p>Adaptive scores, real-time transitions, parameter-driven layers.</p>
                     </article>
-                    <article class="project-card" style="padding:16px;">
+                    <article class="project-card" style="padding:16px; --reveal-delay:.16s;" data-reveal>
                         <h3><span class="icon solid fa-tools" aria-hidden="true"></span> Audio Tools</h3>
                         <p>DSP, plug‑ins, pipeline utilities. C++/JUCE, C#, Python.</p>
                     </article>
-                    <article class="project-card" style="padding:16px;">
+                    <article class="project-card" style="padding:16px; --reveal-delay:.20s;" data-reveal>
                         <h3><span class="icon solid fa-users" aria-hidden="true"></span> Collaboration</h3>
                         <p>Clear comms, fast iteration, measurable results under production constraints.</p>
                     </article>
@@ -369,7 +365,7 @@
             </section>
 
             <!-- Curriculum Vitae (CV) Section -->
-            <section id="cv-section" class="post" data-reveal>
+            <section id="cv-section" class="post" data-reveal style="--reveal-delay:.06s;">
                 <header class="major">
                     <h2>About Me / Curriculum Vitae</h2>
                     <p id="bgWhite">A quasi-chronological overview of my life, education, and professional work.</p>
@@ -423,13 +419,6 @@
                     <a href="scholarly.html" class="icon solid fa-graduation-cap"><span>Scholarly</span></a>
                     <a href="about.html" class="icon solid fa-user"><span>About</span></a>
                     <a href="contact.html" class="icon solid fa-envelope"><span>Contact</span></a>
-                </div>
-                <div class="peek-stage" aria-hidden="true">
-                    <img src="images/maxresdefault.jpg" alt="" loading="lazy" decoding="async"/>
-                    <img src="images/project4.png" alt="" loading="lazy" decoding="async"/>
-                    <img src="images/amorak.png" alt="" loading="lazy" decoding="async"/>
-                    <img src="images/plugins.jpg" alt="" loading="lazy" decoding="async"/>
-                    <img src="images/richter.png" alt="" loading="lazy" decoding="async"/>
                 </div>
             </section>
             
