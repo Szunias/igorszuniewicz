@@ -576,9 +576,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (window.__ui_initialized__) return; window.__ui_initialized__ = true;
 
   // Floating popover for CV tooltips (positioned via icon click)
+  const enableCvHoverPopovers = false; // hard-disable hover popovers to prevent glitches
   const pop = document.createElement('div'); pop.className='tip-popover';
   const popContent = document.createElement('div'); pop.appendChild(popContent);
-  document.body.appendChild(pop);
+  if (enableCvHoverPopovers && window.innerWidth > 980) document.body.appendChild(pop);
 
   let popPinned = false; let lastPos={x:0,y:0};
 
@@ -635,20 +636,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   ensureCvChips();
-  // Hover tooltips for CV items
-  document.addEventListener('pointerenter', (e)=>{
-    const host = e.target.closest('#cv-section .box [data-tip]');
-    if (!host) return; const p = e;
-    showTip(host, p.clientX||0, p.clientY||0);
-  }, true);
-  document.addEventListener('pointermove', (e)=>{
-    if (!pop.classList.contains('visible')) return;
-    const host = e.target.closest('#cv-section .box [data-tip]');
-    if (!host) return; showTip(host, e.clientX||0, e.clientY||0);
-  }, true);
-  document.addEventListener('pointerleave', (e)=>{
-    if (!e.target.closest('#cv-section .box [data-tip]')) return; hideTip();
-  }, true);
+  // Hover tooltips for CV items (desktop / non perf-lite)
+  if (enableCvHoverPopovers && !document.body.classList.contains('perf-lite')){
+    document.addEventListener('pointerenter', (e)=>{
+      const host = e.target.closest('#cv-section .box [data-tip]');
+      if (!host) return; const p = e;
+      showTip(host, p.clientX||0, p.clientY||0);
+    }, true);
+    document.addEventListener('pointermove', (e)=>{
+      if (!pop.classList.contains('visible')) return;
+      const host = e.target.closest('#cv-section .box [data-tip]');
+      if (!host) return; showTip(host, e.clientX||0, e.clientY||0);
+    }, true);
+    document.addEventListener('pointerleave', (e)=>{
+      if (!e.target.closest('#cv-section .box [data-tip]')) return; hideTip();
+    }, true);
+  }
 
   // Replace popovers with smooth inline drawers
   document.querySelectorAll('#cv-section .box [data-tip]').forEach((el)=>{
@@ -856,6 +859,17 @@ document.addEventListener('DOMContentLoaded', function() {
     showcase_title: { pl: 'Przegląd projektów', nl: 'Projectoverzicht', en: 'Projects Showcase' },
     showcase_lead: { pl: 'Wybrane najważniejsze projekty i mój wkład.', nl: 'Een selectie van mijn belangrijkste projecten met mijn rol.', en: 'A selection of my most important projects, highlighting my involvement and key contributions.' },
     explore_lead: { pl: 'Przeglądaj pełne portfolio lub dowiedz się więcej o mnie.', nl: 'Bekijk het volledige portfolio of lees meer over mijn achtergrond.', en: 'Browse the full portfolio or learn more about my background.' },
+    // Capabilities (homepage)
+    cap_title: { pl: 'Kompetencje', nl: 'Competenties', en: 'Capabilities' },
+    cap_lead: { pl: 'Gotowe do produkcji audio i systemy interaktywne do gier i mediów.', nl: 'Productierijp audio en interactieve systemen voor games en media.', en: 'Production-ready audio and interactive systems for games and media.' },
+    cap_game_h: { pl: 'Audio w grach', nl: 'Game‑audio', en: 'Game Audio' },
+    cap_game_p: { pl: 'End‑to‑end: sound design, implementacja, miks. UE5/Unity, Wwise, FMOD.', nl: 'End‑to‑end: sounddesign, implementatie, mix. UE5/Unity, Wwise, FMOD.', en: 'End-to-end: sound design, implementation, mixing. UE5/Unity, Wwise, FMOD.' },
+    cap_music_h: { pl: 'Muzyka interaktywna', nl: 'Interactieve muziek', en: 'Interactive Music' },
+    cap_music_p: { pl: 'Adaptacyjne partytury, przejścia w czasie rzeczywistym, warstwy sterowane parametrami.', nl: 'Adaptieve scores, realtime overgangen, parameter‑gestuurde lagen.', en: 'Adaptive scores, real-time transitions, parameter-driven layers.' },
+    cap_tools_h: { pl: 'Narzędzia audio', nl: 'Audio‑tools', en: 'Audio Tools' },
+    cap_tools_p: { pl: 'DSP, wtyczki, narzędzia pipeline. C++/JUCE, C#, Python.', nl: 'DSP, plug‑ins, pipeline‑tools. C++/JUCE, C#, Python.', en: 'DSP, plug‑ins, pipeline utilities. C++/JUCE, C#, Python.' },
+    cap_collab_h: { pl: 'Współpraca', nl: 'Samenwerking', en: 'Collaboration' },
+    cap_collab_p: { pl: 'Jasna komunikacja, szybka iteracja, mierzalne rezultaty w produkcji.', nl: 'Heldere comms, snelle iteratie, meetbare resultaten onder productiedruk.', en: 'Clear comms, fast iteration, measurable results under production constraints.' },
     footer_location: { pl: 'Lokalizacja', nl: 'Locatie', en: 'Location' },
     footer_email: { pl: 'Email', nl: 'E-mail', en: 'Email' },
     footer_social: { pl: 'Linki społecznościowe i zawodowe', nl: 'Sociale & professionele links', en: 'Social & Professional Links' },
@@ -984,9 +998,45 @@ document.addEventListener('DOMContentLoaded', function() {
       if (introH2) introH2.textContent = I18N.intro_title[lang];
       const introLead = document.querySelector('#main > section.post header.major p');
       if (introLead) introLead.textContent = I18N.intro_lead[lang];
-      const introP = document.querySelector('#main > section.post p:not(header p)');
-      if (introP) introP.textContent = I18N.intro_paragraph[lang];
+      // New minimal hero copy
+      const hi = document.querySelector('.intro-hi');
+      if (hi){ hi.innerHTML = ({
+        en:'<i class="fas fa-hand-peace" aria-hidden="true"></i> Hi, I’m Igor.',
+        pl:'<i class="fas fa-hand-peace" aria-hidden="true"></i> Cześć, jestem Igor.',
+        nl:'<i class="fas fa-hand-peace" aria-hidden="true"></i> Hoi, ik ben Igor.'
+      })[lang]; }
+      const h = document.querySelector('.intro-headline');
+      if (h){ h.textContent = ({
+        en:'I make game sound and music.',
+        pl:'Robię dźwięk do gier i muzykę.',
+        nl:'Ik maak game‑audio en muziek.'
+      })[lang]; }
+      const pillMap = {
+        ga: { en:'Game sound', pl:'Dźwięk do gier', nl:'Game‑audio' },
+        im: { en:'Music for games', pl:'Muzyka do gier', nl:'Muziek voor games' },
+        at: { en:'Tools when needed', pl:'Narzędzia gdy trzeba', nl:'Tools indien nodig' }
+      };
+      document.querySelectorAll('.intro-pills span').forEach(p=>{ const k=p.getAttribute('data-pill'); if (pillMap[k]) p.innerHTML = `<i class="${p.querySelector('i')?.className||'fas fa-circle'}"></i> ${pillMap[k][lang]}`; });
+      // Intro CTAs
+      const explore = document.querySelector('[data-i18n-cta="intro.explore"]');
+      if (explore) explore.textContent = ({en:'Explore work', pl:'Zobacz projekty', nl:'Bekijk werk'})[lang];
+      const listen = document.querySelector('[data-i18n-cta="intro.listen"]');
+      if (listen) listen.textContent = ({en:'Listen', pl:'Posłuchaj', nl:'Luister'})[lang];
+      // Done
     }
+    // Capabilities (homepage)
+    (function translateCapabilities(){
+      const capSection = document.getElementById('capabilities') || Array.from(document.querySelectorAll('section.post'))
+        .find(s => /capabilities|kompetencje|competenties/i.test((s.querySelector('header.major h2')?.textContent||'')));
+      if (!capSection) return;
+      const h2 = capSection.querySelector('header.major h2'); if (h2) h2.textContent = I18N.cap_title[lang];
+      const lead = capSection.querySelector('header.major p'); if (lead) lead.textContent = I18N.cap_lead[lang];
+      const cards = capSection.querySelectorAll('.project-card');
+      if (cards[0]) { const h=cards[0].querySelector('h3'); const p=cards[0].querySelector('p'); if (h) h.innerHTML = '<span class="icon solid fa-gamepad" aria-hidden="true"></span> '+I18N.cap_game_h[lang]; if (p) p.textContent = I18N.cap_game_p[lang]; }
+      if (cards[1]) { const h=cards[1].querySelector('h3'); const p=cards[1].querySelector('p'); if (h) h.innerHTML = '<span class="icon solid fa-music" aria-hidden="true"></span> '+I18N.cap_music_h[lang]; if (p) p.textContent = I18N.cap_music_p[lang]; }
+      if (cards[2]) { const h=cards[2].querySelector('h3'); const p=cards[2].querySelector('p'); if (h) h.innerHTML = '<span class="icon solid fa-tools" aria-hidden="true"></span> '+I18N.cap_tools_h[lang]; if (p) p.textContent = I18N.cap_tools_p[lang]; }
+      if (cards[3]) { const h=cards[3].querySelector('h3'); const p=cards[3].querySelector('p'); if (h) h.innerHTML = '<span class="icon solid fa-users" aria-hidden="true"></span> '+I18N.cap_collab_h[lang]; if (p) p.textContent = I18N.cap_collab_p[lang]; }
+    })();
     const cvH2 = document.querySelector('#cv-section header.major h2');
     if (cvH2) cvH2.textContent = I18N.cv_title[lang];
     const cvLead = document.querySelector('#cv-section header.major p');
