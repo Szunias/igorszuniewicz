@@ -1458,6 +1458,12 @@ body.intro-lock #wrapper { opacity: 0 !important; pointer-events: none; }
   border-color: #4a5160;
 }
 
+/* Capability card icons */
+.project-card h3 .icon {
+  margin-right: 8px;
+  color: #18bfef;
+}
+
 /* Theme toggle styling */
 .theme-toggle {
   display: inline-flex;
