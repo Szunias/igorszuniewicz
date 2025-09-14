@@ -269,8 +269,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, { passive: true });
 
-  // Neo-piano banner: gradient glass keys with shorter neon accidentals for clear piano feel
-  if (!isMobile) (function(){
+  // Feature flag: disable interactive piano for a more professional look
+  const ENABLE_LOGO_PIANO = false;
+
+  // Neo-piano banner (disabled by default)
+  if (!isMobile && ENABLE_LOGO_PIANO) (function(){
     try {
       const wrap=document.createElement('div'); wrap.className='logo-audio'; document.body.appendChild(wrap);
       const svgNS='http://www.w3.org/2000/svg';
@@ -442,6 +445,28 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       onScroll(); window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('pageshow', onScroll);
     } catch(e){ console && console.warn && console.warn('neo piano disabled', e); }
+  })();
+
+  // Minimal animated waveform banner (replacement for piano)
+  if (!isMobile && !ENABLE_LOGO_PIANO) (function(){
+    try {
+      const wrap = document.querySelector('.logo-audio') || (()=>{ const d=document.createElement('div'); d.className='logo-audio'; document.body.appendChild(d); return d; })();
+      const cvs=document.createElement('canvas'); wrap.innerHTML=''; wrap.appendChild(cvs);
+      const ctx=cvs.getContext('2d');
+      function resize(){ cvs.width = Math.min(window.innerWidth*0.96, 1280); cvs.height = 200; }
+      resize(); window.addEventListener('resize', resize);
+      let t=0; function draw(){
+        if(!cvs.isConnected) return; ctx.clearRect(0,0,cvs.width,cvs.height);
+        const w=cvs.width, h=cvs.height; const mid=h*0.58; const amp=Math.min(24, h*0.22);
+        const grad=ctx.createLinearGradient(0,0,w,0); grad.addColorStop(0,'rgba(24,191,239,0.85)'); grad.addColorStop(1,'rgba(154,108,255,0.85)');
+        ctx.lineWidth=2; ctx.strokeStyle=grad; ctx.shadowColor='rgba(24,191,239,0.35)'; ctx.shadowBlur=16; ctx.beginPath();
+        for(let x=0; x<=w; x+=2){ const y = mid + Math.sin((x*0.014)+(t*0.06))*amp*Math.sin((x*0.0022)+(t*0.02)); ctx.lineTo(x,y); }
+        ctx.stroke(); t++; requestAnimationFrame(draw);
+      }
+      requestAnimationFrame(draw);
+      function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome=!!document.getElementById('projects-showcase'); wrap.classList.toggle('visible', onHome && y<140); }
+      onScroll(); window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('pageshow', onScroll);
+    } catch(_){}
   })();
 
   // Intro overlay on first visit (session-based)
