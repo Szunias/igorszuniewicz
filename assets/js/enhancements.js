@@ -24,15 +24,21 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.classList.remove('is-preload');
   }, 100);
 
-  // Connection/motion heuristics for slow networks/devices
+  // Connection/motion heuristics for slow networks/devices (with manual override)
   const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   const saveData = !!(conn && conn.saveData);
   const slowNet = !!(conn && /(^2g$|^slow-2g$)/i.test(conn.effectiveType || ''));
   const prefersReduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  const perfLite = saveData || slowNet || prefersReduced;
-  const shouldRenderHeavy = !(perfLite || isMobile);
-  if (perfLite) document.body.classList.add('perf-lite');
-  if (isMobile) document.body.classList.add('perf-lite');
+  // Manual override via URL (?perf=high|lite) or localStorage('perf-mode')
+  let perfOverride = '';
+  try { perfOverride = (new URLSearchParams(location.search).get('perf') || localStorage.getItem('perf-mode') || '').toLowerCase(); } catch(_) {}
+  let perfLite = saveData || slowNet || prefersReduced || isMobile;
+  if (perfOverride === 'high') perfLite = false;
+  if (perfOverride === 'lite' || perfOverride === 'low') perfLite = true;
+  const shouldRenderHeavy = !perfLite;
+  document.body.classList.toggle('perf-lite', perfLite);
+  // Expose a simple switcher for debugging: setPerfMode('high'|'lite'|'auto')
+  try { window.setPerfMode = function(mode){ if (mode==='auto') localStorage.removeItem('perf-mode'); else localStorage.setItem('perf-mode', String(mode)); location.reload(); }; } catch(_){ }
 
   // Cross-page persistent zoom (Ctrl + / Ctrl - / Ctrl 0, and Ctrl + wheel)
   (function persistentZoom(){
