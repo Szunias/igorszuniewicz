@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const ctx=cvs.getContext('2d');
       function resize(){ cvs.width = Math.min(window.innerWidth*0.96, 1280); cvs.height = 200; }
       resize(); window.addEventListener('resize', resize);
-      let t=0;
+      let t=0; let lastTs = performance.now();
       function ribbon(yBase, amp, hueA, hueB, speed, freq){
         const w=cvs.width; const h=cvs.height;
         const g=ctx.createLinearGradient(0,0,w,0);
@@ -470,13 +470,21 @@ document.addEventListener('DOMContentLoaded', function() {
         ctx.shadowColor='rgba(24,191,239,0.35)'; ctx.shadowBlur=20; ctx.globalCompositeOperation='lighter';
         ctx.stroke(); ctx.globalCompositeOperation='source-over';
       }
-      function draw(){
+      function draw(ts){
         if(!cvs.isConnected) return; ctx.clearRect(0,0,cvs.width,cvs.height);
+        // Advance time based on real frame delta so motion feels smooth at any FPS
+        if (typeof ts === 'number') {
+          const frameEq = Math.min(3, Math.max(0.25, (ts - lastTs) / (1000/60)));
+          t += frameEq;
+          lastTs = ts;
+        } else {
+          t += 1;
+        }
         const h=cvs.height; // layered ribbons
         ribbon(h*0.55, 28, 195, 265, 0.020, 0.012);
         ribbon(h*0.68, 20, 285, 205, 0.016, 0.015);
         ribbon(h*0.42, 18, 168, 320, 0.014, 0.010);
-        t++; requestAnimationFrame(draw);
+        requestAnimationFrame(draw);
       }
       requestAnimationFrame(draw);
       function onScroll(){ const y=window.scrollY||document.documentElement.scrollTop; const onHome=!!document.getElementById('projects-showcase'); wrap.classList.toggle('visible', onHome && y<140); }
@@ -548,14 +556,25 @@ document.addEventListener('DOMContentLoaded', function() {
     d += 'L 1200 600 L 0 600 Z';
     return d;
   }
+  // Adapt wave update cadence to actual refresh rate to avoid 30 Hz feel
   let lastWaveFrame = 0;
+  let measuredFrameMs = 16;
+  (function measureRefresh(){
+    try {
+      let last = performance.now();
+      let samples = 0; let acc = 0;
+      const sample = (ts)=>{ acc += (ts - last); last = ts; samples++; if (samples < 12) requestAnimationFrame(sample); else measuredFrameMs = Math.max(8, Math.min(20, acc / samples)); };
+      requestAnimationFrame(sample);
+    } catch(_) {}
+  })();
   function waveLoop(ts){
     // Update glow every frame (cheap CSS vars)
     glow.style.setProperty('--mx', mouseX + '%');
     glow.style.setProperty('--my', mouseY + '%');
     // Skip wave math if perf-lite or mobile (keep initial shape static)
     if (!perfLite && !isMobile){
-      if (needsWaveUpdate || ts - lastWaveFrame > 140){ // ~7fps idle animate
+      const minInterval = measuredFrameMs; // follow actual refresh cadence
+      if (needsWaveUpdate || ts - lastWaveFrame > minInterval){
         const t = ts / 1000;
         const amp1 = 22 + (mouseY/100)*10;
         const amp2 = 30 + (mouseX/100)*12;
