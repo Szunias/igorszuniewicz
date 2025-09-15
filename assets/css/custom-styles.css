@@ -285,6 +285,12 @@ body.fx-off #nav { backdrop-filter: none !important; }
 /* Dropdown menu for top-right language badge */
 .lang-badge-wrap { position: fixed; top: 14px; right: 16px; z-index: 2147483647; }
 #lang-fixed { position: fixed; top: 14px; right: 16px; z-index: 2147483647; display: flex !important; gap: 8px; }
+
+@media screen and (max-width: 980px) {
+  #lang-fixed, .lang-badge-wrap {
+    display: none !important;
+  }
+}
 .lang-badge-menu { position: absolute; right: 0; top: 42px; background: rgba(10,16,22,0.98); border:1px solid rgba(255,255,255,0.14); border-radius: 10px; padding: 6px; min-width: 180px; box-shadow: 0 16px 40px rgba(0,0,0,0.45); opacity: 0; transform: translateY(-6px); pointer-events: none; transition: opacity .18s ease, transform .18s ease; }
 .lang-badge-menu.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .lang-badge-menu button { width: 100%; display: flex; align-items: center; gap: 10px; background: rgba(24,191,239,0.18); color: #e9f7ff; border: 0; padding: 10px 12px; border-radius: 10px; cursor: pointer; font-weight: 800; letter-spacing: .2px; line-height: 1.2; }
@@ -467,9 +473,15 @@ body p {
 /* Project Showcase - Thematic Grid (Placeholder, to be refined) */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2em;
     padding: 2em 0;
+}
+
+@media screen and (max-width: 736px) {
+    .projects-grid {
+        gap: 1em;
+    }
 }
 /* List view variant */
 .projects-grid.projects-list{
@@ -598,7 +610,13 @@ body p {
 
 /* Skills grid (static, scannable) */
 .skills-title { margin-top: 1.2rem; color: #ffffff !important; }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+
+@media screen and (max-width: 736px) {
+    .skills-grid {
+        gap: 8px;
+    }
+}
 .skill-card { display: grid; grid-template-columns: 40px 1fr; gap: 10px; align-items: start; background: rgba(12,18,26,0.55); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px; box-shadow: 0 12px 30px rgba(0,0,0,0.25); }
 .skill-ico { color: #18bfef; font-size: 1.3rem; display: flex; align-items: center; justify-content: center; }
 .skill-body h5 { margin: 0 0 4px; color: #eaf7ff; font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: .2px; }
