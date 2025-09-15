@@ -693,44 +693,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }, true);
   }
 
-  // Replace popovers with smooth inline drawers
-  document.querySelectorAll('#cv-section .box [data-tip]').forEach((el)=>{
-    // create modern chip button instead of icon
-    if (!el.querySelector('.cv-more-chip')){
-      const chip = document.createElement('button');
-      chip.type='button'; chip.className='cv-more-chip'; chip.setAttribute('aria-label','More info');
-      chip.innerHTML = '<span class="label">More</span><span class="chev">▾</span>';
-      el.appendChild(chip);
-    }
-    // create drawer
-    if (!el.nextElementSibling || !el.nextElementSibling.classList.contains('cv-drawer')){
-      const drawer = document.createElement('div');
-      drawer.className='cv-drawer';
-      const text = el.getAttribute('data-tip') || '';
-      const url = el.getAttribute('data-tip-url');
-      const inner = document.createElement('div'); inner.className='cv-drawer-inner';
-      const textDiv = document.createElement('div'); textDiv.className='cv-drawer-text'; textDiv.textContent = text;
-      inner.appendChild(textDiv);
-      if (url && isSafeHttpUrl(url)){
-        const a = document.createElement('a'); a.className='cv-drawer-link'; a.target='_blank'; a.rel='noopener noreferrer'; a.href = url; a.textContent='Learn more →'; inner.appendChild(a);
-      }
-      drawer.appendChild(inner);
-      el.parentNode.insertBefore(drawer, el.nextSibling);
-    }
-  });
+  // New concept: remove drawers and interactive handlers in CV section
+  document.querySelectorAll('#cv-section .cv-drawer').forEach(d=> d.remove());
 
-  document.body.addEventListener('click', (e)=>{
-    const chip = e.target.closest('.cv-more-chip');
-    if (chip){
-      const host = chip.closest('[data-tip]');
-      const drawer = host.nextElementSibling && host.nextElementSibling.classList.contains('cv-drawer') ? host.nextElementSibling : null;
-      if (drawer){ drawer.classList.toggle('open'); chip.classList.toggle('expanded'); }
-      return;
+  // Interactive education hover pop: show extra details from data-detail
+  (function(){
+    const list = document.querySelector('#cv-section .cv-timeline');
+    if (!list) return;
+    const pop = document.createElement('div');
+    pop.className = 'cv-pop';
+    document.body.appendChild(pop);
+    function show(host, x, y){
+      const txt = host.getAttribute('data-detail')||'';
+      if (!txt) return hide();
+      const [a,b] = txt.split('|');
+      pop.innerHTML = `<h6>${host.querySelector('.cv-title')?.textContent||''}</h6><ul><li>${a||''}</li>${b?`<li>${b}</li>`:''}</ul>`;
+      const pad=12, vw=window.innerWidth, vh=window.innerHeight;
+      const bw = pop.offsetWidth||280, bh = pop.offsetHeight||120;
+      let px=x+pad, py=y+pad; if (px+bw>vw-8) px=vw-bw-8; if (py+bh>vh-8) py=y-bh-pad; if (py<8) py=8;
+      pop.style.left=px+'px'; pop.style.top=py+'px';
+      pop.classList.add('visible');
     }
-    if (!e.target.closest('.cv-drawer') && !e.target.closest('.cv-info-icon')){
-      document.querySelectorAll('.cv-drawer.open').forEach(d=> d.classList.remove('open'));
-    }
-  }, true);
+    function hide(){ pop.classList.remove('visible'); pop.style.left='-9999px'; pop.style.top='-9999px'; }
+    list.addEventListener('pointerenter', (e)=>{
+      const li=e.target.closest('.cv-timeline li'); if(!li) return; show(li, e.clientX||0, e.clientY||0);
+    }, true);
+    list.addEventListener('pointermove', (e)=>{
+      if(!pop.classList.contains('visible')) return; const li=e.target.closest('.cv-timeline li'); if(!li) return hide();
+      show(li, e.clientX||0, e.clientY||0);
+    }, true);
+    list.addEventListener('pointerleave', (e)=>{ if(!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest('.cv-pop')) hide(); }, true);
+  })();
 
   // Nav previews disabled per request
   const base = location.pathname.includes('/projects/') ? '../' : '';
@@ -1082,6 +1075,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (cvH2) cvH2.textContent = I18N.cv_title[lang];
     const cvLead = document.querySelector('#cv-section header.major p');
     if (cvLead) cvLead.textContent = I18N.cv_lead[lang];
+    // Translate labels inside new CV layout
+    const skillsTitle = document.querySelector('#cv-section .skills-title');
+    if (skillsTitle) skillsTitle.textContent = (lang==='pl'?'Kluczowe umiejętności': lang==='nl'?'Belangrijkste vaardigheden':'Key Skills');
+    // Education timeline titles/subtitles kept as static text; can be made dynamic if needed
 
     // Tooltip CTA and chips
     document.querySelectorAll('.tip-popover .tip-action').forEach(a=> a.textContent = I18N.learn_more[lang]);
@@ -1328,16 +1325,17 @@ document.addEventListener('DOMContentLoaded', function() {
       const CV = {
         edu_title: { en:'Education', pl:'Edukacja', nl:'Opleiding' },
         skills_title: { en:'Key Skills', pl:'Kluczowe umiejętności', nl:'Belangrijkste vaardigheden' },
-        edu_1: { en:'<strong>Howest University of Applied Sciences, Digital Arts and Entertainment:</strong> Game Development - Game Sound Integration (Ongoing)', pl:'<strong>Howest University of Applied Sciences, Digital Arts and Entertainment:</strong> Game Development — Game Sound Integration (w trakcie)', nl:'<strong>Howest University of Applied Sciences, Digital Arts and Entertainment:</strong> Game Development — Game Sound Integration (lopend)' },
-        edu_2: { en:'<strong>Bilingual Copernicus Highschool:</strong> Profile - Maths & Physics (Graduated)', pl:'<strong>Bilingual Copernicus Highschool:</strong> Profil — Matematyka i Fizyka (ukończone)', nl:'<strong>Bilingual Copernicus Highschool:</strong> Profiel — Wiskunde & Natuurkunde (afgestudeerd)' },
-        edu_3: { en:'<strong>State Music School in Kołobrzeg, First Degree:</strong> Music Theory & Performance (Graduated)', pl:'<strong>Państwowa Szkoła Muzyczna I stopnia w Kołobrzegu:</strong> Teoria muzyki i wykonawstwo (ukończone)', nl:'<strong>Stedelijke Muziekschool in Kołobrzeg, eerste graad:</strong> Muziektheorie en uitvoering (afgestudeerd)' },
-        s1: { en:'Sound Design & Implementation', pl:'Sound design i implementacja', nl:'Sounddesign & Implementatie' },
-        s2: { en:'Music Composition & Production', pl:'Kompozycja i produkcja muzyki', nl:'Muziekcompositie & -productie' },
-        s3: { en:'Audio Middleware: Wwise, FMOD', pl:'Middleware audio: Wwise, FMOD', nl:'Audio-middleware: Wwise, FMOD' },
-        s4: { en:'Game Engines: Unreal Engine, Unity', pl:'Silniki: Unreal Engine, Unity', nl:'Game-engines: Unreal Engine, Unity' },
-        s5: { en:'Programming: C++, Python, C#', pl:'Programowanie: C++, Python, C#', nl:'Programmeren: C++, Python, C#' },
-        s6: { en:'DAWs: Reaper, Pro Tools, Logic Pro', pl:'DAWy: Reaper, Pro Tools, Logic Pro', nl:'DAW’s: Reaper, Pro Tools, Logic Pro' },
-        s7: { en:'VST/Audio Plugin Development', pl:'Rozwój wtyczek VST/Audio', nl:'VST/Audio plug‑in ontwikkeling' }
+        // concise labels to avoid a wall of text
+        edu_1: { en:'<strong>Howest DAE</strong> — Game Sound Integration (ongoing)', pl:'<strong>Howest DAE</strong> — Integracja dźwięku w grach (w trakcie)', nl:'<strong>Howest DAE</strong> — Game Sound Integration (lopend)' },
+        edu_2: { en:'<strong>Copernicus High School</strong> — Maths & Physics (graduated)', pl:'<strong>LO Kopernika</strong> — Matematyka i Fizyka (ukończone)', nl:'<strong>Copernicus Lyceum</strong> — Wiskunde & Natuurkunde (afgestudeerd)' },
+        edu_3: { en:'<strong>State Music School (First Degree)</strong> — Theory & Performance (graduated)', pl:'<strong>PSM I st.</strong> — Teoria i wykonawstwo (ukończone)', nl:'<strong>Stedelijke Muziekschool (eerste graad)</strong> — Theorie & Uitvoering (afgestudeerd)' },
+        s1: { en:'Sound Design', pl:'Sound design', nl:'Sounddesign' },
+        s2: { en:'Music Composition', pl:'Kompozycja muzyki', nl:'Muziekcompositie' },
+        s3: { en:'Middleware (Wwise, FMOD)', pl:'Middleware (Wwise, FMOD)', nl:'Middleware (Wwise, FMOD)' },
+        s4: { en:'Engines (UE, Unity)', pl:'Silniki (UE, Unity)', nl:'Engines (UE, Unity)' },
+        s5: { en:'Programming (C++, Python, C#)', pl:'Programowanie (C++, Python, C#)', nl:'Programmeren (C++, Python, C#)' },
+        s6: { en:'DAWs (Reaper, Pro Tools, Logic)', pl:'DAW‑y (Reaper, Pro Tools, Logic)', nl:'DAW’s (Reaper, Pro Tools, Logic)' },
+        s7: { en:'VST/Audio Plugins', pl:'Wtyczki VST/Audio', nl:'VST/Audio‑plug‑ins' }
       };
       // Tooltip text per item
       const CV_TIPS = {
