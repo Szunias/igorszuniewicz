@@ -643,18 +643,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const toast = document.createElement('div');
   toast.className = 'lang-toast';
   document.body.appendChild(toast);
-  // Hint near the badge on first visit
-  try {
-    const seenHint = localStorage.getItem('lang-hint-seen');
-    if (!seenHint) {
-      const hint = document.createElement('div');
-      hint.textContent = 'Click to switch language';
-      hint.style.cssText='position:fixed;top:46px;right:16px;background:rgba(12,18,24,.9);color:#e9f7ff;border:1px solid rgba(255,255,255,.14);padding:6px 10px;border-radius:8px;font-size:.85rem;z-index:2147483647;box-shadow:0 8px 18px rgba(0,0,0,.3)';
-      document.body.appendChild(hint);
-      setTimeout(()=>{ hint.style.opacity='0'; hint.style.transition='opacity .4s'; setTimeout(()=>hint.remove(), 420); }, 2600);
-      localStorage.setItem('lang-hint-seen','1');
-    }
-  } catch(_){}
+  // The "Click to switch language" hint was removed as it was redundant.
   // Persistent language badge in top-right
   const badgeWrap = document.querySelector('.lang-badge-wrap') || (()=>{ const w=document.createElement('div'); w.className='lang-badge-wrap'; document.body.appendChild(w); return w; })();
   const langBadge = document.querySelector('.lang-badge') || (()=>{ const b=document.createElement('div'); b.className='lang-badge'; badgeWrap.appendChild(b); return b; })();
@@ -1396,20 +1385,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   })();
 
-  // One-time post-load nudge pointing to the language switcher (not during intro)
-  (function(){
-    const show = ()=>{
-      if (!document.getElementById('projects-showcase')) return; // tylko na głównej
-      // Skip if suggestion system already showed a prompt
-      if (localStorage.getItem('lang-suggest-seen')==='1') return;
-      const n=document.createElement('div'); n.className='lang-nudge';
-      n.innerHTML='<span class="ico">🌍</span><span class="txt">Different language?</span><span class="arrow">↗</span>';
-      badgeWrap.appendChild(n);
-      requestAnimationFrame(()=> n.classList.add('show'));
-      setTimeout(()=>{ n.classList.remove('show'); setTimeout(()=>n.remove(), 400); }, 2200);
-    };
-    window.addEventListener('load', ()=> setTimeout(show, 800));
-  })();
+  // The "Different language?" nudge was removed as it was redundant.
 
   // Geo/locale based language suggestion (privacy‑friendly, fast, one‑time)
   (function(){
