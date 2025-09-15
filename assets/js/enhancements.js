@@ -569,47 +569,14 @@ document.addEventListener('DOMContentLoaded', function() {
     needsWaveUpdate = true; // mark dirty; rAF loop will update
   }, { passive: true });
 
-  function buildWave(amp, phase, freq, t){
-    let d = 'M 0 300 ';
-    for (let i=0;i<=1200;i+=40){ // coarser step (40 vs 20) halves point count
-      const yy = 300 + Math.sin((i/1200)*Math.PI*freq + t*1.2 + phase)*amp + Math.sin((i/1200)*Math.PI*2 + t*0.4)*6;
-      d += `L ${i} ${yy} `;
-    }
-    d += 'L 1200 600 L 0 600 Z';
-    return d;
-  }
-  // Adapt wave update cadence to actual refresh rate to avoid 30 Hz feel
-  let lastWaveFrame = 0;
-  let measuredFrameMs = 16;
-  (function measureRefresh(){
-    try {
-      let last = performance.now();
-      let samples = 0; let acc = 0;
-      const sample = (ts)=>{ acc += (ts - last); last = ts; samples++; if (samples < 12) requestAnimationFrame(sample); else measuredFrameMs = Math.max(8, Math.min(20, acc / samples)); };
-      requestAnimationFrame(sample);
-    } catch(_) {}
-  })();
-  function waveLoop(ts){
-    // Update glow every frame (cheap CSS vars)
+  // The wave animation was moved to CSS for performance.
+  // This loop now only updates the follower glow effect.
+  function glowLoop() {
     glow.style.setProperty('--mx', mouseX + '%');
     glow.style.setProperty('--my', mouseY + '%');
-    // Skip wave math if perf-lite or mobile (keep initial shape static)
-    if (!perfLite && !isMobile && !document.body.classList.contains('fx-off')){
-      const minInterval = (document.body.classList.contains('fps-boost') ? 32 : measuredFrameMs);
-      if (needsWaveUpdate || ts - lastWaveFrame > minInterval){
-        const t = ts / 1000;
-        const amp1 = 22 + (mouseY/100)*10;
-        const amp2 = 30 + (mouseX/100)*12;
-        const amp3 = 16 + ((mouseX+mouseY)/200)*8;
-        path1.setAttribute('d', buildWave(amp1, 0, 4, t));
-        path2.setAttribute('d', buildWave(amp2, Math.PI/2, 5, t));
-        path3.setAttribute('d', buildWave(amp3, Math.PI, 6, t));
-        lastWaveFrame = ts; needsWaveUpdate = false;
-      }
-    }
-    requestAnimationFrame(waveLoop);
+    requestAnimationFrame(glowLoop);
   }
-  requestAnimationFrame(waveLoop);
+  requestAnimationFrame(glowLoop);
 
   // Render equalizer bars (suspend when tab hidden or idle)
   let rafId = null;
