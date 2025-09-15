@@ -297,8 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Neo-piano banner was here, but removed as it was disabled by a feature flag.
 
   // Abstract aurora banner (replacement for piano) — artistic, subtle ribbons
-  const ENABLE_AURORA_BANNER = false;
-  if (!isMobile && !ENABLE_LOGO_PIANO && ENABLE_AURORA_BANNER) (function(){
+  if (!isMobile && !ENABLE_LOGO_PIANO) (function(){
     try {
       const wrap = document.querySelector('.logo-audio') || (()=>{ const d=document.createElement('div'); d.className='logo-audio'; document.body.appendChild(d); return d; })();
       const cvs=document.createElement('canvas'); wrap.innerHTML=''; wrap.appendChild(cvs);
