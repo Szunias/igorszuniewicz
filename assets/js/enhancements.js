@@ -35,10 +35,26 @@ document.addEventListener('DOMContentLoaded', function() {
   let perfLite = saveData || slowNet || prefersReduced || isMobile;
   if (perfOverride === 'high') perfLite = false;
   if (perfOverride === 'lite' || perfOverride === 'low') perfLite = true;
+  // Explicit FX kill switch (?fx=off)
+  let fxOff = false; try { fxOff = (new URLSearchParams(location.search).get('fx')||'').toLowerCase()==='off'; } catch(_) {}
+  if (fxOff) perfLite = true;
   const shouldRenderHeavy = !perfLite;
   document.body.classList.toggle('perf-lite', perfLite);
+  if (fxOff) document.body.classList.add('fx-off');
   // Expose a simple switcher for debugging: setPerfMode('high'|'lite'|'auto')
   try { window.setPerfMode = function(mode){ if (mode==='auto') localStorage.removeItem('perf-mode'); else localStorage.setItem('perf-mode', String(mode)); location.reload(); }; } catch(_){ }
+
+  // Auto-detect low FPS and enable fps-boost (lighter effects)
+  (function autoDetectFPS(){
+    try {
+      let frames = 0; let last = performance.now(); let acc = 0;
+      const sampleN = 24;
+      const tick = (ts)=>{ acc += (ts - last); last = ts; frames++; if (frames < sampleN) return requestAnimationFrame(tick);
+        const avgMs = acc / frames; if (avgMs > 22) { document.body.classList.add('fps-boost'); document.body.classList.add('perf-lite'); }
+      };
+      requestAnimationFrame(tick);
+    } catch(_){ }
+  })();
 
   // Cross-page persistent zoom (Ctrl + / Ctrl - / Ctrl 0, and Ctrl + wheel)
   (function persistentZoom(){
@@ -165,8 +181,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!path2.parentNode) waves.appendChild(path2);
   if (!path3.parentNode) waves.appendChild(path3);
   if (!grad.parentNode) document.body.appendChild(grad);
-  if (shouldRenderHeavy && !orbs.parentNode) document.body.appendChild(orbs);
-  if (!waves.parentNode) document.body.appendChild(waves); // keep waves (very light)
+  if (shouldRenderHeavy && !fxOff && !orbs.parentNode) document.body.appendChild(orbs);
+  if (!fxOff && !waves.parentNode) document.body.appendChild(waves); // keep waves (very light)
   // Initialize wave paths so they are visible even before any pointer movement
   (function initWaves(){
     try {
@@ -188,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
   })();
   // Equalizer bars
   let eq = document.querySelector('canvas.bg-eq'), ctx;
-  if (shouldRenderHeavy && !eq) {
+  if (shouldRenderHeavy && !fxOff && !eq) {
     eq = document.createElement('canvas');
     eq.className = 'bg-eq';
     document.body.appendChild(eq);
@@ -578,8 +594,8 @@ document.addEventListener('DOMContentLoaded', function() {
     glow.style.setProperty('--mx', mouseX + '%');
     glow.style.setProperty('--my', mouseY + '%');
     // Skip wave math if perf-lite or mobile (keep initial shape static)
-    if (!perfLite && !isMobile){
-      const minInterval = measuredFrameMs; // follow actual refresh cadence
+    if (!perfLite && !isMobile && !document.body.classList.contains('fx-off')){
+      const minInterval = (document.body.classList.contains('fps-boost') ? 32 : measuredFrameMs);
       if (needsWaveUpdate || ts - lastWaveFrame > minInterval){
         const t = ts / 1000;
         const amp1 = 22 + (mouseY/100)*10;
@@ -630,7 +646,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     rafId = requestAnimationFrame(renderEQ);
   }
-  if (!perfLite) renderEQ();
+  if (!perfLite && !document.body.classList.contains('fx-off')) renderEQ();
 
   document.addEventListener('visibilitychange', ()=>{
     if (document.hidden && rafId){ cancelAnimationFrame(rafId); rafId = null; }

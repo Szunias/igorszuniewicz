@@ -119,6 +119,13 @@ hr, hr.major { display: none !important; }
   overflow: visible !important; 
   padding: 0.75rem 1.5rem;
 }
+/* Disable costly filters and blends in fps-boost */
+body.fps-boost #nav { backdrop-filter: none !important; }
+body.fps-boost .bg-waves, body.fps-boost .bg-eq { display:none !important; }
+body.fps-boost .bg-orbs .orb { filter: none !important; opacity: .12 !important; }
+/* Hard FX kill switch */
+body.fx-off .bg-waves, body.fx-off .bg-orbs, body.fx-off .bg-eq, body.fx-off .bg-glow { display:none !important; }
+body.fx-off #nav { backdrop-filter: none !important; }
 #nav .links { 
   display: flex; 
   justify-content: center; 
