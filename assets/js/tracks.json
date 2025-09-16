@@ -172,14 +172,14 @@
     "title": "That's It — Cover",
     "artist": "Igor Szuniewicz",
     "cover": "images/ThatsItCover.png",
-    "tags": ["all", "single"],
+    "tags": ["all", "single", "jazz"],
     "length": 0,
     "date": "2025-09-16",
     "year": 2025,
     "desc": {
-      "pl": "Cover utworu 'That's It' zespołu Preservation Hall Jazz Band. Lepszy miks — poprawiłem miks i balans brzmieniowy.",
-      "en": "A cover of 'That's It' by Preservation Hall Jazz Band. Improved mix — I reworked the balance and overall polish.",
-      "nl": "Een cover van 'That's It' van Preservation Hall Jazz Band. Verbeterde mix — ik heb de balans en afwerking bijgewerkt."
+      "pl": "Remix utworu 'That's It' zespołu Preservation Hall Jazz Band w stylistyce new jazz — w duchu tego, co zrobiono z 'Cantaloupe Island' tworząc 'Cantaloop'.",
+      "en": "A new‑jazz remix of 'That's It' by Preservation Hall Jazz Band — in the spirit of how 'Cantaloupe Island' became 'Cantaloop'.",
+      "nl": "Een new‑jazz‑remix van 'That's It' van Preservation Hall Jazz Band — in de geest van hoe 'Cantaloupe Island' veranderde in 'Cantaloop'."
     },
     "sources": [ { "url": "songs/ThatsItIgorSzuniewicz.wav", "type": "audio/wav" } ]
   }
