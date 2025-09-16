@@ -166,5 +166,21 @@
       "en": "One of my heaviest tracks — industrial metal / hard rock: heavy guitars, massive groove and raw energy.",
       "nl": "Een van mijn hardste tracks — industrial metal / hard rock: zware gitaren, massieve groove en rauwe energie."
     }
+  },
+  {
+    "id": "thatsit_cover",
+    "title": "That's It — Cover",
+    "artist": "Igor Szuniewicz",
+    "cover": "images/ThatsItCover.png",
+    "tags": ["all", "single"],
+    "length": 0,
+    "date": "2025-09-16",
+    "year": 2025,
+    "desc": {
+      "pl": "Cover utworu 'That's It' zespołu Preservation Hall Jazz Band. Lepszy miks — poprawiłem miks i balans brzmieniowy.",
+      "en": "A cover of 'That's It' by Preservation Hall Jazz Band. Improved mix — I reworked the balance and overall polish.",
+      "nl": "Een cover van 'That's It' van Preservation Hall Jazz Band. Verbeterde mix — ik heb de balans en afwerking bijgewerkt."
+    },
+    "sources": [ { "url": "songs/ThatsItIgorSzuniewicz.wav", "type": "audio/wav" } ]
   }
 ]
