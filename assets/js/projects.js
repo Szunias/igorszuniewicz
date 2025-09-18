@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function applySort(mode) {
     const sorted = cards.slice().sort((a, b) => {
-      const at = a.getAttribute('data-title').toLowerCase();
-      const bt = b.getAttribute('data-title').toLowerCase();
+      const at = (a.getAttribute('data-title') || '').toLowerCase();
+      const bt = (b.getAttribute('data-title') || '').toLowerCase();
       const ad = a.getAttribute('data-date');
       const bd = b.getAttribute('data-date');
       switch (mode) {

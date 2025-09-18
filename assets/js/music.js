@@ -36,7 +36,7 @@
   const savedVol = parseFloat(localStorage.getItem('player-volume') || '');
   const safeVol = (isFinite(savedVol) ? Math.min(1, Math.max(0, savedVol)) : 0.9);
   audio.volume = safeVol;
-  pbVol.value = String(safeVol);
+  if (pbVol) pbVol.value = String(safeVol);
   // initial CSS vars for sliders
   try { playerBar.style.setProperty('--vol', Math.round(audio.volume*100)+'%'); } catch(_){}
 
@@ -777,11 +777,11 @@
 
   // (removed) global dim overlay control
 
-  // Hook filters with debounced search for better performance
-  const debouncedSearch = window.PerfUtils && window.PerfUtils.debounce ? 
-    window.PerfUtils.debounce(applyFilters, 300) : applyFilters;
-  searchEl.addEventListener('input', debouncedSearch, { passive: true });
-  if (sortEl) sortEl.addEventListener('change', applyFilters);
+  // Hook filters with debounced search for better performance (moved to initPlayer function to avoid duplicate listeners)
+  // const debouncedSearch = window.PerfUtils && window.PerfUtils.debounce ?
+  //   window.PerfUtils.debounce(applyFilters, 300) : applyFilters;
+  // if (searchEl) searchEl.addEventListener('input', debouncedSearch, { passive: true });
+  // if (sortEl) sortEl.addEventListener('change', applyFilters);
 
   // Final safety: ensure view is initialized to all, even if select/search are null
   try { activeTag = TAG_ALL; } catch(_) {}
