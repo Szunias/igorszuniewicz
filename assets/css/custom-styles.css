@@ -1615,6 +1615,17 @@ body[data-theme="light"] #wrapper { background: transparent !important; }
 /* Capabilities as compact pills */
 .capabilities-pills { margin: .2rem auto .2rem; }
 
+/* Mobile: completely remove the top navigation bar */
+@media screen and (max-width: 980px) {
+  #nav,
+  #navPanelToggle,
+  #navPanel {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+}
+
 /*
     Performance Fix: Replace JS wave animation with a hardware-accelerated CSS animation.
     This creates a gentle, back-and-forth motion for the waves, which is
