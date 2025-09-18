@@ -193,5 +193,21 @@
     "date": "2025-09-16",
     "year": 2025,
     "sources": [ { "url": "songs/gnosienne1.wav", "type": "audio/wav" } ]
+  },
+  {
+    "id": "caplanetechno",
+    "title": "Ça Plane Pour Moi — Techno Remix",
+    "artist": "Igor Szuniewicz",
+    "cover": "images/caplanepourmoi.png",
+    "tags": ["single", "techno", "electronic", "remix"],
+    "length": 0,
+    "date": "2023-12-15",
+    "year": 2023,
+    "desc": {
+      "pl": "Techno‑remix klasyka ‘Ça plane pour moi’: szybki beat, sprężysty bas i energetyczne syntezatory.",
+      "en": "Techno remix of the classic ‘Ça plane pour moi’: fast four‑on‑the‑floor, punchy bass and energetic synths.",
+      "nl": "Techno‑remix van de klassieker ‘Ça plane pour moi’: snel vier‑op‑de‑vloer, stevige bas en energieke synths."
+    },
+    "sources": [ { "url": "songs/caplanetechno.wav", "type": "audio/wav" } ]
   }
 ]
