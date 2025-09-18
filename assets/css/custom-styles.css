@@ -1643,3 +1643,8 @@ body[data-theme="light"] #wrapper { background: transparent !important; }
 .bg-waves path:nth-of-type(3) {
     animation: wave-move 15s ease-in-out infinite;
 }
+
+.button.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
