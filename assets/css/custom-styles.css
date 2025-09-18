@@ -1615,11 +1615,9 @@ body[data-theme="light"] #wrapper { background: transparent !important; }
 /* Capabilities as compact pills */
 .capabilities-pills { margin: .2rem auto .2rem; }
 
-/* Mobile: completely remove the top navigation bar */
+/* Mobile: hide only the wide top navigation bar; keep hamburger menu */
 @media screen and (max-width: 980px) {
-  #nav,
-  #navPanelToggle,
-  #navPanel {
+  #nav {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
