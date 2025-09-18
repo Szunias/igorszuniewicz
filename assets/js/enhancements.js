@@ -1454,23 +1454,5 @@ document.addEventListener('DOMContentLoaded', function() {
   })();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
-
-    document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
-  } else {
-    // Fallback: show immediately
-    document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('in-view'));
-  }
-});
-
 // Desktop keyboard click sounds removed per request
 
