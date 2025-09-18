@@ -1615,14 +1615,7 @@ body[data-theme="light"] #wrapper { background: transparent !important; }
 /* Capabilities as compact pills */
 .capabilities-pills { margin: .2rem auto .2rem; }
 
-/* Mobile: hide only the wide top navigation bar; keep hamburger menu */
-@media screen and (max-width: 980px) {
-  #nav {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-  }
-}
+/* (Removed) Hiding #nav on mobile caused missing navigation on pages without hamburger init */
 
 /*
     Performance Fix: Replace JS wave animation with a hardware-accelerated CSS animation.
