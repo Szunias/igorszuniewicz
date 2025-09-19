@@ -511,6 +511,12 @@
 
         </div> <!-- End #main -->
 
+        <!-- Page Visit Counter -->
+        <div id="visit-counter" style="position: fixed; bottom: 20px; right: 20px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 8px 12px; color: rgba(255,255,255,0.8); font-size: 0.8rem; z-index: 1000; display: none;">
+          <span style="margin-right: 6px;">👁️</span>
+          <span id="visit-count">—</span> visits
+        </div>
+
         <div id="copyright">
             <ul>
                 <li>&copy; Igor Szuniewicz 2025. All rights reserved.</li>
@@ -538,6 +544,8 @@
     <!-- Essential functionality scripts -->
     <script src="assets/js/slider.js"></script>
     <script src="assets/js/enhancements.js?v=nuclear-fix"></script>
+    <script src="assets/js/analytics.js"></script>
+    <script src="assets/js/visit-counter.js"></script>
     <!-- <script src="assets/js/theme-toggle.js"></script> -->
 
     <!-- Non-blocking optimizations -->
