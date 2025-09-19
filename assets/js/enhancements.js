@@ -1149,6 +1149,38 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('[data-i18n]').forEach(el=>{ const key=el.getAttribute('data-i18n'); const map=A[key]; if (!map) return; const val=map[lang]||map['en']; if (/^<.*>/.test(val)) el.innerHTML=val; else el.textContent=val; });
     }
 
+    // Professional Profile section translations (index)
+    if (document.getElementById('cv-section')){
+      const P = {
+        profile_title: { en:'Professional Profile', pl:'Profil Zawodowy', nl:'Professioneel Profiel' },
+        profile_desc: { en:'Audio engineer and composer specializing in interactive sound design and game audio implementation.', pl:'Inżynier dźwięku i kompozytor specjalizujący się w interaktywnym sound designie i implementacji audio w grach.', nl:'Audio-engineer en componist gespecialiseerd in interactief sounddesign en game audio-implementatie.' },
+        education_title: { en:'Education & Training', pl:'Edukacja i Szkolenia', nl:'Opleiding & Training' },
+        edu_dae_title: { en:'Game Audio Integration', pl:'Integracja Audio w Grach', nl:'Game Audio Integratie' },
+        present: { en:'Present', pl:'Obecnie', nl:'Huidig' },
+        edu_dae_desc: { en:'Advanced game audio techniques, Wwise/FMOD implementation, real-time audio systems', pl:'Zaawansowane techniki audio w grach, implementacja Wwise/FMOD, systemy audio czasu rzeczywistego', nl:'Geavanceerde game audio-technieken, Wwise/FMOD implementatie, real-time audiosystemen' },
+        edu_hs_title: { en:'Mathematics & Physics', pl:'Matematyka i Fizyka', nl:'Wiskunde & Natuurkunde' },
+        edu_hs_desc: { en:'Advanced mathematics, physics, and analytical thinking foundations', pl:'Zaawansowana matematyka, fizyka i podstawy myślenia analitycznego', nl:'Geavanceerde wiskunde, natuurkunde en analytisch denken' },
+        edu_music_title: { en:'Music Theory & Performance', pl:'Teoria Muzyki i Wykonawstwo', nl:'Muziektheorie & Uitvoering' },
+        edu_music_school: { en:'State Music School', pl:'Państwowa Szkoła Muzyczna', nl:'Staatsmuziekschool' },
+        edu_music_desc: { en:'Classical music training, theory, composition, and ensemble performance', pl:'Szkolenie muzyki klasycznej, teoria, kompozycja i gra zespołowa', nl:'Klassieke muziektraining, theorie, compositie en ensemble-uitvoering' },
+        competencies_title: { en:'Core Competencies', pl:'Kluczowe Kompetencje', nl:'Kerncompetenties' },
+        comp_audio_title: { en:'Audio Production', pl:'Produkcja Audio', nl:'Audioproductie' },
+        comp_game_title: { en:'Game Development', pl:'Rozwój Gier', nl:'Game Development' },
+        comp_prog_title: { en:'Programming', pl:'Programowanie', nl:'Programmeren' },
+        comp_tools_title: { en:'Tools & Workflow', pl:'Narzędzia i Przepływ Pracy', nl:'Tools & Workflow' },
+        spec_title: { en:'Specializations', pl:'Specjalizacje', nl:'Specialisaties' },
+        spec_interactive_title: { en:'Interactive Audio Systems', pl:'Interaktywne Systemy Audio', nl:'Interactieve Audiosystemen' },
+        spec_interactive_desc: { en:'Dynamic music systems, adaptive soundscapes, and real-time audio processing for games', pl:'Dynamiczne systemy muzyczne, adaptacyjne krajobrazy dźwiękowe i przetwarzanie audio w czasie rzeczywistym dla gier', nl:'Dynamische muzieksystemen, adaptieve soundscapes en real-time audioverwerking voor games' },
+        spec_dsp_title: { en:'DSP & Plugin Development', pl:'DSP i Rozwój Wtyczek', nl:'DSP & Plugin Ontwikkeling' },
+        spec_dsp_desc: { en:'Custom audio effects, 3D spatial audio, and performance-optimized real-time processing', pl:'Niestandardowe efekty audio, przestrzenne audio 3D i zoptymalizowane pod kątem wydajności przetwarzanie w czasie rzeczywistym', nl:'Custom audio-effecten, 3D ruimtelijke audio en performance-geoptimaliseerde real-time processing' },
+        spec_media_title: { en:'Media Composition', pl:'Kompozycja Medialna', nl:'Mediacompositie' },
+        spec_media_desc: { en:'Original scoring for games, animations, and interactive media with technical precision', pl:'Oryginalne kompozycje do gier, animacji i mediów interaktywnych z techniczną precyzją', nl:'Originele muziek voor games, animaties en interactieve media met technische precisie' },
+        contact_prompt: { en:'Interested in collaboration or have questions about my work?', pl:'Zainteresowany współpracą lub masz pytania o moją pracę?', nl:'Geïnteresseerd in samenwerking of heb je vragen over mijn werk?' },
+        contact_button: { en:'Get In Touch', pl:'Skontaktuj się', nl:'Neem Contact Op' }
+      };
+      document.querySelectorAll('[data-i18n]').forEach(el=>{ const key=el.getAttribute('data-i18n'); const map=P[key]; if (!map) return; const val=map[lang]||map['en']; if (/^<.*>/.test(val)) el.innerHTML=val; else el.textContent=val; });
+    }
+
     // Scholarly page translations
     if (location.pathname.endsWith('/scholarly.html')){
       const H = {

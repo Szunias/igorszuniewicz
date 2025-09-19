@@ -34,7 +34,7 @@
 	<!-- Main CSS loads immediately to preserve styling -->
 	<link rel="preload" href="assets/css/main.css" as="style" />
 	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="assets/css/custom-styles.css?v=20250919d" />
+	<link rel="stylesheet" href="assets/css/custom-styles.css?v=20250919f" />
 	<link rel="stylesheet" href="assets/css/pro-theme.css?v=20250219" />
 	<!-- Critical CSS for performance (non-blocking) -->
 	<!-- <link rel="preload" href="assets/css/critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> -->
@@ -392,119 +392,141 @@
                 </div>
             </section>
 
-            <!-- Curriculum Vitae (CV) Section -->
+            <!-- Professional Profile Section -->
             <section id="cv-section" class="post" data-reveal style="--reveal-delay:.06s;">
                 <header class="major">
-                    <h2>About Me / Curriculum Vitae</h2>
-                    <p id="bgWhite">A quasi-chronological overview of my life, education, and professional work.</p>
+                    <h2 data-i18n="profile_title">Professional Profile</h2>
+                    <p data-i18n="profile_desc">Audio engineer and composer specializing in interactive sound design and game audio implementation.</p>
                 </header>
-                
-                <div class="box">
-                    <div class="row">
-                        <div class="col-6 col-12-small">
-                            <h4>Education</h4>
-                            <ul class="cv-timeline">
-                                <li data-detail="Integracja audio w grach (UE/Unity)|Wwise, FMOD, miks, RTPCs">
-                                    <div class="cv-time">2024 — now</div>
-                                    <div class="cv-item">
-                                        <div class="cv-title"><img src="images/dae.jpg?v=1" alt="Howest DAE" class="cv-logo" loading="lazy" decoding="async" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; width: 28px !important; height: 28px !important; margin-right: 8px !important;"><strong>Howest DAE</strong></div>
-                                        <div class="cv-sub">Game Sound Integration (ongoing)</div>
+
+                <div class="profile-container">
+                    <!-- Education Timeline -->
+                    <div class="profile-section" data-reveal style="--reveal-delay:.08s;">
+                        <h3><i class="fas fa-graduation-cap"></i> <span data-i18n="education_title">Education & Training</span></h3>
+                        <div class="timeline">
+                            <div class="timeline-item active">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-header">
+                                        <img src="images/dae.jpg?v=1" alt="DAE" class="timeline-logo">
+                                        <div class="timeline-info">
+                                            <h4 data-i18n="edu_dae_title">Game Audio Integration</h4>
+                                            <span class="timeline-institution">Howest DAE, Belgium</span>
+                                            <span class="timeline-period">2024 — <span data-i18n="present">Present</span></span>
+                                        </div>
                                     </div>
-                                </li>
-                                <li data-detail="Profil rozszerzony: matematyka i fizyka|Olimpiady i projekty naukowe">
-                                    <div class="cv-time">2021 — 2024</div>
-                                    <div class="cv-item">
-                                        <div class="cv-title"><img src="images/koperas.png?v=1" alt="Copernicus High School" class="cv-logo" loading="lazy" decoding="async" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; width: 28px !important; height: 28px !important; margin-right: 8px !important;"><strong>Copernicus High School</strong></div>
-                                        <div class="cv-sub">Maths & Physics profile (graduated)</div>
+                                    <p class="timeline-desc" data-i18n="edu_dae_desc">Advanced game audio techniques, Wwise/FMOD implementation, real-time audio systems</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-header">
+                                        <img src="images/koperas.png?v=1" alt="Copernicus" class="timeline-logo">
+                                        <div class="timeline-info">
+                                            <h4 data-i18n="edu_hs_title">Mathematics & Physics</h4>
+                                            <span class="timeline-institution">Copernicus High School</span>
+                                            <span class="timeline-period">2021 — 2024</span>
+                                        </div>
                                     </div>
-                                </li>
-                                <li data-detail="Teoria muzyki, kształcenie słuchu|Praktyka sceniczna i zespół">
-                                    <div class="cv-time">2013 — 2020</div>
-                                    <div class="cv-item">
-                                        <div class="cv-title"><img src="images/muzyczna.png?v=1" alt="State Music School" class="cv-logo" loading="lazy" decoding="async" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; width: 28px !important; height: 28px !important; margin-right: 8px !important;"><strong>State Music School (First Degree)</strong></div>
-                                        <div class="cv-sub">Music Theory & Performance (graduated)</div>
+                                    <p class="timeline-desc" data-i18n="edu_hs_desc">Advanced mathematics, physics, and analytical thinking foundations</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-header">
+                                        <img src="images/muzyczna.png?v=1" alt="Music School" class="timeline-logo">
+                                        <div class="timeline-info">
+                                            <h4 data-i18n="edu_music_title">Music Theory & Performance</h4>
+                                            <span class="timeline-institution" data-i18n="edu_music_school">State Music School</span>
+                                            <span class="timeline-period">2013 — 2020</span>
+                                        </div>
                                     </div>
-                                </li>
-                            </ul>
+                                    <p class="timeline-desc" data-i18n="edu_music_desc">Classical music training, theory, composition, and ensemble performance</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <h4 class="skills-title">Key Skills</h4>
-                    <div class="skills-grid">
-                                <article class="skill-card">
-                                    <div class="skill-ico"><span class="icon solid fa-wave-square" aria-hidden="true"></span></div>
-                                    <div class="skill-body">
-                                        <h5>Sound Design</h5>
-                                        <ul class="mini">
-                                            <li>SFX palette, recording, mixing</li>
-                                            <li>Implementation in UE/Unity</li>
-                                        </ul>
-                                    </div>
-                                </article>
-                                <article class="skill-card">
-                                    <div class="skill-ico"><span class="icon solid fa-music" aria-hidden="true"></span></div>
-                                    <div class="skill-body">
-                                        <h5>Music Composition</h5>
-                                        <ul class="mini">
-                                            <li>Adaptive/interactive scores</li>
-                                            <li>Production and orchestration</li>
-                                        </ul>
-                                    </div>
-                                </article>
-                                <article class="skill-card">
-                                    <div class="skill-ico"><span class="icon solid fa-plug" aria-hidden="true"></span></div>
-                                    <div class="skill-body">
-                                        <h5>Middleware (Wwise, FMOD)</h5>
-                                        <ul class="mini">
-                                            <li>States, RTPCs, mixing</li>
-                                            <li>Game parameter integration</li>
-                                        </ul>
-                                    </div>
-                                </article>
-                                <article class="skill-card">
-                                    <div class="skill-ico"><span class="icon solid fa-cubes" aria-hidden="true"></span></div>
-                                    <div class="skill-body">
-                                        <h5>Engines (UE, Unity)</h5>
-                                        <ul class="mini">
-                                            <li>UE Blueprints/C++</li>
-                                            <li>Unity C# tooling</li>
-                                        </ul>
-                                    </div>
-                                </article>
-                                <article class="skill-card">
-                                    <div class="skill-ico"><span class="icon solid fa-code" aria-hidden="true"></span></div>
-                                    <div class="skill-body">
-                                        <h5>Programming</h5>
-                                        <ul class="mini">
-                                            <li>C++ (DSP/tools), Python</li>
-                                            <li>C# utilities</li>
-                                        </ul>
-                                    </div>
-                                </article>
-                                <article class="skill-card">
-                                    <div class="skill-ico"><span class="icon solid fa-sliders-h" aria-hidden="true"></span></div>
-                                    <div class="skill-body">
-                                        <h5>DAWs</h5>
-                                        <ul class="mini">
-                                            <li>Reaper, Pro Tools, Logic</li>
-                                            <li>Efficient workflows</li>
-                                        </ul>
-                                    </div>
-                                </article>
-                                <article class="skill-card">
-                                    <div class="skill-ico"><span class="icon solid fa-microchip" aria-hidden="true"></span></div>
-                                    <div class="skill-body">
-                                        <h5>VST/Audio Plugins</h5>
-                                        <ul class="mini">
-                                            <li>JUCE/C++, DSP and GUI</li>
-                                            <li>Optimization for realtime</li>
-                                        </ul>
-                                    </div>
-                                </article>
+
+                    <!-- Core Competencies -->
+                    <div class="profile-section" data-reveal style="--reveal-delay:.12s;">
+                        <h3><i class="fas fa-cogs"></i> <span data-i18n="competencies_title">Core Competencies</span></h3>
+                        <div class="competencies-grid">
+                            <div class="competency-category">
+                                <h4 data-i18n="comp_audio_title">Audio Production</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag expert">Sound Design</span>
+                                    <span class="skill-tag expert">Music Composition</span>
+                                    <span class="skill-tag advanced">Audio Implementation</span>
+                                    <span class="skill-tag advanced">Mixing & Mastering</span>
+                                </div>
+                            </div>
+                            <div class="competency-category">
+                                <h4 data-i18n="comp_game_title">Game Development</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag expert">Wwise</span>
+                                    <span class="skill-tag expert">FMOD</span>
+                                    <span class="skill-tag advanced">Unreal Engine</span>
+                                    <span class="skill-tag advanced">Unity</span>
+                                </div>
+                            </div>
+                            <div class="competency-category">
+                                <h4 data-i18n="comp_prog_title">Programming</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag advanced">C++</span>
+                                    <span class="skill-tag intermediate">C#</span>
+                                    <span class="skill-tag intermediate">Python</span>
+                                    <span class="skill-tag expert">JUCE Framework</span>
+                                </div>
+                            </div>
+                            <div class="competency-category">
+                                <h4 data-i18n="comp_tools_title">Tools & Workflow</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag expert">Reaper</span>
+                                    <span class="skill-tag advanced">Pro Tools</span>
+                                    <span class="skill-tag intermediate">Logic Pro</span>
+                                    <span class="skill-tag advanced">Git</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Specializations -->
+                    <div class="profile-section" data-reveal style="--reveal-delay:.16s;">
+                        <h3><i class="fas fa-star"></i> <span data-i18n="spec_title">Specializations</span></h3>
+                        <div class="specializations">
+                            <div class="specialization">
+                                <div class="spec-icon"><i class="fas fa-gamepad"></i></div>
+                                <div class="spec-content">
+                                    <h4 data-i18n="spec_interactive_title">Interactive Audio Systems</h4>
+                                    <p data-i18n="spec_interactive_desc">Dynamic music systems, adaptive soundscapes, and real-time audio processing for games</p>
+                                </div>
+                            </div>
+                            <div class="specialization">
+                                <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                <div class="spec-content">
+                                    <h4 data-i18n="spec_dsp_title">DSP & Plugin Development</h4>
+                                    <p data-i18n="spec_dsp_desc">Custom audio effects, 3D spatial audio, and performance-optimized real-time processing</p>
+                                </div>
+                            </div>
+                            <div class="specialization">
+                                <div class="spec-icon"><i class="fas fa-film"></i></div>
+                                <div class="spec-content">
+                                    <h4 data-i18n="spec_media_title">Media Composition</h4>
+                                    <p data-i18n="spec_media_desc">Original scoring for games, animations, and interactive media with technical precision</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                 <ul class="actions" style="text-align: center; margin-top: 2em;">
-                    <li><a id="butt" href="javascript:void(0);" title="CV not available yet" class="button disabled">Download Full CV (PDF)</a></li>
-                </ul>
+
+                <div class="profile-footer" data-reveal style="--reveal-delay:.20s;">
+                    <div class="contact-prompt">
+                        <p data-i18n="contact_prompt">Interested in collaboration or have questions about my work?</p>
+                        <a href="contact.html" class="button primary" data-i18n="contact_button">Get In Touch</a>
+                    </div>
+                </div>
             </section>
             <hr />
             
