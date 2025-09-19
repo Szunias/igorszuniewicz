@@ -129,7 +129,7 @@
   });
 
   // Robust fetch URL: avoid query params on file:// to prevent fetch errors in local previews
-  const __ts__ = '20250923';
+  const __ts__ = '20250924';
   const tracksUrl = (location.protocol === 'file:')
     ? 'assets/js/tracks.json'
     : ('assets/js/tracks.json?v=' + __ts__);
@@ -589,6 +589,46 @@
     playerBar.hidden = false;
     playerBar.classList.add('open');
     document.documentElement.style.setProperty('--player-visible','1');
+
+    // Media Session API for mobile/car displays
+    try {
+      if ('mediaSession' in navigator) {
+        const albumArt = t.cover ? new URL(t.cover, location.href).toString() : '';
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: t.title || 'Untitled',
+          artist: t.artist || 'Igor Szuniewicz',
+          album: 'Igor Szuniewicz Music Collection',
+          artwork: albumArt ? [
+            { src: albumArt, sizes: '96x96', type: 'image/png' },
+            { src: albumArt, sizes: '128x128', type: 'image/png' },
+            { src: albumArt, sizes: '192x192', type: 'image/png' },
+            { src: albumArt, sizes: '256x256', type: 'image/png' },
+            { src: albumArt, sizes: '384x384', type: 'image/png' },
+            { src: albumArt, sizes: '512x512', type: 'image/png' }
+          ] : []
+        });
+
+        // Set up media session action handlers
+        navigator.mediaSession.setActionHandler('play', () => {
+          if (audio.paused) { audio.play().catch(()=>{}); pbPlay.textContent='⏸'; markPlayingCard(); }
+        });
+        navigator.mediaSession.setActionHandler('pause', () => {
+          if (!audio.paused) { audio.pause(); pbPlay.textContent='▶'; markPlayingCard(); }
+        });
+        navigator.mediaSession.setActionHandler('previoustrack', () => {
+          if (view.length===0) return; const idx=(currentIndex-1+view.length)%view.length; start(idx);
+        });
+        navigator.mediaSession.setActionHandler('nexttrack', () => {
+          if (view.length===0) return; const idx=(currentIndex+1)%view.length; start(idx);
+        });
+        navigator.mediaSession.setActionHandler('seekto', (details) => {
+          if (isFinite(audio.duration) && details.seekTime) {
+            audio.currentTime = details.seekTime;
+          }
+        });
+      }
+    } catch(_) { console.log('Media Session API not supported'); }
+
     // update mini timelines fill/labels
     try {
       document.querySelectorAll('.music-item .mi-mini-timeline .mi-fill').forEach(f=> f.style.width='0%');
@@ -671,6 +711,20 @@
     }
     drawWaveProgress();
     updateModalTimeline();
+
+    // Update Media Session position state
+    try {
+      if ('mediaSession' in navigator && 'setPositionState' in navigator.mediaSession) {
+        if (isFinite(audio.duration) && audio.duration > 0) {
+          navigator.mediaSession.setPositionState({
+            duration: audio.duration,
+            playbackRate: audio.playbackRate,
+            position: audio.currentTime
+          });
+        }
+      }
+    } catch(_) {}
+
     // update mini timeline for currently playing card
     try {
       const node = listEl.querySelector(`.music-item[data-index="${currentIndex}"] .mi-mini-timeline`);
@@ -681,8 +735,20 @@
       }
     } catch(_){ }
   });
-  audio.addEventListener('pause', ()=>{ pbPlay.textContent='▶'; updateCardPlayButtons(); markPlayingCard(); });
-  audio.addEventListener('play', ()=>{ pbPlay.textContent='⏸'; updateCardPlayButtons(); markPlayingCard(); });
+  audio.addEventListener('pause', ()=>{
+    pbPlay.textContent='▶';
+    updateCardPlayButtons();
+    markPlayingCard();
+    // Update Media Session playback state
+    try { if ('mediaSession' in navigator) navigator.mediaSession.playbackState = 'paused'; } catch(_) {}
+  });
+  audio.addEventListener('play', ()=>{
+    pbPlay.textContent='⏸';
+    updateCardPlayButtons();
+    markPlayingCard();
+    // Update Media Session playback state
+    try { if ('mediaSession' in navigator) navigator.mediaSession.playbackState = 'playing'; } catch(_) {}
+  });
   audio.addEventListener('loadedmetadata', ()=>{
     // If length is unknown (0), fill it from metadata
     try {
