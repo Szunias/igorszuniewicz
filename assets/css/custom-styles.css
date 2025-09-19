@@ -4,6 +4,65 @@
 .music-modal .mm-timeline .mm-seek::-webkit-slider-thumb { -webkit-appearance:none; width:18px; height:18px; border-radius:50%; background:#eaf7ff; border:2px solid #18bfef; box-shadow:0 2px 8px rgba(0,0,0,0.3); }
 .music-modal .mm-tooltip { position:absolute; top:-28px; transform: translateX(-50%); padding:2px 6px; border-radius:6px; font-size:.8rem; font-weight:700; color:#0b141a; background:#eaf7ff; border:1px solid rgba(24,191,239,0.6); box-shadow: 0 6px 18px rgba(0,0,0,0.25); opacity:0; pointer-events:none; z-index:5; }
 .music-modal .mm-tooltip.show { opacity:1; }
+
+/* Quality Toggle Button Styles */
+.mi-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mi-quality-toggle {
+    background: linear-gradient(135deg, #18bfef, #1aa3d1);
+    border: 1px solid #18bfef;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(24, 191, 239, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.mi-quality-toggle:hover {
+    background: linear-gradient(135deg, #1aa3d1, #1688b8);
+    border-color: #1aa3d1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(24, 191, 239, 0.4);
+}
+
+.mi-quality-toggle.hq-active {
+    background: linear-gradient(135deg, #f7d774, #e6c85a);
+    border-color: #f7d774;
+    color: #2a2a2a;
+    font-weight: 800;
+    box-shadow: 0 2px 8px rgba(247, 215, 116, 0.4);
+    text-shadow: none;
+}
+
+.mi-quality-toggle.hq-active:hover {
+    background: linear-gradient(135deg, #e6c85a, #d4b848);
+    border-color: #e6c85a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(247, 215, 116, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .mi-quality-toggle {
+        font-size: 10px;
+        padding: 5px 8px;
+        min-width: 24px;
+        height: 24px;
+    }
+}
 /* Custom CSS for Igor Szuniewicz Portfolio Redesign */
 /* Google Fonts now preloaded via <link> tags in HTML head (removed @import for performance) */
 

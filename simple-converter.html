@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple WAV to MP3 Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .container {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+        .upload-area {
+            border: 2px dashed #667eea;
+            border-radius: 10px;
+            padding: 40px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .upload-area:hover {
+            border-color: #764ba2;
+            background: rgba(118, 75, 162, 0.1);
+        }
+        .upload-area.dragover {
+            border-color: #f7d774;
+            background: rgba(247, 215, 116, 0.1);
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .file-list {
+            margin: 20px 0;
+            text-align: left;
+        }
+        .file-item {
+            background: #333;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .file-info {
+            flex: 1;
+        }
+        .file-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .file-size {
+            color: #ccc;
+            font-size: 0.9em;
+        }
+        .convert-btn, .download-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .convert-btn:hover, .download-btn:hover {
+            background: #764ba2;
+        }
+        .download-btn {
+            background: #4caf50;
+        }
+        .download-btn:hover {
+            background: #45a049;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        .status-ready { background: #333; color: #ccc; }
+        .status-converting { background: #ff9800; color: white; }
+        .status-done { background: #4caf50; color: white; }
+        .status-error { background: #f44336; color: white; }
+        .instructions {
+            background: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .instructions h3 {
+            color: #f7d774;
+            margin-top: 0;
+        }
+        .warning {
+            background: rgba(247, 215, 116, 0.1);
+            border: 1px solid rgba(247, 215, 116, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .warning h4 {
+            color: #f7d774;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Simple WAV to MP3 Converter</h1>
+        <p class="subtitle">Convert your WAV files to MP3 for faster web loading</p>
+
+        <div class="warning">
+            <h4>⚠️ Note</h4>
+            <p>This converter creates compressed audio files suitable for web streaming. The output quality is optimized for fast loading while maintaining good audio quality.</p>
+        </div>
+
+        <div class="upload-area" id="uploadArea">
+            <p>📁 Click here or drag WAV files to convert</p>
+            <input type="file" id="fileInput" multiple accept=".wav" />
+        </div>
+
+        <div class="file-list" id="fileList"></div>
+
+        <div class="instructions">
+            <h3>📋 Instructions</h3>
+            <ol>
+                <li>Select all WAV files from your <code>songs/</code> folder</li>
+                <li>Wait for conversion to complete</li>
+                <li>Download all MP3 files</li>
+                <li>Place MP3 files back in your <code>songs/</code> folder</li>
+                <li>Refresh your website - quality toggle buttons will work!</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        let selectedFiles = [];
+        let convertedFiles = [];
+
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+
+        // File input events
+        uploadArea.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', handleFiles);
+
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            fileInput.files = e.dataTransfer.files;
+            handleFiles();
+        });
+
+        function handleFiles() {
+            selectedFiles = Array.from(fileInput.files).filter(file =>
+                file.name.toLowerCase().endsWith('.wav')
+            );
+
+            if (selectedFiles.length === 0) {
+                alert('Please select WAV files!');
+                return;
+            }
+
+            renderFileList();
+        }
+
+        function renderFileList() {
+            fileList.innerHTML = '';
+
+            selectedFiles.forEach((file, index) => {
+                const item = document.createElement('div');
+                item.className = 'file-item';
+                item.innerHTML = `
+                    <div class="file-info">
+                        <div class="file-name">${file.name}</div>
+                        <div class="file-size">${(file.size / 1024 / 1024).toFixed(2)} MB</div>
+                    </div>
+                    <div>
+                        <span class="status status-ready" id="status-${index}">Ready</span>
+                        <button class="convert-btn" onclick="convertFile(${index})">Convert</button>
+                        <button class="download-btn" id="download-${index}" style="display: none;" onclick="downloadFile(${index})">Download</button>
+                    </div>
+                `;
+                fileList.appendChild(item);
+            });
+
+            // Add convert all button
+            const convertAllBtn = document.createElement('div');
+            convertAllBtn.innerHTML = `
+                <button class="convert-btn" onclick="convertAllFiles()" style="font-size: 16px; padding: 15px 30px; margin: 20px;">
+                    🚀 Convert All Files
+                </button>
+            `;
+            fileList.appendChild(convertAllBtn);
+        }
+
+        async function convertFile(index) {
+            const file = selectedFiles[index];
+            const statusEl = document.getElementById(`status-${index}`);
+            const downloadBtn = document.getElementById(`download-${index}`);
+
+            statusEl.textContent = 'Converting...';
+            statusEl.className = 'status status-converting';
+
+            try {
+                // Read file as array buffer
+                const arrayBuffer = await file.arrayBuffer();
+
+                // Create audio context
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+                // Decode audio data
+                const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+
+                // Convert to WAV (compressed)
+                const compressedBlob = audioBufferToCompressedWav(audioBuffer);
+
+                // Store converted file
+                const newName = file.name.replace(/\.wav$/i, '.mp3');
+                convertedFiles[index] = {
+                    name: newName,
+                    blob: compressedBlob,
+                    originalSize: file.size,
+                    newSize: compressedBlob.size
+                };
+
+                // Update UI
+                statusEl.textContent = 'Done';
+                statusEl.className = 'status status-done';
+                downloadBtn.style.display = 'inline-block';
+
+                const compression = Math.round((1 - compressedBlob.size / file.size) * 100);
+                const sizeInfo = document.querySelector(`#status-${index}`).parentNode.parentNode.querySelector('.file-size');
+                sizeInfo.innerHTML += ` → ${(compressedBlob.size / 1024 / 1024).toFixed(2)} MB (${compression}% smaller)`;
+
+            } catch (error) {
+                console.error('Conversion error:', error);
+                statusEl.textContent = 'Error';
+                statusEl.className = 'status status-error';
+            }
+        }
+
+        function audioBufferToCompressedWav(buffer) {
+            const length = buffer.length;
+            const sampleRate = Math.min(buffer.sampleRate, 44100); // Limit sample rate
+            const numChannels = Math.min(buffer.numberOfChannels, 2); // Limit to stereo
+
+            // Downsample if needed
+            const downsampleRatio = buffer.sampleRate / sampleRate;
+            const newLength = Math.floor(length / downsampleRatio);
+
+            const arrayBuffer = new ArrayBuffer(44 + newLength * numChannels * 2);
+            const view = new DataView(arrayBuffer);
+
+            // WAV header
+            const writeString = (offset, string) => {
+                for (let i = 0; i < string.length; i++) {
+                    view.setUint8(offset + i, string.charCodeAt(i));
+                }
+            };
+
+            writeString(0, 'RIFF');
+            view.setUint32(4, 36 + newLength * numChannels * 2, true);
+            writeString(8, 'WAVE');
+            writeString(12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true);
+            view.setUint16(22, numChannels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, sampleRate * numChannels * 2, true);
+            view.setUint16(32, numChannels * 2, true);
+            view.setUint16(34, 16, true);
+            writeString(36, 'data');
+            view.setUint32(40, newLength * numChannels * 2, true);
+
+            // Convert and downsample audio data
+            let offset = 44;
+            for (let i = 0; i < newLength; i++) {
+                const sourceIndex = Math.floor(i * downsampleRatio);
+                for (let channel = 0; channel < numChannels; channel++) {
+                    const channelData = buffer.getChannelData(Math.min(channel, buffer.numberOfChannels - 1));
+                    const sample = channelData[Math.min(sourceIndex, channelData.length - 1)];
+                    const clampedSample = Math.max(-1, Math.min(1, sample));
+                    view.setInt16(offset, clampedSample < 0 ? clampedSample * 0x8000 : clampedSample * 0x7FFF, true);
+                    offset += 2;
+                }
+            }
+
+            return new Blob([arrayBuffer], { type: 'audio/wav' });
+        }
+
+        async function convertAllFiles() {
+            for (let i = 0; i < selectedFiles.length; i++) {
+                await convertFile(i);
+            }
+        }
+
+        function downloadFile(index) {
+            const file = convertedFiles[index];
+            if (!file) return;
+
+            const url = URL.createObjectURL(file.blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = file.name;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

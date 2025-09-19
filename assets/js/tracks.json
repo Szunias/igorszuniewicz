@@ -18,6 +18,10 @@
     },
     "sources": [
       {
+        "url": "songs/RayCreditsTheme.mp3",
+        "type": "audio/mpeg"
+      },
+      {
         "url": "songs/RayCreditsTheme.wav",
         "type": "audio/wav"
       }
@@ -73,6 +77,10 @@
       "nl": "Hypnotische techno met diepe bas en ritmische motieven. Donkere synthesizers creëren een hypnotiserende sfeer."
     },
     "sources": [
+      {
+        "url": "songs/trans2.mp3",
+        "type": "audio/mpeg"
+      },
       {
         "url": "songs/trans2.wav",
         "type": "audio/wav"
@@ -254,6 +262,10 @@
     "year": 2024,
     "sources": [
       {
+        "url": "songs/EdgeOfLife.mp3",
+        "type": "audio/mpeg"
+      },
+      {
         "url": "songs/EdgeOfLife.wav",
         "type": "audio/wav"
       }
@@ -277,6 +289,10 @@
     "date": "2025-02-15",
     "year": 2025,
     "sources": [
+      {
+        "url": "songs/Cage.mp3",
+        "type": "audio/mpeg"
+      },
       {
         "url": "songs/Cage.wav",
         "type": "audio/wav"
@@ -308,6 +324,10 @@
     },
     "sources": [
       {
+        "url": "songs/ThatsItIgorSzuniewicz.mp3",
+        "type": "audio/mpeg"
+      },
+      {
         "url": "songs/ThatsItIgorSzuniewicz.wav",
         "type": "audio/wav"
       }
@@ -326,6 +346,10 @@
     "date": "2025-09-16",
     "year": 2025,
     "sources": [
+      {
+        "url": "songs/gnosienne1.mp3",
+        "type": "audio/mpeg"
+      },
       {
         "url": "songs/gnosienne1.wav",
         "type": "audio/wav"
@@ -353,6 +377,10 @@
     },
     "sources": [
       {
+        "url": "songs/caplanetechno.mp3",
+        "type": "audio/mpeg"
+      },
+      {
         "url": "songs/caplanetechno.wav",
         "type": "audio/wav"
       }
@@ -376,6 +404,10 @@
       "nl": "Hypnotische techno track met complexe syncopische ritmes en diepe baslijnen die een ingewikkelde dansvloer ervaring creëren"
     },
     "sources": [
+      {
+        "url": "songs/syncopationsnew.mp3",
+        "type": "audio/mpeg"
+      },
       {
         "url": "songs/syncopationsnew.wav",
         "type": "audio/wav"

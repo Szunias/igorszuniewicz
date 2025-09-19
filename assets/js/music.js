@@ -107,6 +107,50 @@
     return playable.length ? playable : order;
   }
 
+  // Enhanced source selection with quality preference
+  function chooseSourceWithPreference(track, qualityPreference = 'auto') {
+    if (!track || !Array.isArray(track.sources) || track.sources.length === 0) return [];
+
+    const audio = document.createElement('audio');
+    const sources = track.sources.slice();
+
+    const scored = sources.map(function(s) {
+      const t = s.type || inferType(s.url);
+      let score = 3;
+
+      if (qualityPreference === 'hq') {
+        // Prefer WAV for high quality
+        if (t === 'audio/wav') score = 0;
+        else if (t === 'audio/mpeg' || t === 'audio/mp4' || t === 'audio/ogg') score = 1;
+        else score = 2;
+      } else {
+        // Prefer compressed formats (original behavior)
+        if (t === 'audio/mpeg' || t === 'audio/mp4' || t === 'audio/ogg') score = 0;
+        else if (t === 'audio/wav') score = 2;
+        else score = 1;
+      }
+
+      return { src: s, type: t, score };
+    });
+
+    function inferType(url) {
+      try {
+        if (!url) return '';
+        const ext = url.split('.').pop().toLowerCase();
+        if (ext === 'mp3') return 'audio/mpeg';
+        if (ext === 'wav') return 'audio/wav';
+        if (ext === 'ogg') return 'audio/ogg';
+        if (ext === 'm4a' || ext === 'aac') return 'audio/mp4';
+      } catch(_) {}
+      return '';
+    }
+
+    const playable = scored.filter(p => !p.type || audio.canPlayType(p.type))
+                           .sort((a,b) => a.score - b.score)
+                           .map(p => p.src);
+    return playable.length ? playable : sources;
+  }
+
   // Populate filter chips from tags
   const TAG_ALL = 'all';
   let activeTag = TAG_ALL;
@@ -210,6 +254,9 @@
         const i = idx++;
         const card = document.createElement('div'); card.className='music-item'; card.tabIndex=0; card.dataset.index=String(vi); if (t.id) card.dataset.id = String(t.id);
         const tagsHtml = (Array.isArray(t.tags)?t.tags:[]).map(function(x){ return '<span>'+x+'</span>'; }).join('');
+        // Show quality toggle for all tracks (will gracefully fallback if MP3 doesn't exist)
+        const qualityToggleHtml = '<button class="mi-quality-toggle" aria-label="Toggle Quality" title="Switch between MP3/WAV">SD</button>';
+
         card.innerHTML = `
           <img class="mi-cover" src="${t.cover||''}" alt="" loading="lazy" decoding="async" />
           <div class="mi-meta">
@@ -218,12 +265,68 @@
             <div class="mi-tags">${tagsHtml}</div>
           </div>
           <div class="mi-year">${t.year ? String(t.year) : ''}</div>
-          <button class="mi-play" aria-label="Play">▶</button>
+          <div class="mi-controls">
+            ${qualityToggleHtml}
+            <button class="mi-play" aria-label="Play">▶</button>
+          </div>
         `;
         const playBtn = card.querySelector('.mi-play');
+        const qualityBtn = card.querySelector('.mi-quality-toggle');
+
         function toggleThis(ev){ if (ev) ev.stopPropagation(); if (currentIndex===vi && !audio.paused){ audio.pause(); pbPlay.textContent='▶'; updateCardPlayButtons(); } else { start(vi); } }
         if (playBtn) playBtn.addEventListener('click', toggleThis);
         card.addEventListener('dblclick', toggleThis);
+
+        // Quality toggle functionality
+        if (qualityBtn) {
+          // Track current quality preference (stored per track)
+          if (!t.preferredQuality) t.preferredQuality = 'auto'; // 'auto' = prefer MP3, 'hq' = prefer WAV
+
+          const updateQualityButton = () => {
+            if (t.preferredQuality === 'hq') {
+              qualityBtn.textContent = 'HQ';
+              qualityBtn.title = 'High Quality (WAV) - Click for Standard';
+              qualityBtn.classList.add('hq-active');
+            } else {
+              qualityBtn.textContent = 'SD';
+              qualityBtn.title = 'Standard Quality (MP3) - Click for High Quality';
+              qualityBtn.classList.remove('hq-active');
+            }
+          };
+
+          qualityBtn.addEventListener('click', (ev) => {
+            ev.stopPropagation();
+            // Toggle quality preference
+            t.preferredQuality = (t.preferredQuality === 'hq') ? 'auto' : 'hq';
+            updateQualityButton();
+
+            // If this track is currently playing, reload with new quality
+            if (currentIndex === vi && currentTrackId === t.id) {
+              const wasPlaying = !audio.paused;
+              const currentTime = audio.currentTime;
+
+              // Rebuild source list with new preference
+              fallbackList = chooseSourceWithPreference(t, t.preferredQuality);
+              fallbackIdx = 0;
+              const newSource = fallbackList[0];
+
+              if (newSource) {
+                audio.src = new URL(newSource.url, location.href).toString();
+                audio.load();
+
+                // Restore playback position and state
+                audio.addEventListener('loadeddata', () => {
+                  audio.currentTime = currentTime;
+                  if (wasPlaying) {
+                    audio.play().catch(err => console.error('Playback error:', err));
+                  }
+                }, { once: true });
+              }
+            }
+          });
+
+          updateQualityButton();
+        }
         // Non-intrusive hint on hover
         const hint = document.createElement('div'); hint.className='mi-hint';
         try {
@@ -661,8 +764,8 @@
     const t = view[i]; if (!t) return;
     currentTrackId = t && t.id ? t.id : null;
     try { audio.pause(); } catch(_){}
-    // Build fallback list and pick first
-    fallbackList = chooseSource(t);
+    // Build fallback list with quality preference and pick first
+    fallbackList = chooseSourceWithPreference(t, t.preferredQuality);
     fallbackIdx = 0;
     const first = fallbackList[0]; if (!first) return;
     audio.src = new URL(first.url, location.href).toString();

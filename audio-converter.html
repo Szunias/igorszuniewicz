@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Audio Converter - Igor Szuniewicz</title>
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.7/dist/umd/ffmpeg.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, #1a1a2e 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, #16213e 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, #0f3460 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.4);
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 3.2em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2em;
+            font-weight: 400;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        .drop-zone {
+            border: 2px dashed rgba(102, 126, 234, 0.5);
+            border-radius: 20px;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drop-zone::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            animation: rotate 8s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        .drop-zone:hover,
+        .drop-zone.dragover {
+            border-color: rgba(118, 75, 162, 0.8);
+            background: rgba(255, 255, 255, 0.05);
+            transform: scale(1.02);
+        }
+
+        .drop-zone:hover::before,
+        .drop-zone.dragover::before {
+            opacity: 1;
+        }
+
+        .drop-zone p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .drop-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .file-input-label {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .file-input-label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .controls-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        .control-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .control-section label {
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 16px;
+            display: block;
+            font-size: 1.1em;
+        }
+
+        select {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: rgba(102, 126, 234, 0.6);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        select option {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+
+        .quality-options {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .quality-option {
+            flex: 1;
+            padding: 16px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .quality-option:hover,
+        .quality-option.selected {
+            border-color: rgba(102, 126, 234, 0.8);
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .quality-option strong {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 4px;
+        }
+
+        .quality-option small {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8em;
+        }
+
+        .progress-container {
+            margin-bottom: 30px;
+            display: none;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 16px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .progress-text {
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .file-list {
+            margin-top: 30px;
+        }
+
+        .file-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .file-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .file-info h3 {
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .file-info p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
+            margin-bottom: 4px;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .download-btn:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .file-size {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #667eea;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .status-indicator {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .status-processing {
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+        }
+
+        .status-complete {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4caf50;
+        }
+
+        .status-error {
+            background: rgba(244, 67, 54, 0.1);
+            color: #f44336;
+        }
+
+        .format-info {
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .format-info h3 {
+            color: #667eea;
+            margin-bottom: 16px;
+            font-size: 1.3em;
+        }
+
+        .format-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .format-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .format-card h4 {
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .format-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 12px;
+        }
+
+        .feature-list li {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85em;
+            margin-bottom: 4px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎵 Audio Converter</h1>
+            <p class="subtitle">Professional audio format conversion in your browser</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number" id="filesProcessed">0</div>
+                    <div class="stat-label">Files Processed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="totalSaved">0MB</div>
+                    <div class="stat-label">Space Saved</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="avgCompression">0%</div>
+                    <div class="stat-label">Avg Compression</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="drop-zone" id="dropZone">
+            <div class="drop-icon">📁</div>
+            <p>Drag & drop your audio files here</p>
+            <p>or</p>
+            <label for="fileInput" class="file-input-label">Choose Files</label>
+            <input type="file" id="fileInput" multiple accept="audio/*">
+        </div>
+
+        <div class="controls-grid">
+            <div class="control-section">
+                <label>🎛️ Output Format</label>
+                <select id="outputFormat">
+                    <option value="mp3">MP3 - Universal compatibility</option>
+                    <option value="ogg">OGG Vorbis - Best compression</option>
+                    <option value="aac">AAC - Apple ecosystem</option>
+                    <option value="wav">WAV - Lossless (no compression)</option>
+                </select>
+            </div>
+
+            <div class="control-section">
+                <label>🎯 Quality Setting</label>
+                <div class="quality-options">
+                    <div class="quality-option" data-quality="128">
+                        <strong>128 kbps</strong>
+                        <small>Small files</small>
+                    </div>
+                    <div class="quality-option selected" data-quality="192">
+                        <strong>192 kbps</strong>
+                        <small>Good quality</small>
+                    </div>
+                    <div class="quality-option" data-quality="320">
+                        <strong>320 kbps</strong>
+                        <small>High quality</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-container" id="progressContainer">
+            <label>🔄 Converting...</label>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p class="progress-text" id="progressText">Initializing...</p>
+        </div>
+
+        <div class="file-list" id="fileList"></div>
+
+        <div class="format-info">
+            <h3>💡 Format Guide</h3>
+            <div class="format-grid">
+                <div class="format-card">
+                    <h4>MP3 - Best Choice</h4>
+                    <p>Most compatible format, works everywhere. Perfect balance of quality and file size.</p>
+                    <ul class="feature-list">
+                        <li>Universal compatibility</li>
+                        <li>Good compression ratio</li>
+                        <li>Streaming-friendly</li>
+                    </ul>
+                </div>
+                <div class="format-card">
+                    <h4>OGG Vorbis - Smallest Files</h4>
+                    <p>Open-source format with superior compression. Same quality as MP3 at smaller file sizes.</p>
+                    <ul class="feature-list">
+                        <li>Best compression</li>
+                        <li>Open-source</li>
+                        <li>High quality</li>
+                    </ul>
+                </div>
+                <div class="format-card">
+                    <h4>AAC - Apple Optimized</h4>
+                    <p>Preferred by Apple devices and iTunes. Better quality than MP3 at similar bitrates.</p>
+                    <ul class="feature-list">
+                        <li>Apple ecosystem</li>
+                        <li>Better than MP3</li>
+                        <li>Streaming services</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedQuality = 192;
+        let ffmpeg = null;
+        let isLoading = false;
+        let stats = {
+            filesProcessed: 0,
+            totalSaved: 0,
+            totalCompression: 0
+        };
+
+        // Initialize FFmpeg
+        async function initFFmpeg() {
+            if (ffmpeg) return;
+
+            try {
+                const { FFmpeg } = FFmpegWASM;
+                ffmpeg = new FFmpeg();
+
+                const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.4/dist/umd';
+                ffmpeg.on('log', ({ message }) => {
+                    console.log(message);
+                });
+
+                await ffmpeg.load({
+                    coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
+                    wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
+                });
+
+                console.log('FFmpeg loaded successfully');
+            } catch (error) {
+                console.error('Failed to load FFmpeg:', error);
+                throw new Error('Failed to initialize audio converter');
+            }
+        }
+
+        async function toBlobURL(url, mimeType) {
+            const response = await fetch(url);
+            const blob = await response.blob();
+            return URL.createObjectURL(new Blob([blob], { type: mimeType }));
+        }
+
+        // Quality selector
+        document.querySelectorAll('.quality-option').forEach(option => {
+            option.addEventListener('click', () => {
+                document.querySelectorAll('.quality-option').forEach(o => o.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedQuality = parseInt(option.dataset.quality);
+            });
+        });
+
+        // File input handling
+        const fileInput = document.getElementById('fileInput');
+        const dropZone = document.getElementById('dropZone');
+
+        fileInput.addEventListener('change', handleFiles);
+
+        // Drag and drop
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            handleFiles({ target: { files: e.dataTransfer.files } });
+        });
+
+        async function handleFiles(event) {
+            const files = Array.from(event.target.files);
+            if (files.length === 0) return;
+
+            const audioFiles = files.filter(file => file.type.startsWith('audio/'));
+
+            if (audioFiles.length === 0) {
+                alert('Please select audio files!');
+                return;
+            }
+
+            if (isLoading) {
+                alert('Please wait for the current conversion to complete.');
+                return;
+            }
+
+            try {
+                await convertFiles(audioFiles);
+            } catch (error) {
+                console.error('Conversion failed:', error);
+                updateProgressText('Conversion failed: ' + error.message);
+            }
+        }
+
+        async function convertFiles(files) {
+            isLoading = true;
+            const progressContainer = document.getElementById('progressContainer');
+            progressContainer.style.display = 'block';
+
+            try {
+                updateProgressText('Initializing converter...');
+                await initFFmpeg();
+
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    const progress = ((i) / files.length) * 100;
+
+                    updateProgress(progress, `Converting ${file.name}...`);
+
+                    try {
+                        const result = await convertAudioFile(file);
+                        addFileToList(file.name, result.blob, file.size, result.blob.size);
+                        updateStats(file.size, result.blob.size);
+                    } catch (error) {
+                        console.error('Error converting file:', error);
+                        addErrorToList(file.name, error.message);
+                    }
+                }
+
+                updateProgress(100, 'Conversion completed! 🎉');
+            } catch (error) {
+                updateProgressText('Error: ' + error.message);
+            } finally {
+                isLoading = false;
+            }
+        }
+
+        async function convertAudioFile(file) {
+            const inputName = 'input.' + file.name.split('.').pop();
+            const outputFormat = document.getElementById('outputFormat').value;
+            const outputName = 'output.' + outputFormat;
+
+            try {
+                // Write input file
+                await ffmpeg.writeFile(inputName, await fetchFile(file));
+
+                // Convert
+                const args = ['-i', inputName];
+
+                if (outputFormat === 'mp3') {
+                    args.push('-acodec', 'libmp3lame', '-b:a', `${selectedQuality}k`);
+                } else if (outputFormat === 'ogg') {
+                    args.push('-acodec', 'libvorbis', '-b:a', `${selectedQuality}k`);
+                } else if (outputFormat === 'aac') {
+                    args.push('-acodec', 'aac', '-b:a', `${selectedQuality}k`);
+                } else if (outputFormat === 'wav') {
+                    args.push('-acodec', 'pcm_s16le');
+                }
+
+                args.push(outputName);
+
+                await ffmpeg.exec(args);
+
+                // Read output file
+                const data = await ffmpeg.readFile(outputName);
+                const blob = new Blob([data.buffer], {
+                    type: `audio/${outputFormat}`
+                });
+
+                // Clean up
+                await ffmpeg.deleteFile(inputName);
+                await ffmpeg.deleteFile(outputName);
+
+                return { blob };
+            } catch (error) {
+                throw new Error(`Conversion failed: ${error.message}`);
+            }
+        }
+
+        async function fetchFile(file) {
+            return new Uint8Array(await file.arrayBuffer());
+        }
+
+        function updateProgress(percentage, text) {
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+
+            progressFill.style.width = percentage + '%';
+            progressText.textContent = text;
+        }
+
+        function updateProgressText(text) {
+            document.getElementById('progressText').textContent = text;
+        }
+
+        function updateStats(originalSize, convertedSize) {
+            stats.filesProcessed++;
+            const savedBytes = originalSize - convertedSize;
+            stats.totalSaved += Math.max(0, savedBytes);
+
+            const compressionRatio = savedBytes > 0 ? (savedBytes / originalSize) * 100 : 0;
+            stats.totalCompression = ((stats.totalCompression * (stats.filesProcessed - 1)) + compressionRatio) / stats.filesProcessed;
+
+            document.getElementById('filesProcessed').textContent = stats.filesProcessed;
+            document.getElementById('totalSaved').textContent = Math.round(stats.totalSaved / 1024 / 1024) + 'MB';
+            document.getElementById('avgCompression').textContent = Math.round(stats.totalCompression) + '%';
+        }
+
+        function addFileToList(originalName, blob, originalSize, convertedSize) {
+            const fileList = document.getElementById('fileList');
+            const format = document.getElementById('outputFormat').value;
+            const fileName = originalName.replace(/\.[^/.]+$/, '') + '.' + format;
+
+            const originalSizeMB = (originalSize / 1024 / 1024).toFixed(2);
+            const convertedSizeMB = (convertedSize / 1024 / 1024).toFixed(2);
+            const compression = Math.round((1 - convertedSize / originalSize) * 100);
+
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item';
+            fileItem.innerHTML = `
+                <div class="file-info">
+                    <h3>${fileName}</h3>
+                    <p>Original: ${originalSizeMB} MB → Converted: ${convertedSizeMB} MB</p>
+                    <p>Quality: ${selectedQuality} kbps | Compression: ${compression}%</p>
+                </div>
+                <div class="file-actions">
+                    <span class="file-size">${convertedSizeMB} MB</span>
+                    <span class="status-indicator status-complete">✓ Ready</span>
+                    <button class="download-btn" onclick="downloadFile('${fileName}', '${URL.createObjectURL(blob)}')">
+                        📥 Download
+                    </button>
+                </div>
+            `;
+
+            fileList.appendChild(fileItem);
+        }
+
+        function addErrorToList(fileName, error) {
+            const fileList = document.getElementById('fileList');
+
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item';
+            fileItem.innerHTML = `
+                <div class="file-info">
+                    <h3>${fileName}</h3>
+                    <p style="color: #f44336;">❌ Error: ${error}</p>
+                </div>
+                <div class="file-actions">
+                    <span class="status-indicator status-error">✗ Failed</span>
+                </div>
+            `;
+
+            fileList.appendChild(fileItem);
+        }
+
+        function downloadFile(fileName, url) {
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Add some visual feedback on load
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
