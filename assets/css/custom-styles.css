@@ -1131,7 +1131,7 @@ img[src*="muzyczna.png"] {
 #projects-showcase .project-card .image.fit::before{ content:''; display:block; width:100%; padding-top: 62%; }
 #projects-showcase .project-card .image.fit img { position:absolute; inset:0; width:100%; height:100%; object-fit: cover; object-position: center; border-bottom: 1px solid rgba(255,255,255,0.08); }
 /* Adjust music grid to accommodate year column on smaller screens */
-@media (max-width: 640px){ .music-item { grid-template-columns: 48px 1fr auto auto; } .music-item .mi-cover{ width:48px; height:48px; } }
+@media (max-width: 640px){ .music-item { grid-template-columns: 48px 1fr auto; } .music-item .mi-cover{ width:48px; height:48px; } .music-item .mi-controls{ justify-self:start; } .music-item .mi-controls .mi-play{ order:-1; } }
 
 /* (removed) global dim overlay */
 
