@@ -56,6 +56,30 @@
     ]
   },
   {
+    "id": "obsidian",
+    "title": "Obsidian",
+    "artist": "Igor Szuniewicz",
+    "cover": "images/Tribal.png",
+    "tags": [
+      "techno",
+      "electronic"
+    ],
+    "length": 0,
+    "date": "2023-01-01",
+    "year": 2023,
+    "desc": {
+      "pl": "Hipnotyczny techno z głębokimi basami i rytmicznymi motywami. Ciemne syntezatory tworzą hipnotyczną atmosferę.",
+      "en": "Hypnotic techno with deep bass and rhythmic motifs. Dark synthesizers create a mesmerizing atmosphere.",
+      "nl": "Hypnotische techno met diepe bas en ritmische motieven. Donkere synthesizers creëren een hypnotiserende sfeer."
+    },
+    "sources": [
+      {
+        "url": "songs/trans2.wav",
+        "type": "audio/wav"
+      }
+    ]
+  },
+  {
     "id": "sp_inflow",
     "title": "Inflow",
     "artist": "Igor Szuniewicz",
@@ -335,25 +359,25 @@
     ]
   },
   {
-    "id": "obsidian",
-    "title": "Obsidian",
+    "id": "syncopation",
+    "title": "Syncopation$",
     "artist": "Igor Szuniewicz",
-    "cover": "images/Tribal.png",
+    "cover": "images/Syncopations.png",
     "tags": [
       "techno",
       "electronic"
     ],
     "length": 0,
-    "date": "2023-01-01",
-    "year": 2023,
+    "date": "2024-01-01",
+    "year": 2024,
     "desc": {
-      "pl": "Hipnotyczny techno z głębokimi basami i rytmicznymi motywami. Ciemne syntezatory tworzą hipnotyczną atmosferę.",
-      "en": "Hypnotic techno with deep bass and rhythmic motifs. Dark synthesizers create a mesmerizing atmosphere.",
-      "nl": "Hypnotische techno met diepe bas en ritmische motieven. Donkere synthesizers creëren een hypnotiserende sfeer."
+      "pl": "Hipnotyczny utwór techno ze złożonymi synkopowanymi rytmami i głębokimi liniami basu tworzącymi skomplikowane doświadczenie taneczne",
+      "en": "Hypnotic techno track with complex syncopated rhythms and deep basslines that create an intricate dance floor experience",
+      "nl": "Hypnotische techno track met complexe syncopische ritmes en diepe baslijnen die een ingewikkelde dansvloer ervaring creëren"
     },
     "sources": [
       {
-        "url": "songs/trans2.wav",
+        "url": "songs/syncopationsnew.wav",
         "type": "audio/wav"
       }
     ]
