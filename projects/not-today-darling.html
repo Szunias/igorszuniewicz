@@ -47,80 +47,452 @@
   <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20250919" />
   <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
   <style>
-    .ntd-hero { display:flex; flex-direction:column; gap: 1rem; align-items:center; }
-    .ntd-hero img { max-width: 960px; width: 100%; border-radius: 8px; box-shadow: 0 16px 36px rgba(0,0,0,.35); }
-    .ntd-meta { display:flex; flex-wrap:wrap; gap:.75rem 1.25rem; justify-content:center; opacity:.9 }
-    .ntd-meta span { background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); padding:.35rem .6rem; border-radius:999px; font-size:.9rem }
-    .ntd-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
-    .ntd-card { background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); padding: 1rem; border-radius: 10px; }
-    .ntd-team a { text-decoration: none; }
-    .ntd-team .role { opacity:.8; font-size:.9rem }
-    .samples-note { opacity:.85 }
-    .samples-list { margin-top: .5rem; display:grid; gap:.5rem }
-    .samples-item { display:flex; align-items:center; gap:.75rem; padding:.5rem; background: rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.1); border-radius:8px }
-    .samples-item img { width:48px; height:48px; object-fit:cover; border-radius:6px }
-    .samples-item .title { font-weight:700 }
-    /* High-contrast text for dark background on this page */
-    #main .post h2, #main .post h3, #main .post h4, #main .post p, #main .post li { color: #eaf7ff; }
-    #main .post p { color: rgba(234,247,255,0.92); }
-    #main .post a { color: #eaf7ff; }
+    /* Hero Section - Premium Design */
+    .ntd-hero {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      margin: 3rem 0;
+      position: relative;
+    }
+
+    .ntd-hero::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      right: -50px;
+      bottom: -50px;
+      background: radial-gradient(circle at 30% 40%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+      z-index: -1;
+      border-radius: 50px;
+    }
+
+    .ntd-hero img {
+      max-width: 960px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .ntd-hero img:hover {
+      transform: scale(1.02) translateY(-5px);
+      box-shadow: 0 35px 70px rgba(0,0,0,0.5), 0 0 0 1px rgba(102, 126, 234, 0.3);
+    }
+
+    /* Metadata Tags - Pill Design */
+    .ntd-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .ntd-meta span {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+      border: 1px solid rgba(102, 126, 234, 0.3);
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #cfe7f8;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .ntd-meta span:hover {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+      border-color: rgba(102, 126, 234, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+    }
+
+    /* Grid Layout - Modern Cards */
+    .ntd-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .ntd-card {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 20px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ntd-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .ntd-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .ntd-card:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(102, 126, 234, 0.3);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(102, 126, 234, 0.2);
+    }
+    /* Team Section - Professional Cards */
+    .ntd-team a {
+      text-decoration: none;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .ntd-team a:hover {
+      transform: scale(1.02);
+    }
+
+    .ntd-team .role {
+      color: rgba(207, 231, 248, 0.8);
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    .ntd-team .ntd-card {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .ntd-team a strong {
+      font-size: 1.2rem;
+      color: #ffffff;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Audio Samples - Modern List */
+    .samples-note {
+      color: rgba(207, 231, 248, 0.85);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .samples-list {
+      margin-top: 1rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .samples-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .samples-item:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(102, 126, 234, 0.3);
+      transform: translateX(5px);
+    }
+
+    .samples-item img {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .samples-item .title {
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 1.05rem;
+    }
+    /* Typography - Premium Readability */
+    #main .post h2, #main .post h3, #main .post h4 {
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    #main .post h2 {
+      font-size: 2.2rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    #main .post h3 {
+      font-size: 1.6rem;
+      color: #cfe7f8;
+    }
+
+    #main .post p, #main .post li {
+      color: rgba(207, 231, 248, 0.92);
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    #main .post a {
+      color: #18bfef;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(24, 191, 239, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    #main .post a:hover {
+      color: #cfe7f8;
+      border-bottom-color: #cfe7f8;
+    }
+
     #bgColor, #bgWhite { color: #eaf7ff !important; }
-    .ntd-card { color: rgba(234,247,255,0.95); }
-    .ntd-card h4 { color: #eaf7ff; }
-    .ntd-team .role { color: rgba(234,247,255,0.85); }
-    .ntd-team a strong { color: #ffffff; }
-    /* Make the single-sample list compact and readable */
-    #ntd-samples .group-title { display:none; }
-    #ntd-samples .mi-tags, #ntd-samples .mi-year { display:none; }
-    #ntd-samples .music-item { background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); }
 
-    /* Weekly progress improvements */
-    .weekly-progress { gap: 1.5rem; margin-top: 2rem; }
-    .weekly-progress .week-card { position: relative; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
-    .weekly-progress .week-card:hover { transform: translateY(-4px); border-color: rgba(24,191,239,0.3); box-shadow: 0 8px 25px rgba(24,191,239,0.1); }
-    .weekly-progress .week-card h4 { color: #18bfef; margin-bottom: 0.75rem; font-size: 1.1rem; line-height: 1.3; }
-    .weekly-progress .week-card p { margin-bottom: 1rem; line-height: 1.5; opacity: 0.9; }
+    .ntd-card {
+      color: rgba(207, 231, 248, 0.95);
+      line-height: 1.6;
+    }
+
+    .ntd-card h4 {
+      color: #ffffff;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      line-height: 1.3;
+    }
+
+    /* Audio Player - Clean Integration */
+    #ntd-samples .group-title { display: none; }
+    #ntd-samples .mi-tags, #ntd-samples .mi-year { display: none; }
+    #ntd-samples .music-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 15px;
+      padding: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    #ntd-samples .music-item:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(102, 126, 234, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Weekly Progress - Premium Timeline */
+    .weekly-progress {
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .weekly-progress .week-card {
+      position: relative;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    .weekly-progress .week-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #18bfef, #667eea);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .weekly-progress .week-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .weekly-progress .week-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(24,191,239,0.4);
+      box-shadow: 0 20px 40px rgba(24,191,239,0.15);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .weekly-progress .week-card h4 {
+      color: #18bfef;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+
+    .weekly-progress .week-card p {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      color: rgba(207, 231, 248, 0.9);
+      font-size: 1.05rem;
+    }
+
     .weekly-progress .week-link {
-      display: inline-block; padding: 0.5rem 1rem; background: rgba(24,191,239,0.1);
-      border: 1px solid rgba(24,191,239,0.3); border-radius: 6px; color: #18bfef;
-      text-decoration: none; font-weight: 600; transition: all 0.2s ease;
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(135deg, rgba(24,191,239,0.1), rgba(102, 126, 234, 0.1));
+      border: 1px solid rgba(24,191,239,0.3);
+      border-radius: 12px;
+      color: #18bfef;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
     }
+
     .weekly-progress .week-link:hover {
-      background: rgba(24,191,239,0.2); border-color: rgba(24,191,239,0.5);
-      transform: translateY(-1px); color: #eaf7ff;
+      background: linear-gradient(135deg, rgba(24,191,239,0.2), rgba(102, 126, 234, 0.2));
+      border-color: rgba(24,191,239,0.6);
+      transform: translateY(-2px);
+      color: #cfe7f8;
+      box-shadow: 0 8px 25px rgba(24,191,239,0.2);
     }
 
-    /* Better hero section */
-    .ntd-hero { margin: 2rem 0; }
-    .ntd-hero img { transition: transform 0.3s ease; box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
-    .ntd-hero img:hover { transform: scale(1.02); }
-    .ntd-meta { margin-top: 1.5rem; }
-    .ntd-meta span { font-size: 0.95rem; font-weight: 500; }
+    /* Video Player - Premium Design */
+    .video-thumbnail {
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
 
-    /* Improved cards */
-    .ntd-card h4 { font-size: 1.2rem; margin-bottom: 1rem; }
-    .ntd-card ul li { margin-bottom: 0.5rem; line-height: 1.4; }
+    .video-thumbnail:hover {
+      transform: scale(1.03) translateY(-5px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
 
-    /* Video thumbnail improvements */
     .video-thumbnail:hover .play-button {
-      transform: translate(-50%, -50%) scale(1.15);
-      background: linear-gradient(135deg, #ff6b35, #ff0844);
-      box-shadow: 0 12px 35px rgba(255,8,68,0.6), 0 0 0 6px rgba(255,255,255,0.3);
+      transform: translate(-50%, -50%) scale(1.2);
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6), 0 0 0 6px rgba(255,255,255,0.2);
     }
+
     .video-thumbnail:hover .play-overlay {
-      background: linear-gradient(45deg, rgba(0,0,0,0.2), rgba(0,0,0,0.05));
+      background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
     }
 
-    /* Gallery improvements */
-    .projects-grid { gap: 1rem; margin-top: 1.5rem; }
-    .projects-grid .image { border-radius: 8px; overflow: hidden; transition: transform 0.3s ease; }
-    .projects-grid .image:hover { transform: scale(1.05); }
+    /* Gallery - Modern Grid */
+    .projects-grid {
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
 
-    /* Team section improvements */
-    .ntd-team .ntd-card { text-align: center; padding: 1.5rem 1rem; position: relative; }
-    .ntd-team .ntd-card:hover { background: rgba(255,255,255,0.08); }
-    .ntd-team a strong { font-size: 1.1rem; }
-    .ntd-team .role { margin-top: 0.5rem; font-style: italic; }
+    .projects-grid .image {
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .projects-grid .image:hover {
+      transform: scale(1.05) translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .ntd-hero {
+        margin: 1.5rem 0;
+      }
+
+      .ntd-hero::before {
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+        border-radius: 30px;
+      }
+
+      .ntd-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .ntd-card {
+        padding: 1.5rem;
+      }
+
+      .ntd-meta {
+        gap: 0.8rem 1rem;
+      }
+
+      .ntd-meta span {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+
+      #main .post h2 {
+        font-size: 1.8rem;
+      }
+
+      #main .post h3 {
+        font-size: 1.4rem;
+      }
+
+      .weekly-progress {
+        gap: 1.5rem;
+      }
+
+      .weekly-progress .week-card {
+        padding: 1.5rem;
+      }
+
+      .projects-grid {
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ntd-card {
+        padding: 1.2rem;
+      }
+
+      .ntd-team .ntd-card {
+        padding: 1.5rem 1rem;
+      }
+
+      #main .post h2 {
+        font-size: 1.6rem;
+      }
+
+      .ntd-meta span {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
 
     /* Team tooltips */
     .team-tooltip {

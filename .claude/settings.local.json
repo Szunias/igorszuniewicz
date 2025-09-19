@@ -15,7 +15,8 @@
       "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\convert-audio.html\")",
       "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\auto-convert.html\")",
       "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\index.html\")",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\simple-converter.html\")"
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\simple-converter.html\")",
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\not-today-darling.html\")"
     ],
     "deny": [],
     "ask": []
