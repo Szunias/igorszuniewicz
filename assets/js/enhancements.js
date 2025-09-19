@@ -738,6 +738,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Music page
     music_title: { en: 'Music Listening Room', pl: 'Muzyka — Pokój odsłuchowy', nl: 'Muziek — Luisterkamer' },
     music_lead: { en: 'Stream curated tracks, preview stems, and explore catalog.', pl: 'Słuchaj wybranych utworów, podglądaj stemsy i przeglądaj katalog.', nl: 'Stream geselecteerde tracks, bekijk stems en verken de catalogus.' },
+    music_quality_info: { en: 'Use the <strong>STREAM</strong> button next to each track to switch between fast-loading compressed audio and high-quality original files.', pl: 'Użyj przycisku <strong>STREAM</strong> obok każdego utworu, aby przełączać między szybko ładującym się skompresowanym dźwiękiem a wysokiej jakości oryginalnymi plikami.', nl: 'Gebruik de <strong>STREAM</strong> knop naast elke track om te schakelen tussen snel ladende gecomprimeerde audio en hoogwaardige originele bestanden.' },
     music_sort: { en: 'Sort', pl: 'Sortuj', nl: 'Sorteren' },
     music_hint_click: { en: 'Click for details', pl: 'Kliknij, aby zobaczyć szczegóły', nl: 'Klik voor details' },
     music_now_playing: { en:'Now playing', pl:'Teraz odtwarzane', nl:'Nu speelt' },
@@ -878,6 +879,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const sort = document.querySelector('#music-sort')?.previousElementSibling?.querySelector('span');
       if (h) h.textContent = I18N.music_title[lang];
       if (p) p.textContent = I18N.music_lead[lang];
+      const qualityInfo = document.querySelector('.music-quality-info');
+      if (qualityInfo) qualityInfo.innerHTML = I18N.music_quality_info[lang];
       if (sort) sort.textContent = I18N.music_sort[lang];
       const mf = document.querySelector('.music-finder .mf-label'); if (mf) mf.textContent = I18N.music_finder[lang];
       const tg = document.querySelector('.music-finder .gw-toggle'); if (tg) tg.textContent = I18N.music_gw_toggle[lang];
