@@ -30,9 +30,9 @@
       "nl": "Suspense‑cue voor een korte film: gelaagde strijkers en actiedrums stuwen een constante opbouw, afgesloten met een beslissende filmische stop."
     },
     "sources": [
+      { "url": "songs/RichterMainTheme.wav", "type": "audio/wav" },
       { "url": "songs/RichterMainTheme.m4a", "type": "audio/mp4" },
-      { "url": "songs/RichterMainTheme.mp3", "type": "audio/mpeg" },
-      { "url": "songs/RichterMainTheme.wav", "type": "audio/wav" }
+      { "url": "songs/RichterMainTheme.mp3", "type": "audio/mpeg" }
     ]
   },
   {
@@ -50,9 +50,9 @@
       "nl": "Een kamerpianothema dat organisch uitgroeit tot volledige strijkerorkestratie. Een fragiele expositie groeit naar een brede, filmische climax."
     },
     "sources": [
+      { "url": "songs/Igor Szuniewicz - Inflow.wav", "type": "audio/wav" },
       { "url": "songs/Inflow.m4a", "type": "audio/mp4" },
-      { "url": "songs/Inflow.mp3", "type": "audio/mpeg" },
-      { "url": "songs/Igor Szuniewicz - Inflow.wav", "type": "audio/wav" }
+      { "url": "songs/Inflow.mp3", "type": "audio/mpeg" }
     ]
   },
   {
@@ -70,9 +70,9 @@
       "nl": "Uptempo electronica met arpeggio‑leads en breed stereobeeld. Synthetische texturen combineren met een dansgerichte puls en luchtige productie."
     },
     "sources": [
+      { "url": "songs/Igor Szuniewicz - Astrophonic Dance.wav", "type": "audio/wav" },
       { "url": "songs/AstrophonicDance.m4a", "type": "audio/mp4" },
-      { "url": "songs/AstrophonicDance.mp3", "type": "audio/mpeg" },
-      { "url": "songs/Igor Szuniewicz - Astrophonic Dance.wav", "type": "audio/wav" }
+      { "url": "songs/AstrophonicDance.mp3", "type": "audio/mpeg" }
     ]
   },
   {
@@ -90,9 +90,9 @@
       "nl": "Langzaam ontvouwende filmisch‑elektronische landschappen: warme harmonieën, veel ruimte en een contemplatieve sfeer met constante puls."
     },
     "sources": [
+      { "url": "songs/Igor Szuniewicz - Cathedral Of Time.wav", "type": "audio/wav" },
       { "url": "songs/CathedralOfTime.m4a", "type": "audio/mp4" },
-      { "url": "songs/CathedralOfTime.mp3", "type": "audio/mpeg" },
-      { "url": "songs/Igor Szuniewicz - Cathedral Of Time.wav", "type": "audio/wav" }
+      { "url": "songs/CathedralOfTime.mp3", "type": "audio/mpeg" }
     ]
   },
   {
@@ -110,9 +110,9 @@
       "nl": "Hoofdthema voor een strategiespel: marspercussie, modale melodieën en orkestrale schaal voor ceremoniële kracht en tactische focus."
     },
     "sources": [
+      { "url": "songs/XianClashMainTheme.wav", "type": "audio/wav" },
       { "url": "songs/XianClashMainTheme.m4a", "type": "audio/mp4" },
-      { "url": "songs/XianClashMainTheme.mp3", "type": "audio/mpeg" },
-      { "url": "songs/XianClashMainTheme.wav", "type": "audio/wav" }
+      { "url": "songs/XianClashMainTheme.mp3", "type": "audio/mpeg" }
     ]
   },
   {
@@ -130,9 +130,9 @@
       "nl": "Energieke rock op basis van laag gestemde riffs en strakke ritmische groove. Productie gericht op impact en aanhoudende vaart."
     },
     "sources": [
+      { "url": "songs/RunMainTheme.wav", "type": "audio/wav" },
       { "url": "songs/RunMainTheme.m4a", "type": "audio/mp4" },
-      { "url": "songs/RunMainTheme.mp3", "type": "audio/mpeg" },
-      { "url": "songs/RunMainTheme.wav", "type": "audio/wav" }
+      { "url": "songs/RunMainTheme.mp3", "type": "audio/mpeg" }
     ]
   },
   {

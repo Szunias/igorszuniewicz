@@ -163,8 +163,11 @@
 
     createInvisiblePreload: function(href) {
       // Use fetch to preload the page content
-      perf.requestIdleCallback(() => {
-        fetch(href, { 
+      const requestIdleCallback = window.requestIdleCallback || function(cb) {
+        setTimeout(cb, 0);
+      };
+      requestIdleCallback(() => {
+        fetch(href, {
           method: 'GET',
           mode: 'no-cors',
           cache: 'force-cache'
@@ -178,11 +181,15 @@
       // Prefetch common pages that users are likely to visit
       const criticalPages = ['about.html', 'projects/index.html', 'music.html', 'contact.html'];
       
-      perf.requestIdleCallback(() => {
+      const self = this;
+      const requestIdleCallback = window.requestIdleCallback || function(cb) {
+        setTimeout(cb, 0);
+      };
+      requestIdleCallback(() => {
         criticalPages.forEach((page, index) => {
           setTimeout(() => {
-            if (!this.cache.has(page)) {
-              this.prefetchPage(page);
+            if (!self.cache.has(page)) {
+              self.prefetchPage(page);
             }
           }, index * 500); // Stagger the prefetching
         });
@@ -255,7 +262,10 @@
 
     // Batch DOM updates
     batchUpdate: function(callback) {
-      perf.requestIdleCallback(() => {
+      const requestIdleCallback = window.requestIdleCallback || function(cb) {
+        setTimeout(cb, 0);
+      };
+      requestIdleCallback(() => {
         requestAnimationFrame(callback);
       });
     }
@@ -277,7 +287,7 @@
     window.PerfUtils = {
       throttle: perf.throttle,
       debounce: perf.debounce,
-      requestIdleCallback: perf.requestIdleCallback,
+      requestIdleCallback: window.requestIdleCallback || function(cb) { setTimeout(cb, 0); },
       domCache: domOptimizer
     };
 
