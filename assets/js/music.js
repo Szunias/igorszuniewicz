@@ -129,7 +129,7 @@
   });
 
   // Robust fetch URL: avoid query params on file:// to prevent fetch errors in local previews
-  const __ts__ = '20250922';
+  const __ts__ = '20250923';
   const tracksUrl = (location.protocol === 'file:')
     ? 'assets/js/tracks.json'
     : ('assets/js/tracks.json?v=' + __ts__);
