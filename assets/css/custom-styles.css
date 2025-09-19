@@ -1313,16 +1313,16 @@ img[src*="muzyczna.png"] {
 
 /* Normalize scale across pages: desktop base size */
 @media (min-width: 981px) {
-  html { font-size: 18pt !important; }
-  .project-card img { transform: scale(1.4) !important; }
+  html { font-size: 14pt !important; }
+  .project-card img { transform: scale(0.95) !important; }
 }
 @media (min-width: 1280px) {
-  html { font-size: 17pt !important; }
-  .project-card img { transform: scale(1.5) !important; }
+  html { font-size: 13pt !important; }
+  .project-card img { transform: scale(0.9) !important; }
 }
 @media (min-width: 1681px) {
-  html { font-size: 16pt !important; }
-  .project-card img { transform: scale(1.6) !important; }
+  html { font-size: 12pt !important; }
+  .project-card img { transform: scale(0.85) !important; }
 }
 
 /* Fix projects page filter buttons - keep normal size */

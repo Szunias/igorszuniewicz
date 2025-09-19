@@ -153,7 +153,7 @@
       // Fallback for scoped pages: do NOT load full music catalog
       if (isScoped){
         const fallbackScoped = [
-          { id:'scoped_sample', title:'Sample', artist:'Project audio', cover:'images/NotTodayGameLogo.png', tags:['all'], length:0, date:'2025-01-01', year:2025, sources:[ { url:'songs/placeholder.wav', type:'audio/wav' } ] }
+          { id:'scoped_sample', title:'Sample', artist:'Project audio', cover:'images/NotTodayAudio.png', tags:['all'], length:0, date:'2025-01-01', year:2025, sources:[ { url:'songs/placeholder.wav', type:'audio/wav' } ] }
         ];
         tracks = fallbackScoped;
         tracks.forEach(function(t){ const baseTags = Array.isArray(t.tags)?t.tags:[]; t.tags = Array.from(new Set(['all'].concat(baseTags))); });
