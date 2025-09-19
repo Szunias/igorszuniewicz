@@ -151,6 +151,34 @@
     return playable.length ? playable : sources;
   }
 
+  // Quality change toast notification
+  function showQualityToast(message) {
+    // Remove existing toast
+    const existingToast = document.querySelector('.quality-toast');
+    if (existingToast) existingToast.remove();
+
+    // Create new toast
+    const toast = document.createElement('div');
+    toast.className = 'quality-toast';
+    toast.textContent = message;
+
+    // Add to page
+    document.body.appendChild(toast);
+
+    // Show with animation
+    requestAnimationFrame(() => {
+      toast.classList.add('show');
+    });
+
+    // Auto hide after 3 seconds
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+      }, 300);
+    }, 3000);
+  }
+
   // Populate filter chips from tags
   const TAG_ALL = 'all';
   let activeTag = TAG_ALL;
@@ -255,7 +283,7 @@
         const card = document.createElement('div'); card.className='music-item'; card.tabIndex=0; card.dataset.index=String(vi); if (t.id) card.dataset.id = String(t.id);
         const tagsHtml = (Array.isArray(t.tags)?t.tags:[]).map(function(x){ return '<span>'+x+'</span>'; }).join('');
         // Show quality toggle for all tracks (will gracefully fallback if MP3 doesn't exist)
-        const qualityToggleHtml = '<button class="mi-quality-toggle" aria-label="Toggle Quality" title="Switch between MP3/WAV">SD</button>';
+        const qualityToggleHtml = '<button class="mi-quality-toggle" aria-label="Toggle Audio Quality" title="Streaming Quality (MP3)\\nOptimized for online playback\\nSmaller files, faster loading\\n\\nClick to switch to High Quality"><div class="quality-icon">📶</div><div class="quality-text">STREAM</div><div class="quality-hint">Click to switch</div></button>';
 
         card.innerHTML = `
           <img class="mi-cover" src="${t.cover||''}" alt="" loading="lazy" decoding="async" />
@@ -284,12 +312,12 @@
 
           const updateQualityButton = () => {
             if (t.preferredQuality === 'hq') {
-              qualityBtn.textContent = 'HQ';
-              qualityBtn.title = 'High Quality (WAV) - Click for Standard';
+              qualityBtn.innerHTML = '<div class="quality-icon">🎧</div><div class="quality-text">HIGH</div><div class="quality-hint">Click to switch</div>';
+              qualityBtn.title = 'High Quality Audio (WAV)\nBest sound quality\n\nClick to switch to Standard Quality';
               qualityBtn.classList.add('hq-active');
             } else {
-              qualityBtn.textContent = 'SD';
-              qualityBtn.title = 'Standard Quality (MP3) - Click for High Quality';
+              qualityBtn.innerHTML = '<div class="quality-icon">📶</div><div class="quality-text">STREAM</div><div class="quality-hint">Click to switch</div>';
+              qualityBtn.title = 'Streaming Quality (MP3)\nOptimized for online playback\nSmaller files, faster loading\n\nClick to switch to High Quality';
               qualityBtn.classList.remove('hq-active');
             }
           };
@@ -297,8 +325,13 @@
           qualityBtn.addEventListener('click', (ev) => {
             ev.stopPropagation();
             // Toggle quality preference
+            const oldQuality = t.preferredQuality;
             t.preferredQuality = (t.preferredQuality === 'hq') ? 'auto' : 'hq';
             updateQualityButton();
+
+            // Show toast notification
+            const newQualityText = t.preferredQuality === 'hq' ? 'High Quality (WAV)' : 'Streaming Quality (MP3)';
+            showQualityToast(`Audio: ${newQualityText}`);
 
             // If this track is currently playing, reload with new quality
             if (currentIndex === vi && currentTrackId === t.id) {
