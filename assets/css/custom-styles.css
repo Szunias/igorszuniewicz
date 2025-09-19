@@ -1312,9 +1312,30 @@ img[src*="muzyczna.png"] {
 }
 
 /* Normalize scale across pages: desktop base size */
-@media (min-width: 981px) { html { font-size: 15pt !important; } }
-@media (min-width: 1280px) { html { font-size: 14pt !important; } }
-@media (min-width: 1681px) { html { font-size: 13pt !important; } }
+@media (min-width: 981px) {
+  html { font-size: 18pt !important; }
+  .project-card img { transform: scale(1.4) !important; }
+}
+@media (min-width: 1280px) {
+  html { font-size: 17pt !important; }
+  .project-card img { transform: scale(1.5) !important; }
+}
+@media (min-width: 1681px) {
+  html { font-size: 16pt !important; }
+  .project-card img { transform: scale(1.6) !important; }
+}
+
+/* Fix projects page filter buttons - keep normal size */
+.projects-controls .button.small {
+  font-size: 0.8rem !important;
+  padding: 0.4em 0.8em !important;
+}
+
+/* Fix navigation icons overlap */
+#nav .icons a {
+  padding: 8px !important;
+  margin: 0 2px !important;
+}
 
 /* Page fade transitions */
 #wrapper { transition: opacity 180ms ease, transform 180ms ease; will-change: opacity, transform; }
@@ -1373,7 +1394,7 @@ body.page-enter #wrapper { opacity: 0; transform: translateY(4px); }
 }
 
 /* Equalizer bars overlay */
-.bg-eq { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.06; mix-blend-mode: soft-light; }
+.bg-eq { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.06; mix-blend-mode: soft-light; width: 150% !important; left: -25% !important; }
 
 /* Click visual audio-ripple */
 .click-fx { position: fixed; inset: 0; z-index: 100; pointer-events: none; overflow: hidden; }

@@ -8,7 +8,8 @@
       "Bash(php:*)",
       "Bash(where php)",
       "Bash(netstat:*)",
-      "Bash(taskkill:*)"
+      "Bash(taskkill:*)",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "ask": []

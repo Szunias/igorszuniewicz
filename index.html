@@ -72,13 +72,13 @@
         .slider {
              position: relative;
              width: 100%;
-             max-width: 900px; 
-             height: auto; 
-             min-height: 380px; 
+             max-width: 900px;
+             height: auto;
+             min-height: 520px;
              margin: 20px auto 50px;
              overflow: hidden;
              z-index: 3;
-              background: transparent; 
+              background: transparent;
              border-radius: 8px;
               padding: 1em 1em 3em; /* reserve space for captions */
         }
@@ -193,14 +193,14 @@
         @media (min-width: 980px) {
             .slider {
                 max-width: 1000px;
-                min-height: 420px;
+                min-height: 520px;
             }
             .slide a img { max-height: 46vh; }
         }
         @media (min-width: 1280px) {
             .slider {
                 max-width: 1100px;
-                min-height: 460px;
+                min-height: 580px;
             }
             .slide a img {
                 max-height: calc(100% - 140px);
@@ -216,7 +216,6 @@
     </style>
 </head>
 <body class="is-preload">
-    <a href="#main" class="skip-link">Skip to main content</a>
     <div class="bg-gradient"></div>
     <div class="bg-orbs" aria-hidden="true">
         <div class="orb blue" style="top:10%;left:8%"></div>
@@ -307,8 +306,14 @@
                 <article class="post featured" style="padding:0; margin-bottom: 0; border:0; background: transparent;">
             <div class="slider" style="scroll-margin-top: 80px;">
                         <div class="slide active">
+                            <span class="slide-badge">DAE Game Projects</span>
+                            <h3>Not Today, Darling! — Game Audio</h3>
+                            <a href="projects/not-today-darling.html"><img src="images/NotTodayPic1.png" alt="Not Today, Darling!" loading="eager" decoding="async"></a>
+                            <p class="slide-description">Retro-inspired audio implementation.</p>
+                        </div>
+                        <div class="slide">
                             <h3>Most Recent Single</h3>
-                            <a href="https://youtu.be/9ZgLOSiQwjI?list=OLAK5uy_nzJk7hAZgv6WRFDY8TJHN7YUJrvjCn2Ro&t=80" target="_blank" rel="noopener noreferrer"><img src="images/epkam.png" alt="Most Recent Single" loading="eager" decoding="async"></a>
+                            <a href="https://youtu.be/9ZgLOSiQwjI?list=OLAK5uy_nzJk7hAZgv6WRFDY8TJHN7YUJrvjCn2Ro&t=80" target="_blank" rel="noopener noreferrer"><img src="images/epkam.png" alt="Most Recent Single" loading="lazy" decoding="async"></a>
                             <p class="slide-description">Latest single.</p>
                         </div>
                         <div class="slide">
@@ -325,12 +330,6 @@
                             <h3>Amorak Sound Design</h3>
                             <a href="projects/amorak.html"><img src="images/amorak.png" alt="Amorak Sound Design" loading="lazy" decoding="async"></a>
                             <p class="slide-description">Sound design.</p>
-                        </div>
-                        <div class="slide">
-                            <span class="slide-badge">DAE Game Projects</span>
-                            <h3>Not Today, Darling! — Game Audio</h3>
-                            <a href="projects/not-today-darling.html"><img src="images/NotTodayGameLogo.png" alt="Not Today, Darling!" loading="lazy" decoding="async"></a>
-                            <p class="slide-description">Local co‑op platformer.</p>
                         </div>
                         <div class="slide">
                             <h3>Pause & Deserve Horror Game</h3>
