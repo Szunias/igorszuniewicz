@@ -1,11 +1,13 @@
 /* Simple, professional tracklist + player */
 (function(){
-  const isMusic = !!document.getElementById('music-list');
+  // Initialize either on the full music page or on any page with a scoped samples container
+  const hostEl = document.getElementById('music-list') || document.querySelector('[data-tracks]');
+  const isMusic = !!hostEl;
   if (!isMusic) return;
 
   // Cache DOM elements for better performance
   const elements = {
-    listEl: document.getElementById('music-list'),
+    listEl: hostEl,
     searchEl: document.getElementById('music-search'),
     tagsEl: document.getElementById('music-tags'),
     sortEl: document.getElementById('music-sort'),
@@ -130,13 +132,15 @@
 
   // Robust fetch URL: avoid query params on file:// to prevent fetch errors in local previews
   const __ts__ = '20250926';
-  const tracksUrl = (location.protocol === 'file:')
-    ? 'assets/js/tracks.json'
-    : ('assets/js/tracks.json?v=' + __ts__);
+  // Per-page override: if an element with [data-tracks] is present, load that JSON instead of global catalog
+  const scopedHost = hostEl && hostEl.hasAttribute('data-tracks') ? hostEl : document.querySelector('[data-tracks]');
+  const overrideUrl = scopedHost ? scopedHost.getAttribute('data-tracks') : '';
+  const isScoped = !!overrideUrl;
+  const tracksUrl = overrideUrl ? overrideUrl : ((location.protocol === 'file:') ? 'assets/js/tracks.json' : ('assets/js/tracks.json?v=' + __ts__));
   fetch(tracksUrl, { cache: 'no-store' })
     .then(response => response.json())
     .then(data => {
-      tracks = data;
+      tracks = Array.isArray(data) ? data : (Array.isArray(data.tracks) ? data.tracks : []);
       // Ensure every track is matchable by the "All" filter and normalize tags
       tracks.forEach(function(t){
         const baseTags = Array.isArray(t.tags) ? t.tags : [];
@@ -146,7 +150,17 @@
     })
     .catch(error => {
       console.error('Error loading track data:', error);
-      // Fallback: use embedded track data for local development
+      // Fallback for scoped pages: do NOT load full music catalog
+      if (isScoped){
+        const fallbackScoped = [
+          { id:'scoped_sample', title:'Sample', artist:'Project audio', cover:'images/NotTodayGameLogo.png', tags:['all'], length:0, date:'2025-01-01', year:2025, sources:[ { url:'songs/placeholder.wav', type:'audio/wav' } ] }
+        ];
+        tracks = fallbackScoped;
+        tracks.forEach(function(t){ const baseTags = Array.isArray(t.tags)?t.tags:[]; t.tags = Array.from(new Set(['all'].concat(baseTags))); });
+        initPlayer(tracks);
+        return;
+      }
+      // Fallback (music page): use embedded track data for local development
       const fallbackTracks = [
         { id:'ray', title:'Ray Animation — Credits Theme', artist:'Igor Szuniewicz', cover:'images/project5.png', tags:['film','score'], length: 0, date:'2024-01-10', year: 2024, desc:{ pl:'Funkowo zabarwiony cue do animacji. Lekki groove i figury basu prowadzą do świetlistej kadencji domykającej ujęcie. Brzmienie klarowne, z wyraźnym motywem i sprężystą sekcją.', en:'Funk‑tinged cue for animation. A light groove and bass figures steer the piece towards a luminous cadence that closes the shot. Clean tone with a recognisable motif and elastic rhythm section.', nl:'Funk‑getinte cue voor animatie. Lichte groove en basfiguren bouwen naar een lichtvolle cadens die de scène afrondt. Helder klankbeeld met herkenbaar motief en veerkrachtige ritmesectie.' }, sources:[ { url:'songs/RayCreditsTheme.wav', type:'audio/wav' } ] },
         { id:'richter', title:'Richter — Main Theme', artist:'Igor Szuniewicz', cover:'images/richter.png', tags:['film','score'], length: 0, date:'2024-06-01', year: 2024, desc:{ pl:'Sekwencja suspensu do etiudy filmowej: warstwowe smyczki i perkusja akcji wymuszają stałe narastanie, zakończone zdecydowanym, filmowym cięciem.', en:'Suspense sequence for a short film: layered strings and action percussion drive a continuous escalation, resolved with a decisive cinematic cutoff.', nl:'Suspense‑cue voor een korte film: gelaagde strijkers en actiedrums stuwen een constante opbouw, afgesloten met een beslissende filmische stop.' }, sources:[ { url:'songs/RichterMainTheme.wav', type:'audio/wav' }, { url:'songs/RichterMainTheme.m4a', type:'audio/mp4' }, { url:'songs/RichterMainTheme.mp3', type:'audio/mpeg' } ] },
@@ -562,8 +576,8 @@
       return (String(t.title||'')+String(t.artist||'')+(Array.isArray(t.tags)?t.tags.join(' '):'')).toLowerCase().includes(q);
     });
     if (!results || results.length===0) {
-      // Hard fallback: always show full list rather than empty
-      results = tracks.slice();
+      // For scoped pages, show empty rather than full catalog
+      results = isScoped ? [] : tracks.slice();
     }
     view = results;
     const sortVal = (sortEl && sortEl.value) ? sortEl.value : 'new';

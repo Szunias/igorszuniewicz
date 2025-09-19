@@ -780,7 +780,76 @@ document.addEventListener('DOMContentLoaded', function() {
     contact_lead: { pl: 'Współpracujmy. Jestem otwarty na projekty i staże.', nl: 'Laten we samenwerken. Ik sta open voor projecten en stages.', en: 'Let’s collaborate. I’m open to project opportunities and internships.' },
     contact_email_label: { pl: 'Email:', nl: 'E‑mail:', en: 'Email:' },
     contact_location_label: { pl: 'Lokalizacja:', nl: 'Locatie:', en: 'Location:' },
-    contact_reachout: { pl: 'Śmiało napisz z krótkim opisem. Lubię projekty łączące kreatywną wizję z rozwiązywaniem problemów technicznych.', nl: 'Stuur gerust een korte briefing. Ik werk graag aan projecten die creatieve intentie combineren met technische probleemoplossing.', en: 'Feel free to reach out with a short brief. I enjoy projects that combine creative intent with technical problem‑solving.' }
+    contact_reachout: { pl: 'Śmiało napisz z krótkim opisem. Lubię projekty łączące kreatywną wizję z rozwiązywaniem problemów technicznych.', nl: 'Stuur gerust een korte briefing. Ik werk graag aan projecten die creatieve intentie combineren met technische probleemoplossing.', en: 'Feel free to reach out with a short brief. I enjoy projects that combine creative intent with technical problem‑solving.' },
+    // Not Today Darling page translations
+    ntd_trailer_title: { pl: 'Trailer', nl: 'Trailer', en: 'Trailer' },
+    ntd_role_title: { pl: 'Rola — Audio', nl: 'Rol — Audio', en: 'Role — Audio' },
+    ntd_role_desc: { pl: 'Odpowiadałem za sound effects, implementację i miks: paleta SFX gameplayu, UI, warstwy crowd/ambience oraz integrację i miks w silniku dla czytelności przy szybkiej akcji. System reaguje na stany wyścigu i zdarzenia gracza.', nl: 'SFX‑ontwerp, implementatie en mix: gameplaypalet, UI, crowd/ambience, met engine‑integratie en mix voor leesbaarheid bij hoge snelheid. Systeem reageert op racestaten en events.', en: 'Handled SFX design, implementation and mixing: gameplay palette, UI, crowd/ambience, plus in‑engine integration and mix for clarity at speed. System reacts to race states and player events.' },
+    ntd_hi_title: { pl: 'Gameplay Highlights', nl: 'Gameplay Highlights', en: 'Gameplay Highlights' },
+    ntd_hi_1: { pl: 'Responsywne SFX powiązane z akcjami gracza i przeszkodami', nl: 'Responsieve SFX gekoppeld aan acties en hazards', en: 'Responsive SFX tied to actions and hazards' },
+    ntd_hi_2: { pl: 'Hierarchia miksu zoptymalizowana pod czytelność (1–4 graczy)', nl: 'Mixhiërarchie geoptimaliseerd (1–4 spelers)', en: 'Mix hierarchy optimized for readability (1–4 players)' },
+    ntd_hi_3: { pl: 'Niewchodzące w drogę warstwy dynamiczne przy intensywnych momentach', nl: 'Niet‑opdringerige dynamische lagen bij intense momenten', en: 'Non‑intrusive dynamic layers for intense moments' },
+    ntd_impl_title: { pl: 'Implementacja', nl: 'Implementatie', en: 'Implementation' },
+    ntd_impl_1: { pl: 'Parametry/stany dla cooldownów i burstów', nl: 'Parameters/states voor cooldowns en bursts', en: 'Parameters/states for cooldowns and bursts' },
+    ntd_impl_2: { pl: 'Oszczędna organizacja assetów, spójne poziomy głośności', nl: 'Geheugenvriendelijke assets, consistente loudnessdoelen', en: 'Memory‑friendly assets, consistent loudness targets' },
+    ntd_impl_3: { pl: 'Szybkie iteracje z zespołem gameplay', nl: 'Snelle iteraties met gameplayteam', en: 'Fast iteration loops with gameplay team' },
+    ntd_team_title: { pl: 'Zespół', nl: 'Team', en: 'Team' },
+    ntd_gallery_title: { pl: 'Galeria', nl: 'Galerij', en: 'Gallery' },
+    ntd_download_title: { pl: 'Pobierz', nl: 'Downloaden', en: 'Download' },
+    ntd_download_desc: { pl: 'Pobierz grę na itch.io:', nl: 'Download de game op itch.io:', en: 'Get the game on itch.io:' },
+    ntd_sample_title: { pl: 'Próbka Audio', nl: 'Audio Sample', en: 'Audio Sample' },
+    ntd_sample_note: { pl: 'Jeden przykład dźwięku z gry. Użyj odtwarzacza poniżej.', nl: 'Eén in‑game voorbeeld. Gebruik de speler hieronder.', en: 'Single in‑game example. Use the player below.' },
+    ntd_weeks_title: { pl: 'Postępy Audio — Tygodnie', nl: 'Audio‑voortgang — Wekelijks', en: 'Audio Progress — Weekly' },
+    ntd_tagline: { pl: 'Szybki, lokalny wyścig side‑scrolling. Chaos i frajda.', nl: 'Snelle lokale side‑scroll race. Chaotisch en leuk.', en: 'Fast local side‑scrolling race. Chaotic and fun.' },
+    ntd_meta_school: { pl: 'Digital Arts and Entertainment', nl: 'Digital Arts and Entertainment', en: 'Digital Arts and Entertainment' },
+    ntd_meta_released: { pl: 'Wydano: 25 maja 2025', nl: 'Uitgebracht: 25 mei 2025', en: 'Released: May 25, 2025' },
+    ntd_meta_platforms: { pl: 'Platformy: Windows, Linux', nl: 'Platforms: Windows, Linux', en: 'Platforms: Windows, Linux' },
+    ntd_meta_engine: { pl: 'Silnik: Unreal Engine', nl: 'Engine: Unreal Engine', en: 'Engine: Unreal Engine' },
+    ntd_meta_modes: { pl: 'Tryby: Multiplayer lokalny (1–4)', nl: 'Modi: Lokale multiplayer (1–4)', en: 'Modes: Local multiplayer (1–4)' },
+    ntd_download_sizes: { pl: 'Build Windows (1.0 GB), build Linux (967 MB)', nl: 'Windows build (1.0 GB), Linux build (967 MB)', en: 'Windows build (1.0 GB), Linux build (967 MB)' },
+    ntd_all_projects: { pl: 'Wszystkie Projekty', nl: 'Alle Projecten', en: 'All Projects' },
+    // Weekly progress translations
+    ntd_week02_title: { pl: 'Tydzień 02 — Prototypowanie & Research', nl: 'Week 02 — Prototyping & Onderzoek', en: 'Week 02 — Prototyping & Research' },
+    ntd_week02_desc: { pl: 'Badanie stylu dźwiękowego i referencji, plan SFX/UI, testy pipeline\'u.', nl: 'Onderzoek naar audiostijl en referenties, SFX/UI‑planning, pipeline‑testen.', en: 'Researching audio style and references, SFX/UI planning, pipeline testing.' },
+    ntd_week03_title: { pl: 'Tydzień 03 — Start prototypu', nl: 'Week 03 — Start van prototype', en: 'Week 03 — Start of prototype' },
+    ntd_week03_desc: { pl: 'Dokumentacja systemu audio, backlog SFX, założenia miksu i czytelności.', nl: 'Audiosysteem documentatie, SFX‑backlog, mix‑ en duidelijkheidsveronderstellingen.', en: 'Audio system documentation, SFX backlog, mix and clarity assumptions.' },
+    ntd_week04_title: { pl: 'Tydzień 04 — Łączenie elementów', nl: 'Week 04 — Samenkomen', en: 'Week 04 — Coming together' },
+    ntd_week04_desc: { pl: 'Mapowanie zdarzeń do RTPC/states, eksperymenty z warstwami tła.', nl: 'Events mappen naar RTPC/states, experimenten met achtergrondlagen.', en: 'Mapping events to RTPC/states, experiments with background layers.' },
+    ntd_week05_title: { pl: 'Tydzień 05 — Shaping Up Our Vision', nl: 'Week 05 — Onze Visie Vormgeven', en: 'Week 05 — Shaping Up Our Vision' },
+    ntd_week05_desc: { pl: 'Projekt miksu pod wyścig 1–4 graczy, selektywna głośność i priorytety.', nl: 'Mix‑ontwerp voor 1–4 speler racing, selectief volume en prioriteiten.', en: 'Mix design for 1–4 player racing, selective volume and priorities.' },
+    ntd_week06_title: { pl: 'Tydzień 06 — 3, 2, 1, START!', nl: 'Week 06 — 3, 2, 1, START!', en: 'Week 06 — 3, 2, 1, START!' },
+    ntd_week06_desc: { pl: 'Implementacja podstawowych zdarzeń SFX, sygnałów start/meta, UI.', nl: 'Implementatie van basis SFX‑events, start/meta‑signalen, UI.', en: 'Implementation of basic SFX events, start/meta signals, UI.' },
+    ntd_week07_title: { pl: 'Tydzień 07 — Pit stop finished', nl: 'Week 07 — Pitstop voltooid', en: 'Week 07 — Pit stop finished' },
+    ntd_week07_desc: { pl: 'Optymalizacja pamięci SFX, porządki w bankach, ujednolicenie namingów.', nl: 'SFX‑geheugenoptimalisatie, bank‑opruiming, naamgevingsstandardisatie.', en: 'SFX memory optimization, bank cleanup, naming standardization.' },
+    ntd_week08_title: { pl: 'Tydzień 08 — These grannies are bussin', nl: 'Week 08 — Deze oma\'s zijn bussin', en: 'Week 08 — These grannies are bussin' },
+    ntd_week08_desc: { pl: 'Warstwy crowd/ambience, krótkie loopy tła, kontrola transjentów.', nl: 'Crowd/ambience‑lagen, korte achtergrondloops, transiëntcontrole.', en: 'Crowd/ambience layers, short background loops, transient control.' },
+    ntd_week09_title: { pl: 'Tydzień 09 — Lights, FX, Action!', nl: 'Week 09 — Lights, FX, Action!', en: 'Week 09 — Lights, FX, Action!' },
+    ntd_week09_desc: { pl: 'Soundy kolizji/hazardów, dopasowanie do FX/światła, czytelność.', nl: 'Botsing/gevaargeluiden, aanpassing aan FX/verlichting, duidelijkheid.', en: 'Collision/hazard sounds, adaptation to FX/lighting, clarity.' },
+    ntd_week10_title: { pl: 'Tydzień 10 — Production‑Ready Race', nl: 'Week 10 — Productie‑Klare Race', en: 'Week 10 — Production‑Ready Race' },
+    ntd_week10_desc: { pl: 'Stabilizacja miksu, bus processing, limiter na masterze gry.', nl: 'Mix‑stabilisatie, busverwerking, game‑masterlimiter.', en: 'Mix stabilization, bus processing, game master limiter.' },
+    ntd_week11_title: { pl: 'Tydzień 11 — Polish & Refinement', nl: 'Week 11 — Polijsten & Verfijning', en: 'Week 11 — Polish & Refinement' },
+    ntd_week11_desc: { pl: 'Balans UI vs. gameplay, fine‑tuning envelope\'ów, final pass.', nl: 'UI vs. gameplay‑balans, fine‑tuning enveloppen, laatste doorgang.', en: 'UI vs. gameplay balance, fine‑tuning envelopes, final pass.' },
+    ntd_week12_title: { pl: 'Tydzień 12 — Start, Journey and now the End', nl: 'Week 12 — Start, Reis en nu het Einde', en: 'Week 12 — Start, Journey and now the End' },
+    ntd_week12_desc: { pl: 'Finalne renderingi, QA audio, checklisty, eksport buildów.', nl: 'Finale renders, audio‑QA, checklists, build‑exports.', en: 'Final renders, audio QA, checklists, build exports.' },
+    // Team tooltips
+    ntd_team_tooltip: { pl: 'Kliknij aby odwiedzić portfolio', nl: 'Klik om portfolio te bezoeken', en: 'Click to visit portfolio' },
+    ntd_team_no_portfolio: { pl: 'Portfolio niedostępne', nl: 'Portfolio niet beschikbaar', en: 'Portfolio unavailable' },
+    // Collaboration section
+    ntd_collaboration_title: { pl: 'Współpraca zespołu', nl: 'Teamsamenwerking', en: 'Team Collaboration' },
+    ntd_collaboration_desc: { pl: 'Mój zespół to wspaniali ludzie! Pracowaliśmy tak dobrze razem, że postanowiliśmy dodać dodatkowy element do gry — nagraliśmy oryginalne voiceline\'y dla postaci babć. Każda babcia ma swój unikalny charakter i głos, co dodaje uroku i humoru do rozgrywki.', nl: 'Mijn team bestaat uit geweldige mensen! We werkten zo goed samen dat we besloten een extra element aan de game toe te voegen — we hebben originele voicelines opgenomen voor de oma-personages. Elke oma heeft haar unieke karakter en stem, wat charme en humor toevoegt aan de gameplay.', en: 'My team consists of amazing people! We worked so well together that we decided to add an extra element to the game — we recorded original voicelines for the grandma characters. Each grandma has her unique character and voice, adding charm and humor to the gameplay.' },
+    ntd_voicelines_title: { pl: 'Voiceline\'y Babć', nl: 'Oma Voicelines', en: 'Grandma Voicelines' },
+    ntd_voicelines_desc: { pl: 'Posłuchaj oryginalnych nagrań głosowych naszych postaci:', nl: 'Luister naar de originele voice-opnames van onze personages:', en: 'Listen to the original voice recordings of our characters:' },
+    // Grandma characters
+    ntd_grandma1_title: { pl: 'Grandma 1', nl: 'Oma 1', en: 'Grandma 1' },
+    ntd_grandma1_desc: { pl: 'Energiczna i pewna siebie', nl: 'Energiek en zelfverzekerd', en: 'Energetic and confident' },
+    ntd_grandma2_title: { pl: 'Grandma 2', nl: 'Oma 2', en: 'Grandma 2' },
+    ntd_grandma2_desc: { pl: 'Mądra i doświadczona', nl: 'Wijs en ervaren', en: 'Wise and experienced' },
+    ntd_grandma3_title: { pl: 'Grandma 3', nl: 'Oma 3', en: 'Grandma 3' },
+    ntd_grandma3_desc: { pl: 'Wesoła i żartobliwa', nl: 'Vrolijk en speels', en: 'Cheerful and playful' },
+    ntd_grandma4_title: { pl: 'Grandma 4', nl: 'Oma 4', en: 'Grandma 4' },
+    ntd_grandma4_desc: { pl: 'Spokojna i skupiona', nl: 'Kalm en gefocust', en: 'Calm and focused' },
+    ntd_grandma5_title: { pl: 'Grandma 5', nl: 'Oma 5', en: 'Grandma 5' },
+    ntd_grandma5_desc: { pl: 'Sroga ale sprawiedliwa', nl: 'Streng maar eerlijk', en: 'Stern but fair' }
   };
 
   // Expose minimal public i18n for other scripts (read-only)
@@ -1123,6 +1192,23 @@ document.addEventListener('DOMContentLoaded', function() {
       try { document.title = (lang==='pl'?'Aktywności dodatkowe — Igor Szuniewicz': lang==='nl'?'Extra‑curriculair — Igor Szuniewicz':'Extra-Curricular — Igor Szuniewicz'); } catch(_){}
     }
 
+    // Not Today Darling page translations
+    if (location.pathname.endsWith('/not-today-darling.html') || /not-today-darling\.html$/i.test(location.pathname)){
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        let i18nKey = 'ntd_' + key.replace(/[^a-zA-Z0-9_]/g, '_');
+
+        // Handle special cases for team tooltips
+        if (key === 'team_tooltip') i18nKey = 'ntd_team_tooltip';
+        if (key === 'team_no_portfolio') i18nKey = 'ntd_team_no_portfolio';
+
+        if (I18N[i18nKey]) {
+          el.textContent = I18N[i18nKey][lang];
+        }
+      });
+      // Page <title>
+      try { document.title = (lang==='pl'?'Not Today, Darling! — Audio do gry — Igor Szuniewicz': lang==='nl'?'Not Today, Darling! — Game‑audio — Igor Szuniewicz':'Not Today, Darling! — Game Audio — Igor Szuniewicz'); } catch(_){}
+    }
     // Contact page translations (current markup)
     if (location.pathname.endsWith('/contact.html') || /contact\.html$/i.test(location.pathname)){
       const h1 = document.querySelector('#main header.major h1'); if (h1) h1.textContent = (lang==='pl'?'Porozmawiajmy': lang==='nl'?'Laten we praten':'Let\u2019s Connect');

@@ -166,6 +166,29 @@
             right: 10px;
         }
 
+        /* Slide badges */
+        .slide-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #ff6b35, #f9ca24);
+            color: #0c1218;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2);
+            z-index: 5;
+            line-height: 1;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2); }
+            50% { box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6), 0 0 0 3px rgba(255, 255, 255, 0.3); }
+        }
+
         /* Larger slider on wide screens */
         @media (min-width: 980px) {
             .slider {
@@ -304,8 +327,9 @@
                             <p class="slide-description">Sound design.</p>
                         </div>
                         <div class="slide">
+                            <span class="slide-badge">DAE Game Projects</span>
                             <h3>Not Today, Darling! — Game Audio</h3>
-                            <a href="https://freyaspes.itch.io/not-today-darling" target="_blank" rel="noopener noreferrer"><img src="images/NotTodayGameLogo.png" alt="Not Today, Darling!" loading="lazy" decoding="async"></a>
+                            <a href="projects/not-today-darling.html"><img src="images/NotTodayGameLogo.png" alt="Not Today, Darling!" loading="lazy" decoding="async"></a>
                             <p class="slide-description">Local co‑op platformer.</p>
                         </div>
                         <div class="slide">
