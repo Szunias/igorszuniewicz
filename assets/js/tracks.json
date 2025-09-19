@@ -357,6 +357,30 @@
     ]
   },
   {
+    "id": "psy",
+    "title": "Psy",
+    "artist": "Igor Szuniewicz",
+    "cover": "images/PSY.png",
+    "tags": [
+      "single",
+      "metal"
+    ],
+    "length": 0,
+    "date": "2025-09-15",
+    "year": 2025,
+    "desc": {
+      "pl": "Utwór o cierpieniu psów trzymanych w niewoli i źle traktowanych przez właścicieli. Krzyk sprzeciwu wobec przemocy wobec zwierząt, pokazujący ich ból i bezsilność. Jednocześnie niesie przekaz, że czasem los wymierza sprawiedliwość oprawcom, a cierpienie wraca do tych, którzy je zadają.",
+      "en": "A piece about the suffering of dogs kept in captivity and abused by their owners. A cry of protest against violence towards animals, exposing their pain and powerlessness. At the same time it carries the message that fate sometimes delivers justice to the tormentors, and suffering returns to those who inflict it.",
+      "nl": "Een stuk over het lijden van honden die in gevangenschap worden gehouden en door hun eigenaars worden mishandeld. Een schreeuw van protest tegen geweld jegens dieren, die hun pijn en onmacht toont. Tegelijk draagt het de boodschap dat het lot soms gerechtigheid brengt voor de beulen en dat het leed terugkeert naar wie het toebrengt."
+    },
+    "sources": [
+      {
+        "url": "songs/psy(2).wav",
+        "type": "audio/wav"
+      }
+    ]
+  },
+  {
     "id": "caplanetechno",
     "title": "Ça Plane Pour Moi — Techno Remix",
     "artist": "Igor Szuniewicz",

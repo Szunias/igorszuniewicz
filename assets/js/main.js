@@ -177,29 +177,23 @@
 			// Get inner.
 				$navPanelInner = $navPanel.children('nav');
 
-			// Move nav content on breakpoint change.
+			// Keep nav content in place on mobile; clone into panel for the hamburger.
 				var $navContent = $nav.children();
 
 				breakpoints.on('>medium', function() {
-
-					// NavPanel -> Nav.
-						$navContent.appendTo($nav);
-
-					// Flip icon classes.
-						$nav.find('.icons, .icon')
-							.removeClass('alt');
-
+					// Ensure desktop keeps normal styling and clear panel duplicates.
+					$nav.find('.icons, .icon').removeClass('alt');
+					if ($navPanelInner) $navPanelInner.empty();
 				});
 
 				breakpoints.on('<=medium', function() {
-
-					// Nav -> NavPanel.
-						$navContent.appendTo($navPanelInner);
-
-					// Flip icon classes.
-						$navPanelInner.find('.icons, .icon')
-							.addClass('alt');
-
+					// Do not move nodes away from #nav. Instead, clone into the panel so
+					// the top nav stays visible on mobile pages.
+					if ($navPanelInner) {
+						$navPanelInner.empty();
+						$nav.children().clone(true, true).appendTo($navPanelInner);
+						$navPanelInner.find('.icons, .icon').addClass('alt');
+					}
 				});
 
 			// Hack: Disable transitions on WP.
