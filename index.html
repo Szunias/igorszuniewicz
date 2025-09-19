@@ -18,10 +18,12 @@
 	<link rel="canonical" href="https://igorszuniewicz.com/" />
 	<meta name="theme-color" content="#0c1218" />
 	<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
-	<link rel="icon" href="/favicon.ico" sizes="any">
-	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+	<link rel="icon" href="favicon.ico" sizes="any">
+	<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+	<!-- Web App Manifest -->
+	<link rel="manifest" href="manifest.json">
 	<!-- Performance optimizations: preload critical resources -->
 	<link rel="preload" as="script" href="assets/js/jquery.min.js" />
 	<link rel="preload" as="script" href="assets/js/performance.js" />
@@ -29,11 +31,17 @@
 	<!-- DNS prefetch for external resources -->
 	<link rel="dns-prefetch" href="//fonts.googleapis.com" />
 	<link rel="dns-prefetch" href="//fonts.gstatic.com" />
+	<!-- Main CSS loads immediately to preserve styling -->
 	<link rel="preload" href="assets/css/main.css" as="style" />
 	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="assets/css/custom-styles.css?v=20250210" /> 
-	<link rel="stylesheet" href="assets/css/pro-theme.css?v=20250212" /> 
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<link rel="stylesheet" href="assets/css/custom-styles.css?v=20250919b" />
+	<link rel="stylesheet" href="assets/css/pro-theme.css?v=20250219" />
+	<!-- Critical CSS for performance (non-blocking) -->
+	<!-- <link rel="preload" href="assets/css/critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> -->
+	<noscript>
+		<!-- <link rel="stylesheet" href="assets/css/critical.css" /> -->
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="Igor Szuniewicz" />
 	<meta property="og:title" content="Igor Szuniewicz — Composer, Audio Engineer, Software Developer" />
@@ -376,21 +384,21 @@
                                 <li data-detail="Integracja audio w grach (UE/Unity)|Wwise, FMOD, miks, RTPCs">
                                     <div class="cv-time">2024 — now</div>
                                     <div class="cv-item">
-                                        <div class="cv-title"><img src="images/dae.jpg?v=1" alt="Howest DAE" class="cv-logo" loading="lazy" decoding="async"><strong>Howest DAE</strong></div>
+                                        <div class="cv-title"><img src="images/dae.jpg?v=1" alt="Howest DAE" class="cv-logo" loading="lazy" decoding="async" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; width: 28px !important; height: 28px !important; margin-right: 8px !important;"><strong>Howest DAE</strong></div>
                                         <div class="cv-sub">Game Sound Integration (ongoing)</div>
                                     </div>
                                 </li>
                                 <li data-detail="Profil rozszerzony: matematyka i fizyka|Olimpiady i projekty naukowe">
                                     <div class="cv-time">2021 — 2024</div>
                                     <div class="cv-item">
-                                        <div class="cv-title"><img src="images/koperas.png?v=1" alt="Copernicus High School" class="cv-logo" loading="lazy" decoding="async"><strong>Copernicus High School</strong></div>
+                                        <div class="cv-title"><img src="images/koperas.png?v=1" alt="Copernicus High School" class="cv-logo" loading="lazy" decoding="async" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; width: 28px !important; height: 28px !important; margin-right: 8px !important;"><strong>Copernicus High School</strong></div>
                                         <div class="cv-sub">Maths & Physics profile (graduated)</div>
                                     </div>
                                 </li>
                                 <li data-detail="Teoria muzyki, kształcenie słuchu|Praktyka sceniczna i zespół">
                                     <div class="cv-time">2013 — 2020</div>
                                     <div class="cv-item">
-                                        <div class="cv-title"><img src="images/muzyczna.png?v=1" alt="State Music School" class="cv-logo" loading="lazy" decoding="async"><strong>State Music School (First Degree)</strong></div>
+                                        <div class="cv-title"><img src="images/muzyczna.png?v=1" alt="State Music School" class="cv-logo" loading="lazy" decoding="async" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; width: 28px !important; height: 28px !important; margin-right: 8px !important;"><strong>State Music School (First Degree)</strong></div>
                                         <div class="cv-sub">Music Theory & Performance (graduated)</div>
                                     </div>
                                 </li>
@@ -511,7 +519,13 @@
 
     </div> <!-- End #wrapper -->
 
-    <!-- Scripts -->
+    <!-- Scripts - Restored proper loading order -->
+    <!-- Performance monitoring (non-blocking) -->
+    <!-- <script src="assets/js/performance-monitor.js" async></script> -->
+    <script src="assets/js/image-optimizer.js" async></script>
+    <!-- <script src="assets/js/font-optimizer.js" async></script> -->
+
+    <!-- Core dependencies MUST load in order -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
     <script src="assets/js/jquery.scrolly.min.js"></script>
@@ -520,9 +534,19 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/performance.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/slider.js"></script>
-    <script src="assets/js/enhancements.js?v=20250210"></script>
-    <script src="assets/js/theme-toggle.js"></script>
+
+    <!-- Essential functionality scripts -->
+    <!-- <script src="assets/js/slider.js"></script> -->
+    <script src="assets/js/enhancements.js?v=nuclear-fix"></script>
+    <!-- <script src="assets/js/theme-toggle.js"></script> -->
+
+    <!-- Non-blocking optimizations -->
+    <!-- <script src="assets/js/resource-optimizer.js" async></script> -->
+
+    <!-- Debug script for CV images -->
+    <!-- Debug scripts disabled while fixing enhancements.js -->
+    <!-- <script src="assets/js/debug-cv-images.js?v=reveal-fix"></script> -->
+    <!-- <script src="assets/js/force-cv-images.js?v=reveal-fix"></script> -->
 
 </body>
 </html>

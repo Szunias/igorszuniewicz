@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Final CV Images Test</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/custom-styles.css?v=20250919b" />
+    <link rel="stylesheet" href="assets/css/pro-theme.css?v=20250219" />
+</head>
+<body>
+    <h1>CV Images Test - Final</h1>
+
+    <section id="cv-section" class="post in-view" data-reveal>
+        <div class="box">
+            <ul class="cv-timeline">
+                <li>
+                    <div class="cv-time">2024 — now</div>
+                    <div class="cv-item">
+                        <div class="cv-title">
+                            <img src="images/dae.jpg?v=1" alt="Howest DAE" class="cv-logo" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; width: 28px !important; height: 28px !important; margin-right: 8px !important;">
+                            <strong>Howest DAE</strong>
+                        </div>
+                        <div class="cv-sub">Game Sound Integration (ongoing)</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="cv-time">2021 — 2024</div>
+                    <div class="cv-item">
+                        <div class="cv-title">
+                            <img src="images/koperas.png?v=1" alt="Copernicus High School" class="cv-logo" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; width: 28px !important; height: 28px !important; margin-right: 8px !important;">
+                            <strong>Copernicus High School</strong>
+                        </div>
+                        <div class="cv-sub">Maths & Physics profile (graduated)</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="cv-time">2013 — 2020</div>
+                    <div class="cv-item">
+                        <div class="cv-title">
+                            <img src="images/muzyczna.png?v=1" alt="State Music School" class="cv-logo" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; width: 28px !important; height: 28px !important; margin-right: 8px !important;">
+                            <strong>State Music School (First Degree)</strong>
+                        </div>
+                        <div class="cv-sub">Music Theory & Performance (graduated)</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- NO JAVASCRIPT AT ALL -->
+    <script>
+        console.log('✅ Test page loaded with CV images');
+        setTimeout(() => {
+            const images = document.querySelectorAll('.cv-logo');
+            console.log('Found', images.length, 'CV images in test page');
+            images.forEach((img, i) => {
+                console.log('Image', i+1, ':', img.src, 'Complete:', img.complete);
+            });
+        }, 1000);
+    </script>
+</body>
+</html>

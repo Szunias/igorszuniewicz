@@ -250,17 +250,18 @@ document.addEventListener('DOMContentLoaded', function() {
       o.type='sine'; o.frequency.value=freq; g.gain.setValueAtTime(0.0001,t); g.gain.linearRampToValueAtTime(vol,t+0.01); g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
       o.connect(g).connect(c.destination); o.start(t); o.stop(t+dur+0.02);
     }
-    const isInMusic = (node)=> !!(node && (node.closest('.music-page') || node.closest('#player-bar') || node.closest('#music-list')));
+    const isInMusic = (node)=> !!(node && node.closest && (node.closest('.music-page') || node.closest('#player-bar') || node.closest('#music-list')));
     // Click feedback
     document.addEventListener('click',(e)=>{
+      if(!e.target || !e.target.closest) return;
       const el=e.target.closest('a,button,.button,select,[role="button"],.slider-nav'); if(!el) return;
-      if (isInMusic(el) || el.closest('.mi-play') || el.closest('.pb-btn')) return;
+      if (isInMusic(el) || (el.closest && (el.closest('.mi-play') || el.closest('.pb-btn')))) return;
       blip(880,0.07,0.05);
     },{passive:true});
     // Toggle/select change
     document.addEventListener('change',(e)=>{ if(!e.target) return; if (isInMusic(e.target)) return; if(e.target.matches('select')||e.target.matches('input[type="checkbox"],input[type="radio"]')) blip(660,0.06,0.05); },{passive:true});
     // Hover subtle hint
-    document.addEventListener('pointerenter',(e)=>{ const el=e.target.closest('a.button, .button, .slider-nav'); if(!el) return; if (isInMusic(el)) return; blip(1200,0.04,0.035); },true);
+    document.addEventListener('pointerenter',(e)=>{ if(!e.target || !e.target.closest) return; const el=e.target.closest('a.button, .button, .slider-nav'); if(!el) return; if (isInMusic(el)) return; blip(1200,0.04,0.035); },true);
   })();
 
   // Contact ambient pointer tracking
@@ -514,16 +515,19 @@ document.addEventListener('DOMContentLoaded', function() {
   // Hover tooltips for CV items (desktop / non perf-lite)
   if (enableCvHoverPopovers && !document.body.classList.contains('perf-lite')){
     document.addEventListener('pointerenter', (e)=>{
+      if(!e.target || !e.target.closest) return;
       const host = e.target.closest('#cv-section .box [data-tip]');
       if (!host) return; const p = e;
       showTip(host, p.clientX||0, p.clientY||0);
     }, true);
     document.addEventListener('pointermove', (e)=>{
       if (!pop.classList.contains('visible')) return;
+      if(!e.target || !e.target.closest) return;
       const host = e.target.closest('#cv-section .box [data-tip]');
       if (!host) return; showTip(host, e.clientX||0, e.clientY||0);
     }, true);
     document.addEventListener('pointerleave', (e)=>{
+      if(!e.target || !e.target.closest) return;
       if (!e.target.closest('#cv-section .box [data-tip]')) return; hideTip();
     }, true);
   }
@@ -551,10 +555,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     function hide(){ pop.classList.remove('visible'); pop.style.left='-9999px'; pop.style.top='-9999px'; }
     list.addEventListener('pointerenter', (e)=>{
+      if(!e.target || !e.target.closest) return;
       const li=e.target.closest('.cv-timeline li'); if(!li) return; show(li, e.clientX||0, e.clientY||0);
     }, true);
     list.addEventListener('pointermove', (e)=>{
-      if(!pop.classList.contains('visible')) return; const li=e.target.closest('.cv-timeline li'); if(!li) return hide();
+      if(!pop.classList.contains('visible')) return;
+      if(!e.target || !e.target.closest) return;
+      const li=e.target.closest('.cv-timeline li'); if(!li) return hide();
       show(li, e.clientX||0, e.clientY||0);
     }, true);
     list.addEventListener('pointerleave', (e)=>{ if(!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest('.cv-pop')) hide(); }, true);
@@ -616,20 +623,15 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   // (removed) eager hydration — previews are filled just-in-time on hover with random picks
 
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+  // Force all elements to be visible immediately (debugging CV images)
+  document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('in-view'));
 
-    document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
-  } else {
-    document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('in-view'));
+  // Also force CV section specifically
+  const cvSection = document.querySelector('#cv-section');
+  if (cvSection) {
+    cvSection.classList.add('in-view');
   }
+
 
   window.addEventListener('scroll', markVisibleNow, { passive: true });
 
@@ -1335,10 +1337,11 @@ document.addEventListener('DOMContentLoaded', function() {
   if (toggleBtn && menu){
     toggleBtn.addEventListener('click', (e)=>{ e.preventDefault(); document.querySelector('.lang-switch').classList.toggle('open'); menu.style.display = menu.style.display==='block'?'none':'block'; });
     menu.addEventListener('click', (e)=>{
+      if(!e.target || !e.target.closest) return;
       const btn = e.target.closest('button[data-lang]'); if (!btn) return; setLang(btn.getAttribute('data-lang')); document.querySelector('.lang-switch').classList.remove('open');
       menu.style.display='none';
     });
-    document.addEventListener('click', (e)=>{ if (!e.target.closest('.lang-switch')){ document.querySelector('.lang-switch').classList.remove('open'); menu.style.display='none'; } });
+    document.addEventListener('click', (e)=>{ if(!e.target || !e.target.closest) return; if (!e.target.closest('.lang-switch')){ document.querySelector('.lang-switch').classList.remove('open'); menu.style.display='none'; } });
   }
 
   // Inline menu: highlight active and switch directly
@@ -1356,9 +1359,9 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   }
-  badgeMenu.addEventListener('click', (e)=>{ const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); syncActive(); });
+  badgeMenu.addEventListener('click', (e)=>{ if(!e.target || !e.target.closest) return; const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); syncActive(); });
   const fixed = document.getElementById('lang-fixed');
-  if (fixed){ fixed.addEventListener('click', (e)=>{ const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); syncActive(); }); }
+  if (fixed){ fixed.addEventListener('click', (e)=>{ if(!e.target || !e.target.closest) return; const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); syncActive(); }); }
   syncActive();
   // no dropdown behavior anymore
 

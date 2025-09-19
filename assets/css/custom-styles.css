@@ -592,7 +592,51 @@ body p {
 .cv-timeline .cv-item { position: relative; padding: 10px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; background: rgba(12,18,26,0.5); box-shadow: 0 10px 24px rgba(0,0,0,0.25); }
 .cv-timeline .cv-title { color: #eaf7ff; font-weight: 800; margin-bottom: 2px; }
 .cv-timeline .cv-title { display:flex; align-items:center; gap:8px; }
-.cv-logo { width: 28px; height: 28px; object-fit: contain; border-radius: 4px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 2px; }
+.cv-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 2px;
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* Force visibility for all CV section images - NUCLEAR OPTION */
+.cv-timeline img,
+.cv-item img,
+.cv-title img,
+img[alt*="Howest"],
+img[alt*="DAE"],
+img[alt*="Copernicus"],
+img[alt*="Music School"],
+img[src*="dae.jpg"],
+img[src*="koperas.png"],
+img[src*="muzyczna.png"] {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
+  width: 28px !important;
+  height: 28px !important;
+  margin: 0 8px 0 0 !important;
+  padding: 2px !important;
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  border-radius: 4px !important;
+  object-fit: contain !important;
+  vertical-align: middle !important;
+  position: static !important;
+  z-index: auto !important;
+  transform: none !important;
+  filter: none !important;
+}
 .cv-timeline .cv-sub { color: #cfe7f8; font-size: .92rem; }
 .cv-timeline li + li .cv-item { margin-top: 6px; }
 
