@@ -1127,9 +1127,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const map = key && CARDS[key]; if (!map) return;
         const h = card.querySelector('h3'); if (h) h.textContent = map.h[lang] || map.h.en;
         const p = card.querySelector('p'); if (p) p.textContent = map.p[lang] || map.p.en;
-        // Ensure NTD logo image is used
+        // Keep NTD GIF image
         if (key==='NotTodayDarling'){
-          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../images/NotTodayGameLogo.png'); img.src = '../images/NotTodayGameLogo.png'; img.alt='Not Today, Darling!'; }
+          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../images/NotTodayGIF.gif'); img.src = '../images/NotTodayGIF.gif'; img.alt='Not Today, Darling!'; }
         }
       });
     }
@@ -1195,10 +1195,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const labels = Array.from(document.querySelectorAll('#main h3#bgColor'));
         const order = ['overview','showcase','gallery'];
         labels.forEach((h3,idx)=>{ const key = order[idx]; if (key && M[key]) h3.textContent = M[key][lang] || M[key].en; });
-        // Specific assets tweaks
-        if (path==='not-today-darling'){
-          const hero = document.querySelector('.image.main img'); if (hero){ hero.src='../images/NotTodayGameLogo.png'; hero.alt='Not Today, Darling!'; }
-        }
       }
     }
 
@@ -1295,9 +1291,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!a) return;
         const h = a.closest('article')?.querySelector('header h3 a'); if (h && H[key]) h.textContent = H[key][lang];
       });
-      // Replace NTD image to logo
-      const ntdImg = document.querySelector('a[href="projects/not-today-darling.html"] img');
-      if (ntdImg) { ntdImg.src = 'images/NotTodayGameLogo.png'; ntdImg.alt='Not Today, Darling!'; }
     }
 
     // Extras page translations

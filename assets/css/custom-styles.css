@@ -641,7 +641,17 @@ body p {
 #projects-showcase .slider .slide a img {
   width: 100%;
   height: auto;
-  max-height: 55vh;
+  max-height: 400px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+}
+
+/* Special handling for NotToday GIF to ensure proper sizing */
+#projects-showcase .slider .slide a img[src*="NotTodayGIF.gif"] {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
   object-fit: cover;
   object-position: center;
 }

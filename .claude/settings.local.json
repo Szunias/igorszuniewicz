@@ -19,7 +19,8 @@
       "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\not-today-darling.html\")",
       "WebFetch(domain:www.gov.pl)",
       "WebSearch",
-      "WebFetch(domain:psmkolobrzeg.fryderyk.edu.pl)"
+      "WebFetch(domain:psmkolobrzeg.fryderyk.edu.pl)",
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\index.html\")"
     ],
     "deny": [],
     "ask": []
