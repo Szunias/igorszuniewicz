@@ -1127,9 +1127,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const map = key && CARDS[key]; if (!map) return;
         const h = card.querySelector('h3'); if (h) h.textContent = map.h[lang] || map.h.en;
         const p = card.querySelector('p'); if (p) p.textContent = map.p[lang] || map.p.en;
-        // Keep NTD GIF image
+        // Keep GIF images for projects
         if (key==='NotTodayDarling'){
           const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../images/NotTodayGIF.gif'); img.src = '../images/NotTodayGIF.gif'; img.alt='Not Today, Darling!'; }
+        }
+        if (key==='Transientica AudioLab'){
+          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../images/AudioLabGif.gif'); img.src = '../images/AudioLabGif.gif'; img.alt='Transientica AudioLab'; }
+        }
+        if (key==='Akantilado'){
+          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../images/AkantiladoGIF.gif'); img.src = '../images/AkantiladoGIF.gif'; img.alt='Akantilado'; }
+        }
+        if (key==='Amorak'){
+          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../images/AmorakGIF.gif'); img.src = '../images/AmorakGIF.gif'; img.alt='Amorak'; }
+        }
+        if (key==='Ray'){
+          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../images/RayGIF.gif'); img.src = '../images/RayGIF.gif'; img.alt='Ray'; }
         }
       });
     }
