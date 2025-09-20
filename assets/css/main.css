@@ -1,5 +1,4 @@
 @import 'fontawesome-all.min.css';
-@import url("https://fonts.googleapis.com/css?family=Merriweather:300,700,300italic,700italic|Source+Sans+Pro:900");
 
 /* Accessibility */
 .visually-hidden {
@@ -12,6 +11,24 @@
 	clip: rect(0, 0, 0, 0) !important;
 	white-space: nowrap !important;
 	border: 0 !important;
+}
+
+.skip-link {
+	position: absolute;
+	top: -40px;
+	left: 6px;
+	background: #18bfef;
+	color: #ffffff;
+	padding: 8px 16px;
+	text-decoration: none;
+	border-radius: 4px;
+	font-weight: 700;
+	z-index: 10000;
+	transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+	top: 6px;
 }
 /*
 	Massively by HTML5 UP

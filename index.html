@@ -8,13 +8,21 @@
 	<title>Igor Szuniewicz - Composer, Audio Engineer, Software Developer</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+	<meta http-equiv="X-Frame-Options" content="DENY" />
+	<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 	<meta name="description" content="Portfolio of Igor Szuniewicz — composer, audio engineer, and software developer specializing in interactive music systems, game audio, and DSP." />
+	<meta name="keywords" content="game audio, music composition, sound design, interactive music, DSP, audio programming, Wwise, FMOD, Unreal Engine" />
+	<meta name="author" content="Igor Szuniewicz" />
     <!-- Performance: preconnect to font domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap"></noscript>
+    <!-- Critical resource hints for performance -->
+    <link rel="dns-prefetch" href="//www.youtube.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap&subset=latin">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap&subset=latin" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap&subset=latin"></noscript>
 	<link rel="canonical" href="https://igorszuniewicz.com/" />
 	<meta name="theme-color" content="#0c1218" />
 	<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
@@ -32,14 +40,15 @@
 	<link rel="dns-prefetch" href="//fonts.googleapis.com" />
 	<link rel="dns-prefetch" href="//fonts.gstatic.com" />
 	<!-- Main CSS loads immediately to preserve styling -->
-	<link rel="preload" href="assets/css/main.css" as="style" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="assets/css/custom-styles.css?v=20250919g" />
-	<link rel="stylesheet" href="assets/css/pro-theme.css?v=20250219" />
-	<!-- Critical CSS for performance (non-blocking) -->
-	<!-- <link rel="preload" href="assets/css/critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'"> -->
+	<link rel="preload" href="assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<link rel="preload" href="assets/css/custom-styles.css?v=20250919g" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<link rel="preload" href="assets/css/pro-theme.css?v=20250219" as="style" onload="this.onload=null;this.rel='stylesheet'">
 	<noscript>
-		<!-- <link rel="stylesheet" href="assets/css/critical.css" /> -->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/custom-styles.css?v=20250919g" />
+		<link rel="stylesheet" href="assets/css/pro-theme.css?v=20250219" />
+	</noscript>
+	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
 	<meta property="og:type" content="website" />
@@ -54,17 +63,61 @@
 	<meta name="twitter:image" content="https://igorszuniewicz.com/images/maxresdefault.jpg" />
 	<script type="application/ld+json">
 	{
-	  "@context": "https://schema.org",
-	  "@type": "Person",
-	  "name": "Igor Szuniewicz",
-	  "url": "https://igorszuniewicz.com/",
-	  "image": "https://igorszuniewicz.com/images/maxresdefault.jpg",
-	  "jobTitle": "Composer, Audio Engineer, Software Developer",
-	  "sameAs": [
-	    "https://github.com/Szunias",
-	    "https://www.linkedin.com/in/igor-szuniewicz-a6877a2a3",
-	    "https://open.spotify.com/artist/6jEBXZZOeunaMzMnnHYvd6"
-	  ]
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "Person",
+				"@id": "https://igorszuniewicz.com/#person",
+				"name": "Igor Szuniewicz",
+				"url": "https://igorszuniewicz.com",
+				"image": {
+					"@type": "ImageObject",
+					"url": "https://igorszuniewicz.com/images/maxresdefault.jpg",
+					"width": 1280,
+					"height": 720
+				},
+				"sameAs": [
+					"https://github.com/Szunias",
+					"https://www.linkedin.com/in/igor-szuniewicz-a6877a2a3",
+					"https://open.spotify.com/artist/6jEBXZZOeunaMzMnnHYvd6",
+					"https://igorszuniewicz.itch.io"
+				],
+				"jobTitle": ["Composer", "Audio Engineer", "Software Developer"],
+				"description": "Composer, audio engineer, and software developer specializing in interactive music systems, game audio, and DSP.",
+				"email": "szunio2004@gmail.com",
+				"address": {
+					"@type": "PostalAddress",
+					"addressCountry": "BE",
+					"addressRegion": "West Flanders"
+				},
+				"knowsAbout": [
+					"Game Audio", "Music Composition", "Sound Design", "Interactive Music",
+					"DSP", "Audio Programming", "Wwise", "FMOD", "Unreal Engine", "Unity"
+				],
+				"hasOccupation": {
+					"@type": "Occupation",
+					"name": "Audio Engineer & Composer",
+					"occupationLocation": {
+						"@type": "Country",
+						"name": "Belgium"
+					}
+				}
+			},
+			{
+				"@type": "WebSite",
+				"@id": "https://igorszuniewicz.com/#website",
+				"url": "https://igorszuniewicz.com",
+				"name": "Igor Szuniewicz Portfolio",
+				"publisher": {
+					"@id": "https://igorszuniewicz.com/#person"
+				},
+				"potentialAction": {
+					"@type": "SearchAction",
+					"target": "https://igorszuniewicz.com/?s={search_term_string}",
+					"query-input": "required name=search_term_string"
+				}
+			}
+		]
 	}
 	</script>
 	<!-- Slider-specific style (Restored) -->
@@ -245,7 +298,9 @@
     </style>
 </head>
 <body class="is-preload">
-    <div class="bg-gradient"></div>
+    <!-- Skip to main content for screen readers -->
+    <a href="#main" class="skip-link visually-hidden">Skip to main content</a>
+    <div class="bg-gradient" aria-hidden="true"></div>
     <div class="bg-orbs" aria-hidden="true">
         <div class="orb blue" style="top:10%;left:8%"></div>
         <div class="orb cyan" style="top:60%;left:75%"></div>
@@ -613,11 +668,34 @@
 
     </div> <!-- End #wrapper -->
 
+    <!-- Service Worker Registration -->
+    <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' })
+          .then(registration => {
+            console.log('SW registered:', registration.scope);
+            // Update available
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  // Show update notification
+                  if (confirm('New version available! Refresh to update?')) {
+                    window.location.reload();
+                  }
+                }
+              });
+            });
+          })
+          .catch(error => console.log('SW registration failed:', error));
+      });
+    }
+    </script>
+
     <!-- Scripts - Restored proper loading order -->
-    <!-- Performance monitoring (non-blocking) -->
-    <!-- <script src="assets/js/performance-monitor.js" async></script> -->
+    <script src="assets/js/web-vitals.js" defer></script>
     <script src="assets/js/image-optimizer.js" async></script>
-    <!-- <script src="assets/js/font-optimizer.js" async></script> -->
 
     <!-- Core dependencies MUST load in order -->
     <script src="assets/js/jquery.min.js"></script>
@@ -630,19 +708,11 @@
     <script src="assets/js/main.js"></script>
 
     <!-- Essential functionality scripts -->
-    <script src="assets/js/slider.js?v=20250919b"></script>
-    <script src="assets/js/enhancements.js?v=20250919-fix"></script>
-    <script src="assets/js/analytics.js"></script>
-    <script src="assets/js/visit-counter.js"></script>
-    <!-- <script src="assets/js/theme-toggle.js"></script> -->
+    <script src="assets/js/slider.js?v=20250919b" defer></script>
+    <script src="assets/js/enhancements.js?v=20250919-fix" defer></script>
+    <script src="assets/js/analytics.js" defer></script>
+    <script src="assets/js/visit-counter.js" defer></script>
 
-    <!-- Non-blocking optimizations -->
-    <!-- <script src="assets/js/resource-optimizer.js" async></script> -->
-
-    <!-- Debug script for CV images -->
-    <!-- Debug scripts disabled while fixing enhancements.js -->
-    <!-- <script src="assets/js/debug-cv-images.js?v=reveal-fix"></script> -->
-    <!-- <script src="assets/js/force-cv-images.js?v=reveal-fix"></script> -->
 
 </body>
 </html>

@@ -11,22 +11,22 @@
   "scope": "/",
   "icons": [
     {
-      "src": "/favicon-16x16.png",
+      "src": "favicon-16x16.png",
       "sizes": "16x16",
       "type": "image/png"
     },
     {
-      "src": "/favicon-32x32.png",
+      "src": "favicon-32x32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "/apple-touch-icon.png",
+      "src": "apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     },
     {
-      "src": "/favicon.ico",
+      "src": "favicon.ico",
       "sizes": "48x48",
       "type": "image/x-icon"
     }
@@ -37,22 +37,22 @@
       "name": "Music",
       "short_name": "Music",
       "description": "Listen to Igor's music compositions",
-      "url": "/music.html",
-      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+      "url": "music.html",
+      "icons": [{ "src": "favicon-32x32.png", "sizes": "32x32" }]
     },
     {
       "name": "Projects",
       "short_name": "Projects",
       "description": "View development projects",
-      "url": "/projects/index.html",
-      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+      "url": "projects/index.html",
+      "icons": [{ "src": "favicon-32x32.png", "sizes": "32x32" }]
     },
     {
       "name": "Contact",
       "short_name": "Contact",
       "description": "Get in touch",
-      "url": "/contact.html",
-      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+      "url": "contact.html",
+      "icons": [{ "src": "favicon-32x32.png", "sizes": "32x32" }]
     }
   ]
 }

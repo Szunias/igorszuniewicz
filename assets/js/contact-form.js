@@ -8,9 +8,9 @@
 
   // EmailJS configuration - you'll need to set up EmailJS account
   const EMAILJS_CONFIG = {
-    serviceId: 'service_igor_portfolio', // Replace with your EmailJS service ID
-    templateId: 'template_contact_form', // Replace with your EmailJS template ID
-    publicKey: 'YOUR_EMAILJS_PUBLIC_KEY' // Replace with your EmailJS public key
+    serviceId: 'service_igor_portfolio', // TODO: Replace with your EmailJS service ID
+    templateId: 'template_contact_form', // TODO: Replace with your EmailJS template ID
+    publicKey: 'YOUR_EMAILJS_PUBLIC_KEY' // TODO: Replace with your EmailJS public key
   };
 
   // Initialize when DOM is ready
