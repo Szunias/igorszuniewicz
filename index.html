@@ -145,19 +145,25 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 2.5em;
-            color: #e0e0e0;
-            background-color: rgba(42, 49, 58, 0.7);
-            padding: 8px 12px;
+            font-size: 2.2em;
+            color: #e8f6fb;
+            background: rgba(10, 16, 22, 0.85);
+            backdrop-filter: blur(12px) saturate(1.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 16px;
             cursor: pointer;
-            border-radius: 50%;
-            box-shadow: 0 0 8px rgba(0,0,0,0.5);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             z-index: 10;
             user-select: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .slider-nav:hover {
-            background-color: rgba(24, 191, 239, 0.8);
-            color: #fff;
+            background: linear-gradient(135deg, rgba(24,191,239,0.25), rgba(154,108,255,0.2));
+            border-color: rgba(24,191,239,0.4);
+            color: #ffffff;
+            box-shadow: 0 12px 40px rgba(24,191,239,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            transform: translateY(-50%) translateY(-2px);
         }
         .slider-nav.prev {
             left: 10px;
@@ -213,6 +219,29 @@
         #main > * { border-top: 0 !important; }
         hr, hr.major { display: none !important; }
         #projects-showcase.post, #projects-showcase .post.featured { background: transparent !important; border: 0 !important; margin-bottom: 0 !important; }
+
+        /* Timeline links styling */
+        .timeline-link {
+            color: #18bfef !important;
+            text-decoration: none !important;
+            position: relative;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .timeline-link:hover {
+            color: #ffffff !important;
+            background: rgba(24, 191, 239, 0.15);
+            transform: translateX(2px);
+        }
+        .timeline-link:hover .fa-external-link-alt {
+            opacity: 1 !important;
+            transform: translate(2px, -2px);
+        }
+        .timeline-link .fa-external-link-alt {
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -411,7 +440,7 @@
                                         <img src="images/dae.jpg?v=1" alt="DAE" class="timeline-logo">
                                         <div class="timeline-info">
                                             <h4 data-i18n="edu_dae_title">Game Audio Integration</h4>
-                                            <span class="timeline-institution">Howest DAE, Belgium</span>
+                                            <span class="timeline-institution"><a href="https://www.digitalartsandentertainment.be/" target="_blank" rel="noopener noreferrer" class="timeline-link" title="Kliknij aby przejść do strony Howest DAE">Howest DAE, Belgium <i class="fas fa-external-link-alt" style="font-size: 0.8em; margin-left: 4px; opacity: 0.7;"></i></a></span>
                                             <span class="timeline-period">2024 — <span data-i18n="present">Present</span></span>
                                         </div>
                                     </div>
@@ -425,7 +454,7 @@
                                         <img src="images/koperas.png?v=1" alt="Copernicus" class="timeline-logo">
                                         <div class="timeline-info">
                                             <h4 data-i18n="edu_hs_title">Mathematics & Physics</h4>
-                                            <span class="timeline-institution">Copernicus High School</span>
+                                            <span class="timeline-institution"><a href="https://lokopernik.pl/" target="_blank" rel="noopener noreferrer" class="timeline-link" title="Kliknij aby przejść do strony Liceum im. Kopernika">Copernicus High School <i class="fas fa-external-link-alt" style="font-size: 0.8em; margin-left: 4px; opacity: 0.7;"></i></a></span>
                                             <span class="timeline-period">2021 — 2024</span>
                                         </div>
                                     </div>
@@ -439,7 +468,7 @@
                                         <img src="images/muzyczna.png?v=1" alt="Music School" class="timeline-logo">
                                         <div class="timeline-info">
                                             <h4 data-i18n="edu_music_title">Classical Piano & Music Theory</h4>
-                                            <span class="timeline-institution" data-i18n="edu_music_school">State Music School</span>
+                                            <span class="timeline-institution"><a href="https://www.gov.pl/web/psmkolobrzeg" target="_blank" rel="noopener noreferrer" class="timeline-link" title="Kliknij aby przejść do strony Państwowej Szkoły Muzycznej w Kołobrzegu">State Music School <i class="fas fa-external-link-alt" style="font-size: 0.8em; margin-left: 4px; opacity: 0.7;"></i></a></span>
                                             <span class="timeline-period">2013 — 2020</span>
                                         </div>
                                     </div>
