@@ -47,6 +47,110 @@
   <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20250919" />
   <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
   <style>
+    /* Darker golden gradient background for NotTodayDarling */
+    .retro-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(180deg,
+        #3d2318 0%,
+        #4a3426 25%,
+        #362519 50%,
+        #422a1b 75%,
+        #3f2f1a 100%
+      );
+      opacity: 1;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .retro-background::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(80, 60, 40, 0.2) 0%, transparent 45%),
+        radial-gradient(circle at 70% 70%, rgba(70, 50, 30, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(90, 70, 50, 0.1) 0%, transparent 50%);
+      animation: retroGlow 18s ease-in-out infinite;
+    }
+
+    .retro-background::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg,
+        transparent 35%,
+        rgba(100, 80, 60, 0.08) 50%,
+        transparent 65%
+      );
+      animation: retroPattern 22s linear infinite;
+    }
+
+    @keyframes retroFlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes retroGlow {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+      33% { transform: scale(1.1) rotate(1deg); opacity: 0.8; }
+      66% { transform: scale(0.9) rotate(-1deg); opacity: 1.2; }
+    }
+
+    @keyframes retroPattern {
+      0% { transform: translateY(0) translateX(0) rotate(0deg); }
+      25% { transform: translateY(-15px) translateX(10px) rotate(0.5deg); }
+      50% { transform: translateY(-5px) translateX(-8px) rotate(-0.3deg); }
+      75% { transform: translateY(-25px) translateX(12px) rotate(0.8deg); }
+      100% { transform: translateY(0) translateX(0) rotate(0deg); }
+    }
+
+    body.retro-mode .bg-gradient,
+    body.retro-mode .bg-orbs,
+    body.retro-mode .bg-waves,
+    body.retro-mode .bg-eq,
+    body.retro-mode .bg-glow {
+      opacity: 0 !important;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    body.retro-mode .retro-background {
+      opacity: 1 !important;
+    }
+
+    /* Ensure golden background activates immediately and hide default backgrounds */
+    .retro-background {
+      opacity: 1 !important;
+      z-index: 1 !important;
+    }
+
+    /* Force hide all default backgrounds */
+    .bg-gradient {
+      display: none !important;
+    }
+    .bg-orbs {
+      display: none !important;
+    }
+    .bg-waves {
+      display: none !important;
+    }
+    .bg-eq {
+      display: none !important;
+    }
+    .bg-glow {
+      display: none !important;
+    }
+
+    /* Hero Section - Premium Design */
     /* Hero Section - Premium Design */
     .ntd-hero {
       display: flex;
@@ -624,6 +728,7 @@
   </style>
 </head>
 <body class="is-preload">
+  <div class="retro-background"></div>
   <div class="bg-gradient"></div>
   <div class="bg-orbs">
     <div class="orb blue" style="top:10%;left:8%"></div>
@@ -1000,6 +1105,13 @@
         currentAudio = null;
       });
     }
+
+    // Activate retro background after page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        document.body.classList.add('retro-mode');
+      }, 500);
+    });
   </script>
 </body>
 </html>

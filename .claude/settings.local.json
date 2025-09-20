@@ -20,7 +20,9 @@
       "WebFetch(domain:www.gov.pl)",
       "WebSearch",
       "WebFetch(domain:psmkolobrzeg.fryderyk.edu.pl)",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\index.html\")"
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\index.html\")",
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\akantilado.html\")",
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\ray-animation.html\")"
     ],
     "deny": [],
     "ask": []

@@ -37,9 +37,114 @@
   </script>
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20250210" />
+  <style>
+    /* Simple cave/rock background for Ray */
+    .cave-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(180deg,
+        #1f1612 0%,
+        #2a201a 25%,
+        #161008 50%,
+        #1d150e 75%,
+        #241a14 100%
+      );
+      opacity: 1;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .cave-background::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 25% 40%, rgba(60, 45, 30, 0.2) 0%, transparent 45%),
+        radial-gradient(circle at 75% 60%, rgba(50, 40, 25, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(70, 50, 35, 0.1) 0%, transparent 50%);
+      animation: rockShadows 20s ease-in-out infinite;
+    }
+
+    .cave-background::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg,
+        transparent 30%,
+        rgba(80, 70, 60, 0.06) 50%,
+        transparent 70%
+      );
+      animation: lightFilter 25s linear infinite;
+    }
+
+    @keyframes caveFlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes rockShadows {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      33% { transform: scale(1.02) rotate(0.2deg); }
+      66% { transform: scale(0.98) rotate(-0.2deg); }
+    }
+
+    @keyframes lightFilter {
+      0% { transform: translateY(0) translateX(0); }
+      25% { transform: translateY(-5px) translateX(3px); }
+      50% { transform: translateY(-2px) translateX(-2px); }
+      75% { transform: translateY(-8px) translateX(4px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+
+    body.cave-mode .bg-gradient,
+    body.cave-mode .bg-orbs,
+    body.cave-mode .bg-waves,
+    body.cave-mode .bg-eq,
+    body.cave-mode .bg-glow {
+      opacity: 0 !important;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    body.cave-mode .cave-background {
+      opacity: 1 !important;
+    }
+
+    /* Ensure lightning background activates immediately and hide default backgrounds */
+    .cave-background {
+      opacity: 1 !important;
+      z-index: 1 !important;
+    }
+
+    /* Force hide all default backgrounds */
+    .bg-gradient {
+      display: none !important;
+    }
+    .bg-orbs {
+      display: none !important;
+    }
+    .bg-waves {
+      display: none !important;
+    }
+    .bg-eq {
+      display: none !important;
+    }
+    .bg-glow {
+      display: none !important;
+    }
+  </style>
   <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
+  <div class="cave-background"></div>
   <div class="bg-gradient"></div>
   <div class="bg-orbs">
     <div class="orb blue" style="top:10%;left:8%"></div>
@@ -109,5 +214,13 @@
   </div>
   <script src="../assets/js/enhancements.js?v=20250210"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script>
+    // Activate cave background after page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        document.body.classList.add('cave-mode');
+      }, 500);
+    });
+  </script>
 </body>
 </html>

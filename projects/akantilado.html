@@ -37,9 +37,114 @@
   </script>
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20250210" />
+  <style>
+    /* Simple jungle background for Akantilado */
+    .jungle-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(180deg,
+        #141f1a 0%,
+        #1a251f 25%,
+        #101b15 50%,
+        #0c1712 75%,
+        #08140f 100%
+      );
+      opacity: 1;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .jungle-background::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(30, 50, 35, 0.2) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(25, 40, 28, 0.15) 0%, transparent 35%),
+        radial-gradient(circle at 50% 50%, rgba(35, 55, 40, 0.1) 0%, transparent 50%);
+      animation: leafSway 15s ease-in-out infinite;
+    }
+
+    .jungle-background::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg,
+        transparent 30%,
+        rgba(40, 60, 45, 0.08) 50%,
+        transparent 70%
+      );
+      animation: lightFilter 20s linear infinite;
+    }
+
+    @keyframes jungleFlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes leafSway {
+      0%, 100% { transform: translateX(0) rotate(0deg); }
+      25% { transform: translateX(10px) rotate(1deg); }
+      75% { transform: translateX(-10px) rotate(-1deg); }
+    }
+
+    @keyframes lightFilter {
+      0% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(1deg); }
+      50% { transform: translateY(-5px) rotate(-0.5deg); }
+      75% { transform: translateY(-15px) rotate(0.5deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    body.jungle-mode .bg-gradient,
+    body.jungle-mode .bg-orbs,
+    body.jungle-mode .bg-waves,
+    body.jungle-mode .bg-eq,
+    body.jungle-mode .bg-glow {
+      opacity: 0 !important;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    body.jungle-mode .jungle-background {
+      opacity: 1 !important;
+    }
+
+    /* Ensure jungle background activates immediately and hide default backgrounds */
+    .jungle-background {
+      opacity: 1 !important;
+      z-index: 1 !important;
+    }
+
+    /* Force hide all default backgrounds */
+    .bg-gradient {
+      display: none !important;
+    }
+    .bg-orbs {
+      display: none !important;
+    }
+    .bg-waves {
+      display: none !important;
+    }
+    .bg-eq {
+      display: none !important;
+    }
+    .bg-glow {
+      display: none !important;
+    }
+  </style>
   <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
+  <div class="jungle-background"></div>
   <div class="bg-gradient"></div>
   <div class="bg-orbs">
     <div class="orb blue" style="top:10%;left:8%"></div>
@@ -113,5 +218,13 @@
   </div>
   <script src="../assets/js/enhancements.js?v=20250210"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script>
+    // Activate jungle background after page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        document.body.classList.add('jungle-mode');
+      }, 500);
+    });
+  </script>
 </body>
 </html>
