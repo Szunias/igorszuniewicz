@@ -330,11 +330,11 @@ body.fx-off #nav { backdrop-filter: none !important; }
   #nav .links a { flex: 0 0 auto; }
   #nav .icons {
     position: absolute;
-    right: 70px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     margin: 0; padding: 0;
-    gap: 12px;
+    gap: 0px;
   }
 }
 

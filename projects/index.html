@@ -70,18 +70,30 @@
     .project-badge.animation-badge {
       background: linear-gradient(135deg, #9a6cff, #58b6ff);
       color: #ffffff;
-      box-shadow: 0 4px 15px rgba(154, 108, 255, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2);
+      animation: animation-glow 3s ease-in-out infinite;
     }
 
     /* DAE Game Projects badge */
     .project-badge.dae-badge {
       background: linear-gradient(135deg, #18bfef, #22d3ee);
       color: #0c1218;
-      box-shadow: 0 4px 15px rgba(24, 191, 239, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2);
+      animation: dae-glow 3s ease-in-out infinite;
     }
     @keyframes pulse-glow {
       0%, 100% { box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2); }
       50% { box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6), 0 0 0 3px rgba(255, 255, 255, 0.3); }
+    }
+
+    /* Animation badge glow */
+    @keyframes animation-glow {
+      0%, 100% { box-shadow: 0 4px 15px rgba(154, 108, 255, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2); }
+      50% { box-shadow: 0 6px 20px rgba(154, 108, 255, 0.6), 0 0 0 3px rgba(255, 255, 255, 0.3); }
+    }
+
+    /* DAE badge glow */
+    @keyframes dae-glow {
+      0%, 100% { box-shadow: 0 4px 15px rgba(24, 191, 239, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2); }
+      50% { box-shadow: 0 6px 20px rgba(24, 191, 239, 0.6), 0 0 0 3px rgba(255, 255, 255, 0.3); }
     }
     .project-card { position: relative; }
 
@@ -170,46 +182,8 @@
         </div>
 
         <div class="projects-grid" id="projects-list">
-          <article class="project-card" data-type="game-audio" data-title="Transientica AudioLab" data-date="2025-01-01">
-            <span class="project-badge">AudioLab Project</span>
-            <a href="audiolab.html" class="image fit"><img src="../images/AudioLabGif.gif" data-src="../images/AudioLabGif.gif" alt="Transientica AudioLab" loading="lazy" decoding="async" /></a>
-            <div class="project-card-content">
-              <h3>Transientica: AudioLab — Beatbox Game</h3>
-              <p>Real-time ML classification with 45ms latency.</p>
-            </div>
-          </article>
-          <article class="project-card" data-type="music" data-title="Interactive Music Design" data-date="2024-12-01">
-            <span class="project-badge">Music for Games</span>
-            <a href="musicforgames.html" class="image fit"><img src="../images/musicforgames.png" data-src="../images/musicforgames.png" alt="Interactive Music Design" loading="lazy" decoding="async" /></a>
-            <div class="project-card-content">
-              <h3>Interactive Music Design — Wwise Projects</h3>
-              <p>Adaptive audio systems with vertical layering.</p>
-            </div>
-          </article>
-          <article class="project-card" data-type="music" data-title="Dynamic Music System" data-date="2024-10-01">
-            <a href="dynamic-music-system.html" class="image fit"><img src="../images/maxresdefault.jpg" data-src="../images/maxresdefault.jpg" alt="Dynamic Music System" loading="lazy" decoding="async" /></a>
-            <div class="project-card-content">
-              <h3>Dynamic Music System (Wwise & UE5)</h3>
-              <p>Adaptive music with states, layers, and beat-accurate transitions.</p>
-            </div>
-          </article>
-          <article class="project-card" data-type="sound-design" data-title="Akantilado" data-date="2024-05-01">
-            <span class="project-badge animation-badge">Animation Project</span>
-            <a href="akantilado.html" class="image fit"><img src="../images/AkantiladoGIF.gif" data-src="../images/AkantiladoGIF.gif" alt="Akantilado" loading="lazy" decoding="async" /></a>
-            <div class="project-card-content">
-              <h3>Akantilado — Sound Design</h3>
-              <p>Complete foley and ambience for 3D animation.</p>
-            </div>
-          </article>
-          <article class="project-card" data-type="sound-design" data-title="Amorak" data-date="2024-03-01">
-            <span class="project-badge animation-badge">Animation Project</span>
-            <a href="amorak.html" class="image fit"><img src="../images/AmorakGIF.gif" data-src="../images/AmorakGIF.gif" alt="Amorak" loading="lazy" decoding="async" /></a>
-            <div class="project-card-content">
-              <h3>Amorak — Sound Design</h3>
-              <p>Soundscapes and character audio for animation.</p>
-            </div>
-          </article>
-          <article class="project-card" data-type="music" data-title="Ray" data-date="2023-12-01">
+          <!-- 1. Ray -->
+          <article class="project-card" data-type="music" data-title="Ray" data-date="2025-06-01">
             <span class="project-badge animation-badge">Animation Project</span>
             <a href="ray-animation.html" class="image fit"><img src="../images/RayGIF.gif" data-src="../images/RayGIF.gif" alt="Ray" loading="lazy" decoding="async" /></a>
             <div class="project-card-content">
@@ -217,7 +191,8 @@
               <p>Original score supporting narrative beats.</p>
             </div>
           </article>
-          <article class="project-card" data-type="game-audio" data-title="NotTodayDarling" data-date="2023-10-01">
+          <!-- 2. Not Today Darling -->
+          <article class="project-card" data-type="game-audio" data-title="NotTodayDarling" data-date="2025-05-01">
             <span class="project-badge dae-badge">DAE Game Projects</span>
             <a href="not-today-darling.html" class="image fit"><img src="../images/NotTodayGIF.gif" data-src="../images/NotTodayGIF.gif" alt="Not Today, Darling!" loading="lazy" decoding="async" /></a>
             <div class="project-card-content">
@@ -225,11 +200,55 @@
               <p>Retro-inspired audio implementation.</p>
             </div>
           </article>
-          <article class="project-card" data-type="game-audio" data-title="Pause & Deserve" data-date="2023-05-01">
-            <a href="pause-and-deserve.html" class="image fit"><img src="../images/deserve.png" data-src="../images/deserve.png" alt="Pause & Deserve" loading="lazy" decoding="async" /></a>
+          <!-- 3. Akantilado -->
+          <article class="project-card" data-type="sound-design" data-title="Akantilado" data-date="2025-04-01">
+            <span class="project-badge animation-badge">Animation Project</span>
+            <a href="akantilado.html" class="image fit"><img src="../images/AkantiladoGIF.gif" data-src="../images/AkantiladoGIF.gif" alt="Akantilado" loading="lazy" decoding="async" /></a>
             <div class="project-card-content">
-              <h3>Pause & Deserve — Solo Game</h3>
-              <p>Horror game concept and audio design.</p>
+              <h3>Akantilado — Sound Design</h3>
+              <p>Complete foley and ambience for 3D animation.</p>
+            </div>
+          </article>
+          <!-- 4. Amorak -->
+          <article class="project-card" data-type="sound-design" data-title="Amorak" data-date="2025-03-01">
+            <span class="project-badge animation-badge">Animation Project</span>
+            <a href="amorak.html" class="image fit"><img src="../images/AmorakGIF.gif" data-src="../images/AmorakGIF.gif" alt="Amorak" loading="lazy" decoding="async" /></a>
+            <div class="project-card-content">
+              <h3>Amorak — Sound Design</h3>
+              <p>Soundscapes and character audio for animation.</p>
+            </div>
+          </article>
+          <!-- 5. Transientica -->
+          <article class="project-card" data-type="game-audio" data-title="Transientica AudioLab" data-date="2025-02-01">
+            <span class="project-badge">AudioLab Project</span>
+            <a href="audiolab.html" class="image fit"><img src="../images/AudioLabGif.gif" data-src="../images/AudioLabGif.gif" alt="Transientica AudioLab" loading="lazy" decoding="async" /></a>
+            <div class="project-card-content">
+              <h3>Transientica: AudioLab — Beatbox Game</h3>
+              <p>Real-time ML classification with 45ms latency.</p>
+            </div>
+          </article>
+          <!-- 6. Interactive Music Design -->
+          <article class="project-card" data-type="music" data-title="Interactive Music Design" data-date="2025-01-01">
+            <span class="project-badge">Music for Games</span>
+            <a href="musicforgames.html" class="image fit"><img src="../images/musicforgames.png" data-src="../images/musicforgames.png" alt="Interactive Music Design" loading="lazy" decoding="async" /></a>
+            <div class="project-card-content">
+              <h3>Interactive Music Design — Wwise Projects</h3>
+              <p>Adaptive audio systems with vertical layering.</p>
+            </div>
+          </article>
+          <!-- Lower priority projects -->
+          <article class="project-card" data-type="music" data-title="Dynamic Music System" data-date="2024-10-01">
+            <a href="dynamic-music-system.html" class="image fit"><img src="../images/maxresdefault.jpg" data-src="../images/maxresdefault.jpg" alt="Dynamic Music System" loading="lazy" decoding="async" /></a>
+            <div class="project-card-content">
+              <h3>Dynamic Music System (Wwise & UE5)</h3>
+              <p>Adaptive music with states, layers, and beat-accurate transitions.</p>
+            </div>
+          </article>
+          <article class="project-card" data-type="music" data-title="3D Audio Plugin Suite" data-date="2024-09-01">
+            <a href="audio-plugin-suite.html" class="image fit"><img src="../images/plugins.jpg" data-src="../images/plugins.jpg" alt="3D Audio Plugin Suite" loading="lazy" decoding="async" /></a>
+            <div class="project-card-content">
+              <h3>3D Audio Plugin Suite</h3>
+              <p>HRTF spatialization and convolution reverb plugins.</p>
             </div>
           </article>
           <article class="project-card" data-type="sound-design" data-title="Richter" data-date="2023-03-01">
@@ -240,11 +259,11 @@
               <p>Sound design with minimal recording gear.</p>
             </div>
           </article>
-          <article class="project-card" data-type="music" data-title="3D Audio Plugin Suite" data-date="2024-09-01">
-            <a href="audio-plugin-suite.html" class="image fit"><img src="../images/plugins.jpg" data-src="../images/plugins.jpg" alt="3D Audio Plugin Suite" loading="lazy" decoding="async" /></a>
+          <article class="project-card" data-type="game-audio" data-title="Pause & Deserve" data-date="2023-05-01">
+            <a href="pause-and-deserve.html" class="image fit"><img src="../images/deserve.png" data-src="../images/deserve.png" alt="Pause & Deserve" loading="lazy" decoding="async" /></a>
             <div class="project-card-content">
-              <h3>3D Audio Plugin Suite</h3>
-              <p>HRTF spatialization and convolution reverb plugins.</p>
+              <h3>Pause & Deserve — Solo Game</h3>
+              <p>Horror game concept and audio design.</p>
             </div>
           </article>
         </div>
