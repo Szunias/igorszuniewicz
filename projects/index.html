@@ -47,53 +47,44 @@
     body, #wrapper, #main { background: transparent !important; }
   </style>
   <style>
-    /* Project badges */
+    /* Project badges - new minimalist design */
     .project-badge {
       position: absolute;
-      top: 12px;
-      right: 12px;
-      background: linear-gradient(135deg, #ff6b35, #f9ca24);
-      color: #0c1218;
-      padding: 6px 12px;
-      font-size: 0.8rem;
-      font-weight: 800;
-      border-radius: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2);
+      top: 16px;
+      right: 16px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      padding: 8px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 12px;
+      text-transform: none;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       z-index: 2;
-      line-height: 1;
-      animation: pulse-glow 3s ease-in-out infinite;
+      line-height: 1.2;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .project-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
     }
 
     /* Animation project badge */
     .project-badge.animation-badge {
-      background: linear-gradient(135deg, #9a6cff, #58b6ff);
+      background: rgba(154, 108, 255, 0.9);
+      border: 1px solid rgba(154, 108, 255, 0.3);
       color: #ffffff;
-      animation: animation-glow 3s ease-in-out infinite;
     }
 
     /* DAE Game Projects badge */
     .project-badge.dae-badge {
-      background: linear-gradient(135deg, #18bfef, #22d3ee);
-      color: #0c1218;
-      animation: dae-glow 3s ease-in-out infinite;
-    }
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2); }
-      50% { box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6), 0 0 0 3px rgba(255, 255, 255, 0.3); }
-    }
-
-    /* Animation badge glow */
-    @keyframes animation-glow {
-      0%, 100% { box-shadow: 0 4px 15px rgba(154, 108, 255, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2); }
-      50% { box-shadow: 0 6px 20px rgba(154, 108, 255, 0.6), 0 0 0 3px rgba(255, 255, 255, 0.3); }
-    }
-
-    /* DAE badge glow */
-    @keyframes dae-glow {
-      0%, 100% { box-shadow: 0 4px 15px rgba(24, 191, 239, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.2); }
-      50% { box-shadow: 0 6px 20px rgba(24, 191, 239, 0.6), 0 0 0 3px rgba(255, 255, 255, 0.3); }
+      background: rgba(24, 191, 239, 0.9);
+      border: 1px solid rgba(24, 191, 239, 0.3);
+      color: #ffffff;
     }
     .project-card { position: relative; }
 
