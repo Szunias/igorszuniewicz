@@ -287,44 +287,44 @@
           <img src="../images/AudioLabGif.gif" alt="Transientica AudioLab Gameplay" loading="eager" />
 
           <div class="audiolab-meta">
-            <span>Real-time ML Classification</span>
-            <span>Low-latency OSC Control</span>
-            <span>Python + Unity</span>
-            <span>Beatbox Recognition</span>
-            <span>Spectral Flux Analysis</span>
-            <span>45ms Median Latency</span>
+            <span data-i18n="realtime_ml_classification">Real-time ML Classification</span>
+            <span data-i18n="low_latency_osc">Low-latency OSC Control</span>
+            <span data-i18n="python_unity">Python + Unity</span>
+            <span data-i18n="beatbox_recognition">Beatbox Recognition</span>
+            <span data-i18n="spectral_flux_analysis">Spectral Flux Analysis</span>
+            <span data-i18n="median_latency_45ms">45ms Median Latency</span>
           </div>
         </section>
 
         <!-- Project Overview -->
         <section>
           <h2 data-i18n="project_overview">Project Overview</h2>
-          <p>Transientica replaces traditional button presses with beatboxing in rhythm games. Using real-time audio analysis, machine learning classification, and OSC networking, the system achieves sub-60ms latency while maintaining 82% hit accuracy for vocal percussion gameplay.</p>
+          <p data-i18n="audiolab_desc1">Transientica replaces traditional button presses with beatboxing in rhythm games. Using real-time audio analysis, machine learning classification, and OSC networking, the system achieves sub-60ms latency while maintaining 82% hit accuracy for vocal percussion gameplay.</p>
 
-          <p>This research explores whether beatboxing alone can satisfy the tight timing requirements of competitive rhythm games, combining spectral-flux onset detection with user-trained RBF-SVM classification for kick, snare, and hi-hat sounds.</p>
+          <p data-i18n="audiolab_desc2">This research explores whether beatboxing alone can satisfy the tight timing requirements of competitive rhythm games, combining spectral-flux onset detection with user-trained RBF-SVM classification for kick, snare, and hi-hat sounds.</p>
         </section>
 
         <!-- Technical Implementation -->
         <section class="tech-details">
           <h2 data-i18n="technical_implementation">Technical Implementation</h2>
-          <p>The system uses a Python backend for audio processing and a Unity frontend for gameplay, connected via OSC messaging.</p>
+          <p data-i18n="system_description">The system uses a Python backend for audio processing and a Unity frontend for gameplay, connected via OSC messaging.</p>
 
           <div class="tech-grid">
             <div class="tech-item">
-              <h4><i class="fas fa-microphone"></i> Audio Processing</h4>
-              <p>44.1 kHz sampling, 2048-sample blocks with spectral flux onset detection and MFCC feature extraction (39-dimensional vectors)</p>
+              <h4><i class="fas fa-microphone"></i> <span data-i18n="audio_processing">Audio Processing</span></h4>
+              <p data-i18n="audio_processing_desc">44.1 kHz sampling, 2048-sample blocks with spectral flux onset detection and MFCC feature extraction (39-dimensional vectors)</p>
             </div>
             <div class="tech-item">
-              <h4><i class="fas fa-brain"></i> Machine Learning</h4>
-              <p>User-trained RBF-SVM classifier (C=10, γ=0.01) for real-time beatbox sound recognition with 0.16ms inference time</p>
+              <h4><i class="fas fa-brain"></i> <span data-i18n="machine_learning">Machine Learning</span></h4>
+              <p data-i18n="machine_learning_desc">User-trained RBF-SVM classifier (C=10, γ=0.01) for real-time beatbox sound recognition with 0.16ms inference time</p>
             </div>
             <div class="tech-item">
-              <h4><i class="fas fa-network-wired"></i> OSC Communication</h4>
-              <p>UDP messaging between Python backend and Unity frontend with timestamped events for latency measurement</p>
+              <h4><i class="fas fa-network-wired"></i> <span data-i18n="osc_communication">OSC Communication</span></h4>
+              <p data-i18n="osc_communication_desc">UDP messaging between Python backend and Unity frontend with timestamped events for latency measurement</p>
             </div>
             <div class="tech-item">
-              <h4><i class="fas fa-gamepad"></i> Game Engine</h4>
-              <p>Unity-based rhythm game with JSON beatmaps, hit detection windows (±70ms), and real-time feedback systems</p>
+              <h4><i class="fas fa-gamepad"></i> <span data-i18n="game_engine">Game Engine</span></h4>
+              <p data-i18n="game_engine_desc">Unity-based rhythm game with JSON beatmaps, hit detection windows (±70ms), and real-time feedback systems</p>
             </div>
           </div>
         </section>
@@ -335,30 +335,30 @@
           <div class="results-grid">
             <div class="result-card">
               <span class="result-number">45ms</span>
-              <span class="result-label">Median Latency</span>
+              <span class="result-label" data-i18n="median_latency">Median Latency</span>
             </div>
             <div class="result-card">
               <span class="result-number">64ms</span>
-              <span class="result-label">90th Percentile</span>
+              <span class="result-label" data-i18n="percentile_90">90th Percentile</span>
             </div>
             <div class="result-card">
               <span class="result-number">82.1%</span>
-              <span class="result-label">Hit Accuracy</span>
+              <span class="result-label" data-i18n="hit_accuracy">Hit Accuracy</span>
             </div>
             <div class="result-card">
               <span class="result-number">80.2%</span>
-              <span class="result-label">F1 Score</span>
+              <span class="result-label" data-i18n="f1_score">F1 Score</span>
             </div>
           </div>
         </section>
 
         <!-- Video Demonstration -->
         <section>
-          <h2>Video Demonstration</h2>
+          <h2 data-i18n="video_demonstration">Video Demonstration</h2>
           <div class="video-container">
             <video controls poster="../images/AudioLabGif.gif">
               <source src="../videos/AudiioLab.mp4" type="video/mp4">
-              Your browser does not support the video tag.
+              <span data-i18n="video_unsupported">Your browser does not support the video tag.</span>
             </video>
           </div>
         </section>
@@ -367,24 +367,24 @@
         <section>
           <h2 data-i18n="research_contributions">Research Contributions</h2>
           <ul style="color: #d9f2ff;">
-            <li><strong style="color: #18bfef;">Low-latency vocal interface:</strong> Achieved sub-60ms end-to-end latency suitable for rhythm gaming</li>
-            <li><strong style="color: #18bfef;">Real-time beatbox classification:</strong> User-trained ML models with 80%+ accuracy on kick, snare, hi-hat sounds</li>
-            <li><strong style="color: #18bfef;">OSC-based architecture:</strong> Modular system design enabling integration with DAWs, lighting, and haptic systems</li>
-            <li><strong style="color: #18bfef;">Personalized training:</strong> Local ML training avoiding privacy and cloud latency issues</li>
+            <li><strong style="color: #18bfef;" data-i18n="low_latency_vocal">Low-latency vocal interface:</strong> <span data-i18n="achieved_sub60ms">Achieved sub-60ms end-to-end latency suitable for rhythm gaming</span></li>
+            <li><strong style="color: #18bfef;" data-i18n="realtime_beatbox">Real-time beatbox classification:</strong> <span data-i18n="user_trained_ml">User-trained ML models with 80%+ accuracy on kick, snare, hi-hat sounds</span></li>
+            <li><strong style="color: #18bfef;" data-i18n="osc_architecture">OSC-based architecture:</strong> <span data-i18n="modular_system">Modular system design enabling integration with DAWs, lighting, and haptic systems</span></li>
+            <li><strong style="color: #18bfef;" data-i18n="personalized_training">Personalized training:</strong> <span data-i18n="local_ml_training">Local ML training avoiding privacy and cloud latency issues</span></li>
           </ul>
         </section>
 
         <!-- Technical Documentation -->
         <section>
-          <h2>Documentation & Resources</h2>
+          <h2 data-i18n="documentation_resources">Documentation & Resources</h2>
           <div class="download-section">
             <a href="../videos/AudioLab_2425_SzuniewiczIgor_TechDoc.pdf" class="download-btn" target="_blank">
               <i class="fas fa-file-pdf"></i>
-              Technical Documentation
+              <span data-i18n="technical_documentation">Technical Documentation</span>
             </a>
             <a href="../videos/AudiioLab.mp4" class="download-btn" target="_blank">
               <i class="fas fa-video"></i>
-              Video Demo
+              <span data-i18n="video_demo">Video Demo</span>
             </a>
           </div>
         </section>

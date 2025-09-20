@@ -850,7 +850,90 @@ document.addEventListener('DOMContentLoaded', function() {
     ntd_grandma4_title: { pl: 'Grandma 4', nl: 'Oma 4', en: 'Grandma 4' },
     ntd_grandma4_desc: { pl: 'Spokojna i skupiona', nl: 'Kalm en gefocust', en: 'Calm and focused' },
     ntd_grandma5_title: { pl: 'Grandma 5', nl: 'Oma 5', en: 'Grandma 5' },
-    ntd_grandma5_desc: { pl: 'Sroga ale sprawiedliwa', nl: 'Streng maar eerlijk', en: 'Stern but fair' }
+    ntd_grandma5_desc: { pl: 'Sroga ale sprawiedliwa', nl: 'Streng maar eerlijk', en: 'Stern but fair' },
+    // AudioLab page translations
+    audiolab_title: { pl: 'Transientica: AudioLab', nl: 'Transientica: AudioLab', en: 'Transientica: AudioLab' },
+    audiolab_subtitle: { pl: 'Gra rytmiczna sterowana beatboxem do beatboxu wokalnego', nl: 'Beatbox-gestuurd ritme spel voor vocale percussie gameplay', en: 'Beatbox-Controlled Rhythm Game for Vocal Percussion Gameplay' },
+    // MusicForGames page translations
+    music_title: { pl: 'Interaktywny Design Muzyczny', nl: 'Interactief Muziekontwerp', en: 'Interactive Music Design' },
+    music_subtitle: { pl: 'Muzyka do Gier — Adaptacyjne systemy audio z Wwise', nl: 'Muziek voor Games — Adaptieve audiosystemen met Wwise', en: 'Music for Games — Adaptive Audio Systems with Wwise' },
+    // Common project page translations
+    project_overview: { pl: 'Przegląd Projektu', nl: 'Projectoverzicht', en: 'Project Overview' },
+    technical_implementation: { pl: 'Implementacja Techniczna', nl: 'Technische Implementatie', en: 'Technical Implementation' },
+    performance_results: { pl: 'Wyniki Wydajności', nl: 'Prestatie Resultaten', en: 'Performance Results' },
+    research_contributions: { pl: 'Wkład Badawczy', nl: 'Onderzoeksbijdragen', en: 'Research Contributions' },
+    interactive_techniques: { pl: 'Techniki Interaktywne', nl: 'Interactieve Technieken', en: 'Interactive Techniques' },
+    implementation_details: { pl: 'Szczegóły Implementacji', nl: 'Implementatie Details', en: 'Implementation Details' },
+    back_to_projects: { pl: '← Powrót do Projektów', nl: '← Terug naar Projecten', en: '← Back to Projects' },
+    get_in_touch: { pl: 'Skontaktuj się', nl: 'Neem Contact Op', en: 'Get in Touch' },
+    // AudioLab additional translations
+    audio_processing: { pl: 'Przetwarzanie Audio', nl: 'Audio Verwerking', en: 'Audio Processing' },
+    machine_learning: { pl: 'Uczenie Maszynowe', nl: 'Machine Learning', en: 'Machine Learning' },
+    osc_communication: { pl: 'Komunikacja OSC', nl: 'OSC Communicatie', en: 'OSC Communication' },
+    game_engine: { pl: 'Silnik Gry', nl: 'Game Engine', en: 'Game Engine' },
+    median_latency: { pl: 'Mediana Opóźnienia', nl: 'Mediaan Latentie', en: 'Median Latency' },
+    percentile_90: { pl: '90. Percentyl', nl: '90e Percentiel', en: '90th Percentile' },
+    hit_accuracy: { pl: 'Celność Trafień', nl: 'Hit Nauwkeurigheid', en: 'Hit Accuracy' },
+    f1_score: { pl: 'Wynik F1', nl: 'F1 Score', en: 'F1 Score' },
+    video_demonstration: { pl: 'Demonstracja Video', nl: 'Video Demonstratie', en: 'Video Demonstration' },
+    video_unsupported: { pl: 'Twoja przeglądarka nie obsługuje tagu video.', nl: 'Je browser ondersteunt de video tag niet.', en: 'Your browser does not support the video tag.' },
+    low_latency_vocal: { pl: 'Interfejs wokalny o niskim opóźnieniu:', nl: 'Lage latentie vocale interface:', en: 'Low-latency vocal interface:' },
+    achieved_sub60ms: { pl: 'Osiągnięto opóźnienie poniżej 60ms odpowiednie dla gier rytmicznych', nl: 'Sub-60ms latentie geschikt voor ritmegames bereikt', en: 'Achieved sub-60ms end-to-end latency suitable for rhythm gaming' },
+    realtime_beatbox: { pl: 'Klasyfikacja beatboxu w czasie rzeczywistym:', nl: 'Realtime beatbox classificatie:', en: 'Real-time beatbox classification:' },
+    user_trained_ml: { pl: 'Modele ML trenowane przez użytkownika z dokładnością 80%+ na dźwięki kick, snare, hi-hat', nl: 'Door gebruiker getrainde ML-modellen met 80%+ nauwkeurigheid op kick, snare, hi-hat geluiden', en: 'User-trained ML models with 80%+ accuracy on kick, snare, hi-hat sounds' },
+    osc_architecture: { pl: 'Architektura oparta na OSC:', nl: 'OSC-gebaseerde architectuur:', en: 'OSC-based architecture:' },
+    modular_system: { pl: 'Modularny projekt systemu umożliwiający integrację z DAW, oświetleniem i systemami haptycznymi', nl: 'Modulair systeemontwerp dat integratie met DAWs, verlichting en haptische systemen mogelijk maakt', en: 'Modular system design enabling integration with DAWs, lighting, and haptic systems' },
+    personalized_training: { pl: 'Spersonalizowane szkolenie:', nl: 'Gepersonaliseerde training:', en: 'Personalized training:' },
+    local_ml_training: { pl: 'Lokalne szkolenie ML unikające problemów prywatności i opóźnień chmury', nl: 'Lokale ML-training die privacy- en cloud-latentieproblemen vermijdt', en: 'Local ML training avoiding privacy and cloud latency issues' },
+    documentation_resources: { pl: 'Dokumentacja i Zasoby', nl: 'Documentatie & Bronnen', en: 'Documentation & Resources' },
+    technical_documentation: { pl: 'Dokumentacja Techniczna', nl: 'Technische Documentatie', en: 'Technical Documentation' },
+    video_demo: { pl: 'Demo Video', nl: 'Video Demo', en: 'Video Demo' },
+    // MusicForGames additional translations
+    wwise_implementation: { pl: 'Implementacja Wwise', nl: 'Wwise Implementatie', en: 'Wwise Implementation' },
+    vertical_layering: { pl: 'Warstwowość Wertykalna', nl: 'Verticale Lagen', en: 'Vertical Layering' },
+    horizontal_resequencing: { pl: 'Ponowne Sekwencjonowanie Horyzontalne', nl: 'Horizontale Hersequencing', en: 'Horizontal Re-sequencing' },
+    rtpc_controls: { pl: 'Kontrole RTPC', nl: 'RTPC Besturing', en: 'RTPC Controls' },
+    adaptive_music: { pl: 'Muzyka Adaptacyjna', nl: 'Adaptieve Muziek', en: 'Adaptive Music' },
+    interactive_audio: { pl: 'Audio Interaktywne', nl: 'Interactieve Audio', en: 'Interactive Audio' },
+    chase_concept: { pl: 'Nieustępliwy pościg przez pięć surrealistycznych krain z narastającymi elementami horroru.', nl: 'Meedogenloze achtervolging door vijf surrealistische rijken met escalerende horror-elementen.', en: 'Relentless pursuit through five surreal realms with escalating horror elements.' },
+    race_concept: { pl: 'Wyścigi na wysokiej prędkości na unoszących się egipskich piramidach, ścigani przez siły niebiańskie.', nl: 'Snelle races op zwevende Egyptische piramides, achtervolgd door hemelse krachten.', en: 'High-speed racing atop floating Egyptian pyramids, chased by celestial forces.' },
+    elimination_concept: { pl: 'Strategiczne eliminacje przeciwników w cyberpunkowej arenie z zaawansowanymi systemami RTPC.', nl: 'Strategische eliminatie van tegenstanders in cyberpunk arena met geavanceerde RTPC-systemen.', en: 'Strategic opponent elimination in cyberpunk arena with advanced RTPC systems.' },
+    forest_prelude: { pl: 'Preludium Lasu', nl: 'Bos Prelude', en: 'Forest Prelude' },
+    mechanical_catacombs: { pl: 'Mechaniczne Katakumby', nl: 'Mechanische Catacomben', en: 'Mechanical Catacombs' },
+    haunted_cathedral: { pl: 'Nawiedzony Kościół', nl: 'Spookkathedraal', en: 'Haunted Cathedral' },
+    techno_labyrinth: { pl: 'Techno-Labirynt', nl: 'Techno-Labyrint', en: 'Techno-Labyrinth' },
+    liminal_zone: { pl: 'Strefa Liminalna', nl: 'Liminale Zone', en: 'Liminal Zone' },
+    gate_prep: { pl: 'Przygotowanie Bramy', nl: 'Poort Voorbereiding', en: 'Gate Prep' },
+    first_lap: { pl: 'Pierwsze Okrążenie', nl: 'Eerste Ronde', en: 'First Lap' },
+    ambush_in_sky: { pl: 'Zasadzka w Niebie', nl: 'Hinderlaag in de Lucht', en: 'Ambush in the Sky' },
+    final_sprint: { pl: 'Finisz', nl: 'Eindspurt', en: 'Final Sprint' },
+    arena_entrance: { pl: 'Wejście do Areny', nl: 'Arena Ingang', en: 'Arena Entrance' },
+    combat_escalation: { pl: 'Eskalacja Walki', nl: 'Gevecht Escalatie', en: 'Combat Escalation' },
+    last_stand: { pl: 'Ostatni Bastion', nl: 'Laatste Stand', en: 'Last Stand' },
+    victory_march: { pl: 'Marsz Zwycięstwa', nl: 'Overwinning Mars', en: 'Victory March' },
+    // Additional AudioLab translations
+    realtime_ml_classification: { pl: 'Klasyfikacja ML w Czasie Rzeczywistym', nl: 'Realtime ML Classificatie', en: 'Real-time ML Classification' },
+    low_latency_osc: { pl: 'Kontrola OSC o Niskim Opóźnieniu', nl: 'Lage Latentie OSC Besturing', en: 'Low-latency OSC Control' },
+    python_unity: { pl: 'Python + Unity', nl: 'Python + Unity', en: 'Python + Unity' },
+    beatbox_recognition: { pl: 'Rozpoznawanie Beatboxu', nl: 'Beatbox Herkenning', en: 'Beatbox Recognition' },
+    spectral_flux_analysis: { pl: 'Analiza Strumienia Spektralnego', nl: 'Spectrale Flux Analyse', en: 'Spectral Flux Analysis' },
+    median_latency_45ms: { pl: '45ms Mediana Opóźnienia', nl: '45ms Mediaan Latentie', en: '45ms Median Latency' },
+    audiolab_desc1: { pl: 'Transientica zastępuje tradycyjne naciśnięcia przycisków beatboxem w grach rytmicznych. Używając analizy audio w czasie rzeczywistym, klasyfikacji uczenia maszynowego i sieci OSC, system osiąga opóźnienie poniżej 60ms przy zachowaniu 82% celności trafień w rozgrywce perkusji wokalnej.', nl: 'Transientica vervangt traditionele toetsaanslagen door beatboxing in ritmespellen. Met realtime audio-analyse, machine learning classificatie en OSC-netwerken bereikt het systeem sub-60ms latentie terwijl het 82% trefnauwkeurigheid behoudt voor vocale percussie gameplay.', en: 'Transientica replaces traditional button presses with beatboxing in rhythm games. Using real-time audio analysis, machine learning classification, and OSC networking, the system achieves sub-60ms latency while maintaining 82% hit accuracy for vocal percussion gameplay.' },
+    audiolab_desc2: { pl: 'To badanie eksploruje, czy samo beatboxowanie może spełnić ścisłe wymagania czasowe konkurencyjnych gier rytmicznych, łącząc detekcję początku strumienia spektralnego z klasyfikacją RBF-SVM trenowaną przez użytkownika dla dźwięków kick, snare i hi-hat.', nl: 'Dit onderzoek verkent of beatboxing alleen kan voldoen aan de strakke timing-eisen van competitieve ritmespellen, door spectrale-flux onset detectie te combineren met door gebruikers getrainde RBF-SVM classificatie voor kick, snare en hi-hat geluiden.', en: 'This research explores whether beatboxing alone can satisfy the tight timing requirements of competitive rhythm games, combining spectral-flux onset detection with user-trained RBF-SVM classification for kick, snare, and hi-hat sounds.' },
+    system_description: { pl: 'System używa backendu Python do przetwarzania audio i frontendu Unity do rozgrywki, połączonych przez komunikaty OSC.', nl: 'Het systeem gebruikt een Python backend voor audioverwerking en een Unity frontend voor gameplay, verbonden via OSC-berichten.', en: 'The system uses a Python backend for audio processing and a Unity frontend for gameplay, connected via OSC messaging.' },
+    audio_processing_desc: { pl: 'Próbkowanie 44.1 kHz, bloki 2048 próbek z detekcją początku strumienia spektralnego i ekstrakcją cech MFCC (wektory 39-wymiarowe)', nl: '44.1 kHz sampling, 2048-sample blokken met spectrale flux onset detectie en MFCC feature extractie (39-dimensionale vectoren)', en: '44.1 kHz sampling, 2048-sample blocks with spectral flux onset detection and MFCC feature extraction (39-dimensional vectors)' },
+    machine_learning_desc: { pl: 'Klasyfikator RBF-SVM trenowany przez użytkownika (C=10, γ=0.01) do rozpoznawania dźwięków beatboxu w czasie rzeczywistym z czasem wnioskowania 0.16ms', nl: 'Door gebruiker getrainde RBF-SVM classifier (C=10, γ=0.01) voor realtime beatbox geluidherkenning met 0.16ms inference tijd', en: 'User-trained RBF-SVM classifier (C=10, γ=0.01) for real-time beatbox sound recognition with 0.16ms inference time' },
+    osc_communication_desc: { pl: 'Komunikaty UDP między backendem Python a frontendem Unity z wydarzeniami znaczonymi czasem do pomiaru opóźnienia', nl: 'UDP-berichten tussen Python backend en Unity frontend met getimestampte events voor latentiemeting', en: 'UDP messaging between Python backend and Unity frontend with timestamped events for latency measurement' },
+    game_engine_desc: { pl: 'Gra rytmiczna oparta na Unity z beatmapami JSON, oknami detekcji trafień (±70ms) i systemami informacji zwrotnej w czasie rzeczywistym', nl: 'Unity-gebaseerd ritmespel met JSON beatmaps, hit detectie vensters (±70ms) en realtime feedback systemen', en: 'Unity-based rhythm game with JSON beatmaps, hit detection windows (±70ms), and real-time feedback systems' },
+    // Additional MusicForGames translations
+    music_overview_desc1: { pl: 'Ta kolekcja prezentuje trzy różne interaktywne systemy muzyczne opracowane na egzamin końcowy z Music for Games. Każdy prototyp demonstruje różne podejścia do projektowania adaptacyjnego audio, zawierając warstwowość wertykalną między stanami Spokoju i Intensywności, ponowne sekwencjonowanie horyzontalne dla odmiany oraz rozległe systemy kontroli RTPC.', nl: 'Deze collectie toont drie verschillende interactieve muzieksystemen ontwikkeld voor het Music for Games eindexamen. Elk prototype demonstreert verschillende benaderingen van adaptief audiodesign, met verticale lagen tussen Rustige en Intense toestanden, horizontale hersequencing voor variatie, en uitgebreide RTPC-controlesystemen.', en: 'This collection showcases three distinct interactive music systems developed for the Music for Games final exam. Each prototype demonstrates different approaches to adaptive audio design, featuring vertical layering between Calm and Intense states, horizontal re-sequencing for variation, and extensive RTPC control systems.' },
+    music_overview_desc2: { pl: 'Wszystkie zasoby muzyczne zostały skomponowane, edytowane i wyeksportowane specjalnie do implementacji Wwise, równoważąc wymagania kursu z kreatywną eksploracją technik muzyki interaktywnej.', nl: 'Alle muzikale assets werden gecomponeerd, bewerkt en geëxporteerd specifiek voor Wwise-implementatie, waarbij de eisen van het curriculum werden gebalanceerd met creatieve verkenning van interactieve muziektechnieken.', en: 'All musical assets were composed, edited, and exported specifically for Wwise implementation, balancing coursework demands with creative exploration of interactive music techniques.' },
+    vertical_layering_desc: { pl: 'Dynamiczne przejście między stanami Spokoju (podstawowe ścieżki) a Intensywnymi (pełna orkiestracja) z 0.5s przejściami fade', nl: 'Dynamische overgang tussen Rustige (fundamentele stems) en Intense (volledige orkestratie) toestanden met 0.5s fade overgangen', en: 'Dynamic transition between Calm (foundational stems) and Intense (full orchestration) states with 0.5s fade transitions' },
+    horizontal_resequencing_desc: { pl: 'Naprzemienne wariacje pętli co 8 taktów dla kluczowych ścieżek, tworząc organiczną ewolucję muzyczną bez powtórzeń', nl: 'Wisselende loop variaties elke 8 maten voor belangrijke stems, waardoor organische muzikale evolutie ontstaat zonder herhaling', en: 'Alternating loop variations every 8 bars for key stems, creating organic musical evolution without repetition' },
+    rtpc_controls_desc: { pl: 'Kontrola parametrów w czasie rzeczywistym dla GameState, LevelStep, stanów Victory/Defeat i audio przestrzennego (DistanceReverb w ELIMINATION)', nl: 'Realtime parametercontrole voor GameState, LevelStep, Victory/Defeat toestanden, en ruimtelijke audio (DistanceReverb in ELIMINATION)', en: 'Real-time parameter control for GameState, LevelStep, Victory/Defeat states, and spatial audio (DistanceReverb in ELIMINATION)' },
+    seamless_transitions: { pl: 'Płynne Przejścia', nl: 'Naadloze Overgangen', en: 'Seamless Transitions' },
+    seamless_transitions_desc: { pl: 'Niestandardowe audio przejściowe między sekcjami: risery, smary brass i efekty granularnych glitchy dla ciągłości narracyjnej', nl: 'Aangepaste overgangsaudio tussen secties: risers, brass smears en granulaire glitch-effecten voor narratieve continuïteit', en: 'Custom transition audio between sections: risers, brass smears, and granular glitch effects for narrative continuity' },
+    design_documentation: { pl: 'Dokumentacja Projektowa', nl: 'Ontwerpsdocumentatie', en: 'Design Documentation' }
   };
 
   // Expose minimal public i18n for other scripts (read-only)
@@ -1243,6 +1326,30 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       // Page <title>
       try { document.title = (lang==='pl'?'Not Today, Darling! — Audio do gry — Igor Szuniewicz': lang==='nl'?'Not Today, Darling! — Game‑audio — Igor Szuniewicz':'Not Today, Darling! — Game Audio — Igor Szuniewicz'); } catch(_){}
+    }
+
+    // AudioLab page translations
+    if (location.pathname.endsWith('/audiolab.html') || /audiolab\.html$/i.test(location.pathname)){
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[key]) {
+          el.textContent = I18N[key][lang];
+        }
+      });
+      // Page <title>
+      try { document.title = (lang==='pl'?'Transientica: AudioLab — Gra rytmiczna beatbox — Igor Szuniewicz': lang==='nl'?'Transientica: AudioLab — Beatbox rytme game — Igor Szuniewicz':'Transientica: AudioLab — Beatbox Rhythm Game — Igor Szuniewicz'); } catch(_){}
+    }
+
+    // MusicForGames page translations
+    if (location.pathname.endsWith('/musicforgames.html') || /musicforgames\.html$/i.test(location.pathname)){
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[key]) {
+          el.textContent = I18N[key][lang];
+        }
+      });
+      // Page <title>
+      try { document.title = (lang==='pl'?'Interaktywny Design Muzyczny — Muzyka do gier — Igor Szuniewicz': lang==='nl'?'Interactief Muziekontwerp — Muziek voor games — Igor Szuniewicz':'Interactive Music Design — Music for Games — Igor Szuniewicz'); } catch(_){}
     }
     // Contact page translations (current markup)
     if (location.pathname.endsWith('/contact.html') || /contact\.html$/i.test(location.pathname)){
