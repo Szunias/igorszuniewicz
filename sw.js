@@ -40,7 +40,7 @@ const STATIC_ASSETS = [
 
 // Network-first resources (always try network first)
 const NETWORK_FIRST = [
-  '/assets/js/tracks.json',
+  '/assets/audio/tracks.json',
   '/contact.html',
   '/api/'
 ];

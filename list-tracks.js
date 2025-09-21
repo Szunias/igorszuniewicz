@@ -12,7 +12,7 @@ function main() {
   const filterTag = args[0];
 
   try {
-    const tracksPath = 'assets/js/tracks.json';
+    const tracksPath = 'assets/audio/tracks.json';
     if (!fs.existsSync(tracksPath)) {
       console.log('❌ tracks.json not found');
       return;
@@ -58,7 +58,7 @@ function main() {
   }
 }
 
-if (!fs.existsSync('assets/js/tracks.json')) {
+if (!fs.existsSync('assets/audio/tracks.json')) {
   console.error('❌ Error: Please run this script from the website root directory');
   process.exit(1);
 }
