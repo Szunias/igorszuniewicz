@@ -3,7 +3,7 @@
     Massively by HTML5 UP
     html5up.net | @ajlkn
 -->
-<html lang="en">
+<html lang="en" style="background-color: #1e252d;">
 <head>
 	<title>Igor Szuniewicz - Composer, Audio Engineer, Software Developer</title>
 	<meta charset="utf-8" />
@@ -25,16 +25,16 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap&subset=latin"></noscript>
 	<link rel="canonical" href="https://igorszuniewicz.com/" />
 	<meta name="theme-color" content="#0c1218" />
-	<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
-	<link rel="icon" href="favicon.ico" sizes="any">
-	<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
-	<link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+	<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+	<link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+	<link rel="icon" type="image/png" href="assets/icons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="assets/icons/favicon-16x16.png" sizes="16x16">
+	<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" sizes="180x180">
 	<!-- Web App Manifest -->
 	<link rel="manifest" href="manifest.json">
 	<!-- Performance optimizations: preload critical resources -->
-	<link rel="preload" as="script" href="assets/js/jquery.min.js" />
-	<link rel="preload" as="script" href="assets/js/performance.js" />
+	<link rel="preload" as="script" href="assets/js/core/jquery.min.js" />
+	<link rel="preload" as="script" href="assets/js/utils/performance.js" />
 	<link rel="preload" as="script" href="assets/js/main.js" />
 	<!-- DNS prefetch for external resources -->
 	<link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -56,11 +56,11 @@
 	<meta property="og:title" content="Igor Szuniewicz — Composer, Audio Engineer, Software Developer" />
 	<meta property="og:description" content="Interactive music systems, sound design, game audio, and DSP. Selected projects, music, and contact." />
 	<meta property="og:url" content="https://igorszuniewicz.com/" />
-	<meta property="og:image" content="https://igorszuniewicz.com/images/maxresdefault.jpg" />
+	<meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects/maxresdefault.jpg" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="Igor Szuniewicz — Composer, Audio Engineer, Software Developer" />
 	<meta name="twitter:description" content="Interactive music systems, sound design, game audio, and DSP." />
-	<meta name="twitter:image" content="https://igorszuniewicz.com/images/maxresdefault.jpg" />
+	<meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects/maxresdefault.jpg" />
 	<script type="application/ld+json">
 	{
 		"@context": "https://schema.org",
@@ -72,7 +72,7 @@
 				"url": "https://igorszuniewicz.com",
 				"image": {
 					"@type": "ImageObject",
-					"url": "https://igorszuniewicz.com/images/maxresdefault.jpg",
+					"url": "https://igorszuniewicz.com/assets/images/projects/maxresdefault.jpg",
 					"width": 1280,
 					"height": 720
 				},
@@ -265,8 +265,11 @@
                 max-height: calc(100% - 140px);
             }
         }
-        /* Hard overrides: bars/overlays */
+        /* Hard overrides: bars/overlays - prevent blue square flash */
         #wrapper.fade-in:before { display: none !important; opacity: 0 !important; background: transparent !important; }
+        body.is-preload #wrapper.fade-in:before { display: none !important; opacity: 0 !important; background: transparent !important; }
+        /* Also prevent any other loading overlays */
+        .preload-overlay, #preload-overlay { display: none !important; }
         /* Keep our custom background visible */
         #main { background: transparent !important; }
         #main > * { border-top: 0 !important; }
@@ -297,7 +300,7 @@
         }
     </style>
 </head>
-<body class="is-preload">
+<body class="is-preload" style="background-color: #1e252d;">
     <!-- Skip to main content for screen readers -->
     <a href="#main" class="skip-link visually-hidden">Skip to main content</a>
     <div class="bg-gradient" aria-hidden="true"></div>
@@ -392,49 +395,49 @@
                         <div class="slide active">
                             <span class="slide-badge">DAE Game Projects</span>
                             <h3>Not Today, Darling! — Game Audio</h3>
-                            <a href="projects/not-today-darling.html"><img src="images/NotTodayPic1.png" alt="Not Today, Darling!" loading="eager" decoding="async"></a>
+                            <a href="projects/not-today-darling.html"><img src="assets/images/projects/NotTodayPic1.png" alt="Not Today, Darling!" loading="eager" decoding="async"></a>
                             <p class="slide-description">Retro-inspired audio implementation.</p>
                         </div>
                         <div class="slide">
                             <h3>Most Recent Single</h3>
-                            <a href="https://youtu.be/9ZgLOSiQwjI?list=OLAK5uy_nzJk7hAZgv6WRFDY8TJHN7YUJrvjCn2Ro&t=80" target="_blank" rel="noopener noreferrer"><img src="images/epkam.png" alt="Most Recent Single" loading="lazy" decoding="async"></a>
+                            <a href="https://youtu.be/9ZgLOSiQwjI?list=OLAK5uy_nzJk7hAZgv6WRFDY8TJHN7YUJrvjCn2Ro&t=80" target="_blank" rel="noopener noreferrer"><img src="assets/images/covers/epkam.png" alt="Most Recent Single" loading="lazy" decoding="async"></a>
                             <p class="slide-description">Latest musical release.</p>
                         </div>
                         <div class="slide">
                             <h3>Ray Animation Music Composition</h3>
-                            <a href="projects/ray-animation.html"><img src="images/project5.png" alt="Ray Animation Music Composition" loading="lazy" decoding="async"></a>
+                            <a href="projects/ray-animation.html"><img src="assets/images/projects/project5.png" alt="Ray Animation Music Composition" loading="lazy" decoding="async"></a>
                             <p class="slide-description">Original score supporting narrative beats.</p>
                         </div>
                         <div class="slide">
                             <h3>Akantilado Animation Sound Design</h3>
-                            <a href="projects/akantilado.html"><img src="images/project4.png" alt="Akantilado Animation Sound Design" loading="lazy" decoding="async"></a>
+                            <a href="projects/akantilado.html"><img src="assets/images/projects/project4.png" alt="Akantilado Animation Sound Design" loading="lazy" decoding="async"></a>
                             <p class="slide-description">Complete foley and ambience for 3D animation.</p>
                         </div>
                         <div class="slide">
                             <h3>Amorak Sound Design</h3>
-                            <a href="projects/amorak.html"><img src="images/amorak.png" alt="Amorak Sound Design" loading="lazy" decoding="async"></a>
+                            <a href="projects/amorak.html"><img src="assets/images/projects/amorak.png" alt="Amorak Sound Design" loading="lazy" decoding="async"></a>
                             <p class="slide-description">Soundscapes and character audio for animation.</p>
                         </div>
                         <div class="slide">
                             <h3>Pause & Deserve Horror Game</h3>
-                            <a href="projects/pause-and-deserve.html"><img src="images/deserve.png" alt="Pause & Deserve" loading="lazy" decoding="async"></a>
+                            <a href="projects/pause-and-deserve.html"><img src="assets/images/projects/deserve.png" alt="Pause & Deserve" loading="lazy" decoding="async"></a>
                             <p class="slide-description">Horror game concept and audio design.</p>
                         </div>
                         <div class="slide">
                             <h3>Richter Animation Sound Design</h3>
-                            <a href="projects/richter.html"><img src="images/richter.png" alt="Richter - Animation Audio Design" loading="lazy" decoding="async"></a>
+                            <a href="projects/richter.html"><img src="assets/images/projects/richter.png" alt="Richter - Animation Audio Design" loading="lazy" decoding="async"></a>
                             <p class="slide-description">Sound design with minimal recording gear.</p>
                         </div>
                         <div class="slide">
                             <span class="slide-badge">AudioLab Project</span>
                             <h3>Transientica: Beatbox-Controlled Rhythm Game</h3>
-                            <a href="projects/audiolab.html"><img src="images/AudioLabGif.gif" alt="Transientica AudioLab" loading="lazy" decoding="async"></a>
+                            <a href="projects/audiolab.html"><img src="assets/images/projects/AudioLabGif.gif" alt="Transientica AudioLab" loading="lazy" decoding="async"></a>
                             <p class="slide-description">Real-time ML classification with 45ms latency.</p>
                         </div>
                         <div class="slide">
                             <span class="slide-badge">Music for Games</span>
                             <h3>Interactive Music Design — Wwise Projects</h3>
-                            <a href="projects/musicforgames.html"><img src="images/musicforgames.png" alt="Interactive Music Design" loading="lazy" decoding="async"></a>
+                            <a href="projects/musicforgames.html"><img src="assets/images/projects/musicforgames.png" alt="Interactive Music Design" loading="lazy" decoding="async"></a>
                             <p class="slide-description">Adaptive audio systems with vertical layering.</p>
                         </div>
                         <div class="slider-nav prev" role="button" tabindex="0" aria-label="Previous slide" aria-controls="projects-showcase">&#x25C0;</div>
@@ -444,7 +447,7 @@
 
                 <div class="projects-grid">
                     <article class="project-card" data-reveal style="--reveal-delay:.08s;">
-                        <a href="projects/dynamic-music-system.html" class="image fit"><img src="images/maxresdefault.jpg" alt="Dynamic Music System" loading="lazy" decoding="async" /></a>
+                        <a href="projects/dynamic-music-system.html" class="image fit"><img src="assets/images/projects/maxresdefault.jpg" alt="Dynamic Music System" loading="lazy" decoding="async" /></a>
                         <a href="projects/dynamic-music-system.html" class="stretched-link" aria-label="Dynamic Music System (Wwise & UE5)"></a>
                         <div class="project-card-content">
                             <h3>Dynamic Music System (Wwise & UE5)</h3>
@@ -452,7 +455,7 @@
                         </div>
                     </article>
                     <article class="project-card" data-reveal style="--reveal-delay:.12s;">
-                        <a href="projects/audio-plugin-suite.html" class="image fit"><img src="images/plugins.jpg" alt="Audio Plugins" loading="lazy" decoding="async" /></a>
+                        <a href="projects/audio-plugin-suite.html" class="image fit"><img src="assets/images/projects/plugins.jpg" alt="Audio Plugins" loading="lazy" decoding="async" /></a>
                         <a href="projects/audio-plugin-suite.html" class="stretched-link" aria-label="3D Audio Plugin Suite (VST Development)"></a>
                         <div class="project-card-content">
                             <h3>3D Audio Plugin Suite (VST Development)</h3>
@@ -504,7 +507,7 @@
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
                                     <div class="timeline-header">
-                                        <img src="images/dae.jpg?v=1" alt="DAE" class="timeline-logo">
+                                        <img src="assets/images/logos/dae.jpg?v=1" alt="DAE" class="timeline-logo">
                                         <div class="timeline-info">
                                             <h4 data-i18n="edu_dae_title">Game Audio Integration</h4>
                                             <span class="timeline-institution"><a href="https://www.digitalartsandentertainment.be/" target="_blank" rel="noopener noreferrer" class="timeline-link" title="Kliknij aby przejść do strony Howest DAE">Howest DAE, Belgium <i class="fas fa-external-link-alt" style="font-size: 0.8em; margin-left: 4px; opacity: 0.7;"></i></a></span>
@@ -518,7 +521,7 @@
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
                                     <div class="timeline-header">
-                                        <img src="images/koperas.png?v=1" alt="Copernicus" class="timeline-logo">
+                                        <img src="assets/images/logos/koperas.png?v=1" alt="Copernicus" class="timeline-logo">
                                         <div class="timeline-info">
                                             <h4 data-i18n="edu_hs_title">Mathematics & Physics</h4>
                                             <span class="timeline-institution"><a href="https://lokopernik.pl/" target="_blank" rel="noopener noreferrer" class="timeline-link" title="Kliknij aby przejść do strony Liceum im. Kopernika">Copernicus High School <i class="fas fa-external-link-alt" style="font-size: 0.8em; margin-left: 4px; opacity: 0.7;"></i></a></span>
@@ -532,7 +535,7 @@
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
                                     <div class="timeline-header">
-                                        <img src="images/muzyczna.png?v=1" alt="Music School" class="timeline-logo">
+                                        <img src="assets/images/logos/muzyczna.png?v=1" alt="Music School" class="timeline-logo">
                                         <div class="timeline-info">
                                             <h4 data-i18n="edu_music_title">Classical Piano & Music Theory</h4>
                                             <span class="timeline-institution"><a href="https://www.gov.pl/web/psmkolobrzeg" target="_blank" rel="noopener noreferrer" class="timeline-link" title="Kliknij aby przejść do strony Państwowej Szkoły Muzycznej w Kołobrzegu">State Music School <i class="fas fa-external-link-alt" style="font-size: 0.8em; margin-left: 4px; opacity: 0.7;"></i></a></span>
@@ -694,24 +697,24 @@
     </script>
 
     <!-- Scripts - Restored proper loading order -->
-    <script src="assets/js/web-vitals.js" defer></script>
-    <script src="assets/js/image-optimizer.js" async></script>
+    <script src="assets/js/utils/web-vitals.js" defer></script>
+    <script src="assets/js/utils/image-optimizer.js" defer></script>
 
     <!-- Core dependencies MUST load in order -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/performance.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/core/jquery.min.js" defer></script>
+    <script src="assets/js/core/jquery.scrollex.min.js" defer></script>
+    <script src="assets/js/core/jquery.scrolly.min.js" defer></script>
+    <script src="assets/js/core/browser.min.js" defer></script>
+    <script src="assets/js/core/breakpoints.min.js" defer></script>
+    <script src="assets/js/core/util.js" defer></script>
+    <script src="assets/js/utils/performance.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 
     <!-- Essential functionality scripts -->
-    <script src="assets/js/slider.js?v=20250919b" defer></script>
-    <script src="assets/js/enhancements.js?v=20250919-fix" defer></script>
-    <script src="assets/js/analytics.js" defer></script>
-    <script src="assets/js/visit-counter.js" defer></script>
+    <script src="assets/js/components/slider.js?v=20250919b" defer></script>
+    <script src="assets/js/components/enhancements.js?v=20250919-fix" defer></script>
+    <script src="assets/js/pages/analytics.js" defer></script>
+    <script src="assets/js/pages/visit-counter.js" defer></script>
 
 
 </body>

@@ -210,10 +210,13 @@ hr, hr.major { display: none !important; }
 /* Also kill posts grid borders that can create bars */
 #main > .posts > article { border: 0 !important; }
 
-/* Override theme preload overlay to use transparent background instead of gray */
-#wrapper.fade-in:before {
+/* Override theme preload overlay to prevent blue square flash completely */
+#wrapper.fade-in:before,
+body.is-preload #wrapper.fade-in:before {
+  display: none !important;
   background: transparent !important;
   opacity: 0 !important;
+  visibility: hidden !important;
 }
 
 /* Intro spacing to avoid overlap and raise heading */

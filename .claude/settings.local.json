@@ -1,28 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python:*)",
-      "Bash(findstr:*)",
-      "Bash(node:*)",
-      "Bash(timeout:*)",
-      "Bash(php:*)",
-      "Bash(where php)",
-      "Bash(netstat:*)",
-      "Bash(taskkill:*)",
-      "Bash(dir:*)",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\audio-converter.html\")",
-      "Bash(where:*)",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\convert-audio.html\")",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\auto-convert.html\")",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\index.html\")",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\simple-converter.html\")",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\not-today-darling.html\")",
-      "WebFetch(domain:www.gov.pl)",
-      "WebSearch",
-      "WebFetch(domain:psmkolobrzeg.fryderyk.edu.pl)",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\index.html\")",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\akantilado.html\")",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\ray-animation.html\")"
+      "Bash(do echo \"Fixing $file...\")",
+      "Bash(do echo \"Updating OG images in $file...\")",
+      "Bash(do echo \"Updating JS paths in $file...\")",
+      "Bash(do echo \"Updating other JS paths in $file...\")",
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\extras.html\")",
+      "Bash(for file in projects/*.html)",
+      "Bash(do echo \"Updating favicon paths in $file...\")",
+      "Bash(do echo \"Fixing double paths in $file...\")",
+      "Bash(do echo \"Updating image paths in $file...\")",
+      "Bash(do echo \"Fixing broken image paths in $file...\")"
     ],
     "deny": [],
     "ask": []

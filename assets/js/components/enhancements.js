@@ -623,13 +623,15 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   // (removed) eager hydration — previews are filled just-in-time on hover with random picks
 
-  // Force all elements to be visible immediately (debugging CV images)
-  document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('in-view'));
-
-  // Also force CV section specifically
-  const cvSection = document.querySelector('#cv-section');
-  if (cvSection) {
-    cvSection.classList.add('in-view');
+  // Only enable debug-only DOM changes when explicitly requested
+  const DEBUG_MODE = /[?&]debug=1(?:&|$)/.test(location.search) || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+  if (DEBUG_MODE) {
+    // Force all elements to be visible immediately (debugging CV images)
+    document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('in-view'));
+    const cvSection = document.querySelector('#cv-section');
+    if (cvSection) {
+      cvSection.classList.add('in-view');
+    }
   }
 
 
@@ -671,7 +673,8 @@ document.addEventListener('DOMContentLoaded', function() {
       box.appendChild(btn);
     });
     document.body.appendChild(box); return box; })();
-  try { fixedLang.style.display='flex'; } catch(_){}
+  // Hide fixed language switcher unless debug mode
+  try { fixedLang.style.display = DEBUG_MODE ? 'flex' : 'none'; } catch(_){}
 
   function flagSvg(lang){
     // Use width/height 100% so parent spans can size the flag
@@ -736,8 +739,8 @@ document.addEventListener('DOMContentLoaded', function() {
     footer_qr_title: { pl: 'Szybki dostęp (QR kod)', nl: 'Snelle toegang (QR-code)', en: 'Quick Access (QR Code)' },
     footer_qr_hint: { pl: 'Zeskanuj, aby szybko otworzyć to portfolio.', nl: 'Scan voor snelle toegang tot dit portfolio.', en: 'Scan for quick access to this portfolio.' },
     // Music page
-    music_title: { en: 'Music Listening Room', pl: 'Muzyka — Pokój odsłuchowy', nl: 'Muziek — Luisterkamer' },
-    music_lead: { en: 'Stream curated tracks, preview stems, and explore catalog.', pl: 'Słuchaj wybranych utworów, podglądaj stemsy i przeglądaj katalog.', nl: 'Stream geselecteerde tracks, bekijk stems en verken de catalogus.' },
+    music_title: { en: 'Music Listening Room', pl: 'Pokój odsłuchowy — Muzyka', nl: 'Luisterkamer — Muziek' },
+    music_lead: { en: 'Listen to curated tracks and explore the catalog.', pl: 'Słuchaj wybranych utworów i eksploruj katalog.', nl: 'Luister naar geselecteerde tracks en verken de catalogus.' },
     music_quality_info: { en: 'Use the <strong>STREAM</strong> button next to each track to switch between fast-loading compressed audio and high-quality original files.', pl: 'Użyj przycisku <strong>STREAM</strong> obok każdego utworu, aby przełączać między szybko ładującym się skompresowanym dźwiękiem a wysokiej jakości oryginalnymi plikami.', nl: 'Gebruik de <strong>STREAM</strong> knop naast elke track om te schakelen tussen snel ladende gecomprimeerde audio en hoogwaardige originele bestanden.' },
     music_sort: { en: 'Sort', pl: 'Sortuj', nl: 'Sorteren' },
     music_hint_click: { en: 'Click for details', pl: 'Kliknij, aby zobaczyć szczegóły', nl: 'Klik voor details' },
@@ -855,7 +858,7 @@ document.addEventListener('DOMContentLoaded', function() {
     audiolab_title: { pl: 'Transientica: AudioLab', nl: 'Transientica: AudioLab', en: 'Transientica: AudioLab' },
     audiolab_subtitle: { pl: 'Gra rytmiczna sterowana beatboxem do beatboxu wokalnego', nl: 'Beatbox-gestuurd ritme spel voor vocale percussie gameplay', en: 'Beatbox-Controlled Rhythm Game for Vocal Percussion Gameplay' },
     // MusicForGames page translations
-    music_title: { pl: 'Interaktywny Design Muzyczny', nl: 'Interactief Muziekontwerp', en: 'Interactive Music Design' },
+    // legacy label kept for other pages; ensure music page uses Listening Room
     music_subtitle: { pl: 'Muzyka do Gier — Adaptacyjne systemy audio z Wwise', nl: 'Muziek voor Games — Adaptieve audiosystemen met Wwise', en: 'Music for Games — Adaptive Audio Systems with Wwise' },
     // Common project page translations
     project_overview: { pl: 'Przegląd Projektu', nl: 'Projectoverzicht', en: 'Project Overview' },
@@ -1127,21 +1130,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const map = key && CARDS[key]; if (!map) return;
         const h = card.querySelector('h3'); if (h) h.textContent = map.h[lang] || map.h.en;
         const p = card.querySelector('p'); if (p) p.textContent = map.p[lang] || map.p.en;
-        // Keep GIF images for projects
+        // Keep GIF images for projects (updated paths under assets/images/projects)
         if (key==='NotTodayDarling'){
-          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../images/NotTodayGIF.gif'); img.src = '../images/NotTodayGIF.gif'; img.alt='Not Today, Darling!'; }
+          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../assets/images/projects/NotTodayGIF.gif'); img.src = '../assets/images/projects/NotTodayGIF.gif'; img.alt='Not Today, Darling!'; }
         }
         if (key==='Transientica AudioLab'){
-          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../images/AudioLabGif.gif'); img.src = '../images/AudioLabGif.gif'; img.alt='Transientica AudioLab'; }
+          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../assets/images/projects/AudioLabGif.gif'); img.src = '../assets/images/projects/AudioLabGif.gif'; img.alt='Transientica AudioLab'; }
         }
         if (key==='Akantilado'){
-          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../images/AkantiladoGIF.gif'); img.src = '../images/AkantiladoGIF.gif'; img.alt='Akantilado'; }
+          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../assets/images/projects/AkantiladoGIF.gif'); img.src = '../assets/images/projects/AkantiladoGIF.gif'; img.alt='Akantilado'; }
         }
         if (key==='Amorak'){
-          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../images/AmorakGIF.gif'); img.src = '../images/AmorakGIF.gif'; img.alt='Amorak'; }
+          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../assets/images/projects/AmorakGIF.gif'); img.src = '../assets/images/projects/AmorakGIF.gif'; img.alt='Amorak'; }
         }
         if (key==='Ray'){
-          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../images/RayGIF.gif'); img.src = '../images/RayGIF.gif'; img.alt='Ray'; }
+          const img = card.querySelector('img'); if (img) { img.setAttribute('data-src','../assets/images/projects/RayGIF.gif'); img.src = '../assets/images/projects/RayGIF.gif'; img.alt='Ray'; }
         }
       });
     }
