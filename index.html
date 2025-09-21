@@ -265,11 +265,6 @@
                 max-height: calc(100% - 140px);
             }
         }
-        /* Hard overrides: bars/overlays - prevent blue square flash */
-        #wrapper.fade-in:before { display: none !important; opacity: 0 !important; background: transparent !important; }
-        body.is-preload #wrapper.fade-in:before { display: none !important; opacity: 0 !important; background: transparent !important; }
-        /* Also prevent any other loading overlays */
-        .preload-overlay, #preload-overlay { display: none !important; }
         /* Keep our custom background visible */
         #main { background: transparent !important; }
         #main > * { border-top: 0 !important; }
@@ -299,8 +294,10 @@
             transition: all 0.3s ease;
         }
     </style>
+	<link rel="stylesheet" href="assets/css/preloader.css">
 </head>
 <body class="is-preload" style="background-color: #1e252d;">
+	<div id="preloader"></div>
     <!-- Skip to main content for screen readers -->
     <a href="#main" class="skip-link visually-hidden">Skip to main content</a>
     <div class="bg-gradient" aria-hidden="true"></div>
@@ -696,11 +693,7 @@
     }
     </script>
 
-    <!-- Scripts - Restored proper loading order -->
-    <script src="assets/js/utils/web-vitals.js" defer></script>
-    <script src="assets/js/utils/image-optimizer.js" defer></script>
-
-    <!-- Core dependencies MUST load in order -->
+    <!-- Scripts -->
     <script src="assets/js/core/jquery.min.js" defer></script>
     <script src="assets/js/core/jquery.scrollex.min.js" defer></script>
     <script src="assets/js/core/jquery.scrolly.min.js" defer></script>
@@ -708,9 +701,17 @@
     <script src="assets/js/core/breakpoints.min.js" defer></script>
     <script src="assets/js/core/util.js" defer></script>
     <script src="assets/js/utils/performance.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
 
-    <!-- Essential functionality scripts -->
+    <!-- Features -->
+    <script src="assets/js/features/preloader.js" defer></script>
+    <script src="assets/js/features/parallax.js" defer></script>
+    <script src="assets/js/features/nav-panel.js" defer></script>
+    <script src="assets/js/features/intro.js" defer></script>
+
+    <!-- App -->
+    <script src="assets/js/app.js" defer></script>
+
+    <!-- Other Components -->
     <script src="assets/js/components/slider.js?v=20250919b" defer></script>
     <script src="assets/js/components/reveal.js" defer></script>
     <script src="assets/js/components/enhancements.js?v=20250919-fix" defer></script>
@@ -718,6 +719,8 @@
     <script src="assets/js/pages/analytics.js" defer></script>
     <script src="assets/js/components/lang-badge.js" defer></script>
     <script src="assets/js/pages/visit-counter.js" defer></script>
+    <script src="assets/js/utils/web-vitals.js" defer></script>
+    <script src="assets/js/utils/image-optimizer.js" defer></script>
 
 
 </body>
