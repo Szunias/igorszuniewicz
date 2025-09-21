@@ -673,8 +673,8 @@ document.addEventListener('DOMContentLoaded', function() {
       box.appendChild(btn);
     });
     document.body.appendChild(box); return box; })();
-  // Hide fixed language switcher unless debug mode
-  try { fixedLang.style.display = DEBUG_MODE ? 'flex' : 'none'; } catch(_){}
+  // Ensure fixed language switcher stays visible across pages
+  try { fixedLang.style.display = 'flex'; } catch(_){ }
 
   function flagSvg(lang){
     // Use width/height 100% so parent spans can size the flag
@@ -787,6 +787,7 @@ document.addEventListener('DOMContentLoaded', function() {
     contact_reachout: { pl: 'Śmiało napisz z krótkim opisem. Lubię projekty łączące kreatywną wizję z rozwiązywaniem problemów technicznych.', nl: 'Stuur gerust een korte briefing. Ik werk graag aan projecten die creatieve intentie combineren met technische probleemoplossing.', en: 'Feel free to reach out with a short brief. I enjoy projects that combine creative intent with technical problem‑solving.' },
     // Not Today Darling page translations
     ntd_trailer_title: { pl: 'Trailer', nl: 'Trailer', en: 'Trailer' },
+    ntd_trailer_hint: { pl: '🎬 Obejrzyj trailer', nl: '🎬 Bekijk de trailer', en: '🎬 Watch the trailer' },
     ntd_role_title: { pl: 'Rola — Audio', nl: 'Rol — Audio', en: 'Role — Audio' },
     ntd_role_desc: { pl: 'Odpowiadałem za sound effects, implementację i miks: paleta SFX gameplayu, UI, warstwy crowd/ambience oraz integrację i miks w silniku dla czytelności przy szybkiej akcji. System reaguje na stany wyścigu i zdarzenia gracza.', nl: 'SFX‑ontwerp, implementatie en mix: gameplaypalet, UI, crowd/ambience, met engine‑integratie en mix voor leesbaarheid bij hoge snelheid. Systeem reageert op racestaten en events.', en: 'Handled SFX design, implementation and mixing: gameplay palette, UI, crowd/ambience, plus in‑engine integration and mix for clarity at speed. System reacts to race states and player events.' },
     ntd_hi_title: { pl: 'Gameplay Highlights', nl: 'Gameplay Highlights', en: 'Gameplay Highlights' },
