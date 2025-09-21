@@ -791,19 +791,23 @@
 
         <h3 id="bgColor" data-i18n="trailer_title" style="margin-top:1.5rem;">Trailer</h3>
         <div class="video-container" data-reveal>
-          <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-radius: 8px; box-shadow: 0 12px 30px rgba(0,0,0,0.4);">
-            <div class="video-thumbnail" onclick="this.style.display='none'; this.nextElementSibling.style.display='block';" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; display: block;">
+          <div class="video-wrapper" data-video="https://www.youtube.com/embed/6lFEvyicea0?rel=0&modestbranding=1&color=white" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-radius: 8px; box-shadow: 0 12px 30px rgba(0,0,0,0.4);">
+            <div class="video-thumbnail" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer; display: block;">
               <img src="../assets/images/projects/NotTodayPic2.png?v=20250919b" alt="Not Today, Darling! Trailer" style="width: 100%; height: 100%; object-fit: cover;">
               <div class="play-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1)); backdrop-filter: blur(1px);"></div>
               <div class="play-button" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90px; height: 90px; background: linear-gradient(135deg, #ff0844, #ff6b35); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; color: white; box-shadow: 0 8px 25px rgba(255,8,68,0.4), 0 0 0 4px rgba(255,255,255,0.2); transition: all 0.3s ease; cursor: pointer;">
                 <div style="margin-left: 6px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">▶</div>
               </div>
-              <div class="play-hint" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">
+              <div class="play-hint" data-i18n="trailer_hint" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">
                 🎬 Obejrzyj trailer
               </div>
             </div>
-            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; display: none;"
-              src="https://www.youtube.com/embed/6lFEvyicea0?autoplay=1&rel=0&modestbranding=1&color=white"
+            <iframe
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; display: none;"
+              src="about:blank"
+              data-base="https://www.youtube.com/embed/6lFEvyicea0?rel=0&modestbranding=1&color=white"
+              title="Not Today, Darling! trailer"
+              loading="lazy"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen>
