@@ -3,7 +3,7 @@
     "id": "ray",
     "title": "Ray Animation — Credits Theme",
     "artist": "Igor Szuniewicz",
-    "cover": "images/project5.png",
+    "cover": "assets/images/covers/project5.png",
     "tags": [
       "film",
       "score"
@@ -18,11 +18,11 @@
     },
     "sources": [
       {
-        "url": "songs/RayCreditsTheme.mp3",
+        "url": "assets/audio/tracks/RayCreditsTheme.mp3",
         "type": "audio/mpeg"
       },
       {
-        "url": "songs/RayCreditsTheme.wav",
+        "url": "assets/audio/tracks/RayCreditsTheme.wav",
         "type": "audio/wav"
       }
     ]
@@ -31,7 +31,7 @@
     "id": "richter",
     "title": "Richter — Main Theme",
     "artist": "Igor Szuniewicz",
-    "cover": "images/richter.png",
+    "cover": "assets/images/covers/richter.png",
     "tags": [
       "film",
       "score"
@@ -46,15 +46,15 @@
     },
     "sources": [
       {
-        "url": "songs/RichterMainTheme.wav",
+        "url": "assets/audio/tracks/RichterMainTheme.wav",
         "type": "audio/wav"
       },
       {
-        "url": "songs/RichterMainTheme.m4a",
+        "url": "assets/audio/tracks/RichterMainTheme.m4a",
         "type": "audio/mp4"
       },
       {
-        "url": "songs/RichterMainTheme.mp3",
+        "url": "assets/audio/tracks/RichterMainTheme.mp3",
         "type": "audio/mpeg"
       }
     ]
@@ -63,7 +63,7 @@
     "id": "obsidian",
     "title": "Obsidian",
     "artist": "Igor Szuniewicz",
-    "cover": "images/Tribal.png",
+    "cover": "assets/images/covers/Tribal.png",
     "tags": [
       "techno",
       "electronic"
@@ -78,11 +78,11 @@
     },
     "sources": [
       {
-        "url": "songs/trans2.mp3",
+        "url": "assets/audio/tracks/trans2.mp3",
         "type": "audio/mpeg"
       },
       {
-        "url": "songs/trans2.wav",
+        "url": "assets/audio/tracks/trans2.wav",
         "type": "audio/wav"
       }
     ]
@@ -91,7 +91,7 @@
     "id": "sp_inflow",
     "title": "Inflow",
     "artist": "Igor Szuniewicz",
-    "cover": "images/Inflow_track_cover.jpg",
+    "cover": "assets/images/covers/Inflow_track_cover.jpg",
     "tags": [
       "single",
       "electronic"
@@ -106,15 +106,15 @@
     },
     "sources": [
       {
-        "url": "songs/Igor Szuniewicz - Inflow.wav",
+        "url": "assets/audio/tracks/Igor Szuniewicz - Inflow.wav",
         "type": "audio/wav"
       },
       {
-        "url": "songs/Inflow.m4a",
+        "url": "assets/audio/tracks/Inflow.m4a",
         "type": "audio/mp4"
       },
       {
-        "url": "songs/Inflow.mp3",
+        "url": "assets/audio/tracks/Inflow.mp3",
         "type": "audio/mpeg"
       }
     ]
@@ -123,7 +123,7 @@
     "id": "sp_astro",
     "title": "Astrophonic Dance",
     "artist": "Igor Szuniewicz",
-    "cover": "images/Astrophonic Dance_track_cover.jpg",
+    "cover": "assets/images/covers/Astrophonic Dance_track_cover.jpg",
     "tags": [
       "single",
       "electronic"
@@ -138,15 +138,15 @@
     },
     "sources": [
       {
-        "url": "songs/Igor Szuniewicz - Astrophonic Dance.wav",
+        "url": "assets/audio/tracks/Igor Szuniewicz - Astrophonic Dance.wav",
         "type": "audio/wav"
       },
       {
-        "url": "songs/AstrophonicDance.m4a",
+        "url": "assets/audio/tracks/AstrophonicDance.m4a",
         "type": "audio/mp4"
       },
       {
-        "url": "songs/AstrophonicDance.mp3",
+        "url": "assets/audio/tracks/AstrophonicDance.mp3",
         "type": "audio/mpeg"
       }
     ]
@@ -155,7 +155,7 @@
     "id": "sp_cathedral",
     "title": "Cathedral Of Time",
     "artist": "Igor Szuniewicz",
-    "cover": "images/Cathedral Of Time_track_cover.jpg",
+    "cover": "assets/images/covers/Cathedral Of Time_track_cover.jpg",
     "tags": [
       "single",
       "electronic"
@@ -170,15 +170,15 @@
     },
     "sources": [
       {
-        "url": "songs/Igor Szuniewicz - Cathedral Of Time.wav",
+        "url": "assets/audio/tracks/Igor Szuniewicz - Cathedral Of Time.wav",
         "type": "audio/wav"
       },
       {
-        "url": "songs/CathedralOfTime.m4a",
+        "url": "assets/audio/tracks/CathedralOfTime.m4a",
         "type": "audio/mp4"
       },
       {
-        "url": "songs/CathedralOfTime.mp3",
+        "url": "assets/audio/tracks/CathedralOfTime.mp3",
         "type": "audio/mpeg"
       }
     ]
@@ -187,7 +187,7 @@
     "id": "xianclash",
     "title": "Xian Clash — Main Theme",
     "artist": "Igor Szuniewicz",
-    "cover": "images/XianClashCover.png",
+    "cover": "assets/images/covers/XianClashCover.png",
     "tags": [
       "film",
       "score"
@@ -202,15 +202,15 @@
     },
     "sources": [
       {
-        "url": "songs/XianClashMainTheme.wav",
+        "url": "assets/audio/tracks/XianClashMainTheme.wav",
         "type": "audio/wav"
       },
       {
-        "url": "songs/XianClashMainTheme.m4a",
+        "url": "assets/audio/tracks/XianClashMainTheme.m4a",
         "type": "audio/mp4"
       },
       {
-        "url": "songs/XianClashMainTheme.mp3",
+        "url": "assets/audio/tracks/XianClashMainTheme.mp3",
         "type": "audio/mpeg"
       }
     ]
@@ -219,7 +219,7 @@
     "id": "run",
     "title": "Run — Main Theme",
     "artist": "Igor Szuniewicz",
-    "cover": "images/Run.png",
+    "cover": "assets/images/covers/Run.png",
     "tags": [
       "single",
       "metal"
@@ -234,15 +234,15 @@
     },
     "sources": [
       {
-        "url": "songs/RunMainTheme.wav",
+        "url": "assets/audio/tracks/RunMainTheme.wav",
         "type": "audio/wav"
       },
       {
-        "url": "songs/RunMainTheme.m4a",
+        "url": "assets/audio/tracks/RunMainTheme.m4a",
         "type": "audio/mp4"
       },
       {
-        "url": "songs/RunMainTheme.mp3",
+        "url": "assets/audio/tracks/RunMainTheme.mp3",
         "type": "audio/mpeg"
       }
     ]
@@ -251,7 +251,7 @@
     "id": "edgeoflife",
     "title": "Edge Of Life",
     "artist": "Igor Szuniewicz",
-    "cover": "images/EdgeOfLife.png",
+    "cover": "assets/images/covers/EdgeOfLife.png",
     "tags": [
       "single",
       "electronic",
@@ -262,11 +262,11 @@
     "year": 2024,
     "sources": [
       {
-        "url": "songs/EdgeOfLife.mp3",
+        "url": "assets/audio/tracks/EdgeOfLife.mp3",
         "type": "audio/mpeg"
       },
       {
-        "url": "songs/EdgeOfLife.wav",
+        "url": "assets/audio/tracks/EdgeOfLife.wav",
         "type": "audio/wav"
       }
     ],
@@ -280,7 +280,7 @@
     "id": "cage",
     "title": "Cage",
     "artist": "Igor Szuniewicz",
-    "cover": "images/Cage.png",
+    "cover": "assets/images/covers/Cage.png",
     "tags": [
       "single",
       "metal"
@@ -290,11 +290,11 @@
     "year": 2025,
     "sources": [
       {
-        "url": "songs/Cage.mp3",
+        "url": "assets/audio/tracks/Cage.mp3",
         "type": "audio/mpeg"
       },
       {
-        "url": "songs/Cage.wav",
+        "url": "assets/audio/tracks/Cage.wav",
         "type": "audio/wav"
       }
     ],
@@ -308,7 +308,7 @@
     "id": "thatsit_cover",
     "title": "That's It — Cover",
     "artist": "Igor Szuniewicz",
-    "cover": "images/ThatsItCover.png",
+    "cover": "assets/images/covers/ThatsItCover.png",
     "tags": [
       "all",
       "single",
@@ -324,11 +324,11 @@
     },
     "sources": [
       {
-        "url": "songs/ThatsItIgorSzuniewicz.mp3",
+        "url": "assets/audio/tracks/ThatsItIgorSzuniewicz.mp3",
         "type": "audio/mpeg"
       },
       {
-        "url": "songs/ThatsItIgorSzuniewicz.wav",
+        "url": "assets/audio/tracks/ThatsItIgorSzuniewicz.wav",
         "type": "audio/wav"
       }
     ]
@@ -337,7 +337,7 @@
     "id": "gnosienne1",
     "title": "Gnosienne No. 1 (Cover by Igor Szuniewicz)",
     "artist": "Igor Szuniewicz",
-    "cover": "images/GnosienneAlbumCover.png",
+    "cover": "assets/images/covers/GnosienneAlbumCover.png",
     "tags": [
       "single",
       "metal"
@@ -347,11 +347,11 @@
     "year": 2025,
     "sources": [
       {
-        "url": "songs/gnosienne1.mp3",
+        "url": "assets/audio/tracks/gnosienne1.mp3",
         "type": "audio/mpeg"
       },
       {
-        "url": "songs/gnosienne1.wav",
+        "url": "assets/audio/tracks/gnosienne1.wav",
         "type": "audio/wav"
       }
     ]
@@ -360,7 +360,7 @@
     "id": "psy",
     "title": "Psy",
     "artist": "Igor Szuniewicz",
-    "cover": "images/PSY.png",
+    "cover": "assets/images/covers/PSY.png",
     "tags": [
       "single",
       "metal"
@@ -375,7 +375,7 @@
     },
     "sources": [
       {
-        "url": "songs/psy(2).wav",
+        "url": "assets/audio/tracks/psy(2).wav",
         "type": "audio/wav"
       }
     ]
@@ -384,7 +384,7 @@
     "id": "caplanetechno",
     "title": "Ça Plane Pour Moi — Techno Remix",
     "artist": "Igor Szuniewicz",
-    "cover": "images/caplanepourmoi.png",
+    "cover": "assets/images/covers/caplanepourmoi.png",
     "tags": [
       "single",
       "techno",
@@ -401,11 +401,11 @@
     },
     "sources": [
       {
-        "url": "songs/caplanetechno.mp3",
+        "url": "assets/audio/tracks/caplanetechno.mp3",
         "type": "audio/mpeg"
       },
       {
-        "url": "songs/caplanetechno.wav",
+        "url": "assets/audio/tracks/caplanetechno.wav",
         "type": "audio/wav"
       }
     ]
@@ -414,7 +414,7 @@
     "id": "syncopation",
     "title": "Syncopation$",
     "artist": "Igor Szuniewicz",
-    "cover": "images/Syncopations.png",
+    "cover": "assets/images/covers/Syncopations.png",
     "tags": [
       "techno",
       "electronic"
@@ -429,11 +429,11 @@
     },
     "sources": [
       {
-        "url": "songs/syncopationsnew.mp3",
+        "url": "assets/audio/tracks/syncopationsnew.mp3",
         "type": "audio/mpeg"
       },
       {
-        "url": "songs/syncopationsnew.wav",
+        "url": "assets/audio/tracks/syncopationsnew.wav",
         "type": "audio/wav"
       }
     ]
