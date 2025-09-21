@@ -277,10 +277,7 @@
       title.innerHTML = '<span class="emoji" aria-hidden="true">'+emoji+'</span><span>'+pretty+'</span>';
       wrap.appendChild(title);
       listEl.appendChild(wrap);
-      let idx = 0;
-      view.forEach(function(t){
-        const vi = view.indexOf(t);
-        const i = idx++;
+      view.forEach(function(t, vi){
         const card = document.createElement('div'); card.className='music-item'; card.tabIndex=0; card.dataset.index=String(vi); if (t.id) card.dataset.id = String(t.id);
         const tagsHtml = (Array.isArray(t.tags)?t.tags:[]).map(function(x){ return '<span>'+x+'</span>'; }).join('');
         // Show quality toggle for all tracks (will gracefully fallback if MP3 doesn't exist)
@@ -302,7 +299,21 @@
         const playBtn = card.querySelector('.mi-play');
         const qualityBtn = card.querySelector('.mi-quality-toggle');
 
-        function toggleThis(ev){ if (ev) ev.stopPropagation(); if (currentIndex===vi && !audio.paused){ audio.pause(); pbPlay.textContent='▶'; updateCardPlayButtons(); } else { start(vi); } }
+        function toggleThis(ev){
+          if (ev) ev.stopPropagation();
+          const isCurrent = (currentIndex === vi);
+          if (isCurrent){
+            if (!audio.paused){
+              audio.pause();
+            } else if (audio.ended){
+              start(vi);
+            } else {
+              audio.play().catch(()=>{});
+            }
+            return;
+          }
+          start(vi);
+        }
         if (playBtn) playBtn.addEventListener('click', toggleThis);
         card.addEventListener('dblclick', toggleThis);
 
