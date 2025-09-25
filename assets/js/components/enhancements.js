@@ -658,18 +658,21 @@ document.addEventListener('DOMContentLoaded', function() {
     box.id = 'lang-fixed';
     box.style.cssText = 'position:fixed;top:14px;right:14px;z-index:2147483647;display:flex;gap:8px;background:rgba(10,16,22,.92);border:1px solid rgba(255,255,255,.14);padding:6px;border-radius:999px;backdrop-filter:saturate(1.2) blur(4px)';
     const langs = ['en','pl','nl'];
+    const langLabels = { en: 'English', pl: 'Polski', nl: 'Nederlands' };
     langs.forEach(l=>{
       const btn = document.createElement('button');
-      btn.type='button'; btn.setAttribute('data-lang', l);
+      btn.type='button';
+      btn.setAttribute('data-lang', l);
+      btn.setAttribute('aria-label', `Switch to ${langLabels[l] || l.toUpperCase()}`);
+      btn.setAttribute('aria-pressed', 'false');
       const flagWrap = document.createElement('span');
-      flagWrap.style.cssText='width:24px;height:16px;display:inline-flex;align-items:center;justify-content:center;';
+      flagWrap.className = 'flag';
       flagWrap.innerHTML = flagSvg(l);
       const label = document.createElement('span');
+      label.className = 'label';
       label.textContent = l.toUpperCase();
-      label.style.cssText='margin-left:6px;font-weight:800;letter-spacing:.2px;line-height:1;color:#e9f7ff;display:inline-block;';
       btn.appendChild(flagWrap);
       btn.appendChild(label);
-      btn.style.cssText='display:inline-flex;align-items:center;gap:8px;padding:8px 12px;background:transparent;border:0;border-radius:999px;cursor:pointer;line-height:1;';
       box.appendChild(btn);
     });
     document.body.appendChild(box); return box; })();
@@ -1566,6 +1569,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // update badge
     const c = l.toUpperCase();
     langBadge.innerHTML = '<span class="flag" style="display:inline-block;vertical-align:middle">'+flagSvg(l)+'</span><span class="code">'+c+'</span>';
+    syncActive();
   }
   {
     const current = localStorage.getItem(LANG_KEY) || 'en';
@@ -1585,20 +1589,24 @@ document.addEventListener('DOMContentLoaded', function() {
   function syncActive(){
     const current=localStorage.getItem(LANG_KEY)||'en';
     // old dropdown (if exists)
-    badgeMenu.querySelectorAll('button').forEach(btn=>{ const on = btn.getAttribute('data-lang')===current; btn.classList.toggle('active', on); btn.style.background = on ? 'rgba(24,191,239,0.18)' : 'transparent'; });
+    badgeMenu.querySelectorAll('button').forEach(btn=>{
+      const on = btn.getAttribute('data-lang')===current;
+      btn.classList.toggle('active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
     // fixed switcher
     const fixed = document.getElementById('lang-fixed');
     if (fixed){
       fixed.querySelectorAll('button').forEach(btn=>{
         const on = btn.getAttribute('data-lang')===current;
-        btn.style.background = on ? 'rgba(24,191,239,0.22)' : 'transparent';
-        btn.style.outline = on ? '1px solid rgba(24,191,239,0.45)' : 'none';
+        btn.classList.toggle('is-active', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
       });
     }
   }
-  badgeMenu.addEventListener('click', (e)=>{ if(!e.target || !e.target.closest) return; const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); syncActive(); });
+  badgeMenu.addEventListener('click', (e)=>{ if(!e.target || !e.target.closest) return; const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); });
   const fixed = document.getElementById('lang-fixed');
-  if (fixed){ fixed.addEventListener('click', (e)=>{ if(!e.target || !e.target.closest) return; const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); syncActive(); }); }
+  if (fixed){ fixed.addEventListener('click', (e)=>{ if(!e.target || !e.target.closest) return; const b=e.target.closest('button[data-lang]'); if (!b) return; setLang(b.getAttribute('data-lang')); }); }
   syncActive();
   // no dropdown behavior anymore
 
