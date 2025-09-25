@@ -423,7 +423,55 @@ body.fx-off #nav { backdrop-filter: none !important; }
 
 /* Dropdown menu for top-right language badge */
 .lang-badge-wrap { position: fixed; top: 14px; right: 16px; z-index: 2147483647; }
-#lang-fixed { position: fixed; top: 14px; right: 16px; z-index: 2147483647; display: flex !important; gap: 8px; }
+#lang-fixed {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  z-index: 2147483647;
+  display: flex !important;
+  gap: 8px;
+  background: rgba(10,16,22,0.92);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 999px;
+  padding: 6px;
+  backdrop-filter: saturate(1.2) blur(4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+#lang-fixed button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  line-height: 1;
+  color: #e9f7ff;
+  font-weight: 800;
+  letter-spacing: .2px;
+  transition: background .15s ease, box-shadow .15s ease;
+}
+#lang-fixed button .flag {
+  width: 24px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+#lang-fixed button .label {
+  margin-left: 6px;
+  color: #e9f7ff;
+  letter-spacing: .2px;
+}
+#lang-fixed button.is-active {
+  background: rgba(24,191,239,0.22);
+  box-shadow: 0 0 0 1px rgba(24,191,239,0.45);
+}
+#lang-fixed button:focus-visible {
+  outline: 2px solid rgba(24,191,239,0.6);
+  outline-offset: 2px;
+}
 
 @media screen and (max-width: 980px) {
   #lang-fixed, .lang-badge-wrap {

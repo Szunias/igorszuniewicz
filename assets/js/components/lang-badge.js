@@ -3,6 +3,7 @@
   'use strict';
   const DEBUG_MODE = /[?&]debug=1(?:&|$)/.test(location.search) || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
   if (!DEBUG_MODE) return;
+  if (document.getElementById('lang-fixed')) return;
 
   function flagSvg(lang){
     if (lang==='pl') return '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2"><rect width="3" height="1" fill="#fff"/><rect y="1" width="3" height="1" fill="#dc143c"/></svg>';
