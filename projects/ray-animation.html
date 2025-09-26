@@ -321,6 +321,162 @@
         font-size: 1.6rem;
       }
     }
+
+    /* Ray Details Grid - Modern Cards */
+    .ray-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .ray-card {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 20px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ray-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #d27d2d, #f4a261);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .ray-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .ray-card:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(210, 125, 45, 0.3);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(210, 125, 45, 0.2);
+    }
+
+    .ray-card h4 {
+      color: #ffffff;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      line-height: 1.3;
+    }
+
+    .ray-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .ray-card li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: rgba(244, 230, 215, 0.92);
+      line-height: 1.6;
+    }
+
+    .ray-card li::before {
+      content: '♪';
+      position: absolute;
+      left: 0;
+      color: #d27d2d;
+      font-weight: bold;
+    }
+
+    /* Enhanced Gallery - Grid with Lightbox */
+    .ray-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05) translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: all 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white;
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    .gallery-overlay span {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+
+    /* Responsive Gallery */
+    @media (max-width: 768px) {
+      .ray-details {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .ray-card {
+        padding: 1.5rem;
+      }
+
+      .ray-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+    }
+
+    @media (max-width: 480px) {
+      .ray-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-item img {
+        height: 250px;
+      }
+    }
   </style>
   <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 </head>
@@ -403,33 +559,90 @@
     <div id="main">
       <section class="post" data-reveal>
         <header class="major">
-          <h2 data-i18n="ray.title">Ray Animation — Music Composition</h2>
-          <p id="bgWhite" data-i18n="ray.lead">Original disco-style score for a dreamy 3D character journey.</p>
+          <h2 data-i18n="ray_title">Ray Animation — Music Composition</h2>
+          <p id="bgWhite" data-i18n="ray_lead">Original disco-style score for a dreamy 3D character journey.</p>
         </header>
 
         <div class="ray-hero">
           <img src="../assets/images/projects/project5.png" alt="Ray Animation" />
           <div class="ray-meta">
-            <span data-i18n="ray.role">Role: Replacement Composer</span>
-            <span data-i18n="ray.style">Style: Disco-inspired</span>
-            <span data-i18n="ray.location">Team: Ghent, Belgium</span>
-            <span data-i18n="ray.scope">Scope: Animation + End Credits</span>
+            <span data-i18n="ray_role">Role: Replacement Composer</span>
+            <span data-i18n="ray_style">Style: Disco-inspired</span>
+            <span data-i18n="ray_location">Team: Ghent, Belgium</span>
+            <span data-i18n="ray_scope">Scope: Animation + End Credits</span>
           </div>
         </div>
 
-        <h3 id="bgColor" data-i18n="ray.overview" style="margin-top:1.5rem;">Overview</h3>
-        <p data-i18n="ray.overview_desc">As the replacement composer for this Ghent-based animation team, I created a complete disco-inspired soundtrack. I handled both the main animation score and end credits music, focusing on thematic clarity and pacing that mapped character emotions to harmonic rhythm while maintaining the retro disco aesthetic.</p>
+        <h3 id="bgColor" data-i18n="ray_overview" style="margin-top:1.5rem;">Overview</h3>
+        <p data-i18n="ray_overview_desc">As the replacement composer for this Ghent-based animation team, I created a complete disco-inspired soundtrack. I handled both the main animation score and end credits music, focusing on thematic clarity and pacing that mapped character emotions to harmonic rhythm while maintaining the retro disco aesthetic.</p>
 
-        <h3 id="bgColor" data-i18n="ray.showcase">Showcase</h3>
+        <h3 id="bgColor" data-i18n="ray_showcase">Showcase</h3>
         <div class="video-container" data-reveal>
           <iframe src="https://www.youtube.com/embed/NhH4dNcfxZg?start=131" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <h3 id="bgColor" data-i18n="ray.gallery">Gallery</h3>
-        <div class="projects-grid">
-          <span class="image fit"><img src="../assets/images/projects/project5.png" alt="Ray still" /></span>
+
+        <div class="ray-details">
+          <article class="ray-card">
+            <h4 data-i18n="ray_music_composition">Music Composition</h4>
+            <ul>
+              <li data-i18n="ray_music_1">Disco-inspired main theme with retro synthesizers</li>
+              <li data-i18n="ray_music_2">Character emotion mapping to harmonic progressions</li>
+              <li data-i18n="ray_music_3">Seamless integration with narrative pacing</li>
+            </ul>
+          </article>
+          <article class="ray-card">
+            <h4 data-i18n="ray_creative_process">Creative Process</h4>
+            <ul>
+              <li data-i18n="ray_process_1">Replaced original composer from Ghent team</li>
+              <li data-i18n="ray_process_2">Developed thematic clarity for 3D animation</li>
+              <li data-i18n="ray_process_3">Created end credits music in disco style</li>
+            </ul>
+          </article>
+          <article class="ray-card">
+            <h4 data-i18n="ray_technical_approach">Technical Approach</h4>
+            <ul>
+              <li data-i18n="ray_technical_1">Evolving textures without dialogue masking</li>
+              <li data-i18n="ray_technical_2">Dynamic range optimization for animation</li>
+              <li data-i18n="ray_technical_3">Retro aesthetic with modern production</li>
+            </ul>
+          </article>
+        </div>
+
+        <h3 id="bgColor" data-i18n="ray_gallery">Project Gallery</h3>
+        <div class="ray-gallery">
+          <div class="gallery-item" data-lightbox="ray-gallery">
+            <img src="../assets/images/projects-ray/raytitleinstones.png" alt="Ray Title in Stones" data-full="../assets/images/projects-ray/raytitleinstones.png" />
+            <div class="gallery-overlay">
+              <span data-i18n="ray_gallery_title">Title Sequence</span>
+            </div>
+          </div>
+          <div class="gallery-item" data-lightbox="ray-gallery">
+            <img src="../assets/images/projects-ray/rayaloneinthecave.png" alt="Ray Alone in Cave" data-full="../assets/images/projects-ray/rayaloneinthecave.png" />
+            <div class="gallery-overlay">
+              <span data-i18n="ray_gallery_cave">Cave Scene</span>
+            </div>
+          </div>
+          <div class="gallery-item" data-lightbox="ray-gallery">
+            <img src="../assets/images/projects-ray/raylightsincave.png" alt="Ray Lights in Cave" data-full="../assets/images/projects-ray/raylightsincave.png" />
+            <div class="gallery-overlay">
+              <span data-i18n="ray_gallery_lights">Cave Lighting</span>
+            </div>
+          </div>
+          <div class="gallery-item" data-lightbox="ray-gallery">
+            <img src="../assets/images/projects-ray/rayinlight.png" alt="Ray in Light" data-full="../assets/images/projects-ray/rayinlight.png" />
+            <div class="gallery-overlay">
+              <span data-i18n="ray_gallery_light">Ray in Light</span>
+            </div>
+          </div>
+          <div class="gallery-item" data-lightbox="ray-gallery">
+            <img src="../assets/images/projects-ray/raycredits.png" alt="Ray Credits" data-full="../assets/images/projects-ray/raycredits.png" />
+            <div class="gallery-overlay">
+              <span data-i18n="ray_gallery_credits">End Credits</span>
+            </div>
+          </div>
         </div>
         <ul class="actions" style="margin-top:2em">
-          <li><a href="../projects/index.html" class="button" data-i18n="ray.all_projects">All Projects</a></li>
+          <li><a href="../projects/index.html" class="button" data-i18n="ray_all_projects">All Projects</a></li>
         </ul>
       </section>
     </div>
@@ -442,6 +655,7 @@
   </div>
   <script src="../assets/js/components/enhancements.js?v=20250210"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/components/lightbox.js"></script>
   <script>
     // Activate cave background after page loads
     document.addEventListener('DOMContentLoaded', function() {

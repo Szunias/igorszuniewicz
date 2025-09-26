@@ -915,7 +915,62 @@ document.addEventListener('DOMContentLoaded', function() {
     rtpc_controls_desc: { pl: 'Kontrola parametrów w czasie rzeczywistym dla GameState, LevelStep, stanów Victory/Defeat i audio przestrzennego (DistanceReverb w ELIMINATION)', nl: 'Realtime parametercontrole voor GameState, LevelStep, Victory/Defeat toestanden, en ruimtelijke audio (DistanceReverb in ELIMINATION)', en: 'Real-time parameter control for GameState, LevelStep, Victory/Defeat states, and spatial audio (DistanceReverb in ELIMINATION)' },
     seamless_transitions: { pl: 'Płynne Przejścia', nl: 'Naadloze Overgangen', en: 'Seamless Transitions' },
     seamless_transitions_desc: { pl: 'Niestandardowe audio przejściowe między sekcjami: risery, smary brass i efekty granularnych glitchy dla ciągłości narracyjnej', nl: 'Aangepaste overgangsaudio tussen secties: risers, brass smears en granulaire glitch-effecten voor narratieve continuïteit', en: 'Custom transition audio between sections: risers, brass smears, and granular glitch effects for narrative continuity' },
-    design_documentation: { pl: 'Dokumentacja Projektowa', nl: 'Ontwerpsdocumentatie', en: 'Design Documentation' }
+    design_documentation: { pl: 'Dokumentacja Projektowa', nl: 'Ontwerpsdocumentatie', en: 'Design Documentation' },
+    // Ray Animation project translations
+    ray_title: { en: 'Ray Animation — Music Composition', pl: 'Animacja Ray — Kompozycja muzyki', nl: 'Ray Animation — Muziekcompositie' },
+    ray_lead: { en: 'Complete musical composition for 3D animation project.', pl: 'Kompletna kompozycja muzyczna dla projektu animacji 3D.', nl: 'Complete muziekcompositie voor 3D animatieproject.' },
+    ray_overview: { en: 'Overview', pl: 'Przegląd', nl: 'Overzicht' },
+    ray_overview_desc: {
+      en: 'As the replacement composer for this Ghent-based animation team, I created a complete disco-inspired soundtrack that drives the narrative forward. The music features layered synthesis, dynamic transitions, and carefully crafted tempo changes that enhance the visual storytelling.',
+      pl: 'Jako kompozytor zastępujący dla tego zespołu animatorów z Gandawy, stworzyłem kompletną ścieżkę dźwiękową inspirowaną disco, która napędza narrację. Muzyka zawiera warstwową syntezę, dynamiczne przejścia i starannie opracowane zmiany tempa, które wzmacniają wizualne opowiadanie.',
+      nl: 'Als vervangingscomponist voor dit animatieteam uit Gent creëerde ik een complete disco-geïnspireerde soundtrack die het verhaal vooruitdrijft. De muziek bevat gelaagde synthese, dynamische overgangen en zorgvuldig uitgewerkte tempowisselingen die het visuele verhaal versterken.'
+    },
+    ray_showcase: { en: 'Showcase', pl: 'Prezentacja', nl: 'Showcase' },
+    ray_gallery: { en: 'Gallery', pl: 'Galeria', nl: 'Galerij' },
+    ray_all_projects: { en: 'All Projects', pl: 'Wszystkie Projekty', nl: 'Alle Projecten' },
+    ray_meta_role: { en: 'Role', pl: 'Rola', nl: 'Rol' },
+    ray_meta_role_value: { en: 'Music Composer', pl: 'Kompozytor muzyki', nl: 'Muziekcomponist' },
+    ray_meta_style: { en: 'Style', pl: 'Styl', nl: 'Stijl' },
+    ray_meta_style_value: { en: 'Disco / Electronic', pl: 'Disco / Elektroniczna', nl: 'Disco / Elektronisch' },
+    ray_meta_location: { en: 'Location', pl: 'Lokalizacja', nl: 'Locatie' },
+    ray_meta_location_value: { en: 'Ghent, Belgium', pl: 'Gandawa, Belgia', nl: 'Gent, België' },
+    ray_meta_scope: { en: 'Scope', pl: 'Zakres', nl: 'Omvang' },
+    ray_meta_scope_value: { en: 'Full Soundtrack', pl: 'Pełna ścieżka dźwiękowa', nl: 'Volledige soundtrack' },
+    ray_music_composition: { en: 'Music Composition', pl: 'Kompozycja muzyczna', nl: 'Muziekcompositie' },
+    ray_music_composition_desc: {
+      en: 'The soundtrack was designed to capture the disco era\'s energy while supporting the animation\'s pacing. I used vintage synthesizer emulations, classic disco drums, and layered bass lines to create an authentic retro sound that enhances the visual narrative.',
+      pl: 'Ścieżka dźwiękowa została zaprojektowana, aby uchwycić energię ery disco, jednocześnie wspierając tempo animacji. Użyłem emulacji vintage\'owych syntezatorów, klasycznych perkusji disco i warstwowych linii basu, aby stworzyć autentyczne retro brzmienie, które wzmacnia wizualną narrację.',
+      nl: 'De soundtrack werd ontworpen om de energie van het disco-tijdperk vast te leggen terwijl deze het tempo van de animatie ondersteunt. Ik gebruikte vintage synthesizer-emulaties, klassieke disco-drums en gelaagde baslijnen om een authentiek retro-geluid te creëren dat het visuele verhaal versterkt.'
+    },
+    ray_creative_process: { en: 'Creative Process', pl: 'Proces twórczy', nl: 'Creatief proces' },
+    ray_creative_process_desc: {
+      en: 'Working closely with the animation team from Ghent, I developed the musical themes through iterative collaboration. The composition process involved analyzing the visual pacing, identifying key emotional beats, and crafting musical transitions that seamlessly flow with the animated sequences.',
+      pl: 'Pracując blisko z zespołem animatorów z Gandawy, opracowałem tematy muzyczne poprzez iteracyjną współpracę. Proces kompozycji obejmował analizę wizualnego tempa, identyfikację kluczowych momentów emocjonalnych i tworzenie muzycznych przejść, które płynnie przepływają z animowanymi sekwencjami.',
+      nl: 'In nauwe samenwerking met het animatieteam uit Gent ontwikkelde ik de muzikale thema\'s door iteratieve samenwerking. Het compositieproces omvatte het analyseren van het visuele tempo, het identificeren van belangrijke emotionele momenten, en het creëren van muzikale overgangen die naadloos meevloeien met de geanimeerde sequenties.'
+    },
+    ray_technical_approach: { en: 'Technical Approach', pl: 'Podejście techniczne', nl: 'Technische benadering' },
+    ray_technical_approach_desc: {
+      en: 'The technical execution involved precise timing synchronization with the animation frames, dynamic range management for various playback systems, and careful frequency balancing to ensure the music complements rather than competes with dialogue and sound effects.',
+      pl: 'Wykonanie techniczne obejmowało precyzyjną synchronizację czasową z klatkami animacji, zarządzanie dynamiką dla różnych systemów odtwarzania i staranne balansowanie częstotliwości, aby zapewnić, że muzyka uzupełnia, a nie konkuruje z dialogiem i efektami dźwiękowymi.',
+      nl: 'De technische uitvoering omvatte precieze timing-synchronisatie met de animatieframes, dynamiekbeheer voor verschillende afspeelsystemen, en zorgvuldige frequentiebalancering om ervoor te zorgen dat de muziek dialoog en geluidseffecten aanvult in plaats van ermee te concurreren.'
+    },
+    ray_gallery_title: { en: 'Title Sequence', pl: 'Sekwencja tytułowa', nl: 'Titelsequentie' },
+    ray_gallery_character: { en: 'Character Design', pl: 'Design postaci', nl: 'Karakterontwerp' },
+    ray_gallery_environment: { en: 'Environment Shot', pl: 'Ujęcie środowiska', nl: 'Omgevingsbeeld' },
+    ray_gallery_action: { en: 'Action Sequence', pl: 'Sekwencja akcji', nl: 'Actiesequentie' },
+    ray_gallery_finale: { en: 'Finale Scene', pl: 'Scena finałowa', nl: 'Finale scene' },
+    // Akantilado project translations
+    akantilado_overview_desc: {
+      en: 'In Akantilado I owned the complete sound pass. I built a small foley library, recorded textures, and layered synthesized elements for clarity. Regular reviews with the animation team helped me calibrate timing and avoid masking.',
+      pl: 'W Akantilado odpowiadałem za kompletną ścieżkę dźwiękową. Zbudowałem małą bibliotekę foley, nagrałem tekstury i nakładałem zsyntetyzowane elementy dla przejrzystości. Regularne recenzje z zespołem animacji pomogły mi skalibrować timing i uniknąć maskowania.',
+      nl: 'In Akantilado was ik verantwoordelijk voor de complete geluidspass. Ik bouwde een kleine foley-bibliotheek, nam texturen op en laagde gesynthetiseerde elementen voor duidelijkheid. Regelmatige reviews met het animatieteam hielpen me timing te kalibreren en maskering te vermijden.'
+    },
+    // Amorak project translations
+    amorak_overview_desc: {
+      en: 'Amorak was an exercise in world‑building through sound. I created character signatures and environmental layers that scale with camera proximity, keeping the mix readable while reinforcing the story tone.',
+      pl: 'Amorak było ćwiczeniem w budowaniu świata poprzez dźwięk. Stworzyłem sygnatury postaci i warstwy środowiskowe, które skalują się z bliskością kamery, utrzymując czytelność miksu przy jednoczesnym wzmacnianiu tonu opowieści.',
+      nl: 'Amorak was een oefening in wereldopbouw door geluid. Ik creëerde karaktersignaturen en omgevingslagen die schalen met camera-nabijheid, waarbij de mix leesbaar blijft terwijl de verhaaltoon wordt versterkt.'
+    }
   };
 
   // Expose minimal public i18n for other scripts (read-only)
@@ -1170,24 +1225,6 @@ document.addEventListener('DOMContentLoaded', function() {
           gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
           showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' },
           all_projects: { en:'All Projects', pl:'Wszystkie projekty', nl:'Alle projecten' }
-        },
-        ray: {
-          title: { en:'Ray Animation — Music Composition', pl:'Animacja Ray — Kompozycja muzyki', nl:'Ray Animation — Muziekcompositie' },
-          lead: { en:'Original disco-style score for a dreamy 3D character journey.', pl:'Oryginalna muzyka w stylu disco do marzeńczej podróży postaci 3D.', nl:'Originele disco-stijl score voor een dromerige 3D-karakterreis.' },
-          overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
-          overview_desc: {
-            en:'As the replacement composer for this Ghent-based animation team, I created a complete disco-inspired soundtrack. I handled both the main animation score and end credits music, focusing on thematic clarity and pacing that mapped character emotions to harmonic rhythm while maintaining the retro disco aesthetic.',
-            pl:'Jako kompozytor zastępujący dla tego zespołu animatorów z Gandawy, stworzyłem kompletną ścieżkę dźwiękową inspirowaną disco. Zajmowałem się zarówno główną muzyką do animacji, jak i muzyką do napisów końcowych, koncentrując się na przejrzystości tematycznej i tempie, które łączyło emocje postaci z rytmem harmonicznym, zachowując retro estetykę disco.',
-            nl:'Als vervangingscomponist voor dit animatieteam uit Gent creëerde ik een complete disco-geïnspireerde soundtrack. Ik verzorgde zowel de hoofdanimatiescore als de aftitelingsmuziek, met focus op thematische helderheid en pacing die karakteremotites koppelde aan harmonisch ritme terwijl de retro disco-esthetiek behouden bleef.'
-          },
-          gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
-          showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' },
-          all_projects: { en:'All Projects', pl:'Wszystkie projekty', nl:'Alle projecten' },
-          project_details: { en:'Project Details', pl:'Szczegóły projektu', nl:'Projectdetails' },
-          role: { en:'Role: Replacement Composer', pl:'Rola: Kompozytor zastępujący', nl:'Rol: Vervangingscomponist' },
-          style: { en:'Style: Disco-inspired', pl:'Styl: Inspirowany disco', nl:'Stijl: Disco-geïnspireerd' },
-          location: { en:'Team: Ghent, Belgium', pl:'Zespół: Gandawa, Belgia', nl:'Team: Gent, België' },
-          scope: { en:'Scope: Animation + End Credits', pl:'Zakres: Animacja + Napisy końcowe', nl:'Bereik: Animatie + Aftiteling' }
         },
         'pause-and-deserve': {
           title: { en:'Pause & Deserve — Solo Game', pl:'Pause & Deserve — Gra solo', nl:'Pause & Deserve — Solo game' },
