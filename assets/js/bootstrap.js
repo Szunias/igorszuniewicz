@@ -16,6 +16,9 @@ const path = location.pathname;
 if (/not-today-darling\.html$/.test(path)) {
   import('./pages/not-today-darling.js');
 }
+if (/environments\.html$/.test(path)) {
+  // No specific JS needed for environments page yet
+}
 if (/\/(index\.html)?$/.test(path)) {
   import('./pages/home.js');
 }

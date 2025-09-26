@@ -46,7 +46,37 @@ export const I18N = {
   tag_single: { en:'Single', pl:'Singiel', nl:'Single' },
 
   music_vol_label: { en:'Volume', pl:'Głośność', nl:'Volume' },
-  music_search: { en:'Search…', pl:'Szukaj…', nl:'Zoeken…' }
+  music_search: { en:'Search…', pl:'Szukaj…', nl:'Zoeken…' },
+
+  // Project filter labels
+  filter_3d_design: { en: '3D Design', pl: 'Projekt 3D', nl: '3D-ontwerp' },
+
+  // 3D Environments project translations
+  env_title: { en: '3D Environments', pl: 'Środowiska 3D', nl: '3D-omgevingen' },
+  env_tagline: { en: 'Interior design, architectural modeling and realistic material creation.', pl: 'Projektowanie wnętrz, modelowanie architektoniczne i tworzenie realistycznych materiałów.', nl: 'Interieurontwerp, architecturale modellering en realistische materiaalontwikkeling.' },
+  env_meta_software: { en: 'Software: Blender 3D', pl: 'Oprogramowanie: Blender 3D', nl: 'Software: Blender 3D' },
+  env_meta_type: { en: 'Type: Interior Architecture', pl: 'Typ: Architektura wnętrz', nl: 'Type: Interieurarchitectuur' },
+  env_meta_year: { en: 'Year: 2024', pl: 'Rok: 2024', nl: 'Jaar: 2024' },
+  env_meta_style: { en: 'Style: Modern Realistic', pl: 'Styl: Nowoczesny realistyczny', nl: 'Stijl: Modern realistisch' },
+  env_showcase_title: { en: 'Video Showcase', pl: 'Prezentacja wideo', nl: 'Video showcase' },
+  env_video_hint: { en: '🎬 Watch showcase', pl: '🎬 Obejrzyj prezentację', nl: '🎬 Bekijk showcase' },
+  env_about_title: { en: 'About the Project', pl: 'O projekcie', nl: 'Over het project' },
+  env_about_desc: { en: 'This project showcases a modern interior design with realistic lighting and materials. Created in Blender 3D, the environment features detailed architectural elements, custom materials, and atmospheric lighting that brings the space to life.', pl: 'Ten projekt prezentuje nowoczesne wnętrze z realistycznym oświetleniem i materiałami. Stworzony w Blenderze 3D, środowisko charakteryzuje się szczegółowymi elementami architektonicznymi, niestandardowymi materiałami i atmosferycznym oświetleniem, które ożywia przestrzeń.', nl: 'Dit project toont een modern interieurontwerp met realistische verlichting en materialen. Gemaakt in Blender 3D, heeft de omgeving gedetailleerde architecturale elementen, aangepaste materialen en atmosferische verlichting die de ruimte tot leven brengt.' },
+  env_modeling_title: { en: '3D Modeling', pl: 'Modelowanie 3D', nl: '3D-modellering' },
+  env_modeling_1: { en: 'Architectural layout and structure design', pl: 'Układ architektoniczny i projektowanie struktury', nl: 'Architecturale indeling en structuurontwerp' },
+  env_modeling_2: { en: 'Detailed furniture and decoration modeling', pl: 'Szczegółowe modelowanie mebli i dekoracji', nl: 'Gedetailleerde meubel- en decoratiemodellering' },
+  env_modeling_3: { en: 'Optimized topology for rendering efficiency', pl: 'Zoptymalizowana topologia dla wydajności renderowania', nl: 'Geoptimaliseerde topologie voor renderingsefficiëntie' },
+  env_materials_title: { en: 'Material Design', pl: 'Projektowanie materiałów', nl: 'Materiaalontwerp' },
+  env_materials_1: { en: 'Realistic PBR materials with proper roughness', pl: 'Realistyczne materiały PBR z odpowiednią szorstkością', nl: 'Realistische PBR-materialen met juiste ruwheid' },
+  env_materials_2: { en: 'Custom node setups for complex surfaces', pl: 'Niestandardowe konfiguracje węzłów dla złożonych powierzchni', nl: 'Aangepaste knooppuntinstellingen voor complexe oppervlakken' },
+  env_materials_3: { en: 'Attention to detail in texture mapping', pl: 'Dbałość o szczegóły w mapowaniu tekstur', nl: 'Aandacht voor detail in textuurmapping' },
+  env_lighting_title: { en: 'Lighting & Atmosphere', pl: 'Oświetlenie i atmosfera', nl: 'Verlichting en sfeer' },
+  env_lighting_1: { en: 'Natural and artificial light balance', pl: 'Równowaga światła naturalnego i sztucznego', nl: 'Balans tussen natuurlijk en kunstlicht' },
+  env_lighting_2: { en: 'Volumetric lighting effects', pl: 'Efekty oświetlenia wolumetrycznego', nl: 'Volumetrische verlichtingseffecten' },
+  env_lighting_3: { en: 'Mood and atmosphere creation', pl: 'Tworzenie nastroju i atmosfery', nl: 'Creëren van sfeer en atmosfeer' },
+  env_gallery_title: { en: 'Project Gallery', pl: 'Galeria projektu', nl: 'Projectgalerij' },
+  env_node_badge: { en: 'Material Node', pl: 'Węzeł materiału', nl: 'Materiaalknoop' },
+  env_all_projects: { en: 'All Projects', pl: 'Wszystkie projekty', nl: 'Alle projecten' }
 };
 
 

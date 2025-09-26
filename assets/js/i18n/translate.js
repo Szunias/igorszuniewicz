@@ -62,6 +62,32 @@ export function translatePage(lang){
     if (cards[2]) { const h=cards[2].querySelector('h3'); const p=cards[2].querySelector('p'); if (h) h.innerHTML = '<span class="icon solid fa-tools" aria-hidden="true"></span> '+I18N.cap_tools_h[lang]; if (p) p.textContent = I18N.cap_tools_p[lang]; }
     if (cards[3]) { const h=cards[3].querySelector('h3'); const p=cards[3].querySelector('p'); if (h) h.innerHTML = '<span class="icon solid fa-users" aria-hidden="true"></span> '+I18N.cap_collab_h[lang]; if (p) p.textContent = I18N.cap_collab_p[lang]; }
   })();
+
+  // 3D Environments project page
+  if (location.pathname.endsWith('/environments.html') || location.pathname.endsWith('environments.html')){
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (I18N[key] && I18N[key][lang]) {
+        el.textContent = I18N[key][lang];
+      }
+    });
+  }
+
+  // Projects index page
+  if (location.pathname.endsWith('/projects/index.html') || location.pathname.endsWith('projects/index.html')){
+    const filter3DBtn = document.querySelector('[data-filter="3d-design"]');
+    if (filter3DBtn && I18N.filter_3d_design) {
+      filter3DBtn.textContent = I18N.filter_3d_design[lang];
+    }
+  }
+
+  // General data-i18n translation for all pages (fallback)
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (I18N[key] && I18N[key][lang]) {
+      el.textContent = I18N[key][lang];
+    }
+  });
 }
 
 // Expose for non-module pages if needed
