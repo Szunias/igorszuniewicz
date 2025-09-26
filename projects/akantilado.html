@@ -38,107 +38,292 @@
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20250210" />
   <style>
-    /* Simple jungle background for Akantilado */
-    .jungle-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: linear-gradient(180deg,
-        #141f1a 0%,
-        #1a251f 25%,
-        #101b15 50%,
-        #0c1712 75%,
-        #08140f 100%
-      );
-      opacity: 1;
-      transition: opacity 1.5s ease-in-out;
+    /* Akantilado Jungle Theme */
+    .akantilado-hero {
+      text-align: center;
+      padding: 2em 0;
+      background: linear-gradient(135deg, #0a1f0a 0%, #1a3d1a 25%, #2d5016 50%, #1a3d1a 75%, #0a1f0a 100%);
+      border-radius: 15px;
+      margin-bottom: 2em;
+      position: relative;
+      overflow: hidden;
     }
 
-    .jungle-background::before {
+    .akantilado-hero::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background:
-        radial-gradient(circle at 20% 30%, rgba(30, 50, 35, 0.2) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(25, 40, 28, 0.15) 0%, transparent 35%),
-        radial-gradient(circle at 50% 50%, rgba(35, 55, 40, 0.1) 0%, transparent 50%);
-      animation: leafSway 15s ease-in-out infinite;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 25% 30%, rgba(255, 165, 0, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 75% 70%, rgba(50, 205, 50, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 50% 20%, rgba(255, 215, 0, 0.06) 0%, transparent 60%);
+      pointer-events: none;
     }
 
-    .jungle-background::after {
-      content: '';
+    .akantilado-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1em;
+      margin-bottom: 2em;
+      position: relative;
+      z-index: 2;
+    }
+
+    .akantilado-hero .meta-badge {
+      background: rgba(34, 139, 34, 0.15);
+      border: 1px solid rgba(255, 165, 0, 0.3);
+      padding: 0.8em 1.2em;
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .akantilado-hero .meta-badge:hover {
+      background: rgba(255, 165, 0, 0.2);
+      border-color: rgba(50, 205, 50, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .akantilado-hero .meta-label {
+      display: block;
+      font-size: 0.9em;
+      color: #999;
+      margin-bottom: 0.3em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .akantilado-hero .meta-value {
+      display: block;
+      font-weight: 600;
+      color: #90EE90;
+      font-size: 1.1em;
+    }
+
+    .akantilado-hero h2 {
+      position: relative;
+      z-index: 2;
+      margin: 1em 0 0.5em 0;
+      color: #F0FFF0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .akantilado-tagline {
+      position: relative;
+      z-index: 2;
+      font-size: 1.2em;
+      color: #FFD700;
+      font-style: italic;
+      margin-top: 1em;
+    }
+
+    .akantilado-hero-image {
+      margin: 2em 0;
+      text-align: center;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .akantilado-hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .akantilado-hero-image:hover img {
+      transform: scale(1.02);
+    }
+
+    .akantilado-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1em;
+    }
+
+    .akantilado-section {
+      margin: 3em 0;
+      padding: 2em;
+      background: linear-gradient(135deg, rgba(10, 50, 10, 0.6) 0%, rgba(30, 60, 20, 0.4) 100%);
+      border-radius: 15px;
+      border: 1px solid rgba(50, 205, 50, 0.2);
+      backdrop-filter: blur(5px);
+    }
+
+    .akantilado-section h3 {
+      color: #90EE90;
+      border-bottom: 2px solid rgba(255, 165, 0, 0.3);
+      padding-bottom: 0.5em;
+      margin-bottom: 1.5em;
+    }
+
+    .akantilado-philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2em;
+      margin-top: 2em;
+    }
+
+    .philosophy-item, .tech-item, .scene-item {
+      background: rgba(10, 40, 10, 0.4);
+      padding: 1.5em;
+      border-radius: 10px;
+      border: 1px solid rgba(50, 205, 50, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .philosophy-item:hover, .tech-item:hover, .scene-item:hover {
+      background: rgba(30, 60, 20, 0.5);
+      border-color: rgba(255, 165, 0, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+
+    .philosophy-item h4, .tech-item h4, .scene-item h4 {
+      color: #FFD700;
+      margin-bottom: 1em;
+      font-size: 1.2em;
+    }
+
+    .akantilado-tech-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2em;
+      margin-top: 2em;
+    }
+
+    .akantilado-scenes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2em;
+      margin-top: 2em;
+    }
+
+    .akantilado-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5em;
+      margin-top: 2em;
+    }
+
+    .akantilado-gallery .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .akantilado-gallery .gallery-item:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    }
+
+    .akantilado-gallery .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+
+    .akantilado-gallery .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .akantilado-gallery .gallery-overlay {
       position: absolute;
-      top: 0;
+      bottom: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg,
-        transparent 30%,
-        rgba(40, 60, 45, 0.08) 50%,
-        transparent 70%
-      );
-      animation: lightFilter 20s linear infinite;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+      color: white;
+      padding: 1.5em 1em 1em;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
     }
 
-    @keyframes jungleFlow {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+    .akantilado-gallery .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
     }
 
-    @keyframes leafSway {
-      0%, 100% { transform: translateX(0) rotate(0deg); }
-      25% { transform: translateX(10px) rotate(1deg); }
-      75% { transform: translateX(-10px) rotate(-1deg); }
+    .akantilado-gallery .gallery-overlay span {
+      font-weight: 600;
+      font-size: 1.1em;
+      color: #FFD700;
     }
 
-    @keyframes lightFilter {
-      0% { transform: translateY(0) rotate(0deg); }
-      25% { transform: translateY(-10px) rotate(1deg); }
-      50% { transform: translateY(-5px) rotate(-0.5deg); }
-      75% { transform: translateY(-15px) rotate(0.5deg); }
-      100% { transform: translateY(0) rotate(0deg); }
+    .video-container {
+      margin: 2em 0;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
     }
 
-    body.jungle-mode .bg-gradient,
-    body.jungle-mode .bg-orbs,
-    body.jungle-mode .bg-waves,
-    body.jungle-mode .bg-eq,
-    body.jungle-mode .bg-glow {
-      opacity: 0 !important;
-      transition: opacity 1.5s ease-in-out;
+    .video-description {
+      margin-top: 1em;
+      font-style: italic;
+      color: #999;
+      text-align: center;
     }
 
-    body.jungle-mode .jungle-background {
-      opacity: 1 !important;
+    .akantilado-navigation {
+      text-align: center;
+      margin: 3em 0;
+      padding: 2em;
     }
 
-    /* Ensure jungle background activates immediately and hide default backgrounds */
-    .jungle-background {
-      opacity: 1 !important;
-      z-index: 1 !important;
+    .akantilado-navigation .button {
+      background: linear-gradient(135deg, #228B22 0%, #FF8C00 100%);
+      border: none;
+      padding: 1em 2em;
+      font-size: 1.1em;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    /* Force hide all default backgrounds */
-    .bg-gradient {
-      display: none !important;
+    .akantilado-navigation .button:hover {
+      background: linear-gradient(135deg, #FF8C00 0%, #32CD32 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(255, 165, 0, 0.4);
     }
-    .bg-orbs {
-      display: none !important;
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .akantilado-meta {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .akantilado-philosophy-grid, .akantilado-tech-details, .akantilado-scenes {
+        grid-template-columns: 1fr;
+      }
+
+      .akantilado-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .akantilado-section {
+        padding: 1.5em;
+      }
     }
-    .bg-waves {
-      display: none !important;
-    }
-    .bg-eq {
-      display: none !important;
-    }
-    .bg-glow {
-      display: none !important;
+
+    @media (max-width: 480px) {
+      .akantilado-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .akantilado-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .akantilado-gallery .gallery-item img {
+        height: 200px;
+      }
     }
   </style>
   <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
@@ -224,25 +409,145 @@
       <ul class="icons"></ul>
     </nav>
     <div id="main">
+      <!-- Hero Section -->
       <section class="post" data-reveal>
-        <header class="major">
-          <h2 data-i18n="akantilado.title">Akantilado — Sound Design</h2>
-          <p id="bgWhite" data-i18n="akantilado.lead">Complete sound design for a 3D animation project.</p>
+        <header class="major akantilado-hero">
+          <div class="akantilado-meta">
+            <div class="meta-badge">
+              <span class="meta-label" data-i18n="akantilado_meta_role">Role</span>
+              <span class="meta-value" data-i18n="akantilado_meta_role_value">Sound Designer</span>
+            </div>
+            <div class="meta-badge">
+              <span class="meta-label" data-i18n="akantilado_meta_setting">Setting</span>
+              <span class="meta-value" data-i18n="akantilado_meta_setting_value">Jungle Adventure</span>
+            </div>
+            <div class="meta-badge">
+              <span class="meta-label" data-i18n="akantilado_meta_characters">Characters</span>
+              <span class="meta-value" data-i18n="akantilado_meta_characters_value">Two Cat Creatures</span>
+            </div>
+            <div class="meta-badge">
+              <span class="meta-label" data-i18n="akantilado_meta_theme">Theme</span>
+              <span class="meta-value" data-i18n="akantilado_meta_theme_value">Love vs Greed</span>
+            </div>
+          </div>
+          <h2 data-i18n="akantilado_title">Akantilado — Sound Design</h2>
+          <p class="akantilado-tagline" data-i18n="akantilado_tagline">A heartwarming jungle adventure where love triumphs over greed through immersive audio storytelling.</p>
         </header>
-        <span class="image main"><img src="../assets/images/projects/project4.png" alt="Akantilado" /></span>
-        <h3 id="bgColor" data-i18n="akantilado.overview">Overview</h3>
-        <p data-i18n="akantilado_overview_desc">In Akantilado I owned the complete sound pass. I built a small foley library, recorded textures, and layered synthesized elements for clarity. Regular reviews with the animation team helped me calibrate timing and avoid masking.</p>
-        <h3 id="bgColor" data-i18n="akantilado.showcase">Showcase</h3>
-        <div class="video-container" data-reveal>
-          <iframe src="https://www.youtube.com/embed/ALQy5r7B1Bw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <!-- Main Image -->
+        <div class="akantilado-hero-image" data-reveal>
+          <img src="../assets/images/projects-akantilado/orangecatalikecreaturewithgoldenshinyballbegining.png" alt="Akantilado Beginning" />
         </div>
-        <h3 id="bgColor" data-i18n="akantilado.gallery">Gallery</h3>
-        <div class="projects-grid">
-          <span class="image fit"><img src="../assets/images/projects/project4.png" alt="Akantilado still" /></span>
+
+        <!-- Project Overview -->
+        <div class="akantilado-content">
+          <section class="akantilado-section" data-reveal>
+            <h3 data-i18n="akantilado_overview">Story Overview</h3>
+            <p data-i18n="akantilado_story_desc">Akantilado tells the enchanting story of two cat-like creatures racing through a lush jungle, driven by their desire to claim a mystical golden orb. What begins as a competitive chase transforms into a profound tale of love and sacrifice when one creature must choose between the coveted treasure and saving their companion from a deadly fall. The story culminates in a heartwarming ending where love conquers greed.</p>
+          </section>
+
+          <!-- Sound Design Philosophy -->
+          <section class="akantilado-section" data-reveal>
+            <h3 data-i18n="akantilado_sound_philosophy">Sound Design Philosophy</h3>
+            <div class="akantilado-philosophy-grid">
+              <div class="philosophy-item">
+                <h4 data-i18n="akantilado_emotional_journey">Emotional Journey</h4>
+                <p data-i18n="akantilado_emotional_journey_desc">The audio design mirrors the characters' emotional arc, starting with playful competitive energy and evolving into suspenseful tension before resolving in tender, heartfelt moments. Each phase is supported by carefully crafted soundscapes that guide the audience through the narrative transformation.</p>
+              </div>
+              <div class="philosophy-item">
+                <h4 data-i18n="akantilado_jungle_immersion">Jungle Immersion</h4>
+                <p data-i18n="akantilado_jungle_immersion_desc">The lush jungle environment comes alive through layered natural recordings - rustling leaves, distant animal calls, flowing water, and wind through canopy. These elements create a rich, organic backdrop that makes the audience feel present in this magical world.</p>
+              </div>
+              <div class="philosophy-item">
+                <h4 data-i18n="akantilado_character_voices">Character Expression</h4>
+                <p data-i18n="akantilado_character_voices_desc">Each cat creature has distinct vocal characteristics and movement sounds that reflect their personality. The orange creature's determined footsteps contrast with the pink creature's more graceful movements, while their vocalizations evolve from competitive calls to expressions of genuine care and love.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Technical Approach -->
+          <section class="akantilado-section" data-reveal>
+            <h3 data-i18n="akantilado_technical_approach">Technical Implementation</h3>
+            <div class="akantilado-tech-details">
+              <div class="tech-item">
+                <h4 data-i18n="akantilado_foley_library">Custom Foley Library</h4>
+                <p data-i18n="akantilado_foley_library_desc">Built a comprehensive foley library specifically for cat-like creature movements, including paw steps on various jungle surfaces, climbing sounds, and interaction with vegetation. Each sound was recorded and processed to match the animated characters' unique physiology and movement style.</p>
+              </div>
+              <div class="tech-item">
+                <h4 data-i18n="akantilado_environmental_layers">Environmental Layering</h4>
+                <p data-i18n="akantilado_environmental_layers_desc">Created multi-layered jungle ambiences with distinct zones - canopy sounds, ground-level activity, and distance perspectives. The mix dynamically shifts based on camera movement and story pacing, ensuring the environment supports rather than overwhelms the narrative focus.</p>
+              </div>
+              <div class="tech-item">
+                <h4 data-i18n="akantilado_emotional_scoring">Emotional Sound Scoring</h4>
+                <p data-i18n="akantilado_emotional_scoring_desc">Developed a sound palette that transitions seamlessly between playful chase sequences, intense cliff-hanger moments, and tender emotional resolution. The golden orb itself has a distinctive magical shimmer that represents both temptation and the characters' goals.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Key Scenes -->
+          <section class="akantilado-section" data-reveal>
+            <h3 data-i18n="akantilado_key_scenes">Key Audio Moments</h3>
+            <div class="akantilado-scenes">
+              <div class="scene-item">
+                <h4 data-i18n="akantilado_chase_sequence">The Great Chase</h4>
+                <p data-i18n="akantilado_chase_sequence_desc">Fast-paced sequence featuring rhythmic paw steps, heavy breathing, and dynamic jungle sounds that build excitement. The golden orb's magical resonance guides the audio rhythm, creating a musical quality to the competitive pursuit.</p>
+              </div>
+              <div class="scene-item">
+                <h4 data-i18n="akantilado_cliff_moment">The Cliff Edge Crisis</h4>
+                <p data-i18n="akantilado_cliff_moment_desc">Tension peaks with wind effects, distant echoes from the chasm, and the contrast between the falling creature's desperate calls and the choice-making creature's internal struggle. The golden orb's shine intensifies, representing the magnitude of the decision.</p>
+              </div>
+              <div class="scene-item">
+                <h4 data-i18n="akantilado_love_triumph">Love's Triumph</h4>
+                <p data-i18n="akantilado_love_triumph_desc">The climactic moment where the creature chooses love over treasure is marked by a gentle musical sting, soft vocalizations of relief and affection, and the gradual return of peaceful jungle ambience as harmony is restored.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Gallery Section -->
+          <section class="akantilado-section" data-reveal>
+            <h3 data-i18n="akantilado_gallery">Visual Journey</h3>
+            <div class="akantilado-gallery">
+              <div class="gallery-item" data-lightbox="akantilado-gallery">
+                <img src="../assets/images/projects-akantilado/jungleviewfromtopshot.png" alt="Jungle Overview" data-full="../assets/images/projects-akantilado/jungleviewfromtopshot.png" />
+                <div class="gallery-overlay">
+                  <span data-i18n="akantilado_gallery_jungle_top">Jungle Canopy View</span>
+                </div>
+              </div>
+              <div class="gallery-item" data-lightbox="akantilado-gallery">
+                <img src="../assets/images/projects-akantilado/junglewithbranchesfromnormalview.png" alt="Jungle Ground Level" data-full="../assets/images/projects-akantilado/junglewithbranchesfromnormalview.png" />
+                <div class="gallery-overlay">
+                  <span data-i18n="akantilado_gallery_jungle_ground">Ground Level Perspective</span>
+                </div>
+              </div>
+              <div class="gallery-item" data-lightbox="akantilado-gallery">
+                <img src="../assets/images/projects-akantilado/orangecatalikecreaturewithgoldenball.png" alt="Orange Creature with Ball" data-full="../assets/images/projects-akantilado/orangecatalikecreaturewithgoldenball.png" />
+                <div class="gallery-overlay">
+                  <span data-i18n="akantilado_gallery_orange_ball">Orange Creature's Quest</span>
+                </div>
+              </div>
+              <div class="gallery-item" data-lightbox="akantilado-gallery">
+                <img src="../assets/images/projects-akantilado/pinkcatalikecreature.png" alt="Pink Creature" data-full="../assets/images/projects-akantilado/pinkcatalikecreature.png" />
+                <div class="gallery-overlay">
+                  <span data-i18n="akantilado_gallery_pink_creature">Pink Creature Character</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Video Showcase -->
+          <section class="akantilado-section" data-reveal>
+            <h3 data-i18n="akantilado_showcase">Audio Showcase</h3>
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/ALQy5r7B1Bw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="video-description" data-i18n="akantilado_video_desc">Watch how sound design enhances every moment of this jungle adventure, from playful competition to heartfelt resolution. Notice how the audio guides emotional transitions and supports character development.</p>
+          </section>
+
+          <!-- Navigation -->
+          <div class="akantilado-navigation" data-reveal>
+            <a href="../projects/index.html" class="button primary" data-i18n="akantilado_all_projects">All Projects</a>
+          </div>
         </div>
-        <ul class="actions" style="margin-top:2em">
-          <li><a href="../projects/index.html" class="button" data-i18n="akantilado.all_projects">All Projects</a></li>
-        </ul>
       </section>
     </div>
     <footer id="footer"></footer>

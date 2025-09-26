@@ -960,11 +960,92 @@ document.addEventListener('DOMContentLoaded', function() {
     ray_gallery_action: { en: 'Action Sequence', pl: 'Sekwencja akcji', nl: 'Actiesequentie' },
     ray_gallery_finale: { en: 'Finale Scene', pl: 'Scena finałowa', nl: 'Finale scene' },
     // Akantilado project translations
+    akantilado_title: { en: 'Akantilado — Sound Design', pl: 'Akantilado — Sound Design', nl: 'Akantilado — Sounddesign' },
+    akantilado_tagline: { en: 'A heartwarming jungle adventure where love triumphs over greed through immersive audio storytelling.', pl: 'Wzruszająca przygoda w dżungli, gdzie miłość triumfuje nad chciwością poprzez immersyjne opowiadanie audio.', nl: 'Een hartverwarmend jungle-avontuur waarbij liefde triomfeert over hebzucht door immersieve audio-verhalen.' },
+    akantilado_meta_role: { en: 'Role', pl: 'Rola', nl: 'Rol' },
+    akantilado_meta_role_value: { en: 'Sound Designer', pl: 'Sound Designer', nl: 'Geluidsontwerper' },
+    akantilado_meta_setting: { en: 'Setting', pl: 'Sceneria', nl: 'Setting' },
+    akantilado_meta_setting_value: { en: 'Jungle Adventure', pl: 'Przygoda w Dżungli', nl: 'Jungle Avontuur' },
+    akantilado_meta_characters: { en: 'Characters', pl: 'Postacie', nl: 'Karakters' },
+    akantilado_meta_characters_value: { en: 'Two Cat Creatures', pl: 'Dwa Stworzenia Kotopodobne', nl: 'Twee Katachtige Wezens' },
+    akantilado_meta_theme: { en: 'Theme', pl: 'Temat', nl: 'Thema' },
+    akantilado_meta_theme_value: { en: 'Love vs Greed', pl: 'Miłość vs Chciwość', nl: 'Liefde vs Hebzucht' },
+    akantilado_overview: { en: 'Story Overview', pl: 'Przegląd Historii', nl: 'Verhaaloverzicht' },
+    akantilado_story_desc: {
+      en: 'Akantilado tells the enchanting story of two cat-like creatures racing through a lush jungle, driven by their desire to claim a mystical golden orb. What begins as a competitive chase transforms into a profound tale of love and sacrifice when one creature must choose between the coveted treasure and saving their companion from a deadly fall. The story culminates in a heartwarming ending where love conquers greed.',
+      pl: 'Akantilado opowiada czarującą historię dwóch kotopodobnych stworzeń ścigających się przez bujną dżunglę, kierowanych pragnieniem zdobycia mistycznej złotej kuli. To, co zaczyna się jako konkurencyjny pościg, przekształca się w głęboką opowieść o miłości i poświęceniu, gdy jedno stworzenie musi wybierać między pożądanym skarbem a ratowaniem towarzysza przed śmiertelnym upadkiem. Historia kończy się wzruszającym zakończeniem, gdzie miłość pokonuje chciwość.',
+      nl: 'Akantilado vertelt het betoverende verhaal van twee katachtige wezens die door een weelderige jungle racen, gedreven door hun verlangen om een mystieke gouden bol te claimen. Wat begint als een competitieve achtervolging transformeert in een diepgaand verhaal van liefde en opoffering wanneer een wezen moet kiezen tussen de begeerde schat en het redden van hun metgezel van een dodelijke val. Het verhaal culmineert in een hartverwarmend einde waar liefde hebzucht overwint.'
+    },
+    akantilado_sound_philosophy: { en: 'Sound Design Philosophy', pl: 'Filozofia Sound Designu', nl: 'Geluidsontwerp Filosofie' },
+    akantilado_emotional_journey: { en: 'Emotional Journey', pl: 'Podróż Emocjonalna', nl: 'Emotionele Reis' },
+    akantilado_emotional_journey_desc: {
+      en: 'The audio design mirrors the characters\' emotional arc, starting with playful competitive energy and evolving into suspenseful tension before resolving in tender, heartfelt moments. Each phase is supported by carefully crafted soundscapes that guide the audience through the narrative transformation.',
+      pl: 'Design audio odzwierciedla emocjonalną ścieżkę postaci, zaczynając od zabawnej energii konkurencji i ewoluując w napięcie pełne suspensu, zanim zostanie rozwiązane w czułych, szczerych momentach. Każda faza jest wspierana przez starannie wykonane krajobrazy dźwiękowe, które prowadzą publiczność przez transformację narracyjną.',
+      nl: 'Het audiodesign spiegelt de emotionele boog van de karakters, beginnend met speelse competitieve energie en evoluerend naar spannende spanning voordat het wordt opgelost in tedere, hartelijke momenten. Elke fase wordt ondersteund door zorgvuldig vervaardigde soundscapes die het publiek door de narratieve transformatie leiden.'
+    },
+    akantilado_jungle_immersion: { en: 'Jungle Immersion', pl: 'Immersja Dżungli', nl: 'Jungle Onderdompeling' },
+    akantilado_jungle_immersion_desc: {
+      en: 'The lush jungle environment comes alive through layered natural recordings - rustling leaves, distant animal calls, flowing water, and wind through canopy. These elements create a rich, organic backdrop that makes the audience feel present in this magical world.',
+      pl: 'Bujne środowisko dżungli ożywa poprzez warstwowe naturalne nagrania - szelest liści, odległe wołania zwierząt, płynąca woda i wiatr przez korony drzew. Te elementy tworzą bogate, organiczne tło, które sprawia, że publiczność czuje się obecna w tym magicznym świecie.',
+      nl: 'De weelderige jungle-omgeving komt tot leven door gelaagde natuurlijke opnames - ritselende bladeren, verre dierengeluiden, stromend water en wind door de boomtoppen. Deze elementen creëren een rijke, organische achtergrond die het publiek het gevoel geeft aanwezig te zijn in deze magische wereld.'
+    },
+    akantilado_character_voices: { en: 'Character Expression', pl: 'Ekspresja Postaci', nl: 'Karakter Expressie' },
+    akantilado_character_voices_desc: {
+      en: 'Each cat creature has distinct vocal characteristics and movement sounds that reflect their personality. The orange creature\'s determined footsteps contrast with the pink creature\'s more graceful movements, while their vocalizations evolve from competitive calls to expressions of genuine care and love.',
+      pl: 'Każde kotopodobne stworzenie ma odrębne charakterystyki głosowe i dźwięki ruchu, które odzwierciedlają jego osobowość. Zdeterminowane kroki pomarańczowego stworzenia kontrastują z bardziej gracjalnymi ruchami różowego stworzenia, podczas gdy ich wokalizacje ewoluują od konkurencyjnych wołań do wyrażeń prawdziwej troski i miłości.',
+      nl: 'Elk katachtig wezen heeft verschillende vocale kenmerken en bewegingsgeluiden die hun persoonlijkheid weerspiegelen. De vastberaden voetstappen van het oranje wezen contrasteren met de meer gracieuze bewegingen van het roze wezen, terwijl hun vocalisaties evolueren van competitieve roepen naar uitingen van oprechte zorg en liefde.'
+    },
+    akantilado_technical_approach: { en: 'Technical Implementation', pl: 'Implementacja Techniczna', nl: 'Technische Implementatie' },
+    akantilado_foley_library: { en: 'Custom Foley Library', pl: 'Niestandardowa Biblioteka Foley', nl: 'Aangepaste Foley Bibliotheek' },
+    akantilado_foley_library_desc: {
+      en: 'Built a comprehensive foley library specifically for cat-like creature movements, including paw steps on various jungle surfaces, climbing sounds, and interaction with vegetation. Each sound was recorded and processed to match the animated characters\' unique physiology and movement style.',
+      pl: 'Zbudowałem kompleksową bibliotekę foley specjalnie dla ruchów kotopodobnych stworzeń, włączając kroki łap na różnych powierzchniach dżungli, dźwięki wspinania i interakcję z roślinnością. Każdy dźwięk był nagrywany i przetwarzany, aby pasować do unikalnej fizjologii i stylu ruchu animowanych postaci.',
+      nl: 'Bouwde een uitgebreide foley-bibliotheek specifiek voor katachtige wezenbewegingen, inclusief pootstappen op verschillende jungle-oppervlakken, klimgeluiden en interactie met vegetatie. Elk geluid werd opgenomen en bewerkt om te passen bij de unieke fysiologie en bewegingsstijl van de geanimeerde karakters.'
+    },
+    akantilado_environmental_layers: { en: 'Environmental Layering', pl: 'Warstwowanie Środowiskowe', nl: 'Omgevingsgelaagdheid' },
+    akantilado_environmental_layers_desc: {
+      en: 'Created multi-layered jungle ambiences with distinct zones - canopy sounds, ground-level activity, and distance perspectives. The mix dynamically shifts based on camera movement and story pacing, ensuring the environment supports rather than overwhelms the narrative focus.',
+      pl: 'Stworzyłem wielowarstwowe ambience dżungli z odrębnymi strefami - dźwięki koron drzew, aktywność na poziomie gruntu i perspektywy odległości. Miks dynamicznie zmienia się w oparciu o ruch kamery i tempo historii, zapewniając, że środowisko wspiera, a nie przytłacza narracyjny fokus.',
+      nl: 'Creëerde meerlagige jungle-ambiances met verschillende zones - kroongeluiden, activiteit op grondniveau en afstandsperspectieven. De mix verschuift dynamisch gebaseerd op camerabeweging en verhaaltempo, wat ervoor zorgt dat de omgeving de narratieve focus ondersteunt in plaats van overweldigt.'
+    },
+    akantilado_emotional_scoring: { en: 'Emotional Sound Scoring', pl: 'Emocjonalne Scorowanie Dźwięku', nl: 'Emotionele Geluidsscore' },
+    akantilado_emotional_scoring_desc: {
+      en: 'Developed a sound palette that transitions seamlessly between playful chase sequences, intense cliff-hanger moments, and tender emotional resolution. The golden orb itself has a distinctive magical shimmer that represents both temptation and the characters\' goals.',
+      pl: 'Opracowałem paletę dźwiękową, która płynnie przechodzi między zabawnymi sekwencjami pogoni, intensywnymi momentami cliffhanger i czułą emocjonalną rozdzielczością. Sama złota kula ma charakterystyczny magiczny blask, który reprezentuje zarówno pokusę, jak i cele postaci.',
+      nl: 'Ontwikkelde een geluidspaletdat naadloos overgaat tussen speelse achtervolging sequenties, intense cliffhanger-momenten en tedere emotionele resolutie. De gouden bol zelf heeft een onderscheidende magische glinstering die zowel verleiding als de doelen van de karakters vertegenwoordigt.'
+    },
+    akantilado_key_scenes: { en: 'Key Audio Moments', pl: 'Kluczowe Momenty Audio', nl: 'Belangrijke Audio Momenten' },
+    akantilado_chase_sequence: { en: 'The Great Chase', pl: 'Wielki Pościg', nl: 'De Grote Achtervolging' },
+    akantilado_chase_sequence_desc: {
+      en: 'Fast-paced sequence featuring rhythmic paw steps, heavy breathing, and dynamic jungle sounds that build excitement. The golden orb\'s magical resonance guides the audio rhythm, creating a musical quality to the competitive pursuit.',
+      pl: 'Szybka sekwencja z rytmicznymi krokami łap, ciężkim oddechem i dynamicznymi dźwiękami dżungli, które budują emocje. Magiczna rezonancja złotej kuli kieruje rytmem audio, tworząc muzyczną jakość w konkurencyjnym pościgu.',
+      nl: 'Snelle sequentie met ritmische pootstappen, zwaar ademhalen en dynamische jungle-geluiden die opwinding opbouwen. De magische resonantie van de gouden bol stuurt het audioритme, wat een muzikale kwaliteit creëert in de competitieve achtervolging.'
+    },
+    akantilado_cliff_moment: { en: 'The Cliff Edge Crisis', pl: 'Kryzys na Krawędzi Urwiska', nl: 'De Klif Rand Crisis' },
+    akantilado_cliff_moment_desc: {
+      en: 'Tension peaks with wind effects, distant echoes from the chasm, and the contrast between the falling creature\'s desperate calls and the choice-making creature\'s internal struggle. The golden orb\'s shine intensifies, representing the magnitude of the decision.',
+      pl: 'Napięcie osiąga szczyt z efektami wiatru, odległymi echami z przepaści i kontrastem między rozpaczliwymi wołaniami spadającego stworzenia a wewnętrzną walką stworzenia podejmującego wybór. Blask złotej kuli intensyfikuje się, reprezentując wagę decyzji.',
+      nl: 'Spanning piekt met windeffecten, verre echo\'s van de kloof, en het contrast tussen de wanhopige roepen van het vallende wezen en de interne strijd van het keuze-makende wezen. De glans van de gouden bol intensifieert, wat de magnitude van de beslissing vertegenwoordigt.'
+    },
+    akantilado_love_triumph: { en: 'Love\'s Triumph', pl: 'Triumf Miłości', nl: 'Liefde\'s Triomf' },
+    akantilado_love_triumph_desc: {
+      en: 'The climactic moment where the creature chooses love over treasure is marked by a gentle musical sting, soft vocalizations of relief and affection, and the gradual return of peaceful jungle ambience as harmony is restored.',
+      pl: 'Kulminacyjny moment, w którym stworzenie wybiera miłość nad skarb, jest oznaczony delikatnym muzycznym akcentem, miękkimi wokalizacjami ulgi i czułości, oraz stopniowym powrotem spokojnego ambientu dżungli, gdy harmonia zostaje przywrócona.',
+      nl: 'Het climactische moment waar het wezen liefde kiest boven schat wordt gemarkeerd door een zachte muzikale sting, zachte vocalisaties van opluchting en genegenheid, en de geleidelijke terugkeer van vredige jungle-ambiance terwijl harmonie wordt hersteld.'
+    },
+    akantilado_gallery: { en: 'Visual Journey', pl: 'Podróż Wizualna', nl: 'Visuele Reis' },
+    akantilado_gallery_jungle_top: { en: 'Jungle Canopy View', pl: 'Widok Koron Drzew Dżungli', nl: 'Jungle Bladerdak Zicht' },
+    akantilado_gallery_jungle_ground: { en: 'Ground Level Perspective', pl: 'Perspektywa z Poziomu Gruntu', nl: 'Grondniveau Perspectief' },
+    akantilado_gallery_orange_ball: { en: 'Orange Creature\'s Quest', pl: 'Poszukiwania Pomarańczowego Stworzenia', nl: 'Oranje Wezen\'s Zoektocht' },
+    akantilado_gallery_pink_creature: { en: 'Pink Creature Character', pl: 'Postać Różowego Stworzenia', nl: 'Roze Wezen Karakter' },
+    akantilado_showcase: { en: 'Audio Showcase', pl: 'Prezentacja Audio', nl: 'Audio Showcase' },
+    akantilado_video_desc: { en: 'Watch how sound design enhances every moment of this jungle adventure, from playful competition to heartfelt resolution. Notice how the audio guides emotional transitions and supports character development.', pl: 'Zobacz jak sound design wzmacnia każdy moment tej przygody w dżungli, od zabawnej konkurencji do szczerych rozwiązań. Zwróć uwagę jak audio kieruje przejściami emocjonalnymi i wspiera rozwój postaci.', nl: 'Kijk hoe geluidsontwerp elk moment van dit jungle-avontuur versterkt, van speelse competitie tot hartelijke resolutie. Merk op hoe de audio emotionele overgangen leidt en karakterontwikkeling ondersteunt.' },
     akantilado_overview_desc: {
       en: 'In Akantilado I owned the complete sound pass. I built a small foley library, recorded textures, and layered synthesized elements for clarity. Regular reviews with the animation team helped me calibrate timing and avoid masking.',
       pl: 'W Akantilado odpowiadałem za kompletną ścieżkę dźwiękową. Zbudowałem małą bibliotekę foley, nagrałem tekstury i nakładałem zsyntetyzowane elementy dla przejrzystości. Regularne recenzje z zespołem animacji pomogły mi skalibrować timing i uniknąć maskowania.',
       nl: 'In Akantilado was ik verantwoordelijk voor de complete geluidspass. Ik bouwde een kleine foley-bibliotheek, nam texturen op en laagde gesynthetiseerde elementen voor duidelijkheid. Regelmatige reviews met het animatieteam hielpen me timing te kalibreren en maskering te vermijden.'
     },
+    akantilado_all_projects: { en: 'All Projects', pl: 'Wszystkie Projekty', nl: 'Alle Projecten' },
     // Amorak project translations
     amorak_title: { en: 'Amorak — Sound Design', pl: 'Amorak — Sound Design', nl: 'Amorak — Sounddesign' },
     amorak_tagline: { en: 'World-building through immersive audio design and character sound signatures.', pl: 'Budowanie świata poprzez immersyjny design dźwięku i sygnatury postaci.', nl: 'Wereldopbouw door immersief audiodesign en karaktergeluidshandtekeningen.' },
@@ -1712,6 +1793,18 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       // Page <title>
       try { document.title = (lang==='pl'?'Amorak — Sound Design — Igor Szuniewicz': lang==='nl'?'Amorak — Sounddesign — Igor Szuniewicz':'Amorak — Sound Design — Igor Szuniewicz'); } catch(_){}
+    }
+
+    // Akantilado page translations
+    if (location.pathname.endsWith('/akantilado.html') || /akantilado\.html$/i.test(location.pathname)){
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[key]) {
+          el.textContent = I18N[key][lang];
+        }
+      });
+      // Page <title>
+      try { document.title = (lang==='pl'?'Akantilado — Sound Design — Igor Szuniewicz': lang==='nl'?'Akantilado — Sounddesign — Igor Szuniewicz':'Akantilado — Sound Design — Igor Szuniewicz'); } catch(_){}
     }
   }
 
