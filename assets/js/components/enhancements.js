@@ -966,11 +966,69 @@ document.addEventListener('DOMContentLoaded', function() {
       nl: 'In Akantilado was ik verantwoordelijk voor de complete geluidspass. Ik bouwde een kleine foley-bibliotheek, nam texturen op en laagde gesynthetiseerde elementen voor duidelijkheid. Regelmatige reviews met het animatieteam hielpen me timing te kalibreren en maskering te vermijden.'
     },
     // Amorak project translations
+    amorak_title: { en: 'Amorak — Sound Design', pl: 'Amorak — Sound Design', nl: 'Amorak — Sounddesign' },
+    amorak_tagline: { en: 'World-building through immersive audio design and character sound signatures.', pl: 'Budowanie świata poprzez immersyjny design dźwięku i sygnatury postaci.', nl: 'Wereldopbouw door immersief audiodesign en karaktergeluidshandtekeningen.' },
+    amorak_meta_role: { en: 'Role', pl: 'Rola', nl: 'Rol' },
+    amorak_meta_role_value: { en: 'Sound Designer', pl: 'Sound Designer', nl: 'Geluidsontwerper' },
+    amorak_meta_style: { en: 'Style', pl: 'Styl', nl: 'Stijl' },
+    amorak_meta_style_value: { en: 'Atmospheric / Horror', pl: 'Atmosferyczny / Horror', nl: 'Atmospherisch / Horror' },
+    amorak_meta_team: { en: 'Team', pl: 'Zespół', nl: 'Team' },
+    amorak_meta_team_value: { en: '3D Animation Studio', pl: 'Studio Animacji 3D', nl: '3D Animatiestudio' },
+    amorak_meta_scope: { en: 'Scope', pl: 'Zakres', nl: 'Omvang' },
+    amorak_meta_scope_value: { en: 'Complete Audio Pass', pl: 'Kompletna ścieżka audio', nl: 'Complete audiodoorgang' },
+    amorak_overview: { en: 'Overview', pl: 'Przegląd', nl: 'Overzicht' },
     amorak_overview_desc: {
       en: 'Amorak was an exercise in world‑building through sound. I created character signatures and environmental layers that scale with camera proximity, keeping the mix readable while reinforcing the story tone.',
       pl: 'Amorak było ćwiczeniem w budowaniu świata poprzez dźwięk. Stworzyłem sygnatury postaci i warstwy środowiskowe, które skalują się z bliskością kamery, utrzymując czytelność miksu przy jednoczesnym wzmacnianiu tonu opowieści.',
       nl: 'Amorak was een oefening in wereldopbouw door geluid. Ik creëerde karaktersignaturen en omgevingslagen die schalen met camera-nabijheid, waarbij de mix leesbaar blijft terwijl de verhaaltoon wordt versterkt.'
-    }
+    },
+    amorak_sound_design: { en: 'Sound Design Approach', pl: 'Podejście do Sound Designu', nl: 'Geluidsontwerp Benadering' },
+    amorak_creature_signatures: { en: 'Creature Signatures', pl: 'Sygnatury Stworzeń', nl: 'Wezen Handtekeningen' },
+    amorak_creature_signatures_desc: {
+      en: 'Each creature in Amorak has a unique sonic identity built from organic textures, processed animal vocalizations, and synthesized sub-frequencies. The beast\'s presence is felt through low-frequency rumbles that scale with proximity, creating an unsettling atmosphere even when off-screen.',
+      pl: 'Każde stworzenie w Amorak ma unikalną tożsamość dźwiękową zbudowaną z organicznych tekstur, przetworzonych wokalizacji zwierząt i zsyntetyzowanych podczęstotliwości. Obecność bestii jest odczuwalna poprzez niskofrequencyjne pomruki, które skalują się z bliskością, tworząc niepokojącą atmosferę nawet gdy jest poza ekranem.',
+      nl: 'Elk wezen in Amorak heeft een unieke sonische identiteit opgebouwd uit organische texturen, bewerkte dierenvocalisaties en gesynthetiseerde subfrequenties. De aanwezigheid van het beest wordt gevoeld door laagfrequente rommelingen die schalen met nabijheid, wat een verontrustende sfeer creëert zelfs wanneer het buiten beeld is.'
+    },
+    amorak_environmental_layers: { en: 'Environmental Layers', pl: 'Warstwy Środowiskowe', nl: 'Omgevingslagen' },
+    amorak_environmental_layers_desc: {
+      en: 'The basement environment uses layered ambient textures - dripping water, creaking wood, distant echoes, and subtle electrical hums. These elements dynamically respond to the camera position, creating depth and spatial awareness that guides the viewer\'s attention.',
+      pl: 'Środowisko piwnicy wykorzystuje warstwowe tekstury ambientowe - kapiącą wodę, skrzypiące drewno, odległe echa i subtelne brzęczenie elektryczne. Te elementy dynamicznie reagują na pozycję kamery, tworząc głębię i świadomość przestrzenną, która kieruje uwagę widza.',
+      nl: 'De kelderomgeving gebruikt gelaagde ambiënte texturen - druppelend water, krakend hout, verre echo\'s en subtiele elektrische zoemgeluiden. Deze elementen reageren dynamisch op de camerapositie, wat diepte en ruimtelijk bewustzijn creëert dat de aandacht van de kijker leidt.'
+    },
+    amorak_narrative_support: { en: 'Narrative Support', pl: 'Wsparcie Narracyjne', nl: 'Narratieve Ondersteuning' },
+    amorak_narrative_support_desc: {
+      en: 'Sound design reinforces the story\'s emotional beats through careful frequency manipulation and dynamic range control. Tension builds through gradual introduction of discordant elements, while release moments use natural reverb and space to provide breathing room.',
+      pl: 'Sound design wzmacnia emocjonalne momenty opowieści poprzez staranne manipulowanie częstotliwościami i kontrolę zakresu dynamicznego. Napięcie buduje się poprzez stopniowe wprowadzanie dysonansowych elementów, podczas gdy momenty ulgi wykorzystują naturalny reverb i przestrzeń, aby zapewnić chwilę oddechu.',
+      nl: 'Geluidsontwerp versterkt de emotionele beats van het verhaal door zorgvuldige frequentiemanipulatie en dynamiekbereikcontrole. Spanning bouwt op door geleidelijke introductie van dissonante elementen, terwijl ontspanningsmomenten natuurlijke reverb en ruimte gebruiken om ademruimte te bieden.'
+    },
+    amorak_technical_implementation: { en: 'Technical Implementation', pl: 'Implementacja Techniczna', nl: 'Technische Implementatie' },
+    amorak_proximity_system: { en: 'Proximity-Based Mixing', pl: 'Miksowanie Oparte na Bliskości', nl: 'Nabijheid-Gebaseerd Mixen' },
+    amorak_proximity_system_desc: {
+      en: 'Implemented a 3D spatial audio system where sound elements adjust based on camera distance and angle. Close-up shots emphasize intimate details like breathing and footsteps, while wide shots focus on environmental ambience and creature calls.',
+      pl: 'Zaimplementowano system dźwięku przestrzennego 3D, gdzie elementy dźwiękowe dostosowują się w oparciu o odległość i kąt kamery. Zbliżenia podkreślają intymne detale jak oddech i kroki, podczas gdy szerokie ujęcia skupiają się na ambiencie środowiskowym i wołaniach stworzeń.',
+      nl: 'Een 3D ruimtelijk audiosysteem geïmplementeerd waarbij geluidselementen zich aanpassen op basis van camera-afstand en -hoek. Close-up shots benadrukken intieme details zoals ademhaling en voetstappen, terwijl wide shots zich richten op omgevingsambiance en wezengeroep.'
+    },
+    amorak_frequency_design: { en: 'Frequency Design Strategy', pl: 'Strategia Designu Częstotliwości', nl: 'Frequentieontwerp Strategie' },
+    amorak_frequency_design_desc: {
+      en: 'Careful frequency allocation ensures clarity across all elements. Creature sounds occupy the 40-200Hz range for body and presence, while environmental details fill the mid-range. High frequencies are reserved for tension-building textures and detail work.',
+      pl: 'Staranne przydzielenie częstotliwości zapewnia przejrzystość wszystkich elementów. Dźwięki stworzeń zajmują zakres 40-200Hz dla ciała i obecności, podczas gdy detale środowiskowe wypełniają średni zakres. Wysokie częstotliwości są zarezerwowane dla tekstur budujących napięcie i pracy nad detalami.',
+      nl: 'Zorgvuldige frequentietoewijzing zorgt voor duidelijkheid over alle elementen. Wezenggeluiden bezetten het 40-200Hz bereik voor lichaam en aanwezigheid, terwijl omgevingsdetails het middenbereik vullen. Hoge frequenties zijn gereserveerd voor spanningsopbouwende texturen en detailwerk.'
+    },
+    amorak_dynamic_layering: { en: 'Dynamic Layering', pl: 'Dynamiczne Warstwowanie', nl: 'Dynamische Gelaagdheid' },
+    amorak_dynamic_layering_desc: {
+      en: 'Audio layers build progressively throughout scenes, starting with minimal ambience and adding complexity as tension increases. This approach maintains listener engagement while avoiding overwhelming the mix during critical dialogue moments.',
+      pl: 'Warstwy audio budują się stopniowo przez sceny, zaczynając od minimalnego ambientu i dodając złożoność w miarę wzrostu napięcia. To podejście utrzymuje zaangażowanie słuchacza jednocześnie unikając przeciążenia miksu podczas krytycznych momentów dialogu.',
+      nl: 'Audiolagen bouwen geleidelijk op gedurende scènes, beginnend met minimale ambiance en complexiteit toevoegend naarmate spanning toeneemt. Deze benadering houdt luisteraarsbetrokkenheid vast terwijl het vermijdt de mix te overweldigen tijdens kritieke dialoogmomenten.'
+    },
+    amorak_gallery: { en: 'Visual Showcase', pl: 'Prezentacja Wizualna', nl: 'Visuele Showcase' },
+    amorak_gallery_basement: { en: 'Basement Environment', pl: 'Środowisko Piwnicy', nl: 'Kelderomgeving' },
+    amorak_gallery_beast: { en: 'Beast Roar Sequence', pl: 'Sekwencja Ryku Bestii', nl: 'Beest Gebrul Sequentie' },
+    amorak_gallery_chimney: { en: 'Chimney Tension Scene', pl: 'Scena Napięcia przy Kominie', nl: 'Schoorsteen Spanningsscène' },
+    amorak_gallery_creature: { en: 'Creature Perspective', pl: 'Perspektywa Stworzenia', nl: 'Wezen Perspectief' },
+    amorak_gallery_character: { en: 'Character Focus Shot', pl: 'Ujęcie Skupione na Postaci', nl: 'Karakter Focus Shot' },
+    amorak_showcase: { en: 'Audio Showcase', pl: 'Prezentacja Audio', nl: 'Audio Showcase' },
+    amorak_video_desc: { en: 'Experience the complete audio design in context with the animation. Notice how sound elements respond to visual cues and support the narrative progression.', pl: 'Doświadcz kompletnego designu audio w kontekście z animacją. Zwróć uwagę jak elementy dźwiękowe reagują na wizualne wskazówki i wspierają progresję narracyjną.', nl: 'Ervaar het complete audiodesign in context met de animatie. Merk op hoe geluidselementen reageren op visuele aanwijzingen en de narratieve progressie ondersteunen.' },
+    amorak_all_projects: { en: 'All Projects', pl: 'Wszystkie Projekty', nl: 'Alle Projecten' }
   };
 
   // Expose minimal public i18n for other scripts (read-only)
@@ -1642,6 +1700,18 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       // Page <title>
       try { document.title = (lang==='pl'?'Animacja Ray — Kompozycja muzyki — Igor Szuniewicz': lang==='nl'?'Ray Animation — Muziekcompositie — Igor Szuniewicz':'Ray Animation — Music Composition — Igor Szuniewicz'); } catch(_){}
+    }
+
+    // Amorak page translations
+    if (location.pathname.endsWith('/amorak.html') || /amorak\.html$/i.test(location.pathname)){
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[key]) {
+          el.textContent = I18N[key][lang];
+        }
+      });
+      // Page <title>
+      try { document.title = (lang==='pl'?'Amorak — Sound Design — Igor Szuniewicz': lang==='nl'?'Amorak — Sounddesign — Igor Szuniewicz':'Amorak — Sound Design — Igor Szuniewicz'); } catch(_){}
     }
   }
 
