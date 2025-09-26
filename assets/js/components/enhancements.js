@@ -647,37 +647,11 @@ document.addEventListener('DOMContentLoaded', function() {
   toast.className = 'lang-toast';
   document.body.appendChild(toast);
   // The "Click to switch language" hint was removed as it was redundant.
-  // Persistent language badge in top-right
+  // Language badge creation removed - but keep existing #lang-fixed functionality
   const badgeWrap = document.querySelector('.lang-badge-wrap') || (()=>{ const w=document.createElement('div'); w.className='lang-badge-wrap'; document.body.appendChild(w); return w; })();
   const langBadge = document.querySelector('.lang-badge') || (()=>{ const b=document.createElement('div'); b.className='lang-badge'; badgeWrap.appendChild(b); return b; })();
   const badgeMenu = document.querySelector('.lang-badge-menu') || (()=>{ const m=document.createElement('div'); m.className='lang-badge-menu'; badgeWrap.appendChild(m); return m; })();
-  // Do not reorder nav items dynamically to avoid confusing order changes
-  // Fixed always-visible switcher (separate from old dropdown CSS)
-  const fixedLang = document.getElementById('lang-fixed') || (function(){
-    const box = document.createElement('div');
-    box.id = 'lang-fixed';
-    box.style.cssText = 'position:fixed;top:14px;right:14px;z-index:2147483647;display:flex;gap:8px;background:rgba(10,16,22,.92);border:1px solid rgba(255,255,255,.14);padding:6px;border-radius:999px;backdrop-filter:saturate(1.2) blur(4px)';
-    const langs = ['en','pl','nl'];
-    const langLabels = { en: 'English', pl: 'Polski', nl: 'Nederlands' };
-    langs.forEach(l=>{
-      const btn = document.createElement('button');
-      btn.type='button';
-      btn.setAttribute('data-lang', l);
-      btn.setAttribute('aria-label', `Switch to ${langLabels[l] || l.toUpperCase()}`);
-      btn.setAttribute('aria-pressed', 'false');
-      const flagWrap = document.createElement('span');
-      flagWrap.className = 'flag';
-      flagWrap.innerHTML = flagSvg(l);
-      const label = document.createElement('span');
-      label.className = 'label';
-      label.textContent = l.toUpperCase();
-      btn.appendChild(flagWrap);
-      btn.appendChild(label);
-      box.appendChild(btn);
-    });
-    document.body.appendChild(box); return box; })();
-  // Ensure fixed language switcher stays visible across pages
-  try { fixedLang.style.display = 'flex'; } catch(_){ }
+  const fixedLang = document.getElementById('lang-fixed');
 
   function flagSvg(lang){
     // Use width/height 100% so parent spans can size the flag
@@ -701,6 +675,7 @@ document.addEventListener('DOMContentLoaded', function() {
     nav_about: { pl: 'O mnie', nl: 'Over mij', en: 'About' },
     nav_projects: { pl: 'Projekty', nl: 'Projecten', en: 'Projects' },
     nav_all: { pl: 'Wszystkie', nl: 'Alle', en: 'All' },
+    nav_all_projects: { pl: 'Wszystkie projekty', nl: 'Alle projecten', en: 'All Projects' },
     nav_scholarly: { pl: 'Naukowe', nl: 'Wetenschappelijk', en: 'Scholarly' },
     nav_extra: { pl: 'Dodatkowe', nl: 'Extra', en: 'Extra' },
     nav_contact: { pl: 'Kontakt', nl: 'Contact', en: 'Contact' },
@@ -1158,7 +1133,20 @@ document.addEventListener('DOMContentLoaded', function() {
       const P = {
         amorak: {
           title: { en:'Amorak — Sound Design', pl:'Amorak — Sound design', nl:'Amorak — Sounddesign' },
-          lead: { en:'Complete sound design for the 3D animation "Amorak".', pl:'Kompletny sound design do animacji 3D „Amorak”.', nl:'Volledig sounddesign voor de 3D‑animatie “Amorak”.' },
+          lead: { en:'Complete sound design for the 3D animation "Amorak".', pl:'Kompletny sound design do animacji 3D „Amorak".', nl:'Volledig sounddesign voor de 3D‑animatie "Amorak".' },
+          overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
+          overview_desc: {
+            en:'Amorak was an exercise in world‑building through sound. I created character signatures and environmental layers that scale with camera proximity, keeping the mix readable while reinforcing the story tone.',
+            pl:'Amorak był ćwiczeniem w budowaniu świata przez dźwięk. Stworzyłem sygnatury postaci i warstwy środowiskowe, które skalują się z bliskością kamery, utrzymując czytelność miksu jednocześnie wzmacniając ton opowieści.',
+            nl:'Amorak was een oefening in wereldopbouw door geluid. Ik creëerde karaktersignaturen en omgevingslagen die schalen met de cameranabijheid, waarbij de mix leesbaar bleef terwijl de verhaaltoon werd versterkt.'
+          },
+          gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
+          showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' },
+          all_projects: { en:'All Projects', pl:'Wszystkie projekty', nl:'Alle projecten' }
+        },
+        'audio-plugin-suite': {
+          title: { en:'3D Audio Plugin Suite (VST Development)', pl:'Zestaw wtyczek audio 3D (Rozwój VST)', nl:'3D Audio Plugin Suite (VST‑ontwikkeling)' },
+          lead: { en:'Custom DSP for HRTF spatialization, real-time convolution, and UI design.', pl:'Niestandardowe DSP do spacjalizacji HRTF, konwolucji czasu rzeczywistego i projektowania UI.', nl:'Aangepaste DSP voor HRTF‑spatialisatie, realtime convolutie en UI‑ontwerp.' },
           overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
           gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
           showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' }
@@ -1172,17 +1160,34 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         akantilado: {
           title: { en:'Akantilado — Sound Design', pl:'Akantilado — Sound design', nl:'Akantilado — Sounddesign' },
-          lead: { en:'Complete foley and ambience for 3D animation.', pl:'Kompletny foley i ambience do animacji 3D.', nl:'Complete foley en ambience voor 3D‑animatie.' },
+          lead: { en:'Complete sound design for a 3D animation project.', pl:'Kompletny sound design do projektu animacji 3D.', nl:'Volledig sounddesign voor een 3D-animatieproject.' },
           overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
+          overview_desc: {
+            en:'In Akantilado I owned the complete sound pass. I built a small foley library, recorded textures, and layered synthesized elements for clarity. Regular reviews with the animation team helped me calibrate timing and avoid masking.',
+            pl:'W Akantilado prowadziłem kompletny proces dźwiękowy. Zbudowałem małą bibliotekę foley, nagrałem tekstury i nałożyłem syntetyzowane elementy dla przejrzystości. Regularne recenzje z zespołem animatorów pomogły mi skalibrować timing i uniknąć maskowania.',
+            nl:'In Akantilado verzorgde ik de complete soundpass. Ik bouwde een kleine foley-bibliotheek, nam texturen op en laagde gesynthetiseerde elementen voor helderheid. Regelmatige reviews met het animatieteam hielpen me de timing te kalibreren en maskering te vermijden.'
+          },
           gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
-          showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' }
+          showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' },
+          all_projects: { en:'All Projects', pl:'Wszystkie projekty', nl:'Alle projecten' }
         },
         ray: {
-          title: { en:'Ray — Music Composition', pl:'Ray — Kompozycja muzyki', nl:'Ray — Muziekcompositie' },
-          lead: { en:'Original score supporting narrative beats.', pl:'Oryginalna muzyka wspierająca narrację.', nl:'Originele score die de narratieve beats ondersteunt.' },
+          title: { en:'Ray Animation — Music Composition', pl:'Animacja Ray — Kompozycja muzyki', nl:'Ray Animation — Muziekcompositie' },
+          lead: { en:'Original disco-style score for a dreamy 3D character journey.', pl:'Oryginalna muzyka w stylu disco do marzeńczej podróży postaci 3D.', nl:'Originele disco-stijl score voor een dromerige 3D-karakterreis.' },
           overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
+          overview_desc: {
+            en:'As the replacement composer for this Ghent-based animation team, I created a complete disco-inspired soundtrack. I handled both the main animation score and end credits music, focusing on thematic clarity and pacing that mapped character emotions to harmonic rhythm while maintaining the retro disco aesthetic.',
+            pl:'Jako kompozytor zastępujący dla tego zespołu animatorów z Gandawy, stworzyłem kompletną ścieżkę dźwiękową inspirowaną disco. Zajmowałem się zarówno główną muzyką do animacji, jak i muzyką do napisów końcowych, koncentrując się na przejrzystości tematycznej i tempie, które łączyło emocje postaci z rytmem harmonicznym, zachowując retro estetykę disco.',
+            nl:'Als vervangingscomponist voor dit animatieteam uit Gent creëerde ik een complete disco-geïnspireerde soundtrack. Ik verzorgde zowel de hoofdanimatiescore als de aftitelingsmuziek, met focus op thematische helderheid en pacing die karakteremotites koppelde aan harmonisch ritme terwijl de retro disco-esthetiek behouden bleef.'
+          },
           gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
-          showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' }
+          showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' },
+          all_projects: { en:'All Projects', pl:'Wszystkie projekty', nl:'Alle projecten' },
+          project_details: { en:'Project Details', pl:'Szczegóły projektu', nl:'Projectdetails' },
+          role: { en:'Role: Replacement Composer', pl:'Rola: Kompozytor zastępujący', nl:'Rol: Vervangingscomponist' },
+          style: { en:'Style: Disco-inspired', pl:'Styl: Inspirowany disco', nl:'Stijl: Disco-geïnspireerd' },
+          location: { en:'Team: Ghent, Belgium', pl:'Zespół: Gandawa, Belgia', nl:'Team: Gent, België' },
+          scope: { en:'Scope: Animation + End Credits', pl:'Zakres: Animacja + Napisy końcowe', nl:'Bereik: Animatie + Aftiteling' }
         },
         'pause-and-deserve': {
           title: { en:'Pause & Deserve — Solo Game', pl:'Pause & Deserve — Gra solo', nl:'Pause & Deserve — Solo game' },
