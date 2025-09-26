@@ -56,8 +56,8 @@
         }
 
         .global-lightbox .lightbox-content {
-          max-width: 95%;
-          max-height: 95%;
+          max-width: 80%;
+          max-height: 80%;
           position: relative;
           display: flex;
           justify-content: center;
@@ -153,6 +153,11 @@
 
         /* Responsive design */
         @media (max-width: 768px) {
+          .global-lightbox .lightbox-content {
+            max-width: 90%;
+            max-height: 85%;
+          }
+
           .global-lightbox .lightbox-close {
             top: -50px;
             right: -50px;
@@ -183,6 +188,11 @@
         }
 
         @media (max-width: 480px) {
+          .global-lightbox .lightbox-content {
+            max-width: 95%;
+            max-height: 80%;
+          }
+
           .global-lightbox .lightbox-close {
             top: 20px;
             right: 20px;

@@ -1246,6 +1246,14 @@ document.addEventListener('DOMContentLoaded', function() {
           overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
           gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
           showcase: { en:'Showcase Video', pl:'Wideo pokazowe', nl:'Showcase‑video' }
+        },
+        'ray-animation': {
+          title: { en:'Ray Animation — Music Composition', pl:'Animacja Ray — Kompozycja muzyki', nl:'Ray Animation — Muziekcompositie' },
+          lead: { en:'Complete musical composition for 3D animation project.', pl:'Kompletna kompozycja muzyczna dla projektu animacji 3D.', nl:'Complete muziekcompositie voor 3D animatieproject.' },
+          overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
+          gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
+          showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' },
+          all_projects: { en:'All Projects', pl:'Wszystkie Projekty', nl:'Alle Projecten' }
         }
       };
       const path = location.pathname.split('/').pop().replace('.html','');
@@ -1622,6 +1630,18 @@ document.addEventListener('DOMContentLoaded', function() {
           el.textContent = ENV[key][lang];
         }
       });
+    }
+
+    // Ray Animation page translations
+    if (location.pathname.endsWith('/ray-animation.html') || /ray-animation\.html$/i.test(location.pathname)){
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[key]) {
+          el.textContent = I18N[key][lang];
+        }
+      });
+      // Page <title>
+      try { document.title = (lang==='pl'?'Animacja Ray — Kompozycja muzyki — Igor Szuniewicz': lang==='nl'?'Ray Animation — Muziekcompositie — Igor Szuniewicz':'Ray Animation — Music Composition — Igor Szuniewicz'); } catch(_){}
     }
   }
 
