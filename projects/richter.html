@@ -37,6 +37,206 @@
   </script>
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20250210" />
+  <style>
+    .richter-hero-image {
+      margin: 2em 0;
+      text-align: center;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .richter-hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .richter-hero-image:hover img {
+      transform: scale(1.02);
+    }
+
+    .richter-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1em;
+    }
+
+    .richter-section {
+      margin: 3em 0;
+      padding: 2em;
+      background: linear-gradient(135deg, rgba(20, 40, 60, 0.6) 0%, rgba(40, 60, 80, 0.4) 100%);
+      border-radius: 15px;
+      border: 1px solid rgba(70, 130, 180, 0.2);
+      backdrop-filter: blur(5px);
+    }
+
+    .richter-section h3 {
+      color: #87ceeb;
+      border-bottom: 2px solid rgba(135, 206, 235, 0.4);
+      padding-bottom: 0.5em;
+      margin-bottom: 1.5em;
+      font-family: 'Source Sans Pro', Helvetica, sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.075em;
+    }
+
+    .richter-video-section {
+      margin: 3em 0;
+      padding: 2em;
+      background: linear-gradient(135deg, rgba(20, 40, 60, 0.6) 0%, rgba(40, 60, 80, 0.4) 100%);
+      border-radius: 15px;
+      border: 1px solid rgba(70, 130, 180, 0.2);
+      backdrop-filter: blur(5px);
+    }
+
+    .richter-video-section h3 {
+      color: #87ceeb;
+      border-bottom: 2px solid rgba(135, 206, 235, 0.4);
+      padding-bottom: 0.5em;
+      margin-bottom: 1.5em;
+      font-family: 'Source Sans Pro', Helvetica, sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.075em;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .video-container iframe,
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .video-container video {
+      object-fit: cover;
+      background: #000;
+    }
+
+    .video-container video::-webkit-media-controls-panel {
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    }
+
+    .richter-process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2em;
+      margin-top: 2em;
+    }
+
+    .process-card {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1.5em;
+      border-radius: 10px;
+      border: 1px solid rgba(70, 130, 180, 0.2);
+    }
+
+    .process-card h4 {
+      color: #87ceeb;
+      margin-bottom: 1em;
+    }
+
+    .richter-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5em;
+      margin-top: 2em;
+    }
+
+    .richter-gallery .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .richter-gallery .gallery-item:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    }
+
+    .richter-gallery .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+
+    .richter-gallery .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .richter-gallery .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+      color: white;
+      padding: 1.5em 1em 1em;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .richter-gallery .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    .richter-gallery .gallery-overlay span {
+      color: #87ceeb;
+      font-size: 1.1em;
+    }
+
+    .tech-stack {
+      display: flex;
+      gap: 2em;
+      margin-top: 2em;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .tech-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1.5em;
+      border-radius: 15px;
+      border: 1px solid rgba(70, 130, 180, 0.2);
+      transition: all 0.3s ease;
+      min-width: 120px;
+    }
+
+    .tech-item:hover {
+      transform: translateY(-5px);
+      background: rgba(0, 0, 0, 0.5);
+      border-color: rgba(70, 130, 180, 0.4);
+    }
+
+    .tech-item span {
+      color: #87ceeb;
+      font-weight: 600;
+      font-size: 0.9em;
+      letter-spacing: 0.05em;
+    }
+  </style>
   <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
@@ -120,19 +320,105 @@
     </nav>
     <div id="main">
       <section class="post" data-reveal>
-        <header class="major">
-          <h2>Richter — Sound Design</h2>
-          <p id="bgWhite">Audio crafted with minimal recording gear.</p>
-        </header>
-        <span class="image main"><img src="../assets/images/projects/richter.png" alt="Richter" /></span>
-        <h3 id="bgColor">Overview</h3>
-        <p>Richter challenged me to deliver with limited recording gear. I leaned on careful mic placement, noise management, and synthesis to fill gaps. The result is a focused palette that supports the visual rhythm.</p>
-        <h3 id="bgColor">Gallery</h3>
-        <div class="projects-grid">
-          <span class="image fit"><img src="../assets/images/projects/richter.png" alt="Richter still" /></span>
+        <div class="richter-content">
+          <header class="major">
+            <h2 data-i18n="richter_title">Richter — Sound Design</h2>
+            <p id="bgWhite" data-i18n="richter_subtitle">Complete soundscape designed with original recordings and synthesis for short film.</p>
+          </header>
+
+          <div class="richter-video-section">
+            <h3 data-i18n="richter_video">Project Showcase</h3>
+            <div class="video-container">
+              <video controls preload="metadata" poster="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m22s506.png">
+                <source src="../assets/images/projects-daw2/DigitalAudioWorkstation2.mp4" type="video/mp4">
+                <p data-i18n="richter_video_fallback">Your browser doesn't support HTML5 video. <a href="../assets/images/projects-daw2/DigitalAudioWorkstation2.mp4">Download the video</a> instead.</p>
+              </video>
+            </div>
+          </div>
+
+
+          <div class="richter-section">
+            <h3 data-i18n="richter_overview">Project Overview</h3>
+            <p data-i18n="richter_overview_desc">For my DAW 2 exam assignment, I created the complete soundscape for the short film 'Richter'. The focus was on original sound design without relying on existing sound libraries. I combined field recordings, synthesizer-based design, and creative layering to build a dynamic and immersive audio world.</p>
+
+            <div class="richter-process-grid">
+              <div class="process-card">
+                <h4 data-i18n="richter_process_field">Field Recording</h4>
+                <p data-i18n="richter_process_field_desc">Captured unique ambiences and environmental textures using Zoom H6 recorder while walking through the city.</p>
+              </div>
+              <div class="process-card">
+                <h4 data-i18n="richter_process_synthesis">Sound Synthesis</h4>
+                <p data-i18n="richter_process_synthesis_desc">Used Vital, ReaSynth, and TAL Noisemaker to create drones, risers, and alarms.</p>
+              </div>
+              <div class="process-card">
+                <h4 data-i18n="richter_process_design">Sound Design</h4>
+                <p data-i18n="richter_process_design_desc">Designed vehicle engines, earthquake rumbles, whooshes, and environmental effects.</p>
+              </div>
+              <div class="process-card">
+                <h4 data-i18n="richter_process_mixing">Mixing & Processing</h4>
+                <p data-i18n="richter_process_mixing_desc">Applied EQ, distortion, pitch shifting, and spatial effects with parameter automation.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="richter-section">
+            <h3 data-i18n="richter_technical">Technical Approach</h3>
+            <p data-i18n="richter_technical_desc">Each sound was carefully layered, processed, and mixed with attention to detail. I automated parameters such as volume, panning, and reverb sends to enhance realism and movement, including recreating the Doppler effect. The project used a 48kHz/24-bit setup with loudness metering to maintain professional standards.</p>
+          </div>
+
+          <div class="richter-section">
+            <h3 data-i18n="richter_tools">Tools & Technology</h3>
+            <div class="tech-stack">
+              <div class="tech-item">
+                <span>Zoom H6</span>
+              </div>
+              <div class="tech-item">
+                <span>Vital</span>
+              </div>
+              <div class="tech-item">
+                <span>ReaSynth</span>
+              </div>
+              <div class="tech-item">
+                <span>TAL Noisemaker</span>
+              </div>
+              <div class="tech-item">
+                <span>Reaper DAW</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="richter-section">
+            <h3 data-i18n="richter_gallery">Development Gallery</h3>
+            <div class="richter-gallery">
+              <div class="gallery-item" data-lightbox="richter-gallery">
+                <img src="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m22s506.png" alt="Film Scene 1" data-full="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m22s506.png" />
+                <div class="gallery-overlay">
+                  <span data-i18n="richter_gallery_scene1">Opening Sequence</span>
+                </div>
+              </div>
+              <div class="gallery-item" data-lightbox="richter-gallery">
+                <img src="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m31s882.png" alt="Film Scene 2" data-full="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m31s882.png" />
+                <div class="gallery-overlay">
+                  <span data-i18n="richter_gallery_scene2">Environmental Design</span>
+                </div>
+              </div>
+              <div class="gallery-item" data-lightbox="richter-gallery">
+                <img src="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m42s119.png" alt="Film Scene 3" data-full="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m42s119.png" />
+                <div class="gallery-overlay">
+                  <span data-i18n="richter_gallery_scene3">Action Sequence</span>
+                </div>
+              </div>
+              <div class="gallery-item" data-lightbox="richter-gallery">
+                <img src="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m45s367.png" alt="Film Scene 4" data-full="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m45s367.png" />
+                <div class="gallery-overlay">
+                  <span data-i18n="richter_gallery_scene4">Climax Scene</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <ul class="actions" style="margin-top:2em">
-          <li><a href="../projects/index.html" class="button">All Projects</a></li>
+          <li><a href="../projects/index.html" class="button" data-i18n="richter_all_projects">All Projects</a></li>
         </ul>
       </section>
     </div>
@@ -145,5 +431,6 @@
   </div>
   <script src="../assets/js/components/enhancements.js?v=20250210"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/components/lightbox.js"></script>
 </body>
 </html>

@@ -329,7 +329,8 @@
       '.project-gallery',
       '.pausedeserve-gallery',
       '.akantilado-gallery',
-      '.amorak-gallery'
+      '.amorak-gallery',
+      '.richter-gallery'
     ];
 
     gallerySelectors.forEach(selector => {
