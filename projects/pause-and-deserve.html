@@ -203,6 +203,53 @@
       height: 100%;
       border: none;
     }
+
+    .tech-stack {
+      display: flex;
+      gap: 2em;
+      margin-top: 2em;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .tech-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1.5em;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 122, 122, 0.2);
+      transition: all 0.3s ease;
+      min-width: 150px;
+    }
+
+    .tech-item:hover {
+      transform: translateY(-5px);
+      background: rgba(0, 0, 0, 0.5);
+      border-color: rgba(255, 122, 122, 0.4);
+    }
+
+    .tech-item img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      margin-bottom: 1em;
+      filter: brightness(0.9);
+      transition: filter 0.3s ease;
+    }
+
+    .tech-item:hover img {
+      filter: brightness(1.1);
+    }
+
+    .tech-item span {
+      color: #ff7a7a;
+      font-weight: 600;
+      font-size: 0.9em;
+      letter-spacing: 0.05em;
+    }
   </style>
   <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 </head>
@@ -290,7 +337,7 @@
         <div class="pausedeserve-content">
           <header class="major">
             <span class="work-in-progress-badge" data-i18n="pausedeserve_wip_badge">Work in Progress</span>
-            <h2 data-i18n="pausedeserve_title">Pause & Deserve — Solo Horror Game</h2>
+            <h2 data-i18n="pausedeserve_title">Pause & Deserve — Singleplayer Horror Game</h2>
             <p id="bgWhite" data-i18n="pausedeserve_subtitle">First-person survival game with psychological horror elements and strategic pause mechanics.</p>
           </header>
 
@@ -332,6 +379,20 @@
           <div class="pausedeserve-section">
             <h3 data-i18n="pausedeserve_design">Design Philosophy</h3>
             <p data-i18n="pausedeserve_design_desc">This project focuses on creating immersive tension through first-person perspective, intelligent AI behavior, and audio design that enhances the psychological horror atmosphere. The development emphasizes rapid prototyping and iterative design based on playtesting feedback.</p>
+          </div>
+
+          <div class="pausedeserve-section">
+            <h3 data-i18n="pausedeserve_tech">Technology Stack</h3>
+            <div class="tech-stack">
+              <div class="tech-item">
+                <img src="../assets/images/projects-pausedeserve/Unreal_Engine-Logo.wine.png" alt="Unreal Engine" />
+                <span>Unreal Engine</span>
+              </div>
+              <div class="tech-item">
+                <img src="../assets/images/projects-pausedeserve/wwise_logo_rgb-77Awrfoo.png" alt="Wwise" />
+                <span>Wwise Audio</span>
+              </div>
+            </div>
           </div>
 
           <div class="pausedeserve-section">
