@@ -1868,6 +1868,18 @@ document.addEventListener('DOMContentLoaded', function() {
       // Page <title>
       try { document.title = (lang==='pl'?'Pause & Deserve — Gra grozy solo — Igor Szuniewicz': lang==='nl'?'Pause & Deserve — Solo horrorgame — Igor Szuniewicz':'Pause & Deserve — Solo Horror Game — Igor Szuniewicz'); } catch(_){}
     }
+
+    // Richter page translations
+    if (location.pathname.endsWith('/richter.html') || /richter\.html$/i.test(location.pathname)){
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[key]) {
+          el.textContent = I18N[key][lang];
+        }
+      });
+      // Page <title>
+      try { document.title = (lang==='pl'?'Richter — Sound Design — Igor Szuniewicz': lang==='nl'?'Richter — Sounddesign — Igor Szuniewicz':'Richter — Sound Design — Igor Szuniewicz'); } catch(_){}
+    }
   }
 
   // (removed) duplicate contact translations block that referenced undefined 'lang'
