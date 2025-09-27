@@ -326,7 +326,10 @@
       '.ray-gallery',
       '.env-grid img',
       '.gallery-grid',
-      '.project-gallery'
+      '.project-gallery',
+      '.pausedeserve-gallery',
+      '.akantilado-gallery',
+      '.amorak-gallery'
     ];
 
     gallerySelectors.forEach(selector => {

@@ -112,11 +112,17 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: opacity 1.5s ease-in-out;
+      transition: opacity 2s ease-in-out;
+      opacity: 0;
     }
 
     .pausedeserve-slideshow img:first-child {
       position: relative;
+      opacity: 1;
+    }
+
+    .pausedeserve-slideshow img.active {
+      opacity: 1;
     }
   </style>
   <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
@@ -361,19 +367,26 @@
         const images = slideshow.querySelectorAll('img');
         let currentIndex = 0;
 
+        // Set initial state
+        images.forEach((img, index) => {
+          if (index === 0) {
+            img.classList.add('active');
+          } else {
+            img.classList.remove('active');
+          }
+        });
+
         function nextSlide() {
           if (images.length <= 1) return;
 
-          // Fade out current image
-          images[currentIndex].style.opacity = '0';
+          // Remove active class from current image
+          images[currentIndex].classList.remove('active');
 
           // Move to next image
           currentIndex = (currentIndex + 1) % images.length;
 
-          // Fade in next image
-          setTimeout(() => {
-            images[currentIndex].style.opacity = '1';
-          }, 100);
+          // Add active class to next image
+          images[currentIndex].classList.add('active');
         }
 
         // Start slideshow after 3 seconds, then every 4 seconds
