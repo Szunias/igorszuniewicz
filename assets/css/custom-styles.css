@@ -916,10 +916,100 @@ img[src*="muzyczna.png"] {
 .about-hero .rays span:nth-child(8){ transform:translate(-50%,-50%) rotate(157.5deg); }
 .about-hero:after { content:''; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:220px; height:220px; border-radius:50%; background: radial-gradient(closest-side, rgba(24,191,239,0.24), rgba(24,191,239,0.0)); filter: blur(18px); }
 
-.about-cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:16px; }
-.about-card { background: rgba(12,18,26,0.6); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:14px; box-shadow:0 16px 40px rgba(0,0,0,0.28); transition: transform .25s ease, box-shadow .25s ease; }
-.about-card:hover{ transform: translateY(-4px); box-shadow:0 26px 60px rgba(0,0,0,0.34); border-color: rgba(24,191,239,0.28); }
-.about-card h4 { font-family:'Poppins',sans-serif; font-weight:800; color: #ffffff !important; display:flex; align-items:center; gap:8px; }
+/* About page main content section */
+.about-main-content {
+    margin: 2rem 0 3rem;
+    text-align: center;
+}
+
+.about-main-content p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #e8f6fb;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* About sections for journey and philosophy */
+.about-sections {
+    display: grid;
+    gap: 2.5rem;
+    margin: 3rem 0;
+}
+
+.about-section {
+    background: rgba(12,18,26,0.4);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.about-section:hover {
+    background: rgba(12,18,26,0.6);
+    border-color: rgba(24,191,239,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+}
+
+.about-section h3 {
+    color: #18bfef;
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.about-section h3::before {
+    content: '';
+    width: 4px;
+    height: 1.2em;
+    background: linear-gradient(135deg, #18bfef, #9a6cff);
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.about-section p {
+    color: #e8f6fb;
+    line-height: 1.7;
+    font-size: 1.05em;
+}
+
+.about-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.about-card {
+    background: rgba(12,18,26,0.6);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.28);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.about-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 26px 60px rgba(0,0,0,0.34);
+    border-color: rgba(24,191,239,0.28);
+}
+
+.about-card h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    color: #ffffff !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1rem;
+    font-size: 1.1em;
+}
+
 .about-card ul li,
 .about-card ul li strong,
 .about-card p,
@@ -927,6 +1017,26 @@ img[src*="muzyczna.png"] {
     color: #ffffff !important;
     opacity: 1 !important;
     text-shadow: 0 1px 3px rgba(0,0,0,0.5) !important;
+}
+
+.about-card ul li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments for about page */
+@media (max-width: 768px) {
+    .about-sections {
+        gap: 1.5rem;
+    }
+
+    .about-section {
+        padding: 1.5rem;
+    }
+
+    .about-main-content p {
+        font-size: 1em;
+    }
 }
 #cv-section.post.in-view .box ul li:nth-child(1){ transition-delay: 60ms; }
 #cv-section.post.in-view .box ul li:nth-child(2){ transition-delay: 120ms; }

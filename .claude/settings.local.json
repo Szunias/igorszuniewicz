@@ -15,7 +15,8 @@
       "Bash(do echo \"=== $file ===\")",
       "Bash(rg:*)",
       "Bash(done)",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\ray-animation.html\")"
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\ray-animation.html\")",
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\about.html\")"
     ],
     "deny": [],
     "ask": []
