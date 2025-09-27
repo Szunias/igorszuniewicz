@@ -11,7 +11,11 @@
       "Bash(do echo \"Fixing double paths in $file...\")",
       "Bash(do echo \"Updating image paths in $file...\")",
       "Bash(do echo \"Fixing broken image paths in $file...\")",
-      "Bash(ffprobe:*)"
+      "Bash(ffprobe:*)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(rg:*)",
+      "Bash(done)",
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\ray-animation.html\")"
     ],
     "deny": [],
     "ask": []
