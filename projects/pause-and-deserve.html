@@ -16,17 +16,17 @@
   <meta property="og:title" content="Pause & Deserve — Solo Horror Game" />
   <meta property="og:description" content="Ambitious solo project with iterative prototyping and cohesive audio direction." />
   <meta property="og:url" content="https://igorszuniewicz.com/projects/pause-and-deserve.html" />
-  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects/deserve.png" />
+  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects-pausedeserve/pausedeservetitle.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Pause & Deserve — Solo Horror Game" />
   <meta name="twitter:description" content="Ambitious solo project with iterative prototyping and cohesive audio direction." />
-  <meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects/deserve.png" />
+  <meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects-pausedeserve/pausedeservetitle.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     "name": "Pause & Deserve — Solo Horror Game",
-    "image": "https://igorszuniewicz.com/assets/images/projects/deserve.png",
+    "image": "https://igorszuniewicz.com/assets/images/projects-pausedeserve/pausedeservetitle.png",
     "author": {
       "@type": "Person",
       "name": "Igor Szuniewicz",
@@ -37,6 +37,135 @@
   </script>
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20250210" />
+  <style>
+    .pausedeserve-hero-image {
+      margin: 2em 0;
+      text-align: center;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .pausedeserve-hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .pausedeserve-hero-image:hover img {
+      transform: scale(1.02);
+    }
+
+    .pausedeserve-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1em;
+    }
+
+    .pausedeserve-section {
+      margin: 3em 0;
+      padding: 2em;
+      background: linear-gradient(135deg, rgba(50, 10, 20, 0.6) 0%, rgba(80, 20, 40, 0.4) 100%);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 110, 169, 0.2);
+      backdrop-filter: blur(5px);
+    }
+
+    .pausedeserve-section h3 {
+      color: #ff7a7a;
+      border-bottom: 2px solid rgba(255, 122, 122, 0.4);
+      padding-bottom: 0.5em;
+      margin-bottom: 1.5em;
+      font-family: 'Source Sans Pro', Helvetica, sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.075em;
+    }
+
+    .pausedeserve-mechanics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2em;
+      margin-top: 2em;
+    }
+
+    .mechanic-card {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1.5em;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 110, 169, 0.2);
+    }
+
+    .mechanic-card h4 {
+      color: #ff7a7a;
+      margin-bottom: 1em;
+    }
+
+    .pausedeserve-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5em;
+      margin-top: 2em;
+    }
+
+    .pausedeserve-gallery .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .pausedeserve-gallery .gallery-item:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    }
+
+    .pausedeserve-gallery .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+
+    .pausedeserve-gallery .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .pausedeserve-gallery .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+      color: white;
+      padding: 1.5em 1em 1em;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .pausedeserve-gallery .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    .pausedeserve-gallery .gallery-overlay span {
+      color: #ff7a7a;
+      font-size: 1.1em;
+    }
+
+    .work-in-progress-badge {
+      display: inline-block;
+      background: rgba(255, 110, 169, 0.9);
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 20px;
+      font-size: 0.8em;
+      font-weight: bold;
+      margin-bottom: 1em;
+      border: 1px solid rgba(255, 110, 169, 0.3);
+    }
+  </style>
   <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
@@ -120,16 +249,75 @@
     </nav>
     <div id="main">
       <section class="post" data-reveal>
-        <header class="major">
-          <h2>Pause & Deserve — Solo Horror Game</h2>
-          <p id="bgWhite">Ambitious solo project: concept, design, programming, and audio.</p>
-        </header>
-        <span class="image main"><img src="../assets/images/projects/deserve.png" alt="Pause & Deserve" /></span>
-        <h3 id="bgColor">Overview</h3>
-        <p>A solo exploration of gameplay and audio direction. I prototyped mechanics quickly, letting playtests inform pacing and sound choices. The priority was a cohesive mood with efficient content reuse.</p>
-        <h3 id="bgColor">Gallery</h3>
-        <div class="projects-grid">
-          <span class="image fit"><img src="../assets/images/projects/deserve.png" alt="Pause & Deserve still" /></span>
+        <div class="pausedeserve-content">
+          <header class="major">
+            <span class="work-in-progress-badge" data-i18n="pausedeserve_wip_badge">Work in Progress</span>
+            <h2 data-i18n="pausedeserve_title">Pause & Deserve — Solo Horror Game</h2>
+            <p id="bgWhite" data-i18n="pausedeserve_subtitle">First-person survival game with psychological horror elements and strategic pause mechanics.</p>
+          </header>
+
+          <div class="pausedeserve-hero-image">
+            <img src="../assets/images/projects-pausedeserve/pausedeservetitle.png" alt="Pause & Deserve" />
+          </div>
+
+          <div class="pausedeserve-section">
+            <h3 data-i18n="pausedeserve_overview">Game Overview</h3>
+            <p data-i18n="pausedeserve_overview_desc">You play as a sinner trying to escape eternal punishment. Death chases you relentlessly through a surreal, nightmarish landscape. Using your 'pause' power, you can freeze Death momentarily to find better escape routes. Death becomes faster over time and every time you pause him, challenging your reflexes and strategy.</p>
+
+            <div class="pausedeserve-mechanics-grid">
+              <div class="mechanic-card">
+                <h4 data-i18n="pausedeserve_chase_title">Relentless Chase</h4>
+                <p data-i18n="pausedeserve_chase_desc">Death uses advanced pathfinding to navigate obstacles and adapts to your movements, creating an ever-present threat.</p>
+              </div>
+              <div class="mechanic-card">
+                <h4 data-i18n="pausedeserve_pause_title">Strategic Pause</h4>
+                <p data-i18n="pausedeserve_pause_desc">Temporarily freeze Death's movement to create escape opportunities. Each use has a cooldown and makes Death faster.</p>
+              </div>
+              <div class="mechanic-card">
+                <h4 data-i18n="pausedeserve_world_title">Dynamic Environment</h4>
+                <p data-i18n="pausedeserve_world_desc">The nightmare landscape shifts as time progresses—walls close in, pathways change, and lighting dims.</p>
+              </div>
+              <div class="mechanic-card">
+                <h4 data-i18n="pausedeserve_score_title">Survival Challenge</h4>
+                <p data-i18n="pausedeserve_score_desc">Endless survival game that tracks your best times and tests both reflexes and strategic thinking.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pausedeserve-section">
+            <h3 data-i18n="pausedeserve_design">Design Philosophy</h3>
+            <p data-i18n="pausedeserve_design_desc">This project focuses on creating immersive tension through first-person perspective, intelligent AI behavior, and audio design that enhances the psychological horror atmosphere. The development emphasizes rapid prototyping and iterative design based on playtesting feedback.</p>
+          </div>
+
+          <div class="pausedeserve-section">
+            <h3 data-i18n="pausedeserve_gallery">Development Gallery</h3>
+            <div class="pausedeserve-gallery">
+              <div class="gallery-item" data-lightbox="pausedeserve-gallery">
+                <img src="../assets/images/projects-pausedeserve/caughtbydeath.png" alt="Caught by Death" data-full="../assets/images/projects-pausedeserve/caughtbydeath.png" />
+                <div class="gallery-overlay">
+                  <span data-i18n="pausedeserve_gallery_death">Caught by Death</span>
+                </div>
+              </div>
+              <div class="gallery-item" data-lightbox="pausedeserve-gallery">
+                <img src="../assets/images/projects-pausedeserve/redbushes.png" alt="Red Bushes Environment" data-full="../assets/images/projects-pausedeserve/redbushes.png" />
+                <div class="gallery-overlay">
+                  <span data-i18n="pausedeserve_gallery_bushes">Nightmare Landscape</span>
+                </div>
+              </div>
+              <div class="gallery-item" data-lightbox="pausedeserve-gallery">
+                <img src="../assets/images/projects-pausedeserve/redcorridor.png" alt="Red Corridor" data-full="../assets/images/projects-pausedeserve/redcorridor.png" />
+                <div class="gallery-overlay">
+                  <span data-i18n="pausedeserve_gallery_corridor">The Red Corridor</span>
+                </div>
+              </div>
+              <div class="gallery-item" data-lightbox="pausedeserve-gallery">
+                <img src="../assets/images/projects-pausedeserve/trytofindthekeyhint.png" alt="Key Hunt Mechanic" data-full="../assets/images/projects-pausedeserve/trytofindthekeyhint.png" />
+                <div class="gallery-overlay">
+                  <span data-i18n="pausedeserve_gallery_key">Interactive Elements</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <ul class="actions" style="margin-top:2em">
           <li><a href="../projects/index.html" class="button">All Projects</a></li>
@@ -145,5 +333,6 @@
   </div>
   <script src="../assets/js/components/enhancements.js?v=20250210"></script>
   <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/components/lightbox.js"></script>
 </body>
 </html>

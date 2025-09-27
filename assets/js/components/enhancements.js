@@ -959,6 +959,29 @@ document.addEventListener('DOMContentLoaded', function() {
     ray_gallery_environment: { en: 'Environment Shot', pl: 'Ujęcie środowiska', nl: 'Omgevingsbeeld' },
     ray_gallery_action: { en: 'Action Sequence', pl: 'Sekwencja akcji', nl: 'Actiesequentie' },
     ray_gallery_finale: { en: 'Finale Scene', pl: 'Scena finałowa', nl: 'Finale scene' },
+
+    // Pause & Deserve project translations
+    pausedeserve_wip_badge: { en: 'Work in Progress', pl: 'W trakcie realizacji', nl: 'Work in uitvoering' },
+    pausedeserve_title: { en: 'Pause & Deserve — Solo Horror Game', pl: 'Pause & Deserve — Gra grozy solo', nl: 'Pause & Deserve — Solo horrorgame' },
+    pausedeserve_subtitle: { en: 'First-person survival game with psychological horror elements and strategic pause mechanics.', pl: 'Gra survivalowa w pierwszej osobie z elementami grozy psychologicznej i strategicznymi mechanikami pauzy.', nl: 'First-person survival game met psychologische horror-elementen en strategische pauzemechaniek.' },
+    pausedeserve_overview: { en: 'Game Overview', pl: 'Przegląd gry', nl: 'Game overzicht' },
+    pausedeserve_overview_desc: { en: 'You play as a sinner trying to escape eternal punishment. Death chases you relentlessly through a surreal, nightmarish landscape. Using your \'pause\' power, you can freeze Death momentarily to find better escape routes. Death becomes faster over time and every time you pause him, challenging your reflexes and strategy.', pl: 'Grasz jako grzesznik próbujący uciec od wiecznej kary. Śmierć ściga cię nieustannie przez surrealistyczny, koszmarny krajobraz. Używając swojej mocy \'pauzy\', możesz na chwilę zamrozić Śmierć, aby znaleźć lepsze drogi ucieczki. Śmierć staje się szybsza z czasem i za każdym razem, gdy ją wstrzymujesz, rzucając wyzwanie twoim refleksom i strategii.', nl: 'Je speelt als een zondaar die probeert te ontsnappen aan eeuwige straf. De Dood achtervolgt je meedogenloos door een surrealistisch, nachtmerrieachtig landschap. Met je \'pauze\' kracht kun je de Dood tijdelijk bevriezen om betere ontsnappingsroutes te vinden. De Dood wordt sneller na verloop van tijd en elke keer dat je hem pauzeert, uitdagend voor je reflexen en strategie.' },
+    pausedeserve_chase_title: { en: 'Relentless Chase', pl: 'Nieustający pościg', nl: 'Meedogenloze achtervolging' },
+    pausedeserve_chase_desc: { en: 'Death uses advanced pathfinding to navigate obstacles and adapts to your movements, creating an ever-present threat.', pl: 'Śmierć używa zaawansowanego pathfinding do nawigacji przez przeszkody i dostosowuje się do twoich ruchów, tworząc ciągle obecne zagrożenie.', nl: 'De Dood gebruikt geavanceerde pathfinding om obstakels te navigeren en past zich aan je bewegingen aan, wat een altijd aanwezige bedreiging creëert.' },
+    pausedeserve_pause_title: { en: 'Strategic Pause', pl: 'Strategiczna pauza', nl: 'Strategische pauze' },
+    pausedeserve_pause_desc: { en: 'Temporarily freeze Death\'s movement to create escape opportunities. Each use has a cooldown and makes Death faster.', pl: 'Tymczasowo zamroź ruch Śmierci, aby stworzyć możliwości ucieczki. Każde użycie ma czas odnowienia i sprawia, że Śmierć staje się szybsza.', nl: 'Bevries tijdelijk de beweging van de Dood om ontsnappingsmogelijkheden te creëren. Elk gebruik heeft een cooldown en maakt de Dood sneller.' },
+    pausedeserve_world_title: { en: 'Dynamic Environment', pl: 'Dynamiczne środowisko', nl: 'Dynamische omgeving' },
+    pausedeserve_world_desc: { en: 'The nightmare landscape shifts as time progresses—walls close in, pathways change, and lighting dims.', pl: 'Koszmarny krajobraz zmienia się w miarę upływu czasu—ściany się zaciskają, ścieżki się zmieniają, a oświetlenie przygasa.', nl: 'Het nachtmerrieachtige landschap verschuift naarmate de tijd vordert—muren sluiten zich, paden veranderen en verlichting wordt zwakker.' },
+    pausedeserve_score_title: { en: 'Survival Challenge', pl: 'Wyzwanie przetrwania', nl: 'Overlevingsuitdaging' },
+    pausedeserve_score_desc: { en: 'Endless survival game that tracks your best times and tests both reflexes and strategic thinking.', pl: 'Nieskończona gra survivalowa, która śledzi twoje najlepsze czasy i testuje zarówno refleksy, jak i myślenie strategiczne.', nl: 'Eindeloze survival game die je beste tijden bijhoudt en zowel reflexen als strategisch denken test.' },
+    pausedeserve_design: { en: 'Design Philosophy', pl: 'Filozofia projektowania', nl: 'Ontwerpfilosofie' },
+    pausedeserve_design_desc: { en: 'This project focuses on creating immersive tension through first-person perspective, intelligent AI behavior, and audio design that enhances the psychological horror atmosphere. The development emphasizes rapid prototyping and iterative design based on playtesting feedback.', pl: 'Ten projekt skupia się na tworzeniu wciągającego napięcia poprzez perspektywę pierwszej osoby, inteligentne zachowanie AI i design dźwięku, który wzmacnia atmosferę grozy psychologicznej. Rozwój kładzie nacisk na szybkie prototypowanie i iteracyjny design oparty na feedbacku z playtestów.', nl: 'Dit project richt zich op het creëren van immersieve spanning door first-person perspectief, intelligent AI-gedrag en audiodesign dat de psychologische horror-sfeer versterkt. De ontwikkeling benadrukt snelle prototyping en iteratief ontwerp gebaseerd op playtesting feedback.' },
+    pausedeserve_gallery: { en: 'Development Gallery', pl: 'Galeria rozwoju', nl: 'Ontwikkelingsgalerij' },
+    pausedeserve_gallery_death: { en: 'Caught by Death', pl: 'Złapany przez Śmierć', nl: 'Gevangen door de Dood' },
+    pausedeserve_gallery_bushes: { en: 'Nightmare Landscape', pl: 'Koszmarny krajobraz', nl: 'Nachtmerrieachtig landschap' },
+    pausedeserve_gallery_corridor: { en: 'The Red Corridor', pl: 'Czerwony korytarz', nl: 'De rode gang' },
+    pausedeserve_gallery_key: { en: 'Interactive Elements', pl: 'Elementy interaktywne', nl: 'Interactieve elementen' },
+
     // Akantilado project translations
     akantilado_title: { en: 'Akantilado — Sound Design', pl: 'Akantilado — Sound Design', nl: 'Akantilado — Sounddesign' },
     akantilado_tagline: { en: 'A heartwarming jungle adventure where love triumphs over greed through immersive audio storytelling.', pl: 'Wzruszająca przygoda w dżungli, gdzie miłość triumfuje nad chciwością poprzez immersyjne opowiadanie audio.', nl: 'Een hartverwarmend jungle-avontuur waarbij liefde triomfeert over hebzucht door immersieve audio-verhalen.' },
@@ -1805,6 +1828,18 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       // Page <title>
       try { document.title = (lang==='pl'?'Akantilado — Sound Design — Igor Szuniewicz': lang==='nl'?'Akantilado — Sounddesign — Igor Szuniewicz':'Akantilado — Sound Design — Igor Szuniewicz'); } catch(_){}
+    }
+
+    // Pause & Deserve page translations
+    if (location.pathname.endsWith('/pause-and-deserve.html') || /pause-and-deserve\.html$/i.test(location.pathname)){
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[key]) {
+          el.textContent = I18N[key][lang];
+        }
+      });
+      // Page <title>
+      try { document.title = (lang==='pl'?'Pause & Deserve — Gra grozy solo — Igor Szuniewicz': lang==='nl'?'Pause & Deserve — Solo horrorgame — Igor Szuniewicz':'Pause & Deserve — Solo Horror Game — Igor Szuniewicz'); } catch(_){}
     }
   }
 
