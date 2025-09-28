@@ -1159,7 +1159,29 @@ document.addEventListener('DOMContentLoaded', function() {
     amorak_gallery_character: { en: 'Character Focus Shot', pl: 'Ujęcie Skupione na Postaci', nl: 'Karakter Focus Shot' },
     amorak_showcase: { en: 'Audio Showcase', pl: 'Prezentacja Audio', nl: 'Audio Showcase' },
     amorak_video_desc: { en: 'Experience the complete audio design in context with the animation. Notice how sound elements respond to visual cues and support the narrative progression.', pl: 'Doświadcz kompletnego designu audio w kontekście z animacją. Zwróć uwagę jak elementy dźwiękowe reagują na wizualne wskazówki i wspierają progresję narracyjną.', nl: 'Ervaar het complete audiodesign in context met de animatie. Merk op hoe geluidselementen reageren op visuele aanwijzingen en de narratieve progressie ondersteunen.' },
-    amorak_all_projects: { en: 'All Projects', pl: 'Wszystkie Projekty', nl: 'Alle Projecten' }
+    amorak_all_projects: { en: 'All Projects', pl: 'Wszystkie Projekty', nl: 'Alle Projecten' },
+
+    // AudioQ project translations
+    audioq_title: { en: 'AudioQ — Audio Plugin Development', pl: 'AudioQ — Rozwój wtyczek audio', nl: 'AudioQ — Audio Plugin Ontwikkeling' },
+    audioq_lead: { en: 'JUCE-based audio sampler with granular synthesis, custom DSP effects, and intuitive drag & drop interface.', pl: 'Sampler audio oparty na JUCE z syntezą granularną, niestandardowymi efektami DSP i intuicyjnym interfejsem przeciągnij i upuść.', nl: 'JUCE-gebaseerde audiosampler met granulaire synthese, aangepaste DSP-effecten en intuïtieve drag & drop-interface.' },
+    audioq_overview: { en: 'Overview', pl: 'Przegląd', nl: 'Overzicht' },
+    audioq_overview_desc: { en: 'AudioQ is a comprehensive audio plugin built with the JUCE framework, designed as both a mini-sampler and effects processor. The plugin allows real-time loading and manipulation of audio files with various controllable parameters including gain, tempo, filtering, and custom effects. It features an intuitive interface with drag & drop functionality, real-time waveform visualization, and advanced processing modes.', pl: 'AudioQ to kompleksowa wtyczka audio zbudowana z frameworkiem JUCE, zaprojektowana zarówno jako mini-sampler, jak i procesor efektów. Wtyczka umożliwia ładowanie i manipulację plików audio w czasie rzeczywistym z różnymi kontrolowanymi parametrami, w tym wzmocnieniem, tempem, filtrowaniem i niestandardowymi efektami. Posiada intuicyjny interfejs z funkcją przeciągnij i upuść, wizualizacją kształtu fali w czasie rzeczywistym i zaawansowanymi trybami przetwarzania.', nl: 'AudioQ is een uitgebreide audio-plugin gebouwd met het JUCE-framework, ontworpen als zowel een mini-sampler als effectprocessor. De plugin maakt real-time laden en manipulatie van audiobestanden mogelijk met verschillende controleerbare parameters waaronder gain, tempo, filtering en aangepaste effecten. Het heeft een intuïtieve interface met drag & drop-functionaliteit, real-time golfvormvisualisatie en geavanceerde verwerkingsmodi.' },
+    audioq_features: { en: 'Key Features', pl: 'Kluczowe funkcje', nl: 'Belangrijkste kenmerken' },
+    audioq_feature_1: { en: 'Drag & drop audio file loading (WAV, AIFF, MP3)', pl: 'Ładowanie plików audio metodą przeciągnij i upuść (WAV, AIFF, MP3)', nl: 'Drag & drop audio bestand laden (WAV, AIFF, MP3)' },
+    audioq_feature_2: { en: 'Real-time playback control with tempo adjustment', pl: 'Kontrola odtwarzania w czasie rzeczywistym z regulacją tempa', nl: 'Real-time afspeelcontrole met tempo-aanpassing' },
+    audioq_feature_3: { en: 'Advanced looping with user-defined regions', pl: 'Zaawansowane zapętlanie z regionami definiowanymi przez użytkownika', nl: 'Geavanceerd loopen met door gebruiker gedefinieerde regio\'s' },
+    audioq_feature_4: { en: 'Granular synthesis mode for textural manipulation', pl: 'Tryb syntezy granularnej do manipulacji teksturalnej', nl: 'Granulaire synthese modus voor texturale manipulatie' },
+    audioq_feature_5: { en: 'Custom tremolo effect with manual DSP implementation', pl: 'Niestandardowy efekt tremolo z ręczną implementacją DSP', nl: 'Aangepast tremolo-effect met handmatige DSP-implementatie' },
+    audioq_feature_6: { en: 'High/Low-pass filtering with real-time parameter control', pl: 'Filtrowanie górnoprzepustowe/dolnoprzepustowe z kontrolą parametrów w czasie rzeczywistym', nl: 'High/Low-pass filtering met real-time parametercontrole' },
+    audioq_feature_7: { en: 'Built-in compressor with full parameter automation', pl: 'Wbudowany kompresor z pełną automatyzacją parametrów', nl: 'Ingebouwde compressor met volledige parameter-automatisering' },
+    audioq_feature_8: { en: 'Volume safety system with peak protection', pl: 'System bezpieczeństwa głośności z ochroną przed pikami', nl: 'Volume veiligheidssysteem met piekbescherming' },
+    audioq_feature_9: { en: 'Dual waveform display (offline and real-time)', pl: 'Podwójny wyświetlacz kształtu fali (offline i w czasie rzeczywistym)', nl: 'Dubbele golfvormweergave (offline en real-time)' },
+    audioq_feature_10: { en: 'Full state preservation via AudioProcessorValueTreeState', pl: 'Pełne zachowanie stanu przez AudioProcessorValueTreeState', nl: 'Volledige toestandsbehoud via AudioProcessorValueTreeState' },
+    audioq_technical: { en: 'Technical Implementation', pl: 'Implementacja techniczna', nl: 'Technische implementatie' },
+    audioq_technical_desc: { en: 'The plugin utilizes JUCE\'s AudioProcessorValueTreeState for complete parameter automation, supporting up to +10dB gain control, tempo ranges from 20-300 BPM, and comprehensive filter controls from 20Hz to 20kHz. The custom tremolo effect uses manual LFO calculation with per-sample amplitude modulation, while the granular mode employs automatic region selection with crossfade transitions. All DSP processing includes denormal protection and thread-safe buffer access through critical sections.', pl: 'Wtyczka wykorzystuje AudioProcessorValueTreeState JUCE do pełnej automatyzacji parametrów, obsługując kontrolę wzmocnienia do +10dB, zakresy tempa od 20-300 BPM i kompleksowe kontrole filtrów od 20Hz do 20kHz. Niestandardowy efekt tremolo używa ręcznego obliczania LFO z modulacją amplitudy na próbkę, podczas gdy tryb granularny wykorzystuje automatyczny wybór regionów z przejściami crossfade. Wszystkie przetwarzanie DSP obejmuje ochronę przed denormalizacją i bezpieczny dostęp do bufora przez sekcje krytyczne.', nl: 'De plugin maakt gebruik van JUCE\'s AudioProcessorValueTreeState voor volledige parameter-automatisering, met ondersteuning voor tot +10dB gain-controle, tempo-bereiken van 20-300 BPM, en uitgebreide filtercontroles van 20Hz tot 20kHz. Het aangepaste tremolo-effect gebruikt handmatige LFO-berekening met per-sample amplitude-modulatie, terwijl de granulaire modus automatische regioselectie gebruikt met crossfade-overgangen. Alle DSP-verwerking omvat denormal bescherming en thread-safe buffertoegang door kritieke secties.' },
+    audioq_showcase: { en: 'Showcase Video', pl: 'Wideo pokazowe', nl: 'Showcase Video' },
+    audioq_gallery: { en: 'Interface Gallery', pl: 'Galeria interfejsu', nl: 'Interface Galerij' },
+    audioq_back: { en: 'Back to Projects', pl: 'Powrót do projektów', nl: 'Terug naar projecten' }
   };
 
   // Expose minimal public i18n for other scripts (read-only)
@@ -1395,6 +1417,13 @@ document.addEventListener('DOMContentLoaded', function() {
           gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
           showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' }
         },
+        audioq: {
+          title: { en:'AudioQ — Audio Plugin Development', pl:'AudioQ — Rozwój wtyczek audio', nl:'AudioQ — Audio Plugin Ontwikkeling' },
+          lead: { en:'JUCE-based audio sampler with granular synthesis, custom DSP effects, and intuitive drag & drop interface.', pl:'Sampler audio oparty na JUCE z syntezą granularną, niestandardowymi efektami DSP i intuicyjnym interfejsem przeciągnij i upuść.', nl:'JUCE-gebaseerde audiosampler met granulaire synthese, aangepaste DSP-effecten en intuïtieve drag & drop-interface.' },
+          overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
+          gallery: { en:'Interface Gallery', pl:'Galeria interfejsu', nl:'Interface Galerij' },
+          showcase: { en:'Showcase Video', pl:'Wideo pokazowe', nl:'Showcase Video' }
+        },
         'not-today-darling': {
           title: { en:'Not Today, Darling! — Game Audio', pl:'Not Today, Darling! — Audio do gry', nl:'Not Today, Darling! — Game‑audio' },
           lead: { en:'Retro‑inspired audio design and implementation for a narrative game.', pl:'Retro‑inspirowany sound design i implementacja do gry narracyjnej.', nl:'Retro‑geïnspireerd sounddesign en implementatie voor een verhalende game.' },
@@ -1618,6 +1647,18 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       // Page <title>
       try { document.title = (lang==='pl'?'Interaktywny Design Muzyczny — Muzyka do gier — Igor Szuniewicz': lang==='nl'?'Interactief Muziekontwerp — Muziek voor games — Igor Szuniewicz':'Interactive Music Design — Music for Games — Igor Szuniewicz'); } catch(_){}
+    }
+
+    // AudioQ page translations
+    if (location.pathname.endsWith('/audioq.html') || /audioq\.html$/i.test(location.pathname)){
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[key]) {
+          el.textContent = I18N[key][lang];
+        }
+      });
+      // Page <title>
+      try { document.title = (lang==='pl'?'AudioQ — Rozwój wtyczek audio — Igor Szuniewicz': lang==='nl'?'AudioQ — Audio Plugin Ontwikkeling — Igor Szuniewicz':'AudioQ — Audio Plugin Development — Igor Szuniewicz'); } catch(_){}
     }
     // Contact page translations (current markup)
     if (location.pathname.endsWith('/contact.html') || /contact\.html$/i.test(location.pathname)){
