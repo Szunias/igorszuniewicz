@@ -111,6 +111,76 @@
       text-shadow: 0 0 30px rgba(24, 191, 239, 0.3);
       position: relative;
       z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3em;
+    }
+
+    /* AudioQ Brand Styling */
+    .audioq-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4em;
+    }
+
+    .brand-main {
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 800;
+      font-size: 1.3em;
+      letter-spacing: 3px;
+      background: linear-gradient(135deg, #18bfef 0%, #9a6cff 50%, #ff6ea9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: brandGlow 4s ease-in-out infinite;
+      position: relative;
+    }
+
+    .brand-main::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #18bfef, #ff6ea9);
+      border-radius: 2px;
+      opacity: 0.7;
+    }
+
+    .letter-q {
+      position: relative;
+      color: #ff6ea9 !important;
+      font-weight: 900;
+      text-shadow: 0 0 15px rgba(255, 110, 169, 0.6);
+      animation: letterPulse 3s ease-in-out infinite;
+      -webkit-text-fill-color: #ff6ea9 !important;
+      background: none !important;
+    }
+
+    .brand-tagline {
+      font-size: 0.38em;
+      font-weight: 500;
+      color: #c0c0c0;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      opacity: 0.9;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      text-shadow: none;
+    }
+
+    @keyframes brandGlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes letterPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.08); opacity: 0.85; }
     }
 
     header.major p {
@@ -178,27 +248,27 @@
 
     .demo-controls {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 4px;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 3px;
       margin: 1em 0;
       position: relative;
       z-index: 2;
       background: rgba(255, 255, 255, 0.02);
-      border-radius: 15px;
+      border-radius: 12px;
       overflow: hidden;
-      padding: 4px;
+      padding: 3px;
     }
 
     .control-section {
       background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(20, 20, 40, 0.8) 100%);
-      padding: 1em 0.8em;
+      padding: 0.8em 0.6em;
       backdrop-filter: blur(15px);
       transition: all 0.3s ease;
       position: relative;
-      border-radius: 12px;
+      border-radius: 10px;
       margin: 0;
       border: 1px solid rgba(24, 191, 239, 0.1);
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     .control-section:hover {
@@ -219,15 +289,15 @@
 
     .control-section h4 {
       color: #ffffff !important;
-      margin-bottom: 1.2em;
-      font-size: 0.95rem;
+      margin-bottom: 0.8em;
+      font-size: 0.85rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
       position: relative;
-      padding-bottom: 0.6em;
+      padding-bottom: 0.4em;
       text-align: center;
-      text-shadow: 0 0 10px rgba(24, 191, 239, 0.3);
+      text-shadow: 0 0 8px rgba(24, 191, 239, 0.3);
     }
 
     .control-section h4::after {
@@ -243,46 +313,97 @@
       box-shadow: 0 0 8px rgba(24, 191, 239, 0.4);
     }
 
-    .file-drop-zone {
-      border: 2px dashed rgba(24, 191, 239, 0.4);
-      border-radius: 20px;
-      padding: 3em 2em;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      margin-bottom: 2em;
-      background: linear-gradient(135deg, rgba(24, 191, 239, 0.03) 0%, rgba(154, 108, 255, 0.02) 100%);
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    .effect-indicators-bar {
+      display: flex;
+      gap: 0.5em;
+      margin-bottom: 1em;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    .file-drop-zone::before {
-      content: '📁';
-      font-size: 2.5em;
-      display: block;
-      margin-bottom: 0.5em;
-      opacity: 0.7;
+    .effect-badge {
+      background: rgba(255, 255, 255, 0.1);
+      color: #666;
+      padding: 0.3em 0.8em;
+      border-radius: 12px;
+      font-size: 0.7em;
+      font-weight: 700;
+      letter-spacing: 1px;
       transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .file-drop-zone:hover::before {
-      transform: scale(1.1);
-      opacity: 1;
+    .effect-badge.active {
+      background: linear-gradient(135deg, #18bfef, #9a6cff);
+      color: #000;
+      box-shadow: 0 3px 15px rgba(24, 191, 239, 0.4);
+      animation: badgePulse 2s ease-in-out infinite;
     }
 
-    .file-drop-zone:hover, .file-drop-zone.dragover {
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .file-drop-zone-integrated {
+      position: relative;
+      cursor: pointer;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+
+    .drop-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.15) 0%, rgba(154, 108, 255, 0.1) 100%);
+      border: 2px dashed rgba(24, 191, 239, 0.4);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(15px);
+      z-index: 10;
+    }
+
+    .drop-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .drop-overlay:hover, .drop-overlay.dragover {
       border-color: #18bfef;
-      background: rgba(24, 191, 239, 0.1);
-      transform: scale(1.02);
-      box-shadow: 0 10px 30px rgba(24, 191, 239, 0.2);
+      background: rgba(24, 191, 239, 0.2);
+      transform: scale(1.01);
+      box-shadow: 0 10px 30px rgba(24, 191, 239, 0.3);
     }
 
-    .file-drop-zone p {
-      color: #c0c0c0 !important;
-      margin: 0;
-      font-weight: 500;
+    .drop-content {
+      text-align: center;
+    }
+
+    .drop-content p {
+      color: #e0e0e0 !important;
+      margin: 0.2em 0;
+      font-weight: 600;
+    }
+
+    .drop-hint {
+      font-size: 0.8em !important;
+      opacity: 0.7;
+    }
+
+    .audio-controls-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1em;
+      gap: 1em;
+      flex-wrap: wrap;
     }
 
     .audio-file-section {
@@ -407,7 +528,7 @@
     }
 
     .slider-group {
-      margin-bottom: 0.8em;
+      margin-bottom: 0.6em;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -417,32 +538,32 @@
 
     .slider-group label {
       color: #e0e0e0 !important;
-      margin-bottom: 1em;
-      font-size: 0.9em;
+      margin-bottom: 0.6em;
+      font-size: 0.75em;
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
     }
 
     .knob-container {
       position: relative;
-      width: 50px;
-      height: 50px;
-      margin: 0 auto 0.6em auto;
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 0.4em auto;
     }
 
     .knob {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(40, 40, 60, 0.9) 100%);
       border: 2px solid rgba(24, 191, 239, 0.3);
       cursor: pointer;
       position: relative;
       box-shadow:
-        0 4px 10px rgba(0, 0, 0, 0.4),
-        inset 0 1px 3px rgba(255, 255, 255, 0.1),
-        inset 0 -1px 3px rgba(0, 0, 0, 0.3);
+        0 3px 8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.1),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.3);
       transition: all 0.3s ease;
       user-select: none;
     }
@@ -461,8 +582,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 36px;
-      height: 36px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       background: linear-gradient(135deg, rgba(24, 191, 239, 0.1) 0%, rgba(154, 108, 255, 0.1) 100%);
       transform: translate(-50%, -50%);
@@ -471,15 +592,15 @@
 
     .knob-pointer {
       position: absolute;
-      top: 4px;
+      top: 3px;
       left: 50%;
       width: 2px;
-      height: 16px;
+      height: 12px;
       background: linear-gradient(135deg, #18bfef, #9a6cff);
       border-radius: 1px;
-      transform-origin: 50% 21px;
+      transform-origin: 50% 17px;
       transition: all 0.1s ease;
-      box-shadow: 0 1px 5px rgba(24, 191, 239, 0.5);
+      box-shadow: 0 1px 4px rgba(24, 191, 239, 0.5);
     }
 
     .knob-value {
@@ -832,6 +953,16 @@
         font-size: 2em !important;
       }
 
+      .brand-main {
+        font-size: 1.1em;
+        letter-spacing: 2px;
+      }
+
+      .brand-tagline {
+        font-size: 0.32em;
+        letter-spacing: 2px;
+      }
+
       .content-section {
         margin: 2em 1em;
         padding: 2em;
@@ -856,24 +987,24 @@
       }
 
       .knob-container {
-        width: 45px;
-        height: 45px;
+        width: 35px;
+        height: 35px;
       }
 
       .knob {
-        width: 45px;
-        height: 45px;
+        width: 35px;
+        height: 35px;
       }
 
       .knob::before {
-        width: 32px;
-        height: 32px;
+        width: 25px;
+        height: 25px;
       }
 
       .knob-pointer {
-        height: 14px;
-        transform-origin: 50% 18px;
-        top: 4px;
+        height: 10px;
+        transform-origin: 50% 15px;
+        top: 3px;
       }
 
       .knob-value {
@@ -1052,32 +1183,45 @@
     <div id="main">
       <section class="post" data-reveal>
         <header class="major">
-          <h2 data-i18n="audioq_title">AudioQ — Audio Plugin Development</h2>
-          <p id="bgWhite" data-i18n="audioq_lead">JUCE-based audio sampler with granular synthesis, custom DSP effects, and intuitive drag & drop interface.</p>
+          <h2>
+            <span class="audioq-brand">
+              <span class="brand-main">Audio<span class="letter-q">Q</span></span>
+              <span class="brand-tagline">Professional Audio Engine</span>
+            </span>
+          </h2>
+          <p id="bgWhite">Advanced real-time audio processing with granular synthesis, intelligent DSP effects, and seamless workflow integration</p>
         </header>
 
         <h3 id="bgColor" data-i18n="audioq_demo" style="margin-bottom: 0.5em;">🎛️ Interactive Demo</h3>
         <p style="color: #a0a0a0; margin-bottom: 2em; font-style: italic;">Experience the full AudioQ plugin directly in your browser with real-time audio processing</p>
         <div id="audioq-demo">
           <div class="waveform-display">
-            <canvas id="waveform-canvas" width="800" height="200"></canvas>
-          </div>
-
-          <div class="audio-file-section">
-            <div class="file-drop-zone" id="file-drop">
-              <p>Drop an audio file here or click to browse</p>
+            <div class="effect-indicators-bar">
+              <span class="effect-badge" id="filter-badge">FILTER</span>
+              <span class="effect-badge" id="compressor-badge">COMP</span>
+              <span class="effect-badge" id="tremolo-badge">TREM</span>
+            </div>
+            <div class="file-drop-zone-integrated" id="file-drop">
+              <canvas id="waveform-canvas" width="800" height="200"></canvas>
+              <div class="drop-overlay" id="drop-overlay">
+                <div class="drop-content">
+                  <p>📁 Drop an audio file here or click to browse</p>
+                  <p class="drop-hint">WAV, MP3, AIFF supported</p>
+                </div>
+              </div>
               <input type="file" id="file-input" accept="audio/*" style="display: none;">
             </div>
-            <div class="sample-controls">
-              <p style="color: #a0a0a0; font-size: 0.9em; margin-bottom: 1em;">Or try with a sample:</p>
-              <button id="load-sample-btn" class="sample-button">
-                🎵 Load Gnosienne Sample
-              </button>
-            </div>
-            <div class="transport-controls">
-              <button id="play-btn" disabled>Play</button>
-              <button id="stop-btn" disabled>Stop</button>
-              <button id="loop-btn" disabled>Loop</button>
+            <div class="audio-controls-section">
+              <div class="sample-controls">
+                <button id="load-sample-btn" class="sample-button">
+                  🎵 Load Sample
+                </button>
+              </div>
+              <div class="transport-controls">
+                <button id="play-btn" disabled>Play</button>
+                <button id="stop-btn" disabled>Stop</button>
+                <button id="loop-btn" disabled>Loop</button>
+              </div>
             </div>
           </div>
 
@@ -1390,18 +1534,19 @@
         // File handling
         const fileInput = document.getElementById('file-input');
         const fileDropZone = document.getElementById('file-drop');
+        const dropOverlay = document.getElementById('drop-overlay');
 
         fileDropZone.addEventListener('click', () => fileInput.click());
         fileDropZone.addEventListener('dragover', (e) => {
           e.preventDefault();
-          fileDropZone.classList.add('dragover');
+          dropOverlay.classList.add('dragover');
         });
         fileDropZone.addEventListener('dragleave', () => {
-          fileDropZone.classList.remove('dragover');
+          dropOverlay.classList.remove('dragover');
         });
         fileDropZone.addEventListener('drop', (e) => {
           e.preventDefault();
-          fileDropZone.classList.remove('dragover');
+          dropOverlay.classList.remove('dragover');
           const files = e.dataTransfer.files;
           if (files.length > 0) this.loadAudioFile(files[0]);
         });
@@ -1655,7 +1800,19 @@
           this.drawWaveform();
           this.enableControls();
 
-          document.getElementById('file-drop').innerHTML = `<p>Loaded: ${file.name}</p>`;
+          // Hide drop overlay and show filename
+          const dropOverlay = document.getElementById('drop-overlay');
+          dropOverlay.classList.add('hidden');
+
+          // Add filename indicator if not exists
+          let filenameIndicator = document.getElementById('filename-indicator');
+          if (!filenameIndicator) {
+            filenameIndicator = document.createElement('div');
+            filenameIndicator.id = 'filename-indicator';
+            filenameIndicator.style.cssText = 'position: absolute; top: 5px; left: 10px; background: rgba(0,0,0,0.7); color: #18bfef; padding: 0.3em 0.8em; border-radius: 8px; font-size: 0.8em; z-index: 5; font-weight: 600;';
+            document.querySelector('.file-drop-zone-integrated').appendChild(filenameIndicator);
+          }
+          filenameIndicator.textContent = `📄 ${file.name}`;
 
           console.log('Audio file loaded successfully');
         } catch (error) {
@@ -1705,8 +1862,21 @@
           this.drawWaveform();
           this.enableControls();
 
-          document.getElementById('file-drop').innerHTML = `<p>Loaded: Gnosienne No. 1 (Sample)</p>`;
-          btn.textContent = '🎵 Load Gnosienne Sample';
+          // Hide drop overlay and show sample name
+          const dropOverlay = document.getElementById('drop-overlay');
+          dropOverlay.classList.add('hidden');
+
+          // Add filename indicator if not exists
+          let filenameIndicator = document.getElementById('filename-indicator');
+          if (!filenameIndicator) {
+            filenameIndicator = document.createElement('div');
+            filenameIndicator.id = 'filename-indicator';
+            filenameIndicator.style.cssText = 'position: absolute; top: 5px; left: 10px; background: rgba(0,0,0,0.7); color: #18bfef; padding: 0.3em 0.8em; border-radius: 8px; font-size: 0.8em; z-index: 5; font-weight: 600;';
+            document.querySelector('.file-drop-zone-integrated').appendChild(filenameIndicator);
+          }
+          filenameIndicator.textContent = `🎵 Gnosienne No. 1 (Sample)`;
+
+          btn.textContent = '🎵 Load Sample';
           btn.disabled = false;
 
           console.log('Sample audio loaded successfully from:', loadedUrl);
@@ -1882,29 +2052,58 @@
       }
 
       updateEffectIndicators() {
+        const filterBadge = document.getElementById('filter-badge');
+        const compressorBadge = document.getElementById('compressor-badge');
+        const tremoloBadge = document.getElementById('tremolo-badge');
+
+        // Update filter badge
+        if (this.filtersEnabled) {
+          filterBadge.classList.add('active');
+        } else {
+          filterBadge.classList.remove('active');
+        }
+
+        // Update compressor badge
+        if (this.compressorEnabled) {
+          compressorBadge.classList.add('active');
+        } else {
+          compressorBadge.classList.remove('active');
+        }
+
+        // Update tremolo badge
+        if (this.tremoloEnabled) {
+          tremoloBadge.classList.add('active');
+        } else {
+          tremoloBadge.classList.remove('active');
+        }
+
+        // Also update the old indicators for backward compatibility
         const filterIndicator = document.getElementById('filter-indicator');
         const compressorIndicator = document.getElementById('compressor-indicator');
         const tremoloIndicator = document.getElementById('tremolo-indicator');
 
-        // Update filter indicator
-        if (this.filtersEnabled) {
-          filterIndicator.classList.add('active');
-        } else {
-          filterIndicator.classList.remove('active');
+        if (filterIndicator) {
+          if (this.filtersEnabled) {
+            filterIndicator.classList.add('active');
+          } else {
+            filterIndicator.classList.remove('active');
+          }
         }
 
-        // Update compressor indicator
-        if (this.compressorEnabled) {
-          compressorIndicator.classList.add('active');
-        } else {
-          compressorIndicator.classList.remove('active');
+        if (compressorIndicator) {
+          if (this.compressorEnabled) {
+            compressorIndicator.classList.add('active');
+          } else {
+            compressorIndicator.classList.remove('active');
+          }
         }
 
-        // Update tremolo indicator
-        if (this.tremoloEnabled) {
-          tremoloIndicator.classList.add('active');
-        } else {
-          tremoloIndicator.classList.remove('active');
+        if (tremoloIndicator) {
+          if (this.tremoloEnabled) {
+            tremoloIndicator.classList.add('active');
+          } else {
+            tremoloIndicator.classList.remove('active');
+          }
         }
       }
 

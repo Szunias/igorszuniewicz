@@ -1419,8 +1419,8 @@ document.addEventListener('DOMContentLoaded', function() {
           showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' }
         },
         audioq: {
-          title: { en:'AudioQ — Audio Plugin Development', pl:'AudioQ — Rozwój wtyczek audio', nl:'AudioQ — Audio Plugin Ontwikkeling' },
-          lead: { en:'JUCE-based audio sampler with granular synthesis, custom DSP effects, and intuitive drag & drop interface.', pl:'Sampler audio oparty na JUCE z syntezą granularną, niestandardowymi efektami DSP i intuicyjnym interfejsem przeciągnij i upuść.', nl:'JUCE-gebaseerde audiosampler met granulaire synthese, aangepaste DSP-effecten en intuïtieve drag & drop-interface.' },
+          title: { en:'AudioQ Professional Audio Engine', pl:'AudioQ Profesjonalny Silnik Audio', nl:'AudioQ Professionele Audio Engine' },
+          lead: { en:'Advanced real-time audio processing with granular synthesis, intelligent DSP effects, and seamless workflow integration', pl:'Zaawansowane przetwarzanie audio w czasie rzeczywistym z syntezą granularną, inteligentnymi efektami DSP i płynną integracją workflow', nl:'Geavanceerde realtime audioverwerking met granulaire synthese, intelligente DSP-effecten en naadloze workflow-integratie' },
           overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
           gallery: { en:'Interface Gallery', pl:'Galeria interfejsu', nl:'Interface Galerij' },
           showcase: { en:'Showcase Video', pl:'Wideo pokazowe', nl:'Showcase Video' }
@@ -1478,7 +1478,10 @@ document.addEventListener('DOMContentLoaded', function() {
       const path = location.pathname.split('/').pop().replace('.html','');
       const M = P[path];
       if (M){
-        const h2 = document.querySelector('#main header.major h2'); if (h2) h2.textContent = M.title[lang] || M.title.en;
+        const h2 = document.querySelector('#main header.major h2');
+        if (h2 && !h2.querySelector('.audioq-brand')) {
+          h2.textContent = M.title[lang] || M.title.en;
+        }
         const lead = document.querySelector('#main header.major p'); if (lead) lead.textContent = M.lead[lang] || M.lead.en;
         const labels = Array.from(document.querySelectorAll('#main h3#bgColor'));
         const order = ['overview','showcase','gallery'];
