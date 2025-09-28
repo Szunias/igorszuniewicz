@@ -178,26 +178,27 @@
 
     .demo-controls {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1px;
-      margin: 0;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 4px;
+      margin: 1em 0;
       position: relative;
       z-index: 2;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 15px;
       overflow: hidden;
+      padding: 4px;
     }
 
     .control-section {
       background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(20, 20, 40, 0.8) 100%);
-      padding: 2.5em 2em;
+      padding: 1em 0.8em;
       backdrop-filter: blur(15px);
       transition: all 0.3s ease;
       position: relative;
-      border-radius: 20px;
-      margin: 8px;
+      border-radius: 12px;
+      margin: 0;
       border: 1px solid rgba(24, 191, 239, 0.1);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     }
 
     .control-section:hover {
@@ -218,13 +219,13 @@
 
     .control-section h4 {
       color: #ffffff !important;
-      margin-bottom: 2em;
-      font-size: 1.1rem;
+      margin-bottom: 1.2em;
+      font-size: 0.95rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       position: relative;
-      padding-bottom: 0.8em;
+      padding-bottom: 0.6em;
       text-align: center;
       text-shadow: 0 0 10px rgba(24, 191, 239, 0.3);
     }
@@ -284,6 +285,61 @@
       font-weight: 500;
     }
 
+    .audio-file-section {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(20, 20, 40, 0.8) 100%);
+      padding: 1.5em;
+      margin-bottom: 1em;
+      border-radius: 15px;
+      border: 1px solid rgba(24, 191, 239, 0.1);
+      backdrop-filter: blur(15px);
+    }
+
+    .sample-controls {
+      text-align: center;
+      margin-bottom: 1.5em;
+    }
+
+    .sample-button {
+      background: linear-gradient(135deg, rgba(80, 80, 100, 0.9) 0%, rgba(100, 100, 120, 0.9) 100%);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      color: #ffffff !important;
+      padding: 0.8em 1.5em;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 700;
+      font-size: 0.9em;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 250px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .sample-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .sample-button:hover::before {
+      left: 100%;
+    }
+
+    .sample-button:hover {
+      background: linear-gradient(135deg, rgba(154, 108, 255, 0.25) 0%, rgba(255, 110, 169, 0.25) 100%);
+      border-color: #9a6cff;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(154, 108, 255, 0.3);
+    }
+
     .transport-controls {
       display: flex;
       gap: 1em;
@@ -291,19 +347,19 @@
     }
 
     .transport-controls button, .mode-buttons button {
-      background: linear-gradient(135deg, rgba(24, 191, 239, 0.15) 0%, rgba(154, 108, 255, 0.15) 100%);
-      border: 1px solid rgba(24, 191, 239, 0.4);
-      color: #e8e8e8;
+      background: linear-gradient(135deg, rgba(80, 80, 100, 0.9) 0%, rgba(100, 100, 120, 0.9) 100%);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      color: #ffffff !important;
       padding: 0.8em 1.5em;
       border-radius: 12px;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.9em;
       letter-spacing: 0.5px;
       position: relative;
       overflow: hidden;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     }
 
     .transport-controls button::before, .mode-buttons button::before {
@@ -351,7 +407,7 @@
     }
 
     .slider-group {
-      margin-bottom: 2em;
+      margin-bottom: 0.8em;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -370,23 +426,23 @@
 
     .knob-container {
       position: relative;
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 1em auto;
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 0.6em auto;
     }
 
     .knob {
-      width: 80px;
-      height: 80px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(40, 40, 60, 0.9) 100%);
-      border: 3px solid rgba(24, 191, 239, 0.3);
+      border: 2px solid rgba(24, 191, 239, 0.3);
       cursor: pointer;
       position: relative;
       box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.4),
-        inset 0 2px 4px rgba(255, 255, 255, 0.1),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+        0 4px 10px rgba(0, 0, 0, 0.4),
+        inset 0 1px 3px rgba(255, 255, 255, 0.1),
+        inset 0 -1px 3px rgba(0, 0, 0, 0.3);
       transition: all 0.3s ease;
       user-select: none;
     }
@@ -405,8 +461,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 60px;
-      height: 60px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: linear-gradient(135deg, rgba(24, 191, 239, 0.1) 0%, rgba(154, 108, 255, 0.1) 100%);
       transform: translate(-50%, -50%);
@@ -415,59 +471,100 @@
 
     .knob-pointer {
       position: absolute;
-      top: 8px;
+      top: 4px;
       left: 50%;
-      width: 3px;
-      height: 25px;
+      width: 2px;
+      height: 16px;
       background: linear-gradient(135deg, #18bfef, #9a6cff);
-      border-radius: 2px;
-      transform-origin: 50% 32px;
+      border-radius: 1px;
+      transform-origin: 50% 21px;
       transition: all 0.1s ease;
-      box-shadow: 0 2px 8px rgba(24, 191, 239, 0.5);
+      box-shadow: 0 1px 5px rgba(24, 191, 239, 0.5);
     }
 
     .knob-value {
       background: rgba(24, 191, 239, 0.1);
-      padding: 0.4em 1em;
-      border-radius: 12px;
+      padding: 0.2em 0.6em;
+      border-radius: 8px;
       border: 1px solid rgba(24, 191, 239, 0.3);
       font-family: 'Courier New', monospace;
       font-weight: 600;
       color: #18bfef !important;
-      font-size: 0.85em;
-      min-width: 80px;
+      font-size: 0.7em;
+      min-width: 55px;
       backdrop-filter: blur(10px);
     }
 
-    .knob-ticks {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
+    .effect-indicator {
+      color: #18bfef;
+      font-size: 1.2em;
+      margin-left: 0.5em;
+      opacity: 0.3;
+      transition: all 0.3s ease;
     }
 
-    .knob-tick {
-      position: absolute;
-      width: 2px;
-      height: 8px;
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 1px;
-      transform-origin: 50% 40px;
-      top: 6px;
-      left: 50%;
-      transform-origin: 50% 34px;
-      margin-left: -1px;
+    .effect-indicator.active {
+      opacity: 1;
+      animation: pulse 1.5s ease-in-out infinite;
     }
 
-    .knob-tick.major {
-      height: 12px;
-      background: rgba(24, 191, 239, 0.6);
-      width: 3px;
-      margin-left: -1.5px;
-      top: 4px;
-      transform-origin: 50% 36px;
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    .effect-toggle {
+      margin-bottom: 1em;
+      text-align: center;
+    }
+
+    .toggle-switch {
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      gap: 0.8em;
+    }
+
+    .toggle-switch input {
+      display: none;
+    }
+
+    .toggle-slider {
+      width: 50px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      position: relative;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ffffff;
+      top: 2px;
+      left: 3px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .toggle-switch input:checked + .toggle-slider {
+      background: linear-gradient(135deg, #18bfef, #9a6cff);
+      border-color: #18bfef;
+    }
+
+    .toggle-switch input:checked + .toggle-slider::before {
+      left: 28px;
+    }
+
+    .toggle-label {
+      color: #e0e0e0;
+      font-size: 0.85em;
+      font-weight: 600;
     }
 
     /* Hide original sliders */
@@ -503,15 +600,15 @@
 
     .waveform-display {
       background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 40, 0.9) 100%);
-      border-radius: 25px;
-      padding: 2.5em;
-      margin: 2em 1em;
+      border-radius: 20px;
+      padding: 1.5em;
+      margin-bottom: 1em;
       text-align: center;
       border: 1px solid rgba(24, 191, 239, 0.2);
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(20px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
     .waveform-display::before {
@@ -746,32 +843,43 @@
 
       .demo-controls {
         grid-template-columns: 1fr;
-        gap: 8px;
+        gap: 4px;
       }
 
       .control-section {
-        margin: 4px;
-        padding: 2em 1.5em;
+        margin: 0;
+        padding: 1em 0.8em;
+      }
+
+      .audio-file-section {
+        padding: 1em;
       }
 
       .knob-container {
-        width: 70px;
-        height: 70px;
+        width: 45px;
+        height: 45px;
       }
 
       .knob {
-        width: 70px;
-        height: 70px;
+        width: 45px;
+        height: 45px;
       }
 
       .knob::before {
-        width: 50px;
-        height: 50px;
+        width: 32px;
+        height: 32px;
       }
 
       .knob-pointer {
-        height: 20px;
-        transform-origin: 50% 25px;
+        height: 14px;
+        transform-origin: 50% 18px;
+        top: 4px;
+      }
+
+      .knob-value {
+        font-size: 0.7em;
+        min-width: 50px;
+        padding: 0.2em 0.5em;
       }
 
       .transport-controls, .mode-buttons {
@@ -951,35 +1059,36 @@
         <h3 id="bgColor" data-i18n="audioq_demo" style="margin-bottom: 0.5em;">🎛️ Interactive Demo</h3>
         <p style="color: #a0a0a0; margin-bottom: 2em; font-style: italic;">Experience the full AudioQ plugin directly in your browser with real-time audio processing</p>
         <div id="audioq-demo">
-          <div class="demo-controls">
-            <div class="control-section">
-              <h4>Audio File</h4>
-              <div class="file-drop-zone" id="file-drop">
-                <p>Drop an audio file here or click to browse</p>
-                <input type="file" id="file-input" accept="audio/*" style="display: none;">
-              </div>
-              <div class="transport-controls">
-                <button id="play-btn" disabled>Play</button>
-                <button id="stop-btn" disabled>Stop</button>
-                <button id="loop-btn" disabled>Loop</button>
-              </div>
+          <div class="waveform-display">
+            <canvas id="waveform-canvas" width="800" height="200"></canvas>
+          </div>
+
+          <div class="audio-file-section">
+            <div class="file-drop-zone" id="file-drop">
+              <p>Drop an audio file here or click to browse</p>
+              <input type="file" id="file-input" accept="audio/*" style="display: none;">
             </div>
+            <div class="sample-controls">
+              <p style="color: #a0a0a0; font-size: 0.9em; margin-bottom: 1em;">Or try with a sample:</p>
+              <button id="load-sample-btn" class="sample-button">
+                🎵 Load Gnosienne Sample
+              </button>
+            </div>
+            <div class="transport-controls">
+              <button id="play-btn" disabled>Play</button>
+              <button id="stop-btn" disabled>Stop</button>
+              <button id="loop-btn" disabled>Loop</button>
+            </div>
+          </div>
+
+          <div class="demo-controls">
 
             <div class="control-section">
-              <h4>Main Controls</h4>
+              <h4>Controls</h4>
               <div class="slider-group">
                 <label>Gain</label>
                 <div class="knob-container">
                   <div class="knob" data-knob="gain">
-                    <div class="knob-ticks">
-                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
-                    </div>
                     <div class="knob-pointer" id="gain-pointer"></div>
                   </div>
                 </div>
@@ -990,15 +1099,6 @@
                 <label>Tempo</label>
                 <div class="knob-container">
                   <div class="knob" data-knob="tempo">
-                    <div class="knob-ticks">
-                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
-                    </div>
                     <div class="knob-pointer" id="tempo-pointer"></div>
                   </div>
                 </div>
@@ -1008,20 +1108,18 @@
             </div>
 
             <div class="control-section">
-              <h4>Filters</h4>
+              <h4>Filters <span class="effect-indicator" id="filter-indicator">•</span></h4>
+              <div class="effect-toggle">
+                <label class="toggle-switch">
+                  <input type="checkbox" id="filter-enable" checked>
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-label">Enable</span>
+                </label>
+              </div>
               <div class="slider-group">
                 <label>Low Pass</label>
                 <div class="knob-container">
                   <div class="knob" data-knob="lpf">
-                    <div class="knob-ticks">
-                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
-                    </div>
                     <div class="knob-pointer" id="lpf-pointer"></div>
                   </div>
                 </div>
@@ -1032,15 +1130,6 @@
                 <label>High Pass</label>
                 <div class="knob-container">
                   <div class="knob" data-knob="hpf">
-                    <div class="knob-ticks">
-                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
-                    </div>
                     <div class="knob-pointer" id="hpf-pointer"></div>
                   </div>
                 </div>
@@ -1050,20 +1139,18 @@
             </div>
 
             <div class="control-section">
-              <h4>Compressor</h4>
+              <h4>Compressor <span class="effect-indicator" id="compressor-indicator">•</span></h4>
+              <div class="effect-toggle">
+                <label class="toggle-switch">
+                  <input type="checkbox" id="compressor-enable" checked>
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-label">Enable</span>
+                </label>
+              </div>
               <div class="slider-group">
                 <label>Threshold</label>
                 <div class="knob-container">
                   <div class="knob" data-knob="comp-thresh">
-                    <div class="knob-ticks">
-                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
-                    </div>
                     <div class="knob-pointer" id="comp-thresh-pointer"></div>
                   </div>
                 </div>
@@ -1074,15 +1161,6 @@
                 <label>Ratio</label>
                 <div class="knob-container">
                   <div class="knob" data-knob="comp-ratio">
-                    <div class="knob-ticks">
-                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
-                    </div>
                     <div class="knob-pointer" id="comp-ratio-pointer"></div>
                   </div>
                 </div>
@@ -1093,15 +1171,6 @@
                 <label>Attack</label>
                 <div class="knob-container">
                   <div class="knob" data-knob="comp-attack">
-                    <div class="knob-ticks">
-                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
-                    </div>
                     <div class="knob-pointer" id="comp-attack-pointer"></div>
                   </div>
                 </div>
@@ -1112,15 +1181,6 @@
                 <label>Release</label>
                 <div class="knob-container">
                   <div class="knob" data-knob="comp-release">
-                    <div class="knob-ticks">
-                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
-                    </div>
                     <div class="knob-pointer" id="comp-release-pointer"></div>
                   </div>
                 </div>
@@ -1130,23 +1190,18 @@
             </div>
 
             <div class="control-section">
-              <h4>Tremolo</h4>
-              <div class="checkbox-group">
-                <label><input type="checkbox" id="tremolo-enable"> Enable Tremolo</label>
+              <h4>Tremolo <span class="effect-indicator" id="tremolo-indicator">•</span></h4>
+              <div class="effect-toggle">
+                <label class="toggle-switch">
+                  <input type="checkbox" id="tremolo-enable">
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-label">Enable</span>
+                </label>
               </div>
               <div class="slider-group">
                 <label>Rate</label>
                 <div class="knob-container">
                   <div class="knob" data-knob="tremolo-rate">
-                    <div class="knob-ticks">
-                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
-                    </div>
                     <div class="knob-pointer" id="tremolo-rate-pointer"></div>
                   </div>
                 </div>
@@ -1157,15 +1212,6 @@
                 <label>Depth</label>
                 <div class="knob-container">
                   <div class="knob" data-knob="tremolo-depth">
-                    <div class="knob-ticks">
-                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
-                    </div>
                     <div class="knob-pointer" id="tremolo-depth-pointer"></div>
                   </div>
                 </div>
@@ -1185,15 +1231,6 @@
                 <label>Grain Size</label>
                 <div class="knob-container">
                   <div class="knob" data-knob="grain-size">
-                    <div class="knob-ticks">
-                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
-                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
-                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
-                    </div>
                     <div class="knob-pointer" id="grain-size-pointer"></div>
                   </div>
                 </div>
@@ -1201,10 +1238,6 @@
                 <input type="range" id="grain-size-slider" min="0.05" max="0.5" step="0.01" value="0.1">
               </div>
             </div>
-          </div>
-
-          <div class="waveform-display">
-            <canvas id="waveform-canvas" width="800" height="200"></canvas>
           </div>
 
           <div class="volume-warning" id="volume-warning" style="display: none;">
@@ -1307,6 +1340,9 @@
         this.loopEnd = 1;
         this.grainSize = 0.1;
         this.nextGrainTime = 0;
+        this.selectionStart = null;
+        this.selectionEnd = null;
+        this.isDraggingSelection = false;
 
         this.initializeAudio();
         this.setupEventListeners();
@@ -1389,37 +1425,44 @@
         }, ' BPM');
 
         this.setupSlider('lpf-slider', 'lpf-value', (value) => {
-          this.lpFilter.frequency.value = parseFloat(value);
+          if (this.filtersEnabled) {
+            this.lpFilter.frequency.value = parseFloat(value);
+          }
         }, ' Hz');
 
         this.setupSlider('hpf-slider', 'hpf-value', (value) => {
-          this.hpFilter.frequency.value = parseFloat(value);
+          if (this.filtersEnabled) {
+            this.hpFilter.frequency.value = parseFloat(value);
+          }
         }, ' Hz');
 
         // Compressor controls
         this.setupSlider('comp-thresh-slider', 'comp-thresh-value', (value) => {
-          this.compressor.threshold.value = parseFloat(value);
+          if (this.compressorEnabled) {
+            this.compressor.threshold.value = parseFloat(value);
+          }
         }, ' dB');
 
         this.setupSlider('comp-ratio-slider', 'comp-ratio-value', (value) => {
-          this.compressor.ratio.value = parseFloat(value);
+          if (this.compressorEnabled) {
+            this.compressor.ratio.value = parseFloat(value);
+          }
         }, ':1');
 
         this.setupSlider('comp-attack-slider', 'comp-attack-value', (value) => {
-          this.compressor.attack.value = parseFloat(value) / 1000;
+          if (this.compressorEnabled) {
+            this.compressor.attack.value = parseFloat(value) / 1000;
+          }
         }, ' ms');
 
         this.setupSlider('comp-release-slider', 'comp-release-value', (value) => {
-          this.compressor.release.value = parseFloat(value) / 1000;
+          if (this.compressorEnabled) {
+            this.compressor.release.value = parseFloat(value) / 1000;
+          }
         }, ' ms');
 
-        // Tremolo controls
-        document.getElementById('tremolo-enable').addEventListener('change', (e) => {
-          this.tremoloEnabled = e.target.checked;
-          if (!this.tremoloEnabled) {
-            this.tremoloGain.gain.value = 1.0;
-          }
-        });
+        // Effect toggles and indicators
+        this.setupEffectToggles();
 
         this.setupSlider('tremolo-rate-slider', 'tremolo-rate-value', () => {}, ' Hz');
         this.setupSlider('tremolo-depth-slider', 'tremolo-depth-value', () => {});
@@ -1436,6 +1479,11 @@
         // Volume warning
         document.getElementById('continue-btn').addEventListener('click', () => {
           document.getElementById('volume-warning').style.display = 'none';
+        });
+
+        // Sample button
+        document.getElementById('load-sample-btn').addEventListener('click', () => {
+          this.loadSampleAudio();
         });
 
         // Start tremolo animation if enabled
@@ -1476,25 +1524,29 @@
           };
 
           const updateSliderFromAngle = (angle) => {
-            // Map angle (0-270 degrees) to slider range
+            // Map angle (-135 to +135 degrees) to slider range
             let normalizedAngle = angle;
-            if (normalizedAngle > 270) normalizedAngle -= 360;
-            if (normalizedAngle < -90) normalizedAngle = -90;
-            if (normalizedAngle > 180) normalizedAngle = 180;
+
+            // Normalize angle to -135 to +135 range
+            if (normalizedAngle > 180) normalizedAngle -= 360;
+            if (normalizedAngle < -180) normalizedAngle += 360;
+
+            // Clamp to valid range
+            normalizedAngle = Math.max(-135, Math.min(135, normalizedAngle));
 
             // Convert to 0-1 range
             const progress = (normalizedAngle + 135) / 270;
-            const clampedProgress = Math.max(0, Math.min(1, progress));
 
             const min = parseFloat(slider.min);
             const max = parseFloat(slider.max);
             const step = parseFloat(slider.step);
 
-            let value = min + (max - min) * clampedProgress;
+            let value = min + (max - min) * progress;
 
             // Round to step
             if (step) {
               value = Math.round(value / step) * step;
+              value = Math.max(min, Math.min(max, value));
             }
 
             slider.value = value;
@@ -1612,6 +1664,68 @@
         }
       }
 
+      async loadSampleAudio() {
+        try {
+          // Load the Gnosienne sample from the music catalog - try multiple paths
+          const possibleUrls = [
+            '../assets/audio/tracks/gnosienne1.wav',
+            'assets/audio/tracks/gnosienne1.wav',
+            '/assets/audio/tracks/gnosienne1.wav'
+          ];
+
+          const btn = document.getElementById('load-sample-btn');
+          btn.textContent = 'Loading...';
+          btn.disabled = true;
+
+          let audioBuffer = null;
+          let loadedUrl = null;
+
+          for (const sampleUrl of possibleUrls) {
+            try {
+              console.log('Trying to load:', sampleUrl);
+              const response = await fetch(sampleUrl);
+
+              if (response.ok) {
+                const arrayBuffer = await response.arrayBuffer();
+                audioBuffer = await this.audioContext.decodeAudioData(arrayBuffer);
+                loadedUrl = sampleUrl;
+                break;
+              }
+            } catch (e) {
+              console.log('Failed to load from:', sampleUrl, e);
+              continue;
+            }
+          }
+
+          if (!audioBuffer) {
+            throw new Error('Could not load sample from any location');
+          }
+
+          this.audioBuffer = audioBuffer;
+          this.drawWaveform();
+          this.enableControls();
+
+          document.getElementById('file-drop').innerHTML = `<p>Loaded: Gnosienne No. 1 (Sample)</p>`;
+          btn.textContent = '🎵 Load Gnosienne Sample';
+          btn.disabled = false;
+
+          console.log('Sample audio loaded successfully from:', loadedUrl);
+        } catch (error) {
+          console.error('Failed to load sample audio:', error);
+
+          const btn = document.getElementById('load-sample-btn');
+          btn.textContent = '❌ Sample not found';
+          btn.disabled = false;
+
+          // Reset button text after 3 seconds
+          setTimeout(() => {
+            btn.textContent = '🎵 Load Gnosienne Sample';
+          }, 3000);
+
+          console.log('Sample loading failed. Make sure the gnosienne1.wav file exists in assets/audio/tracks/');
+        }
+      }
+
       drawWaveform() {
         const canvas = document.getElementById('waveform-canvas');
         const ctx = canvas.getContext('2d');
@@ -1619,9 +1733,8 @@
         const width = canvas.width;
         const height = canvas.height;
 
-        ctx.clearRect(0, 0, width, height);
-        ctx.fillStyle = '#18bfef';
-
+        // Store waveform data for real-time drawing
+        this.waveformData = [];
         const samples = data.length;
         const samplesPerPixel = samples / width;
 
@@ -1635,11 +1748,338 @@
             if (data[i] > max) max = data[i];
           }
 
+          this.waveformData.push({ min, max });
+        }
+
+        this.drawWaveformWithProgress();
+        this.startWaveformAnimation();
+        this.setupWaveformInteraction();
+        this.updateEffectIndicators();
+      }
+
+      drawWaveformWithProgress() {
+        const canvas = document.getElementById('waveform-canvas');
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+
+        ctx.clearRect(0, 0, width, height);
+
+        if (!this.waveformData) return;
+
+        // Calculate progress position
+        const progress = this.sourceNode && this.audioBuffer ?
+          (this.audioContext.currentTime - this.playStartTime) / this.audioBuffer.duration : 0;
+        const progressX = Math.max(0, Math.min(width, progress * width));
+
+        // Draw waveform
+        for (let x = 0; x < this.waveformData.length; x++) {
+          const { min, max } = this.waveformData[x];
           const y1 = (1 + min) * height / 2;
           const y2 = (1 + max) * height / 2;
 
+          // Color based on progress and selection
+          if (this.selectionStart !== null && this.selectionEnd !== null) {
+            const selStart = Math.min(this.selectionStart, this.selectionEnd);
+            const selEnd = Math.max(this.selectionStart, this.selectionEnd);
+            if (x >= selStart && x <= selEnd) {
+              ctx.fillStyle = '#ff6ea9'; // Selected region - bright pink
+            } else if (x < progressX) {
+              ctx.fillStyle = '#18bfef'; // Played portion - bright blue
+            } else {
+              ctx.fillStyle = 'rgba(24, 191, 239, 0.3)'; // Unplayed portion - dim
+            }
+          } else if (x < progressX) {
+            ctx.fillStyle = '#18bfef'; // Played portion - bright blue
+          } else {
+            ctx.fillStyle = 'rgba(24, 191, 239, 0.3)'; // Unplayed portion - dim
+          }
+
           ctx.fillRect(x, y1, 1, y2 - y1);
         }
+
+        // Draw selection borders
+        if (this.selectionStart !== null && this.selectionEnd !== null) {
+          const selStart = Math.min(this.selectionStart, this.selectionEnd);
+          const selEnd = Math.max(this.selectionStart, this.selectionEnd);
+
+          ctx.strokeStyle = '#ff6ea9';
+          ctx.lineWidth = 3;
+          ctx.setLineDash([5, 5]);
+
+          // Left border
+          ctx.beginPath();
+          ctx.moveTo(selStart, 0);
+          ctx.lineTo(selStart, height);
+          ctx.stroke();
+
+          // Right border
+          ctx.beginPath();
+          ctx.moveTo(selEnd, 0);
+          ctx.lineTo(selEnd, height);
+          ctx.stroke();
+
+          ctx.setLineDash([]);
+        }
+
+        // Draw progress line
+        if (this.isPlaying && progressX > 0) {
+          ctx.strokeStyle = '#9a6cff';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(progressX, 0);
+          ctx.lineTo(progressX, height);
+          ctx.stroke();
+        }
+      }
+
+      startWaveformAnimation() {
+        const animate = () => {
+          if (this.isPlaying) {
+            this.drawWaveformWithProgress();
+          }
+          requestAnimationFrame(animate);
+        };
+        animate();
+      }
+
+      setupEffectToggles() {
+        // Filters toggle
+        document.getElementById('filter-enable').addEventListener('change', (e) => {
+          this.filtersEnabled = e.target.checked;
+          if (!this.filtersEnabled) {
+            // Bypass filters
+            this.lpFilter.frequency.value = 20000;
+            this.hpFilter.frequency.value = 20;
+          }
+          this.updateEffectIndicators();
+        });
+
+        // Compressor toggle
+        document.getElementById('compressor-enable').addEventListener('change', (e) => {
+          this.compressorEnabled = e.target.checked;
+          if (!this.compressorEnabled) {
+            // Bypass compressor
+            this.compressor.threshold.value = 0;
+            this.compressor.ratio.value = 1;
+          }
+          this.updateEffectIndicators();
+        });
+
+        // Tremolo toggle
+        document.getElementById('tremolo-enable').addEventListener('change', (e) => {
+          this.tremoloEnabled = e.target.checked;
+          if (!this.tremoloEnabled) {
+            this.tremoloGain.gain.value = 1.0;
+          }
+          this.updateEffectIndicators();
+        });
+
+        // Initialize states
+        this.filtersEnabled = true;
+        this.compressorEnabled = true;
+        this.tremoloEnabled = false;
+      }
+
+      updateEffectIndicators() {
+        const filterIndicator = document.getElementById('filter-indicator');
+        const compressorIndicator = document.getElementById('compressor-indicator');
+        const tremoloIndicator = document.getElementById('tremolo-indicator');
+
+        // Update filter indicator
+        if (this.filtersEnabled) {
+          filterIndicator.classList.add('active');
+        } else {
+          filterIndicator.classList.remove('active');
+        }
+
+        // Update compressor indicator
+        if (this.compressorEnabled) {
+          compressorIndicator.classList.add('active');
+        } else {
+          compressorIndicator.classList.remove('active');
+        }
+
+        // Update tremolo indicator
+        if (this.tremoloEnabled) {
+          tremoloIndicator.classList.add('active');
+        } else {
+          tremoloIndicator.classList.remove('active');
+        }
+      }
+
+      setupWaveformInteraction() {
+        const canvas = document.getElementById('waveform-canvas');
+        let isSelecting = false;
+
+        canvas.addEventListener('mousedown', (e) => {
+          const rect = canvas.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const canvasX = (x / rect.width) * canvas.width;
+
+          if (e.shiftKey) {
+            // Start selection
+            isSelecting = true;
+            this.selectionStart = canvasX;
+            this.selectionEnd = canvasX;
+            this.isDraggingSelection = true;
+          } else {
+            // Seek to position
+            if (this.audioBuffer) {
+              const progress = canvasX / canvas.width;
+              const seekTime = progress * this.audioBuffer.duration;
+              if (this.sourceNode) {
+                // Restart playback from new position
+                const wasPlaying = this.isPlaying;
+                this.stop();
+                if (wasPlaying) {
+                  this.currentSeekTime = seekTime;
+                  this.play();
+                }
+              }
+            }
+            // Clear selection
+            this.selectionStart = null;
+            this.selectionEnd = null;
+          }
+          this.drawWaveformWithProgress();
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+          if (isSelecting && this.isDraggingSelection) {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const canvasX = (x / rect.width) * canvas.width;
+            this.selectionEnd = canvasX;
+            this.drawWaveformWithProgress();
+          }
+        });
+
+        canvas.addEventListener('mouseup', () => {
+          isSelecting = false;
+          this.isDraggingSelection = false;
+
+          // Add export button if selection exists
+          if (this.selectionStart !== null && this.selectionEnd !== null) {
+            this.showExportButton();
+          }
+        });
+
+        // Add keyboard shortcut info
+        const waveformDisplay = document.querySelector('.waveform-display');
+        if (waveformDisplay && !waveformDisplay.querySelector('.waveform-help')) {
+          const helpText = document.createElement('div');
+          helpText.className = 'waveform-help';
+          helpText.innerHTML = '<small style="color: #888; position: absolute; bottom: 5px; right: 10px;">Click to seek • Shift+drag to select region for export</small>';
+          waveformDisplay.appendChild(helpText);
+        }
+      }
+
+      showExportButton() {
+        // Remove existing export button
+        const existing = document.getElementById('export-selection-btn');
+        if (existing) existing.remove();
+
+        const button = document.createElement('button');
+        button.id = 'export-selection-btn';
+        button.className = 'sample-button';
+        button.style.cssText = 'margin-top: 1em; max-width: 200px;';
+        button.innerHTML = '💾 Export Selection as MP3';
+        button.addEventListener('click', () => this.exportSelection());
+
+        const waveformDisplay = document.querySelector('.waveform-display');
+        waveformDisplay.appendChild(button);
+      }
+
+      async exportSelection() {
+        if (!this.audioBuffer || this.selectionStart === null || this.selectionEnd === null) return;
+
+        try {
+          const canvas = document.getElementById('waveform-canvas');
+          const startX = Math.min(this.selectionStart, this.selectionEnd);
+          const endX = Math.max(this.selectionStart, this.selectionEnd);
+
+          const startTime = (startX / canvas.width) * this.audioBuffer.duration;
+          const endTime = (endX / canvas.width) * this.audioBuffer.duration;
+          const duration = endTime - startTime;
+
+          // Create new buffer for selection
+          const sampleRate = this.audioBuffer.sampleRate;
+          const startSample = Math.floor(startTime * sampleRate);
+          const endSample = Math.floor(endTime * sampleRate);
+          const selectionLength = endSample - startSample;
+
+          const selectionBuffer = this.audioContext.createBuffer(
+            this.audioBuffer.numberOfChannels,
+            selectionLength,
+            sampleRate
+          );
+
+          // Copy audio data
+          for (let channel = 0; channel < this.audioBuffer.numberOfChannels; channel++) {
+            const channelData = this.audioBuffer.getChannelData(channel);
+            const selectionData = selectionBuffer.getChannelData(channel);
+            for (let i = 0; i < selectionLength; i++) {
+              selectionData[i] = channelData[startSample + i] || 0;
+            }
+          }
+
+          // Export as WAV first, then convert to MP3 using browser
+          this.exportAsWAV(selectionBuffer, `selection_${Date.now()}.wav`);
+
+        } catch (error) {
+          console.error('Export failed:', error);
+          alert('Export failed. Please try again.');
+        }
+      }
+
+      exportAsWAV(audioBuffer, filename) {
+        const length = audioBuffer.length;
+        const sampleRate = audioBuffer.sampleRate;
+        const channels = audioBuffer.numberOfChannels;
+
+        const buffer = new ArrayBuffer(44 + length * channels * 2);
+        const view = new DataView(buffer);
+
+        // WAV header
+        const writeString = (offset, string) => {
+          for (let i = 0; i < string.length; i++) {
+            view.setUint8(offset + i, string.charCodeAt(i));
+          }
+        };
+
+        writeString(0, 'RIFF');
+        view.setUint32(4, 36 + length * channels * 2, true);
+        writeString(8, 'WAVE');
+        writeString(12, 'fmt ');
+        view.setUint32(16, 16, true);
+        view.setUint16(20, 1, true);
+        view.setUint16(22, channels, true);
+        view.setUint32(24, sampleRate, true);
+        view.setUint32(28, sampleRate * channels * 2, true);
+        view.setUint16(32, channels * 2, true);
+        view.setUint16(34, 16, true);
+        writeString(36, 'data');
+        view.setUint32(40, length * channels * 2, true);
+
+        // Convert audio data
+        let offset = 44;
+        for (let i = 0; i < length; i++) {
+          for (let channel = 0; channel < channels; channel++) {
+            const sample = Math.max(-1, Math.min(1, audioBuffer.getChannelData(channel)[i]));
+            view.setInt16(offset, sample * 0x7FFF, true);
+            offset += 2;
+          }
+        }
+
+        // Download
+        const blob = new Blob([buffer], { type: 'audio/wav' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
       }
 
       enableControls() {
@@ -1667,6 +2107,7 @@
 
         this.sourceNode.start();
         this.isPlaying = true;
+        this.playStartTime = this.audioContext.currentTime;
         this.lastTime = this.audioContext.currentTime;
 
         document.getElementById('play-btn').textContent = 'Playing...';
@@ -1675,6 +2116,7 @@
           if (this.isPlaying) {
             this.isPlaying = false;
             document.getElementById('play-btn').textContent = 'Play';
+            this.drawWaveformWithProgress(); // Update waveform when stopped
           }
         };
       }
@@ -1685,7 +2127,13 @@
           this.sourceNode = null;
         }
         this.isPlaying = false;
+        this.playStartTime = 0;
         document.getElementById('play-btn').textContent = 'Play';
+
+        // Reset waveform to beginning
+        if (this.waveformData) {
+          this.drawWaveformWithProgress();
+        }
       }
 
       toggleLoop() {
