@@ -178,26 +178,32 @@
 
     .demo-controls {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 0;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1px;
       margin: 0;
       position: relative;
       z-index: 2;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 25px;
+      overflow: hidden;
     }
 
     .control-section {
-      background: rgba(255, 255, 255, 0.02);
-      padding: 2em;
-      border-right: 1px solid rgba(255, 255, 255, 0.05);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(20, 20, 40, 0.8) 100%);
+      padding: 2.5em 2em;
+      backdrop-filter: blur(15px);
       transition: all 0.3s ease;
       position: relative;
+      border-radius: 20px;
+      margin: 8px;
+      border: 1px solid rgba(24, 191, 239, 0.1);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
 
     .control-section:hover {
-      background: rgba(255, 255, 255, 0.05);
-      transform: translateY(-2px);
+      border-color: rgba(24, 191, 239, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(24, 191, 239, 0.2);
     }
 
     .control-section::before {
@@ -212,37 +218,43 @@
 
     .control-section h4 {
       color: #ffffff !important;
-      margin-bottom: 1.5em;
-      font-size: 1rem;
-      font-weight: 600;
+      margin-bottom: 2em;
+      font-size: 1.1rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
       position: relative;
-      padding-bottom: 0.5em;
+      padding-bottom: 0.8em;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(24, 191, 239, 0.3);
     }
 
     .control-section h4::after {
       content: '';
       position: absolute;
       bottom: 0;
-      left: 0;
-      width: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
       height: 2px;
       background: linear-gradient(90deg, #18bfef, #9a6cff);
       border-radius: 1px;
+      box-shadow: 0 0 8px rgba(24, 191, 239, 0.4);
     }
 
     .file-drop-zone {
       border: 2px dashed rgba(24, 191, 239, 0.4);
-      border-radius: 15px;
+      border-radius: 20px;
       padding: 3em 2em;
       text-align: center;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      margin-bottom: 1.5em;
-      background: rgba(24, 191, 239, 0.02);
+      margin-bottom: 2em;
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.03) 0%, rgba(154, 108, 255, 0.02) 100%);
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(10px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
     .file-drop-zone::before {
@@ -279,9 +291,9 @@
     }
 
     .transport-controls button, .mode-buttons button {
-      background: linear-gradient(135deg, rgba(24, 191, 239, 0.1) 0%, rgba(154, 108, 255, 0.1) 100%);
-      border: 1px solid rgba(24, 191, 239, 0.3);
-      color: #ffffff;
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.15) 0%, rgba(154, 108, 255, 0.15) 100%);
+      border: 1px solid rgba(24, 191, 239, 0.4);
+      color: #e8e8e8;
       padding: 0.8em 1.5em;
       border-radius: 12px;
       cursor: pointer;
@@ -291,6 +303,7 @@
       letter-spacing: 0.5px;
       position: relative;
       overflow: hidden;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
 
     .transport-controls button::before, .mode-buttons button::before {
@@ -309,8 +322,9 @@
     }
 
     .transport-controls button:hover, .mode-buttons button:hover {
-      background: linear-gradient(135deg, rgba(24, 191, 239, 0.2) 0%, rgba(154, 108, 255, 0.2) 100%);
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.25) 0%, rgba(154, 108, 255, 0.25) 100%);
       border-color: #18bfef;
+      color: #ffffff;
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(24, 191, 239, 0.3);
     }
@@ -337,66 +351,128 @@
     }
 
     .slider-group {
-      margin-bottom: 1.5em;
+      margin-bottom: 2em;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .slider-group label {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       color: #e0e0e0 !important;
-      margin-bottom: 0.8em;
+      margin-bottom: 1em;
       font-size: 0.9em;
       font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .slider-group label span {
-      background: rgba(24, 191, 239, 0.1);
-      padding: 0.2em 0.8em;
-      border-radius: 8px;
+    .knob-container {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1em auto;
+    }
+
+    .knob {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(40, 40, 60, 0.9) 100%);
+      border: 3px solid rgba(24, 191, 239, 0.3);
+      cursor: pointer;
+      position: relative;
+      box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .knob:hover {
+      border-color: #18bfef;
+      box-shadow:
+        0 12px 30px rgba(24, 191, 239, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.15),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.4);
+      transform: scale(1.05);
+    }
+
+    .knob::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.1) 0%, rgba(154, 108, 255, 0.1) 100%);
+      transform: translate(-50%, -50%);
       border: 1px solid rgba(24, 191, 239, 0.2);
+    }
+
+    .knob-pointer {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      width: 3px;
+      height: 25px;
+      background: linear-gradient(135deg, #18bfef, #9a6cff);
+      border-radius: 2px;
+      transform-origin: 50% 32px;
+      transition: all 0.1s ease;
+      box-shadow: 0 2px 8px rgba(24, 191, 239, 0.5);
+    }
+
+    .knob-value {
+      background: rgba(24, 191, 239, 0.1);
+      padding: 0.4em 1em;
+      border-radius: 12px;
+      border: 1px solid rgba(24, 191, 239, 0.3);
       font-family: 'Courier New', monospace;
       font-weight: 600;
       color: #18bfef !important;
+      font-size: 0.85em;
+      min-width: 80px;
+      backdrop-filter: blur(10px);
     }
 
-    .slider-group input[type="range"] {
+    .knob-ticks {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .knob-tick {
+      position: absolute;
+      width: 2px;
       height: 8px;
-      border-radius: 4px;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-      outline: none;
-      -webkit-appearance: none;
-      position: relative;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 1px;
+      transform-origin: 50% 40px;
+      top: 6px;
+      left: 50%;
+      transform-origin: 50% 34px;
+      margin-left: -1px;
     }
 
-    .slider-group input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #18bfef, #9a6cff);
-      cursor: pointer;
-      border: 3px solid #fff;
-      box-shadow: 0 4px 15px rgba(24, 191, 239, 0.4);
-      transition: all 0.2s ease;
+    .knob-tick.major {
+      height: 12px;
+      background: rgba(24, 191, 239, 0.6);
+      width: 3px;
+      margin-left: -1.5px;
+      top: 4px;
+      transform-origin: 50% 36px;
     }
 
-    .slider-group input[type="range"]::-webkit-slider-thumb:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(24, 191, 239, 0.6);
-    }
-
-    .slider-group input[type="range"]::-moz-range-thumb {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #18bfef, #9a6cff);
-      cursor: pointer;
-      border: 3px solid #fff;
-      box-shadow: 0 4px 15px rgba(24, 191, 239, 0.4);
+    /* Hide original sliders */
+    .slider-group input[type="range"] {
+      display: none;
     }
 
     .checkbox-group {
@@ -426,14 +502,16 @@
     }
 
     .waveform-display {
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 20px;
-      padding: 2em;
-      margin: 2em;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 40, 0.9) 100%);
+      border-radius: 25px;
+      padding: 2.5em;
+      margin: 2em 1em;
       text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(24, 191, 239, 0.2);
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
     .waveform-display::before {
@@ -449,9 +527,10 @@
     #waveform-canvas {
       max-width: 100%;
       height: auto;
-      border-radius: 10px;
-      background: rgba(0, 0, 0, 0.8);
-      border: 1px solid rgba(24, 191, 239, 0.2);
+      border-radius: 15px;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(10, 10, 20, 0.8) 100%);
+      border: 2px solid rgba(24, 191, 239, 0.3);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
     .volume-warning {
@@ -607,9 +686,9 @@
     }
 
     .actions .button {
-      background: linear-gradient(135deg, rgba(24, 191, 239, 0.1) 0%, rgba(154, 108, 255, 0.1) 100%) !important;
-      border: 2px solid rgba(24, 191, 239, 0.3) !important;
-      color: #ffffff !important;
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.15) 0%, rgba(154, 108, 255, 0.15) 100%) !important;
+      border: 2px solid rgba(24, 191, 239, 0.4) !important;
+      color: #e8e8e8 !important;
       padding: 1em 3em !important;
       border-radius: 15px !important;
       font-weight: 600 !important;
@@ -619,6 +698,7 @@
       transition: all 0.3s ease !important;
       position: relative !important;
       overflow: hidden !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
     }
 
     .actions .button::before {
@@ -637,8 +717,9 @@
     }
 
     .actions .button:hover {
-      background: linear-gradient(135deg, rgba(24, 191, 239, 0.2) 0%, rgba(154, 108, 255, 0.2) 100%) !important;
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.25) 0%, rgba(154, 108, 255, 0.25) 100%) !important;
       border-color: #18bfef !important;
+      color: #ffffff !important;
       transform: translateY(-3px) !important;
       box-shadow: 0 15px 40px rgba(24, 191, 239, 0.3) !important;
     }
@@ -665,10 +746,32 @@
 
       .demo-controls {
         grid-template-columns: 1fr;
+        gap: 8px;
       }
 
       .control-section {
-        border-right: none;
+        margin: 4px;
+        padding: 2em 1.5em;
+      }
+
+      .knob-container {
+        width: 70px;
+        height: 70px;
+      }
+
+      .knob {
+        width: 70px;
+        height: 70px;
+      }
+
+      .knob::before {
+        width: 50px;
+        height: 50px;
+      }
+
+      .knob-pointer {
+        height: 20px;
+        transform-origin: 50% 25px;
       }
 
       .transport-controls, .mode-buttons {
@@ -865,11 +968,41 @@
             <div class="control-section">
               <h4>Main Controls</h4>
               <div class="slider-group">
-                <label>Gain: <span id="gain-value">1.0</span></label>
+                <label>Gain</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="gain">
+                    <div class="knob-ticks">
+                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
+                    </div>
+                    <div class="knob-pointer" id="gain-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="gain-value">1.0</div>
                 <input type="range" id="gain-slider" min="0" max="3.16" step="0.01" value="1.0">
               </div>
               <div class="slider-group">
-                <label>Tempo: <span id="tempo-value">100</span> BPM</label>
+                <label>Tempo</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="tempo">
+                    <div class="knob-ticks">
+                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
+                    </div>
+                    <div class="knob-pointer" id="tempo-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="tempo-value">100 BPM</div>
                 <input type="range" id="tempo-slider" min="20" max="300" step="1" value="100">
               </div>
             </div>
@@ -877,11 +1010,41 @@
             <div class="control-section">
               <h4>Filters</h4>
               <div class="slider-group">
-                <label>Low Pass: <span id="lpf-value">20000</span> Hz</label>
+                <label>Low Pass</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="lpf">
+                    <div class="knob-ticks">
+                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
+                    </div>
+                    <div class="knob-pointer" id="lpf-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="lpf-value">20000 Hz</div>
                 <input type="range" id="lpf-slider" min="20" max="20000" step="1" value="20000">
               </div>
               <div class="slider-group">
-                <label>High Pass: <span id="hpf-value">20</span> Hz</label>
+                <label>High Pass</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="hpf">
+                    <div class="knob-ticks">
+                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
+                    </div>
+                    <div class="knob-pointer" id="hpf-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="hpf-value">20 Hz</div>
                 <input type="range" id="hpf-slider" min="20" max="20000" step="1" value="20">
               </div>
             </div>
@@ -889,19 +1052,79 @@
             <div class="control-section">
               <h4>Compressor</h4>
               <div class="slider-group">
-                <label>Threshold: <span id="comp-thresh-value">-12</span> dB</label>
+                <label>Threshold</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="comp-thresh">
+                    <div class="knob-ticks">
+                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
+                    </div>
+                    <div class="knob-pointer" id="comp-thresh-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="comp-thresh-value">-12 dB</div>
                 <input type="range" id="comp-thresh-slider" min="-60" max="0" step="1" value="-12">
               </div>
               <div class="slider-group">
-                <label>Ratio: <span id="comp-ratio-value">4</span>:1</label>
+                <label>Ratio</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="comp-ratio">
+                    <div class="knob-ticks">
+                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
+                    </div>
+                    <div class="knob-pointer" id="comp-ratio-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="comp-ratio-value">4:1</div>
                 <input type="range" id="comp-ratio-slider" min="1" max="20" step="0.1" value="4">
               </div>
               <div class="slider-group">
-                <label>Attack: <span id="comp-attack-value">10</span> ms</label>
+                <label>Attack</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="comp-attack">
+                    <div class="knob-ticks">
+                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
+                    </div>
+                    <div class="knob-pointer" id="comp-attack-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="comp-attack-value">10 ms</div>
                 <input type="range" id="comp-attack-slider" min="1" max="200" step="1" value="10">
               </div>
               <div class="slider-group">
-                <label>Release: <span id="comp-release-value">100</span> ms</label>
+                <label>Release</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="comp-release">
+                    <div class="knob-ticks">
+                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
+                    </div>
+                    <div class="knob-pointer" id="comp-release-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="comp-release-value">100 ms</div>
                 <input type="range" id="comp-release-slider" min="5" max="1000" step="5" value="100">
               </div>
             </div>
@@ -912,11 +1135,41 @@
                 <label><input type="checkbox" id="tremolo-enable"> Enable Tremolo</label>
               </div>
               <div class="slider-group">
-                <label>Rate: <span id="tremolo-rate-value">2</span> Hz</label>
+                <label>Rate</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="tremolo-rate">
+                    <div class="knob-ticks">
+                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
+                    </div>
+                    <div class="knob-pointer" id="tremolo-rate-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="tremolo-rate-value">2 Hz</div>
                 <input type="range" id="tremolo-rate-slider" min="0.1" max="10" step="0.1" value="2">
               </div>
               <div class="slider-group">
-                <label>Depth: <span id="tremolo-depth-value">0.5</span></label>
+                <label>Depth</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="tremolo-depth">
+                    <div class="knob-ticks">
+                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
+                    </div>
+                    <div class="knob-pointer" id="tremolo-depth-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="tremolo-depth-value">0.5</div>
                 <input type="range" id="tremolo-depth-slider" min="0" max="1" step="0.01" value="0.5">
               </div>
             </div>
@@ -929,7 +1182,22 @@
                 <button id="granular-mode">Granular</button>
               </div>
               <div class="slider-group">
-                <label>Grain Size: <span id="grain-size-value">0.1</span> s</label>
+                <label>Grain Size</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="grain-size">
+                    <div class="knob-ticks">
+                      <div class="knob-tick major" style="transform: rotate(-135deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-90deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(-45deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(0deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(45deg)"></div>
+                      <div class="knob-tick" style="transform: rotate(90deg)"></div>
+                      <div class="knob-tick major" style="transform: rotate(135deg)"></div>
+                    </div>
+                    <div class="knob-pointer" id="grain-size-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="grain-size-value">0.1 s</div>
                 <input type="range" id="grain-size-slider" min="0.05" max="0.5" step="0.01" value="0.1">
               </div>
             </div>
@@ -1042,6 +1310,7 @@
 
         this.initializeAudio();
         this.setupEventListeners();
+        this.setupKnobs();
       }
 
       async initializeAudio() {
@@ -1171,6 +1440,148 @@
 
         // Start tremolo animation if enabled
         this.startTremoloLoop();
+      }
+
+      setupKnobs() {
+        const knobs = document.querySelectorAll('.knob[data-knob]');
+
+        knobs.forEach(knob => {
+          const knobId = knob.dataset.knob;
+          const slider = document.getElementById(`${knobId}-slider`);
+          const pointer = document.getElementById(`${knobId}-pointer`);
+
+          if (!slider || !pointer) return;
+
+          let isDragging = false;
+          let startAngle = 0;
+          let startValue = 0;
+          let centerX = 0;
+          let centerY = 0;
+
+          // Initialize knob position
+          this.updateKnobPosition(knobId);
+
+          const getAngleFromMouse = (clientX, clientY) => {
+            const rect = knob.getBoundingClientRect();
+            centerX = rect.left + rect.width / 2;
+            centerY = rect.top + rect.height / 2;
+
+            const deltaX = clientX - centerX;
+            const deltaY = clientY - centerY;
+
+            let angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+            angle = (angle + 90 + 360) % 360; // Normalize to 0-360, 0 = top
+
+            return angle;
+          };
+
+          const updateSliderFromAngle = (angle) => {
+            // Map angle (0-270 degrees) to slider range
+            let normalizedAngle = angle;
+            if (normalizedAngle > 270) normalizedAngle -= 360;
+            if (normalizedAngle < -90) normalizedAngle = -90;
+            if (normalizedAngle > 180) normalizedAngle = 180;
+
+            // Convert to 0-1 range
+            const progress = (normalizedAngle + 135) / 270;
+            const clampedProgress = Math.max(0, Math.min(1, progress));
+
+            const min = parseFloat(slider.min);
+            const max = parseFloat(slider.max);
+            const step = parseFloat(slider.step);
+
+            let value = min + (max - min) * clampedProgress;
+
+            // Round to step
+            if (step) {
+              value = Math.round(value / step) * step;
+            }
+
+            slider.value = value;
+            slider.dispatchEvent(new Event('input'));
+          };
+
+          const handleStart = (clientX, clientY) => {
+            isDragging = true;
+            startAngle = getAngleFromMouse(clientX, clientY);
+            startValue = parseFloat(slider.value);
+
+            knob.style.transform = 'scale(1.1)';
+            document.body.style.cursor = 'grabbing';
+
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleEnd);
+            document.addEventListener('touchmove', handleTouchMove, { passive: false });
+            document.addEventListener('touchend', handleEnd);
+          };
+
+          const handleMouseMove = (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+
+            const currentAngle = getAngleFromMouse(e.clientX, e.clientY);
+            updateSliderFromAngle(currentAngle);
+          };
+
+          const handleTouchMove = (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+
+            const touch = e.touches[0];
+            const currentAngle = getAngleFromMouse(touch.clientX, touch.clientY);
+            updateSliderFromAngle(currentAngle);
+          };
+
+          const handleEnd = () => {
+            if (!isDragging) return;
+
+            isDragging = false;
+            knob.style.transform = '';
+            document.body.style.cursor = '';
+
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseup', handleEnd);
+            document.removeEventListener('touchmove', handleTouchMove);
+            document.removeEventListener('touchend', handleEnd);
+          };
+
+          // Mouse events
+          knob.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            handleStart(e.clientX, e.clientY);
+          });
+
+          // Touch events
+          knob.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            handleStart(touch.clientX, touch.clientY);
+          });
+
+          // Update knob when slider changes programmatically
+          slider.addEventListener('input', () => {
+            this.updateKnobPosition(knobId);
+          });
+        });
+      }
+
+      updateKnobPosition(knobId) {
+        const slider = document.getElementById(`${knobId}-slider`);
+        const pointer = document.getElementById(`${knobId}-pointer`);
+
+        if (!slider || !pointer) return;
+
+        const min = parseFloat(slider.min);
+        const max = parseFloat(slider.max);
+        const value = parseFloat(slider.value);
+
+        // Convert value to 0-1 range
+        const progress = (value - min) / (max - min);
+
+        // Convert to angle (-135 to +135 degrees)
+        const angle = -135 + (progress * 270);
+
+        pointer.style.transform = `rotate(${angle}deg)`;
       }
 
       setupSlider(sliderId, valueId, callback, suffix = '') {
