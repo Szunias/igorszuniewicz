@@ -765,15 +765,19 @@ body p {
   object-position: center;
 }
 
+/* Optimized project cards for 60fps scrolling */
 .project-card {
   position: relative;
   background: rgba(18, 24, 30, 0.72);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 12px;
-    overflow: hidden;
-  transform: translateY(0);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0); /* Force GPU layer */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  will-change: transform; /* Optimize for animations */
+  backface-visibility: hidden; /* Prevent flicker */
+  contain: layout style paint; /* Isolate repaints */
 }
 .project-card::before{
   content: '';
@@ -781,11 +785,23 @@ body p {
   background: linear-gradient(120deg, rgba(24,191,239,0.12), rgba(154,108,255,0.12));
   opacity: 0; transition: opacity 0.3s ease;
 }
-.project-card:hover { transform: translateY(-8px); box-shadow: 0 24px 50px rgba(0,0,0,0.35); border-color: rgba(24,191,239,0.35); }
+.project-card:hover { 
+  transform: translate3d(0, -8px, 0); /* Use translate3d instead of translateY */
+  box-shadow: 0 24px 50px rgba(0,0,0,0.35); 
+  border-color: rgba(24,191,239,0.35); 
+}
 .project-card:hover::before{ opacity: 1; }
 
 .project-card .image.fit { margin: 0; }
-.project-card .image.fit img { transition: transform 0.6s ease; border-bottom: 1px solid rgba(255,255,255,0.08); display:block; width:100%; height:auto; }
+.project-card .image.fit img { 
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+  border-bottom: 1px solid rgba(255,255,255,0.08); 
+  display:block; 
+  width:100%; 
+  height:auto; 
+  will-change: transform; /* Optimize for hover animation */
+  backface-visibility: hidden; /* Prevent flicker */
+}
 .project-card:hover .image.fit img { transform: scale(1.04); }
 
 .project-card-content { padding: 1.75em; }

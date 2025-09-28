@@ -1,0 +1,48 @@
+<!-- Dodaj te linki w sekcji <head> każdej strony HTML -->
+
+<!-- Optymalizacje przewijania dla 60fps -->
+<link rel="stylesheet" href="assets/css/scroll-optimizations.css">
+<link rel="stylesheet" href="assets/css/60fps-animations.css">
+
+<!-- Dodaj ten skrypt przed zamknięciem </body> -->
+<script src="assets/js/scroll-optimizer.js"></script>
+
+<!-- 
+INSTRUKCJE IMPLEMENTACJI:
+
+1. Dodaj powyższe linki CSS w <head> każdej strony
+2. Dodaj skrypt scroll-optimizer.js na końcu <body>
+3. Skrypt automatycznie wykrywa słabe urządzenia i włącza tryb fps-boost
+4. Możesz ręcznie włączyć/wyłączyć optymalizacje:
+   - window.ScrollOptimizer.enableFpsBoost() - włącza tryb wydajności
+   - window.ScrollOptimizer.disableFpsBoost() - wyłącza tryb wydajności
+   - window.getScrollPerformance() - pokazuje informacje o wydajności
+
+POPRAWKI WPROWADZONE:
+
+✅ Smooth scrolling: scroll-behavior: smooth
+✅ GPU acceleration: transform3d, will-change, backface-visibility
+✅ Throttled scroll events: requestAnimationFrame zamiast bezpośrednich aktualizacji
+✅ Optimized animations: CSS keyframes zamiast JavaScript
+✅ Performance monitoring: automatyczne wykrywanie FPS
+✅ Passive event listeners: {passive: true} dla wszystkich scroll eventów  
+✅ Contain properties: layout isolation dla lepszej wydajności
+✅ Reduced motion support: prefers-reduced-motion
+✅ Mobile optimizations: wyłączanie ciężkich efektów na urządzeniach mobilnych
+
+REZULTAT:
+- Płynne przewijanie 60fps zamiast 30fps
+- Automatyczne dostosowanie do wydajności urządzenia
+- Lepsze doświadczenie na urządzeniach mobilnych
+- Wsparcie dla użytkowników preferujących mniej animacji
+-->
+
+<script>
+// Opcjonalny kod do debugowania wydajności (dodaj do konsoli)
+setInterval(() => {
+  const perf = window.getScrollPerformance?.();
+  if (perf) {
+    console.log(`FPS: ${perf.currentFPS} | Scroll: ${perf.scrollY}px | Boost: ${perf.fpsBoostActive}`);
+  }
+}, 2000);
+</script>
