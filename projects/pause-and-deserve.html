@@ -38,6 +38,79 @@
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20250210" />
   <style>
+    /* Intense Horror-themed background for Pause & Deserve */
+    body {
+      background:
+        /* Blood-like splashes */
+        radial-gradient(ellipse at 15% 20%, rgba(180, 0, 20, 0.4) 0%, rgba(120, 0, 20, 0.2) 30%, transparent 60%),
+        radial-gradient(ellipse at 85% 30%, rgba(140, 0, 40, 0.3) 0%, rgba(80, 0, 30, 0.15) 40%, transparent 70%),
+        radial-gradient(ellipse at 60% 85%, rgba(200, 10, 10, 0.35) 0%, rgba(100, 0, 0, 0.1) 35%, transparent 65%),
+        radial-gradient(ellipse at 30% 60%, rgba(160, 0, 60, 0.25) 0%, transparent 50%),
+        /* Dark horror gradient */
+        linear-gradient(135deg,
+          #050505 0%,
+          #0f0203 15%,
+          #000000 30%,
+          #1a0505 45%,
+          #0d0000 60%,
+          #180a0a 75%,
+          #020202 90%,
+          #000000 100%
+        ) !important;
+      background-attachment: fixed !important;
+      background-size: 60% 60%, 70% 70%, 80% 80%, 50% 50%, 100% 100% !important;
+      min-height: 100vh !important;
+      animation: horrorPulse 8s ease-in-out infinite alternate !important;
+    }
+
+    @keyframes horrorPulse {
+      0% {
+        filter: contrast(1.1) brightness(0.9) saturate(1.2);
+      }
+      100% {
+        filter: contrast(1.3) brightness(0.7) saturate(1.5);
+      }
+    }
+
+    /* Add subtle horror texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(255, 0, 0, 0.02) 2px,
+          rgba(255, 0, 0, 0.02) 4px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 2px,
+          rgba(120, 0, 30, 0.015) 2px,
+          rgba(120, 0, 30, 0.015) 4px
+        );
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Enhance main content area */
+    #main {
+      background: rgba(0, 0, 0, 0.3) !important;
+      backdrop-filter: blur(1px) !important;
+      border-radius: 0 !important;
+    }
+
+    /* Dark wrapper for better contrast */
+    #wrapper {
+      background: rgba(10, 5, 5, 0.4) !important;
+    }
     .pausedeserve-hero-image {
       margin: 2em 0;
       text-align: center;
