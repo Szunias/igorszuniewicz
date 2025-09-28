@@ -1162,8 +1162,10 @@ document.addEventListener('DOMContentLoaded', function() {
     amorak_all_projects: { en: 'All Projects', pl: 'Wszystkie Projekty', nl: 'Alle Projecten' },
 
     // AudioQ project translations
-    audioq_title: { en: 'AudioQ — Audio Plugin Development', pl: 'AudioQ — Rozwój wtyczek audio', nl: 'AudioQ — Audio Plugin Ontwikkeling' },
-    audioq_lead: { en: 'JUCE-based audio sampler with granular synthesis, custom DSP effects, and intuitive drag & drop interface.', pl: 'Sampler audio oparty na JUCE z syntezą granularną, niestandardowymi efektami DSP i intuicyjnym interfejsem przeciągnij i upuść.', nl: 'JUCE-gebaseerde audiosampler met granulaire synthese, aangepaste DSP-effecten en intuïtieve drag & drop-interface.' },
+    audioq_title: { en: 'AudioQ Professional Audio Engine', pl: 'AudioQ Profesjonalny Silnik Audio', nl: 'AudioQ Professionele Audio Engine' },
+    audioq_brand_main: { en: 'Audio', pl: 'Audio', nl: 'Audio' },
+    audioq_brand_tagline: { en: 'Professional Audio Engine', pl: 'Profesjonalny Silnik Audio', nl: 'Professionele Audio Engine' },
+    audioq_lead: { en: 'Advanced real-time audio processing with granular synthesis, intelligent DSP effects, and seamless workflow integration', pl: 'Zaawansowane przetwarzanie audio w czasie rzeczywistym z syntezą granularną, inteligentnymi efektami DSP i płynną integracją workflow', nl: 'Geavanceerde realtime audioverwerking met granulaire synthese, intelligente DSP-effecten en naadloze workflow-integratie' },
     audioq_overview: { en: 'Overview', pl: 'Przegląd', nl: 'Overzicht' },
     audioq_overview_desc: { en: 'AudioQ is a comprehensive audio plugin built with the JUCE framework, designed as both a mini-sampler and effects processor. The plugin allows real-time loading and manipulation of audio files with various controllable parameters including gain, tempo, filtering, and custom effects. It features an intuitive interface with drag & drop functionality, real-time waveform visualization, and advanced processing modes.', pl: 'AudioQ to kompleksowa wtyczka audio zbudowana z frameworkiem JUCE, zaprojektowana zarówno jako mini-sampler, jak i procesor efektów. Wtyczka umożliwia ładowanie i manipulację plików audio w czasie rzeczywistym z różnymi kontrolowanymi parametrami, w tym wzmocnieniem, tempem, filtrowaniem i niestandardowymi efektami. Posiada intuicyjny interfejs z funkcją przeciągnij i upuść, wizualizacją kształtu fali w czasie rzeczywistym i zaawansowanymi trybami przetwarzania.', nl: 'AudioQ is een uitgebreide audio-plugin gebouwd met het JUCE-framework, ontworpen als zowel een mini-sampler als effectprocessor. De plugin maakt real-time laden en manipulatie van audiobestanden mogelijk met verschillende controleerbare parameters waaronder gain, tempo, filtering en aangepaste effecten. Het heeft een intuïtieve interface met drag & drop-functionaliteit, real-time golfvormvisualisatie en geavanceerde verwerkingsmodi.' },
     audioq_features: { en: 'Key Features', pl: 'Kluczowe funkcje', nl: 'Belangrijkste kenmerken' },
@@ -1655,14 +1657,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // AudioQ page translations
     if (location.pathname.endsWith('/audioq.html') || /audioq\.html$/i.test(location.pathname)){
+      // Handle special brand structure
+      const brandMain = document.querySelector('.brand-main');
+      const brandTagline = document.querySelector('.brand-tagline');
+
+      if (brandMain) {
+        const qLetter = brandMain.querySelector('.letter-q');
+        if (qLetter) {
+          brandMain.innerHTML = I18N.audioq_brand_main[lang] + qLetter.outerHTML;
+        }
+      }
+      if (brandTagline && I18N.audioq_brand_tagline) {
+        brandTagline.textContent = I18N.audioq_brand_tagline[lang];
+      }
+
+      // Handle other data-i18n elements
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (I18N[key]) {
+        if (I18N[key] && !el.classList.contains('brand-main') && !el.classList.contains('brand-tagline')) {
           el.textContent = I18N[key][lang];
         }
       });
+
       // Page <title>
-      try { document.title = (lang==='pl'?'AudioQ — Rozwój wtyczek audio — Igor Szuniewicz': lang==='nl'?'AudioQ — Audio Plugin Ontwikkeling — Igor Szuniewicz':'AudioQ — Audio Plugin Development — Igor Szuniewicz'); } catch(_){}
+      try { document.title = (lang==='pl'?'AudioQ — Profesjonalny Silnik Audio — Igor Szuniewicz': lang==='nl'?'AudioQ — Professionele Audio Engine — Igor Szuniewicz':'AudioQ — Professional Audio Engine — Igor Szuniewicz'); } catch(_){}
     }
     // Contact page translations (current markup)
     if (location.pathname.endsWith('/contact.html') || /contact\.html$/i.test(location.pathname)){
