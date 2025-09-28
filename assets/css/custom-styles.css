@@ -189,9 +189,53 @@ html, body { background: #0b141a !important; }
 @media (max-width: 480px) {
   #intro h1 { font-size: 2rem !important; }
   #intro .section-pills a { font-size: .9rem; padding: 8px 12px; }
+  .section-pills { gap: 8px; margin: 0.5rem auto 0; }
+  .section-pills a { padding: 8px 12px; font-size: 0.9rem; }
   .slider { min-height: 480px; max-width: 95%; }
   .projects-controls { padding: 10px; }
   #projects-list { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  #intro { padding: 1.5rem 1rem !important; margin-top: 1rem; }
+  #intro h1 { margin-bottom: 0.5rem !important; }
+  #intro p { margin-bottom: 1rem; }
+  .section-pills { gap: 8px; margin: 1rem auto 0; flex-wrap: wrap; justify-content: center; }
+  .section-pills a { padding: 10px 14px; font-size: 0.95rem; flex: 0 1 auto; min-width: max-content; }
+
+  /* Better spacing for intro hero on mobile */
+  .intro-hero { padding-bottom: 1rem; }
+  .intro-pills { margin-top: 1rem; gap: 8px; }
+  .intro-pills span { padding: 8px 12px; font-size: 0.9rem; }
+
+  /* Prevent elements from being squeezed together on mobile */
+  #main .post { margin-bottom: 2rem; padding: 1rem; }
+  .projects-grid { gap: 1.5rem; padding: 1rem 0; }
+  .project-card { margin-bottom: 1rem; }
+  .capabilities .projects-grid { gap: 1rem; }
+
+  /* Improve header spacing on mobile */
+  header.major { margin-bottom: 1.5rem; }
+  header.major h2 { font-size: 1.8rem; }
+  header.major p { margin-top: 0.5rem; }
+
+  /* Hide entire "Explore More" section on mobile to avoid duplication */
+  #main section.post.explore-more { display: none !important; }
+  .explore-more { display: none !important; }
+
+  /* Keep only top section pills with proper labeling */
+  #intro .section-pills a[href="projects/index.html"] span:after { content: " (All)"; }
+
+  /* Simplify main navigation on mobile */
+  #nav .links li a[href="index.html"],
+  #nav .links li a[href="extras.html"] {
+    display: none;
+  }
+
+  /* Hide social icons on very small screens */
+  @media (max-width: 480px) {
+    #nav .icons { display: none; }
+  }
 }
 
 /* Ensure wrapper and main don't mask interactive background */
@@ -474,7 +518,21 @@ body.fx-off #nav { backdrop-filter: none !important; }
 }
 
 @media screen and (max-width: 980px) {
-  #lang-fixed, .lang-badge-wrap {
+  #lang-fixed {
+    top: 10px;
+    right: 10px;
+    gap: 4px;
+    padding: 4px;
+  }
+  #lang-fixed button {
+    padding: 6px 8px;
+    font-size: 0.85rem;
+  }
+  #lang-fixed button .flag {
+    width: 20px;
+    height: 14px;
+  }
+  .lang-badge-wrap {
     display: none !important;
   }
 }

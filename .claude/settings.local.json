@@ -18,7 +18,8 @@
       "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\ray-animation.html\")",
       "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\about.html\")",
       "Bash(dir:*)",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\assets\\images\\projects-audioq\\AudioQ-Showcase.mp4\")"
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\assets\\images\\projects-audioq\\AudioQ-Showcase.mp4\")",
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\index.html\")"
     ],
     "deny": [],
     "ask": []
