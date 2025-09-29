@@ -178,6 +178,45 @@ a:focus, button:focus, .button:focus {outline:none;}
 
 html { scrollbar-gutter: stable; }
 html, body { background: #0b141a !important; }
+
+/* Project-specific background overrides */
+/* Akantilado jungle theme - very dark green */
+body.jungle-mode { background: linear-gradient(135deg, #020802 0%, #051205 25%, #081808 50%, #051205 75%, #020802 100%) !important; }
+body.jungle-mode .bg-gradient {
+  background:
+    radial-gradient(1400px 900px at 10% 8%, rgba(5, 15, 5, 0.32), transparent 60%),
+    radial-gradient(1200px 800px at 85% 20%, rgba(8, 20, 8, 0.24), transparent 65%),
+    radial-gradient(1000px 700px at 50% 100%, rgba(3, 10, 3, 0.18), transparent 60%),
+    linear-gradient(180deg, #020802 0%, #051205 50%, #081808 100%) !important;
+}
+.jungle-background {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(135deg, #020802 0%, #051205 25%, #081808 50%, #051205 75%, #020802 100%);
+  opacity: 0.9;
+}
+
+/* Amorak brown theme - very dark */
+body.amorak-theme { background: linear-gradient(135deg, #080402 0%, #0f0705 25%, #140a08 50%, #0f0705 75%, #080402 100%) !important; }
+body.amorak-theme .bg-gradient {
+  background:
+    radial-gradient(1400px 900px at 10% 8%, rgba(15, 8, 4, 0.32), transparent 60%),
+    radial-gradient(1200px 800px at 85% 20%, rgba(20, 12, 6, 0.24), transparent 65%),
+    radial-gradient(1000px 700px at 50% 100%, rgba(12, 6, 3, 0.18), transparent 60%),
+    linear-gradient(180deg, #080402 0%, #0f0705 50%, #140a08 100%) !important;
+}
+
+/* Richter gray theme - very dark */
+body.richter-theme { background: linear-gradient(135deg, #0a0a0c 0%, #0f0f12 25%, #141416 50%, #0f0f12 75%, #0a0a0c 100%) !important; }
+body.richter-theme .bg-gradient {
+  background:
+    radial-gradient(1400px 900px at 10% 8%, rgba(15, 15, 18, 0.32), transparent 60%),
+    radial-gradient(1200px 800px at 85% 20%, rgba(20, 20, 24, 0.24), transparent 65%),
+    radial-gradient(1000px 700px at 50% 100%, rgba(12, 12, 15, 0.18), transparent 60%),
+    linear-gradient(180deg, #0a0a0c 0%, #0f0f12 50%, #141416 100%) !important;
+}
 /* Global downscale on desktop to reduce perceived size */
 @media (min-width: 981px) {
   html { font-size: 12pt !important; }
