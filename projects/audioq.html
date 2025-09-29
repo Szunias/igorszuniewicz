@@ -198,17 +198,62 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     }
 
-    .video-container video {
-      width: 100%;
-      height: auto;
-      border: none;
-      border-radius: 10px;
-      background: #000;
+    .video-container {
+      cursor: pointer;
+      position: relative;
     }
 
-    .video-container video::-webkit-media-controls-panel {
-      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    .video-thumbnail {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 10px;
     }
+
+    .video-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
+    }
+
+    .play-button:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .video-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .video-modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .video-modal video {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
 
     /* Lighter text colors for better readability */
     #main p, #main li {
@@ -1198,8 +1243,7 @@
           <p id="bgWhite">Advanced real-time audio processing with granular synthesis, intelligent DSP effects, and seamless workflow integration</p>
         </header>
 
-        <h3 id="bgColor" data-i18n="audioq_demo" style="margin-bottom: 0.5em;">🎛️ Interactive Demo</h3>
-        <p style="color: #a0a0a0; margin-bottom: 2em; font-style: italic;">Experience the full AudioQ plugin directly in your browser with real-time audio processing</p>
+        <h3 id="bgColor" data-i18n="audioq_interface" style="margin-bottom: 1.5em;">🎛️ AudioQ Plugin Interface</h3>
         <div id="audioq-demo">
           <div class="waveform-display">
             <div class="effect-indicators-bar">
@@ -1396,20 +1440,51 @@
           </div>
         </div>
 
+        <!-- Game-Style Tutorial Overlay -->
+        <div id="audioq-tutorial" class="tutorial-overlay hidden">
+          <div class="tutorial-backdrop"></div>
+          <div class="tutorial-spotlight" id="tutorial-spotlight"></div>
+          <div class="tutorial-tooltip" id="tutorial-tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-content">
+              <h4 class="tooltip-title" id="tooltip-title">Welcome to AudioQ!</h4>
+              <p class="tooltip-text" id="tooltip-text">Let's explore the plugin interface. First, drag and drop an audio file here to get started.</p>
+              <div class="tooltip-footer">
+                <span class="tutorial-step" id="tutorial-step">1/2</span>
+                <div class="tutorial-buttons">
+                  <button class="tutorial-btn tutorial-skip" id="tutorial-skip">Skip Tour</button>
+                  <button class="tutorial-btn tutorial-next" id="tutorial-next">Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="content-section">
           <h3 data-i18n="audioq_showcase">🎬 Showcase Video</h3>
-          <div class="video-container">
-            <video controls width="100%" style="max-width: 100%; height: auto;" poster="../assets/images/projects-audioq/AudioQPicture.png">
+          <div class="video-container" onclick="openVideoModal()">
+            <div class="video-thumbnail">
+              <img src="../assets/images/projects-audioq/AudioQPicture.png" alt="AudioQ Showcase" />
+              <div class="play-button">
+                <svg width="80" height="80" viewBox="0 0 80 80">
+                  <circle cx="40" cy="40" r="35" fill="rgba(255,255,255,0.9)" />
+                  <polygon points="30,20 30,60 60,40" fill="#333" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Modal -->
+        <div id="video-modal" class="video-modal" onclick="closeVideoModal()">
+          <div class="video-modal-content">
+            <video id="modal-video" controls width="90%" height="auto">
               <source src="../assets/images/projects-audioq/AudioQ-Showcase.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
         </div>
 
-        <div class="content-section">
-          <h3 data-i18n="audioq_overview">📋 Overview</h3>
-          <p data-i18n="audioq_overview_desc">AudioQ is a comprehensive audio plugin built with the JUCE framework, designed as both a mini-sampler and effects processor. The plugin allows real-time loading and manipulation of audio files with various controllable parameters including gain, tempo, filtering, and custom effects. It features an intuitive interface with drag & drop functionality, real-time waveform visualization, and advanced processing modes.</p>
-        </div>
 
         <div class="content-section">
           <h3 data-i18n="audioq_features">⚡ Key Features</h3>
@@ -1470,7 +1545,7 @@
   <div id="audioq-loader" class="audioq-loader-overlay">
     <div class="audioq-loader-container">
       <div class="audioq-logo-container">
-        <div class="audioq-logo">AudioQ</div>
+        <div class="audioq-logo">AudioQ <span class="beta-label">BETA</span></div>
         <div class="audioq-tagline">Loading Audio Engine...</div>
       </div>
 
@@ -1565,6 +1640,20 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: audioqGradientShift 3s ease-in-out infinite, audioqPulse 2s ease-in-out infinite;
+    }
+
+    .beta-label {
+      font-size: 0.3em;
+      font-weight: 700;
+      background: linear-gradient(45deg, #f7d774, #ffd700, #ffb347);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: goldShimmer 2s ease-in-out infinite;
+      position: relative;
+      top: -0.8em;
+      margin-left: 0.2em;
       text-shadow: 0 0 30px rgba(24, 191, 239, 0.5);
       letter-spacing: 0.1em;
     }
@@ -1686,6 +1775,11 @@
       50% { transform: scale(1.05); }
     }
 
+    @keyframes goldShimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
     @keyframes audioqFadeInOut {
       0%, 100% { opacity: 0.8; }
       50% { opacity: 0.4; }
@@ -1731,6 +1825,162 @@
 
       .audioq-waveform {
         height: 60px;
+      }
+    }
+
+    /* Game-Style Tutorial Overlay */
+    .tutorial-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.4s ease;
+      pointer-events: auto;
+    }
+
+    .tutorial-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .tutorial-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(2px);
+    }
+
+    .tutorial-spotlight {
+      position: absolute;
+      border-radius: 12px;
+      box-shadow:
+        0 0 0 3px rgba(24, 191, 239, 0.6),
+        0 0 0 6px rgba(24, 191, 239, 0.3),
+        0 0 0 9999px rgba(0, 0, 0, 0.8);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      z-index: 10000;
+    }
+
+    .tutorial-tooltip {
+      position: absolute;
+      background: linear-gradient(145deg, rgba(15, 20, 35, 0.95), rgba(25, 30, 45, 0.95));
+      border: 2px solid rgba(24, 191, 239, 0.4);
+      border-radius: 16px;
+      padding: 0;
+      min-width: 320px;
+      max-width: 420px;
+      backdrop-filter: blur(12px);
+      box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(24, 191, 239, 0.2);
+      z-index: 10001;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .tooltip-arrow {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 12px solid transparent;
+      z-index: 10002;
+    }
+
+    .tooltip-content {
+      padding: 1.5em;
+    }
+
+    .tooltip-title {
+      color: #18bfef;
+      font-size: 1.3em;
+      font-weight: 700;
+      margin-bottom: 0.8em;
+      text-shadow: 0 0 10px rgba(24, 191, 239, 0.3);
+    }
+
+    .tooltip-text {
+      color: #e9f7ff;
+      font-size: 1em;
+      line-height: 1.5;
+      margin-bottom: 1.5em;
+    }
+
+    .tooltip-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1em;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .tutorial-step {
+      color: #9a6cff;
+      font-weight: 600;
+      font-size: 0.9em;
+    }
+
+    .tutorial-buttons {
+      display: flex;
+      gap: 0.8em;
+    }
+
+    .tutorial-btn {
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.2), rgba(154, 108, 255, 0.2));
+      border: 1px solid rgba(24, 191, 239, 0.4);
+      color: #e9f7ff;
+      padding: 0.6em 1.2em;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9em;
+    }
+
+    .tutorial-btn:hover {
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.3), rgba(154, 108, 255, 0.3));
+      border-color: rgba(24, 191, 239, 0.6);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(24, 191, 239, 0.3);
+    }
+
+    .tutorial-btn.tutorial-next {
+      background: linear-gradient(135deg, #18bfef, #9a6cff);
+      border-color: #18bfef;
+    }
+
+    .tutorial-btn.tutorial-next:hover {
+      background: linear-gradient(135deg, #20d0ff, #a878ff);
+      box-shadow: 0 4px 16px rgba(24, 191, 239, 0.4);
+    }
+
+    .tutorial-btn.tutorial-skip {
+      opacity: 0.7;
+    }
+
+    .tutorial-btn.tutorial-skip:hover {
+      opacity: 1;
+    }
+
+    /* Responsive tutorial */
+    @media (max-width: 768px) {
+      .tutorial-tooltip {
+        min-width: 280px;
+        max-width: calc(100vw - 2em);
+      }
+
+      .tooltip-content {
+        padding: 1.2em;
+      }
+
+      .tutorial-buttons {
+        flex-direction: column;
+        gap: 0.5em;
+      }
+
+      .tutorial-btn {
+        width: 100%;
       }
     }
   </style>
@@ -1819,6 +2069,158 @@
             this.loader.parentNode.removeChild(this.loader);
           }
         }, 1000);
+      }
+    }
+
+    // Game-Style Tutorial System
+    class AudioQTutorial {
+      constructor() {
+        this.currentStep = 0;
+        this.isActive = false;
+        this.tutorial = document.getElementById('audioq-tutorial');
+        this.spotlight = document.getElementById('tutorial-spotlight');
+        this.tooltip = document.getElementById('tutorial-tooltip');
+        this.hasSeenTutorial = localStorage.getItem('audioq-tutorial-completed') === 'true';
+
+        this.steps = [
+          {
+            target: '.file-drop-zone-integrated',
+            title: 'AudioQ Plugin Interface',
+            text: 'Welcome to AudioQ! Drag and drop audio files here to get started.',
+            position: 'bottom'
+          }
+        ];
+
+        this.init();
+      }
+
+      init() {
+        // Always show tutorial for testing - remove this line later
+        localStorage.removeItem('audioq-tutorial-completed');
+        this.hasSeenTutorial = false;
+
+        if (!this.hasSeenTutorial) {
+          setTimeout(() => this.start(), 500);
+        }
+
+        // Event listeners
+        document.getElementById('tutorial-next').addEventListener('click', () => this.next());
+        document.getElementById('tutorial-skip').addEventListener('click', () => this.skip());
+        document.querySelector('.tutorial-backdrop').addEventListener('click', () => this.skip());
+      }
+
+      start() {
+        this.isActive = true;
+        this.currentStep = 0;
+        this.tutorial.classList.remove('hidden');
+        this.showStep(0);
+
+        // Scroll to tutorial area - scroll to demo interface
+        setTimeout(() => {
+          const demoInterface = document.querySelector('.file-drop-zone-integrated');
+          console.log('Scrolling to demo interface:', demoInterface);
+          if (demoInterface) {
+            demoInterface.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 500);
+      }
+
+      showStep(stepIndex) {
+        if (stepIndex >= this.steps.length) {
+          this.complete();
+          return;
+        }
+
+        const step = this.steps[stepIndex];
+        const target = document.querySelector(step.target);
+
+        if (!target) {
+          this.next();
+          return;
+        }
+
+        // Update content
+        document.getElementById('tooltip-title').textContent = step.title;
+        document.getElementById('tooltip-text').textContent = step.text;
+        document.getElementById('tutorial-step').textContent = `${stepIndex + 1}/${this.steps.length}`;
+
+        // Position spotlight and tooltip
+        this.positionElements(target, step.position);
+
+        // Update next button
+        const nextBtn = document.getElementById('tutorial-next');
+        nextBtn.textContent = stepIndex === this.steps.length - 1 ? 'Finish' : 'Next';
+      }
+
+      positionElements(target, position) {
+        const targetRect = target.getBoundingClientRect();
+        const spotlightPadding = 8;
+        console.log('Positioning tutorial on target:', target, 'rect:', targetRect);
+
+        // Position spotlight
+        this.spotlight.style.left = `${targetRect.left - spotlightPadding}px`;
+        this.spotlight.style.top = `${targetRect.top - spotlightPadding}px`;
+        this.spotlight.style.width = `${targetRect.width + spotlightPadding * 2}px`;
+        this.spotlight.style.height = `${targetRect.height + spotlightPadding * 2}px`;
+
+        // Position tooltip
+        const tooltipRect = this.tooltip.getBoundingClientRect();
+        let tooltipX, tooltipY;
+
+        if (position === 'bottom') {
+          tooltipX = targetRect.left + (targetRect.width / 2) - (tooltipRect.width / 2);
+          tooltipY = targetRect.bottom + 20;
+          this.setArrowPosition('top');
+        } else {
+          tooltipX = targetRect.left + (targetRect.width / 2) - (tooltipRect.width / 2);
+          tooltipY = targetRect.top - tooltipRect.height - 20;
+          this.setArrowPosition('bottom');
+        }
+
+        // Keep tooltip in viewport
+        tooltipX = Math.max(20, Math.min(tooltipX, window.innerWidth - tooltipRect.width - 20));
+        tooltipY = Math.max(20, Math.min(tooltipY, window.innerHeight - tooltipRect.height - 20));
+
+        this.tooltip.style.left = `${tooltipX}px`;
+        this.tooltip.style.top = `${tooltipY}px`;
+      }
+
+      setArrowPosition(position) {
+        const arrow = document.querySelector('.tooltip-arrow');
+        arrow.className = 'tooltip-arrow';
+
+        if (position === 'top') {
+          arrow.style.top = '-12px';
+          arrow.style.left = '50%';
+          arrow.style.transform = 'translateX(-50%)';
+          arrow.style.borderBottomColor = 'rgba(25, 30, 45, 0.95)';
+          arrow.style.borderTopColor = 'transparent';
+        } else {
+          arrow.style.bottom = '-12px';
+          arrow.style.left = '50%';
+          arrow.style.transform = 'translateX(-50%)';
+          arrow.style.borderTopColor = 'rgba(25, 30, 45, 0.95)';
+          arrow.style.borderBottomColor = 'transparent';
+        }
+      }
+
+      next() {
+        this.currentStep++;
+        if (this.currentStep >= this.steps.length) {
+          this.complete();
+        } else {
+          this.showStep(this.currentStep);
+        }
+      }
+
+      skip() {
+        this.complete();
+      }
+
+      complete() {
+        this.isActive = false;
+        this.tutorial.classList.add('hidden');
+        localStorage.setItem('audioq-tutorial-completed', 'true');
       }
     }
 
@@ -2848,6 +3250,22 @@
       }
     }
 
+    // Video Modal Functions
+    function openVideoModal() {
+      const modal = document.getElementById('video-modal');
+      const video = document.getElementById('modal-video');
+      modal.style.display = 'flex';
+      video.play();
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('video-modal');
+      const video = document.getElementById('modal-video');
+      modal.style.display = 'none';
+      video.pause();
+      video.currentTime = 0;
+    }
+
     // Initialize loader and demo when page loads
     document.addEventListener('DOMContentLoaded', () => {
       // Start epic loading animation first
@@ -2856,7 +3274,13 @@
       // Initialize AudioQ demo after loading completes
       setTimeout(() => {
         new AudioQDemo();
-      }, 4500); // Start demo after loader finishes
+
+        // Initialize tutorial for first-time users
+        setTimeout(() => {
+          console.log('Starting tutorial...');
+          new AudioQTutorial();
+        }, 200); // Show tutorial faster after demo loads
+      }, 800); // Start demo after loader finishes
     });
   </script>
 </body>

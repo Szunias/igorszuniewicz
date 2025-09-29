@@ -2667,3 +2667,37 @@ body[data-theme="light"] #wrapper { background: transparent !important; }
     pointer-events: none;
     opacity: 0.5;
 }
+
+/* QSlicer disabled link and tooltip */
+.disabled-link {
+  color: #888 !important;
+  cursor: not-allowed !important;
+  position: relative;
+}
+
+.disabled-link:hover {
+  color: #aaa !important;
+}
+
+.disabled-link::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+  margin-top: 5px;
+}
+
+.disabled-link:hover::after {
+  opacity: 1;
+}
