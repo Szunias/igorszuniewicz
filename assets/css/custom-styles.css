@@ -192,7 +192,25 @@ html, body { background: #0b141a !important; }
   .section-pills { gap: 8px; margin: 0.5rem auto 0; }
   .section-pills a { padding: 8px 12px; font-size: 0.9rem; }
   .slider { min-height: 480px; max-width: 95%; }
-  .projects-controls { padding: 10px; }
+  .projects-controls {
+    padding: 10px;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: stretch !important;
+  }
+  .projects-controls > div {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .projects-controls .proj-search-wrap {
+    margin-left: 0 !important;
+    width: 100%;
+    justify-content: center;
+  }
+  .projects-controls .proj-search {
+    max-width: 280px;
+    width: 100%;
+  }
   #projects-list { grid-template-columns: 1fr; }
 }
 
@@ -235,6 +253,68 @@ html, body { background: #0b141a !important; }
   /* Hide social icons on very small screens */
   @media (max-width: 480px) {
     #nav .icons { display: none; }
+
+    /* Extra small screen improvements for projects page */
+    .projects-controls {
+      padding: 8px !important;
+    }
+    .projects-controls .button.small {
+      font-size: 0.8rem !important;
+      padding: 0 8px !important;
+      height: 30px !important;
+    }
+    .projects-controls select {
+      font-size: 0.9rem !important;
+      height: 30px !important;
+    }
+    .proj-search {
+      font-size: 0.9rem !important;
+      height: 30px !important;
+    }
+
+    /* Improve project grid spacing on very small screens */
+    .projects-grid {
+      gap: 1rem !important;
+    }
+    .project-card-content {
+      padding: 1rem !important;
+    }
+    .project-card h3 {
+      font-size: 1.1rem !important;
+    }
+
+    /* Language switcher improvements for mobile */
+    #lang-fixed {
+      top: 8px !important;
+      right: 8px !important;
+      padding: 4px !important;
+      gap: 4px !important;
+    }
+    #lang-fixed button {
+      padding: 6px 8px !important;
+      font-size: 0.8rem !important;
+    }
+    #lang-fixed .flag {
+      width: 18px !important;
+      height: 12px !important;
+    }
+  }
+
+  /* Language switcher general improvements */
+  #lang-fixed {
+    transition: all 0.2s ease;
+  }
+  #lang-fixed button {
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  #lang-fixed button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+  }
+  #lang-fixed button[aria-pressed="true"] {
+    background: rgba(24, 191, 239, 0.2);
+    border-radius: 6px;
   }
 }
 
@@ -1342,7 +1422,43 @@ img[src*="muzyczna.png"] {
 .projects-controls .button.small.primary, .projects-controls .button.small:hover { background: rgba(24,191,239,0.3); }
 .projects-controls select { background: rgba(10,16,22,0.85); color:#eaf7ff; border:1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 6px 10px; height: 34px; line-height: 1.2; }
 
-#projects-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+#projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 640px) {
+  #projects-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+  #projects-list {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  #projects-list {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (min-width: 1201px) {
+  #projects-list {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+}
 #projects-list .project-card { 
   background: rgba(12,18,26,0.55); border:1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden;
   box-shadow: 0 18px 40px rgba(0,0,0,0.28); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;

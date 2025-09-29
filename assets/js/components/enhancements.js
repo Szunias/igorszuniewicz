@@ -750,6 +750,13 @@ document.addEventListener('DOMContentLoaded', function() {
     filter_music: { pl: 'Muzyka', nl: 'Muziek', en: 'Music' },
     filter_sound: { pl: 'Sound Design', nl: 'Sounddesign', en: 'Sound Design' },
     filter_gameaudio: { pl: 'Audio w grach', nl: 'Game-audio', en: 'Game Audio' },
+    filter_3d: { pl: '3D Design', nl: '3D Design', en: '3D Design' },
+    label_view: { pl: 'Widok:', nl: 'Weergave:', en: 'View:' },
+    view_grid: { pl: 'Siatka', nl: 'Raster', en: 'Grid' },
+    view_list: { pl: 'Lista', nl: 'Lijst', en: 'List' },
+    search_projects: { pl: 'Szukaj projektów…', nl: 'Zoek projecten…', en: 'Search projects…' },
+    projects_shown: { pl: 'pokazane', nl: 'getoond', en: 'shown' },
+    projects_no_match: { pl: 'Brak projektów spełniających kryteria', nl: 'Geen projecten voldoen aan criteria', en: 'No projects match your criteria' },
     learn_more: { pl: 'Więcej →', nl: 'Meer →', en: 'Learn more →' },
     more_label: { pl: 'Więcej', nl: 'Meer', en: 'More' },
     // Extras page
@@ -1321,14 +1328,16 @@ document.addEventListener('DOMContentLoaded', function() {
       const h2 = document.querySelector('header.major h2'); if (h2) h2.textContent = I18N.all_projects_title[lang];
       const lead = document.querySelector('header.major p'); if (lead) lead.textContent = I18N.all_projects_lead[lang];
       const filterStrong = Array.from(document.querySelectorAll('strong')).find(s=>/filter|filtr|sorteer/i.test(s.textContent));
-      const labels = document.querySelectorAll('.row strong');
+      const labels = document.querySelectorAll('.projects-controls strong');
       if (labels[0]) labels[0].textContent = I18N.label_filter[lang];
       if (labels[1]) labels[1].textContent = I18N.label_sort[lang];
+      if (labels[2]) labels[2].textContent = I18N.label_view[lang];
       const b = (sel,val)=>{ const el=document.querySelector(sel); if (el) el.textContent=val; };
       b('button[data-filter="all"]', I18N.filter_all[lang]);
       b('button[data-filter="music"]', I18N.filter_music[lang]);
       b('button[data-filter="sound-design"]', I18N.filter_sound[lang]);
       b('button[data-filter="game-audio"]', I18N.filter_gameaudio[lang]);
+      b('button[data-filter="3d-design"]', I18N.filter_3d[lang]);
       const sel = document.getElementById('sort-select');
       if (sel){
         const opts = sel.options;
@@ -1337,6 +1346,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (opts[2]) opts[2].textContent = I18N.opt_title_az[lang];
         if (opts[3]) opts[3].textContent = I18N.opt_title_za[lang];
       }
+
+      // Handle View controls and Search
+      b('button[data-view="grid"]', I18N.view_grid[lang]);
+      b('button[data-view="list"]', I18N.view_list[lang]);
+      const searchInput = document.getElementById('projects-search');
+      if (searchInput) searchInput.placeholder = I18N.search_projects[lang];
 
       // Translate individual project cards (titles + blurbs)
       const CARDS = {
