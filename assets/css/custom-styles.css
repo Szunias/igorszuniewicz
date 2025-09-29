@@ -2564,6 +2564,74 @@ body[data-theme="light"] #wrapper { background: transparent !important; }
 /* Capabilities as compact pills */
 .capabilities-pills { margin: .2rem auto .2rem; }
 
+/* Dropdown menu styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  content: " ▼";
+  font-size: 0.7em;
+  opacity: 0.7;
+  margin-left: 0.3em;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: rgba(10, 16, 22, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.3s ease;
+  list-style: none;
+  padding: 0.8em 0;
+  margin: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 1em 1.5em;
+  color: #e9f7ff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-radius: 0;
+  border: none;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(24, 191, 239, 0.2);
+  color: #18bfef;
+  transform: translateX(4px);
+  padding-left: 2em;
+}
+
 /* (Removed) Hiding #nav on mobile caused missing navigation on pages without hamburger init */
 
 /*

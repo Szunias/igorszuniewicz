@@ -1172,9 +1172,15 @@
       <ul class="links">
         <li><a href="../index.html" data-i18n="nav_home">Home</a></li>
         <li><a href="../about.html" data-i18n="nav_about">About</a></li>
-        <li class="active"><a href="../projects/index.html" data-i18n="nav_projects">Projects</a></li>
+        <li><a href="../projects/index.html" data-i18n="nav_projects">Projects</a></li>
         <li><a href="../music.html" data-i18n="nav_music">Music</a></li>
-        <li><a href="../extras.html" data-i18n="nav_extras">Extra</a></li>
+        <li class="dropdown active">
+            <a href="#" class="dropdown-toggle" data-i18n="nav_extras">Extra</a>
+            <ul class="dropdown-menu">
+                <li><a href="../projects/audioq.html" class="active">AudioQ Plugin</a></li>
+                <li><a href="https://open.spotify.com/artist/6jEBXZZOeunaMzMnnHYvd6" target="_blank">Spotify Music</a></li>
+            </ul>
+        </li>
         <li><a href="../contact.html" data-i18n="nav_contact">Contact</a></li>
       </ul>
       <ul class="icons"></ul>
@@ -1460,7 +1466,362 @@
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/components/enhancements.js?v=20250210"></script>
 
+  <!-- Epic Loading Animation -->
+  <div id="audioq-loader" class="audioq-loader-overlay">
+    <div class="audioq-loader-container">
+      <div class="audioq-logo-container">
+        <div class="audioq-logo">AudioQ</div>
+        <div class="audioq-tagline">Loading Audio Engine...</div>
+      </div>
+
+      <div class="audioq-waveform">
+        <div class="wave-bar" style="--delay: 0"></div>
+        <div class="wave-bar" style="--delay: 0.1s"></div>
+        <div class="wave-bar" style="--delay: 0.2s"></div>
+        <div class="wave-bar" style="--delay: 0.3s"></div>
+        <div class="wave-bar" style="--delay: 0.4s"></div>
+        <div class="wave-bar" style="--delay: 0.5s"></div>
+        <div class="wave-bar" style="--delay: 0.6s"></div>
+        <div class="wave-bar" style="--delay: 0.7s"></div>
+        <div class="wave-bar" style="--delay: 0.8s"></div>
+        <div class="wave-bar" style="--delay: 0.9s"></div>
+      </div>
+
+      <div class="audioq-progress-ring">
+        <svg class="progress-ring" width="120" height="120">
+          <defs>
+            <linearGradient id="audioqProgressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#18bfef"/>
+              <stop offset="50%" stop-color="#9a6cff"/>
+              <stop offset="100%" stop-color="#ff6ea9"/>
+            </linearGradient>
+          </defs>
+          <circle class="progress-ring-bg" cx="60" cy="60" r="54"></circle>
+          <circle class="progress-ring-progress" cx="60" cy="60" r="54"></circle>
+        </svg>
+        <div class="progress-percentage">0%</div>
+      </div>
+
+      <div class="audioq-particles">
+        <div class="particle" style="--x: 10%; --y: 20%; --delay: 0s"></div>
+        <div class="particle" style="--x: 30%; --y: 40%; --delay: 0.5s"></div>
+        <div class="particle" style="--x: 60%; --y: 10%; --delay: 1s"></div>
+        <div class="particle" style="--x: 80%; --y: 70%; --delay: 1.5s"></div>
+        <div class="particle" style="--x: 15%; --y: 80%; --delay: 2s"></div>
+        <div class="particle" style="--x: 90%; --y: 30%; --delay: 2.5s"></div>
+      </div>
+
+      <div class="audioq-loading-text">
+        <div class="loading-step active" data-step="1">Initializing DSP Engine...</div>
+        <div class="loading-step" data-step="2">Loading Granular Synthesis...</div>
+        <div class="loading-step" data-step="3">Configuring Audio Effects...</div>
+        <div class="loading-step" data-step="4">Ready to Process Audio!</div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .audioq-loader-overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(10, 5, 15, 0.98) 25%,
+        rgba(15, 8, 25, 0.98) 50%,
+        rgba(20, 10, 30, 0.98) 75%,
+        rgba(0, 0, 0, 0.95) 100%);
+      backdrop-filter: blur(20px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    .audioq-loader-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .audioq-loader-container {
+      text-align: center;
+      position: relative;
+      max-width: 500px;
+      padding: 2em;
+    }
+
+    .audioq-logo-container {
+      margin-bottom: 3em;
+    }
+
+    .audioq-logo {
+      font-size: 4em;
+      font-weight: 900;
+      background: linear-gradient(45deg, #18bfef, #9a6cff, #ff6ea9, #f7d774);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: audioqGradientShift 3s ease-in-out infinite, audioqPulse 2s ease-in-out infinite;
+      text-shadow: 0 0 30px rgba(24, 191, 239, 0.5);
+      letter-spacing: 0.1em;
+    }
+
+    .audioq-tagline {
+      font-size: 1.2em;
+      color: #9a6cff;
+      margin-top: 0.5em;
+      font-weight: 600;
+      opacity: 0.8;
+      animation: audioqFadeInOut 2s ease-in-out infinite;
+    }
+
+    .audioq-waveform {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 0.3em;
+      height: 80px;
+      margin: 2em 0;
+    }
+
+    .wave-bar {
+      width: 8px;
+      height: 20px;
+      background: linear-gradient(to top, #18bfef, #9a6cff);
+      border-radius: 4px;
+      animation: audioqWaveform 1.5s ease-in-out infinite;
+      animation-delay: var(--delay);
+      box-shadow: 0 0 10px rgba(24, 191, 239, 0.5);
+    }
+
+    .audioq-progress-ring {
+      position: relative;
+      margin: 2em auto;
+      width: 120px;
+      height: 120px;
+    }
+
+    .progress-ring {
+      transform: rotate(-90deg);
+    }
+
+    .progress-ring-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.1);
+      stroke-width: 6;
+    }
+
+    .progress-ring-progress {
+      fill: none;
+      stroke: url(#audioqProgressGradient);
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-dasharray: 339.292;
+      stroke-dashoffset: 339.292;
+      animation: audioqProgressFill 4s ease-out forwards;
+      filter: drop-shadow(0 0 10px rgba(24, 191, 239, 0.6));
+    }
+
+    .progress-percentage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.5em;
+      font-weight: 700;
+      color: #18bfef;
+      text-shadow: 0 0 10px rgba(24, 191, 239, 0.5);
+    }
+
+    .audioq-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: 6px;
+      height: 6px;
+      background: radial-gradient(circle, #18bfef, transparent);
+      border-radius: 50%;
+      animation: audioqParticleFloat 3s ease-in-out infinite;
+      animation-delay: var(--delay);
+      box-shadow: 0 0 15px rgba(24, 191, 239, 0.8);
+    }
+
+    .audioq-loading-text {
+      margin-top: 2em;
+    }
+
+    .loading-step {
+      font-size: 1.1em;
+      color: #666;
+      margin: 0.5em 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    .loading-step.active {
+      opacity: 1;
+      transform: translateY(0);
+      color: #9a6cff;
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(154, 108, 255, 0.5);
+    }
+
+    @keyframes audioqGradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes audioqPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes audioqFadeInOut {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.4; }
+    }
+
+    @keyframes audioqWaveform {
+      0%, 100% {
+        height: 20px;
+        box-shadow: 0 0 10px rgba(24, 191, 239, 0.5);
+      }
+      50% {
+        height: 60px;
+        box-shadow: 0 0 20px rgba(24, 191, 239, 0.8);
+      }
+    }
+
+    @keyframes audioqProgressFill {
+      from { stroke-dashoffset: 339.292; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes audioqParticleFloat {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translateY(-30px) scale(1.5);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .audioq-logo {
+        font-size: 3em;
+      }
+
+      .audioq-loader-container {
+        padding: 1em;
+        max-width: 350px;
+      }
+
+      .audioq-waveform {
+        height: 60px;
+      }
+    }
+  </style>
+
   <script>
+    // Epic AudioQ Loading Animation Controller
+    class AudioQLoader {
+      constructor() {
+        this.loader = document.getElementById('audioq-loader');
+        this.progressPercentage = document.querySelector('.progress-percentage');
+        this.loadingSteps = document.querySelectorAll('.loading-step');
+        this.currentStep = 0;
+        this.progress = 0;
+
+        this.init();
+      }
+
+      init() {
+        // Start the epic loading sequence
+        this.startLoadingSequence();
+      }
+
+      startLoadingSequence() {
+        // Step progression
+        const stepDurations = [1000, 1500, 1000, 500]; // Duration for each step
+        let totalTime = 0;
+
+        stepDurations.forEach((duration, index) => {
+          setTimeout(() => {
+            this.activateStep(index);
+          }, totalTime);
+          totalTime += duration;
+        });
+
+        // Progress counting animation
+        this.animateProgress();
+
+        // Hide loader after all steps
+        setTimeout(() => {
+          this.hideLoader();
+        }, totalTime + 500);
+      }
+
+      activateStep(stepIndex) {
+        // Deactivate all steps
+        this.loadingSteps.forEach(step => step.classList.remove('active'));
+
+        // Activate current step
+        if (this.loadingSteps[stepIndex]) {
+          this.loadingSteps[stepIndex].classList.add('active');
+        }
+      }
+
+      animateProgress() {
+        const duration = 4000; // 4 seconds
+        const startTime = performance.now();
+
+        const updateProgress = (currentTime) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+
+          // Easing function for smooth progress
+          const easedProgress = this.easeOutCubic(progress);
+          const percentage = Math.round(easedProgress * 100);
+
+          this.progressPercentage.textContent = `${percentage}%`;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateProgress);
+          }
+        };
+
+        requestAnimationFrame(updateProgress);
+      }
+
+      easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      hideLoader() {
+        this.loader.classList.add('hidden');
+
+        // Remove from DOM after transition
+        setTimeout(() => {
+          if (this.loader.parentNode) {
+            this.loader.parentNode.removeChild(this.loader);
+          }
+        }, 1000);
+      }
+    }
+
     // AudioQ Web Demo Implementation
     class AudioQDemo {
       constructor() {
@@ -2487,9 +2848,15 @@
       }
     }
 
-    // Initialize demo when page loads
+    // Initialize loader and demo when page loads
     document.addEventListener('DOMContentLoaded', () => {
-      new AudioQDemo();
+      // Start epic loading animation first
+      new AudioQLoader();
+
+      // Initialize AudioQ demo after loading completes
+      setTimeout(() => {
+        new AudioQDemo();
+      }, 4500); // Start demo after loader finishes
     });
   </script>
 </body>
