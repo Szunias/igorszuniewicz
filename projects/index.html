@@ -191,15 +191,15 @@
         <div class="row projects-controls" style="align-items:center; gap: 1rem; margin-bottom: 1rem;">
           <div>
             <strong>Filter:</strong>
-            <button class="button small" data-filter="all" style="color: #ffffff !important;">All</button>
-            <button class="button small" data-filter="music" style="color: #ffffff !important;">Music</button>
-            <button class="button small" data-filter="sound-design" style="color: #ffffff !important;">Sound Design</button>
-            <button class="button small" data-filter="game-audio" style="color: #ffffff !important;">Game Audio</button>
-            <button class="button small" data-filter="3d-design" style="color: #ffffff !important;">3D Design</button>
+            <button class="button small projects-filter-btn" data-filter="all">All</button>
+            <button class="button small projects-filter-btn" data-filter="music">Music</button>
+            <button class="button small projects-filter-btn" data-filter="sound-design">Sound Design</button>
+            <button class="button small projects-filter-btn" data-filter="game-audio">Game Audio</button>
+            <button class="button small projects-filter-btn" data-filter="3d-design">3D Design</button>
           </div>
           <div>
             <strong>Sort:</strong>
-            <select id="sort-select" style="color: #ffffff !important; background: rgba(255,255,255,0.1) !important;">
+            <select id="sort-select" class="projects-sort-select">
               <option value="date-desc">Newest</option>
               <option value="date-asc">Oldest</option>
               <option value="title-asc">Title A–Z</option>
@@ -208,8 +208,8 @@
           </div>
           <div class="proj-view" style="display:flex; align-items:center; gap:.5rem;">
             <strong>View:</strong>
-            <button class="button small" data-view="grid" style="color: #ffffff !important;">Grid</button>
-            <button class="button small" data-view="list" style="color: #ffffff !important;">List</button>
+            <button class="button small projects-view-btn" data-view="grid">Grid</button>
+            <button class="button small projects-view-btn" data-view="list">List</button>
           </div>
           <div class="proj-search-wrap" style="margin-left:auto; display:flex; align-items:center; gap:.5rem;">
             <input type="search" id="projects-search" class="proj-search" placeholder="Search projects…" aria-label="Search projects" />

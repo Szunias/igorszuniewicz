@@ -1219,7 +1219,7 @@
               </div>
               <div class="transport-controls">
                 <button id="play-btn" disabled>Play</button>
-                <button id="stop-btn" disabled>Stop</button>
+                <button id="stop-btn" disabled>Reset</button>
                 <button id="loop-btn" disabled>Loop</button>
               </div>
             </div>
@@ -1536,8 +1536,14 @@
         const fileDropZone = document.getElementById('file-drop');
         const dropOverlay = document.getElementById('drop-overlay');
 
-        fileDropZone.addEventListener('click', () => fileInput.click());
+        fileDropZone.addEventListener('click', (e) => {
+          // Don't open file picker if clicking on canvas
+          if (e.target.tagName === 'CANVAS') return;
+          fileInput.click();
+        });
         fileDropZone.addEventListener('dragover', (e) => {
+          // Don't show drop overlay if dragging over canvas
+          if (e.target.tagName === 'CANVAS') return;
           e.preventDefault();
           dropOverlay.classList.add('dragover');
         });
@@ -1545,6 +1551,8 @@
           dropOverlay.classList.remove('dragover');
         });
         fileDropZone.addEventListener('drop', (e) => {
+          // Don't handle file drop if dropping on canvas
+          if (e.target.tagName === 'CANVAS') return;
           e.preventDefault();
           dropOverlay.classList.remove('dragover');
           const files = e.dataTransfer.files;
@@ -1555,8 +1563,8 @@
         });
 
         // Transport controls
-        document.getElementById('play-btn').addEventListener('click', () => this.play());
-        document.getElementById('stop-btn').addEventListener('click', () => this.stop());
+        document.getElementById('play-btn').addEventListener('click', () => this.togglePlay());
+        document.getElementById('stop-btn').addEventListener('click', () => this.stopAndReset());
         document.getElementById('loop-btn').addEventListener('click', () => this.toggleLoop());
 
         // Parameter controls
@@ -1938,8 +1946,21 @@
         if (!this.waveformData) return;
 
         // Calculate progress position
-        const progress = this.sourceNode && this.audioBuffer ?
-          (this.audioContext.currentTime - this.playStartTime) / this.audioBuffer.duration : 0;
+        let progress = 0;
+        if (this.audioBuffer) {
+          if (this.isPlaying && this.sourceNode) {
+            // Calculate from playback time
+            progress = (this.audioContext.currentTime - this.playStartTime) / this.audioBuffer.duration;
+            this.currentPosition = progress;
+          } else if (this.currentSeekTime !== null) {
+            // Use seek time when paused
+            progress = this.currentSeekTime / this.audioBuffer.duration;
+            this.currentPosition = progress;
+          } else {
+            // Use stored position
+            progress = this.currentPosition;
+          }
+        }
         const progressX = Math.max(0, Math.min(width, progress * width));
 
         // Draw waveform
@@ -2112,6 +2133,8 @@
         let isSelecting = false;
 
         canvas.addEventListener('mousedown', (e) => {
+          e.stopPropagation();
+          e.preventDefault();
           const rect = canvas.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const canvasX = (x / rect.width) * canvas.width;
@@ -2127,15 +2150,19 @@
             if (this.audioBuffer) {
               const progress = canvasX / canvas.width;
               const seekTime = progress * this.audioBuffer.duration;
-              if (this.sourceNode) {
-                // Restart playback from new position
-                const wasPlaying = this.isPlaying;
-                this.stop();
-                if (wasPlaying) {
-                  this.currentSeekTime = seekTime;
-                  this.play();
-                }
+              const wasPlaying = this.isPlaying;
+
+              // Always stop current playback
+              this.stop();
+
+              // Set seek time and restart if was playing
+              this.currentSeekTime = seekTime;
+              if (wasPlaying) {
+                this.playFromCurrentPosition();
               }
+
+              // Update waveform to show new position
+              this.drawWaveformWithProgress();
             }
             // Clear selection
             this.selectionStart = null;
@@ -2146,6 +2173,8 @@
 
         canvas.addEventListener('mousemove', (e) => {
           if (isSelecting && this.isDraggingSelection) {
+            e.stopPropagation();
+            e.preventDefault();
             const rect = canvas.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const canvasX = (x / rect.width) * canvas.width;
@@ -2154,7 +2183,9 @@
           }
         });
 
-        canvas.addEventListener('mouseup', () => {
+        canvas.addEventListener('mouseup', (e) => {
+          e.stopPropagation();
+          e.preventDefault();
           isSelecting = false;
           this.isDraggingSelection = false;
 
@@ -2162,6 +2193,12 @@
           if (this.selectionStart !== null && this.selectionEnd !== null) {
             this.showExportButton();
           }
+        });
+
+        // Prevent context menu on canvas
+        canvas.addEventListener('contextmenu', (e) => {
+          e.stopPropagation();
+          e.preventDefault();
         });
 
         // Add keyboard shortcut info
@@ -2287,6 +2324,62 @@
         document.getElementById('loop-btn').disabled = false;
       }
 
+      togglePlay() {
+        if (this.isPlaying) {
+          this.pause();
+        } else {
+          this.playFromCurrentPosition();
+        }
+      }
+
+      pause() {
+        if (this.sourceNode && this.isPlaying) {
+          // Calculate current position before stopping
+          const currentTime = this.audioContext.currentTime;
+          const elapsed = currentTime - this.playStartTime;
+          this.currentPosition = elapsed / this.audioBuffer.duration;
+          this.currentSeekTime = elapsed;
+        }
+        this.stop();
+        document.getElementById('play-btn').textContent = 'Play';
+      }
+
+      async playFromCurrentPosition() {
+        if (!this.audioBuffer) return;
+
+        if (this.audioContext.state === 'suspended') {
+          await this.audioContext.resume();
+        }
+
+        this.stop(); // Stop any current playback
+
+        this.sourceNode = this.audioContext.createBufferSource();
+        this.sourceNode.buffer = this.audioBuffer;
+        this.sourceNode.playbackRate.value = this.playbackRate;
+        this.sourceNode.loop = this.isLooping;
+
+        // Connect source to filter chain
+        this.sourceNode.connect(this.hpFilter);
+
+        // Start from current position (not from beginning)
+        const startTime = this.currentSeekTime || (this.currentPosition * this.audioBuffer.duration) || 0;
+        this.sourceNode.start(0, startTime);
+        this.isPlaying = true;
+        this.playStartTime = this.audioContext.currentTime - startTime;
+        this.lastTime = this.audioContext.currentTime;
+        this.currentSeekTime = null; // Reset seek time
+
+        document.getElementById('play-btn').textContent = 'Pause';
+
+        this.sourceNode.onended = () => {
+          if (this.isPlaying) {
+            this.isPlaying = false;
+            document.getElementById('play-btn').textContent = 'Play';
+            this.drawWaveformWithProgress(); // Update waveform when stopped
+          }
+        };
+      }
+
       async play() {
         if (!this.audioBuffer) return;
 
@@ -2304,10 +2397,13 @@
         // Connect source to filter chain
         this.sourceNode.connect(this.hpFilter);
 
-        this.sourceNode.start();
+        // Start from seek position if set
+        const startTime = this.currentSeekTime || 0;
+        this.sourceNode.start(0, startTime);
         this.isPlaying = true;
-        this.playStartTime = this.audioContext.currentTime;
+        this.playStartTime = this.audioContext.currentTime - startTime;
         this.lastTime = this.audioContext.currentTime;
+        this.currentSeekTime = null; // Reset seek time
 
         document.getElementById('play-btn').textContent = 'Playing...';
 
@@ -2329,7 +2425,16 @@
         this.playStartTime = 0;
         document.getElementById('play-btn').textContent = 'Play';
 
-        // Reset waveform to beginning
+        // Reset waveform to beginning only if not seeking
+        if (this.waveformData) {
+          this.drawWaveformWithProgress();
+        }
+      }
+
+      stopAndReset() {
+        this.stop();
+        this.currentPosition = 0;
+        this.currentSeekTime = null;
         if (this.waveformData) {
           this.drawWaveformWithProgress();
         }
