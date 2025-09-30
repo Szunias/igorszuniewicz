@@ -114,18 +114,37 @@
       pointer-events: none;
     }
 
+    header.major {
+      text-align: center;
+      padding: 3rem 0;
+      position: relative;
+    }
+
+    header.major::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #18bfef, #9a6cff, #ff6ea9);
+      border-radius: 2px;
+      box-shadow: 0 0 20px rgba(24, 191, 239, 0.5);
+    }
+
     header.major h2 {
       color: #ffffff !important;
-      font-size: 3em !important;
-      font-weight: 700 !important;
-      margin-bottom: 0.5em !important;
-      text-shadow: 0 0 30px rgba(24, 191, 239, 0.3);
+      font-size: 3.5em !important;
+      font-weight: 800 !important;
+      margin-bottom: 1rem !important;
+      text-shadow: 0 4px 20px rgba(24, 191, 239, 0.3);
       position: relative;
       z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.3em;
+      gap: 0.5em;
     }
 
     /* AudioQ Brand Styling */
@@ -133,14 +152,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.4em;
+      gap: 0.6em;
     }
 
     .brand-main {
-      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-      font-weight: 800;
-      font-size: 1.3em;
-      letter-spacing: 3px;
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      font-weight: 900;
+      font-size: 1.4em;
+      letter-spacing: 4px;
       background: linear-gradient(135deg, #18bfef 0%, #9a6cff 50%, #ff6ea9 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -150,38 +169,38 @@
       position: relative;
     }
 
-    .brand-main::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 2px;
-      background: linear-gradient(90deg, #18bfef, #ff6ea9);
-      border-radius: 2px;
-      opacity: 0.7;
-    }
-
     .letter-q {
       position: relative;
       color: #ff6ea9 !important;
       font-weight: 900;
-      text-shadow: 0 0 15px rgba(255, 110, 169, 0.6);
+      text-shadow: 0 0 20px rgba(255, 110, 169, 0.8);
       animation: letterPulse 3s ease-in-out infinite;
       -webkit-text-fill-color: #ff6ea9 !important;
       background: none !important;
     }
 
     .brand-tagline {
-      font-size: 0.38em;
-      font-weight: 500;
-      color: #c0c0c0;
+      font-size: 0.32em;
+      font-weight: 600;
+      color: #9a6cff;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      opacity: 0.9;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      text-shadow: none;
+      letter-spacing: 4px;
+      opacity: 0.95;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      text-shadow: 0 2px 10px rgba(154, 108, 255, 0.3);
+      padding: 0.5rem 1.5rem;
+      background: rgba(154, 108, 255, 0.08);
+      border-radius: 30px;
+      border: 1px solid rgba(154, 108, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    header.major p {
+      font-size: 1.15em !important;
+      line-height: 1.6 !important;
+      color: rgba(255, 255, 255, 0.85) !important;
+      max-width: 800px;
+      margin: 0 auto !important;
     }
 
     @keyframes brandGlow {
@@ -2016,7 +2035,7 @@
 
       startLoadingSequence() {
         // Step progression
-        const stepDurations = [1000, 1500, 1000, 500]; // Duration for each step
+        const stepDurations = [400, 600, 400, 300]; // Duration for each step (reduced)
         let totalTime = 0;
 
         stepDurations.forEach((duration, index) => {
@@ -2032,7 +2051,7 @@
         // Hide loader after all steps
         setTimeout(() => {
           this.hideLoader();
-        }, totalTime + 500);
+        }, totalTime + 300);
       }
 
       activateStep(stepIndex) {
@@ -2046,7 +2065,7 @@
       }
 
       animateProgress() {
-        const duration = 4000; // 4 seconds
+        const duration = 2000; // 2 seconds (reduced from 4)
         const startTime = performance.now();
 
         const updateProgress = (currentTime) => {
