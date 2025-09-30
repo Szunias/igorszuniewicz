@@ -1864,7 +1864,7 @@
     }
 
     .tutorial-spotlight {
-      position: absolute;
+      position: fixed;
       border-radius: 12px;
       box-shadow:
         0 0 0 3px rgba(24, 191, 239, 0.6),
@@ -1876,7 +1876,7 @@
     }
 
     .tutorial-tooltip {
-      position: absolute;
+      position: fixed;
       background: linear-gradient(145deg, rgba(15, 20, 35, 0.95), rgba(25, 30, 45, 0.95));
       border: 2px solid rgba(24, 191, 239, 0.4);
       border-radius: 16px;
@@ -2082,6 +2082,9 @@
           if (this.loader.parentNode) {
             this.loader.parentNode.removeChild(this.loader);
           }
+
+          // Trigger tutorial after content is fully visible and layout is settled
+          window.dispatchEvent(new Event('audioq-content-ready'));
         }, 1000);
       }
     }
@@ -2098,7 +2101,7 @@
 
         this.steps = [
           {
-            target: '.file-drop-zone-integrated',
+            target: '#audioq-demo',
             title: 'AudioQ Plugin Interface',
             text: 'Welcome to AudioQ! Drag and drop audio files here to get started.',
             position: 'bottom'
@@ -2113,14 +2116,25 @@
         localStorage.removeItem('audioq-tutorial-completed');
         this.hasSeenTutorial = false;
 
-        if (!this.hasSeenTutorial) {
-          setTimeout(() => this.start(), 500);
-        }
-
         // Event listeners
         document.getElementById('tutorial-next').addEventListener('click', () => this.next());
         document.getElementById('tutorial-skip').addEventListener('click', () => this.skip());
         document.querySelector('.tutorial-backdrop').addEventListener('click', () => this.skip());
+
+        // Reposition on window resize
+        window.addEventListener('resize', () => {
+          if (this.isActive && this.currentStep < this.steps.length) {
+            this.showStep(this.currentStep);
+          }
+        });
+
+        // Wait for content to be fully ready before starting
+        if (!this.hasSeenTutorial) {
+          window.addEventListener('audioq-content-ready', () => {
+            // Wait a bit more for layout to fully settle after transition
+            setTimeout(() => this.start(), 500);
+          });
+        }
       }
 
       start() {
@@ -2131,7 +2145,7 @@
 
         // Scroll to tutorial area - scroll to demo interface
         setTimeout(() => {
-          const demoInterface = document.querySelector('.file-drop-zone-integrated');
+          const demoInterface = document.querySelector('#audioq-demo');
           console.log('Scrolling to demo interface:', demoInterface);
           if (demoInterface) {
             demoInterface.scrollIntoView({ behavior: 'smooth', block: 'center' });
