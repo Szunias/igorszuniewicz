@@ -48,6 +48,17 @@
     #wrapper {
       background: transparent !important;
       box-shadow: none !important;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    body.content-ready #wrapper {
+      opacity: 1;
+    }
+
+    #page-wrapper {
+      background: transparent !important;
+      box-shadow: none !important;
     }
 
     #main {
@@ -2062,6 +2073,9 @@
 
       hideLoader() {
         this.loader.classList.add('hidden');
+
+        // Show main content
+        document.body.classList.add('content-ready');
 
         // Remove from DOM after transition
         setTimeout(() => {
