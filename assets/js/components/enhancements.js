@@ -1191,7 +1191,42 @@ document.addEventListener('DOMContentLoaded', function() {
     audioq_showcase: { en: 'Showcase Video', pl: 'Wideo pokazowe', nl: 'Showcase Video' },
     audioq_demo: { en: 'Interactive Demo', pl: 'Interaktywne demo', nl: 'Interactieve demo' },
     audioq_gallery: { en: 'Interface Gallery', pl: 'Galeria interfejsu', nl: 'Interface Galerij' },
-    audioq_back: { en: 'Back to Projects', pl: 'Powrót do projektów', nl: 'Terug naar projecten' }
+    audioq_back: { en: 'Back to Projects', pl: 'Powrót do projektów', nl: 'Terug naar projecten' },
+
+    // Middleware 2
+    mw2_title: { en: 'Middleware 2 — Wwise Implementation', pl: 'Middleware 2 — Implementacja Wwise', nl: 'Middleware 2 — Wwise Implementatie' },
+    mw2_lead: { en: 'Complete audio implementation for a game level mimicking real-world production workflow', pl: 'Kompletna implementacja audio dla poziomu gry naśladująca rzeczywisty przepływ pracy produkcyjnej', nl: 'Volledige audio-implementatie voor een spelniveau die real-world productie workflow nabootst' },
+    mw2_meta_school: { en: 'Digital Arts and Entertainment', pl: 'Digital Arts and Entertainment', nl: 'Digital Arts and Entertainment' },
+    mw2_meta_type: { en: 'Type: Exam Assignment', pl: 'Typ: Zadanie egzaminacyjne', nl: 'Type: Examenopdracht' },
+    mw2_meta_engine: { en: 'Engine: Wwise & Unreal Engine', pl: 'Silnik: Wwise i Unreal Engine', nl: 'Engine: Wwise & Unreal Engine' },
+    mw2_meta_role: { en: 'Role: Audio Implementation', pl: 'Rola: Implementacja audio', nl: 'Rol: Audio Implementatie' },
+    mw2_overview_title: { en: 'Overview', pl: 'Przegląd', nl: 'Overzicht' },
+    mw2_overview_desc: { en: 'The goal of this exam assignment was to mimic a real-world implementation scenario. I was provided with a working game build that included a Menu and the First Level, with all events and game parameter changes already implemented. My task was to implement all audio needed to create a fully finished gameplay experience.', pl: 'Celem tego zadania egzaminacyjnego było naśladowanie scenariusza implementacji ze świata rzeczywistego. Otrzymałem działający build gry, który zawierał Menu i Pierwszy Poziom, ze wszystkimi zdarzeniami i zmianami parametrów gry już zaimplementowanymi. Moim zadaniem było zaimplementowanie całego audio potrzebnego do stworzenia w pełni ukończonego doświadczenia rozgrywki.', nl: 'Het doel van deze examenopdracht was om een real-world implementatiescenario na te bootsen. Ik kreeg een werkende game build met een Menu en het Eerste Level, met alle events en game parameter wijzigingen al geïmplementeerd. Mijn taak was om alle audio te implementeren die nodig was om een volledig afgewerkte gameplay-ervaring te creëren.' },
+    mw2_objectives_title: { en: 'Project Objectives', pl: 'Cele projektu', nl: 'Projectdoelen' },
+    mw2_obj1_title: { en: 'Clean Project', pl: 'Czysty projekt', nl: 'Schoon Project' },
+    mw2_obj1_1: { en: 'Follow best practices for Wwise project structure', pl: 'Przestrzeganie najlepszych praktyk struktury projektu Wwise', nl: 'Best practices volgen voor Wwise projectstructuur' },
+    mw2_obj1_2: { en: 'Optimize memory and CPU usage', pl: 'Optymalizacja użycia pamięci i procesora', nl: 'Geheugen en CPU gebruik optimaliseren' },
+    mw2_obj1_3: { en: 'Maintain organized asset hierarchy', pl: 'Utrzymanie zorganizowanej hierarchii assetów', nl: 'Georganiseerde asset hiërarchie onderhouden' },
+    mw2_obj2_title: { en: 'Implementation', pl: 'Implementacja', nl: 'Implementatie' },
+    mw2_obj2_1: { en: 'Implement all provided events', pl: 'Implementacja wszystkich dostarczonych zdarzeń', nl: 'Alle verstrekte events implementeren' },
+    mw2_obj2_2: { en: 'Setup correct spatialization for in-world sounds', pl: 'Ustawienie prawidłowej spacjalizacji dla dźwięków w świecie gry', nl: 'Correcte spatialisatie instellen voor in-world geluiden' },
+    mw2_obj2_3: { en: 'Configure orientation and attenuation settings', pl: 'Konfiguracja ustawień orientacji i tłumienia', nl: 'Oriëntatie en attenuatie instellingen configureren' },
+    mw2_obj2_4: { en: 'Apply reverb using provided Game Syncs', pl: 'Zastosowanie reverbu przy użyciu dostarczonych Game Syncs', nl: 'Reverb toepassen met verstrekte Game Syncs' },
+    mw2_obj3_title: { en: 'Audio Design', pl: 'Design audio', nl: 'Audio Design' },
+    mw2_obj3_1: { en: 'Create a cohesive sound palette', pl: 'Stworzenie spójnej palety dźwiękowej', nl: 'Een samenhangende klankpalet creëren' },
+    mw2_obj3_2: { en: 'Ensure correctness and loop sounds where needed', pl: 'Zapewnienie poprawności i zapętlenie dźwięków tam, gdzie to potrzebne', nl: 'Correctheid waarborgen en geluiden loopen waar nodig' },
+    mw2_obj3_3: { en: 'Avoid sync issues and cut-off sounds', pl: 'Unikanie problemów z synchronizacją i ucięciami dźwięków', nl: 'Sync problemen en afgesneden geluiden vermijden' },
+    mw2_obj3_4: { en: 'Prevent repetitive sounds through variation', pl: 'Zapobieganie powtarzalności dźwięków poprzez wariacje', nl: 'Repetitieve geluiden voorkomen door variatie' },
+    mw2_features_title: { en: 'Key Features', pl: 'Kluczowe funkcje', nl: 'Belangrijkste kenmerken' },
+    mw2_feat1_title: { en: '🎯 Spatial Audio', pl: '🎯 Audio przestrzenne', nl: '🎯 Ruimtelijke Audio' },
+    mw2_feat1_desc: { en: '3D spatialization with proper attenuation curves and orientation settings for immersive audio positioning.', pl: 'Spacjalizacja 3D z odpowiednimi krzywymi tłumienia i ustawieniami orientacji dla immersyjnego pozycjonowania audio.', nl: '3D spatialisatie met juiste attenuatiecurves en oriëntatie-instellingen voor immersieve audio positionering.' },
+    mw2_feat2_title: { en: '🔊 Dynamic Mix', pl: '🔊 Dynamiczny miks', nl: '🔊 Dynamische Mix' },
+    mw2_feat2_desc: { en: 'Cohesive mix that adapts to gameplay, ensuring clarity and balance across all audio elements.', pl: 'Spójny miks dostosowujący się do rozgrywki, zapewniający klarowność i równowagę wszystkich elementów audio.', nl: 'Samenhangende mix die zich aanpast aan gameplay, waardoor helderheid en balans over alle audio-elementen wordt gegarandeerd.' },
+    mw2_feat3_title: { en: '🎮 Game Syncs', pl: '🎮 Game Syncs', nl: '🎮 Game Syncs' },
+    mw2_feat3_desc: { en: 'Integration of Game Syncs for reverb zones and parameter-driven audio changes.', pl: 'Integracja Game Syncs dla stref reverbu i zmian audio sterowanych parametrami.', nl: 'Integratie van Game Syncs voor reverb zones en parameter-gestuurde audio veranderingen.' },
+    mw2_gallery_title: { en: 'Gallery', pl: 'Galeria', nl: 'Galerij' },
+    mw2_technical_title: { en: 'Technical Details', pl: 'Szczegóły techniczne', nl: 'Technische Details' },
+    mw2_technical_desc: { en: 'This project demonstrates professional Wwise implementation skills including event management, Game Sync integration, 3D audio positioning, and mix optimization. The implementation follows industry best practices for memory management and CPU efficiency.', pl: 'Ten projekt demonstruje profesjonalne umiejętności implementacji Wwise, w tym zarządzanie zdarzeniami, integrację Game Sync, pozycjonowanie audio 3D i optymalizację miksu. Implementacja przestrzega najlepszych praktyk branżowych w zakresie zarządzania pamięcią i wydajności procesora.', nl: 'Dit project demonstreert professionele Wwise implementatievaardigheden, inclusief event management, Game Sync integratie, 3D audio positionering en mix optimalisatie. De implementatie volgt industriële best practices voor geheugenbeheer en CPU-efficiëntie.' }
   };
 
   // Expose minimal public i18n for other scripts (read-only)
@@ -1449,6 +1484,12 @@ document.addEventListener('DOMContentLoaded', function() {
           gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' },
           showcase: { en:'Showcase', pl:'Prezentacja', nl:'Showcase' }
         },
+        middleware2: {
+          title: { en:'Middleware 2 — Wwise Implementation', pl:'Middleware 2 — Implementacja Wwise', nl:'Middleware 2 — Wwise Implementatie' },
+          lead: { en:'Complete audio implementation for a game level mimicking real-world production workflow', pl:'Kompletna implementacja audio dla poziomu gry naśladująca rzeczywisty przepływ pracy produkcyjnej', nl:'Volledige audio-implementatie voor een spelniveau die real-world productie workflow nabootst' },
+          overview: { en:'Overview', pl:'Przegląd', nl:'Overzicht' },
+          gallery: { en:'Gallery', pl:'Galeria', nl:'Galerij' }
+        },
         akantilado: {
           title: { en:'Akantilado — Sound Design', pl:'Akantilado — Sound design', nl:'Akantilado — Sounddesign' },
           lead: { en:'Complete sound design for a 3D animation project.', pl:'Kompletny sound design do projektu animacji 3D.', nl:'Volledig sounddesign voor een 3D-animatieproject.' },
@@ -1644,6 +1685,18 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       // Page <title>
       try { document.title = (lang==='pl'?'Not Today, Darling! — Audio do gry — Igor Szuniewicz': lang==='nl'?'Not Today, Darling! — Game‑audio — Igor Szuniewicz':'Not Today, Darling! — Game Audio — Igor Szuniewicz'); } catch(_){}
+    }
+
+    // Middleware 2 page translations
+    if (location.pathname.endsWith('/middleware2.html') || /middleware2\.html$/i.test(location.pathname)){
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[key]) {
+          el.textContent = I18N[key][lang];
+        }
+      });
+      // Page <title>
+      try { document.title = (lang==='pl'?'Middleware 2 — Implementacja Wwise — Igor Szuniewicz': lang==='nl'?'Middleware 2 — Wwise Implementatie — Igor Szuniewicz':'Middleware 2 — Wwise Implementation — Igor Szuniewicz'); } catch(_){}
     }
 
     // AudioLab page translations

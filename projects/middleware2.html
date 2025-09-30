@@ -1,0 +1,563 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>Middleware 2 — Wwise Implementation by Igor Szuniewicz</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+  <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png" sizes="180x180">
+  <meta name="description" content="Middleware 2 — Complete Wwise audio implementation for game level by Igor Szuniewicz." />
+  <link rel="canonical" href="https://igorszuniewicz.com/projects/middleware2.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Igor Szuniewicz" />
+  <meta property="og:title" content="Middleware 2 — Wwise Implementation" />
+  <meta property="og:description" content="Complete audio implementation for game level with Wwise." />
+  <meta property="og:url" content="https://igorszuniewicz.com/projects/middleware2.html" />
+  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects-middleware2/ellen.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Middleware 2 — Wwise Implementation" />
+  <meta name="twitter:description" content="Complete audio implementation for game level with Wwise." />
+  <meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects-middleware2/ellen.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Middleware 2 — Wwise Implementation",
+    "image": "https://igorszuniewicz.com/assets/images/projects-middleware2/ellen.png",
+    "author": {
+      "@type": "Person",
+      "name": "Igor Szuniewicz",
+      "url": "https://igorszuniewicz.com/"
+    },
+    "url": "https://igorszuniewicz.com/projects/middleware2.html"
+  }
+  </script>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20250210" />
+  <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+  <style>
+    /* Clean professional background */
+    .mw2-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg,
+        #1a1f35 0%,
+        #2a2f45 25%,
+        #1f2437 50%,
+        #252a40 75%,
+        #1a1f35 100%
+      );
+      opacity: 1;
+    }
+
+    .mw2-background::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(78, 205, 196, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(154, 108, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(24, 191, 239, 0.08) 0%, transparent 60%);
+    }
+
+    /* Clean hero section */
+    .mw2-hero {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      margin: 3rem 0;
+      position: relative;
+    }
+
+    .mw2-hero::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      right: -50px;
+      bottom: -50px;
+      background: radial-gradient(circle at 30% 40%, rgba(78, 205, 196, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(154, 108, 255, 0.08) 0%, transparent 50%);
+      z-index: -1;
+      border-radius: 50px;
+    }
+
+    .mw2-hero img {
+      max-width: 960px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(78, 205, 196, 0.2);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .mw2-hero img:hover {
+      transform: scale(1.02) translateY(-5px);
+      box-shadow: 0 35px 70px rgba(0,0,0,0.5), 0 0 0 1px rgba(78, 205, 196, 0.4);
+    }
+
+    /* Metadata pills */
+    .mw2-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .mw2-meta span {
+      background: linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(154, 108, 255, 0.12));
+      border: 1px solid rgba(78, 205, 196, 0.3);
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .mw2-meta span:hover {
+      background: linear-gradient(135deg, rgba(78, 205, 196, 0.25), rgba(154, 108, 255, 0.2));
+      border-color: rgba(78, 205, 196, 0.6);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
+    }
+
+    /* Typography */
+    #main .post h2, #main .post h3, #main .post h4 {
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    #main .post h2 {
+      font-size: 2.2rem;
+      color: #ffffff;
+      font-weight: 600;
+      font-family: 'Spline Sans', system-ui, -apple-system, sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    #main .post h3 {
+      font-size: 1.6rem;
+      color: #cfe7f8;
+    }
+
+    #main .post p, #main .post li {
+      color: rgba(207, 231, 248, 0.92);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    #main .post a {
+      color: #4ecdc4;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(78, 205, 196, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    #main .post a:hover {
+      color: #cfe7f8;
+      border-bottom-color: #cfe7f8;
+    }
+
+    /* Cards grid */
+    .mw2-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .mw2-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(78, 205, 196, 0.2);
+      padding: 2rem;
+      border-radius: 20px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mw2-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #4ecdc4, #9a6cff);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .mw2-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .mw2-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(78, 205, 196, 0.4);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(78, 205, 196, 0.2);
+    }
+
+    .mw2-card h4 {
+      color: #4ecdc4;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .mw2-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .mw2-card li {
+      color: rgba(207, 231, 248, 0.9);
+      line-height: 1.8;
+      font-size: 1.05rem;
+      padding: 0.75rem 0;
+      padding-left: 1.75rem;
+      position: relative;
+      border-bottom: 1px solid rgba(78, 205, 196, 0.1);
+    }
+
+    .mw2-card li:last-child {
+      border-bottom: none;
+    }
+
+    .mw2-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #4ecdc4;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    /* Feature cards */
+    .mw2-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .mw2-feature-card {
+      background: rgba(78, 205, 196, 0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(78, 205, 196, 0.25);
+      padding: 2.5rem;
+      border-radius: 20px;
+      transition: all 0.4s ease;
+      text-align: center;
+    }
+
+    .mw2-feature-card:hover {
+      background: rgba(78, 205, 196, 0.12);
+      transform: translateY(-8px);
+      border-color: rgba(78, 205, 196, 0.5);
+      box-shadow: 0 20px 50px rgba(78, 205, 196, 0.2);
+    }
+
+    .mw2-feature-card h4 {
+      color: #ffffff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .mw2-feature-card p {
+      color: rgba(207, 231, 248, 0.85);
+      line-height: 1.7;
+      font-size: 1.05rem;
+      margin: 0;
+    }
+
+    /* Technical section */
+    .mw2-technical {
+      background: rgba(78, 205, 196, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(78, 205, 196, 0.2);
+      border-radius: 20px;
+      padding: 3rem;
+      margin: 3rem 0;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .mw2-technical h3 {
+      margin-top: 0 !important;
+    }
+
+    /* Action buttons */
+    .actions {
+      margin-top: 4rem !important;
+    }
+
+    .button {
+      background: linear-gradient(135deg, #4ecdc4, #18bfef);
+      border: none;
+      color: #000000;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
+      text-transform: none;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(78, 205, 196, 0.4);
+      background: linear-gradient(135deg, #18bfef, #4ecdc4);
+    }
+
+    /* Gallery */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .projects-grid .image {
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .projects-grid .image:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .projects-grid img {
+      width: 100%;
+      display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .mw2-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .mw2-features {
+        grid-template-columns: 1fr;
+      }
+
+      #main .post h3 {
+        font-size: 1.75rem;
+      }
+    }
+
+    @media (max-width: 736px) {
+      .mw2-hero {
+        margin: 1.5rem 0;
+      }
+
+      .mw2-meta {
+        gap: 0.75rem;
+      }
+
+      .mw2-meta span {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .mw2-card, .mw2-feature-card {
+        padding: 1.5rem;
+      }
+
+      #main .post h2 {
+        font-size: 1.8rem;
+      }
+
+      #main .post h3 {
+        font-size: 1.5rem;
+      }
+
+      .mw2-technical {
+        padding: 2rem 1.5rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Hide default backgrounds */
+    .bg-gradient, .bg-orbs, .bg-waves, .bg-eq, .bg-glow {
+      display: none !important;
+    }
+  </style>
+</head>
+<body class="is-preload">
+  <div id="lang-fixed" role="group" aria-label="Language selection">
+    <button type="button" data-lang="en" aria-label="Switch to English" aria-pressed="true">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 12">
+          <rect width="18" height="12" fill="#012169"/>
+          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#fff" stroke-width="3"/>
+          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#C8102E" stroke-width="1.2"/>
+          <rect x="0" y="5" width="18" height="2" fill="#fff"/>
+          <rect x="8" y="0" width="2" height="12" fill="#fff"/>
+          <rect x="0" y="5.5" width="18" height="1" fill="#C8102E"/>
+          <rect x="8.5" y="0" width="1" height="12" fill="#C8102E"/>
+        </svg>
+      </span>
+      <span class="label">EN</span>
+    </button>
+    <button type="button" data-lang="pl" aria-label="Przełącz na język polski" aria-pressed="false">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
+          <rect width="3" height="1" fill="#fff"/>
+          <rect y="1" width="3" height="1" fill="#dc143c"/>
+        </svg>
+      </span>
+      <span class="label">PL</span>
+    </button>
+    <button type="button" data-lang="nl" aria-label="Schakel over naar Nederlands" aria-pressed="false">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
+          <rect width="3" height="2" fill="#21468B"/>
+          <rect width="3" height="1.333" fill="#fff"/>
+          <rect width="3" height="0.666" fill="#AE1C28"/>
+        </svg>
+      </span>
+      <span class="label">NL</span>
+    </button>
+  </div>
+
+  <div class="mw2-background"></div>
+
+  <div id="wrapper" class="fade-in">
+    <header id="header">
+      <a href="../index.html" class="logo">Igor Szuniewicz</a>
+    </header>
+    <nav id="nav">
+      <ul class="links">
+        <li><a href="../index.html" data-i18n="nav_home">Home</a></li>
+        <li><a href="../about.html" data-i18n="nav_about">About</a></li>
+        <li class="active"><a href="../projects/index.html" data-i18n="nav_projects">Projects</a></li>
+        <li><a href="../music.html" data-i18n="nav_music">Music</a></li>
+        <li><a href="../extras.html" data-i18n="nav_extras">Extra</a></li>
+        <li><a href="../contact.html" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+      <ul class="icons"></ul>
+    </nav>
+
+    <div id="main">
+      <section class="post" data-reveal>
+        <header class="major">
+          <h2 data-i18n="mw2_title">Middleware 2 — Wwise Implementation</h2>
+          <p data-i18n="mw2_lead">Complete audio implementation for a game level mimicking real-world production workflow</p>
+        </header>
+
+        <div class="mw2-hero">
+          <img src="../assets/images/projects-middleware2/ellen.png" alt="Middleware 2 Game Screenshot" />
+          <div class="mw2-meta">
+            <span data-i18n="mw2_meta_school">Digital Arts and Entertainment</span>
+            <span data-i18n="mw2_meta_type">Type: Exam Assignment</span>
+            <span data-i18n="mw2_meta_engine">Engine: Wwise & Unreal Engine</span>
+            <span data-i18n="mw2_meta_role">Role: Audio Implementation</span>
+          </div>
+        </div>
+
+        <h3 data-i18n="mw2_overview_title">Overview</h3>
+        <p data-i18n="mw2_overview_desc">The goal of this exam assignment was to mimic a real-world implementation scenario. I was provided with a working game build that included a Menu and the First Level, with all events and game parameter changes already implemented. My task was to implement all audio needed to create a fully finished gameplay experience.</p>
+
+        <h3 data-i18n="mw2_objectives_title">Project Objectives</h3>
+        <div class="mw2-grid">
+          <article class="mw2-card">
+            <h4 data-i18n="mw2_obj1_title">Clean Project</h4>
+            <ul>
+              <li data-i18n="mw2_obj1_1">Follow best practices for Wwise project structure</li>
+              <li data-i18n="mw2_obj1_2">Optimize memory and CPU usage</li>
+              <li data-i18n="mw2_obj1_3">Maintain organized asset hierarchy</li>
+            </ul>
+          </article>
+          <article class="mw2-card">
+            <h4 data-i18n="mw2_obj2_title">Implementation</h4>
+            <ul>
+              <li data-i18n="mw2_obj2_1">Implement all provided events</li>
+              <li data-i18n="mw2_obj2_2">Setup correct spatialization for in-world sounds</li>
+              <li data-i18n="mw2_obj2_3">Configure orientation and attenuation settings</li>
+              <li data-i18n="mw2_obj2_4">Apply reverb using provided Game Syncs</li>
+            </ul>
+          </article>
+          <article class="mw2-card">
+            <h4 data-i18n="mw2_obj3_title">Audio Design</h4>
+            <ul>
+              <li data-i18n="mw2_obj3_1">Create a cohesive sound palette</li>
+              <li data-i18n="mw2_obj3_2">Ensure correctness and loop sounds where needed</li>
+              <li data-i18n="mw2_obj3_3">Avoid sync issues and cut-off sounds</li>
+              <li data-i18n="mw2_obj3_4">Prevent repetitive sounds through variation</li>
+            </ul>
+          </article>
+        </div>
+
+        <h3 data-i18n="mw2_features_title">Key Features</h3>
+        <div class="mw2-features">
+          <article class="mw2-feature-card">
+            <h4 data-i18n="mw2_feat1_title">🎯 Spatial Audio</h4>
+            <p data-i18n="mw2_feat1_desc">3D spatialization with proper attenuation curves and orientation settings for immersive audio positioning.</p>
+          </article>
+          <article class="mw2-feature-card">
+            <h4 data-i18n="mw2_feat2_title">🔊 Dynamic Mix</h4>
+            <p data-i18n="mw2_feat2_desc">Cohesive mix that adapts to gameplay, ensuring clarity and balance across all audio elements.</p>
+          </article>
+          <article class="mw2-feature-card">
+            <h4 data-i18n="mw2_feat3_title">🎮 Game Syncs</h4>
+            <p data-i18n="mw2_feat3_desc">Integration of Game Syncs for reverb zones and parameter-driven audio changes.</p>
+          </article>
+        </div>
+
+        <div class="mw2-technical">
+          <h3 data-i18n="mw2_technical_title">Technical Details</h3>
+          <p data-i18n="mw2_technical_desc">This project demonstrates professional Wwise implementation skills including event management, Game Sync integration, 3D audio positioning, and mix optimization. The implementation follows industry best practices for memory management and CPU efficiency.</p>
+        </div>
+
+        <h3 data-i18n="mw2_gallery_title">Gallery</h3>
+        <div class="projects-grid">
+          <span class="image fit"><img src="../assets/images/projects-middleware2/ellen.png" alt="Middleware 2 Screenshot" /></span>
+        </div>
+
+        <ul class="actions">
+          <li><a href="../projects/index.html" class="button" data-i18n="all_projects">All Projects</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <footer id="footer"></footer>
+    <div id="copyright">
+      <ul>
+        <li>&copy; Igor Szuniewicz 2025. All rights reserved.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="../assets/js/components/enhancements.js?v=20250210"></script>
+  <script src="../assets/js/components/lightbox.js"></script>
+</body>
+</html>

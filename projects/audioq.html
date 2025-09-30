@@ -2109,7 +2109,7 @@
 
           // Trigger tutorial after content is fully visible and layout is settled
           window.dispatchEvent(new Event('audioq-content-ready'));
-        }, 1000);
+        }, 300);
       }
     }
 
@@ -2156,7 +2156,7 @@
         if (!this.hasSeenTutorial) {
           window.addEventListener('audioq-content-ready', () => {
             // Wait a bit more for layout to fully settle after transition
-            setTimeout(() => this.start(), 500);
+            setTimeout(() => this.start(), 200);
           });
         }
       }
