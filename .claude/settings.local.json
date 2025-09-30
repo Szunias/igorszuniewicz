@@ -27,7 +27,9 @@
       "Bash(echo:*)",
       "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\amorak.html\")",
       "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\richter.html\")",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\not-today-darling.html\")"
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\not-today-darling.html\")",
+      "Bash(findstr:*)",
+      "Bash(sed:*)"
     ],
     "deny": [],
     "ask": []

@@ -555,7 +555,7 @@
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       font-weight: 700;
-      font-size: 0.9em;
+      font-size: 0.7em;
       letter-spacing: 0.5px;
       position: relative;
       overflow: hidden;
@@ -1498,32 +1498,6 @@
         </div>
 
         <div class="content-section">
-          <h3 data-i18n="audioq_showcase">🎬 Showcase Video</h3>
-          <div class="video-container" onclick="openVideoModal()">
-            <div class="video-thumbnail">
-              <img src="../assets/images/projects-audioq/AudioQPicture.png" alt="AudioQ Showcase" />
-              <div class="play-button">
-                <svg width="80" height="80" viewBox="0 0 80 80">
-                  <circle cx="40" cy="40" r="35" fill="rgba(255,255,255,0.9)" />
-                  <polygon points="30,20 30,60 60,40" fill="#333" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Video Modal -->
-        <div id="video-modal" class="video-modal" onclick="closeVideoModal()">
-          <div class="video-modal-content">
-            <video id="modal-video" controls width="90%" height="auto">
-              <source src="../assets/images/projects-audioq/AudioQ-Showcase.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-
-
-        <div class="content-section">
           <h3 data-i18n="audioq_features">⚡ Key Features</h3>
           <ul>
             <li data-i18n="audioq_feature_1">Drag & drop audio file loading (WAV, AIFF, MP3)</li>
@@ -1550,6 +1524,30 @@
             <div class="row gtr-50 gtr-uniform">
               <div class="col-12"><span class="image fit"><img src="../assets/images/projects-audioq/AudioQPicture.png" alt="AudioQ Main Interface" /></span></div>
             </div>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <div class="video-container" onclick="openVideoModal()">
+            <div class="video-thumbnail">
+              <img src="../assets/images/projects-audioq/AudioQPicture.png" alt="AudioQ Showcase" />
+              <div class="play-button">
+                <svg width="80" height="80" viewBox="0 0 80 80">
+                  <circle cx="40" cy="40" r="35" fill="rgba(255,255,255,0.9)" />
+                  <polygon points="30,20 30,60 60,40" fill="#333" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Modal -->
+        <div id="video-modal" class="video-modal" onclick="closeVideoModal()">
+          <div class="video-modal-content">
+            <video id="modal-video" controls width="90%" height="auto">
+              <source src="../assets/images/projects-audioq/AudioQ-Showcase.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
 
