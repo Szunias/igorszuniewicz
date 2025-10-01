@@ -411,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   requestAnimationFrame(glowLoop);
 
-  // Render equalizer bars (suspend when tab hidden or idle)
+  // Render equalizer bars - Premium Professional version
   let rafId = null;
   let lastActivity = performance.now();
   ['pointermove','scroll','keydown','click'].forEach(evt=>window.addEventListener(evt,()=>{ lastActivity = performance.now(); },{passive:true}));
@@ -425,24 +425,58 @@ document.addEventListener('DOMContentLoaded', function() {
     const t = performance.now() / 1000;
     const w = eq.width, h = eq.height;
     ctx.clearRect(0,0,w,h);
-    const bars = Math.min(36, Math.floor(w / 32));
-    const gap = Math.max(12, w/(bars*7));
-    const bw = Math.max(4, (w - (bars-1)*gap) / bars);
+
+    // More bars, thinner for modern look
+    const bars = Math.min(60, Math.floor(w / 20));
+    const gap = Math.max(8, w/(bars*8));
+    const bw = Math.max(3, (w - (bars-1)*gap) / bars);
+
     for(let i=0;i<bars;i++){
       const f = i/bars;
-      const amp = 0.14 + 0.24*Math.abs(Math.sin(t*0.9 + f*3.0 + mouseX/40));
-      const bh = (h*0.08) + (h*0.20)*amp + (mouseY/150)*10;
+      // Smoother, more musical wave pattern
+      const wave1 = Math.sin(t*1.2 + f*4.0);
+      const wave2 = Math.sin(t*0.8 - f*2.5 + mouseX/50);
+      const wave3 = Math.sin(t*1.5 + f*6.0 - mouseY/80);
+      const amp = 0.15 + 0.35 * Math.abs(wave1 * 0.5 + wave2 * 0.3 + wave3 * 0.2);
+
+      const bh = (h*0.12) + (h*0.35)*amp;
       const x = i*(bw+gap);
-      const y = h - bh - 10;
+      const y = h - bh;
+
+      // Modern gradient with cyan/purple theme
       const grd = ctx.createLinearGradient(x, y, x, y+bh);
-      grd.addColorStop(0, 'rgba(24,60,92,0.24)');
-      grd.addColorStop(0.5,'rgba(18,50,82,0.20)');
-      grd.addColorStop(1, 'rgba(12,36,68,0.16)');
+      const intensity = amp * 0.6;
+
+      // Cyan to purple gradient based on position
+      if (f < 0.33) {
+        // Left side - cyan tones
+        grd.addColorStop(0, `rgba(24, 191, 239, ${intensity * 0.4})`);
+        grd.addColorStop(0.5, `rgba(24, 191, 239, ${intensity * 0.25})`);
+        grd.addColorStop(1, `rgba(58, 134, 255, ${intensity * 0.15})`);
+      } else if (f < 0.66) {
+        // Middle - purple tones
+        grd.addColorStop(0, `rgba(154, 108, 255, ${intensity * 0.4})`);
+        grd.addColorStop(0.5, `rgba(154, 108, 255, ${intensity * 0.25})`);
+        grd.addColorStop(1, `rgba(120, 81, 169, ${intensity * 0.15})`);
+      } else {
+        // Right side - pink/purple tones
+        grd.addColorStop(0, `rgba(255, 110, 169, ${intensity * 0.4})`);
+        grd.addColorStop(0.5, `rgba(200, 100, 180, ${intensity * 0.25})`);
+        grd.addColorStop(1, `rgba(154, 108, 255, ${intensity * 0.15})`);
+      }
+
       ctx.fillStyle = grd;
       ctx.fillRect(x, y, bw, bh);
-      // subtle base line
-      ctx.fillStyle = 'rgba(12,28,46,0.06)';
-      ctx.fillRect(x, h-10, bw, 3);
+
+      // Subtle glow effect on top of each bar
+      if (amp > 0.5) {
+        ctx.fillStyle = `rgba(255, 255, 255, ${(amp - 0.5) * 0.15})`;
+        ctx.fillRect(x, y, bw, 3);
+      }
+
+      // Minimalist base indicator
+      ctx.fillStyle = 'rgba(24, 191, 239, 0.06)';
+      ctx.fillRect(x, h-2, bw, 1);
     }
     rafId = requestAnimationFrame(renderEQ);
   }

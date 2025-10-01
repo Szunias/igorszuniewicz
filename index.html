@@ -345,21 +345,21 @@
     <svg class="bg-waves" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <defs>
             <linearGradient id="gradWave1" x1="0%" x2="100%" y1="0%" y2="0%">
-                <stop offset="0%" stop-color="#18bfef" stop-opacity="0.6"/>
-                <stop offset="100%" stop-color="#58b6ff" stop-opacity="0.3"/>
+                <stop offset="0%" stop-color="#18bfef" stop-opacity="0.25"/>
+                <stop offset="100%" stop-color="#58b6ff" stop-opacity="0.1"/>
             </linearGradient>
             <linearGradient id="gradWave2" x1="0%" x2="100%" y1="0%" y2="0%">
-                <stop offset="0%" stop-color="#9a6cff" stop-opacity="0.6"/>
-                <stop offset="100%" stop-color="#18bfef" stop-opacity="0.3"/>
+                <stop offset="0%" stop-color="#9a6cff" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#18bfef" stop-opacity="0.08"/>
             </linearGradient>
             <linearGradient id="gradWave3" x1="0%" x2="100%" y1="0%" y2="0%">
-                <stop offset="0%" stop-color="#ff6ea9" stop-opacity="0.5"/>
-                <stop offset="100%" stop-color="#9a6cff" stop-opacity="0.25"/>
+                <stop offset="0%" stop-color="#ff6ea9" stop-opacity="0.18"/>
+                <stop offset="100%" stop-color="#9a6cff" stop-opacity="0.06"/>
             </linearGradient>
         </defs>
-        <path fill="url(#gradWave1)" opacity="0.6" d="M0 320 L1200 300 L1200 600 L0 600 Z"></path>
-        <path fill="url(#gradWave2)" opacity="0.4" d="M0 340 L1200 330 L1200 600 L0 600 Z"></path>
-        <path fill="url(#gradWave3)" opacity="0.3" d="M0 360 L1200 360 L1200 600 L0 600 Z"></path>
+        <path class="wave-path wave-1" fill="url(#gradWave1)" d="M0,280 C200,260 400,300 600,280 C800,260 1000,300 1200,280 L1200,600 L0,600 Z"></path>
+        <path class="wave-path wave-2" fill="url(#gradWave2)" d="M0,320 C250,300 450,340 650,320 C850,300 1050,340 1200,320 L1200,600 L0,600 Z"></path>
+        <path class="wave-path wave-3" fill="url(#gradWave3)" d="M0,360 C300,340 500,380 700,360 C900,340 1100,380 1200,360 L1200,600 L0,600 Z"></path>
     </svg>
     <canvas class="bg-eq" aria-hidden="true"></canvas>
     <div class="bg-glow"></div>
