@@ -24,47 +24,42 @@ body {
 
 /* 2. Optimize main scrolling container */
 #wrapper {
-  /* Force layer creation for smooth scrolling */
-  will-change: transform;
+  /* Use transform3d for GPU acceleration WITHOUT will-change */
   transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
-/* 3. Optimize animations and transitions for 60fps */
-* {
-  /* Prevent layout thrashing during scroll */
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-}
+/* 3. Removed universal selector - was creating hundreds of GPU layers! */
+/* * { transform-style: preserve-3d; } ← DELETED - caused massive performance issues */
 
-/* 4. Force GPU acceleration on scrollable elements */
-.project-card,
-.music-item,
-#nav,
+/* 4. GPU acceleration only on actively animated elements */
 .bg-waves,
-.bg-orbs,
-.bg-glow,
-.click-fx {
-  will-change: transform;
+.bg-orbs .orb {
+  /* Only elements that actually animate continuously */
   transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
-/* 5. Optimize background elements for smooth scrolling */
-.bg-waves {
-  /* Use GPU-optimized properties */
-  will-change: transform, opacity;
+/* Elements that only animate on interaction - NO will-change until hover/focus */
+.project-card,
+.music-item {
   transform: translate3d(0, 0, 0);
-  /* Reduce complexity during scroll */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* 5. Optimize background elements - removed will-change */
+.bg-waves {
+  /* GPU acceleration via transform3d, NO will-change */
+  transform: translate3d(0, 0, 0);
   contain: layout style paint;
 }
 
 .bg-orbs .orb {
-  will-change: transform;
+  /* Removed will-change - was creating too many layers */
   transform: translate3d(0, 0, 0);
-  /* Optimize orb animations */
   backface-visibility: hidden;
   contain: layout style paint;
 }
@@ -81,14 +76,15 @@ a[href^="#"] {
 }
 
 .project-card {
-  /* Optimize for 60fps hover transitions */
+  /* GPU acceleration but NO will-change until hover */
   transform: translate3d(0, 0, 0);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
 }
 
-.project-card:hover {
-  /* Use transform instead of translateY for better performance */
+.project-card:hover,
+.project-card:focus-within {
+  /* Add will-change ONLY on hover for performance */
+  will-change: transform;
   transform: translate3d(0, -8px, 0);
 }
 
