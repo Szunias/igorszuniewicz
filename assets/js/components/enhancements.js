@@ -348,51 +348,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } catch(_){}
   })();
 
-  // Intro overlay on first visit (session-based) - Premium Professional
-  try {
-    const seen = sessionStorage.getItem('intro-seen');
-    if (!seen) {
-      document.body.classList.add('intro-lock');
-      const overlay = document.createElement('div');
-      overlay.className = 'intro-overlay';
-      const ring = document.createElement('div');
-      ring.className = 'intro-ring';
-      ring.innerHTML = `
-        <div class=\"intro-center-orb\">
-          <div class=\"center-dot\"></div>
-        </div>
-        <div class=\"intro-title\">IGOR SZUNIEWICZ</div>
-        <div class=\"intro-sub\">
-          <span>Composer</span>
-          <span>|</span>
-          <span>Audio Engineer</span>
-          <span>|</span>
-          <span>Game Developer</span>
-        </div>`;
-      overlay.appendChild(ring);
-
-      // Add progress indicator
-      const progress = document.createElement('div');
-      progress.className = 'intro-progress';
-      overlay.appendChild(progress);
-
-      // During intro, temporarily elevate gradient behind overlay
-      const introGrad = grad.cloneNode(true);
-      introGrad.style.zIndex = '1000';
-      document.body.appendChild(introGrad);
-      document.body.appendChild(overlay);
-
-      setTimeout(() => {
-        overlay.classList.add('intro-fade');
-        sessionStorage.setItem('intro-seen','1');
-        setTimeout(() => {
-          overlay.remove();
-          introGrad.remove();
-          document.body.classList.remove('intro-lock');
-        }, 800);
-      }, 2600);
-    }
-  } catch(_) {}
+  // Intro overlay moved to inline script in index.html for instant loading
   if (!perfLite && eq) {
     ctx = eq.getContext('2d');
     function resizeCanvas(){ eq.width = Math.floor(window.innerWidth * 0.6); eq.height = Math.floor(window.innerHeight * 0.5); }

@@ -461,10 +461,10 @@ body.fx-off #nav { backdrop-filter: none !important; }
 }
 #nav ul.links li a {
   white-space: nowrap !important;
-  font-size: 1.15rem !important;
+  font-size: 1.1rem !important;
   font-weight: 600 !important;
   letter-spacing: 0.04em !important;
-  padding: 0.7rem 2.2rem !important;
+  padding: 0.65rem 2rem !important;
   border-radius: 12px !important;
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
@@ -710,12 +710,17 @@ body.fx-off #nav { backdrop-filter: none !important; }
 
 /* Responsive navigation for mobile */
 @media screen and (max-width: 980px) {
-  #nav { 
-    display: block !important; 
-    margin: 0 auto 1.5rem !important; 
-    width: calc(100% - 2rem) !important; 
-    opacity: 1 !important; 
-    transform: none !important; 
+  #intro {
+    padding-bottom: 4rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  #nav {
+    display: block !important;
+    margin: 1.5rem auto 1.5rem !important;
+    width: calc(100% - 2rem) !important;
+    opacity: 1 !important;
+    transform: none !important;
     padding: 0.75rem 1rem;
     border-radius: 12px;
   }

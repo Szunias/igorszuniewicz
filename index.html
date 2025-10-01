@@ -365,7 +365,7 @@
     <div class="bg-glow"></div>
     <div id="wrapper" class="fade-in">
 
-        <div id="intro" style="text-align:center; padding-top: 8vh; padding-bottom: 1.5vh;">
+        <div id="intro" style="text-align:center; padding-top: 8vh; padding-bottom: 3vh;">
             <h1 style="margin-bottom: 0.8rem;">Igor Szuniewicz</h1>
             <p style="opacity: 0.85; margin-bottom: 1.2rem;">Composer • Audio Engineer • Software Developer</p>
             <div class="intro-social" style="display: flex; gap: 1.5rem; justify-content: center; align-items: center; margin-bottom: 0.5rem;">
@@ -707,6 +707,47 @@
 
     <!-- Service Worker Registration -->
     <script>
+    // Instant intro overlay on first visit - runs immediately
+    (function() {
+        try {
+            const seen = sessionStorage.getItem('intro-seen');
+            if (!seen) {
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.body.classList.add('intro-lock');
+                    const overlay = document.createElement('div');
+                    overlay.className = 'intro-overlay';
+                    const ring = document.createElement('div');
+                    ring.className = 'intro-ring';
+                    ring.innerHTML = '<div class="intro-center-orb"><div class="center-dot"></div></div><div class="intro-title">IGOR SZUNIEWICZ</div><div class="intro-sub"><span>Composer</span><span>|</span><span>Audio Engineer</span><span>|</span><span>Game Developer</span></div>';
+                    overlay.appendChild(ring);
+
+                    const progress = document.createElement('div');
+                    progress.className = 'intro-progress';
+                    overlay.appendChild(progress);
+
+                    const grad = document.querySelector('.bg-gradient');
+                    if (grad) {
+                        const introGrad = grad.cloneNode(true);
+                        introGrad.style.zIndex = '1000';
+                        document.body.appendChild(introGrad);
+                    }
+                    document.body.appendChild(overlay);
+
+                    setTimeout(() => {
+                        overlay.classList.add('intro-fade');
+                        sessionStorage.setItem('intro-seen','1');
+                        setTimeout(() => {
+                            overlay.remove();
+                            const introGrad = document.body.querySelector('.bg-gradient[style*="1000"]');
+                            if (introGrad) introGrad.remove();
+                            document.body.classList.remove('intro-lock');
+                        }, 800);
+                    }, 2600);
+                });
+            }
+        } catch(_){}
+    })();
+
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js', { scope: '/' })
