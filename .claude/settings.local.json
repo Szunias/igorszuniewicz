@@ -30,7 +30,11 @@
       "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\projects\\not-today-darling.html\")",
       "Bash(findstr:*)",
       "Bash(sed:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(find:*)",
+      "Bash(awk:*)",
+      "Bash(where magick)",
+      "Bash(where node)"
     ],
     "deny": [],
     "ask": []
