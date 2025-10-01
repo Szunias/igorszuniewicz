@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
   <title>AudioQ — Audio Plugin Development</title>
   <meta charset="utf-8" />
@@ -83,6 +83,7 @@
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-top: none;
+      text-align: center;
     }
 
     header.major::before {
@@ -112,25 +113,6 @@
       background: radial-gradient(circle at 70% 30%, rgba(24, 191, 239, 0.05) 0%, transparent 50%),
                   radial-gradient(circle at 30% 70%, rgba(154, 108, 255, 0.05) 0%, transparent 50%);
       pointer-events: none;
-    }
-
-    header.major {
-      text-align: center;
-      padding: 3rem 0;
-      position: relative;
-    }
-
-    header.major::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 4px;
-      background: linear-gradient(90deg, #18bfef, #9a6cff, #ff6ea9);
-      border-radius: 2px;
-      box-shadow: 0 0 20px rgba(24, 191, 239, 0.5);
     }
 
     header.major h2 {
@@ -201,6 +183,8 @@
       color: rgba(255, 255, 255, 0.85) !important;
       max-width: 800px;
       margin: 0 auto !important;
+      position: relative;
+      z-index: 2;
     }
 
     @keyframes brandGlow {
@@ -213,22 +197,11 @@
       50% { transform: scale(1.08); opacity: 0.85; }
     }
 
-    header.major p {
-      color: #b0b0b0 !important;
-      font-size: 1.2em !important;
-      margin: 0 !important;
-      position: relative;
-      z-index: 2;
-    }
-
     .video-container {
       margin: 2em 0;
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    }
-
-    .video-container {
       cursor: pointer;
       position: relative;
     }
@@ -1305,9 +1278,9 @@
                 </button>
               </div>
               <div class="transport-controls">
-                <button id="play-btn" disabled>Play</button>
-                <button id="stop-btn" disabled>Reset</button>
-                <button id="loop-btn" disabled>Loop</button>
+                <button type="button" id="play-btn" disabled>Play</button>
+                <button type="button" id="stop-btn" disabled>Reset</button>
+                <button type="button" id="loop-btn" disabled>Loop</button>
               </div>
             </div>
           </div>
@@ -2039,8 +2012,8 @@
       }
 
       startLoadingSequence() {
-        // Step progression
-        const stepDurations = [400, 600, 400, 300]; // Duration for each step (reduced)
+        // Step progression with acceleration (getting faster)
+        const stepDurations = [300, 250, 200, 150]; // Accelerating durations
         let totalTime = 0;
 
         stepDurations.forEach((duration, index) => {
@@ -2051,12 +2024,12 @@
         });
 
         // Progress counting animation
-        this.animateProgress();
+        this.animateProgress(totalTime);
 
         // Hide loader after all steps
         setTimeout(() => {
           this.hideLoader();
-        }, totalTime + 300);
+        }, totalTime + 200);
       }
 
       activateStep(stepIndex) {
@@ -2069,16 +2042,16 @@
         }
       }
 
-      animateProgress() {
-        const duration = 2000; // 2 seconds (reduced from 4)
+      animateProgress(totalStepTime) {
+        const duration = totalStepTime + 200; // Match total loading time
         const startTime = performance.now();
 
         const updateProgress = (currentTime) => {
           const elapsed = currentTime - startTime;
           const progress = Math.min(elapsed / duration, 1);
 
-          // Easing function for smooth progress
-          const easedProgress = this.easeOutCubic(progress);
+          // Easing function with acceleration (getting faster)
+          const easedProgress = this.easeInOutQuad(progress);
           const percentage = Math.round(easedProgress * 100);
 
           this.progressPercentage.textContent = `${percentage}%`;
@@ -2091,8 +2064,9 @@
         requestAnimationFrame(updateProgress);
       }
 
-      easeOutCubic(t) {
-        return 1 - Math.pow(1 - t, 3);
+      easeInOutQuad(t) {
+        // Accelerating easing - starts slow, ends fast
+        return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
       }
 
       hideLoader() {
@@ -2136,9 +2110,7 @@
       }
 
       init() {
-        // Always show tutorial for testing - remove this line later
-        localStorage.removeItem('audioq-tutorial-completed');
-        this.hasSeenTutorial = false;
+        this.hasSeenTutorial = localStorage.getItem('audioq-tutorial-completed') === 'true';
 
         // Event listeners
         document.getElementById('tutorial-next').addEventListener('click', () => this.next());
@@ -2170,7 +2142,6 @@
         // Scroll to tutorial area - scroll to demo interface
         setTimeout(() => {
           const demoInterface = document.querySelector('#audioq-demo');
-          console.log('Scrolling to demo interface:', demoInterface);
           if (demoInterface) {
             demoInterface.scrollIntoView({ behavior: 'smooth', block: 'center' });
           }
@@ -2207,7 +2178,6 @@
       positionElements(target, position) {
         const targetRect = target.getBoundingClientRect();
         const spotlightPadding = 8;
-        console.log('Positioning tutorial on target:', target, 'rect:', targetRect);
 
         // Position spotlight
         this.spotlight.style.left = `${targetRect.left - spotlightPadding}px`;
@@ -2295,6 +2265,7 @@
         this.lastTime = 0;
         this.playbackRate = 1.0;
         this.currentPosition = 0;
+        this.currentSeekTime = null;
         this.loopStart = 0;
         this.loopEnd = 1;
         this.grainSize = 0.1;
@@ -2302,6 +2273,8 @@
         this.selectionStart = null;
         this.selectionEnd = null;
         this.isDraggingSelection = false;
+        this.filtersEnabled = false;
+        this.compressorEnabled = false;
 
         this.initializeAudio();
         this.setupEventListeners();
@@ -2339,7 +2312,6 @@
           this.tremoloGain.connect(this.gainNode);
           this.gainNode.connect(this.audioContext.destination);
 
-          console.log('Audio context initialized');
         } catch (error) {
           console.error('Failed to initialize audio context:', error);
         }
@@ -2371,10 +2343,24 @@
           e.preventDefault();
           dropOverlay.classList.remove('dragover');
           const files = e.dataTransfer.files;
-          if (files.length > 0) this.loadAudioFile(files[0]);
+          if (files.length > 0) {
+            const file = files[0];
+            if (file.type.startsWith('audio/')) {
+              this.loadAudioFile(file);
+            } else {
+              alert('Please drop an audio file (mp3, wav, ogg, etc.)');
+            }
+          }
         });
         fileInput.addEventListener('change', (e) => {
-          if (e.target.files.length > 0) this.loadAudioFile(e.target.files[0]);
+          if (e.target.files.length > 0) {
+            const file = e.target.files[0];
+            if (file.type.startsWith('audio/')) {
+              this.loadAudioFile(file);
+            } else {
+              alert('Please select an audio file (mp3, wav, ogg, etc.)');
+            }
+          }
         });
 
         // Transport controls
@@ -2637,7 +2623,6 @@
           }
           filenameIndicator.textContent = `📄 ${file.name}`;
 
-          console.log('Audio file loaded successfully');
         } catch (error) {
           console.error('Failed to load audio file:', error);
           alert('Failed to load audio file. Please try a different file.');
@@ -2662,7 +2647,6 @@
 
           for (const sampleUrl of possibleUrls) {
             try {
-              console.log('Trying to load:', sampleUrl);
               const response = await fetch(sampleUrl);
 
               if (response.ok) {
@@ -2672,7 +2656,6 @@
                 break;
               }
             } catch (e) {
-              console.log('Failed to load from:', sampleUrl, e);
               continue;
             }
           }
@@ -2702,7 +2685,6 @@
           btn.textContent = '🎵 Load Sample';
           btn.disabled = false;
 
-          console.log('Sample audio loaded successfully from:', loadedUrl);
         } catch (error) {
           console.error('Failed to load sample audio:', error);
 
@@ -2714,8 +2696,6 @@
           setTimeout(() => {
             btn.textContent = '🎵 Load Gnosienne Sample';
           }, 3000);
-
-          console.log('Sample loading failed. Make sure the gnosienne1.wav file exists in assets/audio/tracks/');
         }
       }
 
@@ -3302,15 +3282,15 @@
       }
     }
 
-    // Video Modal Functions
-    function openVideoModal() {
+    // Video Modal Functions (Global scope)
+    window.openVideoModal = function() {
       const modal = document.getElementById('video-modal');
       const video = document.getElementById('modal-video');
       modal.style.display = 'flex';
       video.play();
     }
 
-    function closeVideoModal() {
+    window.closeVideoModal = function() {
       const modal = document.getElementById('video-modal');
       const video = document.getElementById('modal-video');
       modal.style.display = 'none';
@@ -3329,7 +3309,6 @@
 
         // Initialize tutorial for first-time users
         setTimeout(() => {
-          console.log('Starting tutorial...');
           new AudioQTutorial();
         }, 200); // Show tutorial faster after demo loads
       }, 800); // Start demo after loader finishes
