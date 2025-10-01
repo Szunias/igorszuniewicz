@@ -411,18 +411,20 @@ body.is-preload #wrapper.fade-in:before {
 }
 
 /* Navbar - Modern glass morphism design */
-#nav { 
-  position: relative; top: auto; z-index: 100; 
-  background: rgba(10, 16, 22, 0.85); 
-  backdrop-filter: blur(12px) saturate(1.1); 
-  border: 1px solid rgba(255, 255, 255, 0.08); 
-  border-radius: 16px; 
-  margin: 0 auto 2rem auto; 
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1); 
-  width: calc(100% - 4rem); 
-  max-width: 72rem; 
-  overflow: visible !important; 
-  padding: 1.25rem 2rem;
+#nav {
+  position: relative; top: auto; z-index: 100;
+  background: rgba(10, 16, 22, 0.88);
+  backdrop-filter: blur(14px) saturate(1.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  margin: 0 auto 2.5rem auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  width: calc(100% - 4rem);
+  max-width: 72rem;
+  overflow: visible !important;
+  padding: 0.85rem 2.5rem;
+  display: flex;
+  align-items: center;
 }
 /* Disable costly filters and blends in fps-boost */
 body.fps-boost #nav { backdrop-filter: none !important; }
@@ -431,15 +433,25 @@ body.fps-boost .bg-orbs .orb { filter: none !important; opacity: .12 !important;
 /* Hard FX kill switch */
 body.fx-off .bg-waves, body.fx-off .bg-orbs, body.fx-off .bg-eq, body.fx-off .bg-glow { display:none !important; }
 body.fx-off #nav { backdrop-filter: none !important; }
-#nav .links { 
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  gap: 0.5rem; 
+#nav .links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
   flex-wrap: wrap;
   /* Isolate from icons to prevent layout interference */
   flex: 1;
   min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#nav ul.links li {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  line-height: 1 !important;
 }
 
 /* Ensure icons don't interfere with main navigation */
@@ -447,28 +459,58 @@ body.fx-off #nav { backdrop-filter: none !important; }
   flex: 0 0 auto;
   margin-left: auto;
 }
-#nav .links a {
-  white-space: nowrap;
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+#nav ul.links li a {
+  white-space: nowrap !important;
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  padding: 0.7rem 2.2rem !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   position: relative;
   overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  margin: 0 !important;
 }
-#nav .links a, #nav .icons a { 
-  color: #e8f6fb;
-  opacity: 0.9; 
-  line-height: 1.3; 
+
+#nav ul.links li a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(24, 191, 239, 0.2), rgba(154, 108, 255, 0.15));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: -1;
 }
-#nav .links a:hover { 
-  opacity: 1; 
-  background: rgba(24, 191, 239, 0.15);
-  border-color: rgba(24, 191, 239, 0.3);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(24, 191, 239, 0.2);
+
+#nav ul.links li a {
+  color: #ffffff !important;
+  opacity: 0.9 !important;
+  line-height: 1.5 !important;
+}
+
+#nav ul.links li a:hover {
+  opacity: 1 !important;
+  background: rgba(24, 191, 239, 0.15) !important;
+  border-color: rgba(24, 191, 239, 0.4) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(24, 191, 239, 0.3) !important;
+}
+
+#nav ul.links li a:hover::before {
+  opacity: 1;
+}
+
+#nav ul.links li.active a {
+  background: linear-gradient(135deg, rgba(24, 191, 239, 0.25), rgba(154, 108, 255, 0.2)) !important;
+  border-color: rgba(24, 191, 239, 0.5) !important;
+  opacity: 1 !important;
+  box-shadow: 0 6px 20px rgba(24, 191, 239, 0.35) !important;
 }
 
 /* Layout tweaks */
@@ -2238,54 +2280,44 @@ body.page-enter #wrapper { opacity: 0; transform: translateY(4px); }
   .page-progress { display: none !important; }
 }
 
-/* Interactive background glow */
+/* Interactive background glow - Disabled for performance */
 .bg-glow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background:
-    radial-gradient(600px 600px at var(--mx,50%) var(--my,50%), rgba(24,191,239,0.06), transparent 40%),
-    radial-gradient(1000px 1000px at calc(var(--mx,50%) + 10%) calc(var(--my,50%) + 20%), rgba(88, 182, 255, 0.04), transparent 50%);
+  display: none;
 }
 
-/* Animated background gradient - Premium Professional */
+/* Animated background gradient - Optimized for performance */
 .bg-gradient {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background:
-    radial-gradient(ellipse 1200px 800px at 15% 10%, rgba(24, 191, 239, 0.08), transparent 55%),
-    radial-gradient(ellipse 1400px 900px at 85% 15%, rgba(154, 108, 255, 0.06), transparent 60%),
-    radial-gradient(ellipse 1000px 700px at 50% 85%, rgba(255, 110, 169, 0.04), transparent 50%),
-    radial-gradient(circle 1600px at 50% 50%, rgba(18, 32, 44, 0.15), transparent 70%),
-    linear-gradient(180deg, #05080c 0%, #080d12 35%, #0a1016 65%, #0c1218 100%);
+  background: linear-gradient(180deg, #06090d 0%, #080e13 50%, #0a1117 100%);
+  will-change: auto;
 }
 
 /* Floating blurred orbs */
 .bg-orbs { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
-/* Audio-themed waves layer - Professional smooth & performant */
+/* Audio-themed waves layer - Lightweight */
 .bg-waves {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.35;
+  opacity: 0.2;
   mix-blend-mode: screen;
-  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.0) 80%);
-  mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.0) 80%);
-  will-change: transform;
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.0) 70%);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.0) 70%);
 }
 
 .wave-path {
-  will-change: transform;
   transform-origin: center;
 }
 
-/* Equalizer bars overlay - Enhanced visibility */
-.bg-eq { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.18; mix-blend-mode: screen; width: 150% !important; left: -25% !important; }
+/* Equalizer bars overlay - Disabled for performance */
+.bg-eq {
+  display: none !important;
+}
 
 /* Click visual audio-ripple */
 .click-fx { position: fixed; inset: 0; z-index: 100; pointer-events: none; overflow: hidden; }

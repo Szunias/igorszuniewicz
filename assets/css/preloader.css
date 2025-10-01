@@ -1,4 +1,4 @@
-/* Preloader styles - Fast minimal */
+/* Preloader styles - Instant */
 body.is-preload #preloader {
     opacity: 1;
     visibility: visible;
@@ -19,6 +19,6 @@ body.is-loaded #preloader {
     z-index: 9998;
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.15s ease, visibility 0.15s ease;
+    transition: opacity 0.1s ease, visibility 0.1s ease;
     pointer-events: none;
 }
