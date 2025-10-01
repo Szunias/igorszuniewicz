@@ -8,7 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (window.innerWidth <= 736);
   // Enable reveal only if JS loads
   document.body.classList.add('reveal-enabled');
-  if (!isMobile) {
+
+  // Only add page-enter fade on first visit or navigation from other pages
+  // Skip on F5/reload to avoid annoying black screen
+  const isReload = performance.navigation && performance.navigation.type === 1;
+  const isBackForward = performance.navigation && performance.navigation.type === 2;
+
+  if (!isMobile && !isReload && !isBackForward) {
     document.body.classList.add('page-enter');
     setTimeout(() => document.body.classList.remove('page-enter'), 180);
   }
