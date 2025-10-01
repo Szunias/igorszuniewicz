@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } catch(_){}
   })();
 
-  // Intro overlay on first visit (session-based)
+  // Intro overlay on first visit (session-based) - Premium Professional
   try {
     const seen = sessionStorage.getItem('intro-seen');
     if (!seen) {
@@ -352,16 +352,10 @@ document.addEventListener('DOMContentLoaded', function() {
       const ring = document.createElement('div');
       ring.className = 'intro-ring';
       ring.innerHTML = `
-        <div class=\"intro-title\">IGOR SZUNIEWICZ</div>
-        <div class=\"items icons\">
-          <i class=\"icon solid fa-music\" style=\"top:2%;left:41%\"></i>
-          <i class=\"icon solid fa-headphones\" style=\"top:18%;left:74%\"></i>
-          <i class=\"icon solid fa-wave-square\" style=\"top:46%;left:80%\"></i>
-          <i class=\"icon solid fa-sliders-h\" style=\"top:76%;left:62%\"></i>
-          <i class=\"icon solid fa-microphone\" style=\"top:78%;left:25%\"></i>
-          <i class=\"icon solid fa-compact-disc\" style=\"top:46%;left:10%\"></i>
-          <i class=\"icon solid fa-guitar\" style=\"top:16%;left:12%\"></i>
+        <div class=\"intro-center-orb\">
+          <div class=\"center-dot\"></div>
         </div>
+        <div class=\"intro-title\">IGOR SZUNIEWICZ</div>
         <div class=\"intro-sub\">
           <span>Composer</span>
           <span>|</span>
@@ -370,16 +364,27 @@ document.addEventListener('DOMContentLoaded', function() {
           <span>Game Developer</span>
         </div>`;
       overlay.appendChild(ring);
+
+      // Add progress indicator
+      const progress = document.createElement('div');
+      progress.className = 'intro-progress';
+      overlay.appendChild(progress);
+
       // During intro, temporarily elevate gradient behind overlay
       const introGrad = grad.cloneNode(true);
       introGrad.style.zIndex = '1000';
       document.body.appendChild(introGrad);
       document.body.appendChild(overlay);
+
       setTimeout(() => {
         overlay.classList.add('intro-fade');
         sessionStorage.setItem('intro-seen','1');
-        setTimeout(() => { overlay.remove(); introGrad.remove(); document.body.classList.remove('intro-lock'); }, 900);
-      }, 2200);
+        setTimeout(() => {
+          overlay.remove();
+          introGrad.remove();
+          document.body.classList.remove('intro-lock');
+        }, 800);
+      }, 2600);
     }
   } catch(_) {}
   if (!perfLite && eq) {
