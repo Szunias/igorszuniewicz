@@ -1,32 +1,65 @@
 /**
  * Visit Counter
- * Simple page visit tracker and display
+ * Tracks and displays page visit count using CountAPI
  */
 
 (function() {
   'use strict';
 
-  const API_ENDPOINT = '/api/analytics.php?counter=1';
+  const NAMESPACE = 'igorszuniewicz';
+  const KEY = 'portfolio_views';
+  const BASE_COUNT = 2533; // Starting count
+  const API_URL = `https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`;
+  const FALLBACK_KEY = 'last_known_count';
 
-  // Get visit count from server
+  // Fetch visit count from CountAPI
   async function getVisitCount() {
     try {
-      const response = await fetch(API_ENDPOINT);
-      if (!response.ok) throw new Error('Failed to fetch');
+      // Try to get count from CountAPI
+      const response = await fetch(API_URL);
+      if (!response.ok) throw new Error('API request failed');
+
       const data = await response.json();
-      return data.visits || 0;
+      const totalCount = BASE_COUNT + (data.value || 0);
+
+      // Cache the result
+      localStorage.setItem(FALLBACK_KEY, totalCount.toString());
+      return totalCount;
     } catch (error) {
-      console.log('Visit counter: using fallback');
-      // Fallback to localStorage
-      return parseInt(localStorage.getItem('fallback_visits') || '0', 10);
+      console.log('Using cached count');
+      // Fallback to last known count
+      const cached = localStorage.getItem(FALLBACK_KEY);
+      return cached ? parseInt(cached, 10) : BASE_COUNT;
     }
   }
 
   // Format visit count for display
   function formatCount(count) {
-    if (count < 1000) return count.toString();
-    if (count < 10000) return (count / 1000).toFixed(1) + 'k';
-    return Math.floor(count / 1000) + 'k';
+    return count.toLocaleString('en-US');
+  }
+
+  // Animate counter number
+  function animateCount(element, targetCount) {
+    const duration = 1500;
+    const startCount = Math.max(0, targetCount - 10);
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeProgress = 1 - Math.pow(1 - progress, 3); // easeOut cubic
+
+      const currentCount = Math.floor(startCount + (targetCount - startCount) * easeProgress);
+      element.textContent = formatCount(currentCount);
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        element.textContent = formatCount(targetCount);
+      }
+    }
+
+    requestAnimationFrame(update);
   }
 
   // Show visit counter
@@ -39,42 +72,28 @@
     try {
       const currentCount = await getVisitCount();
 
-      // Update display
-      countSpan.textContent = formatCount(currentCount);
+      // Start animation after delay
+      setTimeout(() => {
+        counter.style.display = 'flex';
+        counter.style.opacity = '0';
+        counter.style.transform = 'translateY(10px)';
+
+        setTimeout(() => {
+          counter.style.opacity = '1';
+          counter.style.transform = 'translateY(0)';
+          animateCount(countSpan, currentCount);
+        }, 100);
+      }, 2500);
+
     } catch (error) {
       console.error('Failed to load visit count:', error);
-      countSpan.textContent = '—';
+      countSpan.textContent = formatCount(BASE_COUNT);
+      counter.style.display = 'flex';
     }
-
-    // Show counter with animation
-    setTimeout(() => {
-      counter.style.display = 'block';
-      counter.style.opacity = '0';
-      counter.style.transform = 'translateY(20px)';
-      counter.style.transition = 'all 0.3s ease';
-
-      setTimeout(() => {
-        counter.style.opacity = '1';
-        counter.style.transform = 'translateY(0)';
-      }, 100);
-    }, 2000); // Show after 2 seconds
-
-    // Auto-hide after 10 seconds
-    setTimeout(() => {
-      counter.style.opacity = '0.6';
-    }, 12000);
-
-    // Click to toggle visibility
-    counter.addEventListener('click', () => {
-      const isVisible = counter.style.opacity !== '0.3';
-      counter.style.opacity = isVisible ? '0.3' : '1';
-      counter.style.transition = 'opacity 0.2s ease';
-    });
   }
 
   // Initialize when page loads
   function init() {
-    // Wait for page to be ready
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', showVisitCounter);
     } else {
@@ -82,13 +101,10 @@
     }
   }
 
-  // Start only if not a bot and not localhost
+  // Start only if not a bot
   function shouldShowCounter() {
-    // Don't show on localhost
-    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return false;
-
     // Don't show for bots
-    const botPattern = /bot|crawler|spider|scraper/i;
+    const botPattern = /bot|crawler|spider|scraper|headless/i;
     if (botPattern.test(navigator.userAgent)) return false;
 
     return true;
