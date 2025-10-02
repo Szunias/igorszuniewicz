@@ -35,7 +35,10 @@
       "Bash(awk:*)",
       "Bash(where magick)",
       "Bash(where node)",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(grep:*)",
+      "Bash(where convert)",
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": []
