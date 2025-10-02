@@ -39,6 +39,18 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
+  // Create indicators
+  const indicatorsContainer = slider.querySelector('.slider-indicators');
+  if (indicatorsContainer) {
+    slides.forEach((s, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'slider-indicator' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${i+1}`);
+      dot.addEventListener('click', () => goToSlide(i));
+      indicatorsContainer.appendChild(dot);
+    });
+  }
+
   function announce() {
     const active = slides[currentSlide];
     const heading = active.querySelector('h3,h2,h1,a,span');
@@ -64,6 +76,13 @@ document.addEventListener("DOMContentLoaded", function() {
     next.style.opacity='1'; next.style.visibility='visible'; next.style.pointerEvents='auto';
     next.removeAttribute('aria-hidden');
     next.setAttribute('tabindex','0');
+
+    // Update indicators
+    const indicators = slider.querySelectorAll('.slider-indicator');
+    indicators.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
+    });
+
     announce();
     // Move focus if navigation was via keyboard
     if (document.activeElement === prevBtn || document.activeElement === nextBtn) {

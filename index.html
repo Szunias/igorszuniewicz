@@ -198,18 +198,26 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 2.2em;
             color: #e8f6fb;
             background: rgba(10, 16, 22, 0.85);
             backdrop-filter: blur(12px) saturate(1.1);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 12px 16px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            border-radius: 16px;
+            border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             z-index: 10;
             user-select: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slider-nav svg {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
         }
         .slider-nav:hover {
             background: linear-gradient(135deg, rgba(24,191,239,0.25), rgba(154,108,255,0.2));
@@ -218,11 +226,39 @@
             box-shadow: 0 12px 40px rgba(24,191,239,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
             transform: translateY(-50%) translateY(-2px);
         }
+        .slider-nav:hover svg {
+            transform: scale(1.1);
+        }
         .slider-nav.prev {
-            left: 10px;
+            left: 16px;
         }
         .slider-nav.next {
-            right: 10px;
+            right: 16px;
+        }
+        .slider-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+        .slider-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .slider-indicator.active {
+            background: #18bfef;
+            width: 24px;
+            border-radius: 4px;
+        }
+        .slider-indicator:hover {
+            background: rgba(24, 191, 239, 0.6);
         }
 
         /* Slide badges */
@@ -439,7 +475,7 @@
                         </div>
                         <div class="slide">
                             <h3>Ray Animation Music Composition</h3>
-                            <a href="projects/ray-animation.html"><img src="assets/images/projects/project5.jpg" alt="Ray Animation Music Composition" loading="lazy" decoding="async"></a>
+                            <a href="projects/ray-animation.html"><img src="assets/images/projects/project5.png" alt="Ray Animation Music Composition" loading="lazy" decoding="async"></a>
                             <p class="slide-description">Original score supporting narrative beats.</p>
                         </div>
                         <div class="slide">
@@ -459,7 +495,7 @@
                         </div>
                         <div class="slide">
                             <h3>Richter Animation Sound Design</h3>
-                            <a href="projects/richter.html"><img src="assets/images/projects/richter.jpg" alt="Richter - Animation Audio Design" loading="lazy" decoding="async"></a>
+                            <a href="projects/richter.html"><img src="assets/images/projects/richter.png" alt="Richter - Animation Audio Design" loading="lazy" decoding="async"></a>
                             <p class="slide-description">Sound design with minimal recording gear.</p>
                         </div>
                         <div class="slide">
@@ -474,8 +510,13 @@
                             <a href="projects/musicforgames.html"><img src="assets/images/projects/musicforgames.png" alt="Interactive Music Design" loading="lazy" decoding="async"></a>
                             <p class="slide-description">Adaptive audio systems with vertical layering.</p>
                         </div>
-                        <div class="slider-nav prev" role="button" tabindex="0" aria-label="Previous slide" aria-controls="projects-showcase">&#x25C0;</div>
-                        <div class="slider-nav next" role="button" tabindex="0" aria-label="Next slide" aria-controls="projects-showcase">&#x25B6;</div>
+                        <div class="slider-nav prev" role="button" tabindex="0" aria-label="Previous slide" aria-controls="projects-showcase">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        </div>
+                        <div class="slider-nav next" role="button" tabindex="0" aria-label="Next slide" aria-controls="projects-showcase">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </div>
+                        <div class="slider-indicators"></div>
                     </div>
                 </article>
 

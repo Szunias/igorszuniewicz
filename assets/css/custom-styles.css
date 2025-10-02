@@ -915,23 +915,24 @@ body p {
 .projects-grid.projects-list .project-card-content{
   padding: 16px 18px;
 }
-/* Normalize slider images - maintain responsive layout */
+/* Slider link container maintains aspect ratio */
+#projects-showcase .slider .slide a {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(18, 24, 30, 0.5);
+}
+
+/* Normalize slider images - maintain responsive layout with fixed 16:9 ratio */
 #projects-showcase .slider .slide a img {
   width: 100%;
   height: auto;
-  max-height: 400px;
+  min-height: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: 12px;
-}
-
-/* Special handling for NotToday GIF to ensure proper sizing */
-#projects-showcase .slider .slide a img[src*="NotTodayGIF.gif"] {
-  width: 100%;
-  height: auto;
-  max-height: 400px;
-  object-fit: cover;
-  object-position: center;
+  display: block;
 }
 
 /* Optimized project cards for 60fps scrolling */

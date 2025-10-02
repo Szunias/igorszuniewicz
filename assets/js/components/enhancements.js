@@ -1872,15 +1872,17 @@ document.addEventListener('DOMContentLoaded', function() {
       const sh2 = document.querySelector('#projects-showcase h2'); if (sh2) sh2.textContent = I18N.showcase_title[lang];
       const sLead = document.querySelector('#projects-showcase header.major p');
       if (sLead) sLead.textContent = I18N.showcase_lead[lang];
-      // Slider (titles + descriptions)
+      // Slider (titles + descriptions) - ORDER MUST MATCH HTML
       const sliderTexts = [
-        { h:{en:'Most Recent Single', pl:'Najnowszy singiel', nl:'Meest recente single'}, d:{en:'My latest musical release. Click to listen.', pl:'Mój najnowszy utwór. Kliknij, aby posłuchać.', nl:'Mijn nieuwste release. Klik om te luisteren.'}},
-        { h:{en:'Ray Animation Music Composition', pl:'Ray Animation — kompozycja muzyki', nl:'Ray Animation — muziekcompositie'}, d:{en:'Original score for a dreamy character journey.', pl:'Oryginalna muzyka do onirycznej podróży bohatera.', nl:'Originele score voor een dromerige personagereis.'}},
-        { h:{en:'Akantilado Animation Sound Design', pl:'Akantilado — sound design', nl:'Akantilado — sounddesign'}, d:{en:'Collaborative sound design for a 3D animation.', pl:'Współtworzony sound design do animacji 3D.', nl:'Samenwerking aan sounddesign voor een 3D‑animatie.'}},
-        { h:{en:'Amorak Sound Design', pl:'Amorak — sound design', nl:'Amorak — sounddesign'}, d:{en:'Complete sound design for the 3D animation "Amorak".', pl:'Kompletny sound design do animacji 3D „Amorak”.', nl:'Volledig sounddesign voor de 3D‑animatie “Amorak”.'}},
-        { h:{en:'Not Today, Darling! — Game Audio', pl:'Not Today, Darling! — audio do gry', nl:'Not Today, Darling! — game‑audio'}, d:{en:'Local‑multiplayer side‑scroller. Click to view on itch.io.', pl:'Lokalny multiplayer side‑scroller. Kliknij, aby zobaczyć na itch.io.', nl:'Lokale multiplayer side‑scroller. Klik om te bekijken op itch.io.'}},
-        { h:{en:'Pause & Deserve Horror Game', pl:'Pause & Deserve — gra grozy', nl:'Pause & Deserve — horror game'}, d:{en:'Solo horror game development project.', pl:'Solowy projekt tworzenia gry grozy.', nl:'Solo‑project: ontwikkeling van een horror game.'}},
-        { h:{en:'Richter Animation Sound Design', pl:'Richter — sound design', nl:'Richter — sounddesign'}, d:{en:'Sound Design for 3D animation using minimal recording gear.', pl:'Sound design do animacji 3D z użyciem minimalnego sprzętu.', nl:'Sounddesign voor 3D‑animatie met minimale opname‑gear.'}}
+        { h:{en:'Not Today, Darling! — Game Audio', pl:'Not Today, Darling! — audio do gry', nl:'Not Today, Darling! — game‑audio'}, d:{en:'Retro-inspired audio implementation.', pl:'Retro-inspirowana implementacja audio.', nl:'Retro‑geïnspireerde audio‑implementatie.'}},
+        { h:{en:'Most Recent Single', pl:'Najnowszy singiel', nl:'Meest recente single'}, d:{en:'Latest musical release.', pl:'Najnowsze wydawnictwo muzyczne.', nl:'Nieuwste muzikale release.'}},
+        { h:{en:'Ray Animation Music Composition', pl:'Ray Animation — kompozycja muzyki', nl:'Ray Animation — muziekcompositie'}, d:{en:'Original score supporting narrative beats.', pl:'Oryginalna muzyka wspierająca narrację.', nl:'Originele score die het verhaal ondersteunt.'}},
+        { h:{en:'Akantilado Animation Sound Design', pl:'Akantilado — sound design', nl:'Akantilado — sounddesign'}, d:{en:'Complete foley and ambience for 3D animation.', pl:'Kompletny foley i ambience do animacji 3D.', nl:'Volledige foley en sfeer voor 3D‑animatie.'}},
+        { h:{en:'Amorak Sound Design', pl:'Amorak — sound design', nl:'Amorak — sounddesign'}, d:{en:'Soundscapes and character audio for animation.', pl:'Soundscapes i audio postaci do animacji.', nl:'Soundscapes en personage‑audio voor animatie.'}},
+        { h:{en:'Pause & Deserve Horror Game', pl:'Pause & Deserve — gra grozy', nl:'Pause & Deserve — horror game'}, d:{en:'Horror game concept and audio design.', pl:'Koncepcja gry grozy i audio design.', nl:'Horror game concept en audio design.'}},
+        { h:{en:'Richter Animation Sound Design', pl:'Richter — sound design', nl:'Richter — sounddesign'}, d:{en:'Sound design with minimal recording gear.', pl:'Sound design z minimalnym sprzętem nagraniowym.', nl:'Sounddesign met minimale opname‑apparatuur.'}},
+        { h:{en:'Transientica: Beatbox-Controlled Rhythm Game', pl:'Transientica: Gra rytmiczna sterowana beatboxem', nl:'Transientica: Beatbox-gestuurde ritme game'}, d:{en:'Real-time ML classification with 45ms latency.', pl:'Klasyfikacja ML w czasie rzeczywistym z opóźnieniem 45ms.', nl:'Real-time ML classificatie met 45ms latentie.'}},
+        { h:{en:'Interactive Music Design — Wwise Projects', pl:'Interaktywny design muzyki — projekty Wwise', nl:'Interactief muziekdesign — Wwise projecten'}, d:{en:'Adaptive audio systems with vertical layering.', pl:'Adaptacyjne systemy audio z warstwowaniem wertykalnym.', nl:'Adaptieve audiosystemen met verticale lagen.'}}
       ];
       const slides = document.querySelectorAll('#projects-showcase .slider .slide');
       slides.forEach((slide, i)=>{
