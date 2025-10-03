@@ -701,17 +701,25 @@ document.addEventListener('DOMContentLoaded', function() {
     showcase_title: { pl: 'Przegląd projektów', nl: 'Projectoverzicht', en: 'Projects Showcase' },
     showcase_lead: { pl: 'Wybrane najważniejsze projekty i mój wkład.', nl: 'Een selectie van mijn belangrijkste projecten met mijn rol.', en: 'A selection of my most important projects, highlighting my involvement and key contributions.' },
     explore_lead: { pl: 'Przeglądaj pełne portfolio lub dowiedz się więcej o mnie.', nl: 'Bekijk het volledige portfolio of lees meer over mijn achtergrond.', en: 'Browse the full portfolio or learn more about my background.' },
-    // Capabilities (homepage)
-    cap_title: { pl: 'Kompetencje', nl: 'Competenties', en: 'Capabilities' },
-    cap_lead: { pl: 'Gotowe do produkcji audio i systemy interaktywne do gier i mediów.', nl: 'Productierijp audio en interactieve systemen voor games en media.', en: 'Production-ready audio and interactive systems for games and media.' },
-    cap_game_h: { pl: 'Audio w grach', nl: 'Game‑audio', en: 'Game Audio' },
-    cap_game_p: { pl: 'End‑to‑end: sound design, implementacja, miks. UE5/Unity, Wwise, FMOD.', nl: 'End‑to‑end: sounddesign, implementatie, mix. UE5/Unity, Wwise, FMOD.', en: 'End-to-end: sound design, implementation, mixing. UE5/Unity, Wwise, FMOD.' },
-    cap_music_h: { pl: 'Muzyka interaktywna', nl: 'Interactieve muziek', en: 'Interactive Music' },
-    cap_music_p: { pl: 'Adaptacyjne partytury, przejścia w czasie rzeczywistym, warstwy sterowane parametrami.', nl: 'Adaptieve scores, realtime overgangen, parameter‑gestuurde lagen.', en: 'Adaptive scores, real-time transitions, parameter-driven layers.' },
-    cap_tools_h: { pl: 'Narzędzia audio', nl: 'Audio‑tools', en: 'Audio Tools' },
-    cap_tools_p: { pl: 'DSP, wtyczki, narzędzia pipeline. C++/JUCE, C#, Python.', nl: 'DSP, plug‑ins, pipeline‑tools. C++/JUCE, C#, Python.', en: 'DSP, plug‑ins, pipeline utilities. C++/JUCE, C#, Python.' },
-    cap_collab_h: { pl: 'Współpraca', nl: 'Samenwerking', en: 'Collaboration' },
-    cap_collab_p: { pl: 'Jasna komunikacja, szybka iteracja, mierzalne rezultaty w produkcji.', nl: 'Heldere comms, snelle iteratie, meetbare resultaten onder productiedruk.', en: 'Clear comms, fast iteration, measurable results under production constraints.' },
+    // Metrics section (homepage)
+    metrics_title: { pl: 'W liczbach', nl: 'In cijfers', en: 'By the Numbers' },
+    metrics_lead: { pl: 'Wymierne doświadczenie w produkcji audio i systemach interaktywnych.', nl: 'Kwantificeerbare ervaring in audioproductie en interactieve systemen.', en: 'Quantifiable experience across audio production and interactive systems.' },
+    metrics_projects_label: { pl: 'Ukończone projekty', nl: 'Voltooide projecten', en: 'Completed Projects' },
+    metrics_projects_desc: { pl: 'Gry, animacje, media interaktywne', nl: 'Games, animaties, interactieve media', en: 'Games, animations, interactive media' },
+    metrics_tracks_label: { pl: 'Oryginalne kompozycje', nl: 'Originele composities', en: 'Original Compositions' },
+    metrics_tracks_desc: { pl: 'Stworzone utwory muzyczne i ścieżki', nl: 'Muziek tracks en scores gemaakt', en: 'Music tracks and scores created' },
+    metrics_tools_label: { pl: 'Zbudowane narzędzia audio', nl: 'Gebouwde audio-tools', en: 'Audio Tools Built' },
+    metrics_tools_desc: { pl: 'Wtyczki VST i narzędzia pipeline', nl: 'VST-plug-ins en pipeline-tools', en: 'VST plugins and pipeline utilities' },
+    metrics_hours_label: { pl: 'Godzin w produkcji', nl: 'Uur in productie', en: 'Hours in Production' },
+    metrics_hours_desc: { pl: 'Sound design, miksowanie, implementacja', nl: 'Sounddesign, mixen, implementatie', en: 'Sound design, mixing, implementation' },
+    // Unified CTA section (homepage)
+    cta_contact_title: { pl: 'Współpracujmy razem', nl: 'Laten we samenwerken', en: 'Let\'s Work Together' },
+    cta_contact_desc: { pl: 'Zainteresowany współpracą lub masz pytania? Skontaktuj się, aby omówić swój projekt.', nl: 'Geïnteresseerd in samenwerking of vragen over mijn werk? Neem contact op om je project te bespreken.', en: 'Interested in collaboration or have questions about my work? Get in touch to discuss your project.' },
+    cta_explore_title: { pl: 'Odkryj więcej', nl: 'Ontdek meer', en: 'Explore More' },
+    cta_projects: { pl: 'Wszystkie projekty', nl: 'Alle projecten', en: 'All Projects' },
+    cta_about: { pl: 'O mnie', nl: 'Over mij', en: 'About Me' },
+    cta_music: { pl: 'Muzyka', nl: 'Muziek', en: 'Music' },
+    cta_scholarly: { pl: 'Naukowe', nl: 'Academisch', en: 'Scholarly' },
     footer_location: { pl: 'Lokalizacja', nl: 'Locatie', en: 'Location' },
     footer_email: { pl: 'Email', nl: 'E-mail', en: 'Email' },
     footer_social: { pl: 'Linki społecznościowe i zawodowe', nl: 'Sociale & professionele links', en: 'Social & Professional Links' },
@@ -1333,18 +1341,39 @@ document.addEventListener('DOMContentLoaded', function() {
       if (listen) listen.textContent = ({en:'Listen', pl:'Posłuchaj', nl:'Luister'})[lang];
       // Done
     }
-    // Capabilities (homepage)
-    (function translateCapabilities(){
-      const capSection = document.getElementById('capabilities') || Array.from(document.querySelectorAll('section.post'))
-        .find(s => /capabilities|kompetencje|competenties/i.test((s.querySelector('header.major h2')?.textContent||'')));
-      if (!capSection) return;
-      const h2 = capSection.querySelector('header.major h2'); if (h2) h2.textContent = I18N.cap_title[lang];
-      const lead = capSection.querySelector('header.major p'); if (lead) lead.textContent = I18N.cap_lead[lang];
-      const cards = capSection.querySelectorAll('.project-card');
-      if (cards[0]) { const h=cards[0].querySelector('h3'); const p=cards[0].querySelector('p'); if (h) h.innerHTML = '<span class="icon solid fa-gamepad" aria-hidden="true"></span> '+I18N.cap_game_h[lang]; if (p) p.textContent = I18N.cap_game_p[lang]; }
-      if (cards[1]) { const h=cards[1].querySelector('h3'); const p=cards[1].querySelector('p'); if (h) h.innerHTML = '<span class="icon solid fa-music" aria-hidden="true"></span> '+I18N.cap_music_h[lang]; if (p) p.textContent = I18N.cap_music_p[lang]; }
-      if (cards[2]) { const h=cards[2].querySelector('h3'); const p=cards[2].querySelector('p'); if (h) h.innerHTML = '<span class="icon solid fa-tools" aria-hidden="true"></span> '+I18N.cap_tools_h[lang]; if (p) p.textContent = I18N.cap_tools_p[lang]; }
-      if (cards[3]) { const h=cards[3].querySelector('h3'); const p=cards[3].querySelector('p'); if (h) h.innerHTML = '<span class="icon solid fa-users" aria-hidden="true"></span> '+I18N.cap_collab_h[lang]; if (p) p.textContent = I18N.cap_collab_p[lang]; }
+    // Metrics section (homepage)
+    (function translateMetrics(){
+      const metricsSection = document.getElementById('key-metrics');
+      if (!metricsSection) return;
+      const h2 = metricsSection.querySelector('header.major h2');
+      if (h2) h2.textContent = I18N.metrics_title[lang];
+      const lead = metricsSection.querySelector('header.major p');
+      if (lead) lead.textContent = I18N.metrics_lead[lang];
+      const cards = metricsSection.querySelectorAll('.metric-card');
+      if (cards[0]) {
+        const label = cards[0].querySelector('.metric-label');
+        const desc = cards[0].querySelector('.metric-desc');
+        if (label) label.textContent = I18N.metrics_projects_label[lang];
+        if (desc) desc.textContent = I18N.metrics_projects_desc[lang];
+      }
+      if (cards[1]) {
+        const label = cards[1].querySelector('.metric-label');
+        const desc = cards[1].querySelector('.metric-desc');
+        if (label) label.textContent = I18N.metrics_tracks_label[lang];
+        if (desc) desc.textContent = I18N.metrics_tracks_desc[lang];
+      }
+      if (cards[2]) {
+        const label = cards[2].querySelector('.metric-label');
+        const desc = cards[2].querySelector('.metric-desc');
+        if (label) label.textContent = I18N.metrics_tools_label[lang];
+        if (desc) desc.textContent = I18N.metrics_tools_desc[lang];
+      }
+      if (cards[3]) {
+        const label = cards[3].querySelector('.metric-label');
+        const desc = cards[3].querySelector('.metric-desc');
+        if (label) label.textContent = I18N.metrics_hours_label[lang];
+        if (desc) desc.textContent = I18N.metrics_hours_desc[lang];
+      }
     })();
     const cvH2 = document.querySelector('#cv-section header.major h2');
     if (cvH2) cvH2.textContent = I18N.cv_title[lang];
@@ -1893,31 +1922,40 @@ document.addEventListener('DOMContentLoaded', function() {
       // Translate two highlighted project cards
       const m1 = document.querySelector('#projects-showcase .projects-grid article:nth-of-type(1)');
       if (m1){
-        const h = m1.querySelector('h3'); if (h) h.textContent = (lang==='pl'?'System muzyki dynamicznej (Wwise & UE5)': lang==='nl'?'Dynamisch muzieksysteem (Wwise & UE5)':'Dynamic Music System (Wwise & UE5)');
-        const p = m1.querySelector('p'); if (p) p.textContent = (lang==='pl'?'Wwise + UE5: adaptacyjna muzyka z płynnymi przejściami i warstwami.': lang==='nl'?'Wwise + UE5: adaptieve muziek met soepele overgangen en lagen.':'Wwise + UE5: adaptive music with smooth transitions and layers.');
+        const h = m1.querySelector('h3'); if (h) h.textContent = (lang==='pl'?'Interactive Music Design — Projekty Wwise': lang==='nl'?'Interactive Music Design — Wwise-projecten':'Interactive Music Design — Wwise Projects');
+        const p = m1.querySelector('p'); if (p) p.textContent = (lang==='pl'?'Adaptacyjne systemy audio z warstwowaniem wertykalnym, re-sekwencjonowaniem horyzontalnym i kontrolą parametrów w czasie rzeczywistym.': lang==='nl'?'Adaptieve audiosystemen met verticale gelaagdheid, horizontale resequencing en realtime parametercontrole.':'Adaptive audio systems with vertical layering, horizontal re-sequencing, and real-time parameter control.');
         const b = m1.querySelector('.actions .button.small'); if (b) b.textContent = (lang==='pl'?'Szczegóły': lang==='nl'?'Details':'Details');
       }
       const m2 = document.querySelector('#projects-showcase .projects-grid article:nth-of-type(2)');
       if (m2){
-        const h = m2.querySelector('h3'); if (h) h.textContent = (lang==='pl'?'Zestaw wtyczek 3D Audio (VST)': lang==='nl'?'3D Audio Plugin Suite (VST)':'3D Audio Plugin Suite (VST Development)');
-        const p = m2.querySelector('p'); if (p) p.textContent = (lang==='pl'?'Własne VST do audio 3D: HRTF, konwolucja, UI i C++.': lang==='nl'?'Eigen VST voor 3D-audio: HRTF, convolutie, UI en C++.':'Custom VST plugins for 3D audio: HRTF, convolution, UI, C++.');
+        const h = m2.querySelector('h3'); if (h) h.textContent = (lang==='pl'?'AudioQ — Profesjonalna wtyczka EQ': lang==='nl'?'AudioQ — Professionele EQ-plugin':'AudioQ — Professional EQ Plugin');
+        const p = m2.querySelector('p'); if (p) p.textContent = (lang==='pl'?'Wysokiej jakości 8-pasmowy parametryczny EQ z analizatorem spektrum, zbudowany w C++ i frameworku JUCE.': lang==='nl'?'Hoogwaardige 8-bands parametrische EQ met spectrumanalyzer, gebouwd met C++ en JUCE-framework.':'High-quality 8-band parametric EQ with spectrum analyzer, built with C++ and JUCE framework.');
         const b = m2.querySelector('.actions .button.small'); if (b) b.textContent = (lang==='pl'?'Szczegóły': lang==='nl'?'Details':'Details');
       }
     }
 
-    // Explore More section on index
-    if (document.querySelector('.explore-more')){
-      const exH2 = document.querySelector('.explore-more header.major h2');
-      if (exH2) exH2.textContent = lang==='pl' ? 'Zobacz więcej' : lang==='nl' ? 'Ontdek meer' : 'Explore More';
-      const exLead = document.querySelector('.explore-more header.major p');
-      if (exLead) exLead.textContent = I18N.explore_lead[lang];
-      document.querySelectorAll('.explore-more a.button.primary').forEach(a=>{
-        a.textContent = lang==='pl' ? 'Zobacz więcej' : lang==='nl' ? 'Ontdek meer' : 'Explore More';
-      });
-      document.querySelectorAll('.explore-more a .label, .explore-more a span').forEach(s=>{
-        const t = s.textContent.trim().toLowerCase();
-        if (/all|wszystkie|alle/.test(t)) s.textContent = lang==='pl' ? 'Wszystkie projekty' : lang==='nl' ? 'Alle projecten' : 'All Projects';
-        if (/scholarly|naukowe|wetenschappelijk/.test(t)) s.textContent = lang==='pl' ? 'Naukowe' : lang==='nl' ? 'Wetenschappelijk' : 'Scholarly';
+    // Unified CTA section on index
+    if (document.querySelector('.cta-unified')){
+      const ctaH2 = document.querySelector('.cta-primary h2');
+      if (ctaH2) ctaH2.textContent = I18N.cta_contact_title[lang];
+      const ctaDesc = document.querySelector('.cta-primary p');
+      if (ctaDesc) ctaDesc.textContent = I18N.cta_contact_desc[lang];
+      const ctaExploreH3 = document.querySelector('.cta-links h3');
+      if (ctaExploreH3) ctaExploreH3.textContent = I18N.cta_explore_title[lang];
+
+      // Translate divider "or"
+      const dividerSpan = document.querySelector('.cta-divider span');
+      if (dividerSpan) dividerSpan.textContent = (lang==='pl' ? 'lub' : lang==='nl' ? 'of' : 'or');
+
+      // Translate CTA cards
+      document.querySelectorAll('.cta-card span').forEach(s => {
+        const parent = s.closest('a');
+        if (!parent) return;
+        const href = parent.getAttribute('href');
+        if (href.includes('projects')) s.textContent = I18N.cta_projects[lang];
+        else if (href.includes('about')) s.textContent = I18N.cta_about[lang];
+        else if (href.includes('music')) s.textContent = I18N.cta_music[lang];
+        else if (href.includes('scholarly')) s.textContent = I18N.cta_scholarly[lang];
       });
     }
 

@@ -545,47 +545,55 @@
 
                 <div class="projects-grid">
                     <article class="project-card" data-reveal style="--reveal-delay:.08s;">
-                        <a href="projects/dynamic-music-system.html" class="image fit"><img src="assets/images/projects/maxresdefault.jpg" alt="Dynamic Music System" loading="lazy" decoding="async" /></a>
-                        <a href="projects/dynamic-music-system.html" class="stretched-link" aria-label="Dynamic Music System (Wwise & UE5)"></a>
+                        <a href="projects/musicforgames.html" class="image fit"><img src="assets/images/projects/musicforgames.png" alt="Interactive Music Design" loading="lazy" decoding="async" /></a>
+                        <a href="projects/musicforgames.html" class="stretched-link" aria-label="Interactive Music Design — Wwise Projects"></a>
                         <div class="project-card-content">
-                            <h3>Dynamic Music System (Wwise & UE5)</h3>
-                            <p>Adaptive music with smooth transitions and layers, integrated with Unreal Engine and Wwise.</p>
+                            <h3>Interactive Music Design — Wwise Projects</h3>
+                            <p>Adaptive audio systems with vertical layering, horizontal re-sequencing, and real-time parameter control.</p>
                         </div>
                     </article>
                     <article class="project-card" data-reveal style="--reveal-delay:.12s;">
-                        <a href="projects/audio-plugin-suite.html" class="image fit"><img src="assets/images/projects/plugins.jpg" alt="Audio Plugins" loading="lazy" decoding="async" /></a>
-                        <a href="projects/audio-plugin-suite.html" class="stretched-link" aria-label="3D Audio Plugin Suite (VST Development)"></a>
+                        <a href="projects/audioq.html" class="image fit"><img src="assets/images/projects-audioq/AudioQPicture.png" alt="AudioQ Plugin" loading="lazy" decoding="async" /></a>
+                        <a href="projects/audioq.html" class="stretched-link" aria-label="AudioQ — Professional EQ Plugin"></a>
                         <div class="project-card-content">
-                            <h3>3D Audio Plugin Suite (VST Development)</h3>
-                            <p>Custom VSTs for 3D audio: HRTF, convolution, with focused C++/JUCE implementation.</p>
+                            <h3>AudioQ — Professional EQ Plugin</h3>
+                            <p>High-quality 8-band parametric EQ with spectrum analyzer, built with C++ and JUCE framework.</p>
                         </div>
                     </article>
                 </div>
             </section>
 
-            <!-- Feature Grid (Professional Highlights) -->
-            <section id="capabilities" class="post" data-reveal style="--reveal-delay:.06s;">
+            <!-- Key Metrics -->
+            <section id="key-metrics" class="post" data-reveal style="--reveal-delay:.06s;">
                 <header class="major">
-                    <h2>Capabilities</h2>
-                    <p>Production-ready audio and interactive systems for games and media.</p>
+                    <h2 data-i18n="metrics_title">By the Numbers</h2>
+                    <p data-i18n="metrics_lead">Quantifiable experience across audio production and interactive systems.</p>
                 </header>
-                <div class="projects-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-                    <article class="project-card" style="padding:16px; --reveal-delay:.08s;" data-reveal>
-                        <h3><span class="icon solid fa-gamepad" aria-hidden="true"></span> Game Audio</h3>
-                        <p>End-to-end: sound design, implementation, mixing. UE5/Unity, Wwise, FMOD.</p>
-                    </article>
-                    <article class="project-card" style="padding:16px; --reveal-delay:.12s;" data-reveal>
-                        <h3><span class="icon solid fa-music" aria-hidden="true"></span> Interactive Music</h3>
-                        <p>Adaptive scores, real-time transitions, parameter-driven layers.</p>
-                    </article>
-                    <article class="project-card" style="padding:16px; --reveal-delay:.16s;" data-reveal>
-                        <h3><span class="icon solid fa-tools" aria-hidden="true"></span> Audio Tools</h3>
-                        <p>DSP, plug‑ins, pipeline utilities. C++/JUCE, C#, Python.</p>
-                    </article>
-                    <article class="project-card" style="padding:16px; --reveal-delay:.20s;" data-reveal>
-                        <h3><span class="icon solid fa-users" aria-hidden="true"></span> Collaboration</h3>
-                        <p>Clear comms, fast iteration, measurable results under production constraints.</p>
-                    </article>
+                <div class="metrics-grid">
+                    <div class="metric-card" data-reveal style="--reveal-delay:.08s;">
+                        <div class="metric-icon"><i class="fas fa-project-diagram"></i></div>
+                        <div class="metric-value" data-target="15">0</div>
+                        <div class="metric-label" data-i18n="metrics_projects_label">Completed Projects</div>
+                        <div class="metric-desc" data-i18n="metrics_projects_desc">Games, animations, interactive media</div>
+                    </div>
+                    <div class="metric-card" data-reveal style="--reveal-delay:.12s;">
+                        <div class="metric-icon"><i class="fas fa-music"></i></div>
+                        <div class="metric-value" data-target="100">0</div>
+                        <div class="metric-label" data-i18n="metrics_tracks_label">Original Compositions</div>
+                        <div class="metric-desc" data-i18n="metrics_tracks_desc">Music tracks and scores created</div>
+                    </div>
+                    <div class="metric-card" data-reveal style="--reveal-delay:.16s;">
+                        <div class="metric-icon"><i class="fas fa-code"></i></div>
+                        <div class="metric-value" data-target="5">0</div>
+                        <div class="metric-label" data-i18n="metrics_tools_label">Audio Tools Built</div>
+                        <div class="metric-desc" data-i18n="metrics_tools_desc">VST plugins and pipeline utilities</div>
+                    </div>
+                    <div class="metric-card" data-reveal style="--reveal-delay:.20s;">
+                        <div class="metric-icon"><i class="fas fa-clock"></i></div>
+                        <div class="metric-value" data-target="1000" data-suffix="+">0</div>
+                        <div class="metric-label" data-i18n="metrics_hours_label">Hours in Production</div>
+                        <div class="metric-desc" data-i18n="metrics_hours_desc">Sound design, mixing, implementation</div>
+                    </div>
                 </div>
             </section>
 
@@ -786,31 +794,45 @@
                     </div>
                 </div>
 
-                <div class="profile-footer" data-reveal style="--reveal-delay:.20s;">
-                    <div class="contact-prompt">
-                        <p data-i18n="contact_prompt">Interested in collaboration or have questions about my work?</p>
-                        <a href="contact.html" class="button primary" data-i18n="contact_button">Get In Touch</a>
-                    </div>
-                </div>
             </section>
-            <hr />
-            
-            
 
-            <!-- Compact CTA instead of long sections to keep homepage concise -->
-            <section class="post explore-more" data-reveal>
-                <header class="major">
-                    <h2 id="bgColor">Explore More</h2>
-                    <p>Browse the full portfolio or learn more about my background.</p>
-                </header>
-                <ul class="actions special">
-                    <li><a class="button primary" href="projects/index.html">Explore More</a></li>
-                </ul>
-                <div class="section-pills">
-                    <a href="projects/index.html" class="icon solid fa-folder-open"><span>All Projects</span></a>
-                    <a href="scholarly.html" class="icon solid fa-graduation-cap"><span>Scholarly</span></a>
-                    <a href="about.html" class="icon solid fa-user"><span>About</span></a>
-                    <a href="contact.html" class="icon solid fa-envelope"><span>Contact</span></a>
+            <!-- Unified CTA Section -->
+            <section class="post cta-unified" data-reveal>
+                <div class="cta-container">
+                    <div class="cta-primary" data-reveal style="--reveal-delay:.06s;">
+                        <div class="cta-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <h2 data-i18n="cta_contact_title">Let's Work Together</h2>
+                        <p data-i18n="cta_contact_desc">Interested in collaboration or have questions about my work? Get in touch to discuss your project.</p>
+                        <a href="contact.html" class="button primary large" data-i18n="contact_button">Get In Touch</a>
+                    </div>
+
+                    <div class="cta-divider" data-reveal style="--reveal-delay:.12s;">
+                        <span>or</span>
+                    </div>
+
+                    <div class="cta-links" data-reveal style="--reveal-delay:.18s;">
+                        <h3 data-i18n="cta_explore_title">Explore More</h3>
+                        <div class="cta-grid">
+                            <a href="projects/index.html" class="cta-card">
+                                <i class="fas fa-folder-open"></i>
+                                <span data-i18n="cta_projects">All Projects</span>
+                            </a>
+                            <a href="about.html" class="cta-card">
+                                <i class="fas fa-user"></i>
+                                <span data-i18n="cta_about">About Me</span>
+                            </a>
+                            <a href="music.html" class="cta-card">
+                                <i class="fas fa-music"></i>
+                                <span data-i18n="cta_music">Music</span>
+                            </a>
+                            <a href="scholarly.html" class="cta-card">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span data-i18n="cta_scholarly">Scholarly</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </section>
             
@@ -962,6 +984,7 @@
     <script src="assets/js/components/reveal.js" defer></script>
     <script src="assets/js/components/enhancements.js?v=20250919-fix" defer></script>
     <script src="assets/js/components/competencies-animate.js" defer></script>
+    <script src="assets/js/components/metrics-animate.js" defer></script>
     <script type="module" src="assets/js/bootstrap.js" defer></script>
     <script src="assets/js/pages/analytics.js" defer></script>
     <script src="assets/js/components/lang-badge.js" defer></script>

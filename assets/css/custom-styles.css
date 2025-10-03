@@ -1395,6 +1395,380 @@ img[src*="muzyczna.png"] {
     font-family: 'Inter', sans-serif; /* Body font */
 }
 
+/* Key Metrics Section */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-top: 2em;
+}
+
+.metric-card {
+    background: linear-gradient(135deg, rgba(24,191,239,0.05) 0%, rgba(154,108,255,0.03) 100%);
+    border: 1px solid rgba(24,191,239,0.2);
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #18bfef, #9a6cff);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.metric-card:hover::before {
+    transform: scaleX(1);
+}
+
+.metric-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(24,191,239,0.4);
+    background: linear-gradient(135deg, rgba(24,191,239,0.08) 0%, rgba(154,108,255,0.05) 100%);
+    box-shadow: 0 12px 40px rgba(24,191,239,0.2), 0 0 0 1px rgba(24,191,239,0.1);
+}
+
+.metric-icon {
+    font-size: 2.5em;
+    color: #18bfef;
+    margin-bottom: 16px;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover .metric-icon {
+    transform: scale(1.15);
+    opacity: 1;
+    color: #20d0ff;
+}
+
+.metric-value {
+    font-size: 3em;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 8px;
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(135deg, #ffffff 0%, #18bfef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.metric-label {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #e8f6fb;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.metric-desc {
+    font-size: 0.9em;
+    color: #a8c5d8;
+    opacity: 0.85;
+    line-height: 1.4;
+}
+
+@media screen and (max-width: 980px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .metric-value {
+        font-size: 2.5em;
+    }
+}
+
+/* Unified CTA Section */
+.cta-unified {
+    background: linear-gradient(135deg, rgba(24,191,239,0.03) 0%, rgba(154,108,255,0.02) 100%);
+    border: 1px solid rgba(24,191,239,0.1);
+    border-radius: 20px;
+    padding: 4em 2em;
+    margin: 4em 0 2em;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-unified::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #18bfef, #9a6cff, #18bfef);
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.cta-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    align-items: center;
+}
+
+/* Primary CTA */
+.cta-primary {
+    text-align: center;
+    max-width: 600px;
+}
+
+.cta-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5em;
+    background: linear-gradient(135deg, rgba(24,191,239,0.15) 0%, rgba(154,108,255,0.1) 100%);
+    border: 2px solid rgba(24,191,239,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: #18bfef;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.cta-primary:hover .cta-icon {
+    background: linear-gradient(135deg, rgba(24,191,239,0.25) 0%, rgba(154,108,255,0.2) 100%);
+    border-color: rgba(24,191,239,0.6);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 40px rgba(24,191,239,0.3);
+}
+
+.cta-primary h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #18bfef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cta-primary p {
+    font-size: 1.1em;
+    color: #a8c5d8;
+    margin-bottom: 2em;
+    line-height: 1.6;
+}
+
+.cta-primary .button.primary.large {
+    padding: 1em 3em;
+    font-size: 1.1em;
+    font-weight: 700;
+    background: linear-gradient(135deg, #18bfef 0%, #9a6cff 100%);
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 8px 32px rgba(24,191,239,0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-primary .button.primary.large::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.cta-primary .button.primary.large:hover::before {
+    left: 100%;
+}
+
+.cta-primary .button.primary.large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(24,191,239,0.5);
+}
+
+/* Divider */
+.cta-divider {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 1em 0;
+}
+
+.cta-divider::before,
+.cta-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(24,191,239,0.3), transparent);
+}
+
+.cta-divider::before { left: 0; }
+.cta-divider::after { right: 0; }
+
+.cta-divider span {
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    background: rgba(12,18,24,0.8);
+    border: 1px solid rgba(24,191,239,0.2);
+    border-radius: 20px;
+    color: #a8c5d8;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+/* Links Section */
+.cta-links {
+    width: 100%;
+    text-align: center;
+}
+
+.cta-links h3 {
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+    color: #e8f6fb;
+}
+
+.cta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5em;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8em;
+    padding: 1.8em 1em;
+    background: linear-gradient(135deg, rgba(24,191,239,0.05) 0%, rgba(154,108,255,0.03) 100%);
+    border: 1px solid rgba(24,191,239,0.2);
+    border-radius: 16px;
+    text-decoration: none;
+    color: #e8f6fb;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #18bfef, #9a6cff);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.cta-card:hover::before {
+    transform: scaleX(1);
+}
+
+.cta-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(24,191,239,0.5);
+    background: linear-gradient(135deg, rgba(24,191,239,0.1) 0%, rgba(154,108,255,0.06) 100%);
+    box-shadow: 0 12px 32px rgba(24,191,239,0.2);
+}
+
+.cta-card i {
+    font-size: 2em;
+    color: #18bfef;
+    transition: all 0.3s ease;
+}
+
+.cta-card:hover i {
+    transform: scale(1.2);
+    color: #20d0ff;
+}
+
+.cta-card span {
+    font-size: 0.95em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+@media screen and (max-width: 980px) {
+    .cta-container {
+        gap: 2em;
+    }
+
+    .cta-primary h2 {
+        font-size: 2em;
+    }
+
+    .cta-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .cta-unified {
+        padding: 3em 1.5em;
+    }
+
+    .cta-primary h2 {
+        font-size: 1.8em;
+    }
+
+    .cta-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5em;
+    }
+
+    .cta-grid {
+        grid-template-columns: 1fr;
+        gap: 1em;
+    }
+
+    .cta-divider::before,
+    .cta-divider::after {
+        width: 30%;
+    }
+}
+
 /* Responsive adjustments for slider if kept, or new project display */
 @media screen and (max-width: 736px) {
     #intro h1 {
