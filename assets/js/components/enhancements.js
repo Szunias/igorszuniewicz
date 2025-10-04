@@ -775,7 +775,7 @@ document.addEventListener('DOMContentLoaded', function() {
     extras_spotify_lead: { pl: 'Wybrane utwory i wydania odzwierciedlające mój styl i kierunek brzmieniowy.', nl: 'Geselecteerde tracks en releases die mijn esthetiek en soundrichting weerspiegelen.', en: 'Selected tracks and releases reflecting my aesthetic and sound direction.' },
     // Contact page
     contact_title: { pl: 'Kontakt', nl: 'Contact', en: 'Contact' },
-    contact_lead: { pl: 'Współpracujmy. Jestem otwarty na projekty i staże.', nl: 'Laten we samenwerken. Ik sta open voor projecten en stages.', en: 'Let's collaborate. I'm open to project opportunities and internships.' },
+    contact_lead: { pl: 'Współpracujmy. Jestem otwarty na projekty i staże.', nl: 'Laten we samenwerken. Ik sta open voor projecten en stages.', en: 'Let\'s collaborate. I\'m open to project opportunities and internships.' },
     contact_email_label: { pl: 'Email:', nl: 'E‑mail:', en: 'Email:' },
     contact_location_label: { pl: 'Lokalizacja:', nl: 'Locatie:', en: 'Location:' },
     contact_reachout: { pl: 'Śmiało napisz z krótkim opisem. Lubię projekty łączące kreatywną wizję z rozwiązywaniem problemów technicznych.', nl: 'Stuur gerust een korte briefing. Ik werk graag aan projecten die creative intentie combineren met technische probleemoplossing.', en: 'Feel free to reach out with a short brief. I enjoy projects that combine creative intent with technical problem‑solving.' },

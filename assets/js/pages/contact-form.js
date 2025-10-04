@@ -26,28 +26,6 @@
     addFormValidation();
   });
 
-  function getTranslation(key) {
-    // Get current language from localStorage or default to 'en'
-    const lang = localStorage.getItem('site-lang') || 'en';
-    // Access global I18N object if available
-    if (typeof I18N !== 'undefined' && I18N[key] && I18N[key][lang]) {
-      return I18N[key][lang];
-    }
-    // Fallback to hardcoded English
-    const fallbacks = {
-      contact_validation_required: 'Please fill in all required fields.',
-      contact_validation_email: 'Please enter a valid email address.',
-      contact_validation_name: 'Name must be at least 2 characters',
-      contact_validation_message: 'Message must be at least 10 characters',
-      contact_status_sending: 'Sending your message...',
-      contact_status_success: 'Message sent successfully! I\'ll respond soon.',
-      contact_status_error: 'An error occurred while sending. Please try again later.',
-      contact_btn_sending: 'Sending...',
-      contact_form_submit: 'Send Message'
-    };
-    return fallbacks[key] || key;
-  }
-
   function handleFormSubmit(e) {
     e.preventDefault();
 
@@ -67,23 +45,23 @@
 
     // Basic validation
     if (!data.name || !data.email || !data.message) {
-      showStatus(getTranslation('contact_validation_required'), 'error');
+      showStatus('Please fill in all required fields.', 'error');
       return;
     }
 
     if (!isValidEmail(data.email)) {
-      showStatus(getTranslation('contact_validation_email'), 'error');
+      showStatus('Please enter a valid email address.', 'error');
       return;
     }
 
     // Show loading state
     submitBtn.disabled = true;
     if (btnText) {
-      btnText.textContent = getTranslation('contact_btn_sending');
+      btnText.textContent = 'Sending...';
     } else {
-      submitBtn.textContent = getTranslation('contact_btn_sending');
+      submitBtn.textContent = 'Sending...';
     }
-    showStatus(getTranslation('contact_status_sending'), 'info');
+    showStatus('Sending your message...', 'info');
 
     // Send via Web3Forms
     sendViaWeb3Forms(data, form, submitBtn);
@@ -108,7 +86,7 @@
     .then(response => response.json())
     .then(result => {
       if (result.success) {
-        showStatus(getTranslation('contact_status_success'), 'success');
+        showStatus('Message sent successfully! I\'ll respond soon.', 'success');
         form.reset();
         logMessage(data); // Store locally as backup
       } else {
@@ -117,15 +95,15 @@
     })
     .catch(error => {
       console.error('Web3Forms Error:', error);
-      showStatus(getTranslation('contact_status_error'), 'error');
+      showStatus('An error occurred while sending. Please try again later.', 'error');
     })
     .finally(() => {
       submitBtn.disabled = false;
       const btnText = submitBtn.querySelector('.btn-text');
       if (btnText) {
-        btnText.textContent = getTranslation('contact_form_submit');
+        btnText.textContent = 'Send Message';
       } else {
-        submitBtn.textContent = getTranslation('contact_form_submit');
+        submitBtn.textContent = 'Send';
       }
     });
   }
@@ -158,19 +136,19 @@
 
     if (nameInput) {
       nameInput.addEventListener('blur', function() {
-        validateField(this, this.value.trim().length >= 2, getTranslation('contact_validation_name'));
+        validateField(this, this.value.trim().length >= 2, 'Name must be at least 2 characters');
       });
     }
 
     if (emailInput) {
       emailInput.addEventListener('blur', function() {
-        validateField(this, isValidEmail(this.value), getTranslation('contact_validation_email'));
+        validateField(this, isValidEmail(this.value), 'Please enter a valid email address');
       });
     }
 
     if (messageInput) {
       messageInput.addEventListener('blur', function() {
-        validateField(this, this.value.trim().length >= 10, getTranslation('contact_validation_message'));
+        validateField(this, this.value.trim().length >= 10, 'Message must be at least 10 characters');
       });
     }
   }
