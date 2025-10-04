@@ -39,7 +39,8 @@
       "Bash(grep:*)",
       "Bash(where convert)",
       "Bash(node:*)",
-      "Bash(magick identify:*)"
+      "Bash(magick identify:*)",
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\contact.html\")"
     ],
     "deny": [],
     "ask": []

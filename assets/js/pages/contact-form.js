@@ -1,57 +1,62 @@
 /**
- * Contact Form Handler with EmailJS Integration
- * Provides functional contact form that sends emails without backend
+ * Contact Form Handler with Web3Forms Integration
+ * Provides functional contact form that sends emails directly
  */
 
 (function() {
   'use strict';
 
-  // EmailJS configuration - you'll need to set up EmailJS account
-  const EMAILJS_CONFIG = {
-    serviceId: 'service_igor_portfolio', // TODO: Replace with your EmailJS service ID
-    templateId: 'template_contact_form', // TODO: Replace with your EmailJS template ID
-    publicKey: 'YOUR_EMAILJS_PUBLIC_KEY' // TODO: Replace with your EmailJS public key
+  // Web3Forms configuration
+  const WEB3FORMS_CONFIG = {
+    accessKey: '63daf122-621e-405f-ac46-d4537bfba2a4',
+    endpoint: 'https://api.web3forms.com/submit'
   };
 
   // Initialize when DOM is ready
   document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
     const statusEl = document.querySelector('.cf-status');
-    
-    if (!contactForm) return;
 
-    // Initialize EmailJS (if API key is configured)
-    if (EMAILJS_CONFIG.publicKey !== 'YOUR_EMAILJS_PUBLIC_KEY') {
-      initializeEmailJS();
-    }
+    if (!contactForm) return;
 
     // Attach form handler
     contactForm.addEventListener('submit', handleFormSubmit);
-    
+
     // Add real-time validation
     addFormValidation();
   });
 
-  function initializeEmailJS() {
-    // Load EmailJS library dynamically
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
-    script.onload = function() {
-      if (window.emailjs) {
-        emailjs.init(EMAILJS_CONFIG.publicKey);
-      }
+  function getTranslation(key) {
+    // Get current language from localStorage or default to 'en'
+    const lang = localStorage.getItem('site-lang') || 'en';
+    // Access global I18N object if available
+    if (typeof I18N !== 'undefined' && I18N[key] && I18N[key][lang]) {
+      return I18N[key][lang];
+    }
+    // Fallback to hardcoded English
+    const fallbacks = {
+      contact_validation_required: 'Please fill in all required fields.',
+      contact_validation_email: 'Please enter a valid email address.',
+      contact_validation_name: 'Name must be at least 2 characters',
+      contact_validation_message: 'Message must be at least 10 characters',
+      contact_status_sending: 'Sending your message...',
+      contact_status_success: 'Message sent successfully! I\'ll respond soon.',
+      contact_status_error: 'An error occurred while sending. Please try again later.',
+      contact_btn_sending: 'Sending...',
+      contact_form_submit: 'Send Message'
     };
-    document.head.appendChild(script);
+    return fallbacks[key] || key;
   }
 
   function handleFormSubmit(e) {
     e.preventDefault();
-    
+
     const form = e.target;
     const formData = new FormData(form);
     const statusEl = document.querySelector('.cf-status');
     const submitBtn = document.getElementById('cf-send');
-    
+    const btnText = submitBtn.querySelector('.btn-text');
+
     // Get form data
     const data = {
       name: formData.get('name'),
@@ -62,85 +67,67 @@
 
     // Basic validation
     if (!data.name || !data.email || !data.message) {
-      showStatus('Please fill in all required fields.', 'error');
+      showStatus(getTranslation('contact_validation_required'), 'error');
       return;
     }
 
     if (!isValidEmail(data.email)) {
-      showStatus('Please enter a valid email address.', 'error');
+      showStatus(getTranslation('contact_validation_email'), 'error');
       return;
     }
 
     // Show loading state
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-    showStatus('Sending your message...', 'info');
-
-    // Try EmailJS first, fallback to mailto
-    if (window.emailjs && EMAILJS_CONFIG.publicKey !== 'YOUR_EMAILJS_PUBLIC_KEY') {
-      sendViaEmailJS(data, form, submitBtn);
+    if (btnText) {
+      btnText.textContent = getTranslation('contact_btn_sending');
     } else {
-      // Fallback: mailto link and local storage
-      sendViaMailto(data, form, submitBtn);
+      submitBtn.textContent = getTranslation('contact_btn_sending');
     }
+    showStatus(getTranslation('contact_status_sending'), 'info');
+
+    // Send via Web3Forms
+    sendViaWeb3Forms(data, form, submitBtn);
   }
 
-  function sendViaEmailJS(data, form, submitBtn) {
-    const templateParams = {
-      from_name: data.name,
-      from_email: data.email,
-      subject: data.subject,
-      message: data.message,
-      to_email: 'szunio2004@gmail.com' // Your actual email
-    };
+  function sendViaWeb3Forms(data, form, submitBtn) {
+    // Prepare form data for Web3Forms
+    const formData = new FormData();
+    formData.append('access_key', WEB3FORMS_CONFIG.accessKey);
+    formData.append('name', data.name);
+    formData.append('email', data.email);
+    formData.append('subject', data.subject);
+    formData.append('message', data.message);
+    formData.append('from_name', data.name);
+    formData.append('replyto', data.email);
 
-    emailjs.send(
-      EMAILJS_CONFIG.serviceId,
-      EMAILJS_CONFIG.templateId,
-      templateParams
-    ).then(
-      function(response) {
-        showStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
+    // Send to Web3Forms API
+    fetch(WEB3FORMS_CONFIG.endpoint, {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(result => {
+      if (result.success) {
+        showStatus(getTranslation('contact_status_success'), 'success');
         form.reset();
         logMessage(data); // Store locally as backup
-      },
-      function(error) {
-        console.error('EmailJS Error:', error);
-        showStatus('Failed to send message. Please try the direct email option.', 'error');
-        // Fallback to mailto
-        sendViaMailto(data, form, submitBtn);
+      } else {
+        throw new Error(result.message || 'Failed to send message');
       }
-    ).finally(function() {
+    })
+    .catch(error => {
+      console.error('Web3Forms Error:', error);
+      showStatus(getTranslation('contact_status_error'), 'error');
+    })
+    .finally(() => {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Send';
+      const btnText = submitBtn.querySelector('.btn-text');
+      if (btnText) {
+        btnText.textContent = getTranslation('contact_form_submit');
+      } else {
+        submitBtn.textContent = getTranslation('contact_form_submit');
+      }
     });
-  }
-
-  function sendViaMailto(data, form, submitBtn) {
-    // Store message locally for reference
-    logMessage(data);
-    
-    // Create mailto link
-    const subject = encodeURIComponent(data.subject);
-    const body = encodeURIComponent(
-      `Name: ${data.name}\n` +
-      `Email: ${data.email}\n\n` +
-      `Message:\n${data.message}`
-    );
-    const mailtoLink = `mailto:szunio2004@gmail.com?subject=${subject}&body=${body}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    showStatus('Opening your email client... Message has been saved locally.', 'info');
-    
-    // Reset form after short delay
-    setTimeout(() => {
-      form.reset();
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send';
-      showStatus('Message prepared! Please send it from your email client.', 'success');
-    }, 2000);
   }
 
   function logMessage(data) {
@@ -171,37 +158,44 @@
 
     if (nameInput) {
       nameInput.addEventListener('blur', function() {
-        validateField(this, this.value.trim().length >= 2, 'Name must be at least 2 characters');
+        validateField(this, this.value.trim().length >= 2, getTranslation('contact_validation_name'));
       });
     }
 
     if (emailInput) {
       emailInput.addEventListener('blur', function() {
-        validateField(this, isValidEmail(this.value), 'Please enter a valid email address');
+        validateField(this, isValidEmail(this.value), getTranslation('contact_validation_email'));
       });
     }
 
     if (messageInput) {
       messageInput.addEventListener('blur', function() {
-        validateField(this, this.value.trim().length >= 10, 'Message must be at least 10 characters');
+        validateField(this, this.value.trim().length >= 10, getTranslation('contact_validation_message'));
       });
     }
   }
 
   function validateField(field, isValid, errorMessage) {
-    const existingError = field.parentNode.querySelector('.field-error');
-    
+    const formGroup = field.closest('.form-group');
+    const existingError = formGroup ? formGroup.querySelector('.field-error') : field.parentNode.querySelector('.field-error');
+
     if (existingError) {
-      existingError.remove();
+      existingError.style.display = 'none';
+      existingError.textContent = '';
     }
 
     if (!isValid && field.value.trim()) {
       field.classList.add('error');
-      const errorEl = document.createElement('div');
-      errorEl.className = 'field-error';
-      errorEl.textContent = errorMessage;
-      errorEl.style.cssText = 'color: #ff4757; font-size: 0.85rem; margin-top: 0.25rem;';
-      field.parentNode.appendChild(errorEl);
+      if (existingError) {
+        existingError.textContent = errorMessage;
+        existingError.style.display = 'block';
+      } else {
+        const errorEl = document.createElement('div');
+        errorEl.className = 'field-error';
+        errorEl.textContent = errorMessage;
+        const target = formGroup || field.parentNode;
+        target.appendChild(errorEl);
+      }
     } else {
       field.classList.remove('error');
     }

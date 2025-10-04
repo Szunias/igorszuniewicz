@@ -775,10 +775,48 @@ document.addEventListener('DOMContentLoaded', function() {
     extras_spotify_lead: { pl: 'Wybrane utwory i wydania odzwierciedlające mój styl i kierunek brzmieniowy.', nl: 'Geselecteerde tracks en releases die mijn esthetiek en soundrichting weerspiegelen.', en: 'Selected tracks and releases reflecting my aesthetic and sound direction.' },
     // Contact page
     contact_title: { pl: 'Kontakt', nl: 'Contact', en: 'Contact' },
-    contact_lead: { pl: 'Współpracujmy. Jestem otwarty na projekty i staże.', nl: 'Laten we samenwerken. Ik sta open voor projecten en stages.', en: 'Let’s collaborate. I’m open to project opportunities and internships.' },
+    contact_lead: { pl: 'Współpracujmy. Jestem otwarty na projekty i staże.', nl: 'Laten we samenwerken. Ik sta open voor projecten en stages.', en: 'Let's collaborate. I'm open to project opportunities and internships.' },
     contact_email_label: { pl: 'Email:', nl: 'E‑mail:', en: 'Email:' },
     contact_location_label: { pl: 'Lokalizacja:', nl: 'Locatie:', en: 'Location:' },
-    contact_reachout: { pl: 'Śmiało napisz z krótkim opisem. Lubię projekty łączące kreatywną wizję z rozwiązywaniem problemów technicznych.', nl: 'Stuur gerust een korte briefing. Ik werk graag aan projecten die creatieve intentie combineren met technische probleemoplossing.', en: 'Feel free to reach out with a short brief. I enjoy projects that combine creative intent with technical problem‑solving.' },
+    contact_reachout: { pl: 'Śmiało napisz z krótkim opisem. Lubię projekty łączące kreatywną wizję z rozwiązywaniem problemów technicznych.', nl: 'Stuur gerust een korte briefing. Ik werk graag aan projecten die creative intentie combineren met technische probleemoplossing.', en: 'Feel free to reach out with a short brief. I enjoy projects that combine creative intent with technical problem‑solving.' },
+    // New Contact Page Professional
+    contact_badge_available: { pl: 'Dostępny do projektów', nl: 'Beschikbaar voor projecten', en: 'Available for Projects' },
+    contact_hero_title: { pl: 'Twórzmy razem', nl: 'Laten we samen creëren', en: 'Let\'s Create Together' },
+    contact_hero_subtitle: { pl: 'Zazwyczaj odpowiadam w ciągu 24–48 godzin. Porozmawiajmy o Twoim projekcie.', nl: 'Ik reageer meestal binnen 24-48 uur. Laten we je project bespreken.', en: 'I typically respond within 24–48 hours. Let\'s discuss your project.' },
+    contact_section_message: { pl: 'Wyślij wiadomość', nl: 'Stuur een bericht', en: 'Send a Message' },
+    contact_section_direct: { pl: 'Bezpośredni kontakt', nl: 'Direct contact', en: 'Direct Contact' },
+    contact_section_social: { pl: 'Połącz się online', nl: 'Verbind online', en: 'Connect Online' },
+    contact_form_name_label: { pl: 'Twoje imię', nl: 'Je naam', en: 'Your Name' },
+    contact_form_name_placeholder: { pl: 'Jan Kowalski', nl: 'Jan Janssen', en: 'John Doe' },
+    contact_form_email_label: { pl: 'Adres email', nl: 'E-mailadres', en: 'Email Address' },
+    contact_form_email_placeholder: { pl: 'jan@przyklad.pl', nl: 'jan@voorbeeld.nl', en: 'john@example.com' },
+    contact_form_subject_label: { pl: 'Temat', nl: 'Onderwerp', en: 'Subject' },
+    contact_form_subject_placeholder: { pl: 'Zapytanie o projekt', nl: 'Projectaanvraag', en: 'Project Inquiry' },
+    contact_form_message_label: { pl: 'Twoja wiadomość', nl: 'Je bericht', en: 'Your Message' },
+    contact_form_message_placeholder: { pl: 'Opowiedz mi o swoim projekcie...', nl: 'Vertel me over je project...', en: 'Tell me about your project...' },
+    contact_form_submit: { pl: 'Wyślij wiadomość', nl: 'Verzend bericht', en: 'Send Message' },
+    contact_info_email: { pl: 'Email', nl: 'E-mail', en: 'Email' },
+    contact_info_location: { pl: 'Lokalizacja', nl: 'Locatie', en: 'Location' },
+    contact_info_location_value: { pl: 'Belgia, Zachodnia Flandria', nl: 'België, West-Vlaanderen', en: 'Belgium, West Flanders' },
+    contact_info_response: { pl: 'Czas odpowiedzi', nl: 'Reactietijd', en: 'Response Time' },
+    contact_info_response_value: { pl: '24–48 godzin', nl: '24-48 uur', en: '24–48 hours' },
+    contact_social_github: { pl: 'GitHub', nl: 'GitHub', en: 'GitHub' },
+    contact_social_github_handle: { pl: '@Szunias', nl: '@Szunias', en: '@Szunias' },
+    contact_social_linkedin: { pl: 'LinkedIn', nl: 'LinkedIn', en: 'LinkedIn' },
+    contact_social_linkedin_handle: { pl: 'Igor Szuniewicz', nl: 'Igor Szuniewicz', en: 'Igor Szuniewicz' },
+    contact_social_spotify: { pl: 'Spotify', nl: 'Spotify', en: 'Spotify' },
+    contact_social_spotify_handle: { pl: 'Portfolio muzyczne', nl: 'Muziekportfolio', en: 'Music Portfolio' },
+    contact_social_itch: { pl: 'Itch.io', nl: 'Itch.io', en: 'Itch.io' },
+    contact_social_itch_handle: { pl: 'Projekty gier', nl: 'Gameprojecten', en: 'Game Projects' },
+    // Contact form validation messages
+    contact_validation_required: { pl: 'Proszę wypełnić wszystkie wymagane pola.', nl: 'Vul alle verplichte velden in.', en: 'Please fill in all required fields.' },
+    contact_validation_email: { pl: 'Proszę podać prawidłowy adres email.', nl: 'Voer een geldig e-mailadres in.', en: 'Please enter a valid email address.' },
+    contact_validation_name: { pl: 'Imię musi mieć co najmniej 2 znaki', nl: 'Naam moet minimaal 2 tekens bevatten', en: 'Name must be at least 2 characters' },
+    contact_validation_message: { pl: 'Wiadomość musi mieć co najmniej 10 znaków', nl: 'Bericht moet minimaal 10 tekens bevatten', en: 'Message must be at least 10 characters' },
+    contact_status_sending: { pl: 'Wysyłanie wiadomości...', nl: 'Bericht verzenden...', en: 'Sending your message...' },
+    contact_status_success: { pl: 'Wiadomość wysłana pomyślnie! Odpowiem wkrótce.', nl: 'Bericht succesvol verzonden! Ik reageer binnenkort.', en: 'Message sent successfully! I\'ll respond soon.' },
+    contact_status_error: { pl: 'Wystąpił błąd podczas wysyłania. Spróbuj ponownie później.', nl: 'Er is een fout opgetreden. Probeer het later opnieuw.', en: 'An error occurred while sending. Please try again later.' },
+    contact_btn_sending: { pl: 'Wysyłanie...', nl: 'Verzenden...', en: 'Sending...' },
     // Not Today Darling page translations
     ntd_trailer_title: { pl: 'Trailer', nl: 'Trailer', en: 'Trailer' },
     ntd_trailer_hint: { pl: '🎬 Obejrzyj trailer', nl: '🎬 Bekijk de trailer', en: '🎬 Watch the trailer' },
@@ -1780,27 +1818,28 @@ document.addEventListener('DOMContentLoaded', function() {
       // Page <title>
       try { document.title = (lang==='pl'?'AudioQ — Profesjonalny Silnik Audio — Igor Szuniewicz': lang==='nl'?'AudioQ — Professionele Audio Engine — Igor Szuniewicz':'AudioQ — Professional Audio Engine — Igor Szuniewicz'); } catch(_){}
     }
-    // Contact page translations (current markup)
+    // Contact page translations (new professional design)
     if (location.pathname.endsWith('/contact.html') || /contact\.html$/i.test(location.pathname)){
-      const h1 = document.querySelector('#main header.major h1'); if (h1) h1.textContent = (lang==='pl'?'Porozmawiajmy': lang==='nl'?'Laten we praten':'Let\u2019s Connect');
-      const lead = document.querySelector('#main header.major p'); if (lead) lead.textContent = (lang==='pl'?'Napisz krótko, odpowiem w 24\u201348h.': lang==='nl'?'Stuur een bericht, ik antwoord binnen 24\u201348u.':'Drop a message, I reply within 24\u201348h.');
-      const formCard = document.getElementById('contact-form-card');
-      if (formCard){
-        const h3 = formCard.querySelector('h3'); if (h3) h3.textContent = (lang==='pl'?'Szybka wiadomość': lang==='nl'?'Kort bericht':'Quick Message');
-        const n = document.getElementById('cf-name'); if (n) n.setAttribute('placeholder', (lang==='pl'?'Twoje imię': lang==='nl'?'Je naam':'Your name'));
-        const e = document.getElementById('cf-email'); if (e) e.setAttribute('placeholder', (lang==='pl'?'Email': lang==='nl'?'E‑mail':'Email'));
-        const s = document.getElementById('cf-subject'); if (s) s.setAttribute('placeholder', (lang==='pl'?'Temat': lang==='nl'?'Onderwerp':'Subject'));
-        const m = document.getElementById('cf-message'); if (m) m.setAttribute('placeholder', (lang==='pl'?'Twoja wiadomość': lang==='nl'?'Je bericht':'Your message'));
-        const send = document.getElementById('cf-send'); if (send) send.textContent = (lang==='pl'?'Wyślij': lang==='nl'?'Versturen':'Send');
-      }
-      const direct = document.getElementById('contact-direct');
-      if (direct){
-        const h3 = direct.querySelector('h3'); if (h3) h3.textContent = (lang==='pl'?'Bezpośrednio': lang==='nl'?'Direct':'Direct');
-        const labels = direct.querySelectorAll('p strong');
-        if (labels[0]) labels[0].textContent = (lang==='pl'?'Email': lang==='nl'?'E‑mail':'Email');
-        if (labels[1]) labels[1].textContent = (lang==='pl'?'Lokalizacja': lang==='nl'?'Locatie':'Location');
-      }
-      try { document.title = (lang==='pl'?'Kontakt — Igor Szuniewicz': lang==='nl'?'Contact — Igor Szuniewicz':'Contact — Igor Szuniewicz'); } catch(_){ }
+      // Translate all data-i18n elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[key]) {
+          el.textContent = I18N[key][lang];
+        }
+      });
+
+      // Translate placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (I18N[key]) {
+          el.setAttribute('placeholder', I18N[key][lang]);
+        }
+      });
+
+      // Update page title
+      try {
+        document.title = (lang==='pl'?'Kontakt — Igor Szuniewicz': lang==='nl'?'Contact — Igor Szuniewicz':'Contact — Igor Szuniewicz');
+      } catch(_){ }
     }
 
     // CV section on homepage translations

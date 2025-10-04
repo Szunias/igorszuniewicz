@@ -137,35 +137,163 @@
       <ul class="icons"></ul>
     </nav>
     <div id="main">
-      <section class="post contact-modern" data-reveal>
-        <header class="major">
-          <h1>Let’s Connect</h1>
-          <p id="bgWhite">Drop a message, I reply within 24–48h.</p>
-        </header>
-        <div class="contact-grid">
-          <div class="contact-card" id="contact-form-card">
-            <h3>Quick Message</h3>
+      <section class="post contact-professional" data-reveal>
+        <div class="contact-hero">
+          <div class="contact-hero-badge" data-reveal style="--reveal-delay: .06s;">
+            <i class="fas fa-paper-plane"></i>
+            <span data-i18n="contact_badge_available">Available for Projects</span>
+          </div>
+          <header class="major" data-reveal style="--reveal-delay: .12s;">
+            <h1 data-i18n="contact_hero_title">Let's Create Together</h1>
+            <p class="contact-subtitle" data-i18n="contact_hero_subtitle">I typically respond within 24–48 hours. Let's discuss your project.</p>
+          </header>
+        </div>
+
+        <div class="contact-wrapper">
+          <!-- Main Contact Form -->
+          <div class="contact-section contact-form-section" data-reveal style="--reveal-delay: .18s;">
+            <div class="section-header">
+              <div class="section-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <h3 data-i18n="contact_section_message">Send a Message</h3>
+            </div>
             <form id="contact-form" novalidate>
-              <div class="row gtr-uniform">
-                <div class="col-6 col-12-xsmall"><input type="text" name="name" id="cf-name" placeholder="Your name" required /></div>
-                <div class="col-6 col-12-xsmall"><input type="email" name="email" id="cf-email" placeholder="Email" required /></div>
-                <div class="col-12"><input type="text" name="subject" id="cf-subject" placeholder="Subject" /></div>
-                <div class="col-12"><textarea name="message" id="cf-message" placeholder="Your message" rows="5" required></textarea></div>
-                <div class="col-12">
-                  <button type="submit" class="button primary" id="cf-send">Send</button>
-                  <span class="cf-status" aria-live="polite"></span>
+              <input type="hidden" name="access_key" value="63daf122-621e-405f-ac46-d4537bfba2a4">
+              <input type="hidden" name="subject" value="New Contact from Portfolio">
+              <input type="hidden" name="from_name" value="Portfolio Contact Form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="cf-name">
+                    <i class="fas fa-user"></i>
+                    <span data-i18n="contact_form_name_label">Your Name</span>
+                  </label>
+                  <input type="text" name="name" id="cf-name" data-i18n-placeholder="contact_form_name_placeholder" placeholder="John Doe" required />
+                  <div class="field-error" style="display: none;"></div>
                 </div>
+                <div class="form-group">
+                  <label for="cf-email">
+                    <i class="fas fa-at"></i>
+                    <span data-i18n="contact_form_email_label">Email Address</span>
+                  </label>
+                  <input type="email" name="email" id="cf-email" data-i18n-placeholder="contact_form_email_placeholder" placeholder="john@example.com" required />
+                  <div class="field-error" style="display: none;"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cf-subject">
+                  <i class="fas fa-tag"></i>
+                  <span data-i18n="contact_form_subject_label">Subject</span>
+                </label>
+                <input type="text" name="subject" id="cf-subject" data-i18n-placeholder="contact_form_subject_placeholder" placeholder="Project Inquiry" />
+              </div>
+              <div class="form-group">
+                <label for="cf-message">
+                  <i class="fas fa-comment-dots"></i>
+                  <span data-i18n="contact_form_message_label">Your Message</span>
+                </label>
+                <textarea name="message" id="cf-message" data-i18n-placeholder="contact_form_message_placeholder" placeholder="Tell me about your project..." rows="6" required></textarea>
+                <div class="field-error" style="display: none;"></div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="button primary contact-submit" id="cf-send">
+                  <span class="btn-text" data-i18n="contact_form_submit">Send Message</span>
+                  <i class="fas fa-arrow-right btn-icon"></i>
+                </button>
+                <span class="cf-status" aria-live="polite"></span>
               </div>
             </form>
           </div>
-          <div class="contact-card" id="contact-direct">
-            <h3>Direct</h3>
-            <p><strong>Email</strong><br/><a href="mailto:szunio2004@gmail.com">szunio2004@gmail.com</a></p>
-            <p><strong>Location</strong><br/>Belgium, West Flanders</p>
-            <div class="socials">
-              <a href="https://github.com/Szunias" target="_blank" rel="noopener noreferrer" class="icon brands fa-github"></a>
-              <a href="https://www.linkedin.com/in/igor-szuniewicz-a6877a2a3" target="_blank" rel="noopener noreferrer" class="icon brands fa-linkedin"></a>
-              <a href="https://open.spotify.com/artist/6jEBXZZOeunaMzMnnHYvd6" target="_blank" rel="noopener noreferrer" class="icon brands fa-spotify"></a>
+
+          <!-- Contact Info & Social -->
+          <div class="contact-sidebar">
+            <div class="contact-section contact-info-section" data-reveal style="--reveal-delay: .24s;">
+              <div class="section-header">
+                <div class="section-icon">
+                  <i class="fas fa-address-card"></i>
+                </div>
+                <h3 data-i18n="contact_section_direct">Direct Contact</h3>
+              </div>
+              <div class="contact-info-grid">
+                <div class="info-item">
+                  <div class="info-icon">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <div class="info-content">
+                    <div class="info-label" data-i18n="contact_info_email">Email</div>
+                    <a href="mailto:szunio2004@gmail.com" class="info-value">szunio2004@gmail.com</a>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="info-content">
+                    <div class="info-label" data-i18n="contact_info_location">Location</div>
+                    <div class="info-value" data-i18n="contact_info_location_value">Belgium, West Flanders</div>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <div class="info-icon">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <div class="info-content">
+                    <div class="info-label" data-i18n="contact_info_response">Response Time</div>
+                    <div class="info-value" data-i18n="contact_info_response_value">24–48 hours</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-section contact-social-section" data-reveal style="--reveal-delay: .30s;">
+              <div class="section-header">
+                <div class="section-icon">
+                  <i class="fas fa-share-alt"></i>
+                </div>
+                <h3 data-i18n="contact_section_social">Connect Online</h3>
+              </div>
+              <div class="social-links-grid">
+                <a href="https://github.com/Szunias" target="_blank" rel="noopener noreferrer" class="social-link github">
+                  <div class="social-icon">
+                    <i class="fab fa-github"></i>
+                  </div>
+                  <div class="social-content">
+                    <div class="social-label" data-i18n="contact_social_github">GitHub</div>
+                    <div class="social-handle" data-i18n="contact_social_github_handle">@Szunias</div>
+                  </div>
+                  <i class="fas fa-arrow-right social-arrow"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/igor-szuniewicz-a6877a2a3" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
+                  <div class="social-icon">
+                    <i class="fab fa-linkedin"></i>
+                  </div>
+                  <div class="social-content">
+                    <div class="social-label" data-i18n="contact_social_linkedin">LinkedIn</div>
+                    <div class="social-handle" data-i18n="contact_social_linkedin_handle">Igor Szuniewicz</div>
+                  </div>
+                  <i class="fas fa-arrow-right social-arrow"></i>
+                </a>
+                <a href="https://open.spotify.com/artist/6jEBXZZOeunaMzMnnHYvd6" target="_blank" rel="noopener noreferrer" class="social-link spotify">
+                  <div class="social-icon">
+                    <i class="fab fa-spotify"></i>
+                  </div>
+                  <div class="social-content">
+                    <div class="social-label" data-i18n="contact_social_spotify">Spotify</div>
+                    <div class="social-handle" data-i18n="contact_social_spotify_handle">Music Portfolio</div>
+                  </div>
+                  <i class="fas fa-arrow-right social-arrow"></i>
+                </a>
+                <a href="https://igorszuniewicz.itch.io" target="_blank" rel="noopener noreferrer" class="social-link itch">
+                  <div class="social-icon">
+                    <i class="fab fa-itch-io"></i>
+                  </div>
+                  <div class="social-content">
+                    <div class="social-label" data-i18n="contact_social_itch">Itch.io</div>
+                    <div class="social-handle" data-i18n="contact_social_itch_handle">Game Projects</div>
+                  </div>
+                  <i class="fas fa-arrow-right social-arrow"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
