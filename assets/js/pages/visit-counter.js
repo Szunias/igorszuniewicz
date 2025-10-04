@@ -8,29 +8,146 @@
 
   const NAMESPACE = 'igorszuniewicz';
   const KEY = 'portfolio_views';
-  const BASE_COUNT = 2533; // Starting count
-  const API_URL = `https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`;
+  const BASE_COUNT = 2533; // Historical starting count
+  const COUNTAPI_URL = `https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`;
+  const COUNTAPI_GET_URL = `https://api.countapi.xyz/get/${NAMESPACE}/${KEY}`;
+  const COUNTERAPI_URL = `https://counterapi.dev/api/v1/${NAMESPACE}/${KEY}/hit`;
   const FALLBACK_KEY = 'last_known_count';
+  const FETCH_TIMEOUT_MS = 3500;
+  const INCREMENT_TTL_MS = 24 * 60 * 60 * 1000; // limit one increment per device per 24h
+  const STORAGE_LAST_HIT = 'visit_last_hit_at';
+  const SESSION_HIT_FLAG = 'visit_hit_session_done';
 
-  // Fetch visit count from CountAPI
-  async function getVisitCount() {
+  // Fallback: try to increment via image beacon if fetch is blocked
+  function beaconHit(url) {
+    return new Promise((resolve) => {
+      try {
+        const img = new Image();
+        let finished = false;
+        const done = (ok) => { if (!finished) { finished = true; resolve(ok); } };
+        img.onload = () => done(true);
+        img.onerror = () => done(false);
+        // Bust caches
+        const sep = url.includes('?') ? '&' : '?';
+        img.src = `${url}${sep}_=${Date.now()}`;
+        // Safety timeout
+        setTimeout(() => done(false), FETCH_TIMEOUT_MS);
+      } catch (_) {
+        resolve(false);
+      }
+    });
+  }
+
+  function withTimeout(promise, ms) {
+    const ctrl = new AbortController();
+    const timeout = setTimeout(() => ctrl.abort('timeout'), ms);
+    return Promise.race([
+      promise(ctrl.signal).finally(() => clearTimeout(timeout)),
+    ]);
+  }
+
+  async function fetchCountFrom(url) {
+    return withTimeout(async (signal) => {
+      const res = await fetch(url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store',
+        headers: { 'Accept': 'application/json' },
+        redirect: 'follow',
+        signal,
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+      // Try to parse JSON, some providers may respond with text first
+      let data;
+      const ct = res.headers.get('content-type') || '';
+      if (ct.includes('application/json')) {
+        data = await res.json();
+      } else {
+        // Attempt to parse as JSON regardless
+        const text = await res.text();
+        try { data = JSON.parse(text); } catch { throw new Error('Non-JSON response'); }
+      }
+
+      // Normalize common payload shapes
+      // CountAPI -> { value }
+      // CounterAPI -> { value } or { count } (be flexible)
+      const value = (
+        (typeof data.value === 'number' && data.value) ||
+        (typeof data.count === 'number' && data.count)
+      );
+      if (typeof value !== 'number') throw new Error('Invalid payload');
+      return value;
+    }, FETCH_TIMEOUT_MS);
+  }
+
+  // Read current count without increment when possible
+  async function readVisitCount() {
+    // Prefer CountAPI GET (non-increment)
     try {
-      // Try to get count from CountAPI
-      const response = await fetch(API_URL);
-      if (!response.ok) throw new Error('API request failed');
+      const val = await fetchCountFrom(COUNTAPI_GET_URL);
+      const total = BASE_COUNT + val;
+      localStorage.setItem(FALLBACK_KEY, String(total));
+      return total;
+    } catch (_) {}
 
-      const data = await response.json();
-      const totalCount = BASE_COUNT + (data.value || 0);
+    // If GET fails, do not try any provider that increments implicitly.
+    const cached = localStorage.getItem(FALLBACK_KEY);
+    return cached ? parseInt(cached, 10) : BASE_COUNT;
+  }
 
-      // Cache the result
-      localStorage.setItem(FALLBACK_KEY, totalCount.toString());
-      return totalCount;
-    } catch (error) {
-      console.log('Using cached count');
-      // Fallback to last known count
-      const cached = localStorage.getItem(FALLBACK_KEY);
-      return cached ? parseInt(cached, 10) : BASE_COUNT;
+  // Increment counter (limited by local device rules)
+  async function incrementVisitCount() {
+    // Try primary provider (CountAPI hit)
+    try {
+      const val = await fetchCountFrom(COUNTAPI_URL);
+      const total = BASE_COUNT + val;
+      localStorage.setItem(FALLBACK_KEY, String(total));
+      return total;
+    } catch (_) {}
+
+    // Fallback provider (CounterAPI hit)
+    try {
+      const val = await fetchCountFrom(COUNTERAPI_URL);
+      const total = BASE_COUNT + val;
+      localStorage.setItem(FALLBACK_KEY, String(total));
+      return total;
+    } catch (_) {}
+
+    // Last attempt: image beacon to CountAPI, then try to read current value
+    try {
+      const ok = await beaconHit(COUNTAPI_URL);
+      if (ok) {
+        const total = await readVisitCount();
+        localStorage.setItem(FALLBACK_KEY, String(total));
+        return total;
+      }
+    } catch (_) {}
+
+    const cached = localStorage.getItem(FALLBACK_KEY);
+    return cached ? parseInt(cached, 10) : BASE_COUNT;
+  }
+
+  function shouldIncrementNow() {
+    try {
+      // avoid repeated increments within the same browser session
+      if (sessionStorage.getItem(SESSION_HIT_FLAG) === '1') return false;
+
+      const lastHit = parseInt(localStorage.getItem(STORAGE_LAST_HIT) || '0', 10);
+      const now = Date.now();
+      if (!lastHit || (now - lastHit) > INCREMENT_TTL_MS) return true;
+      return false;
+    } catch (_) {
+      // If storage is blocked, err on the side of not incrementing repeatedly
+      return false;
     }
+  }
+
+  function markIncremented() {
+    try {
+      sessionStorage.setItem(SESSION_HIT_FLAG, '1');
+      localStorage.setItem(STORAGE_LAST_HIT, String(Date.now()));
+    } catch (_) {}
   }
 
   // Format visit count for display
@@ -70,7 +187,9 @@
     if (!counter || !countSpan) return;
 
     try {
-      const currentCount = await getVisitCount();
+      const willIncrement = shouldIncrementNow();
+      const currentCount = willIncrement ? await incrementVisitCount() : await readVisitCount();
+      if (willIncrement) markIncremented();
 
       // Start animation after delay
       setTimeout(() => {
@@ -86,8 +205,10 @@
       }, 2500);
 
     } catch (error) {
-      console.error('Failed to load visit count:', error);
-      countSpan.textContent = formatCount(BASE_COUNT);
+      // Ensure we still show something useful if everything fails
+      const cached = localStorage.getItem(FALLBACK_KEY);
+      const fallback = cached ? parseInt(cached, 10) : BASE_COUNT;
+      countSpan.textContent = formatCount(fallback);
       counter.style.display = 'flex';
     }
   }

@@ -17,10 +17,17 @@
     formats: ['webp', 'jpg', 'jpeg', 'png'],
 
     init: function() {
+      // Apply attribute optimizations as early as possible
+      this.adjustAttributes();
+      this.preloadAboveTheFold();
+
       this.detectWebPSupport().then(supported => {
         this.supportsWebP = supported;
+        // IntersectionObserver-based lazy loading for opt-in images
         this.setupLazyLoading();
+        // Nice loading states for all images
         this.optimizeExistingImages();
+        // Optional responsive support via data-responsive
         this.addResponsiveImageSupport();
       });
     },
@@ -87,7 +94,7 @@
 
       if (dataSrc) {
         // Check if we should use WebP version
-        const optimizedSrc = this.getOptimizedImageSrc(dataSrc);
+        const optimizedSrc = this.getOptimizedImageSrc(dataSrc, img);
 
         // Preload the image to avoid flash
         const tempImg = new Image();
@@ -112,8 +119,10 @@
       }
     },
 
-    getOptimizedImageSrc: function(originalSrc) {
+    getOptimizedImageSrc: function(originalSrc, imgEl) {
       if (!this.supportsWebP) return originalSrc;
+      // Only attempt WebP if we explicitly marked the element with data-has-webp
+      if (!imgEl || imgEl.getAttribute('data-has-webp') !== 'true') return originalSrc;
 
       // Try to get WebP version
       const extension = originalSrc.split('.').pop().toLowerCase();
@@ -123,6 +132,61 @@
       }
 
       return originalSrc;
+    },
+
+    // Ensure offscreen images are deprioritized and on-screen prioritized
+    adjustAttributes: function() {
+      const imgs = Array.from(document.querySelectorAll('img'));
+      if (!imgs.length) return;
+
+      // Find first visible image to treat as hero
+      let heroAssigned = false;
+      const vh = window.innerHeight || 800;
+
+      imgs.forEach(img => {
+        const rect = img.getBoundingClientRect();
+        const isVisible = rect.top < vh * 0.9 && rect.bottom > 0;
+
+        // Force lazy for offscreen images
+        if (!isVisible) {
+          if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+          try { img.fetchPriority = 'low'; } catch(_) {}
+          img.setAttribute('fetchpriority', 'low');
+        } else {
+          // First visible becomes hero
+          if (!heroAssigned) {
+            img.classList.add('critical-image');
+            img.setAttribute('loading', 'eager');
+            try { img.fetchPriority = 'high'; } catch(_) {}
+            img.setAttribute('fetchpriority', 'high');
+            heroAssigned = true;
+          } else {
+            // Other visible images can still be async-decoded
+            if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
+          }
+        }
+
+        // Ensure slider non-active slides are lazy
+        if (img.closest('.slide') && !img.closest('.slide').classList.contains('active')) {
+          img.setAttribute('loading', 'lazy');
+          try { img.fetchPriority = 'low'; } catch(_) {}
+          img.setAttribute('fetchpriority', 'low');
+        }
+      });
+    },
+
+    // Preload hero/critical images to speed up visual readiness
+    preloadAboveTheFold: function() {
+      const firstCritical = document.querySelector('.critical-image');
+      if (!firstCritical) return;
+      const src = firstCritical.currentSrc || firstCritical.src;
+      if (!src) return;
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = src;
+      document.head.appendChild(link);
     },
 
     optimizeExistingImages: function() {

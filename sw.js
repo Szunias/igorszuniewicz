@@ -3,11 +3,11 @@
  * Implements intelligent caching strategies for optimal performance
  */
 
-const CACHE_NAME = 'igor-portfolio-v2025.3';
-const STATIC_CACHE = 'static-assets-v2025.3';
-const DYNAMIC_CACHE = 'dynamic-content-v2025.3';
-const IMAGE_CACHE = 'images-v2025.3';
-const AUDIO_CACHE = 'audio-v2025.3';
+const CACHE_NAME = 'igor-portfolio-v2025.4';
+const STATIC_CACHE = 'static-assets-v2025.4';
+const DYNAMIC_CACHE = 'dynamic-content-v2025.4';
+const IMAGE_CACHE = 'images-v2025.4';
+const AUDIO_CACHE = 'audio-v2025.4';
 
 // Cache durations (in milliseconds)
 const CACHE_DURATION = {
@@ -25,17 +25,27 @@ const STATIC_ASSETS = [
   '/music.html',
   '/contact.html',
   '/projects/index.html',
-  '/assets/css/critical.css',
+  // CSS
   '/assets/css/main.css',
-  '/assets/js/performance.js',
+  '/assets/css/custom-styles.css',
+  '/assets/css/pro-theme.css',
+  // JS core
+  '/assets/js/core/jquery.min.js',
+  '/assets/js/core/jquery.scrollex.min.js',
+  '/assets/js/core/jquery.scrolly.min.js',
+  '/assets/js/core/browser.min.js',
+  '/assets/js/core/breakpoints.min.js',
+  '/assets/js/core/util.js',
+  // JS utils
+  '/assets/js/utils/performance.js',
+  '/assets/js/utils/image-optimizer.js',
+  // App
   '/assets/js/main.js',
-  '/assets/js/resource-optimizer.js',
-  '/assets/js/image-optimizer.js',
   '/manifest.json',
-  '/favicon.ico',
-  '/favicon-32x32.png',
-  '/favicon-16x16.png',
-  '/apple-touch-icon.png'
+  '/assets/icons/favicon.ico',
+  '/assets/icons/favicon-32x32.png',
+  '/assets/icons/favicon-16x16.png',
+  '/assets/icons/apple-touch-icon.png'
 ];
 
 // Network-first resources (always try network first)
