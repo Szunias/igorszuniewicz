@@ -14,7 +14,7 @@
         constructor() {
             this.container = null;
             this.particles = [];
-            this.particleCount = window.innerWidth > 768 ? 30 : 15;
+            this.particleCount = window.innerWidth > 768 ? 8 : 0; // REDUCED from 30 to 8
             this.init();
         }
 
@@ -63,53 +63,13 @@
 
     class ParallaxController {
         constructor() {
-            this.elements = [];
-            this.ticking = false;
             this.init();
         }
 
         init() {
-            // Select elements for parallax
-            const orbs = document.querySelectorAll('.bg-orbs .orb');
-            const waves = document.querySelectorAll('.wave-path');
-
-            orbs.forEach((orb, index) => {
-                this.elements.push({
-                    el: orb,
-                    speed: 0.3 + (index * 0.1)
-                });
-            });
-
-            waves.forEach((wave, index) => {
-                this.elements.push({
-                    el: wave,
-                    speed: 0.15 + (index * 0.05)
-                });
-            });
-
-            // Bind scroll event
-            window.addEventListener('scroll', () => this.requestTick(), { passive: true });
-
-            // Initial position
-            this.update();
-        }
-
-        requestTick() {
-            if (!this.ticking) {
-                requestAnimationFrame(() => this.update());
-                this.ticking = true;
-            }
-        }
-
-        update() {
-            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-
-            this.elements.forEach(({ el, speed }) => {
-                const offset = scrollY * speed;
-                el.style.transform = `translate3d(0, ${offset}px, 0)`;
-            });
-
-            this.ticking = false;
+            // DISABLED - Use CSS-only parallax instead for better performance
+            // Parallax is now handled by CSS with transform: translateZ()
+            console.log('Parallax: Using CSS-only mode for performance');
         }
     }
 
@@ -401,18 +361,18 @@
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         if (!prefersReducedMotion) {
-            // Initialize particle system (desktop only)
-            if (window.innerWidth > 768) {
-                new ParticleSystem();
-            }
+            // DISABLED particle system for performance
+            // if (window.innerWidth > 768) {
+            //     new ParticleSystem();
+            // }
 
-            // Initialize parallax
-            new ParallaxController();
+            // DISABLED JS parallax - using CSS instead
+            // new ParallaxController();
 
-            // Initialize custom cursor (desktop only)
-            if (window.innerWidth > 1024) {
-                new MouseFollower();
-            }
+            // DISABLED custom cursor for performance
+            // if (window.innerWidth > 1024) {
+            //     new MouseFollower();
+            // }
         }
 
         // Initialize scroll reveal (always)

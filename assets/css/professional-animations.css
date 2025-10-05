@@ -474,16 +474,25 @@ html {
    PERFORMANCE OPTIMIZATIONS
    ==================================== */
 
-/* Hardware acceleration for smooth animations */
+/* Hardware acceleration for smooth animations - OPTIMIZED */
 .project-card,
 .metric-card,
 .slider-nav,
 .button,
 .intro-pills span,
 .timeline-item {
-    will-change: transform;
+    /* REMOVED will-change for performance - only use on :hover */
     backface-visibility: hidden;
-    perspective: 1000px;
+    transform: translateZ(0); /* GPU acceleration without will-change */
+}
+
+/* Add will-change ONLY on hover for better performance */
+.project-card:hover,
+.metric-card:hover,
+.slider-nav:hover,
+.button:hover,
+.intro-pills span:hover {
+    will-change: transform;
 }
 
 /* Reduce motion for accessibility */
@@ -515,3 +524,21 @@ html {
         display: none;
     }
 }
+
+/* PERFORMANCE: Disable heavy background animations */
+.bg-orbs .orb {
+    animation: none !important;
+}
+
+.bg-waves .wave-path {
+    animation: none !important;
+}
+
+.bg-eq {
+    display: none !important;
+}
+
+.particle-container {
+    display: none !important;
+}
+
