@@ -40,7 +40,10 @@
       "Bash(where convert)",
       "Bash(node:*)",
       "Bash(magick identify:*)",
-      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\contact.html\")"
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\contact.html\")",
+      "Bash(where:*)",
+      "Bash(npm --version)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []

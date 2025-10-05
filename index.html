@@ -43,10 +43,14 @@
 	<link rel="preload" href="assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 	<link rel="preload" href="assets/css/custom-styles.css?v=20250928" as="style" onload="this.onload=null;this.rel='stylesheet'">
 	<link rel="preload" href="assets/css/pro-theme.css?v=20250219" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<link rel="preload" href="assets/css/professional-animations.css?v=20251005" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<link rel="preload" href="assets/css/video-optimization.css?v=20251005" as="style" onload="this.onload=null;this.rel='stylesheet'">
 	<noscript>
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/custom-styles.css?v=20250928" />
 		<link rel="stylesheet" href="assets/css/pro-theme.css?v=20250219" />
+		<link rel="stylesheet" href="assets/css/professional-animations.css?v=20251005" />
+		<link rel="stylesheet" href="assets/css/video-optimization.css?v=20251005" />
 	</noscript>
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
@@ -465,12 +469,12 @@
                     <p>A brief insight into who I am and my passion for audio and technology.</p>
                 </header>
                 <div class="intro-hero">
-                    <p class="intro-hi">Audio engineer specializing in interactive sound systems.</p>
-                    <h3 class="intro-headline">I design sound for games and interactive media.</h3>
-                    <div class="intro-pills">
-                        <span data-pill="ga"><i class="fas fa-gamepad" aria-hidden="true"></i> Game audio</span>
-                        <span data-pill="im"><i class="fas fa-music" aria-hidden="true"></i> Interactive music</span>
-                        <span data-pill="at"><i class="fas fa-code" aria-hidden="true"></i> Audio tools</span>
+                    <p class="intro-hi" data-reveal-child>Audio engineer specializing in interactive sound systems.</p>
+                    <h3 class="intro-headline gradient-text" data-reveal-child>I design sound for games and interactive media.</h3>
+                    <div class="intro-pills" data-reveal-child>
+                        <span data-pill="ga" class="float-animation"><i class="fas fa-gamepad" aria-hidden="true"></i> Game audio</span>
+                        <span data-pill="im" class="float-animation"><i class="fas fa-music" aria-hidden="true"></i> Interactive music</span>
+                        <span data-pill="at" class="float-animation"><i class="fas fa-code" aria-hidden="true"></i> Audio tools</span>
                     </div>
                 </div>
             </section>
@@ -488,7 +492,12 @@
                         <div class="slide active">
                             <span class="slide-badge">DAE Game Projects</span>
                             <h3>Not Today, Darling! — Game Audio</h3>
-                            <a href="projects/not-today-darling.html"><img src="assets/images/projects/NotTodayPic1.png" alt="Not Today, Darling!" loading="eager" decoding="async" class="critical-image" fetchpriority="high"></a>
+                            <a href="projects/not-today-darling.html">
+                                <picture>
+                                    <source srcset="assets/images/projects/NotTodayPic1.webp" type="image/webp">
+                                    <img src="assets/images/projects/NotTodayPic1.png" alt="Not Today, Darling!" loading="eager" decoding="async" class="critical-image" fetchpriority="high">
+                                </picture>
+                            </a>
                             <p class="slide-description">Retro-inspired audio implementation.</p>
                         </div>
                         <div class="slide">
@@ -508,23 +517,44 @@
                         </div>
                         <div class="slide">
                             <h3>Amorak Sound Design</h3>
-                            <a href="projects/amorak.html"><img src="assets/images/projects/amorak.png" alt="Amorak Sound Design" loading="lazy" decoding="async"></a>
+                            <a href="projects/amorak.html">
+                                <picture>
+                                    <source srcset="assets/images/projects/amorak.webp" type="image/webp">
+                                    <img src="assets/images/projects/amorak.png" alt="Amorak Sound Design" loading="lazy" decoding="async">
+                                </picture>
+                            </a>
                             <p class="slide-description">Soundscapes and character audio for animation.</p>
                         </div>
                         <div class="slide">
                             <h3>Pause & Deserve Horror Game</h3>
-                            <a href="projects/pause-and-deserve.html"><img src="assets/images/projects/deserve.png" alt="Pause & Deserve" loading="lazy" decoding="async"></a>
+                            <a href="projects/pause-and-deserve.html">
+                                <picture>
+                                    <source srcset="assets/images/projects/deserve.webp" type="image/webp">
+                                    <img src="assets/images/projects/deserve.png" alt="Pause & Deserve" loading="lazy" decoding="async">
+                                </picture>
+                            </a>
                             <p class="slide-description">Horror game concept and audio design.</p>
                         </div>
                         <div class="slide">
                             <h3>Richter Animation Sound Design</h3>
-                            <a href="projects/richter.html"><img src="assets/images/projects/richter.png" alt="Richter - Animation Audio Design" loading="lazy" decoding="async"></a>
+                            <a href="projects/richter.html">
+                                <picture>
+                                    <source srcset="assets/images/projects/richter.webp" type="image/webp">
+                                    <img src="assets/images/projects/richter.png" alt="Richter - Animation Audio Design" loading="lazy" decoding="async">
+                                </picture>
+                            </a>
                             <p class="slide-description">Sound design with minimal recording gear.</p>
                         </div>
                         <div class="slide">
                             <span class="slide-badge">AudioLab Project</span>
                             <h3>Transientica: Beatbox-Controlled Rhythm Game</h3>
-                            <a href="projects/audiolab.html"><img src="assets/images/projects/AudioLabGif.gif" alt="Transientica AudioLab" loading="lazy" decoding="async"></a>
+                            <a href="projects/audiolab.html">
+                                <video class="project-video gif-replacement-video" autoplay loop muted playsinline loading="lazy">
+                                    <source src="assets/images/projects/AudioLabGif.webm" type="video/webm">
+                                    <source src="assets/images/projects/AudioLabGif.mp4" type="video/mp4">
+                                    <img src="assets/images/projects/AudioLabGif.gif" alt="Transientica AudioLab" class="gif-fallback">
+                                </video>
+                            </a>
                             <p class="slide-description">Real-time ML classification with 45ms latency.</p>
                         </div>
                         <div class="slide">
@@ -547,7 +577,7 @@
                     <article class="project-card" data-reveal style="--reveal-delay:.08s;">
                         <a href="projects/musicforgames.html" class="image fit"><img src="assets/images/projects/musicforgames.png" alt="Interactive Music Design" loading="lazy" decoding="async" /></a>
                         <a href="projects/musicforgames.html" class="stretched-link" aria-label="Interactive Music Design — Wwise Projects"></a>
-                        <div class="project-card-content">
+                        <div class="project-card-content" data-reveal-child>
                             <h3>Interactive Music Design — Wwise Projects</h3>
                             <p>Adaptive audio systems with vertical layering, horizontal re-sequencing, and real-time parameter control.</p>
                         </div>
@@ -555,7 +585,7 @@
                     <article class="project-card" data-reveal style="--reveal-delay:.12s;">
                         <a href="projects/audioq.html" class="image fit"><img src="assets/images/projects-audioq/AudioQPicture.png" alt="AudioQ Plugin" loading="lazy" decoding="async" /></a>
                         <a href="projects/audioq.html" class="stretched-link" aria-label="AudioQ — Professional EQ Plugin"></a>
-                        <div class="project-card-content">
+                        <div class="project-card-content" data-reveal-child>
                             <h3>AudioQ — Professional EQ Plugin</h3>
                             <p>High-quality 8-band parametric EQ with spectrum analyzer, built with C++ and JUCE framework.</p>
                         </div>
@@ -570,29 +600,29 @@
                     <p data-i18n="metrics_lead">Quantifiable experience across audio production and interactive systems.</p>
                 </header>
                 <div class="metrics-grid">
-                    <div class="metric-card" data-reveal style="--reveal-delay:.08s;">
-                        <div class="metric-icon"><i class="fas fa-project-diagram"></i></div>
-                        <div class="metric-value" data-target="15">0</div>
-                        <div class="metric-label" data-i18n="metrics_projects_label">Completed Projects</div>
-                        <div class="metric-desc" data-i18n="metrics_projects_desc">Games, animations, interactive media</div>
+                    <div class="metric-card pulse-glow" data-reveal style="--reveal-delay:.08s;">
+                        <div class="metric-icon" data-reveal-child><i class="fas fa-project-diagram"></i></div>
+                        <div class="metric-value" data-target="15" data-reveal-child>0</div>
+                        <div class="metric-label" data-i18n="metrics_projects_label" data-reveal-child>Completed Projects</div>
+                        <div class="metric-desc" data-i18n="metrics_projects_desc" data-reveal-child>Games, animations, interactive media</div>
                     </div>
-                    <div class="metric-card" data-reveal style="--reveal-delay:.12s;">
-                        <div class="metric-icon"><i class="fas fa-music"></i></div>
-                        <div class="metric-value" data-target="100">0</div>
-                        <div class="metric-label" data-i18n="metrics_tracks_label">Original Compositions</div>
-                        <div class="metric-desc" data-i18n="metrics_tracks_desc">Music tracks and scores created</div>
+                    <div class="metric-card pulse-glow" data-reveal style="--reveal-delay:.12s;">
+                        <div class="metric-icon" data-reveal-child><i class="fas fa-music"></i></div>
+                        <div class="metric-value" data-target="100" data-reveal-child>0</div>
+                        <div class="metric-label" data-i18n="metrics_tracks_label" data-reveal-child>Original Compositions</div>
+                        <div class="metric-desc" data-i18n="metrics_tracks_desc" data-reveal-child>Music tracks and scores created</div>
                     </div>
-                    <div class="metric-card" data-reveal style="--reveal-delay:.16s;">
-                        <div class="metric-icon"><i class="fas fa-code"></i></div>
-                        <div class="metric-value" data-target="5">0</div>
-                        <div class="metric-label" data-i18n="metrics_tools_label">Audio Tools Built</div>
-                        <div class="metric-desc" data-i18n="metrics_tools_desc">VST plugins and pipeline utilities</div>
+                    <div class="metric-card pulse-glow" data-reveal style="--reveal-delay:.16s;">
+                        <div class="metric-icon" data-reveal-child><i class="fas fa-code"></i></div>
+                        <div class="metric-value" data-target="5" data-reveal-child>0</div>
+                        <div class="metric-label" data-i18n="metrics_tools_label" data-reveal-child>Audio Tools Built</div>
+                        <div class="metric-desc" data-i18n="metrics_tools_desc" data-reveal-child>VST plugins and pipeline utilities</div>
                     </div>
-                    <div class="metric-card" data-reveal style="--reveal-delay:.20s;">
-                        <div class="metric-icon"><i class="fas fa-clock"></i></div>
-                        <div class="metric-value" data-target="1000" data-suffix="+">0</div>
-                        <div class="metric-label" data-i18n="metrics_hours_label">Hours in Production</div>
-                        <div class="metric-desc" data-i18n="metrics_hours_desc">Sound design, mixing, implementation</div>
+                    <div class="metric-card pulse-glow" data-reveal style="--reveal-delay:.20s;">
+                        <div class="metric-icon" data-reveal-child><i class="fas fa-clock"></i></div>
+                        <div class="metric-value" data-target="1000" data-suffix="+" data-reveal-child>0</div>
+                        <div class="metric-label" data-i18n="metrics_hours_label" data-reveal-child>Hours in Production</div>
+                        <div class="metric-desc" data-i18n="metrics_hours_desc" data-reveal-child>Sound design, mixing, implementation</div>
                     </div>
                 </div>
             </section>
@@ -991,6 +1021,7 @@
     <script src="assets/js/pages/visit-counter.js" defer></script>
     <script src="assets/js/utils/web-vitals.js" defer></script>
     <script src="assets/js/utils/image-optimizer.js" defer></script>
+    <script src="assets/js/professional-enhancements.js?v=20251005" defer></script>
 
 
 </body>
