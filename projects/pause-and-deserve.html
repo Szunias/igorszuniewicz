@@ -38,31 +38,16 @@
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20250210" />
   <style>
-    /* Optimized Horror-themed background for Pause & Deserve */
-    body {
-      background:
-        /* Simplified 2-layer gradient for better performance */
-        radial-gradient(ellipse at 20% 30%, rgba(80, 0, 20, 0.3) 0%, transparent 60%),
-        linear-gradient(135deg, #050505 0%, #0f0203 30%, #000000 60%, #020202 100%) !important;
-      background-attachment: scroll !important; /* Changed from fixed for better performance */
+    /* Page background: deep burgundy (clean, performant) */
+    html, body {
+      background: linear-gradient(180deg, #120607 0%, #1b090b 60%, #24090a 100%) !important;
+      background-attachment: scroll !important;
       min-height: 100vh !important;
     }
+    .bg-gradient { background: linear-gradient(180deg, #120607 0%, #1b090b 60%, #24090a 100%) !important; }
 
-    /* Simplified subtle overlay without expensive repeating gradients */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background:
-        radial-gradient(circle at 60% 80%, rgba(120, 0, 30, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(100, 0, 40, 0.1) 0%, transparent 40%);
-      opacity: 0.6;
-      pointer-events: none;
-      z-index: -1;
-    }
+    /* Disable additional overlays for clarity */
+    body::before { display: none !important; }
 
     /* Removed backdrop-filter for better performance */
     #main {
