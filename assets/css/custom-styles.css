@@ -1529,7 +1529,7 @@ img[src*="muzyczna.png"] {
 .intro-hi { color:#eaf7ff; font-weight:900; letter-spacing:.2px; opacity:.95; margin: .1rem 0 .2rem; display:inline-flex; gap:8px; align-items:center; }
 .intro-headline { color:#ffffff; font-family:'Outfit',sans-serif; font-weight:900; letter-spacing:.3px; font-size: clamp(1.3rem, 3.2vw, 2rem); margin: .2rem 0; }
 .intro-sub { color:#cfe7f8; margin: 0 auto .5rem; }
-.intro-pills { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+.intro-pills { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top: 1.2rem; }
 .intro-pills span { display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:#eaf7ff; font-weight:800; letter-spacing:.2px; }
 
 /* Ensure text in CV box is visible - stronger overrides */
