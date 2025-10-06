@@ -357,7 +357,30 @@
 			z-index: 99999 !important;
 			background: #0a0e14;
 		}
-	</style>
+    </style>
+
+    <!-- Home background (Variant 2): diagonal sheen + soft accents -->
+    <style>
+      .bg-gradient {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          /* subtle diagonal sheen */
+          linear-gradient(140deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.0) 40%, rgba(255,255,255,0.0) 100%),
+          /* brand-tinted soft highlights */
+          radial-gradient(900px 600px at 15% 12%, rgba(24,191,239,0.06), transparent 60%),
+          radial-gradient(900px 600px at 85% 18%, rgba(154,108,255,0.05), transparent 65%),
+          /* deeper bottom vignette for depth */
+          radial-gradient(1200px 800px at 50% 120%, rgba(0,0,0,0.45), transparent 55%),
+          /* base */
+          linear-gradient(180deg, #0b141a 0%, #0a0f14 100%) !important;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .bg-gradient { background-attachment: scroll; }
+      }
+    </style>
 </head>
 <body class="is-preload" style="background-color: #1e252d;">
   <div id="lang-fixed" role="group" aria-label="Language selection">
