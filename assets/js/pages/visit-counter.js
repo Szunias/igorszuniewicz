@@ -1,136 +1,97 @@
 /**
- * Visit Counter
- * Tracks and displays page visit count using CountAPI
+ * Visit Counter with Firebase Realtime Database
+ * Tracks and displays page visit count with IP-based rate limiting (24h)
  */
 
 (function() {
   'use strict';
 
-  const NAMESPACE = 'igorszuniewicz';
-  const KEY = 'portfolio_views';
+  // Firebase Configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBA2enzFHX7aljA2RMQ46YZ093z9N4lbGM",
+    authDomain: "igorszuniewicz-9ddfc.firebaseapp.com",
+    databaseURL: "https://igorszuniewicz-9ddfc-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "igorszuniewicz-9ddfc",
+    storageBucket: "igorszuniewicz-9ddfc.firebasestorage.app",
+    messagingSenderId: "478087683913",
+    appId: "1:478087683913:web:737f0cca1837d4acf04498"
+  };
+
   const BASE_COUNT = 2533; // Historical starting count
-  const COUNTAPI_URL = `https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`;
-  const COUNTAPI_GET_URL = `https://api.countapi.xyz/get/${NAMESPACE}/${KEY}`;
-  const COUNTERAPI_URL = `https://counterapi.dev/api/v1/${NAMESPACE}/${KEY}/hit`;
-  const FALLBACK_KEY = 'last_known_count';
-  const FETCH_TIMEOUT_MS = 3500;
-  const INCREMENT_TTL_MS = 24 * 60 * 60 * 1000; // limit one increment per device per 24h
+  const INCREMENT_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
   const STORAGE_LAST_HIT = 'visit_last_hit_at';
   const SESSION_HIT_FLAG = 'visit_hit_session_done';
+  const FALLBACK_KEY = 'last_known_count';
 
-  // Fallback: try to increment via image beacon if fetch is blocked
-  function beaconHit(url) {
-    return new Promise((resolve) => {
-      try {
-        const img = new Image();
-        let finished = false;
-        const done = (ok) => { if (!finished) { finished = true; resolve(ok); } };
-        img.onload = () => done(true);
-        img.onerror = () => done(false);
-        // Bust caches
-        const sep = url.includes('?') ? '&' : '?';
-        img.src = `${url}${sep}_=${Date.now()}`;
-        // Safety timeout
-        setTimeout(() => done(false), FETCH_TIMEOUT_MS);
-      } catch (_) {
-        resolve(false);
+  let db = null;
+  let firebaseInitialized = false;
+
+  // Initialize Firebase
+  async function initFirebase() {
+    if (firebaseInitialized) return true;
+
+    try {
+      // Load Firebase SDK from CDN
+      if (!window.firebase) {
+        await loadScript('https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js');
+        await loadScript('https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js');
       }
+
+      if (!window.firebase) {
+        throw new Error('Firebase SDK failed to load');
+      }
+
+      // Initialize Firebase app
+      if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+      }
+
+      db = firebase.database();
+      firebaseInitialized = true;
+      return true;
+    } catch (error) {
+      console.warn('Firebase initialization failed:', error);
+      return false;
+    }
+  }
+
+  // Load external script
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.appendChild(script);
     });
   }
 
-  function withTimeout(promise, ms) {
-    const ctrl = new AbortController();
-    const timeout = setTimeout(() => ctrl.abort('timeout'), ms);
-    return Promise.race([
-      promise(ctrl.signal).finally(() => clearTimeout(timeout)),
-    ]);
+  // Generate simple hash from browser fingerprint (privacy-friendly)
+  async function getVisitorHash() {
+    const fingerprint = [
+      navigator.userAgent,
+      navigator.language,
+      screen.colorDepth,
+      screen.width + 'x' + screen.height,
+      new Date().getTimezoneOffset()
+    ].join('|');
+
+    // Simple hash function
+    let hash = 0;
+    for (let i = 0; i < fingerprint.length; i++) {
+      const char = fingerprint.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32bit integer
+    }
+
+    return 'visitor_' + Math.abs(hash).toString(36);
   }
 
-  async function fetchCountFrom(url) {
-    return withTimeout(async (signal) => {
-      const res = await fetch(url, {
-        method: 'GET',
-        mode: 'cors',
-        cache: 'no-store',
-        headers: { 'Accept': 'application/json' },
-        redirect: 'follow',
-        signal,
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-      // Try to parse JSON, some providers may respond with text first
-      let data;
-      const ct = res.headers.get('content-type') || '';
-      if (ct.includes('application/json')) {
-        data = await res.json();
-      } else {
-        // Attempt to parse as JSON regardless
-        const text = await res.text();
-        try { data = JSON.parse(text); } catch { throw new Error('Non-JSON response'); }
-      }
-
-      // Normalize common payload shapes
-      // CountAPI -> { value }
-      // CounterAPI -> { value } or { count } (be flexible)
-      const value = (
-        (typeof data.value === 'number' && data.value) ||
-        (typeof data.count === 'number' && data.count)
-      );
-      if (typeof value !== 'number') throw new Error('Invalid payload');
-      return value;
-    }, FETCH_TIMEOUT_MS);
-  }
-
-  // Read current count without increment when possible
-  async function readVisitCount() {
-    // Prefer CountAPI GET (non-increment)
-    try {
-      const val = await fetchCountFrom(COUNTAPI_GET_URL);
-      const total = BASE_COUNT + val;
-      localStorage.setItem(FALLBACK_KEY, String(total));
-      return total;
-    } catch (_) {}
-
-    // If GET fails, do not try any provider that increments implicitly.
-    const cached = localStorage.getItem(FALLBACK_KEY);
-    return cached ? parseInt(cached, 10) : BASE_COUNT;
-  }
-
-  // Increment counter (limited by local device rules)
-  async function incrementVisitCount() {
-    // Try primary provider (CountAPI hit)
-    try {
-      const val = await fetchCountFrom(COUNTAPI_URL);
-      const total = BASE_COUNT + val;
-      localStorage.setItem(FALLBACK_KEY, String(total));
-      return total;
-    } catch (_) {}
-
-    // Fallback provider (CounterAPI hit)
-    try {
-      const val = await fetchCountFrom(COUNTERAPI_URL);
-      const total = BASE_COUNT + val;
-      localStorage.setItem(FALLBACK_KEY, String(total));
-      return total;
-    } catch (_) {}
-
-    // Last attempt: image beacon to CountAPI, then try to read current value
-    try {
-      const ok = await beaconHit(COUNTAPI_URL);
-      if (ok) {
-        const total = await readVisitCount();
-        localStorage.setItem(FALLBACK_KEY, String(total));
-        return total;
-      }
-    } catch (_) {}
-
-    const cached = localStorage.getItem(FALLBACK_KEY);
-    return cached ? parseInt(cached, 10) : BASE_COUNT;
-  }
-
+  // Check if visitor should increment counter (24h cooldown)
   function shouldIncrementNow() {
     try {
-      // avoid repeated increments within the same browser session
+      // Avoid repeated increments within the same browser session
       if (sessionStorage.getItem(SESSION_HIT_FLAG) === '1') return false;
 
       const lastHit = parseInt(localStorage.getItem(STORAGE_LAST_HIT) || '0', 10);
@@ -138,16 +99,77 @@
       if (!lastHit || (now - lastHit) > INCREMENT_TTL_MS) return true;
       return false;
     } catch (_) {
-      // If storage is blocked, err on the side of not incrementing repeatedly
       return false;
     }
   }
 
+  // Mark increment as done
   function markIncremented() {
     try {
       sessionStorage.setItem(SESSION_HIT_FLAG, '1');
       localStorage.setItem(STORAGE_LAST_HIT, String(Date.now()));
     } catch (_) {}
+  }
+
+  // Read current visit count from Firebase
+  async function readVisitCount() {
+    try {
+      const initialized = await initFirebase();
+      if (!initialized || !db) throw new Error('Firebase not initialized');
+
+      const snapshot = await db.ref('visit_count').once('value');
+      const count = snapshot.val() || 0;
+      const total = BASE_COUNT + count;
+
+      localStorage.setItem(FALLBACK_KEY, String(total));
+      return total;
+    } catch (error) {
+      console.warn('Failed to read visit count:', error);
+      const cached = localStorage.getItem(FALLBACK_KEY);
+      return cached ? parseInt(cached, 10) : BASE_COUNT;
+    }
+  }
+
+  // Increment visit count in Firebase
+  async function incrementVisitCount() {
+    try {
+      const initialized = await initFirebase();
+      if (!initialized || !db) throw new Error('Firebase not initialized');
+
+      const visitorHash = await getVisitorHash();
+      const now = Date.now();
+
+      // Check if this visitor already incremented recently
+      const visitorRef = db.ref(`visitors/${visitorHash}`);
+      const visitorSnapshot = await visitorRef.once('value');
+      const visitorData = visitorSnapshot.val();
+
+      if (visitorData && visitorData.timestamp) {
+        const timeSinceLastVisit = now - visitorData.timestamp;
+        if (timeSinceLastVisit < INCREMENT_TTL_MS) {
+          // Visitor already counted within 24h, just read current count
+          return await readVisitCount();
+        }
+      }
+
+      // Increment the counter
+      const countRef = db.ref('visit_count');
+      const newCount = await countRef.transaction((currentCount) => {
+        return (currentCount || 0) + 1;
+      });
+
+      // Update visitor timestamp
+      await visitorRef.set({ timestamp: now });
+
+      const total = BASE_COUNT + (newCount.snapshot.val() || 0);
+      localStorage.setItem(FALLBACK_KEY, String(total));
+      return total;
+
+    } catch (error) {
+      console.warn('Failed to increment visit count:', error);
+      const cached = localStorage.getItem(FALLBACK_KEY);
+      return cached ? parseInt(cached, 10) : BASE_COUNT;
+    }
   }
 
   // Format visit count for display
@@ -205,6 +227,7 @@
       }, 2500);
 
     } catch (error) {
+      console.warn('Visit counter error:', error);
       // Ensure we still show something useful if everything fails
       const cached = localStorage.getItem(FALLBACK_KEY);
       const fallback = cached ? parseInt(cached, 10) : BASE_COUNT;
@@ -222,12 +245,10 @@
     }
   }
 
-  // Start only if not a bot
+  // Don't show for bots
   function shouldShowCounter() {
-    // Don't show for bots
     const botPattern = /bot|crawler|spider|scraper|headless/i;
     if (botPattern.test(navigator.userAgent)) return false;
-
     return true;
   }
 
