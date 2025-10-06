@@ -85,23 +85,37 @@ p{ color: var(--pro-text-dim); }
   *{ animation: none !important; transition: none !important; }
 }
 
-/* Background polish: subtle mesh + animated spotlight */
-body::before{
-  content: '';
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background:
-    radial-gradient(1000px 700px at 12% 18%, rgba(24,191,239,0.06), transparent 60%),
-    radial-gradient(1000px 700px at 88% 28%, rgba(154,108,255,0.05), transparent 60%),
-    conic-gradient(from 180deg at 50% 110%, rgba(255,255,255,0.04), rgba(255,255,255,0) 60%);
+/* Background: simplify to a clean, professional base */
+html, body { background: #0b141a !important; }
+
+/* Remove previous decorative overlays */
+body::before,
+body::after {
+  content: none !important;
+  background: none !important;
+  animation: none !important;
 }
-body::after{
-  content: '';
-  position: fixed; left: -20%; top: -20%; width: 140%; height: 140%;
-  background: radial-gradient(600px 600px at var(--mx,50%) var(--my,40%), rgba(24,191,239,0.08), transparent 40%);
-  mix-blend-mode: screen; filter: blur(20px); opacity: .4; z-index: 0; pointer-events: none;
-  animation: proSpot 12s ease-in-out infinite alternate;
+
+/* Quiet the extra background elements for a cleaner look */
+.bg-orbs,
+.bg-waves,
+.bg-eq,
+.bg-glow {
+  display: none !important;
 }
-@keyframes proSpot{ from{ transform: translate3d(-2%, -1%, 0); } to{ transform: translate3d(2%, 1%, 0); } }
+
+/* Keep a single, subtle background layer if present */
+.bg-gradient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, #0b141a 0%, #0a0f14 100%) !important;
+  opacity: 1;
+}
+
+/* Ensure main content sits above background layer */
+#wrapper, #main, #nav, #footer { position: relative; z-index: 1; }
 
 /* Pill navigation under hero */
 .section-pills{ gap: 12px !important; }
