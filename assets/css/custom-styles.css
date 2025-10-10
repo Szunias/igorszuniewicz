@@ -815,8 +815,30 @@ body.is-preload #intro:not(.hidden) + #header + #nav { opacity: 1 !important; tr
 #intro {
     color: #f0f0f0; /* Brighter intro text */
     background-color: rgba(0,0,0,0.18); /* Softer on desktop */
-    padding: 2em;
+    padding: 2em 2em 0 2em !important; /* Usunięto padding-bottom */
     border-radius: 8px;
+    margin-bottom: -1.5rem !important; /* Zmniejsz odstęp poniżej */
+}
+
+/* Social icons section - kontrola odstępów */
+.intro-social {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Kontrola odstępu między #intro a #nav */
+#wrapper #intro {
+    padding-top: 8vh !important;
+    padding-bottom: 0 !important;
+    margin-bottom: -1.5rem !important;
+}
+
+@media (max-width: 980px) {
+    #wrapper #intro {
+        padding-top: 4vh !important;
+        padding-bottom: 0 !important;
+        margin-bottom: -1rem !important;
+    }
 }
 #intro-section header.major { display:none; }
 #intro-section .intro-hero { margin-top: 0; }
@@ -824,7 +846,7 @@ body.is-preload #intro:not(.hidden) + #header + #nav { opacity: 1 !important; tr
 #intro-section .hero-cta { display:none !important; }
 .intro-hero { padding-bottom: .4rem; }
 @media (max-width: 980px){
-  #intro { background-color: transparent !important; padding: 1.2em !important; }
+  #intro { background-color: transparent !important; padding: 1.2em 1.2em 0 1.2em !important; margin-bottom: -1rem !important; }
 }
 
 /* Override intro background block to avoid dark bar behind hero after translate */
