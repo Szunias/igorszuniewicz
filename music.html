@@ -209,37 +209,37 @@
                 <div class="genre-carousel" role="group" aria-label="Genre categories">
                   <div class="genre-slide active" data-tag="all" tabindex="0" role="button">
                     <div class="genre-icon">🎵</div>
-                    <div class="genre-name">All Tracks</div>
+                    <div class="genre-name" data-i18n="genre_all_tracks">All Tracks</div>
                     <div class="genre-count"></div>
                   </div>
                   <div class="genre-slide" data-tag="electronic" tabindex="0" role="button">
                     <div class="genre-icon">⚡</div>
-                    <div class="genre-name">Electronic</div>
+                    <div class="genre-name" data-i18n="genre_electronic">Electronic</div>
                     <div class="genre-count"></div>
                   </div>
                   <div class="genre-slide" data-tag="film" tabindex="0" role="button">
                     <div class="genre-icon">🎬</div>
-                    <div class="genre-name">Film</div>
+                    <div class="genre-name" data-i18n="genre_film">Film</div>
                     <div class="genre-count"></div>
                   </div>
                   <div class="genre-slide" data-tag="metal" tabindex="0" role="button">
                     <div class="genre-icon">🤘</div>
-                    <div class="genre-name">Metal</div>
+                    <div class="genre-name" data-i18n="genre_metal">Metal</div>
                     <div class="genre-count"></div>
                   </div>
                   <div class="genre-slide" data-tag="playful" tabindex="0" role="button">
                     <div class="genre-icon">🎲</div>
-                    <div class="genre-name">Playful</div>
+                    <div class="genre-name" data-i18n="genre_playful">Playful</div>
                     <div class="genre-count"></div>
                   </div>
                   <div class="genre-slide" data-tag="score" tabindex="0" role="button">
                     <div class="genre-icon">🎼</div>
-                    <div class="genre-name">Score</div>
+                    <div class="genre-name" data-i18n="genre_score">Score</div>
                     <div class="genre-count"></div>
                   </div>
                   <div class="genre-slide" data-tag="single" tabindex="0" role="button">
                     <div class="genre-icon">🎧</div>
-                    <div class="genre-name">Single</div>
+                    <div class="genre-name" data-i18n="genre_single">Single</div>
                     <div class="genre-count"></div>
                   </div>
                 </div>
@@ -256,7 +256,7 @@
             </div>
 
             <!-- Search Bar -->
-            <input type="search" id="music-search" placeholder="🔍 Search tracks..." aria-label="Search" style="width: 100%; max-width: 600px; margin: 0 auto; padding: 0.9rem 1.5rem; font-size: 1rem; background: rgba(20, 30, 40, 0.6); border: 1px solid rgba(24, 191, 239, 0.3); border-radius: 50px; color: #e0e0e0; outline: none; transition: all 0.3s ease;" />
+            <input type="search" id="music-search" data-i18n-placeholder="music_search_placeholder" placeholder="🔍 Search tracks..." aria-label="Search" style="width: 100%; max-width: 600px; margin: 0 auto; padding: 0.9rem 1.5rem; font-size: 1rem; background: rgba(20, 30, 40, 0.6); border: 1px solid rgba(24, 191, 239, 0.3); border-radius: 50px; color: #e0e0e0; outline: none; transition: all 0.3s ease;" />
           </div>
         </div>
 
@@ -273,8 +273,9 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
+            padding: 0 0.5rem;
           }
 
           .genre-carousel {
@@ -284,9 +285,10 @@
             overflow-y: hidden;
             scroll-behavior: smooth;
             scroll-snap-type: x mandatory;
-            padding: 1rem 0.5rem;
+            padding: 1rem 0;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
+            flex: 1;
           }
 
           .genre-carousel::-webkit-scrollbar {
