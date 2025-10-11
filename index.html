@@ -41,14 +41,14 @@
 	<link rel="dns-prefetch" href="//fonts.gstatic.com" />
 	<!-- Main CSS loads immediately to preserve styling -->
 	<link rel="preload" href="assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-	<link rel="preload" href="assets/css/custom-styles.css?v=20251011" as="style" onload="this.onload=null;this.rel='stylesheet'">
-	<link rel="preload" href="assets/css/pro-theme.css?v=20250219" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<link rel="preload" href="assets/css/custom-styles.css?v=20251011c" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<link rel="preload" href="assets/css/pro-theme.css?v=20251011f" as="style" onload="this.onload=null;this.rel='stylesheet'">
 	<link rel="preload" href="assets/css/professional-animations.css?v=20251005" as="style" onload="this.onload=null;this.rel='stylesheet'">
 	<link rel="preload" href="assets/css/video-optimization.css?v=20251005" as="style" onload="this.onload=null;this.rel='stylesheet'">
 	<noscript>
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="assets/css/custom-styles.css?v=20251011" />
-		<link rel="stylesheet" href="assets/css/pro-theme.css?v=20250219" />
+		<link rel="stylesheet" href="assets/css/custom-styles.css?v=20251011c" />
+		<link rel="stylesheet" href="assets/css/pro-theme.css?v=20251011f" />
 		<link rel="stylesheet" href="assets/css/professional-animations.css?v=20251005" />
 		<link rel="stylesheet" href="assets/css/video-optimization.css?v=20251005" />
 	</noscript>
@@ -367,6 +367,223 @@
         hr, hr.major { display: none !important; }
         #projects-showcase.post, #projects-showcase .post.featured { background: transparent !important; border: 0 !important; margin-bottom: 0 !important; }
 
+        /* Modern Creative Intro Styles */
+        .intro-hero-modern {
+            padding: 4em 2em;
+            text-align: center;
+            position: relative;
+        }
+
+        .intro-content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Greeting with wave animation */
+        .intro-greeting {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8em;
+            font-size: 1.4em;
+            margin-bottom: 1.5em;
+            font-weight: 500;
+            color: #c9d4e0;
+        }
+
+        .hand-wave {
+            display: inline-block;
+            font-size: 1.3em;
+            animation: wave 2.5s ease-in-out infinite;
+            transform-origin: 70% 70%;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            40%, 100% { transform: rotate(0deg); }
+        }
+
+        .greeting-text {
+            font-weight: 600;
+        }
+
+        /* Main headline */
+        .intro-headline {
+            font-size: 3.2em;
+            line-height: 1.2;
+            margin: 0 0 0.6em 0;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .intro-headline .line-1 {
+            display: block;
+            color: #e8f4f8;
+            margin-bottom: 0.1em;
+        }
+
+        .intro-headline .line-2 {
+            display: block;
+        }
+
+        .gradient-text-animated {
+            background: linear-gradient(135deg, #18bfef 0%, #5a9fd4 50%, #9a6cff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+        }
+
+        /* Subtitle */
+        .intro-subtitle {
+            font-size: 1.15em;
+            line-height: 1.7;
+            color: #a8bac7;
+            margin: 0 0 3em 0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .intro-subtitle strong {
+            color: #d4e4ed;
+            font-weight: 600;
+        }
+
+        /* Action Cards */
+        .intro-action-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5em;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .intro-card {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1.2em;
+            padding: 1.8em;
+            background: rgba(26, 31, 38, 0.6);
+            border: 1px solid rgba(74, 148, 208, 0.15);
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .intro-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #18bfef, #5a9fd4);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .intro-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .intro-card:hover {
+            background: rgba(26, 31, 38, 0.9);
+            border-color: rgba(74, 148, 208, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(24, 191, 239, 0.15);
+        }
+
+        .intro-card .card-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(74, 148, 208, 0.1);
+            border-radius: 10px;
+            font-size: 1.5em;
+            color: #4a94d0;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .intro-card:hover .card-icon {
+            background: rgba(74, 148, 208, 0.2);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .intro-card .card-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .intro-card h4 {
+            margin: 0 0 0.3em 0;
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #e8f4f8;
+            letter-spacing: -0.01em;
+        }
+
+        .intro-card p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #8a9199;
+            font-weight: 500;
+        }
+
+        .intro-card .card-arrow {
+            font-size: 1.5em;
+            color: #4a94d0;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .intro-card:hover .card-arrow {
+            transform: translateX(5px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 980px) {
+            .intro-hero-modern {
+                padding: 3em 1.5em;
+            }
+            .intro-headline {
+                font-size: 2.5em;
+            }
+            .intro-action-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .intro-headline {
+                font-size: 2em;
+            }
+            .intro-greeting {
+                font-size: 1.2em;
+            }
+            .intro-subtitle {
+                font-size: 1em;
+            }
+            .intro-card {
+                padding: 1.5em;
+            }
+        }
+
         /* Timeline links styling */
         .timeline-link {
             color: #18bfef !important;
@@ -415,28 +632,7 @@
 		}
     </style>
 
-    <!-- Home background (Variant 2): diagonal sheen + soft accents -->
-    <style>
-      .bg-gradient {
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-        background:
-          /* subtle diagonal sheen */
-          linear-gradient(140deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.0) 40%, rgba(255,255,255,0.0) 100%),
-          /* brand-tinted soft highlights */
-          radial-gradient(900px 600px at 15% 12%, rgba(24,191,239,0.06), transparent 60%),
-          radial-gradient(900px 600px at 85% 18%, rgba(154,108,255,0.05), transparent 65%),
-          /* deeper bottom vignette for depth */
-          radial-gradient(1200px 800px at 50% 120%, rgba(0,0,0,0.45), transparent 55%),
-          /* base */
-          linear-gradient(180deg, #0b141a 0%, #0a0f14 100%) !important;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .bg-gradient { background-attachment: scroll; }
-      }
-    </style>
+    <!-- Background styles moved to custom-styles.css -->
 </head>
 <body class="is-preload" style="background-color: #1e252d;">
   <div id="lang-fixed" role="group" aria-label="Language selection">
@@ -543,19 +739,55 @@
         </nav>
 
         <div id="main">
-            <!-- Introduction Section (clean + minimal) -->
+            <!-- Introduction Section (Creative & Professional) -->
             <section id="intro-section" class="post" data-reveal>
-                <header class="major">
-                    <h2 id="bgColor">Introduction</h2>
-                    <p>A brief insight into who I am and my passion for audio and technology.</p>
-                </header>
-                <div class="intro-hero">
-                    <p class="intro-hi" data-reveal-child>Audio engineer specializing in interactive sound systems.</p>
-                    <h3 class="intro-headline gradient-text" data-reveal-child>I design sound for games and interactive media.</h3>
-                    <div class="intro-pills" data-reveal-child>
-                        <span data-pill="ga" class="float-animation"><i class="fas fa-gamepad" aria-hidden="true"></i> Game audio</span>
-                        <span data-pill="im" class="float-animation"><i class="fas fa-music" aria-hidden="true"></i> Interactive music</span>
-                        <span data-pill="at" class="float-animation"><i class="fas fa-code" aria-hidden="true"></i> Audio tools</span>
+                <div class="intro-hero-modern">
+                    <div class="intro-content-wrapper" data-reveal-child>
+                        <!-- Animated greeting -->
+                        <div class="intro-greeting">
+                            <span class="hand-wave">👋</span>
+                            <span class="greeting-text" data-i18n="intro_greeting">Hi, I'm Igor.</span>
+                        </div>
+
+                        <!-- Main headline with emphasis -->
+                        <h2 class="intro-headline">
+                            <span class="line-1" data-i18n="intro_headline_1">I create</span>
+                            <span class="line-2 gradient-text-animated" data-i18n="intro_headline_2">sound for games & music.</span>
+                        </h2>
+
+                        <!-- Subtitle -->
+                        <p class="intro-subtitle" data-i18n="intro_subtitle">
+                            Audio engineer & composer specializing in <strong>interactive sound systems</strong>,
+                            <strong>game audio implementation</strong>, and <strong>DSP development</strong>.
+                        </p>
+
+                        <!-- Action cards -->
+                        <div class="intro-action-cards" data-reveal-child>
+                            <a href="#projects-showcase" class="intro-card card-projects">
+                                <div class="card-icon"><i class="fas fa-folder-open"></i></div>
+                                <div class="card-content">
+                                    <h4 data-i18n="intro_card_gameaudio_title">Game Audio</h4>
+                                    <p data-i18n="intro_card_gameaudio_desc">Implementation & Design</p>
+                                </div>
+                                <div class="card-arrow">→</div>
+                            </a>
+                            <a href="music.html" class="intro-card card-music">
+                                <div class="card-icon"><i class="fas fa-music"></i></div>
+                                <div class="card-content">
+                                    <h4 data-i18n="intro_card_music_title">Music</h4>
+                                    <p data-i18n="intro_card_music_desc">Interactive & Scoring</p>
+                                </div>
+                                <div class="card-arrow">→</div>
+                            </a>
+                            <a href="projects/audioq.html" class="intro-card card-tools">
+                                <div class="card-icon"><i class="fas fa-code"></i></div>
+                                <div class="card-content">
+                                    <h4 data-i18n="intro_card_tools_title">Audio Tools</h4>
+                                    <p data-i18n="intro_card_tools_desc">VST & Pipeline Dev</p>
+                                </div>
+                                <div class="card-arrow">→</div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
