@@ -1371,6 +1371,14 @@ document.addEventListener('DOMContentLoaded', function() {
       if (sort) sort.textContent = I18N.music_sort[lang];
       const mf = document.querySelector('.music-finder .mf-label'); if (mf) mf.textContent = I18N.music_finder[lang];
       const tg = document.querySelector('.music-finder .gw-toggle'); if (tg) tg.textContent = I18N.music_gw_toggle[lang];
+      // Translate genre carousel
+      document.querySelectorAll('[data-i18n="genre_all_tracks"]').forEach(el => el.textContent = I18N.genre_all_tracks[lang]);
+      document.querySelectorAll('[data-i18n="genre_electronic"]').forEach(el => el.textContent = I18N.genre_electronic[lang]);
+      document.querySelectorAll('[data-i18n="genre_film"]').forEach(el => el.textContent = I18N.genre_film[lang]);
+      document.querySelectorAll('[data-i18n="genre_metal"]').forEach(el => el.textContent = I18N.genre_metal[lang]);
+      document.querySelectorAll('[data-i18n="genre_playful"]').forEach(el => el.textContent = I18N.genre_playful[lang]);
+      document.querySelectorAll('[data-i18n="genre_score"]').forEach(el => el.textContent = I18N.genre_score[lang]);
+      document.querySelectorAll('[data-i18n="genre_single"]').forEach(el => el.textContent = I18N.genre_single[lang]);
       // Translate subtle card hints
       document.querySelectorAll('#music-list .music-item .mi-hint').forEach(el=>{ el.textContent = I18N.music_hint_click[lang]; });
       // Set Now playing badge text via data attribute for CSS content
@@ -1378,7 +1386,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Volume label in player bar
       const vr = document.querySelector('#player-bar .pb-vol-label'); if (vr) vr.textContent = I18N.music_vol_label[lang];
       // Search placeholder
-      const se = document.getElementById('music-search'); if (se) se.setAttribute('placeholder', I18N.music_search[lang]);
+      const se = document.getElementById('music-search'); if (se) se.setAttribute('placeholder', I18N.music_search_placeholder[lang]);
       // Sort options
       const sel = document.getElementById('music-sort');
       if (sel && sel.options){
@@ -1518,7 +1526,7 @@ document.addEventListener('DOMContentLoaded', function() {
       b('button[data-view="grid"]', I18N.view_grid[lang]);
       b('button[data-view="list"]', I18N.view_list[lang]);
       const searchInput = document.getElementById('projects-search');
-      if (searchInput) searchInput.placeholder = I18N.search_projects[lang];
+      if (searchInput) searchInput.placeholder = I18N.projects_search_placeholder[lang];
 
       // Translate individual project cards (titles + blurbs)
       const CARDS = {
@@ -2326,6 +2334,63 @@ document.addEventListener('DOMContentLoaded', function() {
       const tz = timeZoneCountry();
       const target = decideTarget(tz, navLang);
       if (target && target!==current) showPrompt(target);
+    });
+  })();
+
+  // Dropdown menu handler for "Extra" nav item
+  (function initDropdownMenu() {
+    const dropdownItems = document.querySelectorAll('.dropdown');
+    
+    dropdownItems.forEach(dropdown => {
+      const toggle = dropdown.querySelector('.dropdown-toggle');
+      const menu = dropdown.querySelector('.dropdown-menu');
+      
+      if (!toggle || !menu) return;
+      
+      let hideTimeout;
+      
+      // Toggle on click
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Close other dropdowns
+        dropdownItems.forEach(other => {
+          if (other !== dropdown) {
+            other.classList.remove('active');
+          }
+        });
+        
+        // Toggle current dropdown
+        dropdown.classList.toggle('active');
+      });
+      
+      // Show on hover (desktop)
+      dropdown.addEventListener('mouseenter', function() {
+        clearTimeout(hideTimeout);
+        dropdown.classList.add('active');
+      });
+      
+      // Hide with delay on mouse leave
+      dropdown.addEventListener('mouseleave', function() {
+        hideTimeout = setTimeout(function() {
+          dropdown.classList.remove('active');
+        }, 300);
+      });
+      
+      // Close on click outside
+      document.addEventListener('click', function(e) {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('active');
+        }
+      });
+      
+      // Close on menu item click
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+          dropdown.classList.remove('active');
+        });
+      });
     });
   })();
 });

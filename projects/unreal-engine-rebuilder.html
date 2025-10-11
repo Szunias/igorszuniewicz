@@ -864,57 +864,6 @@
   <script src="../assets/js/core/browser.min.js"></script>
   <script src="../assets/js/core/breakpoints.min.js"></script>
   <script src="../assets/js/utils/performance.js"></script>
-  <!-- main.js doesn't exist, all functionality is in enhancements.js -->
   <script src="../assets/js/components/enhancements.js"></script>
-  
-  <!-- Dropdown menu handler -->
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const dropdown = document.querySelector('.dropdown');
-    const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    
-    if (!dropdown || !dropdownToggle || !dropdownMenu) return;
-    
-    let hideTimeout;
-    
-    // Prevent default link behavior
-    dropdownToggle.addEventListener('click', function(e) {
-      e.preventDefault();
-      dropdownMenu.classList.toggle('show');
-    });
-    
-    // Show on hover
-    dropdown.addEventListener('mouseenter', function() {
-      clearTimeout(hideTimeout);
-      dropdownMenu.classList.add('show');
-    });
-    
-    // Hide with delay on mouse leave
-    dropdown.addEventListener('mouseleave', function() {
-      hideTimeout = setTimeout(function() {
-        dropdownMenu.classList.remove('show');
-      }, 300);
-    });
-    
-    // Keep open when hovering menu
-    dropdownMenu.addEventListener('mouseenter', function() {
-      clearTimeout(hideTimeout);
-    });
-    
-    dropdownMenu.addEventListener('mouseleave', function() {
-      hideTimeout = setTimeout(function() {
-        dropdownMenu.classList.remove('show');
-      }, 300);
-    });
-    
-    // Close when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!dropdown.contains(e.target)) {
-        dropdownMenu.classList.remove('show');
-      }
-    });
-  });
-  </script>
 </body>
 </html>

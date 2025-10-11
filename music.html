@@ -53,6 +53,7 @@
   <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="assets/css/custom-styles.css?v=20250212" />
   <link rel="stylesheet" href="assets/css/pro-theme.css?v=20250212" />
+  <link rel="stylesheet" href="assets/css/genre-carousel.css" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
@@ -133,12 +134,13 @@
         <li><a href="projects/index.html">Projects</a></li>
         <li class="active"><a href="music.html">Music</a></li>
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle">Extra</a>
-            <ul class="dropdown-menu">
-                <li><a href="projects/audioq.html">AudioQ Plugin</a></li>
-                <li><a href="#" class="disabled-link" data-tooltip="Not yet released - In Development">QSlicer</a></li>
-            </ul>
-        </li>
+                    <a href="#" class="dropdown-toggle">Extra</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="projects/audioq.html">AudioQ Plugin</a></li>
+                        <li><a href="projects/unreal-engine-rebuilder.html">Unreal Engine Rebuilder</a></li>
+                        <li><a href="#" class="disabled-link" data-tooltip="Not yet released - In Development">QSlicer</a></li>
+                    </ul>
+                </li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <ul class="icons"></ul>
@@ -260,200 +262,6 @@
           </div>
         </div>
 
-        <!-- Genre Carousel Styles -->
-        <style>
-          .genre-carousel-container {
-            width: 100%;
-            margin: 0 auto;
-            position: relative;
-          }
-
-          .genre-carousel-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 0 0.5rem;
-          }
-
-          .genre-carousel {
-            display: flex;
-            gap: 1.5rem;
-            overflow-x: auto;
-            overflow-y: hidden;
-            scroll-behavior: smooth;
-            scroll-snap-type: x mandatory;
-            padding: 1rem 0;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            flex: 1;
-          }
-
-          .genre-carousel::-webkit-scrollbar {
-            display: none;
-          }
-
-          .genre-slide {
-            flex: 0 0 160px;
-            height: 180px;
-            background: linear-gradient(135deg, rgba(20, 30, 40, 0.8) 0%, rgba(30, 45, 60, 0.6) 100%);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            scroll-snap-align: center;
-            position: relative;
-            overflow: hidden;
-          }
-
-          .genre-slide::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(24, 191, 239, 0.05) 0%, rgba(154, 108, 255, 0.05) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-          }
-
-          .genre-slide:hover::before,
-          .genre-slide.active::before {
-            opacity: 1;
-          }
-
-          .genre-slide:hover {
-            transform: translateY(-8px) scale(1.05);
-            border-color: rgba(24, 191, 239, 0.5);
-            box-shadow: 0 20px 40px rgba(24, 191, 239, 0.2), 0 0 0 1px rgba(24, 191, 239, 0.3);
-          }
-
-          .genre-slide.active {
-            background: linear-gradient(135deg, rgba(24, 191, 239, 0.2) 0%, rgba(154, 108, 255, 0.15) 100%);
-            border-color: rgba(24, 191, 239, 0.8);
-            box-shadow: 0 10px 30px rgba(24, 191, 239, 0.3);
-            transform: scale(1.05);
-          }
-
-          .genre-icon {
-            font-size: 3rem;
-            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
-            transition: transform 0.3s ease;
-          }
-
-          .genre-slide:hover .genre-icon,
-          .genre-slide.active .genre-icon {
-            transform: scale(1.15) rotate(5deg);
-          }
-
-          .genre-name {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            text-align: center;
-          }
-
-          .genre-count {
-            font-size: 0.85rem;
-            color: #18bfef;
-            font-weight: 600;
-          }
-
-          .carousel-nav {
-            width: 48px;
-            height: 48px;
-            background: rgba(24, 191, 239, 0.15);
-            border: 1px solid rgba(24, 191, 239, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #18bfef;
-            flex-shrink: 0;
-          }
-
-          .carousel-nav:hover {
-            background: rgba(24, 191, 239, 0.3);
-            border-color: rgba(24, 191, 239, 0.6);
-            transform: scale(1.1);
-          }
-
-          .carousel-nav:active {
-            transform: scale(0.95);
-          }
-
-          .carousel-nav.disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-            pointer-events: none;
-          }
-
-          .carousel-indicators {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-top: 1rem;
-          }
-
-          .carousel-indicator {
-            width: 8px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            cursor: pointer;
-          }
-
-          .carousel-indicator.active {
-            background: #18bfef;
-            width: 24px;
-            border-radius: 4px;
-          }
-
-          /* Mobile optimizations */
-          @media (max-width: 980px) {
-            .genre-slide {
-              flex: 0 0 140px;
-              height: 160px;
-            }
-
-            .genre-icon {
-              font-size: 2.5rem;
-            }
-
-            .genre-name {
-              font-size: 0.95rem;
-            }
-
-            .carousel-nav {
-              display: none;
-            }
-          }
-
-          @media (max-width: 736px) {
-            .genre-slide {
-              flex: 0 0 120px;
-              height: 140px;
-            }
-
-            .genre-icon {
-              font-size: 2rem;
-            }
-
-            .genre-name {
-              font-size: 0.85rem;
-            }
-          }
-        </style>
 
         <div id="music-list" class="music-list" aria-live="polite" style="min-height: 50vh;"></div>
         <div class="music-controls" style="margin-top:8px">
@@ -518,7 +326,7 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/components/enhancements.js?v=20250212"></script>
   <script src="assets/js/components/reveal.js" defer></script>
-  <script src="assets/js/pages/music.js?v=20250926"></script>
+  <script src="assets/js/pages/music.js?v=20251011"></script>
   <script src="assets/js/components/lang-badge.js" defer></script>
   <script type="module" src="assets/js/bootstrap.js" defer></script>
   
@@ -621,13 +429,17 @@
     }
     
     function endDrag() {
+      if (!isDragging) return;
       isDragging = false;
       carousel.style.cursor = 'grab';
       
-      // Snap to nearest slide
-      const slideWidth = slides[0].offsetWidth + parseFloat(getComputedStyle(carousel).gap);
-      const newIndex = Math.round(carousel.scrollLeft / slideWidth);
-      scrollToSlide(Math.max(0, Math.min(newIndex, slides.length - 1)));
+      // Snap to nearest slide only if actually dragged
+      const dragDistance = Math.abs(carousel.scrollLeft - scrollLeft);
+      if (dragDistance > 5) {
+        const slideWidth = slides[0].offsetWidth + parseFloat(getComputedStyle(carousel).gap);
+        const newIndex = Math.round(carousel.scrollLeft / slideWidth);
+        scrollToSlide(Math.max(0, Math.min(newIndex, slides.length - 1)));
+      }
     }
     
     // Click handler for genre selection
@@ -654,7 +466,7 @@
       });
     });
     
-    // Update on scroll (for manual scroll)
+    // Update on scroll (for manual scroll) - update carousel visuals only, don't trigger filter
     let scrollTimeout;
     carousel.addEventListener('scroll', function() {
       clearTimeout(scrollTimeout);
@@ -662,7 +474,16 @@
         const slideWidth = slides[0].offsetWidth + parseFloat(getComputedStyle(carousel).gap);
         const newIndex = Math.round(carousel.scrollLeft / slideWidth);
         if (newIndex !== currentIndex) {
-          updateActive(newIndex);
+          // Update visual state only (active classes and indicators)
+          slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === newIndex);
+          });
+          indicators.forEach((ind, i) => {
+            ind.classList.toggle('active', i === newIndex);
+          });
+          currentIndex = newIndex;
+          updateNavButtons();
+          // DON'T trigger genreSelect event here - only on explicit click
         }
       }, 100);
     });

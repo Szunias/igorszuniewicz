@@ -4043,6 +4043,12 @@ body[data-theme="light"] #wrapper { background: transparent !important; }
 .capabilities-pills { margin: .2rem auto .2rem; }
 
 /* Dropdown menu styles */
+/* CRITICAL: #nav must have high z-index to appear above page sections */
+#nav {
+  position: relative;
+  z-index: 9999 !important;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -4062,36 +4068,53 @@ body[data-theme="light"] #wrapper { background: transparent !important; }
 
 .dropdown-menu {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 0px);
   left: 0;
-  min-width: 220px;
-  background: rgba(10, 16, 22, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  min-width: 240px;
+  background: rgba(10, 16, 22, 0.98);
+  border: 1px solid rgba(24, 191, 239, 0.3);
   border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(16px);
-  z-index: 1000;
+  z-index: 10000;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px);
-  transition: all 0.2s ease;
+  transition: opacity 0.15s ease, visibility 0.15s ease, transform 0.15s ease;
   list-style: none;
-  padding: 0.8em 0;
+  padding: 0.6em 0;
   margin: 0;
-  margin-top: 4px;
+  pointer-events: none;
 }
 
+/* Show dropdown on hover with expanded hit area */
+.dropdown.active .dropdown-menu,
 .dropdown:hover .dropdown-menu,
-.dropdown-menu:hover {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  transition-delay: 0ms;
+.dropdown-menu.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
 }
 
-/* Better hover zone */
+/* Expand clickable area to prevent gaps */
 .dropdown {
-  padding-bottom: 4px;
+  padding-bottom: 0px;
+}
+
+.dropdown:hover {
+  position: relative;
+}
+
+/* Bridge gap between toggle and menu */
+.dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 8px;
+  display: block;
 }
 
 .dropdown-menu li {
@@ -4101,21 +4124,19 @@ body[data-theme="light"] #wrapper { background: transparent !important; }
 
 .dropdown-menu a {
   display: block;
-  padding: 1em 1.5em;
+  padding: 0.8em 1.5em;
   color: #e9f7ff;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   border-radius: 0;
   border: none;
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: 500;
 }
 
 .dropdown-menu a:hover {
-  background: rgba(24, 191, 239, 0.2);
+  background: rgba(24, 191, 239, 0.25);
   color: #18bfef;
-  transform: translateX(4px);
-  padding-left: 2em;
 }
 
 /* (Removed) Hiding #nav on mobile caused missing navigation on pages without hamburger init */
@@ -4192,4 +4213,210 @@ body[data-theme="light"] #wrapper { background: transparent !important; }
 
 .disabled-link:hover::after {
   opacity: 1;
+}
+
+/* Genre Carousel Styles - Music Page */
+.music-page .genre-carousel-container {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  position: relative !important;
+}
+
+.music-page .genre-carousel-wrapper {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 0.5rem !important;
+}
+
+.music-page .genre-carousel {
+  display: flex !important;
+  gap: 1.5rem !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scroll-behavior: smooth !important;
+  scroll-snap-type: x mandatory !important;
+  padding: 1rem 0 !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: none !important;
+  flex: 1 !important;
+  max-width: calc(100vw - 150px) !important;
+}
+
+.music-page .genre-carousel::-webkit-scrollbar {
+  display: none !important;
+}
+
+.music-page .genre-slide {
+  flex: 0 0 140px !important;
+  min-width: 140px !important;
+  max-width: 140px !important;
+  height: 160px !important;
+  background: linear-gradient(135deg, rgba(20, 30, 40, 0.8) 0%, rgba(30, 45, 60, 0.6) 100%) !important;
+  border: 2px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.7rem !important;
+  cursor: pointer !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  scroll-snap-align: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.music-page .genre-slide::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(135deg, rgba(24, 191, 239, 0.05) 0%, rgba(154, 108, 255, 0.05) 100%) !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.music-page .genre-slide:hover::before,
+.music-page .genre-slide.active::before {
+  opacity: 1 !important;
+}
+
+.music-page .genre-slide:hover {
+  transform: translateY(-8px) scale(1.05) !important;
+  border-color: rgba(24, 191, 239, 0.5) !important;
+  box-shadow: 0 20px 40px rgba(24, 191, 239, 0.2), 0 0 0 1px rgba(24, 191, 239, 0.3) !important;
+}
+
+.music-page .genre-slide.active {
+  background: linear-gradient(135deg, rgba(24, 191, 239, 0.2) 0%, rgba(154, 108, 255, 0.15) 100%) !important;
+  border-color: rgba(24, 191, 239, 0.8) !important;
+  box-shadow: 0 10px 30px rgba(24, 191, 239, 0.3) !important;
+  transform: scale(1.05) !important;
+}
+
+.music-page .genre-icon {
+  font-size: 2.5rem !important;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3)) !important;
+  transition: transform 0.3s ease !important;
+}
+
+.music-page .genre-slide:hover .genre-icon,
+.music-page .genre-slide.active .genre-icon {
+  transform: scale(1.15) rotate(5deg) !important;
+}
+
+.music-page .genre-name {
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  text-align: center !important;
+  padding: 0 0.5rem !important;
+}
+
+.music-page .genre-count {
+  font-size: 0.75rem !important;
+  color: #18bfef !important;
+  font-weight: 600 !important;
+}
+
+.music-page .carousel-nav {
+  width: 48px !important;
+  height: 48px !important;
+  background: rgba(24, 191, 239, 0.15) !important;
+  border: 1px solid rgba(24, 191, 239, 0.3) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  color: #18bfef !important;
+  flex-shrink: 0 !important;
+}
+
+.music-page .carousel-nav:hover {
+  background: rgba(24, 191, 239, 0.3) !important;
+  border-color: rgba(24, 191, 239, 0.6) !important;
+  transform: scale(1.1) !important;
+}
+
+.music-page .carousel-nav:active {
+  transform: scale(0.95) !important;
+}
+
+.music-page .carousel-nav.disabled {
+  opacity: 0.3 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+.music-page .carousel-indicators {
+  display: flex !important;
+  gap: 0.5rem !important;
+  justify-content: center !important;
+  margin-top: 1rem !important;
+}
+
+.music-page .carousel-indicator {
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.music-page .carousel-indicator.active {
+  background: #18bfef !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
+
+/* Mobile optimizations */
+@media (max-width: 980px) {
+  .music-page .genre-slide {
+    flex: 0 0 130px !important;
+    min-width: 130px !important;
+    max-width: 130px !important;
+    height: 150px !important;
+  }
+
+  .music-page .genre-icon {
+    font-size: 2.2rem !important;
+  }
+
+  .music-page .genre-name {
+    font-size: 0.85rem !important;
+  }
+
+  .music-page .carousel-nav {
+    display: none !important;
+  }
+}
+
+@media (max-width: 736px) {
+  .music-page .genre-slide {
+    flex: 0 0 110px !important;
+    min-width: 110px !important;
+    max-width: 110px !important;
+    height: 130px !important;
+  }
+
+  .music-page .genre-icon {
+    font-size: 1.8rem !important;
+  }
+
+  .music-page .genre-name {
+    font-size: 0.75rem !important;
+  }
+  
+  .music-page .genre-count {
+    font-size: 0.65rem !important;
+  }
 }

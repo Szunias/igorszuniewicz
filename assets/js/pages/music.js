@@ -70,6 +70,8 @@
     // Populate filter chips from tags
     let allTags = Array.from(new Set([].concat.apply([], tracks.map(function(t){ return t.tags || []; })))).filter(function(tag){ return tag !== 'all'; }).sort();
     renderTagChips(allTags);
+    // Update genre carousel counts
+    updateGenreCounts();
     // Ensure default is 'All' and render immediately
     activeTag = TAG_ALL;
     applyFilters();
@@ -188,6 +190,24 @@
     const make = (value, label)=>{ const b=document.createElement('button'); b.type='button'; b.className='chip'+(activeTag===value?' active':''); b.dataset.tag=value; b.textContent = label; return b; };
     tagsEl.appendChild(make(TAG_ALL, 'All'));
     allTags.forEach(tag=> { const lbl = tag.charAt(0).toUpperCase()+tag.slice(1); tagsEl.appendChild(make(tag, lbl)); });
+  }
+  
+  // Update genre carousel counts
+  function updateGenreCounts() {
+    document.querySelectorAll('.genre-slide').forEach(slide => {
+      const tag = slide.getAttribute('data-tag');
+      const countEl = slide.querySelector('.genre-count');
+      if (!countEl) return;
+      
+      let count = 0;
+      if (tag === 'all') {
+        count = tracks.length;
+      } else {
+        count = tracks.filter(t => Array.isArray(t.tags) && t.tags.includes(tag)).length;
+      }
+      
+      countEl.textContent = count > 0 ? `${count} track${count !== 1 ? 's' : ''}` : '';
+    });
   }
   if (tagsEl){ tagsEl.addEventListener('click', (e)=>{ const b=e.target.closest('.chip'); if(!b || !b.dataset) return; activeTag=(b.dataset.tag||TAG_ALL); renderTagChips(Array.from(new Set([].concat.apply([], tracks.map(function(t){ return t.tags || []; })))).filter(function(tag){ return tag !== 'all'; }).sort()); applyFilters(); }); }
   // Genre wheel/carousel clicks map to the same tag system
