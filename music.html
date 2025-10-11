@@ -53,7 +53,7 @@
   <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="assets/css/custom-styles.css?v=20250212" />
   <link rel="stylesheet" href="assets/css/pro-theme.css?v=20250212" />
-  <link rel="stylesheet" href="assets/css/genre-carousel.css?v=20251011d" />
+  <link rel="stylesheet" href="assets/css/genre-carousel.css?v=20251012" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
@@ -197,64 +197,61 @@
 
         <div class="music-controls">
           <div class="left" style="flex-direction: column; gap: 1.5rem; width: 100%;">
-            <!-- Modern Genre Carousel -->
-            <div class="genre-carousel-container">
-              <div class="mf-label" data-i18n="music.finder" style="margin-bottom: 1rem; text-align: center; font-size: 1rem; color: #18bfef; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;">Browse by Style</div>
+            <!-- Modern Genre Grid Selector -->
+            <div class="genre-grid-container">
+              <div class="mf-label" data-i18n="music.finder" style="margin-bottom: 1.2rem; text-align: center; font-size: 0.95rem; color: #18bfef; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;">Browse by Style</div>
               
-              <div class="genre-carousel-wrapper">
-                <button class="carousel-nav carousel-prev" aria-label="Previous genres">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                  </svg>
-                </button>
-                
-                <div class="genre-carousel" role="group" aria-label="Genre categories">
-                  <div class="genre-slide active" data-tag="all" tabindex="0" role="button">
+              <div class="genre-grid" role="group" aria-label="Genre categories">
+                <button class="genre-card active" data-tag="all" type="button">
+                  <div class="genre-card-inner">
                     <div class="genre-icon">🎵</div>
                     <div class="genre-name" data-i18n="genre_all_tracks">All Tracks</div>
                     <div class="genre-count"></div>
                   </div>
-                  <div class="genre-slide" data-tag="electronic" tabindex="0" role="button">
+                </button>
+                <button class="genre-card" data-tag="electronic" type="button">
+                  <div class="genre-card-inner">
                     <div class="genre-icon">⚡</div>
                     <div class="genre-name" data-i18n="genre_electronic">Electronic</div>
                     <div class="genre-count"></div>
                   </div>
-                  <div class="genre-slide" data-tag="film" tabindex="0" role="button">
+                </button>
+                <button class="genre-card" data-tag="film" type="button">
+                  <div class="genre-card-inner">
                     <div class="genre-icon">🎬</div>
                     <div class="genre-name" data-i18n="genre_film">Film</div>
                     <div class="genre-count"></div>
                   </div>
-                  <div class="genre-slide" data-tag="metal" tabindex="0" role="button">
+                </button>
+                <button class="genre-card" data-tag="metal" type="button">
+                  <div class="genre-card-inner">
                     <div class="genre-icon">🤘</div>
                     <div class="genre-name" data-i18n="genre_metal">Metal</div>
                     <div class="genre-count"></div>
                   </div>
-                  <div class="genre-slide" data-tag="playful" tabindex="0" role="button">
+                </button>
+                <button class="genre-card" data-tag="playful" type="button">
+                  <div class="genre-card-inner">
                     <div class="genre-icon">🎲</div>
                     <div class="genre-name" data-i18n="genre_playful">Playful</div>
                     <div class="genre-count"></div>
                   </div>
-                  <div class="genre-slide" data-tag="score" tabindex="0" role="button">
+                </button>
+                <button class="genre-card" data-tag="score" type="button">
+                  <div class="genre-card-inner">
                     <div class="genre-icon">🎼</div>
                     <div class="genre-name" data-i18n="genre_score">Score</div>
                     <div class="genre-count"></div>
                   </div>
-                  <div class="genre-slide" data-tag="single" tabindex="0" role="button">
+                </button>
+                <button class="genre-card" data-tag="single" type="button">
+                  <div class="genre-card-inner">
                     <div class="genre-icon">🎧</div>
                     <div class="genre-name" data-i18n="genre_single">Single</div>
                     <div class="genre-count"></div>
                   </div>
-                </div>
-                
-                <button class="carousel-nav carousel-next" aria-label="Next genres">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
                 </button>
               </div>
-              
-              <!-- Carousel indicators -->
-              <div class="carousel-indicators"></div>
             </div>
 
             <!-- Search Bar -->
@@ -326,178 +323,31 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/components/enhancements.js?v=20250212"></script>
   <script src="assets/js/components/reveal.js" defer></script>
-  <script src="assets/js/pages/music.js?v=20251011"></script>
+  <script src="assets/js/pages/music.js?v=20251012"></script>
   <script src="assets/js/components/lang-badge.js" defer></script>
   <script type="module" src="assets/js/bootstrap.js" defer></script>
   
-  <!-- Genre Carousel JavaScript -->
+  <!-- Genre Grid JavaScript -->
   <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.querySelector('.genre-carousel');
-    const slides = document.querySelectorAll('.genre-slide');
-    const prevBtn = document.querySelector('.carousel-prev');
-    const nextBtn = document.querySelector('.carousel-next');
-    const indicatorsContainer = document.querySelector('.carousel-indicators');
+    const genreCards = document.querySelectorAll('.genre-card');
     
-    if (!carousel || !slides.length) return;
-    
-    let currentIndex = 0;
-    let startX = 0;
-    let scrollLeft = 0;
-    let isDragging = false;
-    
-    // Create indicators
-    slides.forEach((_, index) => {
-      const indicator = document.createElement('div');
-      indicator.className = 'carousel-indicator' + (index === 0 ? ' active' : '');
-      indicator.addEventListener('click', () => scrollToSlide(index));
-      indicatorsContainer.appendChild(indicator);
-    });
-    
-    const indicators = indicatorsContainer.querySelectorAll('.carousel-indicator');
-    
-    // Update active states
-    function updateActive(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-      indicators.forEach((ind, i) => {
-        ind.classList.toggle('active', i === index);
-      });
-      currentIndex = index;
-      updateNavButtons();
-    }
-    
-    // Scroll to specific slide
-    function scrollToSlide(index) {
-      const slide = slides[index];
-      if (!slide) return;
-      
-      const containerWidth = carousel.offsetWidth;
-      const slideWidth = slide.offsetWidth;
-      const gap = parseFloat(getComputedStyle(carousel).gap) || 24;
-      const scrollPosition = (slideWidth + gap) * index - (containerWidth / 2) + (slideWidth / 2);
-      
-      carousel.scrollTo({
-        left: Math.max(0, scrollPosition),
-        behavior: 'smooth'
-      });
-      
-      updateActive(index);
-    }
-    
-    // Navigation buttons
-    function updateNavButtons() {
-      if (prevBtn && nextBtn) {
-        prevBtn.classList.toggle('disabled', currentIndex === 0);
-        nextBtn.classList.toggle('disabled', currentIndex === slides.length - 1);
-      }
-    }
-    
-    prevBtn && prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) scrollToSlide(currentIndex - 1);
-    });
-    
-    nextBtn && nextBtn.addEventListener('click', () => {
-      if (currentIndex < slides.length - 1) scrollToSlide(currentIndex + 1);
-    });
-    
-    // Touch/Mouse drag support - IMPROVED
-    carousel.addEventListener('mousedown', startDrag);
-    carousel.addEventListener('touchstart', startDrag, { passive: false });
-    
-    carousel.addEventListener('mousemove', drag);
-    carousel.addEventListener('touchmove', drag, { passive: false });
-    
-    carousel.addEventListener('mouseup', endDrag);
-    carousel.addEventListener('mouseleave', endDrag);
-    carousel.addEventListener('touchend', endDrag);
-    
-    // Prevent text selection on all slides
-    slides.forEach(slide => {
-      slide.addEventListener('dragstart', (e) => e.preventDefault());
-      slide.addEventListener('selectstart', (e) => e.preventDefault());
-    });
-    
-    function startDrag(e) {
-      isDragging = true;
-      startX = e.type === 'mousedown' ? e.pageX : e.touches[0].pageX;
-      scrollLeft = carousel.scrollLeft;
-      carousel.style.cursor = 'grabbing';
-      e.preventDefault(); // Prevent text selection
-    }
-    
-    function drag(e) {
-      if (!isDragging) return;
-      e.preventDefault(); // Stop text selection during drag
-      const x = e.type === 'mousemove' ? e.pageX : e.touches[0].pageX;
-      const walk = (x - startX) * 1.5;
-      carousel.scrollLeft = scrollLeft - walk;
-    }
-    
-    function endDrag() {
-      if (!isDragging) return;
-      isDragging = false;
-      carousel.style.cursor = 'grab';
-      
-      // Snap to nearest slide only if actually dragged
-      const dragDistance = Math.abs(carousel.scrollLeft - scrollLeft);
-      if (dragDistance > 5) {
-        const slideWidth = slides[0].offsetWidth + parseFloat(getComputedStyle(carousel).gap);
-        const newIndex = Math.round(carousel.scrollLeft / slideWidth);
-        scrollToSlide(Math.max(0, Math.min(newIndex, slides.length - 1)));
-      }
-    }
+    if (!genreCards.length) return;
     
     // Click handler for genre selection
-    slides.forEach((slide, index) => {
-      slide.addEventListener('click', function(e) {
-        // Prevent click if was dragging
-        if (Math.abs(carousel.scrollLeft - scrollLeft) > 10) return;
-        
+    genreCards.forEach(card => {
+      card.addEventListener('click', function() {
         const tag = this.getAttribute('data-tag');
-        updateActive(index);
         
-        // Trigger filter (this connects to existing music.js logic)
-        // The music.js should listen for clicks on .gw-node or .genre-slide
+        // Update active state
+        genreCards.forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Trigger filter (connects to music.js)
         const event = new CustomEvent('genreSelect', { detail: { tag } });
         document.dispatchEvent(event);
       });
-      
-      // Keyboard support
-      slide.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          this.click();
-        }
-      });
     });
-    
-    // Update on scroll (for manual scroll) - update carousel visuals only, don't trigger filter
-    let scrollTimeout;
-    carousel.addEventListener('scroll', function() {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        const slideWidth = slides[0].offsetWidth + parseFloat(getComputedStyle(carousel).gap);
-        const newIndex = Math.round(carousel.scrollLeft / slideWidth);
-        if (newIndex !== currentIndex) {
-          // Update visual state only (active classes and indicators)
-          slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === newIndex);
-          });
-          indicators.forEach((ind, i) => {
-            ind.classList.toggle('active', i === newIndex);
-          });
-          currentIndex = newIndex;
-          updateNavButtons();
-          // DON'T trigger genreSelect event here - only on explicit click
-        }
-      }, 100);
-    });
-    
-    // Initialize
-    updateNavButtons();
-    carousel.style.cursor = 'grab';
   });
   </script>
 </body>

@@ -1,442 +1,292 @@
-/* Genre Carousel - Modern Professional Design */
+/* Modern Genre Grid Selector - Spotify/Apple Music Style */
 
 /* Container */
-.music-page .genre-carousel-container {
+.music-page .genre-grid-container {
   width: 100% !important;
-  max-width: 1000px !important;
+  max-width: 900px !important;
   margin: 0 auto !important;
-  position: relative !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
   padding: 1rem 0 !important;
-  justify-content: center !important;
 }
 
-/* Wrapper - drag-enabled carousel */
-.music-page .genre-carousel-wrapper {
-  position: relative !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0 !important;
+/* Grid Layout - Responsive columns */
+.music-page .genre-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)) !important;
+  gap: 1rem !important;
   width: 100% !important;
-  max-width: 800px !important;
-  margin: 0 auto !important;
   padding: 0 !important;
-}
-
-/* Carousel scrollable area - drag enabled */
-.music-page .genre-carousel {
-  display: flex !important;
-  gap: 1.25rem !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  scroll-behavior: smooth !important;
-  scroll-snap-type: x mandatory !important;
-  padding: 1.5rem 1rem !important;
-  -webkit-overflow-scrolling: touch !important;
-  scrollbar-width: none !important;
-  flex: 0 0 auto !important;
-  max-width: 100% !important;
-  width: 100% !important;
-  justify-content: flex-start !important;
-  margin: 0 !important;
-  cursor: grab !important;
-  user-select: none !important;
-  -webkit-user-select: none !important;
-}
-
-.music-page .genre-carousel:active {
-  cursor: grabbing !important;
-}
-
-.music-page .genre-carousel::-webkit-scrollbar {
-  display: none !important;
-}
-
-/* Individual genre slide - Professional glassmorphism design */
-.music-page .genre-slide {
-  flex: 0 0 130px !important;
-  min-width: 130px !important;
-  max-width: 130px !important;
-  height: 140px !important;
-  background: linear-gradient(145deg, 
-    rgba(15, 25, 35, 0.95) 0%, 
-    rgba(25, 40, 55, 0.85) 50%,
-    rgba(20, 35, 50, 0.9) 100%) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 16px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
   justify-content: center !important;
-  gap: 0.6rem !important;
+}
+
+/* Genre Card - Glassmorphism Button */
+.music-page .genre-card {
+  background: linear-gradient(145deg, 
+    rgba(15, 25, 35, 0.9) 0%, 
+    rgba(25, 40, 55, 0.8) 100%) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 14px !important;
+  padding: 0 !important;
   cursor: pointer !important;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  scroll-snap-align: center !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   position: relative !important;
   overflow: hidden !important;
-  padding: 1rem 0.6rem !important;
   box-shadow: 
-    0 4px 16px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
-  pointer-events: auto !important;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
 }
 
-/* Gradient overlay effect */
-.music-page .genre-slide::before {
+/* Inner wrapper for padding */
+.music-page .genre-card-inner {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  padding: 1.2rem 0.8rem !important;
+  min-height: 110px !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Animated gradient overlay */
+.music-page .genre-card::before {
   content: '' !important;
   position: absolute !important;
   inset: 0 !important;
   background: linear-gradient(145deg, 
     rgba(24, 191, 239, 0.15) 0%, 
-    rgba(154, 108, 255, 0.12) 50%,
-    rgba(88, 182, 255, 0.1) 100%) !important;
+    rgba(154, 108, 255, 0.12) 100%) !important;
   opacity: 0 !important;
-  transition: opacity 0.4s ease !important;
-  border-radius: 16px !important;
+  transition: opacity 0.3s ease !important;
+  border-radius: 14px !important;
+  pointer-events: none !important;
 }
 
-/* Animated border glow */
-.music-page .genre-slide::after {
+/* Glow effect on hover/active */
+.music-page .genre-card::after {
   content: '' !important;
   position: absolute !important;
-  inset: -2px !important;
+  inset: -1px !important;
   background: linear-gradient(135deg, 
-    transparent 0%,
-    rgba(24, 191, 239, 0.4) 50%, 
-    transparent 100%) !important;
-  border-radius: 18px !important;
+    rgba(24, 191, 239, 0.5) 0%, 
+    rgba(154, 108, 255, 0.4) 100%) !important;
+  border-radius: 15px !important;
   opacity: 0 !important;
-  transition: opacity 0.4s ease !important;
+  transition: opacity 0.3s ease !important;
   z-index: -1 !important;
   filter: blur(8px) !important;
-}
-
-.music-page .genre-slide:hover::before {
-  opacity: 1 !important;
-}
-
-.music-page .genre-slide:hover::after {
-  opacity: 0.6 !important;
-}
-
-.music-page .genre-slide.active::before {
-  opacity: 1 !important;
-}
-
-.music-page .genre-slide.active::after {
-  opacity: 0.8 !important;
-  background: linear-gradient(135deg, 
-    rgba(24, 191, 239, 0.6) 0%, 
-    rgba(154, 108, 255, 0.5) 50%,
-    rgba(88, 182, 255, 0.6) 100%) !important;
-}
-
-.music-page .genre-slide:hover {
-  transform: translateY(-6px) scale(1.05) !important;
-  border-color: rgba(24, 191, 239, 0.5) !important;
-  box-shadow: 
-    0 16px 32px rgba(24, 191, 239, 0.3),
-    0 8px 16px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
-}
-
-.music-page .genre-slide.active {
-  background: linear-gradient(145deg, 
-    rgba(24, 191, 239, 0.25) 0%, 
-    rgba(30, 50, 70, 0.9) 50%,
-    rgba(154, 108, 255, 0.2) 100%) !important;
-  border-color: rgba(24, 191, 239, 0.7) !important;
-  box-shadow: 
-    0 12px 28px rgba(24, 191, 239, 0.4),
-    0 6px 14px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-  transform: scale(1.08) !important;
-}
-
-/* Icon with modern effects */
-.music-page .genre-icon {
-  font-size: 2.4rem !important;
-  filter: drop-shadow(0 4px 12px rgba(24, 191, 239, 0.3)) !important;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  line-height: 1 !important;
-  position: relative !important;
-  z-index: 1 !important;
-  user-select: none !important;
-  -webkit-user-drag: none !important;
   pointer-events: none !important;
 }
 
-.music-page .genre-slide:hover .genre-icon {
-  transform: scale(1.2) rotate(-5deg) !important;
-  filter: drop-shadow(0 6px 16px rgba(24, 191, 239, 0.5)) !important;
-}
-
-.music-page .genre-slide.active .genre-icon {
-  transform: scale(1.15) !important;
-  filter: drop-shadow(0 6px 20px rgba(24, 191, 239, 0.6)) drop-shadow(0 0 8px rgba(154, 108, 255, 0.4)) !important;
-}
-
-/* Text with better typography */
-.music-page .genre-name {
-  font-size: 0.75rem !important;
-  font-weight: 700 !important;
-  color: #ffffff !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.8px !important;
-  text-align: center !important;
-  padding: 0 0.4rem !important;
-  line-height: 1.2 !important;
-  word-break: break-word !important;
-  hyphens: auto !important;
-  position: relative !important;
-  z-index: 1 !important;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
-  transition: all 0.3s ease !important;
-  user-select: none !important;
-  pointer-events: none !important;
-}
-
-.music-page .genre-slide:hover .genre-name,
-.music-page .genre-slide.active .genre-name {
-  color: #18bfef !important;
-  text-shadow: 0 0 12px rgba(24, 191, 239, 0.6) !important;
-}
-
-/* Count badge with modern style */
-.music-page .genre-count {
-  font-size: 0.7rem !important;
-  color: rgba(24, 191, 239, 0.9) !important;
-  font-weight: 700 !important;
-  line-height: 1 !important;
-  position: relative !important;
-  z-index: 1 !important;
-  padding: 0.25rem 0.6rem !important;
-  background: rgba(24, 191, 239, 0.15) !important;
-  border-radius: 12px !important;
-  border: 1px solid rgba(24, 191, 239, 0.3) !important;
-  transition: all 0.3s ease !important;
-  user-select: none !important;
-  pointer-events: none !important;
-}
-
-.music-page .genre-slide:hover .genre-count,
-.music-page .genre-slide.active .genre-count {
-  background: rgba(24, 191, 239, 0.25) !important;
-  border-color: rgba(24, 191, 239, 0.6) !important;
-  color: #ffffff !important;
-  box-shadow: 0 0 12px rgba(24, 191, 239, 0.4) !important;
-}
-
-/* Navigation buttons - Hidden for drag-only interaction */
-.music-page .carousel-nav {
-  display: none !important;
-}
-
-
-/* Indicators - Modern pill style */
-.music-page .carousel-indicators {
-  display: flex !important;
-  gap: 0.5rem !important;
-  justify-content: center !important;
-  margin-top: 1.2rem !important;
-  padding: 0.5rem !important;
-}
-
-.music-page .carousel-indicator {
-  width: 8px !important;
-  height: 8px !important;
-  background: rgba(255, 255, 255, 0.2) !important;
-  border-radius: 50% !important;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  cursor: pointer !important;
-  border: 1px solid transparent !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
-}
-
-.music-page .carousel-indicator:hover {
-  background: rgba(24, 191, 239, 0.5) !important;
-  transform: scale(1.2) !important;
-}
-
-.music-page .carousel-indicator.active {
-  background: linear-gradient(90deg, 
-    rgba(24, 191, 239, 0.9) 0%, 
-    rgba(154, 108, 255, 0.8) 100%) !important;
-  width: 24px !important;
-  border-radius: 4px !important;
+/* Hover State */
+.music-page .genre-card:hover {
+  transform: translateY(-4px) scale(1.02) !important;
   border-color: rgba(24, 191, 239, 0.4) !important;
   box-shadow: 
-    0 0 16px rgba(24, 191, 239, 0.6),
-    0 2px 8px rgba(0, 0, 0, 0.3) !important;
+    0 12px 24px rgba(24, 191, 239, 0.25),
+    0 6px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
 }
 
-/* Responsive Design - Tablet & Mobile */
+.music-page .genre-card:hover::before {
+  opacity: 1 !important;
+}
+
+.music-page .genre-card:hover::after {
+  opacity: 0.5 !important;
+}
+
+/* Active State */
+.music-page .genre-card.active {
+  background: linear-gradient(145deg, 
+    rgba(24, 191, 239, 0.22) 0%, 
+    rgba(30, 50, 70, 0.9) 50%,
+    rgba(154, 108, 255, 0.18) 100%) !important;
+  border-color: rgba(24, 191, 239, 0.7) !important;
+  box-shadow: 
+    0 8px 20px rgba(24, 191, 239, 0.35),
+    0 4px 10px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  transform: scale(1.05) !important;
+}
+
+.music-page .genre-card.active::before {
+  opacity: 1 !important;
+}
+
+.music-page .genre-card.active::after {
+  opacity: 0.7 !important;
+  background: linear-gradient(135deg, 
+    rgba(24, 191, 239, 0.7) 0%, 
+    rgba(154, 108, 255, 0.6) 100%) !important;
+}
+
+/* Icon styling */
+.music-page .genre-card .genre-icon {
+  font-size: 2.2rem !important;
+  line-height: 1 !important;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.4)) !important;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  user-select: none !important;
+  -webkit-user-drag: none !important;
+}
+
+.music-page .genre-card:hover .genre-icon {
+  transform: scale(1.15) !important;
+  filter: drop-shadow(0 4px 12px rgba(24, 191, 239, 0.5)) !important;
+}
+
+.music-page .genre-card.active .genre-icon {
+  transform: scale(1.12) !important;
+  filter: drop-shadow(0 4px 14px rgba(24, 191, 239, 0.6)) 
+          drop-shadow(0 0 8px rgba(154, 108, 255, 0.4)) !important;
+}
+
+/* Name styling */
+.music-page .genre-card .genre-name {
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.7px !important;
+  text-align: center !important;
+  line-height: 1.2 !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.3s ease !important;
+  user-select: none !important;
+}
+
+.music-page .genre-card:hover .genre-name,
+.music-page .genre-card.active .genre-name {
+  color: #18bfef !important;
+  text-shadow: 0 0 10px rgba(24, 191, 239, 0.6) !important;
+}
+
+/* Count badge */
+.music-page .genre-card .genre-count {
+  font-size: 0.68rem !important;
+  color: rgba(24, 191, 239, 0.8) !important;
+  font-weight: 700 !important;
+  padding: 0.2rem 0.5rem !important;
+  background: rgba(24, 191, 239, 0.12) !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(24, 191, 239, 0.25) !important;
+  transition: all 0.3s ease !important;
+  user-select: none !important;
+  white-space: nowrap !important;
+}
+
+.music-page .genre-card:hover .genre-count,
+.music-page .genre-card.active .genre-count {
+  background: rgba(24, 191, 239, 0.2) !important;
+  border-color: rgba(24, 191, 239, 0.5) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 10px rgba(24, 191, 239, 0.3) !important;
+}
+
+/* Press effect */
+.music-page .genre-card:active {
+  transform: scale(0.98) !important;
+}
+
+/* Focus state for accessibility */
+.music-page .genre-card:focus-visible {
+  outline: 2px solid rgba(24, 191, 239, 0.8) !important;
+  outline-offset: 2px !important;
+}
+
+/* Responsive Design */
+
+/* Tablet */
 @media (max-width: 980px) {
-  .music-page .genre-carousel-container {
+  .music-page .genre-grid-container {
     max-width: 100% !important;
-    padding: 0.5rem 0 !important;
+    padding: 0.8rem 0 !important;
   }
 
-  .music-page .genre-carousel-wrapper {
-    gap: 1rem !important;
-  }
-
-  .music-page .genre-carousel {
-    padding: 1rem 0.5rem !important;
-    gap: 1rem !important;
-  }
-
-  .music-page .genre-slide {
-    flex: 0 0 115px !important;
-    min-width: 115px !important;
-    max-width: 115px !important;
-    height: 130px !important;
-    padding: 0.8rem 0.5rem !important;
-  }
-
-  .music-page .genre-icon {
-    font-size: 2.2rem !important;
-  }
-
-  .music-page .genre-name {
-    font-size: 0.7rem !important;
-    letter-spacing: 0.5px !important;
-  }
-
-  .music-page .genre-count {
-    font-size: 0.65rem !important;
-    padding: 0.2rem 0.5rem !important;
-  }
-
-  .music-page .carousel-nav {
-    width: 40px !important;
-    height: 40px !important;
-  }
-
-  .music-page .carousel-nav svg {
-    width: 20px !important;
-    height: 20px !important;
-  }
-}
-
-@media (max-width: 736px) {
-  .music-page .genre-carousel-container {
-    padding: 0.25rem 0 !important;
-  }
-
-  .music-page .genre-carousel-wrapper {
-    gap: 0.8rem !important;
-  }
-
-  .music-page .genre-carousel {
-    padding: 0.8rem 0.5rem !important;
+  .music-page .genre-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important;
     gap: 0.9rem !important;
   }
 
-  .music-page .genre-slide {
-    flex: 0 0 100px !important;
-    min-width: 100px !important;
-    max-width: 100px !important;
-    height: 115px !important;
-    padding: 0.7rem 0.4rem !important;
-    gap: 0.5rem !important;
+  .music-page .genre-card-inner {
+    padding: 1rem 0.7rem !important;
+    min-height: 100px !important;
   }
 
-  .music-page .genre-icon {
-    font-size: 1.9rem !important;
+  .music-page .genre-card .genre-icon {
+    font-size: 2rem !important;
   }
 
-  .music-page .genre-name {
+  .music-page .genre-card .genre-name {
+    font-size: 0.7rem !important;
+  }
+
+  .music-page .genre-card .genre-count {
+    font-size: 0.65rem !important;
+    padding: 0.18rem 0.45rem !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 736px) {
+  .music-page .genre-grid-container {
+    padding: 0.5rem 0 !important;
+  }
+
+  .music-page .genre-grid {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)) !important;
+    gap: 0.8rem !important;
+  }
+
+  .music-page .genre-card-inner {
+    padding: 0.9rem 0.6rem !important;
+    min-height: 92px !important;
+    gap: 0.45rem !important;
+  }
+
+  .music-page .genre-card .genre-icon {
+    font-size: 1.85rem !important;
+  }
+
+  .music-page .genre-card .genre-name {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .music-page .genre-card .genre-count {
+    font-size: 0.62rem !important;
+    padding: 0.15rem 0.4rem !important;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .music-page .genre-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)) !important;
+    gap: 0.7rem !important;
+  }
+
+  .music-page .genre-card-inner {
+    padding: 0.8rem 0.5rem !important;
+    min-height: 85px !important;
+    gap: 0.4rem !important;
+  }
+
+  .music-page .genre-card .genre-icon {
+    font-size: 1.7rem !important;
+  }
+
+  .music-page .genre-card .genre-name {
     font-size: 0.65rem !important;
     letter-spacing: 0.4px !important;
   }
 
-  .music-page .genre-count {
+  .music-page .genre-card .genre-count {
     font-size: 0.6rem !important;
-    padding: 0.2rem 0.45rem !important;
-  }
-
-  .music-page .carousel-nav {
-    width: 36px !important;
-    height: 36px !important;
-  }
-
-  .music-page .carousel-nav svg {
-    width: 18px !important;
-    height: 18px !important;
-  }
-
-  .music-page .carousel-indicators {
-    margin-top: 1rem !important;
-  }
-}
-
-/* Small Mobile - Optimized for smaller screens */
-@media (max-width: 480px) {
-  .music-page .genre-carousel-container {
-    padding: 0 !important;
-  }
-
-  .music-page .carousel-nav {
-    width: 32px !important;
-    height: 32px !important;
-  }
-
-  .music-page .carousel-nav svg {
-    width: 16px !important;
-    height: 16px !important;
-  }
-
-  .music-page .genre-carousel {
-    padding: 0.6rem 0.3rem !important;
-    gap: 0.8rem !important;
-  }
-
-  .music-page .genre-slide {
-    flex: 0 0 90px !important;
-    min-width: 90px !important;
-    max-width: 90px !important;
-    height: 105px !important;
-    padding: 0.6rem 0.3rem !important;
-    gap: 0.4rem !important;
-    border-radius: 14px !important;
-  }
-
-  .music-page .genre-icon {
-    font-size: 1.7rem !important;
-  }
-
-  .music-page .genre-name {
-    font-size: 0.6rem !important;
-    letter-spacing: 0.3px !important;
-    padding: 0 0.2rem !important;
-  }
-
-  .music-page .genre-count {
-    font-size: 0.55rem !important;
-    padding: 0.15rem 0.4rem !important;
-  }
-
-  .music-page .carousel-indicators {
-    margin-top: 0.8rem !important;
-    gap: 0.4rem !important;
-  }
-
-  .music-page .carousel-indicator {
-    width: 6px !important;
-    height: 6px !important;
-  }
-
-  .music-page .carousel-indicator.active {
-    width: 20px !important;
   }
 }
