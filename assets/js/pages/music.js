@@ -190,10 +190,17 @@
     allTags.forEach(tag=> { const lbl = tag.charAt(0).toUpperCase()+tag.slice(1); tagsEl.appendChild(make(tag, lbl)); });
   }
   if (tagsEl){ tagsEl.addEventListener('click', (e)=>{ const b=e.target.closest('.chip'); if(!b || !b.dataset) return; activeTag=(b.dataset.tag||TAG_ALL); renderTagChips(Array.from(new Set([].concat.apply([], tracks.map(function(t){ return t.tags || []; })))).filter(function(tag){ return tag !== 'all'; }).sort()); applyFilters(); }); }
-  // Genre wheel clicks map to the same tag system
+  // Genre wheel/carousel clicks map to the same tag system
   document.addEventListener('click', (e)=>{
-    const g = e.target.closest('.genre-wheel .gw-node'); if (!g) return;
+    const g = e.target.closest('.genre-wheel .gw-node, .genre-slide'); if (!g) return;
     const tag = g.getAttribute('data-tag') || TAG_ALL; activeTag = tag; renderTagChips(Array.from(new Set([].concat.apply([], tracks.map(function(t){ return t.tags || []; })))).filter(function(tag){ return tag !== 'all'; }).sort()); applyFilters();
+  });
+  // Listen for custom genre select event from carousel
+  document.addEventListener('genreSelect', (e) => {
+    if (!e.detail || !e.detail.tag) return;
+    activeTag = e.detail.tag;
+    renderTagChips(Array.from(new Set([].concat.apply([], tracks.map(function(t){ return t.tags || []; })))).filter(function(tag){ return tag !== 'all'; }).sort());
+    applyFilters();
   });
   // Toggle tag chips visibility (wheel stays visible)
   document.addEventListener('click', (e)=>{

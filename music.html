@@ -194,56 +194,264 @@
         </div>
 
         <div class="music-controls">
-          <div class="left">
-            <div class="music-finder">
-              <div class="mf-label" data-i18n="music.finder">Browse by style</div>
-              <button type="button" class="gw-toggle" data-i18n="music.gw_toggle">Sort by tag</button>
-              <div class="genre-wheel" aria-label="Categories">
-                <svg viewBox="0 0 220 220" role="group" aria-label="Genres">
-                  <defs>
-                    <linearGradient id="gwGrad" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stop-color="#18bfef"/>
-                      <stop offset="100%" stop-color="#9a6cff"/>
-                    </linearGradient>
-                  </defs>
-                  <!-- Center (All) -->
-                  <g class="gw-node gw-center" data-tag="all" tabindex="0" aria-label="All">
-                    <circle cx="110" cy="110" r="34" />
-                    <text x="110" y="115">All</text>
-                  </g>
-                  <!-- Outer ring, 6 nodes evenly spaced -->
-                  <g class="gw-node" data-tag="electronic" tabindex="0" aria-label="Electronic">
-                    <circle cx="110" cy="40" r="28" />
-                    <text x="110" y="45">Electronic</text>
-                  </g>
-                  <g class="gw-node" data-tag="film" tabindex="0" aria-label="Film">
-                    <circle cx="179" cy="80" r="28" />
-                    <text x="179" y="85">Film</text>
-                  </g>
-                  <g class="gw-node" data-tag="metal" tabindex="0" aria-label="Metal">
-                    <circle cx="179" cy="140" r="28" />
-                    <text x="179" y="145">Metal</text>
-                  </g>
-                  <g class="gw-node" data-tag="playful" tabindex="0" aria-label="Playful">
-                    <circle cx="110" cy="180" r="28" />
-                    <text x="110" y="185">Playful</text>
-                  </g>
-                  <g class="gw-node" data-tag="score" tabindex="0" aria-label="Score">
-                    <circle cx="41" cy="140" r="28" />
-                    <text x="41" y="145">Score</text>
-                  </g>
-                  <g class="gw-node" data-tag="single" tabindex="0" aria-label="Single">
-                    <circle cx="41" cy="80" r="28" />
-                    <text x="41" y="85">Single</text>
-                  </g>
-                </svg>
+          <div class="left" style="flex-direction: column; gap: 1.5rem; width: 100%;">
+            <!-- Modern Genre Carousel -->
+            <div class="genre-carousel-container">
+              <div class="mf-label" data-i18n="music.finder" style="margin-bottom: 1rem; text-align: center; font-size: 1rem; color: #18bfef; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;">Browse by Style</div>
+              
+              <div class="genre-carousel-wrapper">
+                <button class="carousel-nav carousel-prev" aria-label="Previous genres">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                </button>
+                
+                <div class="genre-carousel" role="group" aria-label="Genre categories">
+                  <div class="genre-slide active" data-tag="all" tabindex="0" role="button">
+                    <div class="genre-icon">🎵</div>
+                    <div class="genre-name">All Tracks</div>
+                    <div class="genre-count"></div>
+                  </div>
+                  <div class="genre-slide" data-tag="electronic" tabindex="0" role="button">
+                    <div class="genre-icon">⚡</div>
+                    <div class="genre-name">Electronic</div>
+                    <div class="genre-count"></div>
+                  </div>
+                  <div class="genre-slide" data-tag="film" tabindex="0" role="button">
+                    <div class="genre-icon">🎬</div>
+                    <div class="genre-name">Film</div>
+                    <div class="genre-count"></div>
+                  </div>
+                  <div class="genre-slide" data-tag="metal" tabindex="0" role="button">
+                    <div class="genre-icon">🤘</div>
+                    <div class="genre-name">Metal</div>
+                    <div class="genre-count"></div>
+                  </div>
+                  <div class="genre-slide" data-tag="playful" tabindex="0" role="button">
+                    <div class="genre-icon">🎲</div>
+                    <div class="genre-name">Playful</div>
+                    <div class="genre-count"></div>
+                  </div>
+                  <div class="genre-slide" data-tag="score" tabindex="0" role="button">
+                    <div class="genre-icon">🎼</div>
+                    <div class="genre-name">Score</div>
+                    <div class="genre-count"></div>
+                  </div>
+                  <div class="genre-slide" data-tag="single" tabindex="0" role="button">
+                    <div class="genre-icon">🎧</div>
+                    <div class="genre-name">Single</div>
+                    <div class="genre-count"></div>
+                  </div>
+                </div>
+                
+                <button class="carousel-nav carousel-next" aria-label="Next genres">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
               </div>
-              <div id="music-tags" class="music-tags" role="group" aria-label="Filter by tag"></div>
+              
+              <!-- Carousel indicators -->
+              <div class="carousel-indicators"></div>
             </div>
-            <input type="search" id="music-search" placeholder="Search…" aria-label="Search" />
+
+            <!-- Search Bar -->
+            <input type="search" id="music-search" placeholder="🔍 Search tracks..." aria-label="Search" style="width: 100%; max-width: 600px; margin: 0 auto; padding: 0.9rem 1.5rem; font-size: 1rem; background: rgba(20, 30, 40, 0.6); border: 1px solid rgba(24, 191, 239, 0.3); border-radius: 50px; color: #e0e0e0; outline: none; transition: all 0.3s ease;" />
           </div>
-          <div class="right"></div>
         </div>
+
+        <!-- Genre Carousel Styles -->
+        <style>
+          .genre-carousel-container {
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+          }
+
+          .genre-carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+          }
+
+          .genre-carousel {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding: 1rem 0.5rem;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+          }
+
+          .genre-carousel::-webkit-scrollbar {
+            display: none;
+          }
+
+          .genre-slide {
+            flex: 0 0 160px;
+            height: 180px;
+            background: linear-gradient(135deg, rgba(20, 30, 40, 0.8) 0%, rgba(30, 45, 60, 0.6) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            scroll-snap-align: center;
+            position: relative;
+            overflow: hidden;
+          }
+
+          .genre-slide::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(24, 191, 239, 0.05) 0%, rgba(154, 108, 255, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+
+          .genre-slide:hover::before,
+          .genre-slide.active::before {
+            opacity: 1;
+          }
+
+          .genre-slide:hover {
+            transform: translateY(-8px) scale(1.05);
+            border-color: rgba(24, 191, 239, 0.5);
+            box-shadow: 0 20px 40px rgba(24, 191, 239, 0.2), 0 0 0 1px rgba(24, 191, 239, 0.3);
+          }
+
+          .genre-slide.active {
+            background: linear-gradient(135deg, rgba(24, 191, 239, 0.2) 0%, rgba(154, 108, 255, 0.15) 100%);
+            border-color: rgba(24, 191, 239, 0.8);
+            box-shadow: 0 10px 30px rgba(24, 191, 239, 0.3);
+            transform: scale(1.05);
+          }
+
+          .genre-icon {
+            font-size: 3rem;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+            transition: transform 0.3s ease;
+          }
+
+          .genre-slide:hover .genre-icon,
+          .genre-slide.active .genre-icon {
+            transform: scale(1.15) rotate(5deg);
+          }
+
+          .genre-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+          }
+
+          .genre-count {
+            font-size: 0.85rem;
+            color: #18bfef;
+            font-weight: 600;
+          }
+
+          .carousel-nav {
+            width: 48px;
+            height: 48px;
+            background: rgba(24, 191, 239, 0.15);
+            border: 1px solid rgba(24, 191, 239, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #18bfef;
+            flex-shrink: 0;
+          }
+
+          .carousel-nav:hover {
+            background: rgba(24, 191, 239, 0.3);
+            border-color: rgba(24, 191, 239, 0.6);
+            transform: scale(1.1);
+          }
+
+          .carousel-nav:active {
+            transform: scale(0.95);
+          }
+
+          .carousel-nav.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+          }
+
+          .carousel-indicators {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+          }
+
+          .carousel-indicator {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            cursor: pointer;
+          }
+
+          .carousel-indicator.active {
+            background: #18bfef;
+            width: 24px;
+            border-radius: 4px;
+          }
+
+          /* Mobile optimizations */
+          @media (max-width: 980px) {
+            .genre-slide {
+              flex: 0 0 140px;
+              height: 160px;
+            }
+
+            .genre-icon {
+              font-size: 2.5rem;
+            }
+
+            .genre-name {
+              font-size: 0.95rem;
+            }
+
+            .carousel-nav {
+              display: none;
+            }
+          }
+
+          @media (max-width: 736px) {
+            .genre-slide {
+              flex: 0 0 120px;
+              height: 140px;
+            }
+
+            .genre-icon {
+              font-size: 2rem;
+            }
+
+            .genre-name {
+              font-size: 0.85rem;
+            }
+          }
+        </style>
 
         <div id="music-list" class="music-list" aria-live="polite" style="min-height: 50vh;"></div>
         <div class="music-controls" style="margin-top:8px">
@@ -311,5 +519,156 @@
   <script src="assets/js/pages/music.js?v=20250926"></script>
   <script src="assets/js/components/lang-badge.js" defer></script>
   <script type="module" src="assets/js/bootstrap.js" defer></script>
+  
+  <!-- Genre Carousel JavaScript -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('.genre-carousel');
+    const slides = document.querySelectorAll('.genre-slide');
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    const indicatorsContainer = document.querySelector('.carousel-indicators');
+    
+    if (!carousel || !slides.length) return;
+    
+    let currentIndex = 0;
+    let startX = 0;
+    let scrollLeft = 0;
+    let isDragging = false;
+    
+    // Create indicators
+    slides.forEach((_, index) => {
+      const indicator = document.createElement('div');
+      indicator.className = 'carousel-indicator' + (index === 0 ? ' active' : '');
+      indicator.addEventListener('click', () => scrollToSlide(index));
+      indicatorsContainer.appendChild(indicator);
+    });
+    
+    const indicators = indicatorsContainer.querySelectorAll('.carousel-indicator');
+    
+    // Update active states
+    function updateActive(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      indicators.forEach((ind, i) => {
+        ind.classList.toggle('active', i === index);
+      });
+      currentIndex = index;
+      updateNavButtons();
+    }
+    
+    // Scroll to specific slide
+    function scrollToSlide(index) {
+      const slide = slides[index];
+      if (!slide) return;
+      
+      const containerWidth = carousel.offsetWidth;
+      const slideWidth = slide.offsetWidth;
+      const gap = parseFloat(getComputedStyle(carousel).gap) || 24;
+      const scrollPosition = (slideWidth + gap) * index - (containerWidth / 2) + (slideWidth / 2);
+      
+      carousel.scrollTo({
+        left: Math.max(0, scrollPosition),
+        behavior: 'smooth'
+      });
+      
+      updateActive(index);
+    }
+    
+    // Navigation buttons
+    function updateNavButtons() {
+      if (prevBtn && nextBtn) {
+        prevBtn.classList.toggle('disabled', currentIndex === 0);
+        nextBtn.classList.toggle('disabled', currentIndex === slides.length - 1);
+      }
+    }
+    
+    prevBtn && prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) scrollToSlide(currentIndex - 1);
+    });
+    
+    nextBtn && nextBtn.addEventListener('click', () => {
+      if (currentIndex < slides.length - 1) scrollToSlide(currentIndex + 1);
+    });
+    
+    // Touch/Mouse drag support
+    carousel.addEventListener('mousedown', startDrag);
+    carousel.addEventListener('touchstart', startDrag, { passive: true });
+    
+    carousel.addEventListener('mousemove', drag);
+    carousel.addEventListener('touchmove', drag, { passive: true });
+    
+    carousel.addEventListener('mouseup', endDrag);
+    carousel.addEventListener('mouseleave', endDrag);
+    carousel.addEventListener('touchend', endDrag);
+    
+    function startDrag(e) {
+      isDragging = true;
+      startX = e.type === 'mousedown' ? e.pageX : e.touches[0].pageX;
+      scrollLeft = carousel.scrollLeft;
+      carousel.style.cursor = 'grabbing';
+    }
+    
+    function drag(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.type === 'mousemove' ? e.pageX : e.touches[0].pageX;
+      const walk = (x - startX) * 1.5;
+      carousel.scrollLeft = scrollLeft - walk;
+    }
+    
+    function endDrag() {
+      isDragging = false;
+      carousel.style.cursor = 'grab';
+      
+      // Snap to nearest slide
+      const slideWidth = slides[0].offsetWidth + parseFloat(getComputedStyle(carousel).gap);
+      const newIndex = Math.round(carousel.scrollLeft / slideWidth);
+      scrollToSlide(Math.max(0, Math.min(newIndex, slides.length - 1)));
+    }
+    
+    // Click handler for genre selection
+    slides.forEach((slide, index) => {
+      slide.addEventListener('click', function(e) {
+        // Prevent click if was dragging
+        if (Math.abs(carousel.scrollLeft - scrollLeft) > 10) return;
+        
+        const tag = this.getAttribute('data-tag');
+        updateActive(index);
+        
+        // Trigger filter (this connects to existing music.js logic)
+        // The music.js should listen for clicks on .gw-node or .genre-slide
+        const event = new CustomEvent('genreSelect', { detail: { tag } });
+        document.dispatchEvent(event);
+      });
+      
+      // Keyboard support
+      slide.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
+        }
+      });
+    });
+    
+    // Update on scroll (for manual scroll)
+    let scrollTimeout;
+    carousel.addEventListener('scroll', function() {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const slideWidth = slides[0].offsetWidth + parseFloat(getComputedStyle(carousel).gap);
+        const newIndex = Math.round(carousel.scrollLeft / slideWidth);
+        if (newIndex !== currentIndex) {
+          updateActive(newIndex);
+        }
+      }, 100);
+    });
+    
+    // Initialize
+    updateNavButtons();
+    carousel.style.cursor = 'grab';
+  });
+  </script>
 </body>
 </html>
