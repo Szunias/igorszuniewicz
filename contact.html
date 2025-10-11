@@ -566,10 +566,10 @@
       <div class="page-header">
         <div class="badge">
           <i class="fas fa-paper-plane"></i>
-          Available for Projects
+          <span data-i18n="contact_badge">Available for Projects</span>
         </div>
-        <h1 class="page-title">Let's Create Together</h1>
-        <p class="page-description">
+        <h1 class="page-title" data-i18n="contact_title">Let's Create Together</h1>
+        <p class="page-description" data-i18n="contact_subtitle">
           I typically respond within 24–48 hours. Let's discuss your project.
         </p>
       </div>
@@ -581,40 +581,40 @@
             <div class="section-icon">
               <i class="fas fa-envelope"></i>
             </div>
-            <h3>Send a Message</h3>
+            <h3 data-i18n="contact_form_title">Send a Message</h3>
           </div>
           <form id="contact-form">
             <input type="hidden" name="access_key" value="63daf122-621e-405f-ac46-d4537bfba2a4">
             <div class="form-group">
               <label for="name">
                 <i class="fas fa-user"></i>
-                Your Name
+                <span data-i18n="contact_form_name">Your Name</span>
               </label>
               <input type="text" name="name" id="name" placeholder="John Doe" required>
             </div>
             <div class="form-group">
               <label for="email">
                 <i class="fas fa-at"></i>
-                Email Address
+                <span data-i18n="contact_form_email">Email Address</span>
               </label>
               <input type="email" name="email" id="email" placeholder="john@example.com" required>
             </div>
             <div class="form-group">
               <label for="subject">
                 <i class="fas fa-tag"></i>
-                Subject
+                <span data-i18n="contact_form_subject">Subject</span>
               </label>
               <input type="text" name="subject" id="subject" placeholder="Project Inquiry">
             </div>
             <div class="form-group">
               <label for="message">
                 <i class="fas fa-comment-dots"></i>
-                Your Message
+                <span data-i18n="contact_form_message">Your Message</span>
               </label>
               <textarea name="message" id="message" placeholder="Tell me about your project..." required></textarea>
             </div>
             <button type="submit" class="submit-btn" id="submit-btn">
-              <span>Send Message</span>
+              <span data-i18n="contact_form_submit">Send Message</span>
               <i class="fas fa-arrow-right"></i>
             </button>
             <div class="success-message" id="success-message">
@@ -631,14 +631,14 @@
               <div class="section-icon">
                 <i class="fas fa-address-card"></i>
               </div>
-              <h3>Direct Contact</h3>
+              <h3 data-i18n="contact_info_title">Direct Contact</h3>
             </div>
             <div class="info-item">
               <div class="info-icon">
                 <i class="fas fa-envelope"></i>
               </div>
               <div class="info-content">
-                <div class="info-label">Email</div>
+                <div class="info-label" data-i18n="contact_info_email">Email</div>
                 <div class="info-value">
                   <a href="mailto:szunio2004@gmail.com">szunio2004@gmail.com</a>
                 </div>
@@ -649,8 +649,8 @@
                 <i class="fas fa-map-marker-alt"></i>
               </div>
               <div class="info-content">
-                <div class="info-label">Location</div>
-                <div class="info-value">Belgium, West Flanders</div>
+                <div class="info-label" data-i18n="contact_info_location">Location</div>
+                <div class="info-value" data-i18n="contact_info_location_value">Belgium, West Flanders</div>
               </div>
             </div>
             <div class="info-item">
@@ -658,8 +658,8 @@
                 <i class="fas fa-clock"></i>
               </div>
               <div class="info-content">
-                <div class="info-label">Response Time</div>
-                <div class="info-value">24–48 hours</div>
+                <div class="info-label" data-i18n="contact_info_response">Response Time</div>
+                <div class="info-value" data-i18n="contact_info_response_value">24–48 hours</div>
               </div>
             </div>
           </div>
@@ -670,15 +670,15 @@
               <div class="section-icon">
                 <i class="fas fa-share-alt"></i>
               </div>
-              <h3>Connect Online</h3>
+              <h3 data-i18n="contact_social_title">Connect Online</h3>
             </div>
             <a href="https://github.com/Szunias" target="_blank" rel="noopener noreferrer" class="social-link github">
               <div class="social-icon">
                 <i class="fab fa-github"></i>
               </div>
               <div class="social-content">
-                <div class="social-label">GitHub</div>
-                <div class="social-handle">@Szunias</div>
+                <div class="social-label" data-i18n="contact_social_github">GitHub</div>
+                <div class="social-handle" data-i18n="contact_social_github_handle">@Szunias</div>
               </div>
               <i class="fas fa-arrow-right social-arrow"></i>
             </a>
@@ -687,8 +687,8 @@
                 <i class="fab fa-linkedin"></i>
               </div>
               <div class="social-content">
-                <div class="social-label">LinkedIn</div>
-                <div class="social-handle">Igor Szuniewicz</div>
+                <div class="social-label" data-i18n="contact_social_linkedin">LinkedIn</div>
+                <div class="social-handle" data-i18n="contact_social_linkedin_handle">Igor Szuniewicz</div>
               </div>
               <i class="fas fa-arrow-right social-arrow"></i>
             </a>
@@ -697,8 +697,8 @@
                 <i class="fab fa-spotify"></i>
               </div>
               <div class="social-content">
-                <div class="social-label">Spotify</div>
-                <div class="social-handle">Music Portfolio</div>
+                <div class="social-label" data-i18n="contact_social_spotify">Spotify</div>
+                <div class="social-handle" data-i18n="contact_social_spotify_handle">Music Portfolio</div>
               </div>
               <i class="fas fa-arrow-right social-arrow"></i>
             </a>
@@ -707,8 +707,8 @@
                 <i class="fab fa-itch-io"></i>
               </div>
               <div class="social-content">
-                <div class="social-label">Itch.io</div>
-                <div class="social-handle">Game Projects</div>
+                <div class="social-label" data-i18n="contact_social_itch">Itch.io</div>
+                <div class="social-handle" data-i18n="contact_social_itch_handle">Game Projects</div>
               </div>
               <i class="fas fa-arrow-right social-arrow"></i>
             </a>
@@ -769,5 +769,22 @@
     });
   </script>
   <script src="assets/js/page-transitions.js"></script>
+  <script type="module">
+    import { translatePage } from './assets/js/i18n/translate.js';
+    
+    let currentLang = localStorage.getItem('language') || 'en';
+    translatePage(currentLang);
+    
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === currentLang);
+      btn.addEventListener('click', () => {
+        currentLang = btn.dataset.lang;
+        localStorage.setItem('language', currentLang);
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        translatePage(currentLang);
+      });
+    });
+  </script>
 </body>
 </html>

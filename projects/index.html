@@ -445,17 +445,17 @@
   <div class="page-content">
     <div class="container">
       <div class="page-header">
-        <h1 class="page-title">All Projects</h1>
-        <p class="page-description">
+        <h1 class="page-title" data-i18n="projects_page_title">All Projects</h1>
+        <p class="page-description" data-i18n="projects_page_subtitle">
           Game audio, sound design, interactive music systems, and audio development tools.
         </p>
         
         <div class="filters">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="game">Game Audio</button>
-          <button class="filter-btn" data-filter="sound">Sound Design</button>
-          <button class="filter-btn" data-filter="music">Music</button>
-          <button class="filter-btn" data-filter="tools">Dev Tools</button>
+          <button class="filter-btn active" data-filter="all" data-i18n="projects_filter_all">All</button>
+          <button class="filter-btn" data-filter="game" data-i18n="projects_filter_game">Game Audio</button>
+          <button class="filter-btn" data-filter="sound" data-i18n="projects_filter_sound">Sound Design</button>
+          <button class="filter-btn" data-filter="music" data-i18n="projects_filter_music">Music</button>
+          <button class="filter-btn" data-filter="tools" data-i18n="projects_filter_tools">Dev Tools</button>
         </div>
       </div>
       
@@ -683,5 +683,22 @@
     });
   </script>
   <script src="../assets/js/page-transitions.js"></script>
+  <script type="module">
+    import { translatePage } from '../assets/js/i18n/translate.js';
+    
+    let currentLang = localStorage.getItem('language') || 'en';
+    translatePage(currentLang);
+    
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === currentLang);
+      btn.addEventListener('click', () => {
+        currentLang = btn.dataset.lang;
+        localStorage.setItem('language', currentLang);
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        translatePage(currentLang);
+      });
+    });
+  </script>
 </body>
 </html>
