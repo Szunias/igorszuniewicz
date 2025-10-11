@@ -401,16 +401,15 @@
     /* === COMING SOON === */
     .project-card.coming-soon {
       cursor: not-allowed;
-      opacity: 0.6;
-      filter: grayscale(0.7);
     }
     
     .project-card.coming-soon:hover {
       transform: translateY(-6px) scale(1.01);
+      opacity: 0.7;
       filter: grayscale(0.8);
     }
     
-    .project-card.coming-soon .project-image::before {
+    .project-card.coming-soon:hover .project-image::before {
       content: '';
       position: absolute;
       top: 0;
@@ -460,13 +459,144 @@
     }
     
     /* === RESPONSIVE === */
+    @media (max-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+    }
+    
     @media (max-width: 768px) {
       .nav-links {
         display: none;
       }
       
+      .container {
+        padding: 0 1.5rem;
+      }
+      
+      .page-title {
+        font-size: clamp(2.5rem, 8vw, 3.5rem);
+      }
+      
+      .page-description {
+        font-size: 1.1rem;
+      }
+      
       .projects-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .project-card {
+        border-radius: 20px;
+      }
+      
+      .project-image {
+        aspect-ratio: 16 / 10;
+      }
+      
+      .project-content {
+        padding: 1.5rem;
+      }
+      
+      .project-title {
+        font-size: 1.35rem;
+      }
+      
+      .project-description {
+        font-size: 0.9rem;
+      }
+      
+      .filters {
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+      }
+      
+      .filter-btn {
+        padding: 0.65rem 1.2rem;
+        font-size: 0.85rem;
+      }
+      
+      .coming-soon-text {
+        font-size: 1rem;
+        padding: 0.65rem 1.2rem;
+      }
+      
+      .coming-soon-subtitle {
+        font-size: 0.8rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
+      }
+      
+      .page-title {
+        font-size: clamp(2rem, 10vw, 2.5rem);
+        margin-bottom: 0.75rem;
+      }
+      
+      .page-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .filters {
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .filter-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+        border-radius: 20px;
+      }
+      
+      .projects-grid {
+        gap: 1.25rem;
+      }
+      
+      .project-card {
+        border-radius: 16px;
+      }
+      
+      .project-content {
+        padding: 1.25rem;
+      }
+      
+      .project-title {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .project-description {
+        font-size: 0.875rem;
+        line-height: 1.6;
+      }
+      
+      .project-badge {
+        top: 0.75rem;
+        right: 0.75rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.7rem;
+        border-radius: 16px;
+      }
+      
+      .coming-soon-text {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+        border-radius: 10px;
+      }
+      
+      .coming-soon-subtitle {
+        font-size: 0.75rem;
+      }
+      
+      /* Touch-friendly hover states */
+      .project-card:active {
+        transform: scale(0.98);
       }
     }
   </style>
