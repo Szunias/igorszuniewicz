@@ -100,6 +100,109 @@
     html { scrollbar-gutter: stable; }
     html, body { overflow-x: hidden; background: transparent !important; }
 
+    /* Modern Masonry-style Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 980px) {
+      .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 736px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    /* Enhanced Project Cards */
+    .project-card {
+      position: relative;
+      background: rgba(20, 30, 40, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(24, 191, 239, 0.3);
+      border-color: rgba(24, 191, 239, 0.5);
+    }
+
+    .project-card .image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+    }
+
+    .project-card .image img,
+    .project-card .image video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-card:hover .image img,
+    .project-card:hover .image video {
+      transform: scale(1.08);
+    }
+
+    .project-card-content {
+      padding: 1.5rem;
+      background: linear-gradient(180deg, rgba(10, 15, 20, 0.9) 0%, rgba(15, 22, 30, 0.95) 100%);
+    }
+
+    .project-card-content h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+      transition: color 0.3s ease;
+    }
+
+    .project-card:hover .project-card-content h3 {
+      color: #18bfef;
+    }
+
+    .project-card-content p {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Stats badges hover effect */
+    .stat-badge {
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .stat-badge:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Hidden state for filtered projects */
+    .project-card.hidden {
+      display: none;
+    }
+
+    /* Loading skeleton (optional future enhancement) */
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
   </style>
   <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 </head>
@@ -193,36 +296,36 @@
       <section class="post projects-page" data-reveal>
         <header class="major">
           <h2>All Projects</h2>
-          <p id="bgWhite">Filter and sort to explore selected works.</p>
+          <p id="bgWhite">Selected works across music, sound design, game audio & development.</p>
         </header>
 
-        <div class="row projects-controls" style="align-items:center; gap: 1rem; margin-bottom: 1rem;">
-          <div>
-            <strong>Filter:</strong>
-            <button class="button small projects-filter-btn" data-filter="all">All</button>
-            <button class="button small projects-filter-btn" data-filter="music">Music</button>
-            <button class="button small projects-filter-btn" data-filter="sound-design">Sound Design</button>
-            <button class="button small projects-filter-btn" data-filter="game-audio">Game Audio</button>
-            <button class="button small projects-filter-btn" data-filter="3d-design">3D Design</button>
+        <!-- Quick Stats -->
+        <div class="projects-stats" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; justify-content: center;">
+          <div class="stat-badge" style="background: rgba(154, 108, 255, 0.15); border: 1px solid rgba(154, 108, 255, 0.3); padding: 0.8rem 1.5rem; border-radius: 12px; text-align: center;">
+            <div style="font-size: 1.8rem; font-weight: 900; color: #9a6cff;">4</div>
+            <div style="font-size: 0.85rem; color: #bbb; text-transform: uppercase; letter-spacing: 1px;">Music</div>
           </div>
-          <div>
-            <strong>Sort:</strong>
-            <select id="sort-select" class="projects-sort-select">
-              <option value="date-desc">Newest</option>
-              <option value="date-asc">Oldest</option>
-              <option value="title-asc">Title A–Z</option>
-              <option value="title-desc">Title Z–A</option>
-            </select>
+          <div class="stat-badge" style="background: rgba(24, 191, 239, 0.15); border: 1px solid rgba(24, 191, 239, 0.3); padding: 0.8rem 1.5rem; border-radius: 12px; text-align: center;">
+            <div style="font-size: 1.8rem; font-weight: 900; color: #18bfef;">3</div>
+            <div style="font-size: 0.85rem; color: #bbb; text-transform: uppercase; letter-spacing: 1px;">Sound Design</div>
           </div>
-          <div class="proj-view" style="display:flex; align-items:center; gap:.5rem;">
-            <strong>View:</strong>
-            <button class="button small projects-view-btn" data-view="grid">Grid</button>
-            <button class="button small projects-view-btn" data-view="list">List</button>
+          <div class="stat-badge" style="background: rgba(255, 140, 0, 0.15); border: 1px solid rgba(255, 140, 0, 0.3); padding: 0.8rem 1.5rem; border-radius: 12px; text-align: center;">
+            <div style="font-size: 1.8rem; font-weight: 900; color: #ff8c00;">4</div>
+            <div style="font-size: 0.85rem; color: #bbb; text-transform: uppercase; letter-spacing: 1px;">Game Audio</div>
           </div>
-          <div class="proj-search-wrap" style="margin-left:auto; display:flex; align-items:center; gap:.5rem;">
-            <input type="search" id="projects-search" class="proj-search" placeholder="Search projects…" aria-label="Search projects" />
-            <span id="projects-count" class="proj-count" aria-live="polite"></span>
+          <div class="stat-badge" style="background: rgba(78, 205, 196, 0.15); border: 1px solid rgba(78, 205, 196, 0.3); padding: 0.8rem 1.5rem; border-radius: 12px; text-align: center;">
+            <div style="font-size: 1.8rem; font-weight: 900; color: #4ecdc4;">1</div>
+            <div style="font-size: 0.85rem; color: #bbb; text-transform: uppercase; letter-spacing: 1px;">3D Design</div>
           </div>
+        </div>
+
+        <!-- Simple Search Bar -->
+        <div class="projects-search-bar" style="max-width: 600px; margin: 0 auto 2.5rem; position: relative;">
+          <input type="search" id="projects-search" placeholder="🔍 Search projects by name or type..." aria-label="Search projects" 
+            style="width: 100%; padding: 1rem 1.5rem; font-size: 1rem; background: rgba(20, 30, 40, 0.6); border: 1px solid rgba(24, 191, 239, 0.3); border-radius: 50px; color: #e0e0e0; outline: none; transition: all 0.3s ease;" 
+            onfocus="this.style.borderColor='#18bfef'; this.style.boxShadow='0 0 20px rgba(24, 191, 239, 0.3)';" 
+            onblur="this.style.borderColor='rgba(24, 191, 239, 0.3)'; this.style.boxShadow='none';" />
+          <span id="projects-count" style="position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); color: #888; font-size: 0.9rem;" aria-live="polite"></span>
         </div>
 
         <div class="projects-grid" id="projects-list">
