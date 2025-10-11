@@ -289,6 +289,152 @@
       0%, 100% { opacity: 0.6; }
       50% { opacity: 0.9; }
     }
+    
+    /* Vines/Lianas */
+    .vines-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    .vine {
+      position: absolute;
+      width: 8px;
+      background: linear-gradient(to bottom, 
+        rgba(34, 80, 34, 0.8) 0%,
+        rgba(50, 100, 50, 0.7) 30%,
+        rgba(40, 90, 40, 0.6) 60%,
+        rgba(30, 70, 30, 0.5) 100%);
+      border-radius: 4px;
+      top: -20%;
+      opacity: 0;
+      animation: vineGrow 3s ease-out forwards;
+      transform-origin: top center;
+    }
+    
+    .vine::before,
+    .vine::after {
+      content: '';
+      position: absolute;
+      background: rgba(60, 120, 60, 0.6);
+      border-radius: 50%;
+    }
+    
+    /* Vine leaves */
+    .vine::before {
+      width: 15px;
+      height: 20px;
+      top: 30%;
+      left: -12px;
+      border-radius: 0 50% 50% 0;
+      animation: vineLeafSway 3s ease-in-out infinite;
+    }
+    
+    .vine::after {
+      width: 15px;
+      height: 20px;
+      top: 60%;
+      right: -12px;
+      border-radius: 50% 0 0 50%;
+      animation: vineLeafSway 3s ease-in-out infinite;
+      animation-delay: 0.5s;
+    }
+    
+    @keyframes vineGrow {
+      0% {
+        height: 0;
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.8;
+      }
+      100% {
+        height: 120vh;
+        opacity: 1;
+      }
+    }
+    
+    @keyframes vineLeafSway {
+      0%, 100% {
+        transform: rotate(0deg) scale(1);
+      }
+      50% {
+        transform: rotate(15deg) scale(1.1);
+      }
+    }
+    
+    /* Individual vine positioning and timing */
+    .vine:nth-child(1) {
+      left: 5%;
+      width: 10px;
+      animation-delay: 0.2s;
+      animation-duration: 2.8s;
+    }
+    
+    .vine:nth-child(2) {
+      left: 18%;
+      width: 7px;
+      animation-delay: 0.5s;
+      animation-duration: 3.2s;
+    }
+    
+    .vine:nth-child(3) {
+      left: 35%;
+      width: 9px;
+      animation-delay: 0.3s;
+      animation-duration: 3s;
+    }
+    
+    .vine:nth-child(4) {
+      right: 35%;
+      width: 8px;
+      animation-delay: 0.7s;
+      animation-duration: 2.9s;
+    }
+    
+    .vine:nth-child(5) {
+      right: 18%;
+      width: 11px;
+      animation-delay: 0.4s;
+      animation-duration: 3.1s;
+    }
+    
+    .vine:nth-child(6) {
+      right: 5%;
+      width: 7px;
+      animation-delay: 0.6s;
+      animation-duration: 3.3s;
+    }
+    
+    /* Vine tendrils (curly parts) */
+    .vine-tendril {
+      position: absolute;
+      width: 3px;
+      height: 40px;
+      background: transparent;
+      border: 2px solid rgba(50, 100, 50, 0.5);
+      border-radius: 50%;
+      animation: tendrilCurl 2s ease-in-out infinite;
+    }
+    
+    .vine:nth-child(1) .vine-tendril { top: 40%; left: -8px; }
+    .vine:nth-child(2) .vine-tendril { top: 50%; right: -8px; animation-delay: 0.3s; }
+    .vine:nth-child(3) .vine-tendril { top: 35%; left: -8px; animation-delay: 0.6s; }
+    .vine:nth-child(4) .vine-tendril { top: 45%; right: -8px; animation-delay: 0.2s; }
+    .vine:nth-child(5) .vine-tendril { top: 55%; left: -8px; animation-delay: 0.5s; }
+    .vine:nth-child(6) .vine-tendril { top: 38%; right: -8px; animation-delay: 0.4s; }
+    
+    @keyframes tendrilCurl {
+      0%, 100% {
+        transform: rotate(0deg);
+        border-radius: 50% 50% 50% 0;
+      }
+      50% {
+        transform: rotate(180deg);
+        border-radius: 0 50% 50% 50%;
+      }
+    }
   </style>
   <title>Akantilado — Sound Design</title>
   <meta charset="utf-8" />
@@ -883,6 +1029,26 @@
   <div class="jungle-entrance">
     <div class="jungle-vignette"></div>
     <div class="light-rays"></div>
+    <div class="vines-container">
+      <div class="vine">
+        <div class="vine-tendril"></div>
+      </div>
+      <div class="vine">
+        <div class="vine-tendril"></div>
+      </div>
+      <div class="vine">
+        <div class="vine-tendril"></div>
+      </div>
+      <div class="vine">
+        <div class="vine-tendril"></div>
+      </div>
+      <div class="vine">
+        <div class="vine-tendril"></div>
+      </div>
+      <div class="vine">
+        <div class="vine-tendril"></div>
+      </div>
+    </div>
     <div class="leaves-container">
       <div class="leaf"></div>
       <div class="leaf"></div>
