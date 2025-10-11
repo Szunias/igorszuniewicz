@@ -35,8 +35,16 @@
     "url": "https://igorszuniewicz.com/projects/akantilado.html"
   }
   </script>
-  <!-- All styles are now inline below -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20251011" />
   <style>
+    /* Background with jungle image */
+    html, body {
+      background: 
+        linear-gradient(180deg, rgba(11, 20, 16, 0.85) 0%, rgba(15, 29, 20, 0.90) 60%, rgba(11, 20, 16, 0.95) 100%),
+        url('../assets/images/projects-akantilado/background/Jungle.jpg') center/cover no-repeat fixed !important;
+    }
+    
     /* Akantilado: toned-down, professional green accent */
     .akantilado-hero {
       text-align: center;
@@ -325,45 +333,8 @@
         height: 200px;
       }
     }
-    
-    /* === BACK BUTTON === */
-    .back-button {
-      position: fixed;
-      top: 2rem;
-      left: 2rem;
-      z-index: 100;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 0.8rem 1.5rem;
-      background: rgba(16, 28, 20, 0.7);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(50, 205, 50, 0.4);
-      border-radius: 50px;
-      color: #90EE90;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    }
-    
-    .back-button:hover {
-      background: rgba(30, 60, 20, 0.8);
-      border-color: #FFD700;
-      transform: translateX(-5px);
-      box-shadow: 0 6px 30px rgba(255, 165, 0, 0.4);
-      color: #FFD700;
-    }
-    
-    .back-button::before {
-      content: '←';
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
   </style>
+  <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
   <div id="lang-fixed" role="group" aria-label="Language selection">
@@ -402,7 +373,6 @@
     </button>
   </div>
 
-  <div class="jungle-background" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:linear-gradient(180deg,rgba(11,20,16,0.85) 0%,rgba(15,29,20,0.90) 60%,rgba(11,20,16,0.95) 100%),url('../assets/images/projects-akantilado/background/Jungle.jpg') center/cover no-repeat fixed;"></div>
   <div class="bg-gradient"></div>
   <div class="bg-orbs">
     <div class="orb blue" style="top:10%;left:8%"></div>
@@ -616,6 +586,8 @@
       </ul>
     </div>
   </div>
-  <!-- All scripts are now inline below -->
+  <script src="../assets/js/components/enhancements.js?v=20250210"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/components/lightbox.js"></script>
 </body>
 </html>
