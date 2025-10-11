@@ -395,11 +395,11 @@
       <nav class="nav">
         <a href="index.html" class="logo">Igor Szuniewicz</a>
         <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="projects/index.html">Projects</a></li>
-          <li><a href="music.html">Music</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="about.html" class="active" data-i18n="nav_about">About</a></li>
+          <li><a href="projects/index.html" data-i18n="nav_projects">Projects</a></li>
+          <li><a href="music.html" data-i18n="nav_music">Music</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
           <li class="lang-switcher">
             <button class="lang-btn active" data-lang="en">EN</button>
             <button class="lang-btn" data-lang="pl">PL</button>
@@ -511,25 +511,7 @@
       }
     });
   </script>
+  <script src="assets/js/translations.js"></script>
   <script src="assets/js/page-transitions.js"></script>
-  <script type="module">
-    import { translatePage } from './assets/js/i18n/translate.js';
-    
-    // Aktywuj tłumaczenia
-    let currentLang = localStorage.getItem('language') || 'en';
-    translatePage(currentLang);
-    
-    // Language switcher
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.lang === currentLang);
-      btn.addEventListener('click', () => {
-        currentLang = btn.dataset.lang;
-        localStorage.setItem('language', currentLang);
-        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        translatePage(currentLang);
-      });
-    });
-  </script>
 </body>
 </html>
