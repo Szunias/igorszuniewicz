@@ -38,6 +38,9 @@
     "downloadUrl": "https://github.com/Szunias/UnrealEngineRebuilder"
   }
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20251011" />
   <link rel="stylesheet" href="../assets/css/professional-animations.css?v=20251005" />
@@ -45,324 +48,325 @@
     <link rel="stylesheet" href="../assets/css/noscript.css" />
   </noscript>
   <style>
-    /* CRITICAL: Background elements with complete positioning */
-    .bg-gradient {
-      position: fixed !important;
-      inset: 0 !important;
-      z-index: 0 !important;
-      pointer-events: none !important;
-      display: block !important;
-      width: 100% !important;
-      height: 100% !important;
-      opacity: 1 !important;
-    }
-
-    .bg-orbs {
-      position: fixed !important;
-      inset: 0 !important;
-      z-index: 1 !important;
-      pointer-events: none !important;
-      display: block !important;
-      width: 100% !important;
-      height: 100% !important;
-      opacity: 1 !important;
-    }
-
-    .bg-orbs .orb {
-      position: absolute !important;
-      width: 300px !important;
-      height: 300px !important;
-      border-radius: 50% !important;
-      filter: blur(80px) !important;
-      opacity: 0.4 !important;
-      display: block !important;
-    }
-
-    .bg-orbs .orb.blue {
-      background: radial-gradient(circle, #18bfef 0%, transparent 70%) !important;
-    }
-
-    .bg-orbs .orb.cyan {
-      background: radial-gradient(circle, #58b6ff 0%, transparent 70%) !important;
-    }
-
-    .bg-orbs .orb.teal {
-      background: radial-gradient(circle, #4ecdc4 0%, transparent 70%) !important;
-    }
-
-    .bg-waves {
-      position: fixed !important;
-      bottom: 0 !important;
-      left: 0 !important;
-      width: 100% !important;
-      height: 50% !important;
-      z-index: 1 !important;
-      pointer-events: none !important;
-      display: block !important;
-      opacity: 1 !important;
-    }
-
-    .bg-eq {
-      position: fixed !important;
-      bottom: 0 !important;
-      left: 0 !important;
-      width: 100% !important;
-      height: 100px !important;
-      z-index: 2 !important;
-      pointer-events: none !important;
-      display: block !important;
-      opacity: 0.3 !important;
-    }
-
-    .bg-glow {
-      position: fixed !important;
-      inset: 0 !important;
-      z-index: 1 !important;
-      pointer-events: none !important;
-      display: block !important;
-      opacity: 1 !important;
-    }
-
-    /* Page background: modern developer tool theme */
-    html, body { 
-      background: linear-gradient(180deg, #0a0f14 0%, #0d1419 55%, #111822 100%) !important;
-      background-color: #0c1218 !important;
+    /* Clean Professional Design - Updated 2025-10-11 v2 */
+    /* Override main.css background */
+    html,
+    body {
       min-height: 100vh;
       overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      background: #0f1419;
+      position: relative;
     }
+
     #wrapper {
       background: transparent !important;
+      position: relative;
+      z-index: 1;
     }
+
     #main {
       background: transparent !important;
-    }
-    .bg-gradient { 
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(140deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.0) 40%, rgba(255,255,255,0.0) 100%),
-        radial-gradient(900px 600px at 15% 12%, rgba(24,191,239,0.06), transparent 60%),
-        radial-gradient(900px 600px at 85% 18%, rgba(154,108,255,0.05), transparent 65%),
-        radial-gradient(1200px 800px at 50% 120%, rgba(0,0,0,0.45), transparent 55%),
-        linear-gradient(180deg, #0b141a 0%, #0a0f14 100%) !important;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2em;
+      position: relative;
+      z-index: 1;
     }
 
-    /* UnrealEngineRebuilder Modern Developer Theme */
+    /* Hero Section - Clean & Minimal */
     .ue-hero {
       text-align: center;
-      padding: 2em 0;
-      background: linear-gradient(135deg, #0d1820 0%, #162533 55%, #0d1820 100%);
-      border-radius: 15px;
-      margin-bottom: 2em;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .ue-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(24, 191, 239, 0.08) 0%, transparent 55%),
-        radial-gradient(circle at 70% 80%, rgba(154, 108, 255, 0.06) 0%, transparent 55%);
-      pointer-events: none;
+      padding: 3em 2em;
+      background: rgba(26, 31, 38, 0.85);
+      border-radius: 12px;
+      margin-bottom: 3em;
+      border: 1px solid #2a3038;
     }
 
     .ue-meta {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1em;
-      margin-bottom: 2em;
-      position: relative;
-      z-index: 2;
+      margin: 2em 0;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .ue-hero .meta-badge {
-      background: rgba(24, 191, 239, 0.08);
-      border: 1px solid rgba(24, 191, 239, 0.25);
-      padding: 0.8em 1.2em;
+      background: rgba(34, 41, 48, 0.9);
+      border: 1px solid #2d3640;
+      padding: 1em;
       border-radius: 8px;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
     }
 
     .ue-hero .meta-badge:hover {
-      background: rgba(24, 191, 239, 0.15);
-      border-color: rgba(24, 191, 239, 0.4);
-      transform: translateY(-2px);
+      background: #2a323b;
+      border-color: #4a94d0;
     }
 
     .ue-hero .meta-label {
       display: block;
-      font-size: 0.9em;
-      color: #888;
-      margin-bottom: 0.3em;
+      font-size: 0.75em;
+      color: #7a8591;
+      margin-bottom: 0.5em;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
+      font-weight: 600;
     }
 
     .ue-hero .meta-value {
       display: block;
       font-weight: 600;
-      color: #18bfef;
-      font-size: 1.1em;
+      color: #e0e6ed;
+      font-size: 1em;
     }
 
     .ue-hero h2 {
-      position: relative;
-      z-index: 2;
-      margin: 1em 0 0.5em 0;
-      color: #f5f5f5;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      margin: 0 0 0.5em 0;
+      color: #ffffff;
+      font-size: 2.5em;
+      font-weight: 700;
     }
 
     .ue-tagline {
-      position: relative;
-      z-index: 2;
-      font-size: 1.2em;
-      color: #18bfef;
-      font-style: italic;
+      font-size: 1.1em;
+      color: #8a9199;
       margin-top: 1em;
+      font-weight: 400;
     }
 
     .ue-hero-image {
-      margin: 2em 0;
-      text-align: center;
-      border-radius: 15px;
+      margin: 3em 0 2em 0;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      border: 1px solid #2a3038;
     }
 
     .ue-hero-image img {
       width: 100%;
       height: auto;
-      border-radius: 15px;
-      transition: transform 0.3s ease;
-    }
-
-    .ue-hero-image:hover img {
-      transform: scale(1.02);
+      display: block;
     }
 
     .ue-content {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1em;
     }
 
     .ue-section {
-      margin: 3em 0;
-      padding: 2em;
-      background: linear-gradient(135deg, rgba(20, 35, 50, 0.4) 0%, rgba(25, 40, 55, 0.3) 100%);
-      border-radius: 15px;
-      border: 1px solid rgba(24, 191, 239, 0.15);
-      backdrop-filter: blur(5px);
+      margin: 2.5em 0;
+      padding: 2.5em;
+      background: rgba(26, 31, 38, 0.85);
+      border-radius: 12px;
+      border: 1px solid #2a3038;
     }
 
     .ue-section h3 {
-      color: #18bfef;
-      border-bottom: 2px solid rgba(24, 191, 239, 0.3);
-      padding-bottom: 0.5em;
-      margin-bottom: 1.5em;
+      color: #ffffff;
+      font-size: 1.8em;
+      font-weight: 600;
+      margin: 0 0 1.5em 0;
+      padding-bottom: 0.75em;
+      border-bottom: 2px solid #2d3640;
     }
 
     .ue-features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2em;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5em;
       margin-top: 2em;
     }
 
     .feature-item {
-      background: rgba(20, 35, 50, 0.3);
-      padding: 1.5em;
+      background: rgba(34, 41, 48, 0.9);
+      padding: 2em;
       border-radius: 10px;
-      border: 1px solid rgba(24, 191, 239, 0.15);
-      transition: all 0.3s ease;
+      border: 1px solid #2d3640;
+      transition: all 0.2s ease;
     }
 
     .feature-item:hover {
-      background: rgba(25, 40, 55, 0.4);
-      border-color: rgba(24, 191, 239, 0.3);
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+      border-color: #4a94d0;
+      transform: translateY(-2px);
     }
 
     .feature-item h4 {
-      color: #18bfef;
-      margin-bottom: 1em;
+      color: #ffffff;
+      margin: 0.5em 0 1em 0;
       font-size: 1.2em;
+      font-weight: 600;
     }
 
     .feature-icon {
       font-size: 2.5em;
-      color: #18bfef;
-      margin-bottom: 0.5em;
+      margin-bottom: 0.3em;
       display: block;
+      opacity: 0.9;
+    }
+
+    /* GitHub Button with Circle Background */
+    .github-button-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 2em 0;
+    }
+
+    .github-circle-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(74, 148, 208, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: -1;
+      transition: all 0.4s ease;
+    }
+
+    .github-button-wrapper:hover .github-circle-bg {
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(74, 148, 208, 0.25) 0%, transparent 70%);
+    }
+
+    .github-hint {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.85em;
+      color: #8a9199;
+      white-space: nowrap;
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .github-arrow {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5em;
+      color: #4a94d0;
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    .github-button-wrapper:hover .github-hint,
+    .github-button-wrapper:hover .github-arrow {
+      opacity: 1;
     }
 
     .ue-button {
       display: inline-block;
-      padding: 1em 2em;
-      background: linear-gradient(135deg, #18bfef, #1690d0);
+      padding: 1em 2.5em;
+      background: #4a94d0;
       color: #fff !important;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 50px;
       font-weight: 600;
+      font-size: 1em;
       transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: none;
+      box-shadow: 0 4px 15px rgba(74, 148, 208, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ue-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .ue-button:hover::before {
+      left: 100%;
     }
 
     .ue-button:hover {
-      background: linear-gradient(135deg, #1690d0, #18bfef);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(24, 191, 239, 0.3);
+      background: #5aa4e0;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(74, 148, 208, 0.5);
     }
 
     .ue-button i {
-      margin-right: 0.5em;
+      margin-right: 0.6em;
+      font-size: 1.1em;
+    }
+
+    /* Secondary button style */
+    .ue-button.secondary {
+      background: #2a323b;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .ue-button.secondary:hover {
+      background: #343d48;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
     }
 
     .tech-stack {
       display: flex;
       flex-wrap: wrap;
-      gap: 1em;
-      margin-top: 1em;
+      gap: 0.75em;
+      margin-top: 1.5em;
     }
 
     .tech-badge {
-      background: rgba(24, 191, 239, 0.1);
-      border: 1px solid rgba(24, 191, 239, 0.3);
-      padding: 0.5em 1em;
-      border-radius: 20px;
-      font-size: 0.9em;
-      color: #18bfef;
-      font-weight: 600;
+      background: #222930;
+      border: 1px solid #2d3640;
+      padding: 0.6em 1.2em;
+      border-radius: 6px;
+      font-size: 0.85em;
+      color: #c9d4e0;
+      font-weight: 500;
     }
 
     .workflow-list {
       list-style: none;
       padding: 0;
+      margin: 1em 0;
     }
 
     .workflow-list li {
-      padding: 0.8em 0;
-      border-bottom: 1px solid rgba(24, 191, 239, 0.1);
+      padding: 0.9em 0;
+      border-bottom: 1px solid #2d3640;
       display: flex;
       align-items: center;
+      color: #c9d4e0;
+    }
+
+    .workflow-list li:last-child {
+      border-bottom: none;
     }
 
     .workflow-list li:before {
-      content: "✓";
-      color: #18bfef;
-      font-weight: bold;
-      font-size: 1.3em;
+      content: "●";
+      color: #4a94d0;
+      font-size: 0.8em;
       margin-right: 1em;
+      flex-shrink: 0;
     }
 
     .stats-grid {
@@ -373,41 +377,67 @@
     }
 
     .stat-card {
-      background: rgba(20, 35, 50, 0.4);
-      padding: 1.5em;
+      background: #222930;
+      padding: 2em;
       border-radius: 10px;
-      border: 1px solid rgba(24, 191, 239, 0.2);
+      border: 1px solid #2d3640;
       text-align: center;
     }
 
     .stat-value {
-      font-size: 2.5em;
-      color: #18bfef;
-      font-weight: bold;
+      font-size: 2.8em;
+      color: #4a94d0;
+      font-weight: 700;
       display: block;
-      margin-bottom: 0.3em;
+      margin-bottom: 0.4em;
     }
 
     .stat-label {
-      color: #aaa;
-      font-size: 0.9em;
+      color: #8a9199;
+      font-size: 0.85em;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
+      font-weight: 500;
     }
 
-    /* Ensure content is visible */
+    /* Typography */
     .ue-content p,
     .ue-section p,
     .feature-item p {
-      color: #e0e0e0 !important;
+      color: #c9d4e0;
+      line-height: 1.7;
+      font-size: 1em;
     }
 
-    .ue-section h3,
-    .feature-item h4 {
-      color: #18bfef !important;
+    header.major h2 {
+      font-family: 'Rajdhani', 'Orbitron', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 3.5em;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5em;
+      background: linear-gradient(135deg, #18bfef 0%, #6dd5ed 50%, #18bfef 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(24, 191, 239, 0.3);
+      animation: gradientShift 8s ease infinite;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
 
-    /* Dropdown menu fix - ensure it works properly */
+    header.major p {
+      color: #8a9199 !important;
+      font-size: 1.2em;
+    }
+
+    /* Dropdown menu */
     .dropdown {
       position: relative;
       display: inline-block;
@@ -420,8 +450,8 @@
 
     .dropdown-toggle::after {
       content: " ▼";
-      font-size: 0.7em;
-      opacity: 0.7;
+      font-size: 0.65em;
+      opacity: 0.6;
       margin-left: 0.3em;
     }
 
@@ -429,24 +459,22 @@
       position: absolute;
       top: calc(100% + 0px);
       left: 0;
-      min-width: 240px;
-      background: rgba(10, 16, 22, 0.98);
-      border: 1px solid rgba(24, 191, 239, 0.3);
-      border-radius: 12px;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(16px);
+      min-width: 220px;
+      background: #1a1f26;
+      border: 1px solid #2d3640;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
       z-index: 10000;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-8px);
+      transform: translateY(-4px);
       transition: opacity 0.15s ease, visibility 0.15s ease, transform 0.15s ease;
       list-style: none;
-      padding: 0.6em 0;
+      padding: 0.5em 0;
       margin: 0;
       pointer-events: none;
     }
 
-    /* Show dropdown on hover with expanded hit area */
     .dropdown:hover .dropdown-menu,
     .dropdown-menu.show {
       opacity: 1 !important;
@@ -455,16 +483,6 @@
       pointer-events: auto !important;
     }
 
-    /* Expand clickable area to prevent gaps */
-    .dropdown {
-      padding-bottom: 0px;
-    }
-
-    .dropdown:hover {
-      position: relative;
-    }
-
-    /* Bridge gap between toggle and menu */
     .dropdown::after {
       content: '';
       position: absolute;
@@ -482,87 +500,96 @@
 
     .dropdown-menu a {
       display: block;
-      padding: 0.8em 1.5em;
-      color: #e9f7ff;
+      padding: 0.75em 1.25em;
+      color: #c9d4e0;
       text-decoration: none;
-      transition: all 0.2s ease;
-      border-radius: 0;
-      border: none;
-      font-size: 1em;
+      transition: all 0.15s ease;
+      font-size: 0.95em;
       font-weight: 500;
     }
 
     .dropdown-menu a:hover {
-      background: rgba(24, 191, 239, 0.25);
-      color: #18bfef;
+      background: #222930;
+      color: #ffffff;
     }
 
     .disabled-link {
-      color: #666 !important;
+      color: #555 !important;
       cursor: not-allowed !important;
       opacity: 0.5;
     }
 
     .disabled-link:hover {
-      background: rgba(100, 100, 100, 0.1) !important;
-      color: #888 !important;
+      background: transparent !important;
+      color: #555 !important;
     }
 
-    /* CRITICAL FIX: Force preloader to be hidden immediately */
+    /* Preloader and visibility */
     #preloader {
       display: none !important;
-      opacity: 0 !important;
-      visibility: hidden !important;
     }
 
-    /* Force content and background visibility immediately - no JS required */
     #wrapper, #main, article, .post {
       opacity: 1 !important;
       visibility: visible !important;
-      display: block !important;
     }
 
-    /* Ensure all background layers are immediately visible */
+    /* Blueprint Grid animation */
+    @keyframes blueprintShift {
+      0% { 
+        background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 30% 30%, 0 0;
+      }
+      100% { 
+        background-position: 80px 80px, 80px 80px, 20px 20px, 20px 20px, 80px 80px, 35% 35%, 0 0;
+      }
+    }
+
+    /* Hide other background elements */
     .bg-gradient,
     .bg-orbs,
     .bg-waves,
     .bg-eq,
     .bg-glow {
-      opacity: 1 !important;
-      visibility: visible !important;
-      display: block !important;
-      pointer-events: none !important;
-    }
-
-    /* Force SVG waves to render */
-    svg.bg-waves {
-      display: block !important;
-      opacity: 1 !important;
-    }
-
-    /* Override any theme or transition delays */
-    * {
-      animation-play-state: running !important;
-    }
-
-    /* CRITICAL: Kill theme background that conflicts with our custom bg */
-    #wrapper > .bg,
-    #wrapper > .bg.fixed {
       display: none !important;
-      opacity: 0 !important;
-      visibility: hidden !important;
-      background: none !important;
     }
 
-    /* Ensure our body background is visible */
-    body {
-      background: linear-gradient(180deg, #0a0f14 0%, #0d1419 55%, #111822 100%) !important;
-      background-color: #0c1218 !important;
+    /* Button styling */
+    .button {
+      background: #222930;
+      color: #c9d4e0 !important;
+      border: 1px solid #2d3640;
+      padding: 0.8em 1.6em;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      display: inline-block;
+    }
+
+    .button:hover {
+      background: #2a323b;
+      border-color: #4a94d0;
+      color: #ffffff !important;
     }
   </style>
   <link rel="stylesheet" href="../assets/css/preloader.css">
 </head>
 <body>
+  <!-- Blueprint Grid Background -->
+  <div id="blueprint-bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;
+    background:
+      linear-gradient(90deg, transparent 79px, rgba(24,191,239,0.08) 79px, rgba(24,191,239,0.08) 80px, transparent 80px),
+      linear-gradient(0deg, transparent 79px, rgba(24,191,239,0.08) 79px, rgba(24,191,239,0.08) 80px, transparent 80px),
+      linear-gradient(90deg, transparent 19px, rgba(24,191,239,0.04) 19px, rgba(24,191,239,0.04) 20px, transparent 20px),
+      linear-gradient(0deg, transparent 19px, rgba(24,191,239,0.04) 19px, rgba(24,191,239,0.04) 20px, transparent 20px),
+      radial-gradient(circle at 80px 80px, rgba(24,191,239,0.15) 3px, transparent 3px),
+      radial-gradient(ellipse 1200px 900px at 30% 30%, rgba(24,191,239,0.06), transparent 60%),
+      linear-gradient(180deg, #08090d 0%, #0a0e13 100%);
+    background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px, 80px 80px, 100% 100%, 100% 100%;
+    background-position: 0 0;
+    animation: blueprintShift 30s linear infinite;">
+  </div>
+
   <div id="lang-fixed" role="group" aria-label="Language selection">
     <button type="button" data-lang="en" aria-label="Switch to English" aria-pressed="true">
       <span class="flag" aria-hidden="true">
@@ -599,34 +626,6 @@
     </button>
   </div>
 
-  <div id="preloader"></div>
-  <div class="bg-gradient"></div>
-  <div class="bg-orbs">
-    <div class="orb blue" style="top:10%;left:8%"></div>
-    <div class="orb cyan" style="top:60%;left:75%"></div>
-    <div class="orb teal" style="top:75%;left:15%"></div>
-  </div>
-  <svg class="bg-waves" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <defs>
-      <linearGradient id="gradWave1" x1="0%" x2="100%" y1="0%" y2="0%">
-        <stop offset="0%" stop-color="#18bfef" stop-opacity="0.25"/>
-        <stop offset="100%" stop-color="#58b6ff" stop-opacity="0.1"/>
-      </linearGradient>
-      <linearGradient id="gradWave2" x1="0%" x2="100%" y1="0%" y2="0%">
-        <stop offset="0%" stop-color="#9a6cff" stop-opacity="0.2"/>
-        <stop offset="100%" stop-color="#18bfef" stop-opacity="0.08"/>
-      </linearGradient>
-      <linearGradient id="gradWave3" x1="0%" x2="100%" y1="0%" y2="0%">
-        <stop offset="0%" stop-color="#ff6ea9" stop-opacity="0.18"/>
-        <stop offset="100%" stop-color="#9a6cff" stop-opacity="0.06"/>
-      </linearGradient>
-    </defs>
-    <path class="wave-path wave-1" fill="url(#gradWave1)" d="M0,280 C200,260 400,300 600,280 C800,260 1000,300 1200,280 L1200,600 L0,600 Z"></path>
-    <path class="wave-path wave-2" fill="url(#gradWave2)" d="M0,320 C250,300 450,340 650,320 C850,300 1050,340 1200,320 L1200,600 L0,600 Z"></path>
-    <path class="wave-path wave-3" fill="url(#gradWave3)" d="M0,360 C300,340 500,380 700,360 C900,340 1100,380 1200,360 L1200,600 L0,600 Z"></path>
-  </svg>
-  <canvas class="bg-eq" aria-hidden="true"></canvas>
-  <div class="bg-glow"></div>
   <div id="wrapper" class="fade-in">
     <header id="header">
       <a href="../index.html" class="logo">Igor Szuniewicz</a>
@@ -685,11 +684,16 @@
 
             <p class="ue-tagline" data-i18n="ue_tagline">Born from frustration, evolved into a powerful workflow automation suite</p>
 
-            <div style="margin-top: 2em; display: flex; gap: 1em; justify-content: center; flex-wrap: wrap;">
-              <a href="https://github.com/Szunias/UnrealEngineRebuilder" target="_blank" rel="noopener noreferrer" class="ue-button">
-                <i class="fab fa-github"></i><span data-i18n="ue_button_github">View on GitHub</span>
-              </a>
-              <a href="https://github.com/Szunias/UnrealEngineRebuilder/releases" target="_blank" rel="noopener noreferrer" class="ue-button">
+            <div style="margin-top: 3em; display: flex; gap: 2em; justify-content: center; align-items: center; flex-wrap: wrap;">
+              <div class="github-button-wrapper">
+                <div class="github-circle-bg"></div>
+                <div class="github-hint" data-i18n="ue_github_hint">Click to view GitHub project</div>
+                <div class="github-arrow">↓</div>
+                <a href="https://github.com/Szunias/UnrealEngineRebuilder" target="_blank" rel="noopener noreferrer" class="ue-button">
+                  <i class="fab fa-github"></i><span data-i18n="ue_button_github">View on GitHub</span>
+                </a>
+              </div>
+              <a href="https://github.com/Szunias/UnrealEngineRebuilder/releases" target="_blank" rel="noopener noreferrer" class="ue-button secondary">
                 <i class="fas fa-download"></i><span data-i18n="ue_button_download">Download Latest Release</span>
               </a>
             </div>
@@ -817,11 +821,11 @@
           <div class="ue-section" style="text-align: center;">
             <h3 data-i18n="ue_cta_title">Get Started</h3>
             <p data-i18n="ue_cta_desc">Download the latest release, place it next to your .uproject file, and start automating your workflow today. It's completely free and open source.</p>
-            <div style="margin-top: 2em; display: flex; gap: 1em; justify-content: center; flex-wrap: wrap;">
+            <div style="margin-top: 2em; display: flex; gap: 2em; justify-content: center; flex-wrap: wrap;">
               <a href="https://github.com/Szunias/UnrealEngineRebuilder/releases" target="_blank" rel="noopener noreferrer" class="ue-button">
                 <i class="fas fa-download"></i><span data-i18n="ue_cta_download">Download Now</span>
               </a>
-              <a href="https://github.com/Szunias/UnrealEngineRebuilder" target="_blank" rel="noopener noreferrer" class="ue-button">
+              <a href="https://github.com/Szunias/UnrealEngineRebuilder" target="_blank" rel="noopener noreferrer" class="ue-button secondary">
                 <i class="fab fa-github"></i><span data-i18n="ue_cta_github">View Source Code</span>
               </a>
             </div>

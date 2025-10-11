@@ -687,6 +687,21 @@ document.addEventListener('DOMContentLoaded', function() {
       nl: 'Een korte blik op wie ik ben en mijn passie voor audio en technologie.',
       en: 'A brief insight into who I am and my passion for audio and technology.'
     },
+    // New intro section
+    intro_greeting: { pl: 'Cześć, jestem Igor.', nl: 'Hallo, ik ben Igor.', en: 'Hi, I\'m Igor.' },
+    intro_headline_1: { pl: 'Tworzę', nl: 'Ik creëer', en: 'I create' },
+    intro_headline_2: { pl: 'dźwięk do gier i muzykę.', nl: 'geluid voor games & muziek.', en: 'sound for games & music.' },
+    intro_subtitle: {
+      pl: 'Inżynier dźwięku i kompozytor specjalizujący się w <strong>interaktywnych systemach dźwiękowych</strong>, <strong>implementacji audio w grach</strong> oraz <strong>rozwoju DSP</strong>.',
+      nl: 'Audio-engineer & componist gespecialiseerd in <strong>interactieve geluidssystemen</strong>, <strong>game audio-implementatie</strong> en <strong>DSP-ontwikkeling</strong>.',
+      en: 'Audio engineer & composer specializing in <strong>interactive sound systems</strong>, <strong>game audio implementation</strong>, and <strong>DSP development</strong>.'
+    },
+    intro_card_gameaudio_title: { pl: 'Audio w grach', nl: 'Game Audio', en: 'Game Audio' },
+    intro_card_gameaudio_desc: { pl: 'Implementacja i design', nl: 'Implementatie & Design', en: 'Implementation & Design' },
+    intro_card_music_title: { pl: 'Muzyka', nl: 'Muziek', en: 'Music' },
+    intro_card_music_desc: { pl: 'Interaktywna i scoring', nl: 'Interactief & Scoring', en: 'Interactive & Scoring' },
+    intro_card_tools_title: { pl: 'Narzędzia audio', nl: 'Audio-tools', en: 'Audio Tools' },
+    intro_card_tools_desc: { pl: 'VST i narzędzia pipeline', nl: 'VST & Pipeline Dev', en: 'VST & Pipeline Dev' },
     cv_title: { pl: 'O mnie / CV', nl: 'Over mij / CV', en: 'About Me / Curriculum Vitae' },
     cv_lead: {
       pl: 'Pół-chronologiczny przegląd mojego życia, edukacji i pracy zawodowej.',
@@ -1288,7 +1303,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Unreal Engine Rebuilder project translations
     ue_title: { en: 'Unreal Engine Rebuilder', pl: 'Unreal Engine Rebuilder', nl: 'Unreal Engine Rebuilder' },
     ue_lead: { en: 'Professional project management tool that automates Unreal Engine workflows with one click.', pl: 'Profesjonalne narzędzie do zarządzania projektami, które automatyzuje przepływy pracy Unreal Engine jednym kliknięciem.', nl: 'Professionele projectbeheertool die Unreal Engine workflows automatiseert met één klik.' },
-    ue_tagline: { en: 'Born from frustration, evolved into a powerful workflow automation suite', pl: 'Powstało z frustracji, przekształciło się w potężny pakiet automatyzacji przepływu pracy', nl: 'Geboren uit frustratie, geëvolueerd tot een krachtige workflow automatiseringssuite' },
+    ue_tagline: { en: 'Born from frustration, evolved into a powerful workflow automation suite', pl: '✨ Z frustracji w innowację — automatyzacja, która oszczędza Twój czas', nl: 'Geboren uit frustratie, geëvolueerd tot een krachtige workflow automatiseringssuite' },
     ue_meta_type: { en: 'Type', pl: 'Typ', nl: 'Type' },
     ue_meta_type_value: { en: 'Developer Tool', pl: 'Narzędzie programistyczne', nl: 'Ontwikkelaarstool' },
     ue_meta_platform: { en: 'Platform', pl: 'Platforma', nl: 'Platform' },
@@ -1337,7 +1352,8 @@ document.addEventListener('DOMContentLoaded', function() {
     ue_cta_desc: { en: 'Download the latest release, place it next to your .uproject file, and start automating your workflow today. It\'s completely free and open source.', pl: 'Pobierz najnowszą wersję, umieść ją obok pliku .uproject i zacznij automatyzować swój przepływ pracy już dziś. Jest całkowicie darmowe i open source.', nl: 'Download de nieuwste versie, plaats het naast je .uproject bestand, en begin vandaag nog met het automatiseren van je workflow. Het is volledig gratis en open source.' },
     ue_cta_download: { en: 'Download Now', pl: 'Pobierz teraz', nl: 'Download nu' },
     ue_cta_github: { en: 'View Source Code', pl: 'Zobacz kod źródłowy', nl: 'Bekijk broncode' },
-    ue_back: { en: '← Back to All Projects', pl: '← Powrót do wszystkich projektów', nl: '← Terug naar alle projecten' }
+    ue_back: { en: '← Back to All Projects', pl: '← Powrót do wszystkich projektów', nl: '← Terug naar alle projecten' },
+    ue_github_hint: { en: 'Click to view GitHub project', pl: 'Kliknij aby zobaczyć projekt na GitHub', nl: 'Klik om GitHub project te bekijken' }
   };
 
   // Expose minimal public i18n for other scripts (read-only)
@@ -1702,6 +1718,21 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
+    // New intro section translations (index)
+    if (document.querySelector('.intro-hero-modern')){
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[key]) {
+          // Use innerHTML for subtitle to preserve <strong> tags
+          if (key === 'intro_subtitle') {
+            el.innerHTML = I18N[key][lang];
+          } else {
+            el.textContent = I18N[key][lang];
+          }
+        }
+      });
+    }
+
     // About page translations (minimal)
     if (location.pathname.endsWith('/about.html') || document.querySelector('.about-hero')){
       const A = {
@@ -1890,6 +1921,19 @@ document.addEventListener('DOMContentLoaded', function() {
       // Page <title>
       try { document.title = (lang==='pl'?'AudioQ — Profesjonalny Silnik Audio — Igor Szuniewicz': lang==='nl'?'AudioQ — Professionele Audio Engine — Igor Szuniewicz':'AudioQ — Professional Audio Engine — Igor Szuniewicz'); } catch(_){}
     }
+
+    // Unreal Engine Rebuilder page translations
+    if (location.pathname.endsWith('/unreal-engine-rebuilder.html') || /unreal-engine-rebuilder\.html$/i.test(location.pathname)){
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[key]) {
+          el.textContent = I18N[key][lang];
+        }
+      });
+      // Page <title>
+      try { document.title = (lang==='pl'?'Unreal Engine Rebuilder — Narzędzie programistyczne — Igor Szuniewicz': lang==='nl'?'Unreal Engine Rebuilder — Ontwikkelaarstool — Igor Szuniewicz':'Unreal Engine Rebuilder — Developer Tool — Igor Szuniewicz'); } catch(_){}
+    }
+
     // Contact page translations (new professional design)
     if (location.pathname.endsWith('/contact.html') || /contact\.html$/i.test(location.pathname)){
       // Translate all data-i18n elements
