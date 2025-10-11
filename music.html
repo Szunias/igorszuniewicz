@@ -53,7 +53,7 @@
   <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="assets/css/custom-styles.css?v=20250212" />
   <link rel="stylesheet" href="assets/css/pro-theme.css?v=20250212" />
-  <link rel="stylesheet" href="assets/css/genre-carousel.css?v=20251012b" />
+  <link rel="stylesheet" href="assets/css/genre-carousel.css?v=20251013" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
@@ -197,59 +197,38 @@
 
         <div class="music-controls">
           <div class="left" style="flex-direction: column; gap: 1.5rem; width: 100%;">
-            <!-- Modern Genre Grid Selector -->
-            <div class="genre-grid-container">
-              <div class="mf-label" data-i18n="music.finder" style="margin-bottom: 1.2rem; text-align: center; font-size: 0.95rem; color: #18bfef; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;">Browse by Style</div>
+            <!-- Simple Genre Pills -->
+            <div class="genre-pills-container">
+              <div class="mf-label" data-i18n="music.finder" style="margin-bottom: 1rem; text-align: center; font-size: 0.85rem; color: rgba(24, 191, 239, 0.8); font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px;">Browse by Style</div>
               
-              <div class="genre-grid" role="group" aria-label="Genre categories">
-                <button class="genre-card active" data-tag="all" type="button">
-                  <div class="genre-card-inner">
-                    <div class="genre-icon">♫</div>
-                    <div class="genre-name" data-i18n="genre_all_tracks">All</div>
-                    <div class="genre-count"></div>
-                  </div>
+              <div class="genre-pills" role="group" aria-label="Genre categories">
+                <button class="genre-pill active" data-tag="all" type="button">
+                  <span class="pill-text" data-i18n="genre_all_tracks">All Tracks</span>
+                  <span class="pill-count"></span>
                 </button>
-                <button class="genre-card" data-tag="electronic" type="button">
-                  <div class="genre-card-inner">
-                    <div class="genre-icon">⚡</div>
-                    <div class="genre-name" data-i18n="genre_electronic">Electronic</div>
-                    <div class="genre-count"></div>
-                  </div>
+                <button class="genre-pill" data-tag="electronic" type="button">
+                  <span class="pill-text" data-i18n="genre_electronic">Electronic</span>
+                  <span class="pill-count"></span>
                 </button>
-                <button class="genre-card" data-tag="film" type="button">
-                  <div class="genre-card-inner">
-                    <div class="genre-icon">🎥</div>
-                    <div class="genre-name" data-i18n="genre_film">Film</div>
-                    <div class="genre-count"></div>
-                  </div>
+                <button class="genre-pill" data-tag="film" type="button">
+                  <span class="pill-text" data-i18n="genre_film">Film</span>
+                  <span class="pill-count"></span>
                 </button>
-                <button class="genre-card" data-tag="metal" type="button">
-                  <div class="genre-card-inner">
-                    <div class="genre-icon">🎸</div>
-                    <div class="genre-name" data-i18n="genre_metal">Metal</div>
-                    <div class="genre-count"></div>
-                  </div>
+                <button class="genre-pill" data-tag="metal" type="button">
+                  <span class="pill-text" data-i18n="genre_metal">Metal</span>
+                  <span class="pill-count"></span>
                 </button>
-                <button class="genre-card" data-tag="playful" type="button">
-                  <div class="genre-card-inner">
-                    <div class="genre-icon">🎮</div>
-                    <div class="genre-name" data-i18n="genre_playful">Playful</div>
-                    <div class="genre-count"></div>
-                  </div>
+                <button class="genre-pill" data-tag="playful" type="button">
+                  <span class="pill-text" data-i18n="genre_playful">Playful</span>
+                  <span class="pill-count"></span>
                 </button>
-                <button class="genre-card" data-tag="score" type="button">
-                  <div class="genre-card-inner">
-                    <div class="genre-icon">🎻</div>
-                    <div class="genre-name" data-i18n="genre_score">Score</div>
-                    <div class="genre-count"></div>
-                  </div>
+                <button class="genre-pill" data-tag="score" type="button">
+                  <span class="pill-text" data-i18n="genre_score">Score</span>
+                  <span class="pill-count"></span>
                 </button>
-                <button class="genre-card" data-tag="single" type="button">
-                  <div class="genre-card-inner">
-                    <div class="genre-icon">💿</div>
-                    <div class="genre-name" data-i18n="genre_single">Single</div>
-                    <div class="genre-count"></div>
-                  </div>
+                <button class="genre-pill" data-tag="single" type="button">
+                  <span class="pill-text" data-i18n="genre_single">Single</span>
+                  <span class="pill-count"></span>
                 </button>
               </div>
             </div>
@@ -323,24 +302,24 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/components/enhancements.js?v=20250212"></script>
   <script src="assets/js/components/reveal.js" defer></script>
-  <script src="assets/js/pages/music.js?v=20251012"></script>
+  <script src="assets/js/pages/music.js?v=20251013"></script>
   <script src="assets/js/components/lang-badge.js" defer></script>
   <script type="module" src="assets/js/bootstrap.js" defer></script>
   
-  <!-- Genre Grid JavaScript -->
+  <!-- Genre Pills JavaScript -->
   <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const genreCards = document.querySelectorAll('.genre-card');
+    const genrePills = document.querySelectorAll('.genre-pill');
     
-    if (!genreCards.length) return;
+    if (!genrePills.length) return;
     
     // Click handler for genre selection
-    genreCards.forEach(card => {
-      card.addEventListener('click', function() {
+    genrePills.forEach(pill => {
+      pill.addEventListener('click', function() {
         const tag = this.getAttribute('data-tag');
         
         // Update active state
-        genreCards.forEach(c => c.classList.remove('active'));
+        genrePills.forEach(p => p.classList.remove('active'));
         this.classList.add('active');
         
         // Trigger filter (connects to music.js)
