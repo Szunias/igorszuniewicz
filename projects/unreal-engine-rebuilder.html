@@ -45,14 +45,84 @@
     <link rel="stylesheet" href="../assets/css/noscript.css" />
   </noscript>
   <style>
-    /* CRITICAL: Override pro-theme.css hiding background elements */
-    .bg-orbs,
-    .bg-waves,
-    .bg-eq,
-    .bg-glow {
+    /* CRITICAL: Background elements with complete positioning */
+    .bg-gradient {
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: 0 !important;
+      pointer-events: none !important;
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      opacity: 1 !important;
+    }
+
+    .bg-orbs {
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: 1 !important;
+      pointer-events: none !important;
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      opacity: 1 !important;
+    }
+
+    .bg-orbs .orb {
+      position: absolute !important;
+      width: 300px !important;
+      height: 300px !important;
+      border-radius: 50% !important;
+      filter: blur(80px) !important;
+      opacity: 0.4 !important;
+      display: block !important;
+    }
+
+    .bg-orbs .orb.blue {
+      background: radial-gradient(circle, #18bfef 0%, transparent 70%) !important;
+    }
+
+    .bg-orbs .orb.cyan {
+      background: radial-gradient(circle, #58b6ff 0%, transparent 70%) !important;
+    }
+
+    .bg-orbs .orb.teal {
+      background: radial-gradient(circle, #4ecdc4 0%, transparent 70%) !important;
+    }
+
+    .bg-waves {
+      position: fixed !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 50% !important;
+      z-index: 1 !important;
+      pointer-events: none !important;
       display: block !important;
       opacity: 1 !important;
     }
+
+    .bg-eq {
+      position: fixed !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100px !important;
+      z-index: 2 !important;
+      pointer-events: none !important;
+      display: block !important;
+      opacity: 0.3 !important;
+    }
+
+    .bg-glow {
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: 1 !important;
+      pointer-events: none !important;
+      display: block !important;
+      opacity: 1 !important;
+    }
+
     /* Page background: modern developer tool theme */
     html, body { 
       background: linear-gradient(180deg, #0a0f14 0%, #0d1419 55%, #111822 100%) !important;
