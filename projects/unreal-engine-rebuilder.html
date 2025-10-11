@@ -427,7 +427,7 @@
 
     .dropdown-menu {
       position: absolute;
-      top: calc(100% + 4px);
+      top: calc(100% + 0px);
       left: 0;
       min-width: 240px;
       background: rgba(10, 16, 22, 0.98);
@@ -439,17 +439,40 @@
       opacity: 0;
       visibility: hidden;
       transform: translateY(-8px);
-      transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+      transition: opacity 0.15s ease, visibility 0.15s ease, transform 0.15s ease;
       list-style: none;
       padding: 0.6em 0;
       margin: 0;
+      pointer-events: none;
     }
 
+    /* Show dropdown on hover with expanded hit area */
     .dropdown:hover .dropdown-menu,
-    .dropdown-menu:hover {
+    .dropdown-menu.show {
       opacity: 1 !important;
       visibility: visible !important;
       transform: translateY(0) !important;
+      pointer-events: auto !important;
+    }
+
+    /* Expand clickable area to prevent gaps */
+    .dropdown {
+      padding-bottom: 0px;
+    }
+
+    .dropdown:hover {
+      position: relative;
+    }
+
+    /* Bridge gap between toggle and menu */
+    .dropdown::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 8px;
+      display: block;
     }
 
     .dropdown-menu li {
@@ -484,10 +507,62 @@
       background: rgba(100, 100, 100, 0.1) !important;
       color: #888 !important;
     }
+
+    /* CRITICAL FIX: Force preloader to be hidden immediately */
+    #preloader {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+
+    /* Force content and background visibility immediately - no JS required */
+    #wrapper, #main, article, .post {
+      opacity: 1 !important;
+      visibility: visible !important;
+      display: block !important;
+    }
+
+    /* Ensure all background layers are immediately visible */
+    .bg-gradient,
+    .bg-orbs,
+    .bg-waves,
+    .bg-eq,
+    .bg-glow {
+      opacity: 1 !important;
+      visibility: visible !important;
+      display: block !important;
+      pointer-events: none !important;
+    }
+
+    /* Force SVG waves to render */
+    svg.bg-waves {
+      display: block !important;
+      opacity: 1 !important;
+    }
+
+    /* Override any theme or transition delays */
+    * {
+      animation-play-state: running !important;
+    }
+
+    /* CRITICAL: Kill theme background that conflicts with our custom bg */
+    #wrapper > .bg,
+    #wrapper > .bg.fixed {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      background: none !important;
+    }
+
+    /* Ensure our body background is visible */
+    body {
+      background: linear-gradient(180deg, #0a0f14 0%, #0d1419 55%, #111822 100%) !important;
+      background-color: #0c1218 !important;
+    }
   </style>
   <link rel="stylesheet" href="../assets/css/preloader.css">
 </head>
-<body class="is-preload">
+<body>
   <div id="lang-fixed" role="group" aria-label="Language selection">
     <button type="button" data-lang="en" aria-label="Switch to English" aria-pressed="true">
       <span class="flag" aria-hidden="true">
@@ -789,7 +864,57 @@
   <script src="../assets/js/core/browser.min.js"></script>
   <script src="../assets/js/core/breakpoints.min.js"></script>
   <script src="../assets/js/utils/performance.js"></script>
-  <script src="../assets/js/main.js"></script>
+  <!-- main.js doesn't exist, all functionality is in enhancements.js -->
   <script src="../assets/js/components/enhancements.js"></script>
+  
+  <!-- Dropdown menu handler -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    
+    if (!dropdown || !dropdownToggle || !dropdownMenu) return;
+    
+    let hideTimeout;
+    
+    // Prevent default link behavior
+    dropdownToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      dropdownMenu.classList.toggle('show');
+    });
+    
+    // Show on hover
+    dropdown.addEventListener('mouseenter', function() {
+      clearTimeout(hideTimeout);
+      dropdownMenu.classList.add('show');
+    });
+    
+    // Hide with delay on mouse leave
+    dropdown.addEventListener('mouseleave', function() {
+      hideTimeout = setTimeout(function() {
+        dropdownMenu.classList.remove('show');
+      }, 300);
+    });
+    
+    // Keep open when hovering menu
+    dropdownMenu.addEventListener('mouseenter', function() {
+      clearTimeout(hideTimeout);
+    });
+    
+    dropdownMenu.addEventListener('mouseleave', function() {
+      hideTimeout = setTimeout(function() {
+        dropdownMenu.classList.remove('show');
+      }, 300);
+    });
+    
+    // Close when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!dropdown.contains(e.target)) {
+        dropdownMenu.classList.remove('show');
+      }
+    });
+  });
+  </script>
 </body>
 </html>
