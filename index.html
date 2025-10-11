@@ -400,6 +400,119 @@
       color: #fff;
     }
     
+    /* === MOBILE MENU === */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+    }
+    
+    .mobile-menu-toggle span {
+      width: 25px;
+      height: 2px;
+      background: #fff;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+    
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 350px;
+      height: 100vh;
+      background: rgba(10, 14, 18, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 6rem 2rem 2rem;
+      transition: right 0.4s ease;
+      z-index: 1000;
+      border-left: 1px solid rgba(96, 165, 250, 0.2);
+      overflow-y: auto;
+    }
+    
+    .mobile-menu.active {
+      right: 0;
+    }
+    
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+    
+    .mobile-menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .mobile-nav-links a {
+      display: block;
+      color: #e0e6ed;
+      text-decoration: none;
+      font-size: 1.25rem;
+      font-weight: 600;
+      padding: 1rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+    
+    .mobile-nav-links a:hover,
+    .mobile-nav-links a:active {
+      background: rgba(96, 165, 250, 0.1);
+      border-color: rgba(96, 165, 250, 0.3);
+      color: #60a5fa;
+      transform: translateX(8px);
+    }
+    
+    .mobile-lang-switcher {
+      display: flex;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: rgba(30, 41, 59, 0.6);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .mobile-lang-switcher .lang-btn {
+      flex: 1;
+      padding: 0.75rem;
+      font-size: 1rem;
+    }
+    
     /* === HERO SECTION === */
     .hero {
       min-height: 100vh;
@@ -847,6 +960,10 @@
         display: none;
       }
       
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      
       .container {
         padding: 0 1.5rem;
       }
@@ -1106,9 +1223,33 @@
             <button class="lang-btn" data-lang="nl">NL</button>
           </li>
         </ul>
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </nav>
     </div>
   </header>
+  
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay"></div>
+  
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <ul class="mobile-nav-links">
+      <li><a href="#work" data-i18n="nav.work">Work</a></li>
+      <li><a href="about.html" data-i18n="nav.about">About</a></li>
+      <li><a href="projects/index.html" data-i18n="nav.projects">All Projects</a></li>
+      <li><a href="music.html" data-i18n="nav.music">Music</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="mobile-lang-switcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="pl">PL</button>
+      <button class="lang-btn" data-lang="nl">NL</button>
+    </div>
+  </div>
   
   <!-- Hero -->
   <section class="hero" aria-label="Hero section" itemscope itemtype="https://schema.org/Person">
@@ -1584,6 +1725,58 @@
       if (navLang && navLang !== current) {
         setTimeout(() => showPrompt(navLang), 1000);
       }
+    })();
+    
+    // Mobile menu toggle
+    (function() {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const menu = document.querySelector('.mobile-menu');
+      const overlay = document.querySelector('.mobile-menu-overlay');
+      const menuLinks = document.querySelectorAll('.mobile-nav-links a');
+      
+      function closeMobileMenu() {
+        toggle.classList.remove('active');
+        menu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      
+      function openMobileMenu() {
+        toggle.classList.add('active');
+        menu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      
+      toggle.addEventListener('click', () => {
+        if (menu.classList.contains('active')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+      
+      overlay.addEventListener('click', closeMobileMenu);
+      
+      menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          closeMobileMenu();
+        });
+      });
+      
+      // Close on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menu.classList.contains('active')) {
+          closeMobileMenu();
+        }
+      });
+      
+      // Mobile lang switcher sync with main
+      document.querySelectorAll('.mobile-lang-switcher .lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setLanguage(btn.dataset.lang);
+        });
+      });
     })();
   </script>
   <script src="assets/js/page-transitions.js"></script>

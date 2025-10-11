@@ -139,13 +139,27 @@
     });
   }
   
-  // Usuń preloader po animacji (zoptymalizowany czas)
-  setTimeout(() => {
+  // Funkcja czyszcząca - zawsze odblokuj scrollowanie
+  function cleanupPreloader() {
     if (preloader && preloader.parentNode) {
       preloader.remove();
     }
     document.body.classList.remove('preloader-active');
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
-  }, 1500);
+  }
+  
+  // Usuń preloader po animacji (zoptymalizowany czas)
+  setTimeout(cleanupPreloader, 1500);
+  
+  // Failsafe - zawsze odblokuj scrollowanie po 2 sekundach
+  setTimeout(() => {
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+  }, 2000);
+  
+  // Dodatkowy failsafe gdy okno się załaduje
+  window.addEventListener('load', () => {
+    setTimeout(cleanupPreloader, 100);
+  });
 })();

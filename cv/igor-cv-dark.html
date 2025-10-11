@@ -353,6 +353,190 @@
                 padding: 0;
             }
         }
+        
+        /* Responsive Mobile Styles */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 15px;
+                overflow-x: hidden;
+            }
+            
+            .page {
+                width: 100%;
+                height: auto;
+                min-height: 100vh;
+                padding-bottom: 20px;
+            }
+            
+            .container {
+                padding: 15px 20px 20px 25px;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+                margin-bottom: 15px;
+            }
+            
+            .name {
+                font-size: 36px;
+                margin-bottom: 8px;
+            }
+            
+            .title {
+                font-size: 13px;
+                padding-left: 12px;
+            }
+            
+            .header-right {
+                order: -1;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .photo-box {
+                width: 140px;
+                height: 165px;
+            }
+            
+            .content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .section {
+                margin-bottom: 15px;
+            }
+            
+            .section-title {
+                font-size: 9px;
+                margin-bottom: 7px;
+            }
+            
+            .profile {
+                font-size: 10px;
+                line-height: 1.6;
+            }
+            
+            .item {
+                margin-bottom: 12px;
+                padding-bottom: 10px;
+            }
+            
+            .item-name {
+                font-size: 11px;
+            }
+            
+            .item-year {
+                font-size: 8.5px;
+            }
+            
+            .item-sub {
+                font-size: 9px;
+                margin-bottom: 5px;
+            }
+            
+            .item-desc {
+                font-size: 9.5px;
+                line-height: 1.5;
+            }
+            
+            .skill {
+                font-size: 10px;
+                margin-bottom: 6px;
+            }
+            
+            .lang {
+                margin-bottom: 8px;
+            }
+            
+            .lang-name {
+                font-size: 10px;
+            }
+            
+            .lang-level {
+                font-size: 8.5px;
+            }
+            
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding-top: 15px;
+                font-size: 8.5px;
+            }
+            
+            .qr-corner {
+                position: static;
+                margin-top: 20px;
+                align-self: center;
+            }
+            
+            .qr-corner img {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .qr-corner-label {
+                font-size: 8px;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .page {
+                padding-bottom: 15px;
+            }
+            
+            .container {
+                padding: 12px 15px 15px 20px;
+            }
+            
+            .name {
+                font-size: 28px;
+            }
+            
+            .title {
+                font-size: 11px;
+            }
+            
+            .photo-box {
+                width: 120px;
+                height: 145px;
+            }
+            
+            .profile {
+                font-size: 9.5px;
+            }
+            
+            .item-name {
+                font-size: 10px;
+            }
+            
+            .item-year {
+                font-size: 8px;
+            }
+            
+            .item-sub {
+                font-size: 8.5px;
+            }
+            
+            .item-desc {
+                font-size: 9px;
+            }
+            
+            .skill {
+                font-size: 9.5px;
+            }
+            
+            .footer {
+                font-size: 8px;
+            }
+        }
     </style>
 </head>
 <body>
