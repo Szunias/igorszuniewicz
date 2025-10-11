@@ -10,6 +10,7 @@
   flex-direction: column !important;
   align-items: center !important;
   padding: 1rem 0 !important;
+  justify-content: center !important;
 }
 
 /* Wrapper with nav buttons */
@@ -20,7 +21,7 @@
   justify-content: center !important;
   gap: 1.2rem !important;
   width: 100% !important;
-  max-width: 800px !important;
+  max-width: 650px !important;
   margin: 0 auto !important;
   padding: 0 !important;
 }
@@ -36,8 +37,8 @@
   padding: 1.5rem 1rem !important;
   -webkit-overflow-scrolling: touch !important;
   scrollbar-width: none !important;
-  flex: 0 1 auto !important;
-  max-width: calc(100% - 120px) !important;
+  flex: 0 0 auto !important;
+  max-width: 100% !important;
   width: auto !important;
   justify-content: flex-start !important;
   margin: 0 !important;
