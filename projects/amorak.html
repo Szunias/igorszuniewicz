@@ -1,59 +1,201 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="en" style="background:#120607;">
 <head>
+  <style>
+    /* CRITICAL: Load immediately before anything else */
+    html, body {
+      background: #120607 !important;
+      margin: 0;
+      padding: 0;
+    }
+    /* Hide content until fully loaded */
+    .content {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    body.loaded .content {
+      opacity: 1;
+    }
+  </style>
   <title>Amorak — Sound Design</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
-  <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
-  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png" sizes="180x180">
-  <meta name="description" content="Amorak — sound design for 3D animation by Igor Szuniewicz." />
-  <link rel="canonical" href="https://igorszuniewicz.com/projects/amorak.html" />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="Igor Szuniewicz" />
-  <meta property="og:title" content="Amorak — Sound Design" />
-  <meta property="og:description" content="Character signatures and environmental layers that scale with proximity." />
-  <meta property="og:url" content="https://igorszuniewicz.com/projects/amorak.html" />
-  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects/amorak.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Amorak — Sound Design" />
-  <meta name="twitter:description" content="Character signatures and environmental layers that scale with proximity." />
-  <meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects/amorak.png" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": "Amorak — Sound Design",
-    "image": "https://igorszuniewicz.com/assets/images/projects/amorak.png",
-    "author": {
-      "@type": "Person",
-      "name": "Igor Szuniewicz",
-      "url": "https://igorszuniewicz.com/"
-    },
-    "url": "https://igorszuniewicz.com/projects/amorak.html"
-  }
-  </script>
-  <link rel="stylesheet" href="../assets/css/main.css" />
-  <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20251011" />
+  <meta name="description" content="Amorak — sound design for 3D animation by Igor Szuniewicz" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* Page background: deep burgundy for Amorak */
-    html, body { background: linear-gradient(180deg, #120607 0%, #1b090b 55%, #24090a 100%) !important; }
-    .bg-gradient { background: linear-gradient(180deg, #120607 0%, #1b090b 55%, #24090a 100%) !important; }
-
-    /* Amorak Dark Horror Theme (burgundy accent) */
-    .amorak-hero {
-      text-align: center;
-      padding: 2em 0;
-      background: linear-gradient(135deg, #18090b 0%, #260c10 55%, #18090b 100%);
-      border-radius: 15px;
-      margin-bottom: 2em;
+    /* === RESET & BASE === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #120607 0%, #1b090b 55%, #24090a 100%);
+      color: #e0d0c0;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    /* === BACKGROUND === */
+    .horror-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background: linear-gradient(180deg, #120607 0%, #1b090b 55%, #24090a 100%);
+    }
+    
+    .horror-background::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(ellipse at 20% 30%, rgba(120, 20, 30, 0.10) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 70%, rgba(160, 30, 40, 0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 50%, rgba(139, 69, 19, 0.05) 0%, transparent 60%);
+    }
+    
+    .horror-background::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 30%, rgba(178, 34, 34, 0.03) 0%, transparent 40%);
+      animation: bgPulse 10s ease-in-out infinite;
+    }
+    
+    @keyframes bgPulse {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.3; }
+    }
+    
+    /* === CONTENT WRAPPER === */
+    .content {
       position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    /* === BACK BUTTON === */
+    .back-button {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 100;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(40, 25, 15, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(178, 34, 34, 0.4);
+      border-radius: 50px;
+      color: #cd853f;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    .back-button:hover {
+      background: rgba(50, 30, 20, 0.8);
+      border-color: #b22222;
+      transform: translateX(-5px);
+      box-shadow: 0 6px 30px rgba(178, 34, 34, 0.4);
+      color: #d2b48c;
+    }
+    
+    .back-button::before {
+      content: '←';
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    
+    /* === LANGUAGE SWITCHER === */
+    .lang-switcher {
+      position: fixed !important;
+      top: 2rem !important;
+      right: 2rem !important;
+      z-index: 1000 !important;
+      display: flex !important;
+      gap: 0.5rem;
+      background: rgba(40, 25, 15, 0.7) !important;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(178, 34, 34, 0.4) !important;
+      border-radius: 50px;
+      padding: 0.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(178, 34, 34, 0.2) !important;
+    }
+    
+    .lang-btn {
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: none;
+      border-radius: 50px;
+      color: #999 !important;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.9rem;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+      display: flex !important;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .lang-btn:hover {
+      color: #cd853f !important;
+      background: rgba(178, 34, 34, 0.15);
+    }
+    
+    .lang-btn.active {
+      color: #cd853f !important;
+      background: rgba(178, 34, 34, 0.25);
+      font-weight: 600;
+    }
+    
+    .lang-flag {
+      width: 20px;
+      height: 14px;
+      border-radius: 2px;
+      overflow: hidden;
+      display: block;
+    }
+    
+    /* === HERO SECTION === */
+    .hero {
+      text-align: center;
+      padding: 8rem 0 4rem;
+      margin-bottom: 3rem;
+      position: relative;
+      background: linear-gradient(135deg, #18090b 0%, #260c10 55%, #18090b 100%);
+      border-radius: 20px;
       overflow: hidden;
     }
-
-    .amorak-hero::before {
+    
+    .hero::before {
       content: '';
       position: absolute;
       top: 0;
@@ -65,494 +207,883 @@
         radial-gradient(circle at 70% 80%, rgba(160, 30, 40, 0.08) 0%, transparent 55%);
       pointer-events: none;
     }
-
-    .amorak-meta {
+    
+    .hero h1 {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+      color: #f5f5dc;
+      position: relative;
+      z-index: 1;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    }
+    
+    .hero .tagline {
+      font-size: 1.2rem;
+      color: #cd853f;
+      font-style: italic;
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* === METADATA BADGES === */
+    .meta-badges {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1em;
-      margin-bottom: 2em;
+      gap: 1rem;
+      margin-top: 2.5rem;
       position: relative;
       z-index: 2;
     }
-
-    .amorak-hero .meta-badge {
+    
+    .meta-badge {
       background: rgba(120, 20, 30, 0.14);
       border: 1px solid rgba(178, 34, 34, 0.35);
-      padding: 0.8em 1.2em;
-      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
     }
-
-    .amorak-hero .meta-badge:hover {
+    
+    .meta-badge:hover {
       background: rgba(178, 34, 34, 0.22);
       border-color: rgba(178, 34, 34, 0.5);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-
-    .amorak-hero .meta-label {
+    
+    .meta-label {
       display: block;
-      font-size: 0.9em;
+      font-size: 0.85rem;
       color: #888;
-      margin-bottom: 0.3em;
+      margin-bottom: 0.4rem;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-
-    .amorak-hero .meta-value {
+    
+    .meta-value {
       display: block;
       font-weight: 600;
       color: #d2b48c;
-      font-size: 1.1em;
+      font-size: 1.1rem;
     }
-
-    .amorak-hero h2 {
+    
+    /* === VIDEO SECTION === */
+    .video-section {
+      margin: 4rem 0;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .video-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .video-section h2 {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-size: 2.2rem;
+      color: #d2b48c;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      border-bottom: 2px solid rgba(178, 34, 34, 0.3);
+      padding-bottom: 0.8rem;
+    }
+    
+    .video-container {
       position: relative;
-      z-index: 2;
-      margin: 1em 0 0.5em 0;
-      color: #f5f5dc;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    }
-
-    .amorak-tagline {
-      position: relative;
-      z-index: 2;
-      font-size: 1.2em;
-      color: #cd853f;
-      font-style: italic;
-      margin-top: 1em;
-    }
-
-    .amorak-hero-image {
-      margin: 2em 0;
-      text-align: center;
-      border-radius: 15px;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      border: 1px solid rgba(139, 69, 19, 0.3);
+      transition: all 0.4s ease;
+      background: #000;
     }
-
-    .amorak-hero-image img {
+    
+    .video-container:hover {
+      box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 50px rgba(178, 34, 34, 0.3);
+      border-color: rgba(178, 34, 34, 0.6);
+      transform: scale(1.01) translateY(-3px);
+    }
+    
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    
+    .video-description {
+      margin-top: 1.5rem;
+      font-style: italic;
+      color: #999;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    
+    /* === HERO IMAGE === */
+    .hero-image {
+      margin: 4rem 0;
+      text-align: center;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .hero-image.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .hero-image img {
       width: 100%;
       height: auto;
-      border-radius: 15px;
-      transition: transform 0.3s ease;
+      border-radius: 20px;
+      transition: transform 0.4s ease;
     }
-
-    .amorak-hero-image:hover img {
+    
+    .hero-image:hover img {
       transform: scale(1.02);
     }
-
-    .amorak-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1em;
-    }
-
-    .amorak-section {
-      margin: 3em 0;
-      padding: 2em;
+    
+    /* === SECTION === */
+    section {
+      margin: 5rem 0;
+      padding: 2.5rem;
       background: linear-gradient(135deg, rgba(40, 25, 15, 0.6) 0%, rgba(50, 30, 20, 0.4) 100%);
-      border-radius: 15px;
+      border-radius: 20px;
       border: 1px solid rgba(139, 69, 19, 0.2);
       backdrop-filter: blur(5px);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-
-    .amorak-section h3 {
+    
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    section h2 {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-size: 2.2rem;
       color: #d2b48c;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
       border-bottom: 2px solid rgba(178, 34, 34, 0.3);
-      padding-bottom: 0.5em;
-      margin-bottom: 1.5em;
+      padding-bottom: 0.8rem;
     }
-
-    .amorak-approach-grid {
+    
+    section h3 {
+      font-size: 1.6rem;
+      color: #cd853f;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    
+    section p {
+      color: rgba(224, 208, 192, 0.9);
+      line-height: 1.7;
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* === APPROACH GRID === */
+    .approach-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2em;
-      margin-top: 2em;
+      gap: 2rem;
+      margin-top: 2rem;
     }
-
-    .approach-item, .tech-item {
+    
+    .approach-item {
       background: rgba(40, 25, 15, 0.4);
-      padding: 1.5em;
-      border-radius: 10px;
+      padding: 2rem;
+      border-radius: 15px;
       border: 1px solid rgba(139, 69, 19, 0.2);
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
     }
-
-    .approach-item:hover, .tech-item:hover {
+    
+    .approach-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #8b4513, #b22222, #cd853f);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .approach-item:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .approach-item:hover {
       background: rgba(50, 30, 20, 0.5);
       border-color: rgba(178, 34, 34, 0.4);
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
     }
-
-    .approach-item h4, .tech-item h4 {
+    
+    .approach-item h4 {
       color: #cd853f;
-      margin-bottom: 1em;
-      font-size: 1.2em;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      font-weight: 700;
     }
-
-    .amorak-tech-details {
+    
+    /* === TECH DETAILS === */
+    .tech-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2em;
-      margin-top: 2em;
+      gap: 2rem;
+      margin-top: 2rem;
     }
-
-    .amorak-gallery {
+    
+    .tech-item {
+      background: rgba(40, 25, 15, 0.4);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 1px solid rgba(139, 69, 19, 0.2);
+      transition: all 0.4s ease;
+    }
+    
+    .tech-item:hover {
+      background: rgba(50, 30, 20, 0.5);
+      border-color: rgba(178, 34, 34, 0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+    
+    .tech-item h4 {
+      color: #cd853f;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    
+    /* === GALLERY === */
+    .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5em;
-      margin-top: 2em;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
-
-    .amorak-gallery .gallery-item {
+    
+    .gallery-item {
       position: relative;
-      border-radius: 10px;
+      border-radius: 15px;
       overflow: hidden;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      border: 1px solid rgba(139, 69, 19, 0.2);
     }
-
-    .amorak-gallery .gallery-item:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    
+    .gallery-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(178, 34, 34, 0.3);
+      border-color: rgba(178, 34, 34, 0.5);
     }
-
-    .amorak-gallery .gallery-item img {
+    
+    .gallery-item img {
       width: 100%;
       height: 250px;
       object-fit: cover;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
+      filter: brightness(0.85) contrast(1.1);
     }
-
-    .amorak-gallery .gallery-item:hover img {
-      transform: scale(1.05);
+    
+    .gallery-item:hover img {
+      transform: scale(1.08);
+      filter: brightness(0.95) contrast(1.15);
     }
-
-    .amorak-gallery .gallery-overlay {
+    
+    .gallery-overlay {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.9));
-      color: white;
-      padding: 1.5em 1em 1em;
+      background: linear-gradient(transparent, rgba(0,0,0,0.95));
+      color: #d2b48c;
+      padding: 2rem 1.5rem 1.5rem;
       transform: translateY(100%);
       transition: transform 0.3s ease;
     }
-
-    .amorak-gallery .gallery-item:hover .gallery-overlay {
+    
+    .gallery-item:hover .gallery-overlay {
       transform: translateY(0);
     }
-
-    .amorak-gallery .gallery-overlay span {
+    
+    .gallery-overlay span {
       font-weight: 600;
-      font-size: 1.1em;
+      font-size: 1.1rem;
     }
-
-    .video-container {
-      margin: 2em 0;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-    }
-
-    .video-description {
-      margin-top: 1em;
-      font-style: italic;
-      color: #999;
+    
+    /* === BUTTON === */
+    .button-container {
       text-align: center;
+      margin: 4rem 0;
     }
-
-    .amorak-navigation {
-      text-align: center;
-      margin: 3em 0;
-      padding: 2em;
-    }
-
-    .amorak-navigation .button {
-      background: linear-gradient(135deg, #8b4513 0%, #b22222 100%);
-      border: none;
-      padding: 1em 2em;
-      font-size: 1.1em;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      text-decoration: none;
+    
+    .button {
       display: inline-block;
+      padding: 1.2rem 3rem;
+      background: linear-gradient(135deg, #8b4513 0%, #b22222 100%);
+      border: 2px solid transparent;
+      border-radius: 50px;
+      color: #f5f5dc;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
     }
-
-    .amorak-navigation .button:hover {
+    
+    .button:hover {
       background: linear-gradient(135deg, #b22222 0%, #8b4513 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(139, 69, 19, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(139, 69, 19, 0.5);
+      color: #fff;
     }
-
-    /* Responsive Design */
+    
+    /* === FOOTER === */
+    .footer {
+      text-align: center;
+      padding: 3rem 0;
+      color: #666;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(139, 69, 19, 0.2);
+      margin-top: 5rem;
+    }
+    
+    /* === LIGHTBOX === */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    
+    .lightbox.active {
+      display: flex;
+    }
+    
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 0 50px rgba(178, 34, 34, 0.5);
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 3rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 10001;
+    }
+    
+    /* === RESPONSIVE === */
     @media (max-width: 768px) {
-      .amorak-meta {
+      .back-button, .lang-switcher {
+        top: 1rem;
+        left: 1rem;
+        right: 1rem;
+      }
+      
+      .lang-switcher {
+        right: 1rem;
+        left: auto;
+      }
+      
+      .hero {
+        padding: 4rem 1rem 3rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      section {
+        padding: 2rem 1.5rem;
+      }
+      
+      section h2 {
+        font-size: 1.8rem;
+      }
+      
+      .meta-badges {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .amorak-approach-grid, .amorak-tech-details {
+      
+      .approach-grid, .tech-grid {
         grid-template-columns: 1fr;
       }
-
-      .amorak-gallery {
+      
+      .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
-      }
-
-      .amorak-section {
-        padding: 1.5em;
       }
     }
-
+    
     @media (max-width: 480px) {
-      .amorak-meta {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .meta-badges {
         grid-template-columns: 1fr;
       }
-
-      .amorak-gallery {
+      
+      .gallery-grid {
         grid-template-columns: 1fr;
       }
-
-      .amorak-gallery .gallery-item img {
+      
+      .gallery-item img {
         height: 200px;
       }
     }
   </style>
-  <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 </head>
-<body class="is-preload">
-  <div id="lang-fixed" role="group" aria-label="Language selection">
-    <button type="button" data-lang="en" aria-label="Switch to English" aria-pressed="true">
-      <span class="flag" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 12">
-          <rect width="18" height="12" fill="#012169"/>
-          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#fff" stroke-width="3"/>
-          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#C8102E" stroke-width="1.2"/>
-          <rect x="0" y="5" width="18" height="2" fill="#fff"/>
-          <rect x="8" y="0" width="2" height="12" fill="#fff"/>
-          <rect x="0" y="5.5" width="18" height="1" fill="#C8102E"/>
-          <rect x="8.5" y="0" width="1" height="12" fill="#C8102E"/>
-        </svg>
-      </span>
-      <span class="label">EN</span>
-    </button>
-    <button type="button" data-lang="pl" aria-label="Przełącz na język polski" aria-pressed="false">
-      <span class="flag" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
-          <rect width="3" height="1" fill="#fff"/>
-          <rect y="1" width="3" height="1" fill="#dc143c"/>
-        </svg>
-      </span>
-      <span class="label">PL</span>
-    </button>
-    <button type="button" data-lang="nl" aria-label="Schakel over naar Nederlands" aria-pressed="false">
-      <span class="flag" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
-          <rect width="3" height="2" fill="#21468B"/>
-          <rect width="3" height="1.333" fill="#fff"/>
-          <rect width="3" height="0.666" fill="#AE1C28"/>
-        </svg>
-      </span>
-      <span class="label">NL</span>
-    </button>
+<body style="background:#120607;margin:0;padding:0;">
+  <!-- Background -->
+  <div class="horror-background"></div>
+  
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="">
   </div>
-
-  <div class="bg-gradient"></div>
-  <div class="bg-orbs">
-    <div class="orb blue" style="top:10%;left:8%"></div>
-    <div class="orb cyan" style="top:60%;left:75%"></div>
-    <div class="orb teal" style="top:75%;left:15%"></div>
-  </div>
-  <svg class="bg-waves" viewBox="0 0 1200 600" preserveAspectRatio="none">
-    <defs>
-      <linearGradient id="gradWave1" x1="0%" x2="100%" y1="0%" y2="0%">
-        <stop offset="0%" stop-color="#18bfef" stop-opacity="0.6"/>
-        <stop offset="100%" stop-color="#58b6ff" stop-opacity="0.3"/>
-      </linearGradient>
-      <linearGradient id="gradWave2" x1="0%" x2="100%" y1="0%" y2="0%">
-        <stop offset="0%" stop-color="#9a6cff" stop-opacity="0.6"/>
-        <stop offset="100%" stop-color="#18bfef" stop-opacity="0.3"/>
-      </linearGradient>
-      <linearGradient id="gradWave3" x1="0%" x2="100%" y1="0%" y2="0%">
-        <stop offset="0%" stop-color="#ff6ea9" stop-opacity="0.5"/>
-        <stop offset="100%" stop-color="#9a6cff" stop-opacity="0.25"/>
-      </linearGradient>
-    </defs>
-    <path fill="url(#gradWave1)" opacity="0.6" d="M0 320 L1200 300 L1200 600 L0 600 Z"></path>
-    <path fill="url(#gradWave2)" opacity="0.4" d="M0 340 L1200 330 L1200 600 L0 600 Z"></path>
-    <path fill="url(#gradWave3)" opacity="0.3" d="M0 360 L1200 360 L1200 600 L0 600 Z"></path>
-  </svg>
-  <canvas class="bg-eq"></canvas>
-  <div class="bg-glow"></div>
-  <div id="wrapper" class="fade-in">
-    <header id="header">
-      <a href="../index.html" class="logo">Igor Szuniewicz</a>
-    </header>
-    <nav id="nav">
-      <ul class="links">
-        <li><a href="../index.html" data-i18n="nav_home">Home</a></li>
-        <li><a href="../about.html" data-i18n="nav_about">About</a></li>
-        <li class="active"><a href="../projects/index.html" data-i18n="nav_all_projects">Projects</a></li>
-        <li><a href="../music.html" data-i18n="nav_music">Music</a></li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-i18n="nav_extra">Extra</a>
-            <ul class="dropdown-menu">
-                <li><a href="../projects/audioq.html">AudioQ Plugin</a></li>
-                <li><a href="https://open.spotify.com/artist/6jEBXZZOeunaMzMnnHYvd6" target="_blank">Spotify Music</a></li>
-            </ul>
-        </li>
-        <li><a href="../contact.html" data-i18n="nav_contact">Contact</a></li>
-      </ul>
-      <ul class="icons"></ul>
-    </nav>
-    <div id="main">
-      <!-- Hero Section -->
-      <section class="post" data-reveal>
-        <header class="major amorak-hero">
-          <div class="amorak-meta">
-            <div class="meta-badge">
-              <span class="meta-label" data-i18n="amorak_meta_role">Role</span>
-              <span class="meta-value" data-i18n="amorak_meta_role_value">Sound Designer</span>
-            </div>
-            <div class="meta-badge">
-              <span class="meta-label" data-i18n="amorak_meta_style">Style</span>
-              <span class="meta-value" data-i18n="amorak_meta_style_value">Atmospheric / Horror</span>
-            </div>
-            <div class="meta-badge">
-              <span class="meta-label" data-i18n="amorak_meta_team">Team</span>
-              <span class="meta-value" data-i18n="amorak_meta_team_value">3D Animation Studio</span>
-            </div>
-            <div class="meta-badge">
-              <span class="meta-label" data-i18n="amorak_meta_scope">Scope</span>
-              <span class="meta-value" data-i18n="amorak_meta_scope_value">Complete Audio Pass</span>
-            </div>
-          </div>
-          <h2 data-i18n="amorak_title">Amorak — Sound Design</h2>
-          <p class="amorak-tagline" data-i18n="amorak_tagline">World-building through immersive audio design and character sound signatures.</p>
-        </header>
-
-        <!-- Video Showcase -->
-        <section class="amorak-section" data-reveal>
-          <h3 data-i18n="amorak_showcase">Audio Showcase</h3>
-          <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/VZgEK1CjlNM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <p class="video-description" data-i18n="amorak_video_desc">Experience the complete audio design in context with the animation. Notice how sound elements respond to visual cues and support the narrative progression.</p>
-        </section>
-
-        <!-- Main Image -->
-        <div class="amorak-hero-image" data-reveal>
-          <img src="../assets/images/projects-amorak/amoraktitle.png" alt="Amorak Title" />
+  
+  <!-- Content -->
+  <div class="content">
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="en">
+        <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30">
+          <rect width="60" height="30" fill="#012169"/>
+          <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+          <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/>
+          <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+          <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+        </svg>
+        <span>EN</span>
+      </button>
+      <button class="lang-btn" data-lang="pl">
+        <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10">
+          <rect width="16" height="5" fill="#fff"/>
+          <rect y="5" width="16" height="5" fill="#dc143c"/>
+        </svg>
+        <span>PL</span>
+      </button>
+      <button class="lang-btn" data-lang="nl">
+        <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6">
+          <rect width="9" height="6" fill="#21468B"/>
+          <rect width="9" height="4" fill="#fff"/>
+          <rect width="9" height="2" fill="#AE1C28"/>
+        </svg>
+        <span>NL</span>
+      </button>
+    </div>
+    
+    <!-- Back Button -->
+    <a href="../index.html" class="back-button">
+      <span data-i18n="back">Back to Home</span>
+    </a>
+    
+    <!-- Hero -->
+    <section class="hero">
+      <div class="meta-badges">
+        <div class="meta-badge">
+          <span class="meta-label" data-i18n="meta.role.label">Role</span>
+          <span class="meta-value" data-i18n="meta.role.value">Sound Designer</span>
         </div>
-
-        <!-- Project Overview -->
-        <div class="amorak-content">
-          <section class="amorak-section" data-reveal>
-            <h3 data-i18n="amorak_overview">Overview</h3>
-            <p data-i18n="amorak_overview_desc">Amorak was an exercise in world‑building through sound. I created character signatures and environmental layers that scale with camera proximity, keeping the mix readable while reinforcing the story tone.</p>
-          </section>
-
-          <!-- Sound Design Approach -->
-          <section class="amorak-section" data-reveal>
-            <h3 data-i18n="amorak_sound_design">Sound Design Approach</h3>
-            <div class="amorak-approach-grid">
-              <div class="approach-item">
-                <h4 data-i18n="amorak_creature_signatures">Creature Signatures</h4>
-                <p data-i18n="amorak_creature_signatures_desc">Each creature in Amorak has a unique sonic identity built from organic textures, processed animal vocalizations, and synthesized sub-frequencies. The beast's presence is felt through low-frequency rumbles that scale with proximity, creating an unsettling atmosphere even when off-screen.</p>
-              </div>
-              <div class="approach-item">
-                <h4 data-i18n="amorak_environmental_layers">Environmental Layers</h4>
-                <p data-i18n="amorak_environmental_layers_desc">The basement environment uses layered ambient textures - dripping water, creaking wood, distant echoes, and subtle electrical hums. These elements dynamically respond to the camera position, creating depth and spatial awareness that guides the viewer's attention.</p>
-              </div>
-              <div class="approach-item">
-                <h4 data-i18n="amorak_narrative_support">Narrative Support</h4>
-                <p data-i18n="amorak_narrative_support_desc">Sound design reinforces the story's emotional beats through careful frequency manipulation and dynamic range control. Tension builds through gradual introduction of discordant elements, while release moments use natural reverb and space to provide breathing room.</p>
-              </div>
-            </div>
-          </section>
-
-          <!-- Technical Implementation -->
-          <section class="amorak-section" data-reveal>
-            <h3 data-i18n="amorak_technical_implementation">Technical Implementation</h3>
-            <div class="amorak-tech-details">
-              <div class="tech-item">
-                <h4 data-i18n="amorak_proximity_system">Proximity-Based Mixing</h4>
-                <p data-i18n="amorak_proximity_system_desc">Implemented a 3D spatial audio system where sound elements adjust based on camera distance and angle. Close-up shots emphasize intimate details like breathing and footsteps, while wide shots focus on environmental ambience and creature calls.</p>
-              </div>
-              <div class="tech-item">
-                <h4 data-i18n="amorak_frequency_design">Frequency Design Strategy</h4>
-                <p data-i18n="amorak_frequency_design_desc">Careful frequency allocation ensures clarity across all elements. Creature sounds occupy the 40-200Hz range for body and presence, while environmental details fill the mid-range. High frequencies are reserved for tension-building textures and detail work.</p>
-              </div>
-              <div class="tech-item">
-                <h4 data-i18n="amorak_dynamic_layering">Dynamic Layering</h4>
-                <p data-i18n="amorak_dynamic_layering_desc">Audio layers build progressively throughout scenes, starting with minimal ambience and adding complexity as tension increases. This approach maintains listener engagement while avoiding overwhelming the mix during critical dialogue moments.</p>
-              </div>
-            </div>
-          </section>
-
-          <!-- Gallery Section -->
-          <section class="amorak-section" data-reveal>
-            <h3 data-i18n="amorak_gallery">Visual Showcase</h3>
-            <div class="amorak-gallery">
-              <div class="gallery-item" data-lightbox="amorak-gallery">
-                <img src="../assets/images/projects-amorak/basement.png" alt="Basement Environment" data-full="../assets/images/projects-amorak/basement.png" />
-                <div class="gallery-overlay">
-                  <span data-i18n="amorak_gallery_basement">Basement Environment</span>
-                </div>
-              </div>
-              <div class="gallery-item" data-lightbox="amorak-gallery">
-                <img src="../assets/images/projects-amorak/beastroar.png" alt="Beast Roar Scene" data-full="../assets/images/projects-amorak/beastroar.png" />
-                <div class="gallery-overlay">
-                  <span data-i18n="amorak_gallery_beast">Beast Roar Sequence</span>
-                </div>
-              </div>
-              <div class="gallery-item" data-lightbox="amorak-gallery">
-                <img src="../assets/images/projects-amorak/chimneywithaknife.png" alt="Chimney Scene" data-full="../assets/images/projects-amorak/chimneywithaknife.png" />
-                <div class="gallery-overlay">
-                  <span data-i18n="amorak_gallery_chimney">Chimney Tension Scene</span>
-                </div>
-              </div>
-              <div class="gallery-item" data-lightbox="amorak-gallery">
-                <img src="../assets/images/projects-amorak/creatureviewfrombasement.png" alt="Creature View" data-full="../assets/images/projects-amorak/creatureviewfrombasement.png" />
-                <div class="gallery-overlay">
-                  <span data-i18n="amorak_gallery_creature">Creature Perspective</span>
-                </div>
-              </div>
-              <div class="gallery-item" data-lightbox="amorak-gallery">
-                <img src="../assets/images/projects-amorak/malelooksatchimney.png" alt="Character Focus" data-full="../assets/images/projects-amorak/malelooksatchimney.png" />
-                <div class="gallery-overlay">
-                  <span data-i18n="amorak_gallery_character">Character Focus Shot</span>
-                </div>
-              </div>
-            </div>
-          </section>
-
-
-          <!-- Navigation -->
-          <div class="amorak-navigation" data-reveal>
-            <a href="../projects/index.html" class="button primary" data-i18n="amorak_all_projects">All Projects</a>
+        <div class="meta-badge">
+          <span class="meta-label" data-i18n="meta.style.label">Style</span>
+          <span class="meta-value" data-i18n="meta.style.value">Atmospheric / Horror</span>
+        </div>
+        <div class="meta-badge">
+          <span class="meta-label" data-i18n="meta.team.label">Team</span>
+          <span class="meta-value" data-i18n="meta.team.value">3D Animation Studio</span>
+        </div>
+        <div class="meta-badge">
+          <span class="meta-label" data-i18n="meta.scope.label">Scope</span>
+          <span class="meta-value" data-i18n="meta.scope.value">Complete Audio Pass</span>
+        </div>
+      </div>
+      <h1 data-i18n="title">Amorak — Sound Design</h1>
+      <p class="tagline" data-i18n="tagline">World-building through immersive audio design and character sound signatures.</p>
+    </section>
+    
+    <!-- Video -->
+    <div class="video-section">
+      <h2 data-i18n="showcase.title">Audio Showcase</h2>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/VZgEK1CjlNM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="video-description" data-i18n="showcase.desc">Experience the complete audio design in context with the animation. Notice how sound elements respond to visual cues and support the narrative progression.</p>
+    </div>
+    
+    <!-- Hero Image -->
+    <div class="hero-image">
+      <img src="../assets/images/projects-amorak/amoraktitle.png" alt="Amorak Title" />
+    </div>
+    
+    <!-- Overview -->
+    <section>
+      <h2 data-i18n="overview.title">Overview</h2>
+      <p data-i18n="overview.desc">Amorak was an exercise in world‑building through sound. I created character signatures and environmental layers that scale with camera proximity, keeping the mix readable while reinforcing the story tone.</p>
+    </section>
+    
+    <!-- Sound Design Approach -->
+    <section>
+      <h2 data-i18n="approach.title">Sound Design Approach</h2>
+      <div class="approach-grid">
+        <div class="approach-item">
+          <h4 data-i18n="approach.creatures.title">Creature Signatures</h4>
+          <p data-i18n="approach.creatures.desc">Each creature in Amorak has a unique sonic identity built from organic textures, processed animal vocalizations, and synthesized sub-frequencies. The beast's presence is felt through low-frequency rumbles that scale with proximity, creating an unsettling atmosphere even when off-screen.</p>
+        </div>
+        <div class="approach-item">
+          <h4 data-i18n="approach.environment.title">Environmental Layers</h4>
+          <p data-i18n="approach.environment.desc">The basement environment uses layered ambient textures - dripping water, creaking wood, distant echoes, and subtle electrical hums. These elements dynamically respond to the camera position, creating depth and spatial awareness that guides the viewer's attention.</p>
+        </div>
+        <div class="approach-item">
+          <h4 data-i18n="approach.narrative.title">Narrative Support</h4>
+          <p data-i18n="approach.narrative.desc">Sound design reinforces the story's emotional beats through careful frequency manipulation and dynamic range control. Tension builds through gradual introduction of discordant elements, while release moments use natural reverb and space to provide breathing room.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Technical Implementation -->
+    <section>
+      <h2 data-i18n="technical.title">Technical Implementation</h2>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <h4 data-i18n="technical.proximity.title">Proximity-Based Mixing</h4>
+          <p data-i18n="technical.proximity.desc">Implemented a 3D spatial audio system where sound elements adjust based on camera distance and angle. Close-up shots emphasize intimate details like breathing and footsteps, while wide shots focus on environmental ambience and creature calls.</p>
+        </div>
+        <div class="tech-item">
+          <h4 data-i18n="technical.frequency.title">Frequency Design Strategy</h4>
+          <p data-i18n="technical.frequency.desc">Careful frequency allocation ensures clarity across all elements. Creature sounds occupy the 40-200Hz range for body and presence, while environmental details fill the mid-range. High frequencies are reserved for tension-building textures and detail work.</p>
+        </div>
+        <div class="tech-item">
+          <h4 data-i18n="technical.layering.title">Dynamic Layering</h4>
+          <p data-i18n="technical.layering.desc">Audio layers build progressively throughout scenes, starting with minimal ambience and adding complexity as tension increases. This approach maintains listener engagement while avoiding overwhelming the mix during critical dialogue moments.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Gallery -->
+    <section>
+      <h2 data-i18n="gallery.title">Visual Showcase</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="../assets/images/projects-amorak/basement.png" alt="Basement Environment" />
+          <div class="gallery-overlay">
+            <span data-i18n="gallery.basement">Basement Environment</span>
           </div>
         </div>
-      </section>
+        <div class="gallery-item">
+          <img src="../assets/images/projects-amorak/beastroar.png" alt="Beast Roar Scene" />
+          <div class="gallery-overlay">
+            <span data-i18n="gallery.beast">Beast Roar Sequence</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/projects-amorak/chimneywithaknife.png" alt="Chimney Scene" />
+          <div class="gallery-overlay">
+            <span data-i18n="gallery.chimney">Chimney Tension Scene</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/projects-amorak/creatureviewfrombasement.png" alt="Creature View" />
+          <div class="gallery-overlay">
+            <span data-i18n="gallery.creature">Creature Perspective</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/projects-amorak/malelooksatchimney.png" alt="Character Focus" />
+          <div class="gallery-overlay">
+            <span data-i18n="gallery.character">Character Focus Shot</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Button -->
+    <div class="button-container">
+      <a href="../projects/index.html" class="button" data-i18n="button.projects">All Projects</a>
     </div>
-    <footer id="footer"></footer>
-    <div id="copyright">
-      <ul>
-        <li>&copy; Igor Szuniewicz 2025. All rights reserved.</li>
-      </ul>
-    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; Igor Szuniewicz 2025. All rights reserved.</p>
+    </footer>
   </div>
-  <script src="../assets/js/components/enhancements.js?v=20250210"></script>
-  <script src="../assets/js/theme-toggle.js"></script>
-  <script src="../assets/js/components/lightbox.js"></script>
+  
+  <!-- Translation Data -->
   <script>
-    // Activate amorak brown background
-    document.addEventListener('DOMContentLoaded', function() {
-      document.body.classList.add('amorak-theme');
+    const translations = {
+      en: {
+        back: 'Back to Home',
+        title: 'Amorak — Sound Design',
+        tagline: 'World-building through immersive audio design and character sound signatures.',
+        'meta.role.label': 'Role',
+        'meta.role.value': 'Sound Designer',
+        'meta.style.label': 'Style',
+        'meta.style.value': 'Atmospheric / Horror',
+        'meta.team.label': 'Team',
+        'meta.team.value': '3D Animation Studio',
+        'meta.scope.label': 'Scope',
+        'meta.scope.value': 'Complete Audio Pass',
+        'showcase.title': 'Audio Showcase',
+        'showcase.desc': 'Experience the complete audio design in context with the animation. Notice how sound elements respond to visual cues and support the narrative progression.',
+        'overview.title': 'Overview',
+        'overview.desc': 'Amorak was an exercise in world‑building through sound. I created character signatures and environmental layers that scale with camera proximity, keeping the mix readable while reinforcing the story tone.',
+        'approach.title': 'Sound Design Approach',
+        'approach.creatures.title': 'Creature Signatures',
+        'approach.creatures.desc': 'Each creature in Amorak has a unique sonic identity built from organic textures, processed animal vocalizations, and synthesized sub-frequencies. The beast\'s presence is felt through low-frequency rumbles that scale with proximity, creating an unsettling atmosphere even when off-screen.',
+        'approach.environment.title': 'Environmental Layers',
+        'approach.environment.desc': 'The basement environment uses layered ambient textures - dripping water, creaking wood, distant echoes, and subtle electrical hums. These elements dynamically respond to the camera position, creating depth and spatial awareness that guides the viewer\'s attention.',
+        'approach.narrative.title': 'Narrative Support',
+        'approach.narrative.desc': 'Sound design reinforces the story\'s emotional beats through careful frequency manipulation and dynamic range control. Tension builds through gradual introduction of discordant elements, while release moments use natural reverb and space to provide breathing room.',
+        'technical.title': 'Technical Implementation',
+        'technical.proximity.title': 'Proximity-Based Mixing',
+        'technical.proximity.desc': 'Implemented a 3D spatial audio system where sound elements adjust based on camera distance and angle. Close-up shots emphasize intimate details like breathing and footsteps, while wide shots focus on environmental ambience and creature calls.',
+        'technical.frequency.title': 'Frequency Design Strategy',
+        'technical.frequency.desc': 'Careful frequency allocation ensures clarity across all elements. Creature sounds occupy the 40-200Hz range for body and presence, while environmental details fill the mid-range. High frequencies are reserved for tension-building textures and detail work.',
+        'technical.layering.title': 'Dynamic Layering',
+        'technical.layering.desc': 'Audio layers build progressively throughout scenes, starting with minimal ambience and adding complexity as tension increases. This approach maintains listener engagement while avoiding overwhelming the mix during critical dialogue moments.',
+        'gallery.title': 'Visual Showcase',
+        'gallery.basement': 'Basement Environment',
+        'gallery.beast': 'Beast Roar Sequence',
+        'gallery.chimney': 'Chimney Tension Scene',
+        'gallery.creature': 'Creature Perspective',
+        'gallery.character': 'Character Focus Shot',
+        'button.projects': 'All Projects'
+      },
+      pl: {
+        back: 'Powrót do strony głównej',
+        title: 'Amorak — Sound Design',
+        tagline: 'Kreowanie świata poprzez immersyjny design dźwięku i unikalne sygnatury postaci.',
+        'meta.role.label': 'Rola',
+        'meta.role.value': 'Sound Designer',
+        'meta.style.label': 'Styl',
+        'meta.style.value': 'Atmosferyczny / Horror',
+        'meta.team.label': 'Zespół',
+        'meta.team.value': 'Studio Animacji 3D',
+        'meta.scope.label': 'Zakres',
+        'meta.scope.value': 'Kompletne Audio',
+        'showcase.title': 'Prezentacja Audio',
+        'showcase.desc': 'Doświadcz kompletnego designu dźwięku w kontekście animacji. Zwróć uwagę, jak elementy dźwiękowe reagują na sygnały wizualne i wspierają progresję narracji.',
+        'overview.title': 'Przegląd',
+        'overview.desc': 'Amorak był ćwiczeniem w budowaniu świata poprzez dźwięk. Stworzyłem sygnatury postaci i warstwy środowiskowe, które skalują się z bliskością kamery, utrzymując czytelność miksu przy jednoczesnym wzmacnianiu tonu opowieści.',
+        'approach.title': 'Podejście do Sound Designu',
+        'approach.creatures.title': 'Sygnatury Stworzeń',
+        'approach.creatures.desc': 'Każde stworzenie w Amorak ma unikalną tożsamość dźwiękową zbudowaną z organicznych tekstur, przetworzonych wokalizacji zwierząt i syntezowanych sub-częstotliwości. Obecność bestii odczuwalna jest przez niskofrequencyjne dźwięki, które skalują się z bliskością, tworząc niepokojącą atmosferę nawet poza ekranem.',
+        'approach.environment.title': 'Warstwy Środowiskowe',
+        'approach.environment.desc': 'Środowisko piwnicy wykorzystuje warstwowe tekstury ambientowe - kapanie wody, skrzypienie drewna, odległe echa i subtelne brzęczenie elektryczne. Te elementy dynamicznie reagują na pozycję kamery, tworząc głębię i świadomość przestrzenną, która kieruje uwagą widza.',
+        'approach.narrative.title': 'Wsparcie Narracji',
+        'approach.narrative.desc': 'Sound design wzmacnia emocjonalne momenty opowieści poprzez staranne manipulowanie częstotliwościami i kontrolę zakresu dynamicznego. Napięcie narasta poprzez stopniowe wprowadzanie dysharmonijnych elementów, podczas gdy momenty odprężenia wykorzystują naturalną pogłos i przestrzeń.',
+        'technical.title': 'Implementacja Techniczna',
+        'technical.proximity.title': 'Miksowanie Oparte na Bliskości',
+        'technical.proximity.desc': 'Zaimplementowano system audio przestrzennego 3D, gdzie elementy dźwiękowe dostosowują się do odległości i kąta kamery. Zbliżenia podkreślają intymne detale jak oddech i kroki, podczas gdy szerokie ujęcia skupiają się na ambiencie środowiskowym i wołaniach stworzeń.',
+        'technical.frequency.title': 'Strategia Projektowania Częstotliwości',
+        'technical.frequency.desc': 'Staranna alokacja częstotliwości zapewnia przejrzystość wszystkich elementów. Dźwięki stworzeń zajmują zakres 40-200Hz dla ciała i obecności, podczas gdy detale środowiskowe wypełniają średni zakres. Wysokie częstotliwości zarezerwowane są dla tekstur budujących napięcie i pracy nad detalami.',
+        'technical.layering.title': 'Dynamiczne Warstwowanie',
+        'technical.layering.desc': 'Warstwy audio budują się progresywnie przez sceny, rozpoczynając od minimalnego ambientu i dodając złożoność w miarę narastania napięcia. To podejście utrzymuje zaangażowanie słuchacza, unikając przytłaczania miksu podczas krytycznych momentów dialogowych.',
+        'gallery.title': 'Prezentacja Wizualna',
+        'gallery.basement': 'Środowisko Piwnicy',
+        'gallery.beast': 'Sekwencja Ryku Bestii',
+        'gallery.chimney': 'Scena Napięcia przy Kominie',
+        'gallery.creature': 'Perspektywa Stworzenia',
+        'gallery.character': 'Ujęcie Postaci',
+        'button.projects': 'Wszystkie Projekty'
+      },
+      nl: {
+        back: 'Terug naar Home',
+        title: 'Amorak — Sound Design',
+        tagline: 'Wereldcreatie door meeslepend audiodesign en karakter geluidssignaturen.',
+        'meta.role.label': 'Rol',
+        'meta.role.value': 'Sound Designer',
+        'meta.style.label': 'Stijl',
+        'meta.style.value': 'Atmosferisch / Horror',
+        'meta.team.label': 'Team',
+        'meta.team.value': '3D Animatiestudio',
+        'meta.scope.label': 'Bereik',
+        'meta.scope.value': 'Volledige Audio Pass',
+        'showcase.title': 'Audio Showcase',
+        'showcase.desc': 'Ervaar het complete audiodesign in de context van de animatie. Let op hoe geluidelementen reageren op visuele signalen en de verhaalontwikkeling ondersteunen.',
+        'overview.title': 'Overzicht',
+        'overview.desc': 'Amorak was een oefening in wereldcreatie door geluid. Ik creëerde karaktersignaturen en omgevingslagen die schalen met camera nabijheid, waarbij de mix leesbaar blijft terwijl de verhaaltoon wordt versterkt.',
+        'approach.title': 'Sound Design Aanpak',
+        'approach.creatures.title': 'Wezen Signaturen',
+        'approach.creatures.desc': 'Elk wezen in Amorak heeft een unieke sonische identiteit gebouwd uit organische texturen, verwerkte dierlijke vocalisaties en gesynthetiseerde sub-frequenties. De aanwezigheid van het beest wordt gevoeld door lage-frequentie gerommel dat schaalt met nabijheid, waardoor een verontrustende atmosfeer ontstaat zelfs wanneer het off-screen is.',
+        'approach.environment.title': 'Omgevingslagen',
+        'approach.environment.desc': 'De kelderomgeving gebruikt gelaagde ambient texturen - druppelend water, krakend hout, verre echo\'s en subtiele elektrische zoemen. Deze elementen reageren dynamisch op de camerapositie, waardoor diepte en ruimtelijk bewustzijn ontstaat dat de aandacht van de kijker leidt.',
+        'approach.narrative.title': 'Narratieve Ondersteuning',
+        'approach.narrative.desc': 'Sound design versterkt de emotionele beats van het verhaal door zorgvuldige frequentiemanipulatie en dynamische bereikcontrole. Spanning bouwt op door geleidelijke introductie van dissonante elementen, terwijl release-momenten natuurlijke reverb en ruimte gebruiken om ademruimte te bieden.',
+        'technical.title': 'Technische Implementatie',
+        'technical.proximity.title': 'Nabijheid-Gebaseerde Mixing',
+        'technical.proximity.desc': 'Implementeerde een 3D ruimtelijk audiosysteem waar geluidelementen aanpassen op basis van camera-afstand en hoek. Close-ups benadrukken intieme details zoals ademhaling en voetstappen, terwijl brede shots zich richten op omgevingsambiance en wezenroepen.',
+        'technical.frequency.title': 'Frequentie Design Strategie',
+        'technical.frequency.desc': 'Zorgvuldige frequentietoewijzing zorgt voor helderheid over alle elementen. Wezengeluiden bezetten het 40-200Hz bereik voor body en aanwezigheid, terwijl omgevingsdetails het mid-bereik vullen. Hoge frequenties zijn gereserveerd voor spanning-opbouwende texturen en detailwerk.',
+        'technical.layering.title': 'Dynamische Gelaagdheid',
+        'technical.layering.desc': 'Audiolagen bouwen progressief op doorheen scènes, beginnend met minimale ambiance en complexiteit toevoegend naarmate de spanning toeneemt. Deze aanpak houdt luisteraarsbetrokkenheid vast terwijl het overweldigen van de mix tijdens kritieke dialoogmomenten wordt vermeden.',
+        'gallery.title': 'Visuele Showcase',
+        'gallery.basement': 'Kelderomgeving',
+        'gallery.beast': 'Beest Gebrul Sequentie',
+        'gallery.chimney': 'Schoorsteen Spanning Scène',
+        'gallery.creature': 'Wezen Perspectief',
+        'gallery.character': 'Karakter Focus Shot',
+        'button.projects': 'Alle Projecten'
+      }
+    };
+    
+    // Language switcher
+    let currentLang = localStorage.getItem('language') || 'en';
+    
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('language', lang);
+      
+      // Update all translatable elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+    
+    // Initialize language on load
+    document.addEventListener('DOMContentLoaded', () => {
+      setLanguage(currentLang);
+      
+      // Add click handlers
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setLanguage(btn.dataset.lang);
+        });
+      });
+    });
+  </script>
+  
+  <!-- Lightbox Script -->
+  <script>
+    (function() {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.getElementById('lightbox-close');
+      
+      function openLightbox(imgSrc) {
+        lightboxImg.src = imgSrc;
+        lightbox.classList.add('active');
+      }
+      
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+      }
+      
+      // Bind gallery items
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.gallery-item').forEach(item => {
+          item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            if (img) {
+              openLightbox(img.src);
+            }
+          });
+        });
+        
+        // Close on click
+        lightbox.addEventListener('click', closeLightbox);
+        lightboxClose.addEventListener('click', closeLightbox);
+        
+        // Prevent close when clicking on image
+        lightboxImg.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+        
+        // Close on escape
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+          }
+        });
+      });
+    })();
+  </script>
+  
+  <!-- Scroll Reveal Animation Script -->
+  <script>
+    // Remove preload state
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+    
+    // Smooth scroll reveal
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all sections
+    document.addEventListener('DOMContentLoaded', () => {
+      // Show content immediately on DOM ready
+      setTimeout(() => {
+        document.body.classList.add('loaded');
+      }, 100);
+      
+      const sections = document.querySelectorAll('section, .video-section, .hero-image');
+      sections.forEach(section => observer.observe(section));
+      
+      // Stagger animation for cards
+      const cards = document.querySelectorAll('.approach-item, .tech-item, .gallery-item, .meta-badge');
+      cards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.08}s`;
+      });
     });
   </script>
 </body>
