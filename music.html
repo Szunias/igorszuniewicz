@@ -53,7 +53,7 @@
   <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="stylesheet" href="assets/css/custom-styles.css?v=20250212" />
   <link rel="stylesheet" href="assets/css/pro-theme.css?v=20250212" />
-  <link rel="stylesheet" href="assets/css/genre-carousel.css?v=20251011c" />
+  <link rel="stylesheet" href="assets/css/genre-carousel.css?v=20251011d" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
@@ -402,27 +402,34 @@
       if (currentIndex < slides.length - 1) scrollToSlide(currentIndex + 1);
     });
     
-    // Touch/Mouse drag support
+    // Touch/Mouse drag support - IMPROVED
     carousel.addEventListener('mousedown', startDrag);
-    carousel.addEventListener('touchstart', startDrag, { passive: true });
+    carousel.addEventListener('touchstart', startDrag, { passive: false });
     
     carousel.addEventListener('mousemove', drag);
-    carousel.addEventListener('touchmove', drag, { passive: true });
+    carousel.addEventListener('touchmove', drag, { passive: false });
     
     carousel.addEventListener('mouseup', endDrag);
     carousel.addEventListener('mouseleave', endDrag);
     carousel.addEventListener('touchend', endDrag);
+    
+    // Prevent text selection on all slides
+    slides.forEach(slide => {
+      slide.addEventListener('dragstart', (e) => e.preventDefault());
+      slide.addEventListener('selectstart', (e) => e.preventDefault());
+    });
     
     function startDrag(e) {
       isDragging = true;
       startX = e.type === 'mousedown' ? e.pageX : e.touches[0].pageX;
       scrollLeft = carousel.scrollLeft;
       carousel.style.cursor = 'grabbing';
+      e.preventDefault(); // Prevent text selection
     }
     
     function drag(e) {
       if (!isDragging) return;
-      e.preventDefault();
+      e.preventDefault(); // Stop text selection during drag
       const x = e.type === 'mousemove' ? e.pageX : e.touches[0].pageX;
       const walk = (x - startX) * 1.5;
       carousel.scrollLeft = scrollLeft - walk;
