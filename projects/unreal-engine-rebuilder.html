@@ -39,15 +39,25 @@
   }
   </script>
   <link rel="stylesheet" href="../assets/css/main.css" />
-  <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20250210" />
+  <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20251011" />
+  <noscript>
+    <link rel="stylesheet" href="../assets/css/noscript.css" />
+  </noscript>
   <style>
+    /* CRITICAL: Override pro-theme.css hiding background elements */
+    .bg-orbs,
+    .bg-waves,
+    .bg-eq,
+    .bg-glow {
+      display: block !important;
+      opacity: 1 !important;
+    }
     /* Page background: modern developer tool theme */
     html, body { 
       background: linear-gradient(180deg, #0a0f14 0%, #0d1419 55%, #111822 100%) !important;
+      background-color: #0c1218 !important;
       min-height: 100vh;
-    }
-    body { 
-      background-color: #0c1218 !important; 
+      overflow-x: hidden;
     }
     #wrapper {
       background: transparent !important;
@@ -312,6 +322,96 @@
       font-size: 0.9em;
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+
+    /* Ensure content is visible */
+    .ue-content p,
+    .ue-section p,
+    .feature-item p {
+      color: #e0e0e0 !important;
+    }
+
+    .ue-section h3,
+    .feature-item h4 {
+      color: #18bfef !important;
+    }
+
+    /* Dropdown menu fix - ensure it works properly */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-toggle {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .dropdown-toggle::after {
+      content: " ▼";
+      font-size: 0.7em;
+      opacity: 0.7;
+      margin-left: 0.3em;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      min-width: 240px;
+      background: rgba(10, 16, 22, 0.98);
+      border: 1px solid rgba(24, 191, 239, 0.3);
+      border-radius: 12px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(16px);
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+      list-style: none;
+      padding: 0.6em 0;
+      margin: 0;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown-menu:hover {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+    }
+
+    .dropdown-menu li {
+      padding: 0;
+      margin: 0;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.8em 1.5em;
+      color: #e9f7ff;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border-radius: 0;
+      border: none;
+      font-size: 1em;
+      font-weight: 500;
+    }
+
+    .dropdown-menu a:hover {
+      background: rgba(24, 191, 239, 0.25);
+      color: #18bfef;
+    }
+
+    .disabled-link {
+      color: #666 !important;
+      cursor: not-allowed !important;
+      opacity: 0.5;
+    }
+
+    .disabled-link:hover {
+      background: rgba(100, 100, 100, 0.1) !important;
+      color: #888 !important;
     }
   </style>
   <link rel="stylesheet" href="../assets/css/preloader.css">
