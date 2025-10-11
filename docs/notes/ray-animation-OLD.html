@@ -1,0 +1,1102 @@
+<!DOCTYPE HTML>
+<html lang="en" style="background:#0a0a0a!important;background-color:#0a0a0a!important;">
+<head>
+  <title>Ray Animation — Music Composition</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+  <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png" sizes="180x180">
+  <meta name="description" content="Ray Animation — music composition by Igor Szuniewicz: thematic clarity and evolving textures." />
+  <link rel="canonical" href="https://igorszuniewicz.com/projects/ray-animation.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Igor Szuniewicz" />
+  <meta property="og:title" content="Ray Animation — Music Composition" />
+  <meta property="og:description" content="Original score supporting narrative beats." />
+  <meta property="og:url" content="https://igorszuniewicz.com/projects/ray-animation.html" />
+  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects/project5.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ray Animation — Music Composition" />
+  <meta name="twitter:description" content="Original score supporting narrative beats." />
+  <meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects/project5.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Ray Animation — Music Composition",
+    "image": "https://igorszuniewicz.com/assets/images/projects/project5.png",
+    "author": {
+      "@type": "Person",
+      "name": "Igor Szuniewicz",
+      "url": "https://igorszuniewicz.com/"
+    },
+    "url": "https://igorszuniewicz.com/projects/ray-animation.html"
+  }
+  </script>
+  <!-- Google Fonts - Creative & Modern -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- ULTRA-CRITICAL: Anti-flicker styles - MUST load before main.css has any effect -->
+  <style>
+    /* Nuclear option - force everything to dark immediately */
+    *, *::before, *::after {
+      background: transparent !important;
+      background-image: none !important;
+      background-color: transparent !important;
+    }
+    html, body {
+      background: #0a0a0a !important;
+      background-color: #0a0a0a !important;
+      background-image: none !important;
+    }
+    /* Hide navigation header and language switcher */
+    #header, #nav, #lang-fixed {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      height: 0 !important;
+      width: 0 !important;
+      overflow: hidden !important;
+      position: absolute !important;
+      left: -9999px !important;
+    }
+    /* Hide ANY element that could be a background */
+    div[class*="bg-"],
+    div[class*="bg"],
+    svg[class*="bg-"],
+    canvas[class*="bg-"],
+    .bg-gradient,
+    .bg-orbs,
+    .bg-waves,
+    .bg-eq,
+    .bg-glow,
+    #wrapper > .bg,
+    #wrapper > .bg.fixed {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      position: absolute !important;
+      left: -9999px !important;
+    }
+    /* Only cave-background should be visible */
+    .cave-background {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+  </style>
+  
+  <style>
+    /* Dark Creative Background */
+    body {
+      background: #0a0a0a !important;
+      background-color: #0a0a0a !important;
+      overflow-x: hidden;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* Override the display:none from custom-styles.css line 3821 */
+    body .cave-background,
+    .cave-background {
+      display: block !important;
+      visibility: visible !important;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: 1 !important;
+      pointer-events: none !important;
+      background: url('../assets/images/projects-ray/background/Black%20Coal.jpg') repeat center !important;
+      background-size: 400px 400px !important;
+      opacity: 1 !important;
+    }
+
+    .cave-background::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(ellipse at 30% 20%, rgba(255, 140, 0, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(210, 125, 45, 0.03) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.92) 50%, rgba(0,0,0,0.95) 100%);
+    }
+
+    .cave-background::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 50% 30%, rgba(255, 140, 0, 0.02) 0%, transparent 40%);
+      animation: bgPulse 8s ease-in-out infinite;
+    }
+
+    @keyframes bgPulse {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.25; }
+    }
+
+    #wrapper,
+    #wrapper > .bg {
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: none !important;
+      position: relative !important;
+      z-index: 10 !important;
+    }
+
+    #main {
+      background: transparent !important;
+    }
+
+    /* Scroll Animation Keyframes */
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Scroll Reveal Classes */
+    .scroll-reveal {
+      opacity: 0;
+    }
+
+    .scroll-reveal.revealed {
+      animation-duration: 0.8s;
+      animation-fill-mode: both;
+      animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .scroll-reveal-left.revealed {
+      animation-name: slideInLeft;
+    }
+
+    .scroll-reveal-right.revealed {
+      animation-name: slideInRight;
+    }
+
+    .scroll-reveal-up.revealed {
+      animation-name: fadeInUp;
+    }
+
+    /* ===== PROFESSIONAL PORTFOLIO DESIGN ===== */
+    
+    /* Main Container */
+    #main {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* Minimal Back Button */
+    #header {
+      display: none !important;
+    }
+
+    #nav {
+      display: none !important;
+    }
+
+    .back-to-home {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 140, 0, 0.3);
+      border-radius: 50px;
+      color: #ff8c00;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 140, 0, 0.1);
+    }
+
+    .back-to-home:hover {
+      background: rgba(255, 140, 0, 0.15);
+      border-color: #ff8c00;
+      transform: translateX(-5px);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 140, 0, 0.3);
+      color: #ffa500;
+    }
+
+    .back-to-home::before {
+      content: '←';
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+
+    .back-to-home:hover::before {
+      transform: translateX(-3px);
+    }
+
+    /* Hero Section - Creative & Bold */
+    .portfolio-hero {
+      text-align: center;
+      margin-bottom: 6rem;
+      padding: 8rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255, 140, 0, 0.1) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.5; }
+    }
+
+    .portfolio-hero h2 {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 5.5rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+      position: relative;
+      display: inline-block;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .portfolio-hero h2 .main-title {
+      color: #ffffff;
+      text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 140, 0, 0.6),
+        0 0 30px rgba(255, 140, 0, 0.4),
+        0 0 40px rgba(255, 140, 0, 0.3),
+        0 0 60px rgba(255, 140, 0, 0.2);
+      animation: titleGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes titleGlow {
+      from { 
+        text-shadow: 
+          0 0 10px rgba(255, 255, 255, 0.8),
+          0 0 20px rgba(255, 140, 0, 0.6),
+          0 0 30px rgba(255, 140, 0, 0.4),
+          0 0 40px rgba(255, 140, 0, 0.3);
+      }
+      to { 
+        text-shadow: 
+          0 0 15px rgba(255, 255, 255, 1),
+          0 0 30px rgba(255, 140, 0, 0.8),
+          0 0 50px rgba(255, 140, 0, 0.6),
+          0 0 70px rgba(255, 140, 0, 0.4),
+          0 0 90px rgba(255, 140, 0, 0.2);
+      }
+    }
+
+    .portfolio-hero h2 .highlight {
+      color: #aaa;
+      font-weight: 400;
+      display: block;
+      font-size: 0.55em;
+      margin-top: 0.5rem;
+      letter-spacing: 0.15em;
+    }
+
+    .portfolio-hero .subtitle {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.2rem;
+      color: #aaa;
+      font-weight: 400;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .portfolio-tags {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .portfolio-tags span {
+      font-family: 'DM Sans', sans-serif;
+      padding: 0.6rem 1.3rem;
+      background: rgba(255, 140, 0, 0.1);
+      border: 1px solid rgba(255, 140, 0, 0.3);
+      border-radius: 25px;
+      font-size: 0.9rem;
+      color: #ff8c00;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .portfolio-tags span:hover {
+      background: rgba(255, 140, 0, 0.2);
+      border-color: #ffa500;
+      color: #ffa500;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(255, 140, 0, 0.4);
+    }
+
+    /* Alternating Content Cards - Zigzag Layout */
+    .content-row {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      margin: 5rem 0;
+      position: relative;
+    }
+
+    .content-row.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .content-visual {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .content-visual img,
+    .content-visual .video-container {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(210, 125, 45, 0.15);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(210, 125, 45, 0.2);
+    }
+
+    .content-visual img:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 50px rgba(210, 125, 45, 0.3);
+      border-color: rgba(255, 140, 0, 0.5);
+    }
+
+    .content-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .content-text h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+      border-left: 4px solid #ff8c00;
+      padding-left: 1rem;
+    }
+
+    .content-text p {
+      font-family: 'Poppins', sans-serif;
+      color: #aaa;
+      line-height: 1.8;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .content-text ul {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+    }
+
+    .content-text li {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.6rem 0;
+      padding-left: 1.8rem;
+      position: relative;
+      color: #999;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    .content-text li::before {
+      content: '▸';
+      position: absolute;
+      left: 0.2rem;
+      color: #ff8c00;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* Video Container */
+    .video-container {
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(210, 125, 45, 0.15);
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      border: 1px solid rgba(210, 125, 45, 0.2);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .video-container:hover {
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 50px rgba(210, 125, 45, 0.3);
+      transform: translateY(-5px);
+      border-color: rgba(255, 140, 0, 0.5);
+    }
+
+    /* Stats Cards - Horizontal */
+    .stats-section {
+      margin: 5rem 0;
+      text-align: center;
+    }
+
+    .stats-section h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      color: #ffffff;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(210, 125, 45, 0.3);
+      border-radius: 12px;
+      padding: 2.5rem 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(210, 125, 45, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-card:hover {
+      border-color: #ff8c00;
+      transform: translateY(-8px);
+      box-shadow: 0 15px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(210, 125, 45, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .stat-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #ff8c00;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      margin: 5rem 0;
+    }
+
+    .gallery-section h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      color: #ffffff;
+      margin-bottom: 3rem;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 20px rgba(210, 125, 45, 0.1);
+      border: 1px solid rgba(210, 125, 45, 0.2);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(210, 125, 45, 0.3);
+      border-color: rgba(255, 140, 0, 0.5);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: all 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+      color: white;
+      padding: 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    .gallery-overlay span {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .content-row {
+        gap: 3rem;
+        margin: 4rem 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .back-to-home {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+      }
+
+      #main {
+        padding: 2rem 1.5rem;
+      }
+
+      .portfolio-hero {
+        margin-bottom: 4rem;
+        padding: 2rem 0;
+      }
+
+      .portfolio-hero h2 {
+        font-size: 3.5rem;
+      }
+
+      .portfolio-hero h2 .highlight {
+        font-size: 0.5em;
+      }
+
+      .portfolio-hero .subtitle {
+        font-size: 1.1rem;
+      }
+
+      .content-row,
+      .content-row.reverse {
+        flex-direction: column;
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .content-text h3 {
+        font-size: 1.6rem;
+      }
+
+      .stats-section h3,
+      .gallery-section h3 {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .stat-value {
+        font-size: 2.5rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .back-to-home {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        gap: 0.5rem;
+      }
+
+      .back-to-home span {
+        display: none;
+      }
+
+      .back-to-home::after {
+        content: 'Home';
+        font-size: 0.8rem;
+      }
+
+      .portfolio-hero h2 {
+        font-size: 2.2rem;
+      }
+
+      .portfolio-hero h2 .highlight {
+        font-size: 0.45em;
+        margin-top: 0.3rem;
+      }
+
+      .portfolio-tags span {
+        font-size: 0.85rem;
+        padding: 0.4rem 1rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .stat-card {
+        padding: 2rem 1rem;
+      }
+
+      .stat-value {
+        font-size: 2.2rem;
+      }
+    }
+
+  </style>
+  
+  <!-- Load template CSS AFTER our anti-flicker styles so !important wins -->
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20251011" />
+  
+  <!-- FINAL OVERRIDE: Nuclear anti-flicker styles - loaded LAST to win ALL specificity battles -->
+  <style>
+    /* Override EVERYTHING from main.css with maximum specificity */
+    html, html body, body {
+      background: #0a0a0a !important;
+      background-color: #0a0a0a !important;
+      background-image: none !important;
+    }
+    #wrapper, #main {
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: none !important;
+    }
+    /* Kill all background elements with extreme prejudice */
+    body div[class*="bg-"],
+    body div[class*="bg"],
+    body svg[class*="bg-"],
+    body canvas[class*="bg-"],
+    body .bg-gradient,
+    body .bg-orbs,
+    body .bg-waves,
+    body .bg-eq,
+    body .bg-glow,
+    #wrapper > .bg,
+    #wrapper .bg {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      position: fixed !important;
+      left: -99999px !important;
+      top: -99999px !important;
+      pointer-events: none !important;
+    }
+    /* Hide navigation */
+    #header, #nav, #lang-fixed {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+  </style>
+  
+  <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+  
+  <!-- Immediate script to remove template backgrounds BEFORE they render -->
+  <script>
+    // Run immediately (blocking) to prevent flicker
+    (function() {
+      // Remove template backgrounds as soon as DOM is parsed
+      document.addEventListener('DOMContentLoaded', function() {
+        // Remove all template background elements
+        const removes = ['.bg-gradient', '.bg-orbs', '.bg-waves', '.bg-eq', '.bg-glow', '#wrapper > .bg'];
+        removes.forEach(sel => {
+          document.querySelectorAll(sel).forEach(el => {
+            el.style.display = 'none';
+            el.style.visibility = 'hidden';
+            el.style.opacity = '0';
+            el.remove();
+          });
+        });
+      });
+      
+      // Also run immediately if document is already loaded
+      if (document.readyState === 'interactive' || document.readyState === 'complete') {
+        const removes = ['.bg-gradient', '.bg-orbs', '.bg-waves', '.bg-eq', '.bg-glow', '#wrapper > .bg'];
+        removes.forEach(sel => {
+          document.querySelectorAll(sel).forEach(el => {
+            el.style.display = 'none';
+            el.style.visibility = 'hidden';
+            el.style.opacity = '0';
+            try { el.remove(); } catch(e) {}
+          });
+        });
+      }
+    })();
+  </script>
+</head>
+<body class="is-preload" style="background:#0a0a0a!important;background-color:#0a0a0a!important;background-image:none!important;">
+  <div id="lang-fixed" role="group" aria-label="Language selection">
+    <button type="button" data-lang="en" aria-label="Switch to English" aria-pressed="true">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 12">
+          <rect width="18" height="12" fill="#012169"/>
+          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#fff" stroke-width="3"/>
+          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#C8102E" stroke-width="1.2"/>
+          <rect x="0" y="5" width="18" height="2" fill="#fff"/>
+          <rect x="8" y="0" width="2" height="12" fill="#fff"/>
+          <rect x="0" y="5.5" width="18" height="1" fill="#C8102E"/>
+          <rect x="8.5" y="0" width="1" height="12" fill="#C8102E"/>
+        </svg>
+      </span>
+      <span class="label">EN</span>
+    </button>
+    <button type="button" data-lang="pl" aria-label="Przełącz na język polski" aria-pressed="false">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
+          <rect width="3" height="1" fill="#fff"/>
+          <rect y="1" width="3" height="1" fill="#dc143c"/>
+        </svg>
+      </span>
+      <span class="label">PL</span>
+    </button>
+    <button type="button" data-lang="nl" aria-label="Schakel over naar Nederlands" aria-pressed="false">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
+          <rect width="3" height="2" fill="#21468B"/>
+          <rect width="3" height="1.333" fill="#fff"/>
+          <rect width="3" height="0.666" fill="#AE1C28"/>
+        </svg>
+      </span>
+      <span class="label">NL</span>
+    </button>
+  </div>
+
+  <!-- Custom cave background - only this one should be visible -->
+  <div class="cave-background" style="display:block!important;visibility:visible!important;position:fixed!important;top:0!important;left:0!important;width:100vw!important;height:100vh!important;z-index:1!important;pointer-events:none!important;background:url('../assets/images/projects-ray/background/Black%20Coal.jpg') repeat center!important;background-size:400px 400px!important;opacity:1!important;"></div>
+  <!-- All default backgrounds removed to prevent flicker -->
+  <div id="wrapper" class="fade-in">
+    <a href="../index.html" class="back-to-home">
+      <span>Back to Home</span>
+    </a>
+    <header id="header" style="display:none;">
+      <a href="../index.html" class="logo">Igor Szuniewicz</a>
+    </header>
+    <nav id="nav" style="display:none;">
+      <ul class="links">
+        <li><a href="../index.html" data-i18n="nav_home">Home</a></li>
+        <li><a href="../about.html" data-i18n="nav_about">About</a></li>
+        <li><a href="../projects/index.html" data-i18n="nav_all_projects">Projects</a></li>
+        <li><a href="../music.html" data-i18n="nav_music">Music</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-i18n="nav_extra">Extra</a>
+            <ul class="dropdown-menu">
+                <li><a href="../projects/audioq.html">AudioQ Plugin</a></li>
+                <li><a href="https://open.spotify.com/artist/6jEBXZZOeunaMzMnnHYvd6" target="_blank">Spotify Music</a></li>
+            </ul>
+        </li>
+        <li><a href="../contact.html" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+      <ul class="icons"></ul>
+    </nav>
+    <div id="main">
+      <section class="post">
+        <!-- Hero Section -->
+        <div class="portfolio-hero">
+          <h2><span class="main-title">Ray Animation</span> <span class="highlight">Music Composition</span></h2>
+          <p class="subtitle" data-i18n="ray_lead">Complete musical composition for 3D animated short film</p>
+          
+          <div class="portfolio-tags">
+            <span data-i18n="ray_role">Replacement Composer</span>
+            <span data-i18n="ray_style">Disco-inspired</span>
+            <span data-i18n="ray_location">Ghent, Belgium</span>
+            <span>Animation Score</span>
+          </div>
+        </div>
+
+        <!-- Video Showcase Row -->
+        <div class="content-row scroll-reveal scroll-reveal-left">
+          <div class="content-visual">
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/NhH4dNcfxZg?start=131" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="content-text">
+            <h3 data-i18n="ray_showcase">Project Showcase</h3>
+            <p data-i18n="ray_overview_desc">As the replacement composer for this Ghent-based animation team, I created a complete disco-inspired soundtrack. The score features thematic clarity and evolving textures that map character emotions to harmonic progressions while maintaining a retro aesthetic.</p>
+            <ul>
+              <li>Complete original score composition</li>
+              <li>Disco-inspired musical themes</li>
+              <li>Character-driven harmonic progression</li>
+              <li>Professional mixing and mastering</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section scroll-reveal scroll-reveal-up">
+          <h3>Project Details</h3>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-value">3:30</span>
+              <span class="stat-label" data-i18n="ray_stat_duration">Duration</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value">100%</span>
+              <span class="stat-label" data-i18n="ray_stat_original">Original</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value">Disco</span>
+              <span class="stat-label" data-i18n="ray_stat_style">Style</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value">2024</span>
+              <span class="stat-label" data-i18n="ray_stat_year">Year</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Music Composition Row -->
+        <div class="content-row reverse scroll-reveal scroll-reveal-right">
+          <div class="content-visual">
+            <img src="../assets/images/projects-ray/raytitleinstones.png" alt="Ray Title Scene" />
+          </div>
+          <div class="content-text">
+            <h3 data-i18n="ray_music_composition">Music Composition</h3>
+            <p>The score features a disco-inspired main theme built on retro synthesizers and layered string arrangements. Each musical element was carefully crafted to support the narrative while maintaining the nostalgic aesthetic.</p>
+            <ul>
+              <li data-i18n="ray_music_1">Disco-inspired main theme with retro synthesizers</li>
+              <li data-i18n="ray_music_2">Character emotion mapping to harmonic progressions</li>
+              <li data-i18n="ray_music_3">Seamless integration with narrative pacing</li>
+              <li>Dynamic orchestration with layered strings</li>
+              <li>Memorable melodic hooks throughout</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Technical Approach Row -->
+        <div class="content-row scroll-reveal scroll-reveal-left">
+          <div class="content-visual">
+            <img src="../assets/images/projects-ray/raylightsincave.png" alt="Cave Lighting Scene" />
+          </div>
+          <div class="content-text">
+            <h3 data-i18n="ray_technical_approach">Technical Approach</h3>
+            <p>Professional audio production with focus on cinematic depth and dynamic range optimization. The mix ensures clear separation while maintaining the warm, nostalgic character of the disco era.</p>
+            <ul>
+              <li data-i18n="ray_technical_1">Evolving textures without dialogue masking</li>
+              <li data-i18n="ray_technical_2">Dynamic range optimization for animation</li>
+              <li data-i18n="ray_technical_3">Retro aesthetic with modern production</li>
+              <li>Stereo field positioning for cinematic depth</li>
+              <li>Professional mixing and mastering</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Creative Process Row -->
+        <div class="content-row reverse scroll-reveal scroll-reveal-right">
+          <div class="content-visual">
+            <img src="../assets/images/projects-ray/rayinlight.png" alt="Ray in Light" />
+          </div>
+          <div class="content-text">
+            <h3 data-i18n="ray_creative_process">Creative Process</h3>
+            <p>Stepped in as replacement composer for the Ghent-based team, bringing fresh perspective while respecting the animation's vision. Close collaboration with the director ensured perfect synchronization.</p>
+            <ul>
+              <li data-i18n="ray_process_1">Replaced original composer from Ghent team</li>
+              <li data-i18n="ray_process_2">Developed thematic clarity for 3D animation</li>
+              <li>Regular feedback sessions with director</li>
+              <li>Multiple revision cycles for perfect sync</li>
+              <li>On-time delivery for festival deadlines</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="gallery-section scroll-reveal scroll-reveal-up">
+          <h3 data-i18n="ray_gallery">Visual Gallery</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item" data-lightbox="ray-gallery">
+              <img src="../assets/images/projects-ray/raytitleinstones.png" alt="Ray Title in Stones" data-full="../assets/images/projects-ray/raytitleinstones.png" />
+              <div class="gallery-overlay">
+                <span data-i18n="ray_gallery_title">Title Sequence</span>
+              </div>
+            </div>
+            <div class="gallery-item" data-lightbox="ray-gallery">
+              <img src="../assets/images/projects-ray/rayaloneinthecave.png" alt="Ray Alone in Cave" data-full="../assets/images/projects-ray/rayaloneinthecave.png" />
+              <div class="gallery-overlay">
+                <span data-i18n="ray_gallery_cave">Cave Scene</span>
+              </div>
+            </div>
+            <div class="gallery-item" data-lightbox="ray-gallery">
+              <img src="../assets/images/projects-ray/raylightsincave.png" alt="Ray Lights in Cave" data-full="../assets/images/projects-ray/raylightsincave.png" />
+              <div class="gallery-overlay">
+                <span data-i18n="ray_gallery_lights">Cave Lighting</span>
+              </div>
+            </div>
+            <div class="gallery-item" data-lightbox="ray-gallery">
+              <img src="../assets/images/projects-ray/rayinlight.png" alt="Ray in Light" data-full="../assets/images/projects-ray/rayinlight.png" />
+              <div class="gallery-overlay">
+                <span data-i18n="ray_gallery_light">Ray in Light</span>
+              </div>
+            </div>
+            <div class="gallery-item" data-lightbox="ray-gallery">
+              <img src="../assets/images/projects-ray/raycredits.png" alt="Ray Credits" data-full="../assets/images/projects-ray/raycredits.png" />
+              <div class="gallery-overlay">
+                <span data-i18n="ray_gallery_credits">End Credits</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="actions" style="margin-top:2em">
+          <li><a href="../projects/index.html" class="button" data-i18n="ray_all_projects">All Projects</a></li>
+        </ul>
+      </section>
+    </div>
+    <footer id="footer"></footer>
+    <div id="copyright">
+      <ul>
+        <li>&copy; Igor Szuniewicz 2025. All rights reserved.</li>
+      </ul>
+    </div>
+  </div>
+  <script src="../assets/js/components/enhancements.js?v=20250210"></script>
+  <script src="../assets/js/theme-toggle.js"></script>
+  <script src="../assets/js/components/lightbox.js"></script>
+  <script>
+    // Activate cave background after page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      // Background is now handled by inline styles + CSS
+      // No need for JavaScript intervention since enhancements.js is disabled
+
+      // Scroll Reveal Animation
+      const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+      
+      const elementInView = (el, percentageScroll = 80) => {
+        const elementTop = el.getBoundingClientRect().top;
+        return (
+          elementTop <= 
+          (window.innerHeight || document.documentElement.clientHeight) * (percentageScroll/100)
+        );
+      };
+      
+      const displayScrollElement = (element) => {
+        element.classList.add('revealed');
+      };
+      
+      const hideScrollElement = (element) => {
+        element.classList.remove('revealed');
+      };
+      
+      const handleScrollAnimation = () => {
+        scrollRevealElements.forEach((el) => {
+          if (elementInView(el, 80)) {
+            displayScrollElement(el);
+          }
+        });
+      };
+      
+      window.addEventListener('scroll', () => {
+        handleScrollAnimation();
+      });
+      
+      // Trigger on load
+      handleScrollAnimation();
+    });
+  </script>
+</body>
+</html>

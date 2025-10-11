@@ -1,0 +1,58 @@
+{
+  "name": "Igor Szuniewicz - Portfolio",
+  "short_name": "Igor Portfolio",
+  "description": "Portfolio of Igor Szuniewicz — composer, audio engineer, and software developer specializing in interactive music systems, game audio, and DSP.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0c1218",
+  "background_color": "#0c1218",
+  "lang": "en",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["music", "entertainment", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Music",
+      "short_name": "Music",
+      "description": "Listen to Igor's music compositions",
+      "url": "music.html",
+      "icons": [{ "src": "favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Projects",
+      "short_name": "Projects",
+      "description": "View development projects",
+      "url": "projects/index.html",
+      "icons": [{ "src": "favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Get in touch",
+      "url": "contact.html",
+      "icons": [{ "src": "favicon-32x32.png", "sizes": "32x32" }]
+    }
+  ]
+}
