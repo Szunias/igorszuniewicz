@@ -18,49 +18,49 @@
 
 /* Pill Button - Text Only */
 .music-page .genre-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.7rem 1.5rem;
-  background: rgba(20, 30, 40, 0.8);
-  border: 1px solid rgba(24, 191, 239, 0.3);
-  border-radius: 50px;
-  color: #ffffff;
-  font-size: 0.9rem;
-  font-weight: 600;
-  font-family: 'Outfit', 'Spline Sans', sans-serif;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  outline: none;
-  white-space: nowrap;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.7rem 1.5rem !important;
+  background: rgba(20, 30, 40, 0.8) !important;
+  border: 1px solid rgba(24, 191, 239, 0.3) !important;
+  border-radius: 50px !important;
+  color: #ffffff !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  font-family: 'Outfit', 'Spline Sans', sans-serif !important;
+  letter-spacing: 0.5px !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  outline: none !important;
+  white-space: nowrap !important;
+  user-select: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Hover State */
 .music-page .genre-pill:hover {
-  background: rgba(24, 191, 239, 0.15);
-  border-color: rgba(24, 191, 239, 0.5);
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(24, 191, 239, 0.3);
+  background: rgba(24, 191, 239, 0.15) !important;
+  border-color: rgba(24, 191, 239, 0.5) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 16px rgba(24, 191, 239, 0.3) !important;
 }
 
 /* Active State */
 .music-page .genre-pill.active {
   background: linear-gradient(135deg, 
     rgba(24, 191, 239, 0.45) 0%, 
-    rgba(154, 108, 255, 0.35) 100%);
-  border-color: rgba(24, 191, 239, 0.9);
-  color: #ffffff;
+    rgba(154, 108, 255, 0.35) 100%) !important;
+  border-color: rgba(24, 191, 239, 0.9) !important;
+  color: #ffffff !important;
   box-shadow: 
     0 4px 16px rgba(24, 191, 239, 0.5),
     0 0 20px rgba(24, 191, 239, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
 }
 
 .music-page .genre-pill.active:hover {
@@ -80,8 +80,10 @@
 
 /* Pill Text */
 .music-page .pill-text {
-  position: relative;
-  z-index: 1;
+  position: relative !important;
+  z-index: 1 !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
 }
 
 /* Count Badge */
