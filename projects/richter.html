@@ -1,448 +1,579 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Richter — Sound Design</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
-  <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
-  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png" sizes="180x180">
-  <meta name="description" content="Richter — sound design by Igor Szuniewicz with minimal recording gear." />
-  <link rel="canonical" href="https://igorszuniewicz.com/projects/richter.html" />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="Igor Szuniewicz" />
-  <meta property="og:title" content="Richter — Sound Design" />
-  <meta property="og:description" content="Resourceful foley and synthesis under constrained recording conditions." />
-  <meta property="og:url" content="https://igorszuniewicz.com/projects/richter.html" />
-  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects/richter.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Richter — Sound Design" />
-  <meta name="twitter:description" content="Resourceful foley and synthesis under constrained recording conditions." />
-  <meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects/richter.png" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": "Richter — Sound Design",
-    "image": "https://igorszuniewicz.com/assets/images/projects/richter.png",
-    "author": {
-      "@type": "Person",
-      "name": "Igor Szuniewicz",
-      "url": "https://igorszuniewicz.com/"
-    },
-    "url": "https://igorszuniewicz.com/projects/richter.html"
-  }
-  </script>
-  <link rel="stylesheet" href="../assets/css/main.css" />
-  <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20251011" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Richter - Sound Design for Short Film by Igor Szuniewicz</title>
+  <meta name="description" content="Complete soundscape for Richter short film. Original field recordings, synthesis, and foley design. Sound design by Igor Szuniewicz.">
+  <meta name="keywords" content="sound design, foley, field recording, film audio, synthesis, Reaper, DAW, audio post-production">
+  <meta name="author" content="Igor Szuniewicz">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Richter - Sound Design for Short Film">
+  <meta property="og:description" content="Complete soundscape with original recordings and synthesis for short film. Resourceful foley under constrained conditions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://igorszuniewicz.com/projects/richter.html">
+  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects/richter.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Richter - Sound Design for Short Film">
+  <meta name="twitter:description" content="Complete soundscape with original recordings and synthesis.">
+  <meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects/richter.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  
   <style>
-    .richter-hero-image {
-      margin: 2em 0;
-      text-align: center;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-
-    .richter-hero-image img {
-      width: 100%;
-      height: auto;
-      border-radius: 15px;
-      transition: transform 0.3s ease;
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1420 50%, #0f0a15 100%);
+      color: #e0e6ed;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-
-    .richter-hero-image:hover img {
-      transform: scale(1.02);
-    }
-
-    .richter-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1em;
-    }
-
-    .richter-section {
-      margin: 3em 0;
-      padding: 2em;
-      background: linear-gradient(135deg, rgba(35, 35, 40, 0.6) 0%, rgba(50, 50, 55, 0.4) 100%);
-      border-radius: 15px;
-      border: 1px solid rgba(120, 120, 130, 0.2);
-      backdrop-filter: blur(5px);
-    }
-
-    .richter-section h3 {
-      color: #c0c0c8;
-      border-bottom: 2px solid rgba(180, 180, 190, 0.4);
-      padding-bottom: 0.5em;
-      margin-bottom: 1.5em;
-      font-family: 'Source Sans Pro', Helvetica, sans-serif;
-      font-weight: 300;
-      letter-spacing: 0.075em;
-    }
-
-    .richter-video-section {
-      margin: 3em 0;
-      padding: 2em;
-      background: linear-gradient(135deg, rgba(35, 35, 40, 0.6) 0%, rgba(50, 50, 55, 0.4) 100%);
-      border-radius: 15px;
-      border: 1px solid rgba(120, 120, 130, 0.2);
-      backdrop-filter: blur(5px);
-    }
-
-    .richter-video-section h3 {
-      color: #c0c0c8;
-      border-bottom: 2px solid rgba(180, 180, 190, 0.4);
-      padding-bottom: 0.5em;
-      margin-bottom: 1.5em;
-      font-family: 'Source Sans Pro', Helvetica, sans-serif;
-      font-weight: 300;
-      letter-spacing: 0.075em;
-    }
-
-    .video-container {
-      position: relative;
-      width: 100%;
-      height: 0;
-      padding-bottom: 56.25%;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    }
-
-    .video-container iframe,
-    .video-container video {
-      position: absolute;
+    
+    body::before {
+      content: '';
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      border: none;
-      border-radius: 10px;
+      background:
+        radial-gradient(circle at 25% 30%, rgba(120, 120, 130, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 70%, rgba(100, 100, 110, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
     }
-
-    .video-container video {
-      object-fit: cover;
-      background: #000;
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
     }
-
-    .video-container video::-webkit-media-controls-panel {
-      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    
+    /* Hero Section */
+    .hero {
+      padding: 8rem 0 4rem;
+      text-align: center;
+      position: relative;
     }
-
-    .richter-process-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2em;
-      margin-top: 2em;
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(120, 120, 130, 0.15) 0%, rgba(100, 100, 110, 0.1) 50%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
     }
-
-    .process-card {
-      background: rgba(40, 40, 45, 0.4);
-      padding: 1.5em;
-      border-radius: 10px;
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background: linear-gradient(135deg, rgba(120, 120, 130, 0.2), rgba(100, 100, 110, 0.2));
+      border: 1px solid rgba(120, 120, 130, 0.4);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #c0c0c8;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 900;
+      letter-spacing: 4px;
+      background: linear-gradient(135deg, #c0c0c8 0%, #888890 50%, #b0b0b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.35rem;
+      color: #9ca3af;
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+    }
+    
+    /* Video Section */
+    .video-section {
+      padding: 4rem 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-badge {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      background: rgba(120, 120, 130, 0.1);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #c0c0c8;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    
+    .video-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
       border: 1px solid rgba(120, 120, 130, 0.2);
     }
-
-    .process-card h4 {
-      color: #c0c0c8;
-      margin-bottom: 1em;
-    }
-
-    .richter-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5em;
-      margin-top: 2em;
-    }
-
-    .richter-gallery .gallery-item {
-      position: relative;
-      border-radius: 10px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    }
-
-    .richter-gallery .gallery-item:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
-    }
-
-    .richter-gallery .gallery-item img {
+    
+    .video-wrapper video {
       width: 100%;
-      height: 250px;
-      object-fit: cover;
+      height: auto;
+      display: block;
+    }
+    
+    /* Overview Section */
+    .overview-section {
+      padding: 4rem 0;
+    }
+    
+    .overview-text {
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #d0d6dd;
+    }
+    
+    /* Process Grid */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .process-card {
+      background: linear-gradient(135deg, rgba(40, 40, 45, 0.6), rgba(30, 30, 35, 0.8));
+      border: 1px solid rgba(120, 120, 130, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
       transition: all 0.3s ease;
     }
-
-    .richter-gallery .gallery-item:hover img {
+    
+    .process-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(120, 120, 130, 0.4);
+    }
+    
+    .process-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    
+    .process-card h3 {
+      color: #c0c0c8;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+    
+    .process-card p {
+      color: #a0a6ad;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    /* Technical Section */
+    .technical-section {
+      padding: 4rem 0;
+      background: linear-gradient(135deg, rgba(35, 35, 40, 0.4), rgba(25, 25, 30, 0.6));
+      border-radius: 30px;
+      margin: 4rem 0;
+      border: 1px solid rgba(120, 120, 130, 0.2);
+    }
+    
+    .technical-text {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #d0d6dd;
+    }
+    
+    /* Tools Section */
+    .tools-section {
+      padding: 4rem 0;
+    }
+    
+    .tools-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 3rem;
+    }
+    
+    .tool-badge {
+      background: rgba(40, 40, 45, 0.6);
+      border: 1px solid rgba(120, 120, 130, 0.2);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #c0c0c8;
+      transition: all 0.3s ease;
+    }
+    
+    .tool-badge:hover {
+      background: rgba(50, 50, 55, 0.8);
+      border-color: rgba(140, 140, 150, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Gallery Section */
+    .gallery-section {
+      padding: 4rem 0;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: all 0.4s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: all 0.4s ease;
+    }
+    
+    .gallery-item:hover img {
       transform: scale(1.05);
     }
-
-    .richter-gallery .gallery-overlay {
+    
+    .gallery-overlay {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
       color: white;
-      padding: 1.5em 1em 1em;
+      padding: 2rem 1.5rem 1.5rem;
       transform: translateY(100%);
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease;
     }
-
-    .richter-gallery .gallery-item:hover .gallery-overlay {
+    
+    .gallery-item:hover .gallery-overlay {
       transform: translateY(0);
     }
-
-    .richter-gallery .gallery-overlay span {
+    
+    .gallery-title {
       color: #c0c0c8;
-      font-size: 1.1em;
-    }
-
-    .tech-stack {
-      display: flex;
-      gap: 2em;
-      margin-top: 2em;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .tech-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      background: rgba(40, 40, 45, 0.3);
-      padding: 1.5em;
-      border-radius: 15px;
-      border: 1px solid rgba(120, 120, 130, 0.2);
-      transition: all 0.3s ease;
-      min-width: 120px;
-    }
-
-    .tech-item:hover {
-      transform: translateY(-5px);
-      background: rgba(50, 50, 55, 0.5);
-      border-color: rgba(140, 140, 150, 0.4);
-    }
-
-    .tech-item span {
-      color: #c0c0c8;
+      font-size: 1.1rem;
       font-weight: 600;
-      font-size: 0.9em;
-      letter-spacing: 0.05em;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 4rem 0 3rem;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: 4rem;
+    }
+    
+    footer p {
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+    
+    footer a {
+      color: #c0c0c8;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    footer a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 4rem 0 3rem;
+      }
+      
+      h1 {
+        font-size: 3rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .overview-text, .technical-text {
+        font-size: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      
+      .process-card {
+        padding: 1.5rem;
+      }
+      
+      .tools-grid {
+        gap: 1rem;
+      }
+      
+      .tool-badge {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+      }
     }
   </style>
-  <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 </head>
-<body class="is-preload">
-  <div id="lang-fixed" role="group" aria-label="Language selection">
-    <button type="button" data-lang="en" aria-label="Switch to English" aria-pressed="true">
-      <span class="flag" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 12">
-          <rect width="18" height="12" fill="#012169"/>
-          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#fff" stroke-width="3"/>
-          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#C8102E" stroke-width="1.2"/>
-          <rect x="0" y="5" width="18" height="2" fill="#fff"/>
-          <rect x="8" y="0" width="2" height="12" fill="#fff"/>
-          <rect x="0" y="5.5" width="18" height="1" fill="#C8102E"/>
-          <rect x="8.5" y="0" width="1" height="12" fill="#C8102E"/>
-        </svg>
-      </span>
-      <span class="label">EN</span>
-    </button>
-    <button type="button" data-lang="pl" aria-label="Przełącz na język polski" aria-pressed="false">
-      <span class="flag" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
-          <rect width="3" height="1" fill="#fff"/>
-          <rect y="1" width="3" height="1" fill="#dc143c"/>
-        </svg>
-      </span>
-      <span class="label">PL</span>
-    </button>
-    <button type="button" data-lang="nl" aria-label="Schakel over naar Nederlands" aria-pressed="false">
-      <span class="flag" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
-          <rect width="3" height="2" fill="#21468B"/>
-          <rect width="3" height="1.333" fill="#fff"/>
-          <rect width="3" height="0.666" fill="#AE1C28"/>
-        </svg>
-      </span>
-      <span class="label">NL</span>
-    </button>
-  </div>
-
-  <div class="bg-gradient"></div>
-  <div class="bg-orbs">
-    <div class="orb blue" style="top:10%;left:8%"></div>
-    <div class="orb cyan" style="top:60%;left:75%"></div>
-    <div class="orb teal" style="top:75%;left:15%"></div>
-  </div>
-  <svg class="bg-waves" viewBox="0 0 1200 600" preserveAspectRatio="none">
-    <defs>
-      <linearGradient id="gradWave1" x1="0%" x2="100%" y1="0%" y2="0%">
-        <stop offset="0%" stop-color="#18bfef" stop-opacity="0.6"/>
-        <stop offset="100%" stop-color="#58b6ff" stop-opacity="0.3"/>
-      </linearGradient>
-      <linearGradient id="gradWave2" x1="0%" x2="100%" y1="0%" y2="0%">
-        <stop offset="0%" stop-color="#9a6cff" stop-opacity="0.6"/>
-        <stop offset="100%" stop-color="#18bfef" stop-opacity="0.3"/>
-      </linearGradient>
-      <linearGradient id="gradWave3" x1="0%" x2="100%" y1="0%" y2="0%">
-        <stop offset="0%" stop-color="#ff6ea9" stop-opacity="0.5"/>
-        <stop offset="100%" stop-color="#9a6cff" stop-opacity="0.25"/>
-      </linearGradient>
-    </defs>
-    <path fill="url(#gradWave1)" opacity="0.6" d="M0 320 L1200 300 L1200 600 L0 600 Z"></path>
-    <path fill="url(#gradWave2)" opacity="0.4" d="M0 340 L1200 330 L1200 600 L0 600 Z"></path>
-    <path fill="url(#gradWave3)" opacity="0.3" d="M0 360 L1200 360 L1200 600 L0 600 Z"></path>
-  </svg>
-  <canvas class="bg-eq"></canvas>
-  <div class="bg-glow"></div>
-  <div id="wrapper" class="fade-in">
-    <header id="header">
-      <a href="../index.html" class="logo">Igor Szuniewicz</a>
-    </header>
-    <nav id="nav">
-      <ul class="links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li class="active"><a href="../projects/index.html">Projects</a></li>
-        <li><a href="../music.html">Music</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle">Extra</a>
-          <ul class="dropdown-menu">
-            <li><a href="audioq.html">AudioQ Plugin</a></li>
-            <li><a href="unreal-engine-rebuilder.html">Unreal Engine Rebuilder</a></li>
-            <li><a href="#" class="disabled-link" data-tooltip="Not yet released - In Development">QSlicer</a></li>
-          </ul>
-        </li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
-      <ul class="icons"></ul>
-    </nav>
-    <div id="main">
-      <section class="post" data-reveal>
-        <div class="richter-content">
-          <header class="major">
-            <h2 data-i18n="richter_title">Richter — Sound Design</h2>
-            <p id="bgWhite" data-i18n="richter_subtitle">Complete soundscape designed with original recordings and synthesis for short film.</p>
-          </header>
-
-          <div class="richter-video-section">
-            <h3 data-i18n="richter_video">Project Showcase</h3>
-            <div class="video-container">
-              <video controls preload="metadata" poster="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m22s506.png">
-                <source src="../assets/images/projects-daw2/DigitalAudioWorkstation2.mp4" type="video/mp4">
-                <p data-i18n="richter_video_fallback">Your browser doesn't support HTML5 video. <a href="../assets/images/projects-daw2/DigitalAudioWorkstation2.mp4">Download the video</a> instead.</p>
-              </video>
-            </div>
-          </div>
-
-          <div class="richter-section">
-            <h3 data-i18n="richter_overview">Project Overview</h3>
-            <p data-i18n="richter_overview_desc">For my DAW 2 exam assignment, I created the complete soundscape for the short film 'Richter'. The focus was on original sound design without relying on existing sound libraries. I combined field recordings, synthesizer-based design, and creative layering to build a dynamic and immersive audio world.</p>
-
-            <div class="richter-process-grid">
-              <div class="process-card">
-                <h4 data-i18n="richter_process_field">Field Recording</h4>
-                <p data-i18n="richter_process_field_desc">Captured unique ambiences and environmental textures using Zoom H6 recorder while walking through the city.</p>
-              </div>
-              <div class="process-card">
-                <h4 data-i18n="richter_process_synthesis">Sound Synthesis</h4>
-                <p data-i18n="richter_process_synthesis_desc">Used Vital, ReaSynth, and TAL Noisemaker to create drones, risers, and alarms.</p>
-              </div>
-              <div class="process-card">
-                <h4 data-i18n="richter_process_design">Sound Design</h4>
-                <p data-i18n="richter_process_design_desc">Designed vehicle engines, earthquake rumbles, whooshes, and environmental effects.</p>
-              </div>
-              <div class="process-card">
-                <h4 data-i18n="richter_process_mixing">Mixing & Processing</h4>
-                <p data-i18n="richter_process_mixing_desc">Applied EQ, distortion, pitch shifting, and spatial effects with parameter automation.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="richter-section">
-            <h3 data-i18n="richter_technical">Technical Approach</h3>
-            <p data-i18n="richter_technical_desc">Each sound was carefully layered, processed, and mixed with attention to detail. I automated parameters such as volume, panning, and reverb sends to enhance realism and movement, including recreating the Doppler effect. The project used a 48kHz/24-bit setup with loudness metering to maintain professional standards.</p>
-          </div>
-
-          <div class="richter-section">
-            <h3 data-i18n="richter_tools">Tools & Technology</h3>
-            <div class="tech-stack">
-              <div class="tech-item">
-                <span>Zoom H6</span>
-              </div>
-              <div class="tech-item">
-                <span>Vital</span>
-              </div>
-              <div class="tech-item">
-                <span>ReaSynth</span>
-              </div>
-              <div class="tech-item">
-                <span>TAL Noisemaker</span>
-              </div>
-              <div class="tech-item">
-                <span>Reaper DAW</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="richter-section">
-            <h3 data-i18n="richter_gallery">Development Gallery</h3>
-            <div class="richter-gallery">
-              <div class="gallery-item" data-lightbox="richter-gallery">
-                <img src="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m22s506.png" alt="Film Scene 1" data-full="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m22s506.png" />
-                <div class="gallery-overlay">
-                  <span data-i18n="richter_gallery_scene1">Opening Sequence</span>
-                </div>
-              </div>
-              <div class="gallery-item" data-lightbox="richter-gallery">
-                <img src="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m31s882.png" alt="Film Scene 2" data-full="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m31s882.png" />
-                <div class="gallery-overlay">
-                  <span data-i18n="richter_gallery_scene2">Environmental Design</span>
-                </div>
-              </div>
-              <div class="gallery-item" data-lightbox="richter-gallery">
-                <img src="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m42s119.png" alt="Film Scene 3" data-full="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m42s119.png" />
-                <div class="gallery-overlay">
-                  <span data-i18n="richter_gallery_scene3">Action Sequence</span>
-                </div>
-              </div>
-              <div class="gallery-item" data-lightbox="richter-gallery">
-                <img src="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m45s367.png" alt="Film Scene 4" data-full="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m45s367.png" />
-                <div class="gallery-overlay">
-                  <span data-i18n="richter_gallery_scene4">Climax Scene</span>
-                </div>
-              </div>
-            </div>
+<body>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">🎬 Sound Design</div>
+        <h1>RICHTER</h1>
+        <p class="hero-subtitle">
+          Complete soundscape for short film with original field recordings, synthesis, and creative foley design. 
+          Resourceful audio production under constrained recording conditions.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Video Showcase -->
+  <section class="video-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Project Showcase</div>
+        <h2>Film with Sound Design</h2>
+      </div>
+      <div class="video-wrapper">
+        <video controls preload="metadata" poster="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m22s506.png">
+          <source src="../assets/images/projects-daw2/DigitalAudioWorkstation2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Project Overview -->
+  <section class="overview-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Overview</div>
+        <h2>Original Sound Design</h2>
+      </div>
+      
+      <p class="overview-text">
+        For my DAW 2 exam assignment, I created the complete soundscape for the short film <strong>'Richter'</strong>. 
+        The focus was on <strong>original sound design</strong> without relying on existing sound libraries. I combined 
+        field recordings, synthesizer-based design, and creative layering to build a dynamic and immersive audio world that 
+        complements the visual narrative while working under equipment constraints.
+      </p>
+      
+      <div class="process-grid">
+        <div class="process-card">
+          <span class="process-icon">🎙️</span>
+          <h3>Field Recording</h3>
+          <p>
+            Captured unique ambiences and environmental textures using Zoom H6 recorder while walking through the city. 
+            Every sound is original and tailored to the film's atmosphere.
+          </p>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-icon">🎹</span>
+          <h3>Sound Synthesis</h3>
+          <p>
+            Used Vital, ReaSynth, and TAL Noisemaker to create custom drones, risers, and alarm sounds. 
+            Synthesized elements add tension and depth to key scenes.
+          </p>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-icon">🔊</span>
+          <h3>Sound Design</h3>
+          <p>
+            Designed vehicle engines, earthquake rumbles, whooshes, and environmental effects from scratch. 
+            Creative layering and processing bring realism to every moment.
+          </p>
+        </div>
+        
+        <div class="process-card">
+          <span class="process-icon">🎚️</span>
+          <h3>Mixing & Processing</h3>
+          <p>
+            Applied EQ, distortion, pitch shifting, and spatial effects with parameter automation. 
+            Recreated the Doppler effect and dynamic movement throughout the soundscape.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Technical Approach -->
+  <section class="technical-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Technical Details</div>
+        <h2>Professional Standards</h2>
+      </div>
+      
+      <p class="technical-text">
+        Each sound was carefully <strong>layered, processed, and mixed</strong> with attention to detail. I automated parameters 
+        such as volume, panning, and reverb sends to enhance realism and movement. Special attention was paid to recreating the 
+        <strong>Doppler effect</strong> for passing vehicles and creating a believable sense of space and distance. 
+        The project used a <strong>48kHz/24-bit setup</strong> with loudness metering to maintain professional broadcast standards.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Tools & Technology -->
+  <section class="tools-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Technology</div>
+        <h2>Tools & Equipment</h2>
+      </div>
+      
+      <div class="tools-grid">
+        <div class="tool-badge">Zoom H6 Recorder</div>
+        <div class="tool-badge">Reaper DAW</div>
+        <div class="tool-badge">Vital Synthesizer</div>
+        <div class="tool-badge">ReaSynth</div>
+        <div class="tool-badge">TAL Noisemaker</div>
+        <div class="tool-badge">48kHz/24-bit Audio</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Development Gallery -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Visual Development</div>
+        <h2>Film Scenes</h2>
+      </div>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m22s506.png" alt="Richter Opening Sequence">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Opening Sequence</div>
           </div>
         </div>
-        <ul class="actions" style="margin-top:2em">
-          <li><a href="../projects/index.html" class="button" data-i18n="richter_all_projects">All Projects</a></li>
-        </ul>
-      </section>
+        
+        <div class="gallery-item">
+          <img src="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m31s882.png" alt="Richter Environmental Design">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Environmental Design</div>
+          </div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="../assets/images/projects-daw2/vlcsnap-2025-09-28-00h05m42s119.png" alt="Richter Action Sequence">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Action Sequence</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <footer id="footer"></footer>
-    <div id="copyright">
-      <ul>
-        <li>&copy; Igor Szuniewicz 2025. All rights reserved.</li>
-      </ul>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>
+        Sound Design by <a href="https://igorszuniewicz.com" target="_blank" rel="noopener">Igor Szuniewicz</a> | 
+        Richter Short Film Audio
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+        © 2025 Igor Szuniewicz. DAW 2 Exam Project - Original sound design and field recordings.
+      </p>
     </div>
-  </div>
-  <script src="../assets/js/components/enhancements.js?v=20250210"></script>
-  <script src="../assets/js/theme-toggle.js"></script>
-  <script src="../assets/js/components/lightbox.js"></script>
-  <script>
-    // Activate richter gray background
-    document.addEventListener('DOMContentLoaded', function() {
-      document.body.classList.add('richter-theme');
-    });
-  </script>
+  </footer>
+
 </body>
 </html>
