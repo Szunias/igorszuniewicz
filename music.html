@@ -578,15 +578,24 @@
     
     // Load tracks from JSON
     fetch('assets/audio/tracks.json')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then(data => {
+        console.log('Tracks loaded:', data.length);
         tracks = data;
         renderPlaylist();
         if (tracks.length > 0) {
           loadTrack(0);
         }
       })
-      .catch(err => console.error('Error loading tracks:', err));
+      .catch(err => {
+        console.error('Error loading tracks:', err);
+        document.getElementById('playlist').innerHTML = '<p style="color: #ef4444; text-align: center; padding: 2rem;">Failed to load tracks. Error: ' + err.message + '</p>';
+      });
     
     function renderPlaylist() {
       const playlist = document.getElementById('playlist');
