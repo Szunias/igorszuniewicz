@@ -3,11 +3,11 @@
  * Implements intelligent caching strategies for optimal performance
  */
 
-const CACHE_NAME = 'igor-portfolio-v2025.8';
-const STATIC_CACHE = 'static-assets-v2025.8';
-const DYNAMIC_CACHE = 'dynamic-content-v2025.8';
-const IMAGE_CACHE = 'images-v2025.8';
-const AUDIO_CACHE = 'audio-v2025.8';
+const CACHE_NAME = 'igor-portfolio-v2025.10';
+const STATIC_CACHE = 'static-assets-v2025.10';
+const DYNAMIC_CACHE = 'dynamic-content-v2025.10';
+const IMAGE_CACHE = 'images-v2025.10';
+const AUDIO_CACHE = 'audio-v2025.10';
 
 // Cache durations (in milliseconds)
 const CACHE_DURATION = {

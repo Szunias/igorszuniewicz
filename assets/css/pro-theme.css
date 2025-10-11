@@ -104,63 +104,54 @@ body::after {
   display: none !important;
 }
 
-/* Particle Field - Elegant & Minimal Technical Background */
+/* Striped Tech - Dynamic & Modern */
 .bg-gradient {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background:
-    /* Gradient base - radial glows */
-    radial-gradient(ellipse at 20% 30%, rgba(24,191,239,0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(154,108,255,0.10) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(24,191,239,0.04) 0%, transparent 70%),
-    /* Dot pattern - small particles */
-    radial-gradient(circle at 25% 25%, rgba(24,191,239,0.4) 1px, transparent 1px),
-    radial-gradient(circle at 75% 75%, rgba(154,108,255,0.3) 1px, transparent 1px),
-    /* Dot pattern - medium particles */
-    radial-gradient(circle at 50% 50%, rgba(24,191,239,0.2) 1.5px, transparent 1.5px),
-    /* Connection lines - diagonal */
+    /* Diagonal stripes - 45° */
     repeating-linear-gradient(45deg,
       transparent,
-      transparent 149px,
-      rgba(24,191,239,0.05) 149px,
-      rgba(24,191,239,0.05) 150px
+      transparent 59px,
+      rgba(24,191,239,0.06) 59px,
+      rgba(24,191,239,0.06) 60px
     ),
+    /* Diagonal stripes - -45° (crossing pattern) */
     repeating-linear-gradient(-45deg,
       transparent,
-      transparent 149px,
-      rgba(154,108,255,0.04) 149px,
-      rgba(154,108,255,0.04) 150px
+      transparent 59px,
+      rgba(154,108,255,0.05) 59px,
+      rgba(154,108,255,0.05) 60px
     ),
+    /* Animated gradient overlay */
+    linear-gradient(135deg, 
+      rgba(24,191,239,0.04) 0%, 
+      transparent 50%, 
+      rgba(154,108,255,0.04) 100%
+    ),
+    /* Soft radial glow for depth */
+    radial-gradient(ellipse 1400px 900px at 50% 50%, rgba(24,191,239,0.06), transparent 65%),
     /* Dark base gradient */
-    linear-gradient(180deg, #090c11 0%, #0b0f14 100%);
+    linear-gradient(180deg, #0a0d12 0%, #0c1017 100%);
   background-size: 
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    80px 80px,
-    80px 80px,
     120px 120px,
-    300px 300px,
-    300px 300px,
+    120px 120px,
+    200% 200%,
+    100% 100%,
     100% 100%;
-  animation: particleDrift 40s ease-in-out infinite;
+  animation: stripeShift 38s linear infinite;
   opacity: 1;
 }
 
-/* Particle drift animation - smooth and elegant */
-@keyframes particleDrift {
-  0%, 100% { 
-    background-position: 
-      20% 30%, 80% 70%, 50% 50%,
-      0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+/* Stripe shift animation - smooth diagonal movement */
+@keyframes stripeShift {
+  0% { 
+    background-position: 0 0, 0 0, 0% 50%, 50% 50%, 0 0;
   }
-  50% { 
-    background-position: 
-      25% 35%, 75% 65%, 50% 50%,
-      40px 40px, -40px -40px, 60px 60px,
-      150px 150px, -150px -150px, 0 0;
+  100% { 
+    background-position: 120px 120px, -120px -120px, 100% 50%, 50% 50%, 0 0;
   }
 }
 

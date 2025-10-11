@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Technical Background Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* Technical cyberpunk-style animated background */
+        .bg-gradient {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                /* Animated diagonal tech gradient */
+                linear-gradient(135deg, 
+                    rgba(24,191,239,0.18) 0%, 
+                    rgba(154,108,255,0.18) 25%,
+                    rgba(24,191,239,0.10) 50%,
+                    rgba(154,108,255,0.18) 75%,
+                    rgba(24,191,239,0.18) 100%
+                ),
+                /* Fine tech grid - horizontal */
+                repeating-linear-gradient(0deg, 
+                    transparent, 
+                    transparent 49px, 
+                    rgba(24,191,239,0.15) 49px, 
+                    rgba(24,191,239,0.15) 50px
+                ),
+                /* Fine tech grid - vertical */
+                repeating-linear-gradient(90deg, 
+                    transparent, 
+                    transparent 49px, 
+                    rgba(24,191,239,0.15) 49px, 
+                    rgba(24,191,239,0.15) 50px
+                ),
+                /* Diagonal scan lines */
+                repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 19px,
+                    rgba(154,108,255,0.08) 19px,
+                    rgba(154,108,255,0.08) 20px
+                ),
+                /* Circuit board pattern */
+                repeating-linear-gradient(-45deg,
+                    transparent,
+                    transparent 39px,
+                    rgba(24,191,239,0.05) 39px,
+                    rgba(24,191,239,0.05) 40px
+                ),
+                /* Radial tech glow - top left */
+                radial-gradient(ellipse 1200px 800px at 15% 20%, rgba(24,191,239,0.20), transparent 55%),
+                /* Radial tech glow - bottom right */
+                radial-gradient(ellipse 1200px 800px at 85% 80%, rgba(154,108,255,0.18), transparent 55%),
+                /* Dark vignette for depth */
+                radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(0,0,0,0.6) 100%),
+                /* Base dark gradient */
+                linear-gradient(180deg, #08090c 0%, #0a0e15 50%, #0c1118 100%);
+            background-size: 
+                200% 200%,
+                50px 50px,
+                50px 50px,
+                100% 100%,
+                100% 100%,
+                100% 100%,
+                100% 100%,
+                100% 100%,
+                100% 100%;
+            animation: techFlow 25s ease-in-out infinite;
+            opacity: 1;
+        }
+
+        /* Technical flow animation */
+        @keyframes techFlow {
+            0%, 100% { 
+                background-position: 
+                    0% 50%,
+                    0 0,
+                    0 0,
+                    0 0,
+                    0 0,
+                    15% 20%,
+                    85% 80%,
+                    50% 50%,
+                    0 0;
+            }
+            50% { 
+                background-position: 
+                    100% 50%,
+                    -20px -20px,
+                    -20px -20px,
+                    10px 10px,
+                    -10px -10px,
+                    20% 25%,
+                    80% 75%,
+                    50% 50%,
+                    0 0;
+            }
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #18bfef;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        h1 {
+            font-size: 3em;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(24,191,239,0.8), 0 0 60px rgba(24,191,239,0.4);
+            letter-spacing: 0.1em;
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 30px rgba(24,191,239,0.8), 0 0 60px rgba(24,191,239,0.4); }
+            50% { text-shadow: 0 0 40px rgba(24,191,239,1), 0 0 80px rgba(24,191,239,0.6); }
+        }
+        
+        p {
+            font-size: 1.2em;
+            color: #9a6cff;
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(24,191,239,0.1);
+            border: 2px solid rgba(24,191,239,0.5);
+            border-radius: 10px;
+            font-size: 1.1em;
+            color: #fff;
+            animation: pulse 2s ease infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { border-color: rgba(24,191,239,0.5); box-shadow: 0 0 20px rgba(24,191,239,0.3); }
+            50% { border-color: rgba(24,191,239,1); box-shadow: 0 0 40px rgba(24,191,239,0.6); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="content">
+        <h1>⚡ TECHNICAL BACKGROUND ⚡</h1>
+        <p>
+            Animated tech grid with cyberpunk aesthetics<br>
+            50px grid lines + diagonal scan pattern<br>
+            Dual radial glows + smooth animation
+        </p>
+        <div class="status">
+            ✓ BACKGROUND SYSTEM ACTIVE
+        </div>
+    </div>
+</body>
+</html>
