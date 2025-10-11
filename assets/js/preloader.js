@@ -14,8 +14,12 @@
     return;
   }
   
-  // Oznacz że użytkownik odwiedził stronę
+  // Oznacz że użytkownik odwiedził stronę (natychmiast)
   sessionStorage.setItem('hasVisited', 'true');
+  
+  // Blokuj przewijanie od razu
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
   
   // Tworzenie preloadera
   const preloader = document.createElement('div');
@@ -44,7 +48,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: preloaderFadeOut 0.8s ease-out 2.5s forwards;
+      animation: preloaderFadeOut 0.6s ease-out 2.2s forwards;
     }
     
     .preloader-content {
@@ -115,14 +119,33 @@
     }
   `;
   
-  // Dodaj style i preloader do DOM
-  document.head.appendChild(style);
-  document.body.insertBefore(preloader, document.body.firstChild);
-  document.body.classList.add('preloader-active');
+  // Dodaj style i preloader do DOM natychmiast
+  if (document.head) {
+    document.head.appendChild(style);
+  } else {
+    document.addEventListener('DOMContentLoaded', () => {
+      document.head.appendChild(style);
+    });
+  }
   
-  // Usuń preloader po animacji
+  // Wstaw preloader natychmiast
+  if (document.body) {
+    document.body.insertBefore(preloader, document.body.firstChild);
+    document.body.classList.add('preloader-active');
+  } else {
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.insertBefore(preloader, document.body.firstChild);
+      document.body.classList.add('preloader-active');
+    });
+  }
+  
+  // Usuń preloader po animacji (skrócony czas)
   setTimeout(() => {
-    preloader.remove();
+    if (preloader && preloader.parentNode) {
+      preloader.remove();
+    }
     document.body.classList.remove('preloader-active');
-  }, 3300);
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+  }, 2800);
 })();
