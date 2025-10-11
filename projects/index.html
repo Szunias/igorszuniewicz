@@ -398,6 +398,67 @@
       line-height: 1.7;
     }
     
+    /* === COMING SOON === */
+    .project-card.coming-soon {
+      cursor: not-allowed;
+      opacity: 0.6;
+      filter: grayscale(0.7);
+    }
+    
+    .project-card.coming-soon:hover {
+      transform: translateY(-6px) scale(1.01);
+      filter: grayscale(0.8);
+    }
+    
+    .project-card.coming-soon .project-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.7);
+      z-index: 3;
+    }
+    
+    .coming-soon-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      text-align: center;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .project-card.coming-soon:hover .coming-soon-overlay {
+      opacity: 1;
+    }
+    
+    .coming-soon-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #60a5fa;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+      padding: 0.75rem 1.5rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 2px solid #60a5fa;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .coming-soon-subtitle {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+    
     /* === RESPONSIVE === */
     @media (max-width: 768px) {
       .nav-links {
@@ -642,6 +703,24 @@
             <p class="project-description">Automated build tool for UE projects.</p>
           </div>
         </a>
+        
+        <!-- WwiseUnrealEngineFixer -->
+        <div class="project-card coming-soon" data-category="tools">
+          <div class="project-image">
+            <span class="project-badge badge-tool">Dev Tool</span>
+            <img src="../assets/images/projects/maxresdefault.jpg" alt="Wwise UE Fixer" onerror="this.src='../assets/images/covers/project5.png'">
+            <div class="coming-soon-overlay">
+              <div class="coming-soon-text">
+                In Production
+                <div class="coming-soon-subtitle">Not Yet Released</div>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">WwiseUnrealEngineFixer</h3>
+            <p class="project-description">Advanced Wwise integration fix tool for Unreal Engine.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
