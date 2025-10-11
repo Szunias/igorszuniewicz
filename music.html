@@ -374,6 +374,118 @@
       box-shadow: 0 15px 40px rgba(236, 72, 153, 0.6);
     }
     
+    /* === VOLUME CONTROL === */
+    .volume-control {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 100;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 0.75rem 1rem;
+      border-radius: 50px;
+      border: 1px solid rgba(236, 72, 153, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .volume-control:hover {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: rgba(236, 72, 153, 0.4);
+      box-shadow: 0 6px 30px rgba(236, 72, 153, 0.2);
+    }
+    
+    .volume-icon {
+      font-size: 1.1rem;
+      color: #ec4899;
+      min-width: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    
+    .volume-icon:hover {
+      transform: scale(1.1);
+    }
+    
+    .volume-slider-container {
+      position: relative;
+      width: 120px;
+      height: 6px;
+    }
+    
+    .volume-slider {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .volume-slider::-webkit-slider-track {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+    
+    .volume-slider::-moz-range-track {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+    
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      background: #ec4899;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.3), 0 2px 8px rgba(236, 72, 153, 0.4);
+      transition: all 0.2s ease;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .volume-slider::-webkit-slider-thumb:hover {
+      background: #f472b6;
+      transform: scale(1.15);
+      box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.4), 0 3px 12px rgba(236, 72, 153, 0.6);
+    }
+    
+    .volume-slider::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      background: #ec4899;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.3), 0 2px 8px rgba(236, 72, 153, 0.4);
+      transition: all 0.2s ease;
+    }
+    
+    .volume-slider::-moz-range-thumb:hover {
+      background: #f472b6;
+      transform: scale(1.15);
+      box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.4), 0 3px 12px rgba(236, 72, 153, 0.6);
+    }
+    
+    .volume-percentage {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      font-weight: 600;
+      min-width: 35px;
+      text-align: right;
+    }
+    
     /* === PLAYLIST === */
     .playlist-header {
       display: flex;
@@ -573,6 +685,15 @@
         </div>
       </div>
       
+      <!-- Floating Volume Control -->
+      <div class="volume-control">
+        <span class="volume-icon" id="volume-icon">🔊</span>
+        <div class="volume-slider-container">
+          <input type="range" min="0" max="100" value="70" class="volume-slider" id="volume-slider">
+        </div>
+        <span class="volume-percentage" id="volume-percentage">70%</span>
+      </div>
+      
       <!-- Playlist -->
       <div class="playlist-header">
         <h2 class="playlist-title">All Tracks</h2>
@@ -612,6 +733,12 @@
     const progressFill = document.getElementById('progress-fill');
     const currentTimeEl = document.getElementById('current-time');
     const totalTimeEl = document.getElementById('total-time');
+    const volumeSlider = document.getElementById('volume-slider');
+    const volumeIcon = document.getElementById('volume-icon');
+    const volumePercentage = document.getElementById('volume-percentage');
+    
+    // Set initial volume
+    audio.volume = 0.7; // 70%
     
     // Load tracks from JSON
     fetch('assets/audio/tracks.json')
@@ -767,6 +894,43 @@
       audio.currentTime = percent * audio.duration;
     });
     
+    // Volume control
+    volumeSlider.addEventListener('input', (e) => {
+      const volume = e.target.value / 100;
+      audio.volume = volume;
+      volumePercentage.textContent = `${e.target.value}%`;
+      updateVolumeIcon(volume);
+    });
+    
+    // Volume icon click to mute/unmute
+    let previousVolume = 0.7;
+    volumeIcon.addEventListener('click', () => {
+      if (audio.volume > 0) {
+        previousVolume = audio.volume;
+        audio.volume = 0;
+        volumeSlider.value = 0;
+        volumePercentage.textContent = '0%';
+        updateVolumeIcon(0);
+      } else {
+        audio.volume = previousVolume;
+        volumeSlider.value = previousVolume * 100;
+        volumePercentage.textContent = `${Math.round(previousVolume * 100)}%`;
+        updateVolumeIcon(previousVolume);
+      }
+    });
+    
+    function updateVolumeIcon(volume) {
+      if (volume === 0) {
+        volumeIcon.textContent = '🔇';
+      } else if (volume < 0.3) {
+        volumeIcon.textContent = '🔈';
+      } else if (volume < 0.7) {
+        volumeIcon.textContent = '🔉';
+      } else {
+        volumeIcon.textContent = '🔊';
+      }
+    }
+    
     // Filter tags
     document.querySelectorAll('.filter-tag').forEach(tag => {
       tag.addEventListener('click', () => {
@@ -787,5 +951,6 @@
       }
     });
   </script>
+  <script src="assets/js/page-transitions.js"></script>
 </body>
 </html>
