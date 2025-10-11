@@ -1,65 +1,52 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Middleware 2 — Wwise Implementation by Igor Szuniewicz</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
-  <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
-  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png" sizes="180x180">
-  <meta name="description" content="Middleware 2 — Complete Wwise audio implementation for game level by Igor Szuniewicz." />
-  <link rel="canonical" href="https://igorszuniewicz.com/projects/middleware2.html" />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="Igor Szuniewicz" />
-  <meta property="og:title" content="Middleware 2 — Wwise Implementation" />
-  <meta property="og:description" content="Complete audio implementation for game level with Wwise." />
-  <meta property="og:url" content="https://igorszuniewicz.com/projects/middleware2.html" />
-  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects-middleware2/ellen.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Middleware 2 — Wwise Implementation" />
-  <meta name="twitter:description" content="Complete audio implementation for game level with Wwise." />
-  <meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects-middleware2/ellen.png" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": "Middleware 2 — Wwise Implementation",
-    "image": "https://igorszuniewicz.com/assets/images/projects-middleware2/ellen.png",
-    "author": {
-      "@type": "Person",
-      "name": "Igor Szuniewicz",
-      "url": "https://igorszuniewicz.com/"
-    },
-    "url": "https://igorszuniewicz.com/projects/middleware2.html"
-  }
-  </script>
-  <link rel="stylesheet" href="../assets/css/main.css" />
-  <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20251011" />
-  <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Middleware 2 - Wwise Audio Implementation by Igor Szuniewicz</title>
+  <meta name="description" content="Complete Wwise audio implementation for game level. Professional audio middleware work with spatial audio, dynamic mix, and Game Syncs by Igor Szuniewicz.">
+  <meta name="keywords" content="Wwise, audio middleware, game audio, Unreal Engine, spatial audio, audio implementation, Game Syncs">
+  <meta name="author" content="Igor Szuniewicz">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Middleware 2 - Wwise Audio Implementation">
+  <meta property="og:description" content="Complete audio implementation for game level mimicking real-world production workflow.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://igorszuniewicz.com/projects/middleware2.html">
+  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects-middleware2/ellen.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Middleware 2 - Wwise Audio Implementation">
+  <meta name="twitter:description" content="Complete audio implementation for game level with Wwise.">
+  <meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects-middleware2/ellen.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* Clean professional background */
-    .mw2-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: linear-gradient(135deg,
-        #1a1f35 0%,
-        #2a2f45 25%,
-        #1f2437 50%,
-        #252a40 75%,
-        #1a1f35 100%
-      );
-      opacity: 1;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-
-    .mw2-background::before {
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1a1f35 0%, #2a2f45 50%, #1f2437 100%);
+      color: #e0e6ed;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    body::before {
       content: '';
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -68,55 +55,118 @@
         radial-gradient(circle at 20% 20%, rgba(78, 205, 196, 0.12) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(154, 108, 255, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 50% 50%, rgba(24, 191, 239, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
     }
-
-    /* Clean hero section */
-    .mw2-hero {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
+    
+    /* Back button */
+    .back-button {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
       align-items: center;
-      margin: 3rem 0;
+      gap: 0.5rem;
+    }
+    
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(78, 205, 196, 0.5);
+      transform: translateX(-3px);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Hero Section */
+    .hero {
+      padding: 8rem 0 4rem;
+      text-align: center;
       position: relative;
     }
-
-    .mw2-hero::before {
+    
+    .hero::before {
       content: '';
       position: absolute;
-      top: -50px;
-      left: -50px;
-      right: -50px;
-      bottom: -50px;
-      background: radial-gradient(circle at 30% 40%, rgba(78, 205, 196, 0.08) 0%, transparent 50%),
-                  radial-gradient(circle at 70% 60%, rgba(154, 108, 255, 0.08) 0%, transparent 50%);
-      z-index: -1;
-      border-radius: 50px;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(78, 205, 196, 0.2) 0%, rgba(154, 108, 255, 0.1) 50%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
     }
-
-    .mw2-hero img {
-      max-width: 960px;
-      width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(78, 205, 196, 0.2);
-      transition: all 0.4s ease;
+    
+    .hero-content {
       position: relative;
+      z-index: 1;
     }
-
-    .mw2-hero img:hover {
-      transform: scale(1.02) translateY(-5px);
-      box-shadow: 0 35px 70px rgba(0,0,0,0.5), 0 0 0 1px rgba(78, 205, 196, 0.4);
+    
+    .hero-badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background: linear-gradient(135deg, rgba(78, 205, 196, 0.2), rgba(154, 108, 255, 0.2));
+      border: 1px solid rgba(78, 205, 196, 0.4);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #4ecdc4;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
     }
-
-    /* Metadata pills */
-    .mw2-meta {
+    
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 8vw, 4.5rem);
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #4ecdc4 0%, #9a6cff 50%, #18bfef 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.35rem;
+      color: #9ca3af;
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+    }
+    
+    /* Meta Pills */
+    .meta-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem 1.5rem;
+      gap: 1rem;
       justify-content: center;
-      margin-top: 2rem;
+      margin-bottom: 4rem;
     }
-
-    .mw2-meta span {
+    
+    .pill {
       background: linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(154, 108, 255, 0.12));
       border: 1px solid rgba(78, 205, 196, 0.3);
       padding: 0.6rem 1.2rem;
@@ -127,63 +177,89 @@
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
     }
-
-    .mw2-meta span:hover {
+    
+    .pill:hover {
       background: linear-gradient(135deg, rgba(78, 205, 196, 0.25), rgba(154, 108, 255, 0.2));
       border-color: rgba(78, 205, 196, 0.6);
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
     }
-
-    /* Typography */
-    #main .post h2, #main .post h3, #main .post h4 {
-      color: #ffffff;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      line-height: 1.3;
+    
+    /* Hero Image */
+    .hero-image-section {
+      padding: 4rem 0;
     }
-
-    #main .post h2 {
-      font-size: 2.2rem;
-      color: #ffffff;
+    
+    .hero-image-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(78, 205, 196, 0.2);
+      transition: all 0.4s ease;
+    }
+    
+    .hero-image-wrapper:hover {
+      transform: scale(1.02) translateY(-5px);
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(78, 205, 196, 0.4);
+    }
+    
+    .hero-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* Overview Section */
+    .overview-section {
+      padding: 4rem 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-badge {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      background: rgba(78, 205, 196, 0.1);
+      border-radius: 50px;
+      font-size: 0.8rem;
       font-weight: 600;
-      font-family: 'Spline Sans', system-ui, -apple-system, sans-serif;
-      letter-spacing: -0.02em;
-    }
-
-    #main .post h3 {
-      font-size: 1.6rem;
-      color: #cfe7f8;
-    }
-
-    #main .post p, #main .post li {
-      color: rgba(207, 231, 248, 0.92);
-      line-height: 1.8;
-      font-size: 1.05rem;
-    }
-
-    #main .post a {
       color: #4ecdc4;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(78, 205, 196, 0.3);
-      transition: all 0.2s ease;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
     }
-
-    #main .post a:hover {
+    
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    
+    .overview-text {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      line-height: 1.8;
       color: #cfe7f8;
-      border-bottom-color: #cfe7f8;
     }
-
-    /* Cards grid */
-    .mw2-grid {
+    
+    /* Objectives Grid */
+    .objectives-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
       margin-top: 3rem;
     }
-
-    .mw2-card {
-      background: rgba(255,255,255,0.05);
+    
+    .objective-card {
+      background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(20px);
       border: 1px solid rgba(78, 205, 196, 0.2);
       padding: 2rem;
@@ -192,8 +268,8 @@
       position: relative;
       overflow: hidden;
     }
-
-    .mw2-card::before {
+    
+    .objective-card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -204,32 +280,32 @@
       transform: scaleX(0);
       transition: transform 0.3s ease;
     }
-
-    .mw2-card:hover::before {
+    
+    .objective-card:hover::before {
       transform: scaleX(1);
     }
-
-    .mw2-card:hover {
-      background: rgba(255,255,255,0.08);
+    
+    .objective-card:hover {
+      background: rgba(255, 255, 255, 0.08);
       border-color: rgba(78, 205, 196, 0.4);
       transform: translateY(-8px);
       box-shadow: 0 20px 40px rgba(78, 205, 196, 0.2);
     }
-
-    .mw2-card h4 {
+    
+    .objective-card h3 {
       color: #4ecdc4;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
     }
-
-    .mw2-card ul {
+    
+    .objective-card ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-
-    .mw2-card li {
+    
+    .objective-card li {
       color: rgba(207, 231, 248, 0.9);
       line-height: 1.8;
       font-size: 1.05rem;
@@ -238,12 +314,12 @@
       position: relative;
       border-bottom: 1px solid rgba(78, 205, 196, 0.1);
     }
-
-    .mw2-card li:last-child {
+    
+    .objective-card li:last-child {
       border-bottom: none;
     }
-
-    .mw2-card li::before {
+    
+    .objective-card li::before {
       content: '✓';
       position: absolute;
       left: 0;
@@ -251,16 +327,20 @@
       font-weight: bold;
       font-size: 1.1rem;
     }
-
-    /* Feature cards */
-    .mw2-features {
+    
+    /* Features Section */
+    .features-section {
+      padding: 4rem 0;
+    }
+    
+    .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       margin-top: 3rem;
     }
-
-    .mw2-feature-card {
+    
+    .feature-card {
       background: rgba(78, 205, 196, 0.08);
       backdrop-filter: blur(20px);
       border: 1px solid rgba(78, 205, 196, 0.25);
@@ -269,295 +349,294 @@
       transition: all 0.4s ease;
       text-align: center;
     }
-
-    .mw2-feature-card:hover {
+    
+    .feature-card:hover {
       background: rgba(78, 205, 196, 0.12);
       transform: translateY(-8px);
       border-color: rgba(78, 205, 196, 0.5);
       box-shadow: 0 20px 50px rgba(78, 205, 196, 0.2);
     }
-
-    .mw2-feature-card h4 {
+    
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    
+    .feature-card h3 {
       color: #ffffff;
       font-size: 1.5rem;
       font-weight: 700;
       margin-bottom: 1rem;
     }
-
-    .mw2-feature-card p {
+    
+    .feature-card p {
       color: rgba(207, 231, 248, 0.85);
       line-height: 1.7;
       font-size: 1.05rem;
       margin: 0;
     }
-
-    /* Technical section */
-    .mw2-technical {
+    
+    /* Technical Section */
+    .technical-section {
+      padding: 4rem 0;
       background: rgba(78, 205, 196, 0.05);
       backdrop-filter: blur(20px);
       border: 1px solid rgba(78, 205, 196, 0.2);
-      border-radius: 20px;
-      padding: 3rem;
-      margin: 3rem 0;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .mw2-technical h3 {
-      margin-top: 0 !important;
-    }
-
-    /* Action buttons */
-    .actions {
-      margin-top: 4rem !important;
-    }
-
-    .button {
-      background: linear-gradient(135deg, #4ecdc4, #18bfef);
-      border: none;
-      color: #000000;
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
-      font-weight: 700;
       border-radius: 30px;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
-      text-transform: none;
+      margin: 4rem 0;
     }
-
-    .button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(78, 205, 196, 0.4);
-      background: linear-gradient(135deg, #18bfef, #4ecdc4);
+    
+    .technical-text {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #cfe7f8;
     }
-
-    /* Gallery */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2.5rem;
+    
+    /* Footer */
+    footer {
+      padding: 4rem 0 3rem;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: 4rem;
     }
-
-    .projects-grid .image {
-      border-radius: 20px;
-      overflow: hidden;
-      transition: all 0.4s ease;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    
+    footer p {
+      color: #6b7280;
+      font-size: 0.9rem;
     }
-
-    .projects-grid .image:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    
+    footer a {
+      color: #4ecdc4;
+      text-decoration: none;
+      transition: color 0.2s ease;
     }
-
-    .projects-grid img {
-      width: 100%;
-      display: block;
+    
+    footer a:hover {
+      color: #9a6cff;
+      text-decoration: underline;
     }
-
+    
     /* Responsive */
-    @media (max-width: 980px) {
-      .mw2-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    @media (max-width: 768px) {
+      .back-button {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
       }
-
-      .mw2-features {
-        grid-template-columns: 1fr;
+      
+      .hero {
+        padding: 4rem 0 3rem;
       }
-
-      #main .post h3 {
-        font-size: 1.75rem;
+      
+      h1 {
+        font-size: 3rem;
       }
-    }
-
-    @media (max-width: 736px) {
-      .mw2-hero {
-        margin: 1.5rem 0;
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
       }
-
-      .mw2-meta {
-        gap: 0.75rem;
+      
+      .meta-pills {
+        gap: 0.8rem;
       }
-
-      .mw2-meta span {
-        font-size: 0.9rem;
+      
+      .pill {
+        font-size: 0.85rem;
         padding: 0.5rem 1rem;
       }
-
-      .mw2-card, .mw2-feature-card {
-        padding: 1.5rem;
-      }
-
-      #main .post h2 {
-        font-size: 1.8rem;
-      }
-
-      #main .post h3 {
-        font-size: 1.5rem;
-      }
-
-      .mw2-technical {
-        padding: 2rem 1.5rem;
-      }
-
-      .projects-grid {
+      
+      .objectives-grid {
         grid-template-columns: 1fr;
       }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .overview-text, .technical-text {
+        font-size: 1rem;
+      }
     }
-
-    /* Hide default backgrounds */
-    .bg-gradient, .bg-orbs, .bg-waves, .bg-eq, .bg-glow {
-      display: none !important;
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      
+      .objective-card {
+        padding: 1.5rem;
+      }
+      
+      .feature-card {
+        padding: 2rem;
+      }
     }
   </style>
 </head>
-<body class="is-preload">
-  <div id="lang-fixed" role="group" aria-label="Language selection">
-    <button type="button" data-lang="en" aria-label="Switch to English" aria-pressed="true">
-      <span class="flag" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 12">
-          <rect width="18" height="12" fill="#012169"/>
-          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#fff" stroke-width="3"/>
-          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#C8102E" stroke-width="1.2"/>
-          <rect x="0" y="5" width="18" height="2" fill="#fff"/>
-          <rect x="8" y="0" width="2" height="12" fill="#fff"/>
-          <rect x="0" y="5.5" width="18" height="1" fill="#C8102E"/>
-          <rect x="8.5" y="0" width="1" height="12" fill="#C8102E"/>
-        </svg>
-      </span>
-      <span class="label">EN</span>
-    </button>
-    <button type="button" data-lang="pl" aria-label="Przełącz na język polski" aria-pressed="false">
-      <span class="flag" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
-          <rect width="3" height="1" fill="#fff"/>
-          <rect y="1" width="3" height="1" fill="#dc143c"/>
-        </svg>
-      </span>
-      <span class="label">PL</span>
-    </button>
-    <button type="button" data-lang="nl" aria-label="Schakel over naar Nederlands" aria-pressed="false">
-      <span class="flag" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
-          <rect width="3" height="2" fill="#21468B"/>
-          <rect width="3" height="1.333" fill="#fff"/>
-          <rect width="3" height="0.666" fill="#AE1C28"/>
-        </svg>
-      </span>
-      <span class="label">NL</span>
-    </button>
-  </div>
-
-  <div class="mw2-background"></div>
-
-  <div id="wrapper" class="fade-in">
-    <header id="header">
-      <a href="../index.html" class="logo">Igor Szuniewicz</a>
-    </header>
-    <nav id="nav">
-      <ul class="links">
-        <li><a href="../index.html" data-i18n="nav_home">Home</a></li>
-        <li><a href="../about.html" data-i18n="nav_about">About</a></li>
-        <li class="active"><a href="../projects/index.html" data-i18n="nav_projects">Projects</a></li>
-        <li><a href="../music.html" data-i18n="nav_music">Music</a></li>
-        <li><a href="../extras.html" data-i18n="nav_extras">Extra</a></li>
-        <li><a href="../contact.html" data-i18n="nav_contact">Contact</a></li>
-      </ul>
-      <ul class="icons"></ul>
-    </nav>
-
-    <div id="main">
-      <section class="post" data-reveal>
-        <header class="major">
-          <h2 data-i18n="mw2_title">Middleware 2 — Wwise Implementation</h2>
-          <p data-i18n="mw2_lead">Complete audio implementation for a game level mimicking real-world production workflow</p>
-        </header>
-
-        <div class="mw2-hero">
-          <img src="../assets/images/projects-middleware2/ellen.png" alt="Middleware 2 Game Screenshot" />
-          <div class="mw2-meta">
-            <span data-i18n="mw2_meta_school">Digital Arts and Entertainment</span>
-            <span data-i18n="mw2_meta_type">Type: Exam Assignment</span>
-            <span data-i18n="mw2_meta_engine">Engine: Wwise & Unreal Engine</span>
-            <span data-i18n="mw2_meta_role">Role: Audio Implementation</span>
-          </div>
+<body>
+  <a href="index.html" class="back-button">← Back to Projects</a>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">🎮 Audio Middleware</div>
+        <h1>Middleware 2</h1>
+        <p class="hero-subtitle">
+          Complete Wwise audio implementation for game level, mimicking real-world production workflow 
+          with spatial audio, dynamic mixing, and Game Syncs integration.
+        </p>
+        
+        <div class="meta-pills">
+          <div class="pill">🏫 Digital Arts & Entertainment</div>
+          <div class="pill">📝 Exam Assignment</div>
+          <div class="pill">🎵 Wwise & Unreal Engine</div>
+          <div class="pill">🔊 Audio Implementation</div>
         </div>
-
-        <h3 data-i18n="mw2_overview_title">Overview</h3>
-        <p data-i18n="mw2_overview_desc">The goal of this exam assignment was to mimic a real-world implementation scenario. I was provided with a working game build that included a Menu and the First Level, with all events and game parameter changes already implemented. My task was to implement all audio needed to create a fully finished gameplay experience.</p>
-
-        <h3 data-i18n="mw2_objectives_title">Project Objectives</h3>
-        <div class="mw2-grid">
-          <article class="mw2-card">
-            <h4 data-i18n="mw2_obj1_title">Clean Project</h4>
-            <ul>
-              <li data-i18n="mw2_obj1_1">Follow best practices for Wwise project structure</li>
-              <li data-i18n="mw2_obj1_2">Optimize memory and CPU usage</li>
-              <li data-i18n="mw2_obj1_3">Maintain organized asset hierarchy</li>
-            </ul>
-          </article>
-          <article class="mw2-card">
-            <h4 data-i18n="mw2_obj2_title">Implementation</h4>
-            <ul>
-              <li data-i18n="mw2_obj2_1">Implement all provided events</li>
-              <li data-i18n="mw2_obj2_2">Setup correct spatialization for in-world sounds</li>
-              <li data-i18n="mw2_obj2_3">Configure orientation and attenuation settings</li>
-              <li data-i18n="mw2_obj2_4">Apply reverb using provided Game Syncs</li>
-            </ul>
-          </article>
-          <article class="mw2-card">
-            <h4 data-i18n="mw2_obj3_title">Audio Design</h4>
-            <ul>
-              <li data-i18n="mw2_obj3_1">Create a cohesive sound palette</li>
-              <li data-i18n="mw2_obj3_2">Ensure correctness and loop sounds where needed</li>
-              <li data-i18n="mw2_obj3_3">Avoid sync issues and cut-off sounds</li>
-              <li data-i18n="mw2_obj3_4">Prevent repetitive sounds through variation</li>
-            </ul>
-          </article>
-        </div>
-
-        <h3 data-i18n="mw2_features_title">Key Features</h3>
-        <div class="mw2-features">
-          <article class="mw2-feature-card">
-            <h4 data-i18n="mw2_feat1_title">🎯 Spatial Audio</h4>
-            <p data-i18n="mw2_feat1_desc">3D spatialization with proper attenuation curves and orientation settings for immersive audio positioning.</p>
-          </article>
-          <article class="mw2-feature-card">
-            <h4 data-i18n="mw2_feat2_title">🔊 Dynamic Mix</h4>
-            <p data-i18n="mw2_feat2_desc">Cohesive mix that adapts to gameplay, ensuring clarity and balance across all audio elements.</p>
-          </article>
-          <article class="mw2-feature-card">
-            <h4 data-i18n="mw2_feat3_title">🎮 Game Syncs</h4>
-            <p data-i18n="mw2_feat3_desc">Integration of Game Syncs for reverb zones and parameter-driven audio changes.</p>
-          </article>
-        </div>
-
-        <div class="mw2-technical">
-          <h3 data-i18n="mw2_technical_title">Technical Details</h3>
-          <p data-i18n="mw2_technical_desc">This project demonstrates professional Wwise implementation skills including event management, Game Sync integration, 3D audio positioning, and mix optimization. The implementation follows industry best practices for memory management and CPU efficiency.</p>
-        </div>
-
-        <h3 data-i18n="mw2_gallery_title">Gallery</h3>
-        <div class="projects-grid">
-          <span class="image fit"><img src="../assets/images/projects-middleware2/ellen.png" alt="Middleware 2 Screenshot" /></span>
-        </div>
-
-        <ul class="actions">
-          <li><a href="../projects/index.html" class="button" data-i18n="all_projects">All Projects</a></li>
-        </ul>
-      </section>
+      </div>
     </div>
-
-    <footer id="footer"></footer>
-    <div id="copyright">
-      <ul>
-        <li>&copy; Igor Szuniewicz 2025. All rights reserved.</li>
-      </ul>
+  </section>
+  
+  <!-- Hero Image -->
+  <section class="hero-image-section">
+    <div class="container">
+      <div class="hero-image-wrapper">
+        <img src="../assets/images/projects-middleware2/ellen.png" alt="Middleware 2 Game Screenshot">
+      </div>
     </div>
-  </div>
+  </section>
+  
+  <!-- Overview Section -->
+  <section class="overview-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Project Overview</div>
+        <h2>Real-World Audio Implementation</h2>
+      </div>
+      
+      <p class="overview-text">
+        The goal of this exam assignment was to <strong>mimic a real-world implementation scenario</strong>. I was provided 
+        with a working game build that included a Menu and the First Level, with all events and game parameter changes 
+        already implemented. My task was to implement all audio needed to create a <strong>fully finished gameplay experience</strong>, 
+        demonstrating professional Wwise workflow and best practices.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Project Objectives -->
+  <section class="objectives-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Implementation Goals</div>
+        <h2>Project Objectives</h2>
+      </div>
+      
+      <div class="objectives-grid">
+        <div class="objective-card">
+          <h3>Clean Project Structure</h3>
+          <ul>
+            <li>Follow best practices for Wwise project structure</li>
+            <li>Optimize memory and CPU usage</li>
+            <li>Maintain organized asset hierarchy</li>
+          </ul>
+        </div>
+        
+        <div class="objective-card">
+          <h3>Technical Implementation</h3>
+          <ul>
+            <li>Implement all provided events</li>
+            <li>Setup correct spatialization for in-world sounds</li>
+            <li>Configure orientation and attenuation settings</li>
+            <li>Apply reverb using provided Game Syncs</li>
+          </ul>
+        </div>
+        
+        <div class="objective-card">
+          <h3>Audio Design Quality</h3>
+          <ul>
+            <li>Create a cohesive sound palette</li>
+            <li>Ensure correctness and loop sounds where needed</li>
+            <li>Avoid sync issues and cut-off sounds</li>
+            <li>Prevent repetitive sounds through variation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Key Features -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Implementation Features</div>
+        <h2>Key Technical Features</h2>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">🎯</span>
+          <h3>Spatial Audio</h3>
+          <p>
+            3D spatialization with proper attenuation curves and orientation settings for immersive 
+            audio positioning throughout the game world.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">🔊</span>
+          <h3>Dynamic Mix</h3>
+          <p>
+            Cohesive mix that adapts to gameplay, ensuring clarity and balance across all audio 
+            elements for optimal player experience.
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">🎮</span>
+          <h3>Game Syncs Integration</h3>
+          <p>
+            Integration of Game Syncs for reverb zones and parameter-driven audio changes, 
+            creating responsive and contextual soundscapes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Technical Details -->
+  <section class="technical-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Technical Approach</div>
+        <h2>Professional Implementation</h2>
+      </div>
+      
+      <p class="technical-text">
+        This project demonstrates <strong>professional Wwise implementation skills</strong> including event management, 
+        Game Sync integration, 3D audio positioning, and mix optimization. The implementation follows 
+        <strong>industry best practices</strong> for memory management and CPU efficiency. All audio assets were 
+        carefully selected and processed to create a cohesive sound palette that enhances gameplay while 
+        maintaining technical performance standards required for real-time game audio.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>
+        Audio Implementation by <a href="https://igorszuniewicz.com" target="_blank" rel="noopener">Igor Szuniewicz</a> | 
+        Middleware 2 Project
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+        © 2025 Igor Szuniewicz. Exam assignment for Digital Arts & Entertainment.
+      </p>
+    </div>
+  </footer>
 
-  <script src="../assets/js/components/enhancements.js?v=20250210"></script>
-  <script src="../assets/js/components/lightbox.js"></script>
 </body>
 </html>
