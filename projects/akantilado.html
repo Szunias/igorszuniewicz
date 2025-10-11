@@ -435,6 +435,216 @@
         border-radius: 0 50% 50% 50%;
       }
     }
+    
+    /* Ground vegetation */
+    .ground-plants {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 40%;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      z-index: 2;
+    }
+    
+    /* Ferns */
+    .fern {
+      position: relative;
+      width: 80px;
+      height: 0;
+      opacity: 0;
+      animation: plantGrowUp 2.5s ease-out forwards;
+    }
+    
+    @keyframes plantGrowUp {
+      0% {
+        height: 0;
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.6;
+      }
+      100% {
+        height: 120px;
+        opacity: 1;
+      }
+    }
+    
+    .fern-stem {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to top, #2d5016 0%, #3a6b1f 50%, #4a7c2e 100%);
+      border-radius: 2px;
+      transform: translateX(-50%);
+    }
+    
+    /* Fern leaves */
+    .fern-leaf {
+      position: absolute;
+      left: 50%;
+      width: 35px;
+      height: 15px;
+      background: linear-gradient(to right, transparent 0%, #3a6b1f 20%, #4a7c2e 80%, transparent 100%);
+      border-radius: 50%;
+      transform-origin: left center;
+      animation: fernSway 3s ease-in-out infinite;
+    }
+    
+    .fern-leaf.left {
+      transform: translateX(-100%) rotate(-45deg);
+    }
+    
+    .fern-leaf.right {
+      transform: rotate(45deg);
+      background: linear-gradient(to left, transparent 0%, #3a6b1f 20%, #4a7c2e 80%, transparent 100%);
+    }
+    
+    .fern-leaf:nth-child(2) { bottom: 20%; }
+    .fern-leaf:nth-child(3) { bottom: 40%; }
+    .fern-leaf:nth-child(4) { bottom: 60%; }
+    .fern-leaf:nth-child(5) { bottom: 80%; }
+    
+    @keyframes fernSway {
+      0%, 100% { transform: translateX(-100%) rotate(-45deg); }
+      50% { transform: translateX(-105%) rotate(-50deg); }
+    }
+    
+    .fern-leaf.right {
+      animation-name: fernSwayRight;
+    }
+    
+    @keyframes fernSwayRight {
+      0%, 100% { transform: rotate(45deg); }
+      50% { transform: rotate(50deg); }
+    }
+    
+    /* Bushes */
+    .bush {
+      position: relative;
+      width: 100px;
+      height: 0;
+      opacity: 0;
+      animation: bushGrow 2.2s ease-out forwards;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    
+    @keyframes bushGrow {
+      0% {
+        height: 0;
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      30% {
+        opacity: 0.7;
+      }
+      100% {
+        height: 80px;
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .bush-cluster {
+      position: absolute;
+      bottom: 0;
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(ellipse at center, #2d5016 0%, #3a6b1f 60%, transparent 100%);
+      border-radius: 50% 50% 0 0;
+      animation: bushRustle 4s ease-in-out infinite;
+    }
+    
+    .bush-cluster:nth-child(1) { left: 10%; width: 45px; height: 45px; }
+    .bush-cluster:nth-child(2) { left: 35%; width: 50px; height: 50px; animation-delay: 0.3s; }
+    .bush-cluster:nth-child(3) { right: 35%; width: 42px; height: 42px; animation-delay: 0.6s; }
+    .bush-cluster:nth-child(4) { right: 10%; width: 48px; height: 48px; animation-delay: 0.9s; }
+    
+    @keyframes bushRustle {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    /* Grass blades */
+    .grass-container {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 50px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: flex-end;
+    }
+    
+    .grass-blade {
+      width: 3px;
+      height: 0;
+      background: linear-gradient(to top, #2d5016 0%, #4a7c2e 100%);
+      border-radius: 50% 50% 0 0;
+      opacity: 0;
+      animation: grassGrow 1.8s ease-out forwards;
+      transform-origin: bottom center;
+    }
+    
+    @keyframes grassGrow {
+      0% {
+        height: 0;
+        opacity: 0;
+      }
+      30% {
+        opacity: 0.8;
+      }
+      100% {
+        height: 35px;
+        opacity: 1;
+      }
+    }
+    
+    .grass-blade:nth-child(odd) {
+      animation: grassSway 2s ease-in-out infinite;
+    }
+    
+    .grass-blade:nth-child(even) {
+      animation: grassSwayAlt 2.5s ease-in-out infinite;
+    }
+    
+    @keyframes grassSway {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-3deg); }
+      75% { transform: rotate(3deg); }
+    }
+    
+    @keyframes grassSwayAlt {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(3deg); }
+      75% { transform: rotate(-3deg); }
+    }
+    
+    /* Individual timing for ground plants */
+    .fern:nth-child(1) { animation-delay: 0.3s; }
+    .fern:nth-child(2) { animation-delay: 0.6s; }
+    .fern:nth-child(3) { animation-delay: 0.9s; }
+    .fern:nth-child(4) { animation-delay: 1.2s; }
+    
+    .bush:nth-child(1) { animation-delay: 0.4s; }
+    .bush:nth-child(2) { animation-delay: 0.7s; }
+    .bush:nth-child(3) { animation-delay: 1s; }
+    
+    .grass-blade:nth-child(1) { animation-delay: 0.1s; }
+    .grass-blade:nth-child(2) { animation-delay: 0.15s; }
+    .grass-blade:nth-child(3) { animation-delay: 0.2s; }
+    .grass-blade:nth-child(4) { animation-delay: 0.25s; }
+    .grass-blade:nth-child(5) { animation-delay: 0.3s; }
+    .grass-blade:nth-child(6) { animation-delay: 0.35s; }
+    .grass-blade:nth-child(7) { animation-delay: 0.4s; }
+    .grass-blade:nth-child(8) { animation-delay: 0.45s; }
+    .grass-blade:nth-child(9) { animation-delay: 0.5s; }
+    .grass-blade:nth-child(10) { animation-delay: 0.55s; }
   </style>
   <title>Akantilado — Sound Design</title>
   <meta charset="utf-8" />
@@ -1067,6 +1277,56 @@
     <div class="firefly"></div>
     <div class="firefly"></div>
     <div class="firefly"></div>
+    <div class="ground-plants">
+      <div class="fern">
+        <div class="fern-stem"></div>
+        <div class="fern-leaf left"></div>
+        <div class="fern-leaf right"></div>
+        <div class="fern-leaf left"></div>
+        <div class="fern-leaf right"></div>
+        <div class="fern-leaf left"></div>
+      </div>
+      <div class="bush">
+        <div class="bush-cluster"></div>
+        <div class="bush-cluster"></div>
+        <div class="bush-cluster"></div>
+        <div class="bush-cluster"></div>
+      </div>
+      <div class="fern">
+        <div class="fern-stem"></div>
+        <div class="fern-leaf left"></div>
+        <div class="fern-leaf right"></div>
+        <div class="fern-leaf left"></div>
+        <div class="fern-leaf right"></div>
+        <div class="fern-leaf left"></div>
+      </div>
+      <div class="bush">
+        <div class="bush-cluster"></div>
+        <div class="bush-cluster"></div>
+        <div class="bush-cluster"></div>
+        <div class="bush-cluster"></div>
+      </div>
+      <div class="fern">
+        <div class="fern-stem"></div>
+        <div class="fern-leaf left"></div>
+        <div class="fern-leaf right"></div>
+        <div class="fern-leaf left"></div>
+        <div class="fern-leaf right"></div>
+        <div class="fern-leaf left"></div>
+      </div>
+    </div>
+    <div class="grass-container">
+      <div class="grass-blade"></div>
+      <div class="grass-blade"></div>
+      <div class="grass-blade"></div>
+      <div class="grass-blade"></div>
+      <div class="grass-blade"></div>
+      <div class="grass-blade"></div>
+      <div class="grass-blade"></div>
+      <div class="grass-blade"></div>
+      <div class="grass-blade"></div>
+      <div class="grass-blade"></div>
+    </div>
     <div class="akantilado-title">AKANTILADO</div>
   </div>
   
