@@ -85,7 +85,23 @@ export function translatePage(lang){
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (I18N[key] && I18N[key][lang]) {
-      el.textContent = I18N[key][lang];
+      // Check if element has data-i18n-placeholder attribute
+      if (el.hasAttribute('data-i18n-placeholder')) {
+        el.setAttribute('placeholder', I18N[key][lang]);
+      } else if (el.innerHTML.includes('<')) {
+        // If element contains HTML tags, preserve them
+        el.innerHTML = I18N[key][lang];
+      } else {
+        el.textContent = I18N[key][lang];
+      }
+    }
+  });
+  
+  // Handle placeholder translations
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (I18N[key] && I18N[key][lang]) {
+      el.setAttribute('placeholder', I18N[key][lang]);
     }
   });
 }
