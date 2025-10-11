@@ -8,7 +8,7 @@
   
   // Konfiguracja
   const config = {
-    duration: 200, // Czas trwania animacji w ms (bardzo szybkie)
+    duration: 350, // Czas trwania animacji w ms (zoptymalizowane dla płynności)
     easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)'
   };
   

@@ -48,7 +48,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: preloaderFadeOut 0.6s ease-out 2.2s forwards;
+      animation: preloaderFadeOut 0.4s ease-out 1.1s forwards;
     }
     
     .preloader-content {
@@ -76,11 +76,11 @@
     }
     
     .name-part:nth-child(1) {
-      animation: nameSlideIn 0.8s cubic-bezier(0.4, 0.0, 0.2, 1) 0.3s forwards;
+      animation: nameSlideIn 0.5s cubic-bezier(0.4, 0.0, 0.2, 1) 0.1s forwards;
     }
     
     .name-part:nth-child(2) {
-      animation: nameSlideIn 0.8s cubic-bezier(0.4, 0.0, 0.2, 1) 0.6s forwards;
+      animation: nameSlideIn 0.5s cubic-bezier(0.4, 0.0, 0.2, 1) 0.3s forwards;
     }
     
     .preloader-line {
@@ -89,7 +89,7 @@
       background: linear-gradient(90deg, #60a5fa, #a78bfa);
       margin: 0 auto;
       border-radius: 2px;
-      animation: lineExpand 1s cubic-bezier(0.4, 0.0, 0.2, 1) 1.2s forwards;
+      animation: lineExpand 0.6s cubic-bezier(0.4, 0.0, 0.2, 1) 0.7s forwards;
       box-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
     }
     
@@ -139,7 +139,7 @@
     });
   }
   
-  // Usuń preloader po animacji (skrócony czas)
+  // Usuń preloader po animacji (zoptymalizowany czas)
   setTimeout(() => {
     if (preloader && preloader.parentNode) {
       preloader.remove();
@@ -147,5 +147,5 @@
     document.body.classList.remove('preloader-active');
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
-  }, 2800);
+  }, 1500);
 })();
