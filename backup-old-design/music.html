@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>Music — Listening Room</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap"></noscript>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/icons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="assets/icons/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" sizes="180x180">
+  <!-- Performance optimizations: preload critical resources -->
+  <link rel="preload" as="script" href="assets/js/core/jquery.min.js" />
+  <link rel="preload" as="script" href="assets/js/utils/performance.js" />
+  <link rel="preload" as="script" href="assets/js/main.js" />
+  <link rel="preload" as="script" href="assets/js/pages/music.js?v=20250919" />
+  <!-- DNS prefetch for external resources -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  
+  <meta name="description" content="Music Listening Room — curated tracks, stems, and catalog by Igor Szuniewicz." />
+  <link rel="canonical" href="https://igorszuniewicz.com/music.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Igor Szuniewicz" />
+  <meta property="og:title" content="Music — Listening Room" />
+  <meta property="og:description" content="Stream selected works spanning electronic, film, and more." />
+  <meta property="og:url" content="https://igorszuniewicz.com/music.html" />
+  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects/project5.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Music — Listening Room" />
+  <meta name="twitter:description" content="Stream selected works spanning electronic, film, and more." />
+  <meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects/project5.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Music",
+    "url": "https://igorszuniewicz.com/music.html",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://igorszuniewicz.com/"},
+        {"@type":"ListItem","position":2,"name":"Music","item":"https://igorszuniewicz.com/music.html"}
+      ]
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/custom-styles.css?v=20250212" />
+  <link rel="stylesheet" href="assets/css/pro-theme.css?v=20250212" />
+  <link rel="stylesheet" href="assets/css/genre-carousel.css?v=20251013c" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+  <div id="lang-fixed" role="group" aria-label="Language selection">
+    <button type="button" data-lang="en" aria-label="Switch to English" aria-pressed="true">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 12">
+          <rect width="18" height="12" fill="#012169"/>
+          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#fff" stroke-width="3"/>
+          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#C8102E" stroke-width="1.2"/>
+          <rect x="0" y="5" width="18" height="2" fill="#fff"/>
+          <rect x="8" y="0" width="2" height="12" fill="#fff"/>
+          <rect x="0" y="5.5" width="18" height="1" fill="#C8102E"/>
+          <rect x="8.5" y="0" width="1" height="12" fill="#C8102E"/>
+        </svg>
+      </span>
+      <span class="label">EN</span>
+    </button>
+    <button type="button" data-lang="pl" aria-label="Przełącz na język polski" aria-pressed="false">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
+          <rect width="3" height="1" fill="#fff"/>
+          <rect y="1" width="3" height="1" fill="#dc143c"/>
+        </svg>
+      </span>
+      <span class="label">PL</span>
+    </button>
+    <button type="button" data-lang="nl" aria-label="Schakel over naar Nederlands" aria-pressed="false">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
+          <rect width="3" height="2" fill="#21468B"/>
+          <rect width="3" height="1.333" fill="#fff"/>
+          <rect width="3" height="0.666" fill="#AE1C28"/>
+        </svg>
+      </span>
+      <span class="label">NL</span>
+    </button>
+  </div>
+
+
+  <div class="bg-gradient" aria-hidden="true"></div>
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb blue" style="top:10%;left:8%"></div>
+    <div class="orb cyan" style="top:60%;left:75%"></div>
+    <div class="orb teal" style="top:75%;left:15%"></div>
+  </div>
+  <svg class="bg-waves" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="gradWave1" x1="0%" x2="100%" y1="0%" y2="0%">
+        <stop offset="0%" stop-color="#18bfef" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#58b6ff" stop-opacity="0.3"/>
+      </linearGradient>
+      <linearGradient id="gradWave2" x1="0%" x2="100%" y1="0%" y2="0%">
+        <stop offset="0%" stop-color="#9a6cff" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#18bfef" stop-opacity="0.3"/>
+      </linearGradient>
+      <linearGradient id="gradWave3" x1="0%" x2="100%" y1="0%" y2="0%">
+        <stop offset="0%" stop-color="#ff6ea9" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#9a6cff" stop-opacity="0.25"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#gradWave1)" opacity="0.6" d="M0 320 L1200 300 L1200 600 L0 600 Z"></path>
+    <path fill="url(#gradWave2)" opacity="0.4" d="M0 340 L1200 330 L1200 600 L0 600 Z"></path>
+    <path fill="url(#gradWave3)" opacity="0.3" d="M0 360 L1200 360 L1200 600 L0 600 Z"></path>
+  </svg>
+  <canvas class="bg-eq" aria-hidden="true"></canvas>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div id="wrapper" class="fade-in">
+
+    <header id="header">
+      <a href="index.html" class="logo">Igor Szuniewicz</a>
+    </header>
+
+    <nav id="nav">
+      <ul class="links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects/index.html">Projects</a></li>
+        <li class="active"><a href="music.html">Music</a></li>
+        <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Extra</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="projects/audioq.html">AudioQ Plugin</a></li>
+                        <li><a href="projects/unreal-engine-rebuilder.html">Unreal Engine Rebuilder</a></li>
+                        <li><a href="#" class="disabled-link" data-tooltip="Not yet released - In Development">QSlicer</a></li>
+                    </ul>
+                </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <ul class="icons"></ul>
+    </nav>
+
+    <div id="main">
+      <section class="post music-page" data-reveal>
+        <div class="album-wall" aria-hidden="true">
+          <div class="album-row r1">
+            <div class="strip">
+              <div class="set">
+                <div class="tile"><img src="assets/images/covers/Inflow_track_cover.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/Astrophonic Dance_track_cover.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/Cathedral Of Time_track_cover.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/Run.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/richter.jpg" alt="" loading="lazy" /></div>
+              </div>
+              <div class="set">
+                <div class="tile"><img src="assets/images/covers/Inflow_track_cover.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/Astrophonic Dance_track_cover.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/Cathedral Of Time_track_cover.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/Run.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/richter.jpg" alt="" loading="lazy" /></div>
+              </div>
+            </div>
+          </div>
+          <div class="album-row r2">
+            <div class="strip">
+              <div class="set">
+                <div class="tile"><img src="assets/images/covers/project5.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/EdgeOfLife.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/XianClashCover.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/Inflow_track_cover.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/Astrophonic Dance_track_cover.jpg" alt="" loading="lazy" /></div>
+              </div>
+              <div class="set">
+                <div class="tile"><img src="assets/images/covers/project5.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/EdgeOfLife.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/XianClashCover.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/Inflow_track_cover.jpg" alt="" loading="lazy" /></div>
+                <div class="tile"><img src="assets/images/covers/Astrophonic Dance_track_cover.jpg" alt="" loading="lazy" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <header class="major">
+          <h2 data-i18n="music.title">Music Listening Room</h2>
+          <p id="bgWhite" data-i18n="music.lead">Stream curated tracks, preview stems, and explore catalog.</p>
+        </header>
+
+        <div class="music-quality-info" data-i18n="music.quality_info">
+          Use the <strong>STREAM</strong> button next to each track to switch between fast-loading compressed audio and high-quality original files.
+        </div>
+
+        <div class="music-controls">
+          <div class="left" style="flex-direction: column; gap: 1.5rem; width: 100%;">
+            <!-- Simple Genre Pills -->
+            <div class="genre-pills-container">
+              <div class="mf-label" data-i18n="music.finder" style="margin-bottom: 1rem; text-align: center; font-size: 0.85rem; color: rgba(24, 191, 239, 0.8); font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px;">Browse by Style</div>
+              
+              <div class="genre-pills" role="group" aria-label="Genre categories">
+                <button class="genre-pill active" data-tag="all" type="button">
+                  <span class="pill-text" data-i18n="genre_all_tracks">All Tracks</span>
+                  <span class="pill-count"></span>
+                </button>
+                <button class="genre-pill" data-tag="electronic" type="button">
+                  <span class="pill-text" data-i18n="genre_electronic">Electronic</span>
+                  <span class="pill-count"></span>
+                </button>
+                <button class="genre-pill" data-tag="film" type="button">
+                  <span class="pill-text" data-i18n="genre_film">Film</span>
+                  <span class="pill-count"></span>
+                </button>
+                <button class="genre-pill" data-tag="metal" type="button">
+                  <span class="pill-text" data-i18n="genre_metal">Metal</span>
+                  <span class="pill-count"></span>
+                </button>
+                <button class="genre-pill" data-tag="playful" type="button">
+                  <span class="pill-text" data-i18n="genre_playful">Playful</span>
+                  <span class="pill-count"></span>
+                </button>
+                <button class="genre-pill" data-tag="score" type="button">
+                  <span class="pill-text" data-i18n="genre_score">Score</span>
+                  <span class="pill-count"></span>
+                </button>
+                <button class="genre-pill" data-tag="single" type="button">
+                  <span class="pill-text" data-i18n="genre_single">Single</span>
+                  <span class="pill-count"></span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Search Bar -->
+            <input type="search" id="music-search" data-i18n-placeholder="music_search_placeholder" placeholder="🔍 Search tracks..." aria-label="Search" style="width: 100%; max-width: 600px; margin: 0 auto; padding: 0.9rem 1.5rem; font-size: 1rem; background: rgba(20, 30, 40, 0.6); border: 1px solid rgba(24, 191, 239, 0.3); border-radius: 50px; color: #e0e0e0; outline: none; transition: all 0.3s ease;" />
+          </div>
+        </div>
+
+
+        <div id="music-list" class="music-list" aria-live="polite" style="min-height: 50vh;"></div>
+        <div class="music-controls" style="margin-top:8px">
+          <div class="left" style="justify-content:flex-start">
+            <label>
+              <span data-i18n="music.sort">Sort</span>
+              <select id="music-sort">
+                <option value="new">Newest</option>
+                <option value="az">A → Z</option>
+                <option value="len">Length</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer id="footer"></footer>
+
+    <div id="copyright">
+      <ul>
+        <li>&copy; Igor Szuniewicz 2025. All rights reserved.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div id="player-bar" class="player-bar" aria-live="polite" aria-atomic="true" hidden>
+    <div class="pb-left">
+      <img class="pb-cover" alt="" />
+      <div class="pb-meta">
+        <div class="pb-title">—</div>
+        <div class="pb-sub">—</div>
+      </div>
+    </div>
+    <div class="pb-center">
+      <div class="pb-controls">
+        <button class="pb-btn pb-prev" aria-label="Previous">⏮</button>
+        <button class="pb-btn pb-play" aria-label="Play/Pause">▶</button>
+        <button class="pb-btn pb-next" aria-label="Next">⏭</button>
+      </div>
+      <div class="pb-timeline">
+        <span class="pb-time pb-current">0:00</span>
+        <input type="range" class="pb-seek" min="0" max="1000" value="0" aria-label="Seek" />
+        <span class="pb-time pb-duration">0:00</span>
+        <canvas class="pb-wave" aria-hidden="true"></canvas>
+      </div>
+    </div>
+    <div class="pb-right">
+      <span class="pb-vol-label">Volume</span>
+      <input type="range" class="pb-vol" min="0" max="1" step="0.01" value="0.9" aria-label="Volume" />
+    </div>
+  </div>
+
+  <script src="assets/js/core/jquery.min.js"></script>
+  <script src="assets/js/core/jquery.scrollex.min.js"></script>
+  <script src="assets/js/core/jquery.scrolly.min.js"></script>
+  <script src="assets/js/core/browser.min.js"></script>
+  <script src="assets/js/core/breakpoints.min.js"></script>
+  <script src="assets/js/core/util.js"></script>
+  <script src="assets/js/utils/performance.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/components/enhancements.js?v=20250212"></script>
+  <script src="assets/js/components/reveal.js" defer></script>
+  <script src="assets/js/pages/music.js?v=20251013"></script>
+  <script src="assets/js/components/lang-badge.js" defer></script>
+  <script type="module" src="assets/js/bootstrap.js" defer></script>
+  
+  <!-- Genre Pills JavaScript -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const genrePills = document.querySelectorAll('.genre-pill');
+    
+    if (!genrePills.length) return;
+    
+    // Click handler for genre selection
+    genrePills.forEach(pill => {
+      pill.addEventListener('click', function() {
+        const tag = this.getAttribute('data-tag');
+        
+        // Update active state
+        genrePills.forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Trigger filter (connects to music.js)
+        const event = new CustomEvent('genreSelect', { detail: { tag } });
+        document.dispatchEvent(event);
+      });
+    });
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>Transientica: AudioLab — Beatbox-Controlled Rhythm Game by Igor Szuniewicz</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+  <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png" sizes="180x180">
+  <meta name="description" content="Transientica — beatbox-controlled rhythm game with real-time ML classification and low-latency OSC control by Igor Szuniewicz." />
+  <link rel="canonical" href="https://igorszuniewicz.com/projects/audiolab.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Igor Szuniewicz" />
+  <meta property="og:title" content="Transientica: AudioLab — Beatbox-Controlled Rhythm Game" />
+  <meta property="og:description" content="Interactive rhythm-game platform driven by real-time beatbox recognition and low-latency OSC control." />
+  <meta property="og:url" content="https://igorszuniewicz.com/projects/audiolab.html" />
+  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects/AudioLabGif.gif" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Transientica: AudioLab — Beatbox-Controlled Rhythm Game" />
+  <meta name="twitter:description" content="Beatbox-controlled rhythm game with real-time ML classification by Igor Szuniewicz." />
+  <meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects/AudioLabGif.gif" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Transientica: AudioLab",
+    "url": "https://igorszuniewicz.com/projects/audiolab.html",
+    "image": "https://igorszuniewicz.com/assets/images/projects/AudioLabGif.gif",
+    "author": {
+      "@type": "Person",
+      "name": "Igor Szuniewicz",
+      "url": "https://igorszuniewicz.com"
+    },
+    "applicationCategory": "Game",
+    "operatingSystem": "Windows, macOS, Linux"
+  }
+  </script>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20251011" />
+  <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+  <style>
+    /* Hero Section - Premium Design */
+    .audiolab-hero {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      margin: 3rem 0;
+      position: relative;
+    }
+
+    .audiolab-hero::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      right: -50px;
+      bottom: -50px;
+      background: radial-gradient(circle at 30% 40%, rgba(24, 191, 239, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(154, 108, 255, 0.1) 0%, transparent 50%);
+      z-index: -1;
+      border-radius: 50px;
+    }
+
+    .audiolab-hero img, .audiolab-hero video {
+      max-width: 960px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .audiolab-hero img:hover, .audiolab-hero video:hover {
+      transform: scale(1.02) translateY(-5px);
+      box-shadow: 0 35px 70px rgba(0,0,0,0.5), 0 0 0 1px rgba(24, 191, 239, 0.3);
+    }
+
+    /* Metadata Tags - Pill Design */
+    .audiolab-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .audiolab-meta span {
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.1), rgba(154, 108, 255, 0.1));
+      border: 1px solid rgba(24, 191, 239, 0.3);
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      color: #e8f6fb;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .audiolab-meta span:hover {
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.2), rgba(154, 108, 255, 0.2));
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(24, 191, 239, 0.2);
+    }
+
+    /* Technical Details Section */
+    .tech-details {
+      background: linear-gradient(135deg, rgba(12, 18, 24, 0.6), rgba(10, 16, 22, 0.8));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem 0;
+      backdrop-filter: blur(10px);
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tech-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .tech-item:hover {
+      background: rgba(24, 191, 239, 0.05);
+      border-color: rgba(24, 191, 239, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .tech-item h4 {
+      color: #18bfef;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    .tech-item p {
+      color: #d9f2ff;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Results Section */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .result-card {
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.1), rgba(154, 108, 255, 0.05));
+      border: 1px solid rgba(24, 191, 239, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .result-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(24, 191, 239, 0.2);
+    }
+
+    .result-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #18bfef;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-label {
+      color: #e8f6fb;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Video Container */
+    .video-container {
+      position: relative;
+      margin: 2rem 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .video-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Download Links */
+    .download-section {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #18bfef, #9a6cff);
+      color: #0c1218;
+      padding: 0.8rem 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(24, 191, 239, 0.4);
+      filter: brightness(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .tech-grid, .results-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .audiolab-meta {
+        gap: 0.8rem;
+      }
+
+      .download-section {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body class="is-preload">
+  <div id="lang-fixed" role="group" aria-label="Language selection">
+    <button type="button" data-lang="en" aria-label="Switch to English" aria-pressed="true">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 12">
+          <rect width="18" height="12" fill="#012169"/>
+          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#fff" stroke-width="3"/>
+          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#C8102E" stroke-width="1.2"/>
+          <rect x="0" y="5" width="18" height="2" fill="#fff"/>
+          <rect x="8" y="0" width="2" height="12" fill="#fff"/>
+          <rect x="0" y="5.5" width="18" height="1" fill="#C8102E"/>
+          <rect x="8.5" y="0" width="1" height="12" fill="#C8102E"/>
+        </svg>
+      </span>
+      <span class="label">EN</span>
+    </button>
+    <button type="button" data-lang="pl" aria-label="Przełącz na język polski" aria-pressed="false">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
+          <rect width="3" height="1" fill="#fff"/>
+          <rect y="1" width="3" height="1" fill="#dc143c"/>
+        </svg>
+      </span>
+      <span class="label">PL</span>
+    </button>
+    <button type="button" data-lang="nl" aria-label="Schakel over naar Nederlands" aria-pressed="false">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
+          <rect width="3" height="2" fill="#21468B"/>
+          <rect width="3" height="1.333" fill="#fff"/>
+          <rect width="3" height="0.666" fill="#AE1C28"/>
+        </svg>
+      </span>
+      <span class="label">NL</span>
+    </button>
+  </div>
+
+  <div class="bg-gradient"></div>
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb blue" style="top:15%;left:10%"></div>
+    <div class="orb cyan" style="top:65%;left:80%"></div>
+    <div class="orb teal" style="top:80%;left:20%"></div>
+  </div>
+
+  <div id="wrapper" class="fade-in">
+
+    <header id="header">
+      <a href="../index.html" class="logo">Igor Szuniewicz</a>
+    </header>
+
+    <nav id="nav">
+      <ul class="links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li class="active"><a href="index.html">Projects</a></li>
+        <li><a href="../music.html">Music</a></li>
+        <li><a href="../extras.html">Extra</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+      <ul class="icons">
+        <li><a href="https://github.com/Szunias" class="icon brands fa-github" target="_blank" rel="noopener noreferrer"><span class="label">GitHub</span></a></li>
+        <li><a href="https://www.linkedin.com/in/igor-szuniewicz-a6877a2a3" class="icon brands fa-linkedin" target="_blank" rel="noopener noreferrer"><span class="label">LinkedIn</span></a></li>
+        <li><a href="https://open.spotify.com/artist/6jEBXZZOeunaMzMnnHYvd6" class="icon brands fa-spotify" target="_blank" rel="noopener noreferrer"><span class="label">Spotify</span></a></li>
+      </ul>
+    </nav>
+
+    <div id="main">
+      <article class="post">
+        <header class="major">
+          <h1 data-i18n="audiolab_title">Transientica: AudioLab</h1>
+          <p data-i18n="audiolab_subtitle">Beatbox-Controlled Rhythm Game for Vocal Percussion Gameplay</p>
+        </header>
+
+        <!-- Video Demonstration -->
+        <section>
+          <h2 data-i18n="video_demonstration">Video Demonstration</h2>
+          <div class="video-container">
+            <video controls poster="../assets/images/projects/AudioLabGif.gif">
+              <source src="../videos/AudiioLab.mp4" type="video/mp4">
+              <span data-i18n="video_unsupported">Your browser does not support the video tag.</span>
+            </video>
+          </div>
+        </section>
+
+        <!-- Hero Section -->
+        <section class="audiolab-hero">
+          <div class="audiolab-meta">
+            <span data-i18n="realtime_ml_classification">Real-time ML Classification</span>
+            <span data-i18n="low_latency_osc">Low-latency OSC Control</span>
+            <span data-i18n="python_unity">Python + Unity</span>
+            <span data-i18n="beatbox_recognition">Beatbox Recognition</span>
+            <span data-i18n="spectral_flux_analysis">Spectral Flux Analysis</span>
+            <span data-i18n="median_latency_45ms">45ms Median Latency</span>
+          </div>
+        </section>
+
+        <!-- Project Overview -->
+        <section>
+          <h2 data-i18n="project_overview">Project Overview</h2>
+          <p data-i18n="audiolab_desc1">Transientica replaces traditional button presses with beatboxing in rhythm games. Using real-time audio analysis, machine learning classification, and OSC networking, the system achieves sub-60ms latency while maintaining 82% hit accuracy for vocal percussion gameplay.</p>
+
+          <p data-i18n="audiolab_desc2">This research explores whether beatboxing alone can satisfy the tight timing requirements of competitive rhythm games, combining spectral-flux onset detection with user-trained RBF-SVM classification for kick, snare, and hi-hat sounds.</p>
+        </section>
+
+        <!-- Technical Implementation -->
+        <section class="tech-details">
+          <h2 data-i18n="technical_implementation">Technical Implementation</h2>
+          <p data-i18n="system_description">The system uses a Python backend for audio processing and a Unity frontend for gameplay, connected via OSC messaging.</p>
+
+          <div class="tech-grid">
+            <div class="tech-item">
+              <h4><i class="fas fa-microphone"></i> <span data-i18n="audio_processing">Audio Processing</span></h4>
+              <p data-i18n="audio_processing_desc">44.1 kHz sampling, 2048-sample blocks with spectral flux onset detection and MFCC feature extraction (39-dimensional vectors)</p>
+            </div>
+            <div class="tech-item">
+              <h4><i class="fas fa-brain"></i> <span data-i18n="machine_learning">Machine Learning</span></h4>
+              <p data-i18n="machine_learning_desc">User-trained RBF-SVM classifier (C=10, γ=0.01) for real-time beatbox sound recognition with 0.16ms inference time</p>
+            </div>
+            <div class="tech-item">
+              <h4><i class="fas fa-network-wired"></i> <span data-i18n="osc_communication">OSC Communication</span></h4>
+              <p data-i18n="osc_communication_desc">UDP messaging between Python backend and Unity frontend with timestamped events for latency measurement</p>
+            </div>
+            <div class="tech-item">
+              <h4><i class="fas fa-gamepad"></i> <span data-i18n="game_engine">Game Engine</span></h4>
+              <p data-i18n="game_engine_desc">Unity-based rhythm game with JSON beatmaps, hit detection windows (±70ms), and real-time feedback systems</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Performance Results -->
+        <section>
+          <h2 data-i18n="performance_results">Performance Results</h2>
+          <div class="results-grid">
+            <div class="result-card">
+              <span class="result-number">45ms</span>
+              <span class="result-label" data-i18n="median_latency">Median Latency</span>
+            </div>
+            <div class="result-card">
+              <span class="result-number">64ms</span>
+              <span class="result-label" data-i18n="percentile_90">90th Percentile</span>
+            </div>
+            <div class="result-card">
+              <span class="result-number">82.1%</span>
+              <span class="result-label" data-i18n="hit_accuracy">Hit Accuracy</span>
+            </div>
+            <div class="result-card">
+              <span class="result-number">80.2%</span>
+              <span class="result-label" data-i18n="f1_score">F1 Score</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Research Contributions -->
+        <section>
+          <h2 data-i18n="research_contributions">Research Contributions</h2>
+          <ul style="color: #d9f2ff;">
+            <li><strong style="color: #18bfef;" data-i18n="low_latency_vocal">Low-latency vocal interface:</strong> <span data-i18n="achieved_sub60ms">Achieved sub-60ms end-to-end latency suitable for rhythm gaming</span></li>
+            <li><strong style="color: #18bfef;" data-i18n="realtime_beatbox">Real-time beatbox classification:</strong> <span data-i18n="user_trained_ml">User-trained ML models with 80%+ accuracy on kick, snare, hi-hat sounds</span></li>
+            <li><strong style="color: #18bfef;" data-i18n="osc_architecture">OSC-based architecture:</strong> <span data-i18n="modular_system">Modular system design enabling integration with DAWs, lighting, and haptic systems</span></li>
+            <li><strong style="color: #18bfef;" data-i18n="personalized_training">Personalized training:</strong> <span data-i18n="local_ml_training">Local ML training avoiding privacy and cloud latency issues</span></li>
+          </ul>
+        </section>
+
+        <!-- Technical Documentation -->
+        <section>
+          <h2 data-i18n="documentation_resources">Documentation & Resources</h2>
+          <div class="download-section">
+            <a href="../videos/AudioLab_2425_SzuniewiczIgor_TechDoc.pdf" class="download-btn" target="_blank">
+              <i class="fas fa-file-pdf"></i>
+              <span data-i18n="technical_documentation">Technical Documentation</span>
+            </a>
+            <a href="../videos/AudiioLab.mp4" class="download-btn" target="_blank">
+              <i class="fas fa-video"></i>
+              <span data-i18n="video_demo">Video Demo</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- Footer Navigation -->
+        <footer>
+          <div class="pagination">
+            <a href="index.html" class="button" data-i18n="back_to_projects" style="color: #e8f6fb !important; background: rgba(255,255,255,0.1) !important; border: 1px solid rgba(255,255,255,0.2) !important;">← Back to Projects</a>
+            <a href="../contact.html" class="button primary" data-i18n="get_in_touch">Get in Touch</a>
+          </div>
+        </footer>
+
+      </article>
+    </div>
+
+    <div id="copyright">
+      <ul>
+        <li>&copy; Igor Szuniewicz 2025. All rights reserved.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../assets/js/browser.min.js"></script>
+  <script src="../assets/js/breakpoints.min.js"></script>
+  <script src="../assets/js/util.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/components/enhancements.js?v=20250919-fix"></script>
+
+</body>
+</html>

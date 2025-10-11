@@ -1,0 +1,3318 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>AudioQ — Audio Plugin Development</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+  <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png" sizes="180x180">
+  <meta name="description" content="AudioQ — JUCE-based audio plugin with granular synthesis, tremolo, and real-time effects by Igor Szuniewicz." />
+  <link rel="canonical" href="https://igorszuniewicz.com/projects/audioq.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Igor Szuniewicz" />
+  <meta property="og:title" content="AudioQ — Audio Plugin Development" />
+  <meta property="og:description" content="JUCE-based audio sampler with granular synthesis, custom DSP, and drag & drop functionality." />
+  <meta property="og:url" content="https://igorszuniewicz.com/projects/audioq.html" />
+  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects-audioq/AudioQPicture.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AudioQ — Audio Plugin Development" />
+  <meta name="twitter:description" content="JUCE-based audio sampler with granular synthesis, custom DSP, and drag & drop functionality." />
+  <meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects-audioq/AudioQPicture.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "AudioQ — Audio Plugin Development",
+    "image": "https://igorszuniewicz.com/assets/images/projects-audioq/AudioQPicture.png",
+    "author": {
+      "@type": "Person",
+      "name": "Igor Szuniewicz",
+      "url": "https://igorszuniewicz.com/"
+    },
+    "url": "https://igorszuniewicz.com/projects/audioq.html"
+  }
+  </script>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20251011" />
+  <style>
+    /* Global AudioQ Page Overrides */
+    body {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%) !important;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    #wrapper {
+      background: transparent !important;
+      box-shadow: none !important;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    body.content-ready #wrapper {
+      opacity: 1;
+    }
+
+    #page-wrapper {
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    #main {
+      background: transparent !important;
+      padding: 0 !important;
+    }
+
+    .post {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+
+    /* Futuristic Header */
+    header.major {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(26, 26, 46, 0.8) 100%);
+      padding: 4em 3em;
+      margin: 0 0 3em 0;
+      border-radius: 0 0 30px 30px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: none;
+      text-align: center;
+    }
+
+    header.major::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #18bfef, #9a6cff, #ff6ea9, #18bfef);
+      background-size: 200% 100%;
+      animation: gradientMove 3s ease-in-out infinite;
+    }
+
+    @keyframes gradientMove {
+      0%, 100% { background-position: 0% 0%; }
+      50% { background-position: 100% 0%; }
+    }
+
+    header.major::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 70% 30%, rgba(24, 191, 239, 0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 30% 70%, rgba(154, 108, 255, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    header.major h2 {
+      color: #ffffff !important;
+      font-size: 3.5em !important;
+      font-weight: 800 !important;
+      margin-bottom: 1rem !important;
+      text-shadow: 0 4px 20px rgba(24, 191, 239, 0.3);
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5em;
+    }
+
+    /* AudioQ Brand Styling */
+    .audioq-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6em;
+    }
+
+    .brand-main {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      font-weight: 900;
+      font-size: 1.4em;
+      letter-spacing: 4px;
+      background: linear-gradient(135deg, #18bfef 0%, #9a6cff 50%, #ff6ea9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: brandGlow 4s ease-in-out infinite;
+      position: relative;
+    }
+
+    .letter-q {
+      position: relative;
+      color: #ff6ea9 !important;
+      font-weight: 900;
+      text-shadow: 0 0 20px rgba(255, 110, 169, 0.8);
+      animation: letterPulse 3s ease-in-out infinite;
+      -webkit-text-fill-color: #ff6ea9 !important;
+      background: none !important;
+    }
+
+    .brand-tagline {
+      font-size: 0.32em;
+      font-weight: 600;
+      color: #9a6cff;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      opacity: 0.95;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      text-shadow: 0 2px 10px rgba(154, 108, 255, 0.3);
+      padding: 0.5rem 1.5rem;
+      background: rgba(154, 108, 255, 0.08);
+      border-radius: 30px;
+      border: 1px solid rgba(154, 108, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    header.major p {
+      font-size: 1.15em !important;
+      line-height: 1.6 !important;
+      color: rgba(255, 255, 255, 0.85) !important;
+      max-width: 800px;
+      margin: 0 auto !important;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes brandGlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes letterPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.08); opacity: 0.85; }
+    }
+
+    .video-container {
+      margin: 2em 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .video-thumbnail {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .video-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
+    }
+
+    .play-button:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .video-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .video-modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .video-modal video {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+
+    /* Lighter text colors for better readability */
+    #main p, #main li {
+      color: #e0e0e0 !important;
+    }
+
+    #main h3 {
+      color: #ffffff !important;
+    }
+
+    #main h2 {
+      color: #ffffff !important;
+    }
+
+    /* AudioQ Demo - Ultra Modern Design */
+    #audioq-demo {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 40, 0.9) 100%);
+      border-radius: 25px;
+      padding: 0;
+      margin: 2em 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      position: relative;
+    }
+
+    #audioq-demo::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #18bfef, #9a6cff, #ff6ea9);
+      z-index: 1;
+    }
+
+    .demo-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 3px;
+      margin: 1em 0;
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 3px;
+    }
+
+    .control-section {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(20, 20, 40, 0.8) 100%);
+      padding: 0.8em 0.6em;
+      backdrop-filter: blur(15px);
+      transition: all 0.3s ease;
+      position: relative;
+      border-radius: 10px;
+      margin: 0;
+      border: 1px solid rgba(24, 191, 239, 0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .control-section:hover {
+      border-color: rgba(24, 191, 239, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(24, 191, 239, 0.2);
+    }
+
+    .control-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(24, 191, 239, 0.3), transparent);
+    }
+
+    .control-section h4 {
+      color: #ffffff !important;
+      margin-bottom: 0.8em;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      position: relative;
+      padding-bottom: 0.4em;
+      text-align: center;
+      text-shadow: 0 0 8px rgba(24, 191, 239, 0.3);
+    }
+
+    .control-section h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, #18bfef, #9a6cff);
+      border-radius: 1px;
+      box-shadow: 0 0 8px rgba(24, 191, 239, 0.4);
+    }
+
+    .effect-indicators-bar {
+      display: flex;
+      gap: 0.5em;
+      margin-bottom: 1em;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .effect-badge {
+      background: rgba(255, 255, 255, 0.1);
+      color: #666;
+      padding: 0.3em 0.8em;
+      border-radius: 12px;
+      font-size: 0.7em;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .effect-badge.active {
+      background: linear-gradient(135deg, #18bfef, #9a6cff);
+      color: #000;
+      box-shadow: 0 3px 15px rgba(24, 191, 239, 0.4);
+      animation: badgePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .file-drop-zone-integrated {
+      position: relative;
+      cursor: pointer;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+
+    .drop-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.15) 0%, rgba(154, 108, 255, 0.1) 100%);
+      border: 2px dashed rgba(24, 191, 239, 0.4);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(15px);
+      z-index: 10;
+    }
+
+    .drop-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .drop-overlay:hover, .drop-overlay.dragover {
+      border-color: #18bfef;
+      background: rgba(24, 191, 239, 0.2);
+      transform: scale(1.01);
+      box-shadow: 0 10px 30px rgba(24, 191, 239, 0.3);
+    }
+
+    .drop-content {
+      text-align: center;
+    }
+
+    .drop-content p {
+      color: #e0e0e0 !important;
+      margin: 0.2em 0;
+      font-weight: 600;
+    }
+
+    .drop-hint {
+      font-size: 0.8em !important;
+      opacity: 0.7;
+    }
+
+    .audio-controls-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1em;
+      gap: 1em;
+      flex-wrap: wrap;
+    }
+
+    .audio-file-section {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(20, 20, 40, 0.8) 100%);
+      padding: 1.5em;
+      margin-bottom: 1em;
+      border-radius: 15px;
+      border: 1px solid rgba(24, 191, 239, 0.1);
+      backdrop-filter: blur(15px);
+    }
+
+    .sample-controls {
+      text-align: center;
+      margin-bottom: 1.5em;
+    }
+
+    .sample-button {
+      background: linear-gradient(135deg, rgba(80, 80, 100, 0.9) 0%, rgba(100, 100, 120, 0.9) 100%);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      color: #ffffff !important;
+      padding: 0.8em 1.5em;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 700;
+      font-size: 0.9em;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 250px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .sample-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .sample-button:hover::before {
+      left: 100%;
+    }
+
+    .sample-button:hover {
+      background: linear-gradient(135deg, rgba(154, 108, 255, 0.25) 0%, rgba(255, 110, 169, 0.25) 100%);
+      border-color: #9a6cff;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(154, 108, 255, 0.3);
+    }
+
+    .transport-controls {
+      display: flex;
+      gap: 1em;
+      justify-content: center;
+    }
+
+    .transport-controls button, .mode-buttons button {
+      background: linear-gradient(135deg, rgba(80, 80, 100, 0.9) 0%, rgba(100, 100, 120, 0.9) 100%);
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      color: #ffffff !important;
+      padding: 0.8em 1.5em;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 700;
+      font-size: 0.7em;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .transport-controls button::before, .mode-buttons button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .transport-controls button:hover::before, .mode-buttons button:hover::before {
+      left: 100%;
+    }
+
+    .transport-controls button:hover, .mode-buttons button:hover {
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.25) 0%, rgba(154, 108, 255, 0.25) 100%);
+      border-color: #18bfef;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(24, 191, 239, 0.3);
+    }
+
+    .transport-controls button:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .mode-buttons {
+      display: flex;
+      gap: 0.8em;
+      margin-bottom: 1.5em;
+      justify-content: center;
+    }
+
+    .mode-buttons button.active {
+      background: linear-gradient(135deg, #18bfef 0%, #9a6cff 100%);
+      color: #000;
+      font-weight: 700;
+      box-shadow: 0 8px 25px rgba(24, 191, 239, 0.4);
+    }
+
+    .slider-group {
+      margin-bottom: 0.6em;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .slider-group label {
+      color: #e0e0e0 !important;
+      margin-bottom: 0.6em;
+      font-size: 0.75em;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .knob-container {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 0.4em auto;
+    }
+
+    .knob {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(40, 40, 60, 0.9) 100%);
+      border: 2px solid rgba(24, 191, 239, 0.3);
+      cursor: pointer;
+      position: relative;
+      box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.1),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .knob:hover {
+      border-color: #18bfef;
+      box-shadow:
+        0 12px 30px rgba(24, 191, 239, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.15),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.4);
+      transform: scale(1.05);
+    }
+
+    .knob::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.1) 0%, rgba(154, 108, 255, 0.1) 100%);
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(24, 191, 239, 0.2);
+    }
+
+    .knob-pointer {
+      position: absolute;
+      top: 3px;
+      left: 50%;
+      width: 2px;
+      height: 12px;
+      background: linear-gradient(135deg, #18bfef, #9a6cff);
+      border-radius: 1px;
+      transform-origin: 50% 17px;
+      transition: all 0.1s ease;
+      box-shadow: 0 1px 4px rgba(24, 191, 239, 0.5);
+    }
+
+    .knob-value {
+      background: rgba(24, 191, 239, 0.1);
+      padding: 0.2em 0.6em;
+      border-radius: 8px;
+      border: 1px solid rgba(24, 191, 239, 0.3);
+      font-family: 'Courier New', monospace;
+      font-weight: 600;
+      color: #18bfef !important;
+      font-size: 0.7em;
+      min-width: 55px;
+      backdrop-filter: blur(10px);
+    }
+
+    .effect-indicator {
+      color: #18bfef;
+      font-size: 1.2em;
+      margin-left: 0.5em;
+      opacity: 0.3;
+      transition: all 0.3s ease;
+    }
+
+    .effect-indicator.active {
+      opacity: 1;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+
+    .effect-toggle {
+      margin-bottom: 1em;
+      text-align: center;
+    }
+
+    .toggle-switch {
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      gap: 0.8em;
+    }
+
+    .toggle-switch input {
+      display: none;
+    }
+
+    .toggle-slider {
+      width: 50px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      position: relative;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ffffff;
+      top: 2px;
+      left: 3px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .toggle-switch input:checked + .toggle-slider {
+      background: linear-gradient(135deg, #18bfef, #9a6cff);
+      border-color: #18bfef;
+    }
+
+    .toggle-switch input:checked + .toggle-slider::before {
+      left: 28px;
+    }
+
+    .toggle-label {
+      color: #e0e0e0;
+      font-size: 0.85em;
+      font-weight: 600;
+    }
+
+    /* Hide original sliders */
+    .slider-group input[type="range"] {
+      display: none;
+    }
+
+    .checkbox-group {
+      margin-bottom: 1.5em;
+    }
+
+    .checkbox-group label {
+      color: #e0e0e0 !important;
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      cursor: pointer;
+      padding: 0.8em;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .checkbox-group label:hover {
+      background: rgba(24, 191, 239, 0.05);
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: #18bfef;
+      cursor: pointer;
+    }
+
+    .waveform-display {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 40, 0.9) 100%);
+      border-radius: 20px;
+      padding: 1.5em;
+      margin-bottom: 1em;
+      text-align: center;
+      border: 1px solid rgba(24, 191, 239, 0.2);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .waveform-display::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #18bfef, #9a6cff, #ff6ea9);
+    }
+
+    #waveform-canvas {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(10, 10, 20, 0.8) 100%);
+      border: 2px solid rgba(24, 191, 239, 0.3);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .volume-warning {
+      background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 100, 100, 0.1));
+      border: 2px solid #ff4444;
+      border-radius: 15px;
+      padding: 2em;
+      margin: 2em;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .volume-warning p {
+      color: #ff6666 !important;
+      margin-bottom: 1em;
+      font-weight: 600;
+      font-size: 1.1em;
+    }
+
+    #continue-btn {
+      background: linear-gradient(135deg, #ff4444, #ff6666);
+      border: none;
+      color: white;
+      padding: 1em 2em;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    #continue-btn:hover {
+      background: linear-gradient(135deg, #ff6666, #ff8888);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
+    }
+
+    /* Modern Typography & Content Styling */
+    #main h3:not(.demo-section h3) {
+      color: #ffffff !important;
+      font-size: 2em !important;
+      font-weight: 600 !important;
+      margin-bottom: 1.5em !important;
+      position: relative;
+      padding-left: 2em;
+    }
+
+    #main h3:not(.demo-section h3)::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 30px;
+      background: linear-gradient(135deg, #18bfef, #9a6cff);
+      border-radius: 2px;
+    }
+
+    #main p, #main li {
+      color: #d0d0d0 !important;
+      font-size: 1.1em !important;
+      line-height: 1.8 !important;
+      margin-bottom: 1.5em !important;
+    }
+
+    #main ul {
+      list-style: none !important;
+      padding-left: 0 !important;
+    }
+
+    #main li {
+      position: relative;
+      padding-left: 2em;
+      margin-bottom: 1em !important;
+    }
+
+    #main li::before {
+      content: '▶';
+      position: absolute;
+      left: 0;
+      color: #18bfef;
+      font-size: 0.8em;
+    }
+
+    /* Content Sections */
+    .content-section {
+      background: rgba(0, 0, 0, 0.4);
+      margin: 3em 2em;
+      padding: 3em;
+      border-radius: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(24, 191, 239, 0.5), transparent);
+    }
+
+    /* Enhanced Video Container */
+    .video-container {
+      margin: 2em 0 !important;
+      border-radius: 20px !important;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    .video-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #18bfef, #9a6cff, #ff6ea9);
+      z-index: 1;
+    }
+
+    /* Image Gallery */
+    .box.alt {
+      background: rgba(0, 0, 0, 0.3) !important;
+      padding: 2em !important;
+      border-radius: 20px !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .box.alt img {
+      border-radius: 15px !important;
+      border: 1px solid rgba(24, 191, 239, 0.2) !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .box.alt img:hover {
+      transform: scale(1.02) !important;
+      box-shadow: 0 15px 40px rgba(24, 191, 239, 0.2) !important;
+    }
+
+    /* Back Button */
+    .actions {
+      text-align: center;
+      margin: 4em 0 !important;
+    }
+
+    .actions .button {
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.15) 0%, rgba(154, 108, 255, 0.15) 100%) !important;
+      border: 2px solid rgba(24, 191, 239, 0.4) !important;
+      color: #e8e8e8 !important;
+      padding: 1em 3em !important;
+      border-radius: 15px !important;
+      font-weight: 600 !important;
+      font-size: 1.1em !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1px !important;
+      transition: all 0.3s ease !important;
+      position: relative !important;
+      overflow: hidden !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .actions .button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .actions .button:hover::before {
+      left: 100%;
+    }
+
+    .actions .button:hover {
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.25) 0%, rgba(154, 108, 255, 0.25) 100%) !important;
+      border-color: #18bfef !important;
+      color: #ffffff !important;
+      transform: translateY(-3px) !important;
+      box-shadow: 0 15px 40px rgba(24, 191, 239, 0.3) !important;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      header.major {
+        padding: 2em 1.5em;
+        margin: 0 0 2em 0;
+      }
+
+      header.major h2 {
+        font-size: 2em !important;
+      }
+
+      .brand-main {
+        font-size: 1.1em;
+        letter-spacing: 2px;
+      }
+
+      .brand-tagline {
+        font-size: 0.32em;
+        letter-spacing: 2px;
+      }
+
+      .content-section {
+        margin: 2em 1em;
+        padding: 2em;
+      }
+
+      #main h3 {
+        font-size: 1.5em !important;
+      }
+
+      .demo-controls {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .control-section {
+        margin: 0;
+        padding: 1em 0.8em;
+      }
+
+      .audio-file-section {
+        padding: 1em;
+      }
+
+      .knob-container {
+        width: 35px;
+        height: 35px;
+      }
+
+      .knob {
+        width: 35px;
+        height: 35px;
+      }
+
+      .knob::before {
+        width: 25px;
+        height: 25px;
+      }
+
+      .knob-pointer {
+        height: 10px;
+        transform-origin: 50% 15px;
+        top: 3px;
+      }
+
+      .knob-value {
+        font-size: 0.7em;
+        min-width: 50px;
+        padding: 0.2em 0.5em;
+      }
+
+      .transport-controls, .mode-buttons {
+        flex-wrap: wrap;
+        gap: 0.5em;
+      }
+
+      .transport-controls button, .mode-buttons button {
+        flex: 1;
+        min-width: 120px;
+      }
+    }
+  </style>
+  <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+  <div id="lang-fixed" role="group" aria-label="Language selection">
+    <button type="button" data-lang="en" aria-label="Switch to English" aria-pressed="true">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 12">
+          <rect width="18" height="12" fill="#012169"/>
+          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#fff" stroke-width="3"/>
+          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#C8102E" stroke-width="1.2"/>
+          <rect x="0" y="5" width="18" height="2" fill="#fff"/>
+          <rect x="8" y="0" width="2" height="12" fill="#fff"/>
+          <rect x="0" y="5.5" width="18" height="1" fill="#C8102E"/>
+          <rect x="8.5" y="0" width="1" height="12" fill="#C8102E"/>
+        </svg>
+      </span>
+      <span class="label">EN</span>
+    </button>
+    <button type="button" data-lang="pl" aria-label="Przełącz na język polski" aria-pressed="false">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
+          <rect width="3" height="1" fill="#fff"/>
+          <rect y="1" width="3" height="1" fill="#dc143c"/>
+        </svg>
+      </span>
+      <span class="label">PL</span>
+    </button>
+    <button type="button" data-lang="nl" aria-label="Schakel over naar Nederlands" aria-pressed="false">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
+          <rect width="3" height="2" fill="#21468B"/>
+          <rect width="3" height="1.333" fill="#fff"/>
+          <rect width="3" height="0.666" fill="#AE1C28"/>
+        </svg>
+      </span>
+      <span class="label">NL</span>
+    </button>
+  </div>
+
+  <!-- Enhanced Audio-themed Background -->
+  <div class="audio-bg-effects">
+    <div class="floating-notes">
+      <div class="note" style="top:15%;left:10%;animation-delay:0s;">♪</div>
+      <div class="note" style="top:25%;left:80%;animation-delay:1s;">♫</div>
+      <div class="note" style="top:70%;left:20%;animation-delay:2s;">♪</div>
+      <div class="note" style="top:60%;left:85%;animation-delay:3s;">♫</div>
+      <div class="note" style="top:80%;left:70%;animation-delay:4s;">♪</div>
+    </div>
+
+    <div class="waveform-bg">
+      <svg width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="waveGrad" x1="0%" x2="100%" y1="0%" y2="0%">
+            <stop offset="0%" stop-color="#18bfef" stop-opacity="0.1"/>
+            <stop offset="50%" stop-color="#9a6cff" stop-opacity="0.15"/>
+            <stop offset="100%" stop-color="#ff6ea9" stop-opacity="0.1"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,400 Q150,300 300,380 T600,360 T900,390 T1200,370 L1200,800 L0,800 Z" fill="url(#waveGrad)" opacity="0.3"/>
+        <path d="M0,450 Q200,350 400,420 T800,400 T1200,410 L1200,800 L0,800 Z" fill="url(#waveGrad)" opacity="0.2"/>
+      </svg>
+    </div>
+
+    <div class="spectrum-bars">
+      <div class="bar" style="left:5%;height:20%;animation-delay:0s;"></div>
+      <div class="bar" style="left:15%;height:35%;animation-delay:0.2s;"></div>
+      <div class="bar" style="left:25%;height:15%;animation-delay:0.4s;"></div>
+      <div class="bar" style="left:35%;height:45%;animation-delay:0.6s;"></div>
+      <div class="bar" style="left:45%;height:25%;animation-delay:0.8s;"></div>
+      <div class="bar" style="left:55%;height:40%;animation-delay:1s;"></div>
+      <div class="bar" style="left:65%;height:30%;animation-delay:1.2s;"></div>
+      <div class="bar" style="left:75%;height:20%;animation-delay:1.4s;"></div>
+      <div class="bar" style="left:85%;height:35%;animation-delay:1.6s;"></div>
+      <div class="bar" style="left:95%;height:25%;animation-delay:1.8s;"></div>
+    </div>
+  </div>
+
+  <style>
+    .audio-bg-effects {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .floating-notes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .note {
+      position: absolute;
+      font-size: 2em;
+      color: rgba(24, 191, 239, 0.1);
+      animation: float 8s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+      25% { transform: translateY(-20px) rotate(5deg); opacity: 0.3; }
+      50% { transform: translateY(-10px) rotate(-3deg); opacity: 0.2; }
+      75% { transform: translateY(-25px) rotate(7deg); opacity: 0.15; }
+    }
+
+    .waveform-bg {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.3;
+    }
+
+    .spectrum-bars {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+    }
+
+    .bar {
+      position: absolute;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to top, rgba(24, 191, 239, 0.3), rgba(154, 108, 255, 0.2));
+      border-radius: 2px 2px 0 0;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: scaleY(0.3); }
+      50% { transform: scaleY(1); }
+    }
+  </style>
+  <div id="wrapper" class="fade-in">
+
+    <header id="header">
+      <a href="../index.html" class="logo">Igor Szuniewicz</a>
+    </header>
+
+    <nav id="nav">
+      <ul class="links">
+        <li><a href="../index.html" data-i18n="nav_home">Home</a></li>
+        <li><a href="../about.html" data-i18n="nav_about">About</a></li>
+        <li><a href="../projects/index.html" data-i18n="nav_projects">Projects</a></li>
+        <li><a href="../music.html" data-i18n="nav_music">Music</a></li>
+        <li class="dropdown active">
+            <a href="#" class="dropdown-toggle" data-i18n="nav_extras">Extra</a>
+            <ul class="dropdown-menu">
+                <li><a href="../projects/audioq.html" class="active">AudioQ Plugin</a></li>
+                <li><a href="https://open.spotify.com/artist/6jEBXZZOeunaMzMnnHYvd6" target="_blank">Spotify Music</a></li>
+            </ul>
+        </li>
+        <li><a href="../contact.html" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+      <ul class="icons"></ul>
+    </nav>
+
+    <div id="main">
+      <section class="post" data-reveal>
+        <header class="major">
+          <h2>
+            <span class="audioq-brand">
+              <span class="brand-main">Audio<span class="letter-q">Q</span></span>
+              <span class="brand-tagline">Professional Audio Engine</span>
+            </span>
+          </h2>
+        </header>
+
+        <h3 id="bgColor" data-i18n="audioq_interface" style="margin-bottom: 1.5em;">🎛️ AudioQ Plugin Interface</h3>
+        <div id="audioq-demo">
+          <div class="waveform-display">
+            <div class="effect-indicators-bar">
+              <span class="effect-badge" id="filter-badge">FILTER</span>
+              <span class="effect-badge" id="compressor-badge">COMP</span>
+              <span class="effect-badge" id="tremolo-badge">TREM</span>
+            </div>
+            <div class="file-drop-zone-integrated" id="file-drop">
+              <canvas id="waveform-canvas" width="800" height="200"></canvas>
+              <div class="drop-overlay" id="drop-overlay">
+                <div class="drop-content">
+                  <p>📁 Drop an audio file here or click to browse</p>
+                  <p class="drop-hint">WAV, MP3, AIFF supported</p>
+                </div>
+              </div>
+              <input type="file" id="file-input" accept="audio/*" style="display: none;">
+            </div>
+            <div class="audio-controls-section">
+              <div class="sample-controls">
+                <button id="load-sample-btn" class="sample-button">
+                  🎵 Load Sample
+                </button>
+              </div>
+              <div class="transport-controls">
+                <button type="button" id="play-btn" disabled>Play</button>
+                <button type="button" id="stop-btn" disabled>Reset</button>
+                <button type="button" id="loop-btn" disabled>Loop</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-controls">
+
+            <div class="control-section">
+              <h4>Controls</h4>
+              <div class="slider-group">
+                <label>Gain</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="gain">
+                    <div class="knob-pointer" id="gain-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="gain-value">1.0</div>
+                <input type="range" id="gain-slider" min="0" max="3.16" step="0.01" value="1.0">
+              </div>
+              <div class="slider-group">
+                <label>Tempo</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="tempo">
+                    <div class="knob-pointer" id="tempo-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="tempo-value">100 BPM</div>
+                <input type="range" id="tempo-slider" min="20" max="300" step="1" value="100">
+              </div>
+            </div>
+
+            <div class="control-section">
+              <h4>Filters <span class="effect-indicator" id="filter-indicator">•</span></h4>
+              <div class="effect-toggle">
+                <label class="toggle-switch">
+                  <input type="checkbox" id="filter-enable" checked>
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-label">Enable</span>
+                </label>
+              </div>
+              <div class="slider-group">
+                <label>Low Pass</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="lpf">
+                    <div class="knob-pointer" id="lpf-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="lpf-value">20000 Hz</div>
+                <input type="range" id="lpf-slider" min="20" max="20000" step="1" value="20000">
+              </div>
+              <div class="slider-group">
+                <label>High Pass</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="hpf">
+                    <div class="knob-pointer" id="hpf-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="hpf-value">20 Hz</div>
+                <input type="range" id="hpf-slider" min="20" max="20000" step="1" value="20">
+              </div>
+            </div>
+
+            <div class="control-section">
+              <h4>Compressor <span class="effect-indicator" id="compressor-indicator">•</span></h4>
+              <div class="effect-toggle">
+                <label class="toggle-switch">
+                  <input type="checkbox" id="compressor-enable" checked>
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-label">Enable</span>
+                </label>
+              </div>
+              <div class="slider-group">
+                <label>Threshold</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="comp-thresh">
+                    <div class="knob-pointer" id="comp-thresh-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="comp-thresh-value">-12 dB</div>
+                <input type="range" id="comp-thresh-slider" min="-60" max="0" step="1" value="-12">
+              </div>
+              <div class="slider-group">
+                <label>Ratio</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="comp-ratio">
+                    <div class="knob-pointer" id="comp-ratio-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="comp-ratio-value">4:1</div>
+                <input type="range" id="comp-ratio-slider" min="1" max="20" step="0.1" value="4">
+              </div>
+              <div class="slider-group">
+                <label>Attack</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="comp-attack">
+                    <div class="knob-pointer" id="comp-attack-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="comp-attack-value">10 ms</div>
+                <input type="range" id="comp-attack-slider" min="1" max="200" step="1" value="10">
+              </div>
+              <div class="slider-group">
+                <label>Release</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="comp-release">
+                    <div class="knob-pointer" id="comp-release-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="comp-release-value">100 ms</div>
+                <input type="range" id="comp-release-slider" min="5" max="1000" step="5" value="100">
+              </div>
+            </div>
+
+            <div class="control-section">
+              <h4>Tremolo <span class="effect-indicator" id="tremolo-indicator">•</span></h4>
+              <div class="effect-toggle">
+                <label class="toggle-switch">
+                  <input type="checkbox" id="tremolo-enable">
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-label">Enable</span>
+                </label>
+              </div>
+              <div class="slider-group">
+                <label>Rate</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="tremolo-rate">
+                    <div class="knob-pointer" id="tremolo-rate-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="tremolo-rate-value">2 Hz</div>
+                <input type="range" id="tremolo-rate-slider" min="0.1" max="10" step="0.1" value="2">
+              </div>
+              <div class="slider-group">
+                <label>Depth</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="tremolo-depth">
+                    <div class="knob-pointer" id="tremolo-depth-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="tremolo-depth-value">0.5</div>
+                <input type="range" id="tremolo-depth-slider" min="0" max="1" step="0.01" value="0.5">
+              </div>
+            </div>
+
+            <div class="control-section">
+              <h4>Granular</h4>
+              <div class="mode-buttons">
+                <button id="normal-mode" class="active">Normal</button>
+                <button id="random-mode">Random</button>
+                <button id="granular-mode">Granular</button>
+              </div>
+              <div class="slider-group">
+                <label>Grain Size</label>
+                <div class="knob-container">
+                  <div class="knob" data-knob="grain-size">
+                    <div class="knob-pointer" id="grain-size-pointer"></div>
+                  </div>
+                </div>
+                <div class="knob-value" id="grain-size-value">0.1 s</div>
+                <input type="range" id="grain-size-slider" min="0.05" max="0.5" step="0.01" value="0.1">
+              </div>
+            </div>
+          </div>
+
+          <div class="volume-warning" id="volume-warning" style="display: none;">
+            <p>⚠️ High volume detected! Audio stopped for safety.</p>
+            <button id="continue-btn">Continue</button>
+          </div>
+        </div>
+
+        <!-- Game-Style Tutorial Overlay -->
+        <div id="audioq-tutorial" class="tutorial-overlay hidden">
+          <div class="tutorial-backdrop"></div>
+          <div class="tutorial-spotlight" id="tutorial-spotlight"></div>
+          <div class="tutorial-tooltip" id="tutorial-tooltip">
+            <div class="tooltip-arrow"></div>
+            <div class="tooltip-content">
+              <h4 class="tooltip-title" id="tooltip-title">Welcome to AudioQ!</h4>
+              <p class="tooltip-text" id="tooltip-text">Let's explore the plugin interface. First, drag and drop an audio file here to get started.</p>
+              <div class="tooltip-footer">
+                <span class="tutorial-step" id="tutorial-step">1/2</span>
+                <div class="tutorial-buttons">
+                  <button class="tutorial-btn tutorial-skip" id="tutorial-skip">Skip Tour</button>
+                  <button class="tutorial-btn tutorial-next" id="tutorial-next">Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <h3 data-i18n="audioq_features">⚡ Key Features</h3>
+          <ul>
+            <li data-i18n="audioq_feature_1">Drag & drop audio file loading (WAV, AIFF, MP3)</li>
+            <li data-i18n="audioq_feature_2">Real-time playback control with tempo adjustment</li>
+            <li data-i18n="audioq_feature_3">Advanced looping with user-defined regions</li>
+            <li data-i18n="audioq_feature_4">Granular synthesis mode for textural manipulation</li>
+            <li data-i18n="audioq_feature_5">Custom tremolo effect with manual DSP implementation</li>
+            <li data-i18n="audioq_feature_6">High/Low-pass filtering with real-time parameter control</li>
+            <li data-i18n="audioq_feature_7">Built-in compressor with full parameter automation</li>
+            <li data-i18n="audioq_feature_8">Volume safety system with peak protection</li>
+            <li data-i18n="audioq_feature_9">Dual waveform display (offline and real-time)</li>
+            <li data-i18n="audioq_feature_10">Full state preservation via AudioProcessorValueTreeState</li>
+          </ul>
+        </div>
+
+        <div class="content-section">
+          <h3 data-i18n="audioq_technical">⚙️ Technical Implementation</h3>
+          <p data-i18n="audioq_technical_desc">The plugin utilizes JUCE's AudioProcessorValueTreeState for complete parameter automation, supporting up to +10dB gain control, tempo ranges from 20-300 BPM, and comprehensive filter controls from 20Hz to 20kHz. The custom tremolo effect uses manual LFO calculation with per-sample amplitude modulation, while the granular mode employs automatic region selection with crossfade transitions. All DSP processing includes denormal protection and thread-safe buffer access through critical sections.</p>
+        </div>
+
+        <div class="content-section">
+          <h3 data-i18n="audioq_gallery">🖼️ Interface Gallery</h3>
+          <div class="box alt">
+            <div class="row gtr-50 gtr-uniform">
+              <div class="col-12"><span class="image fit"><img src="../assets/images/projects-audioq/AudioQPicture.png" alt="AudioQ Main Interface" /></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <div class="video-container" onclick="openVideoModal()">
+            <div class="video-thumbnail">
+              <img src="../assets/images/projects-audioq/AudioQPicture.png" alt="AudioQ Showcase" />
+              <div class="play-button">
+                <svg width="80" height="80" viewBox="0 0 80 80">
+                  <circle cx="40" cy="40" r="35" fill="rgba(255,255,255,0.9)" />
+                  <polygon points="30,20 30,60 60,40" fill="#333" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Modal -->
+        <div id="video-modal" class="video-modal" onclick="closeVideoModal()">
+          <div class="video-modal-content">
+            <video id="modal-video" controls width="90%" height="auto">
+              <source src="../assets/images/projects-audioq/AudioQ-Showcase.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        <ul class="actions" style="margin-top:2em">
+          <li><a href="../index.html#projects-showcase" class="button" data-i18n="audioq_back">Back to Projects</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <footer id="footer"></footer>
+
+    <div id="copyright">
+      <ul>
+        <li>&copy; Igor Szuniewicz 2025. All rights reserved.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/jquery.scrollex.min.js"></script>
+  <script src="../assets/js/jquery.scrolly.min.js"></script>
+  <script src="../assets/js/browser.min.js"></script>
+  <script src="../assets/js/breakpoints.min.js"></script>
+  <script src="../assets/js/util.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/components/enhancements.js?v=20250210"></script>
+
+  <!-- Epic Loading Animation -->
+  <div id="audioq-loader" class="audioq-loader-overlay">
+    <div class="audioq-loader-container">
+      <div class="audioq-logo-container">
+        <div class="audioq-logo">AudioQ <span class="beta-label">BETA</span></div>
+        <div class="audioq-tagline">Loading Audio Engine...</div>
+      </div>
+
+      <div class="audioq-waveform">
+        <div class="wave-bar" style="--delay: 0"></div>
+        <div class="wave-bar" style="--delay: 0.1s"></div>
+        <div class="wave-bar" style="--delay: 0.2s"></div>
+        <div class="wave-bar" style="--delay: 0.3s"></div>
+        <div class="wave-bar" style="--delay: 0.4s"></div>
+        <div class="wave-bar" style="--delay: 0.5s"></div>
+        <div class="wave-bar" style="--delay: 0.6s"></div>
+        <div class="wave-bar" style="--delay: 0.7s"></div>
+        <div class="wave-bar" style="--delay: 0.8s"></div>
+        <div class="wave-bar" style="--delay: 0.9s"></div>
+      </div>
+
+      <div class="audioq-progress-ring">
+        <svg class="progress-ring" width="120" height="120">
+          <defs>
+            <linearGradient id="audioqProgressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#18bfef"/>
+              <stop offset="50%" stop-color="#9a6cff"/>
+              <stop offset="100%" stop-color="#ff6ea9"/>
+            </linearGradient>
+          </defs>
+          <circle class="progress-ring-bg" cx="60" cy="60" r="54"></circle>
+          <circle class="progress-ring-progress" cx="60" cy="60" r="54"></circle>
+        </svg>
+        <div class="progress-percentage">0%</div>
+      </div>
+
+      <div class="audioq-particles">
+        <div class="particle" style="--x: 10%; --y: 20%; --delay: 0s"></div>
+        <div class="particle" style="--x: 30%; --y: 40%; --delay: 0.5s"></div>
+        <div class="particle" style="--x: 60%; --y: 10%; --delay: 1s"></div>
+        <div class="particle" style="--x: 80%; --y: 70%; --delay: 1.5s"></div>
+        <div class="particle" style="--x: 15%; --y: 80%; --delay: 2s"></div>
+        <div class="particle" style="--x: 90%; --y: 30%; --delay: 2.5s"></div>
+      </div>
+
+      <div class="audioq-loading-text">
+        <div class="loading-step active" data-step="1">Initializing DSP Engine...</div>
+        <div class="loading-step" data-step="2">Loading Granular Synthesis...</div>
+        <div class="loading-step" data-step="3">Configuring Audio Effects...</div>
+        <div class="loading-step" data-step="4">Ready to Process Audio!</div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .audioq-loader-overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(10, 5, 15, 0.98) 25%,
+        rgba(15, 8, 25, 0.98) 50%,
+        rgba(20, 10, 30, 0.98) 75%,
+        rgba(0, 0, 0, 0.95) 100%);
+      backdrop-filter: blur(20px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    .audioq-loader-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .audioq-loader-container {
+      text-align: center;
+      position: relative;
+      max-width: 500px;
+      padding: 2em;
+    }
+
+    .audioq-logo-container {
+      margin-bottom: 3em;
+    }
+
+    .audioq-logo {
+      font-size: 4em;
+      font-weight: 900;
+      background: linear-gradient(45deg, #18bfef, #9a6cff, #ff6ea9, #f7d774);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: audioqGradientShift 3s ease-in-out infinite, audioqPulse 2s ease-in-out infinite;
+    }
+
+    .beta-label {
+      font-size: 0.3em;
+      font-weight: 700;
+      background: linear-gradient(45deg, #f7d774, #ffd700, #ffb347);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: goldShimmer 2s ease-in-out infinite;
+      position: relative;
+      top: -0.8em;
+      margin-left: 0.2em;
+      text-shadow: 0 0 30px rgba(24, 191, 239, 0.5);
+      letter-spacing: 0.1em;
+    }
+
+    .audioq-tagline {
+      font-size: 1.2em;
+      color: #9a6cff;
+      margin-top: 0.5em;
+      font-weight: 600;
+      opacity: 0.8;
+      animation: audioqFadeInOut 2s ease-in-out infinite;
+    }
+
+    .audioq-waveform {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 0.3em;
+      height: 80px;
+      margin: 2em 0;
+    }
+
+    .wave-bar {
+      width: 8px;
+      height: 20px;
+      background: linear-gradient(to top, #18bfef, #9a6cff);
+      border-radius: 4px;
+      animation: audioqWaveform 1.5s ease-in-out infinite;
+      animation-delay: var(--delay);
+      box-shadow: 0 0 10px rgba(24, 191, 239, 0.5);
+    }
+
+    .audioq-progress-ring {
+      position: relative;
+      margin: 2em auto;
+      width: 120px;
+      height: 120px;
+    }
+
+    .progress-ring {
+      transform: rotate(-90deg);
+    }
+
+    .progress-ring-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.1);
+      stroke-width: 6;
+    }
+
+    .progress-ring-progress {
+      fill: none;
+      stroke: url(#audioqProgressGradient);
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-dasharray: 339.292;
+      stroke-dashoffset: 339.292;
+      animation: audioqProgressFill 4s ease-out forwards;
+      filter: drop-shadow(0 0 10px rgba(24, 191, 239, 0.6));
+    }
+
+    .progress-percentage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.5em;
+      font-weight: 700;
+      color: #18bfef;
+      text-shadow: 0 0 10px rgba(24, 191, 239, 0.5);
+    }
+
+    .audioq-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: 6px;
+      height: 6px;
+      background: radial-gradient(circle, #18bfef, transparent);
+      border-radius: 50%;
+      animation: audioqParticleFloat 3s ease-in-out infinite;
+      animation-delay: var(--delay);
+      box-shadow: 0 0 15px rgba(24, 191, 239, 0.8);
+    }
+
+    .audioq-loading-text {
+      margin-top: 2em;
+    }
+
+    .loading-step {
+      font-size: 1.1em;
+      color: #666;
+      margin: 0.5em 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+
+    .loading-step.active {
+      opacity: 1;
+      transform: translateY(0);
+      color: #9a6cff;
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(154, 108, 255, 0.5);
+    }
+
+    @keyframes audioqGradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes audioqPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes goldShimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes audioqFadeInOut {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.4; }
+    }
+
+    @keyframes audioqWaveform {
+      0%, 100% {
+        height: 20px;
+        box-shadow: 0 0 10px rgba(24, 191, 239, 0.5);
+      }
+      50% {
+        height: 60px;
+        box-shadow: 0 0 20px rgba(24, 191, 239, 0.8);
+      }
+    }
+
+    @keyframes audioqProgressFill {
+      from { stroke-dashoffset: 339.292; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes audioqParticleFloat {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translateY(-30px) scale(1.5);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .audioq-logo {
+        font-size: 3em;
+      }
+
+      .audioq-loader-container {
+        padding: 1em;
+        max-width: 350px;
+      }
+
+      .audioq-waveform {
+        height: 60px;
+      }
+    }
+
+    /* Game-Style Tutorial Overlay */
+    .tutorial-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.4s ease;
+      pointer-events: auto;
+    }
+
+    .tutorial-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .tutorial-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(2px);
+    }
+
+    .tutorial-spotlight {
+      position: fixed;
+      border-radius: 12px;
+      box-shadow:
+        0 0 0 3px rgba(24, 191, 239, 0.6),
+        0 0 0 6px rgba(24, 191, 239, 0.3),
+        0 0 0 9999px rgba(0, 0, 0, 0.8);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      z-index: 10000;
+    }
+
+    .tutorial-tooltip {
+      position: fixed;
+      background: linear-gradient(145deg, rgba(15, 20, 35, 0.95), rgba(25, 30, 45, 0.95));
+      border: 2px solid rgba(24, 191, 239, 0.4);
+      border-radius: 16px;
+      padding: 0;
+      min-width: 320px;
+      max-width: 420px;
+      backdrop-filter: blur(12px);
+      box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(24, 191, 239, 0.2);
+      z-index: 10001;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .tooltip-arrow {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 12px solid transparent;
+      z-index: 10002;
+    }
+
+    .tooltip-content {
+      padding: 1.5em;
+    }
+
+    .tooltip-title {
+      color: #18bfef;
+      font-size: 1.3em;
+      font-weight: 700;
+      margin-bottom: 0.8em;
+      text-shadow: 0 0 10px rgba(24, 191, 239, 0.3);
+    }
+
+    .tooltip-text {
+      color: #e9f7ff;
+      font-size: 1em;
+      line-height: 1.5;
+      margin-bottom: 1.5em;
+    }
+
+    .tooltip-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1em;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .tutorial-step {
+      color: #9a6cff;
+      font-weight: 600;
+      font-size: 0.9em;
+    }
+
+    .tutorial-buttons {
+      display: flex;
+      gap: 0.8em;
+    }
+
+    .tutorial-btn {
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.2), rgba(154, 108, 255, 0.2));
+      border: 1px solid rgba(24, 191, 239, 0.4);
+      color: #e9f7ff;
+      padding: 0.6em 1.2em;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9em;
+    }
+
+    .tutorial-btn:hover {
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.3), rgba(154, 108, 255, 0.3));
+      border-color: rgba(24, 191, 239, 0.6);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(24, 191, 239, 0.3);
+    }
+
+    .tutorial-btn.tutorial-next {
+      background: linear-gradient(135deg, #18bfef, #9a6cff);
+      border-color: #18bfef;
+    }
+
+    .tutorial-btn.tutorial-next:hover {
+      background: linear-gradient(135deg, #20d0ff, #a878ff);
+      box-shadow: 0 4px 16px rgba(24, 191, 239, 0.4);
+    }
+
+    .tutorial-btn.tutorial-skip {
+      opacity: 0.7;
+    }
+
+    .tutorial-btn.tutorial-skip:hover {
+      opacity: 1;
+    }
+
+    /* Responsive tutorial */
+    @media (max-width: 768px) {
+      .tutorial-tooltip {
+        min-width: 280px;
+        max-width: calc(100vw - 2em);
+      }
+
+      .tooltip-content {
+        padding: 1.2em;
+      }
+
+      .tutorial-buttons {
+        flex-direction: column;
+        gap: 0.5em;
+      }
+
+      .tutorial-btn {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <script>
+    // Epic AudioQ Loading Animation Controller
+    class AudioQLoader {
+      constructor() {
+        this.loader = document.getElementById('audioq-loader');
+        this.progressPercentage = document.querySelector('.progress-percentage');
+        this.loadingSteps = document.querySelectorAll('.loading-step');
+        this.currentStep = 0;
+        this.progress = 0;
+
+        this.init();
+      }
+
+      init() {
+        // Start the epic loading sequence
+        this.startLoadingSequence();
+      }
+
+      startLoadingSequence() {
+        // Step progression with acceleration (getting faster)
+        const stepDurations = [300, 250, 200, 150]; // Accelerating durations
+        let totalTime = 0;
+
+        stepDurations.forEach((duration, index) => {
+          setTimeout(() => {
+            this.activateStep(index);
+          }, totalTime);
+          totalTime += duration;
+        });
+
+        // Progress counting animation
+        this.animateProgress(totalTime);
+
+        // Hide loader after all steps
+        setTimeout(() => {
+          this.hideLoader();
+        }, totalTime + 200);
+      }
+
+      activateStep(stepIndex) {
+        // Deactivate all steps
+        this.loadingSteps.forEach(step => step.classList.remove('active'));
+
+        // Activate current step
+        if (this.loadingSteps[stepIndex]) {
+          this.loadingSteps[stepIndex].classList.add('active');
+        }
+      }
+
+      animateProgress(totalStepTime) {
+        const duration = totalStepTime + 200; // Match total loading time
+        const startTime = performance.now();
+
+        const updateProgress = (currentTime) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+
+          // Easing function with acceleration (getting faster)
+          const easedProgress = this.easeInOutQuad(progress);
+          const percentage = Math.round(easedProgress * 100);
+
+          this.progressPercentage.textContent = `${percentage}%`;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateProgress);
+          }
+        };
+
+        requestAnimationFrame(updateProgress);
+      }
+
+      easeInOutQuad(t) {
+        // Accelerating easing - starts slow, ends fast
+        return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      }
+
+      hideLoader() {
+        this.loader.classList.add('hidden');
+
+        // Show main content
+        document.body.classList.add('content-ready');
+
+        // Remove from DOM after transition
+        setTimeout(() => {
+          if (this.loader.parentNode) {
+            this.loader.parentNode.removeChild(this.loader);
+          }
+
+          // Trigger tutorial after content is fully visible and layout is settled
+          window.dispatchEvent(new Event('audioq-content-ready'));
+        }, 300);
+      }
+    }
+
+    // Game-Style Tutorial System
+    class AudioQTutorial {
+      constructor() {
+        this.currentStep = 0;
+        this.isActive = false;
+        this.tutorial = document.getElementById('audioq-tutorial');
+        this.spotlight = document.getElementById('tutorial-spotlight');
+        this.tooltip = document.getElementById('tutorial-tooltip');
+        this.hasSeenTutorial = localStorage.getItem('audioq-tutorial-completed') === 'true';
+
+        this.steps = [
+          {
+            target: '#audioq-demo',
+            title: 'AudioQ Plugin Interface',
+            text: 'Welcome to AudioQ! Drag and drop audio files here to get started.',
+            position: 'bottom'
+          }
+        ];
+
+        this.init();
+      }
+
+      init() {
+        this.hasSeenTutorial = localStorage.getItem('audioq-tutorial-completed') === 'true';
+
+        // Event listeners
+        document.getElementById('tutorial-next').addEventListener('click', () => this.next());
+        document.getElementById('tutorial-skip').addEventListener('click', () => this.skip());
+        document.querySelector('.tutorial-backdrop').addEventListener('click', () => this.skip());
+
+        // Reposition on window resize
+        window.addEventListener('resize', () => {
+          if (this.isActive && this.currentStep < this.steps.length) {
+            this.showStep(this.currentStep);
+          }
+        });
+
+        // Wait for content to be fully ready before starting
+        if (!this.hasSeenTutorial) {
+          window.addEventListener('audioq-content-ready', () => {
+            // Wait a bit more for layout to fully settle after transition
+            setTimeout(() => this.start(), 200);
+          });
+        }
+      }
+
+      start() {
+        this.isActive = true;
+        this.currentStep = 0;
+        this.tutorial.classList.remove('hidden');
+        this.showStep(0);
+
+        // Scroll to tutorial area - scroll to demo interface
+        setTimeout(() => {
+          const demoInterface = document.querySelector('#audioq-demo');
+          if (demoInterface) {
+            demoInterface.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 500);
+      }
+
+      showStep(stepIndex) {
+        if (stepIndex >= this.steps.length) {
+          this.complete();
+          return;
+        }
+
+        const step = this.steps[stepIndex];
+        const target = document.querySelector(step.target);
+
+        if (!target) {
+          this.next();
+          return;
+        }
+
+        // Update content
+        document.getElementById('tooltip-title').textContent = step.title;
+        document.getElementById('tooltip-text').textContent = step.text;
+        document.getElementById('tutorial-step').textContent = `${stepIndex + 1}/${this.steps.length}`;
+
+        // Position spotlight and tooltip
+        this.positionElements(target, step.position);
+
+        // Update next button
+        const nextBtn = document.getElementById('tutorial-next');
+        nextBtn.textContent = stepIndex === this.steps.length - 1 ? 'Finish' : 'Next';
+      }
+
+      positionElements(target, position) {
+        const targetRect = target.getBoundingClientRect();
+        const spotlightPadding = 8;
+
+        // Position spotlight
+        this.spotlight.style.left = `${targetRect.left - spotlightPadding}px`;
+        this.spotlight.style.top = `${targetRect.top - spotlightPadding}px`;
+        this.spotlight.style.width = `${targetRect.width + spotlightPadding * 2}px`;
+        this.spotlight.style.height = `${targetRect.height + spotlightPadding * 2}px`;
+
+        // Position tooltip
+        const tooltipRect = this.tooltip.getBoundingClientRect();
+        let tooltipX, tooltipY;
+
+        if (position === 'bottom') {
+          tooltipX = targetRect.left + (targetRect.width / 2) - (tooltipRect.width / 2);
+          tooltipY = targetRect.bottom + 20;
+          this.setArrowPosition('top');
+        } else {
+          tooltipX = targetRect.left + (targetRect.width / 2) - (tooltipRect.width / 2);
+          tooltipY = targetRect.top - tooltipRect.height - 20;
+          this.setArrowPosition('bottom');
+        }
+
+        // Keep tooltip in viewport
+        tooltipX = Math.max(20, Math.min(tooltipX, window.innerWidth - tooltipRect.width - 20));
+        tooltipY = Math.max(20, Math.min(tooltipY, window.innerHeight - tooltipRect.height - 20));
+
+        this.tooltip.style.left = `${tooltipX}px`;
+        this.tooltip.style.top = `${tooltipY}px`;
+      }
+
+      setArrowPosition(position) {
+        const arrow = document.querySelector('.tooltip-arrow');
+        arrow.className = 'tooltip-arrow';
+
+        if (position === 'top') {
+          arrow.style.top = '-12px';
+          arrow.style.left = '50%';
+          arrow.style.transform = 'translateX(-50%)';
+          arrow.style.borderBottomColor = 'rgba(25, 30, 45, 0.95)';
+          arrow.style.borderTopColor = 'transparent';
+        } else {
+          arrow.style.bottom = '-12px';
+          arrow.style.left = '50%';
+          arrow.style.transform = 'translateX(-50%)';
+          arrow.style.borderTopColor = 'rgba(25, 30, 45, 0.95)';
+          arrow.style.borderBottomColor = 'transparent';
+        }
+      }
+
+      next() {
+        this.currentStep++;
+        if (this.currentStep >= this.steps.length) {
+          this.complete();
+        } else {
+          this.showStep(this.currentStep);
+        }
+      }
+
+      skip() {
+        this.complete();
+      }
+
+      complete() {
+        this.isActive = false;
+        this.tutorial.classList.add('hidden');
+        localStorage.setItem('audioq-tutorial-completed', 'true');
+      }
+    }
+
+    // AudioQ Web Demo Implementation
+    class AudioQDemo {
+      constructor() {
+        this.audioContext = null;
+        this.audioBuffer = null;
+        this.sourceNode = null;
+        this.gainNode = null;
+        this.lpFilter = null;
+        this.hpFilter = null;
+        this.compressor = null;
+        this.tremoloGain = null;
+        this.isPlaying = false;
+        this.isLooping = false;
+        this.tremoloEnabled = false;
+        this.playMode = 'normal'; // normal, random, granular
+        this.tremoloPhase = 0;
+        this.lastTime = 0;
+        this.playbackRate = 1.0;
+        this.currentPosition = 0;
+        this.currentSeekTime = null;
+        this.loopStart = 0;
+        this.loopEnd = 1;
+        this.grainSize = 0.1;
+        this.nextGrainTime = 0;
+        this.selectionStart = null;
+        this.selectionEnd = null;
+        this.isDraggingSelection = false;
+        this.filtersEnabled = false;
+        this.compressorEnabled = false;
+
+        this.initializeAudio();
+        this.setupEventListeners();
+        this.setupKnobs();
+      }
+
+      async initializeAudio() {
+        try {
+          this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+          // Create audio nodes
+          this.gainNode = this.audioContext.createGain();
+          this.lpFilter = this.audioContext.createBiquadFilter();
+          this.hpFilter = this.audioContext.createBiquadFilter();
+          this.compressor = this.audioContext.createDynamicsCompressor();
+          this.tremoloGain = this.audioContext.createGain();
+
+          // Configure filters
+          this.lpFilter.type = 'lowpass';
+          this.lpFilter.frequency.value = 20000;
+          this.hpFilter.type = 'highpass';
+          this.hpFilter.frequency.value = 20;
+
+          // Configure compressor
+          this.compressor.threshold.value = -12;
+          this.compressor.knee.value = 30;
+          this.compressor.ratio.value = 4;
+          this.compressor.attack.value = 0.01;
+          this.compressor.release.value = 0.1;
+
+          // Connect nodes: source -> hp -> lp -> compressor -> tremolo -> gain -> destination
+          this.hpFilter.connect(this.lpFilter);
+          this.lpFilter.connect(this.compressor);
+          this.compressor.connect(this.tremoloGain);
+          this.tremoloGain.connect(this.gainNode);
+          this.gainNode.connect(this.audioContext.destination);
+
+        } catch (error) {
+          console.error('Failed to initialize audio context:', error);
+        }
+      }
+
+      setupEventListeners() {
+        // File handling
+        const fileInput = document.getElementById('file-input');
+        const fileDropZone = document.getElementById('file-drop');
+        const dropOverlay = document.getElementById('drop-overlay');
+
+        fileDropZone.addEventListener('click', (e) => {
+          // Don't open file picker if clicking on canvas
+          if (e.target.tagName === 'CANVAS') return;
+          fileInput.click();
+        });
+        fileDropZone.addEventListener('dragover', (e) => {
+          // Don't show drop overlay if dragging over canvas
+          if (e.target.tagName === 'CANVAS') return;
+          e.preventDefault();
+          dropOverlay.classList.add('dragover');
+        });
+        fileDropZone.addEventListener('dragleave', () => {
+          dropOverlay.classList.remove('dragover');
+        });
+        fileDropZone.addEventListener('drop', (e) => {
+          // Don't handle file drop if dropping on canvas
+          if (e.target.tagName === 'CANVAS') return;
+          e.preventDefault();
+          dropOverlay.classList.remove('dragover');
+          const files = e.dataTransfer.files;
+          if (files.length > 0) {
+            const file = files[0];
+            if (file.type.startsWith('audio/')) {
+              this.loadAudioFile(file);
+            } else {
+              alert('Please drop an audio file (mp3, wav, ogg, etc.)');
+            }
+          }
+        });
+        fileInput.addEventListener('change', (e) => {
+          if (e.target.files.length > 0) {
+            const file = e.target.files[0];
+            if (file.type.startsWith('audio/')) {
+              this.loadAudioFile(file);
+            } else {
+              alert('Please select an audio file (mp3, wav, ogg, etc.)');
+            }
+          }
+        });
+
+        // Transport controls
+        document.getElementById('play-btn').addEventListener('click', () => this.togglePlay());
+        document.getElementById('stop-btn').addEventListener('click', () => this.stopAndReset());
+        document.getElementById('loop-btn').addEventListener('click', () => this.toggleLoop());
+
+        // Parameter controls
+        this.setupSlider('gain-slider', 'gain-value', (value) => {
+          this.gainNode.gain.value = parseFloat(value);
+        });
+
+        this.setupSlider('tempo-slider', 'tempo-value', (value) => {
+          this.playbackRate = parseFloat(value) / 100;
+          if (this.sourceNode) this.sourceNode.playbackRate.value = this.playbackRate;
+        }, ' BPM');
+
+        this.setupSlider('lpf-slider', 'lpf-value', (value) => {
+          if (this.filtersEnabled) {
+            this.lpFilter.frequency.value = parseFloat(value);
+          }
+        }, ' Hz');
+
+        this.setupSlider('hpf-slider', 'hpf-value', (value) => {
+          if (this.filtersEnabled) {
+            this.hpFilter.frequency.value = parseFloat(value);
+          }
+        }, ' Hz');
+
+        // Compressor controls
+        this.setupSlider('comp-thresh-slider', 'comp-thresh-value', (value) => {
+          if (this.compressorEnabled) {
+            this.compressor.threshold.value = parseFloat(value);
+          }
+        }, ' dB');
+
+        this.setupSlider('comp-ratio-slider', 'comp-ratio-value', (value) => {
+          if (this.compressorEnabled) {
+            this.compressor.ratio.value = parseFloat(value);
+          }
+        }, ':1');
+
+        this.setupSlider('comp-attack-slider', 'comp-attack-value', (value) => {
+          if (this.compressorEnabled) {
+            this.compressor.attack.value = parseFloat(value) / 1000;
+          }
+        }, ' ms');
+
+        this.setupSlider('comp-release-slider', 'comp-release-value', (value) => {
+          if (this.compressorEnabled) {
+            this.compressor.release.value = parseFloat(value) / 1000;
+          }
+        }, ' ms');
+
+        // Effect toggles and indicators
+        this.setupEffectToggles();
+
+        this.setupSlider('tremolo-rate-slider', 'tremolo-rate-value', () => {}, ' Hz');
+        this.setupSlider('tremolo-depth-slider', 'tremolo-depth-value', () => {});
+
+        // Mode buttons
+        document.getElementById('normal-mode').addEventListener('click', () => this.setPlayMode('normal'));
+        document.getElementById('random-mode').addEventListener('click', () => this.setPlayMode('random'));
+        document.getElementById('granular-mode').addEventListener('click', () => this.setPlayMode('granular'));
+
+        this.setupSlider('grain-size-slider', 'grain-size-value', (value) => {
+          this.grainSize = parseFloat(value);
+        }, ' s');
+
+        // Volume warning
+        document.getElementById('continue-btn').addEventListener('click', () => {
+          document.getElementById('volume-warning').style.display = 'none';
+        });
+
+        // Sample button
+        document.getElementById('load-sample-btn').addEventListener('click', () => {
+          this.loadSampleAudio();
+        });
+
+        // Start tremolo animation if enabled
+        this.startTremoloLoop();
+      }
+
+      setupKnobs() {
+        const knobs = document.querySelectorAll('.knob[data-knob]');
+
+        knobs.forEach(knob => {
+          const knobId = knob.dataset.knob;
+          const slider = document.getElementById(`${knobId}-slider`);
+          const pointer = document.getElementById(`${knobId}-pointer`);
+
+          if (!slider || !pointer) return;
+
+          let isDragging = false;
+          let startAngle = 0;
+          let startValue = 0;
+          let centerX = 0;
+          let centerY = 0;
+
+          // Initialize knob position
+          this.updateKnobPosition(knobId);
+
+          const getAngleFromMouse = (clientX, clientY) => {
+            const rect = knob.getBoundingClientRect();
+            centerX = rect.left + rect.width / 2;
+            centerY = rect.top + rect.height / 2;
+
+            const deltaX = clientX - centerX;
+            const deltaY = clientY - centerY;
+
+            let angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+            angle = (angle + 90 + 360) % 360; // Normalize to 0-360, 0 = top
+
+            return angle;
+          };
+
+          const updateSliderFromAngle = (angle) => {
+            // Map angle (-135 to +135 degrees) to slider range
+            let normalizedAngle = angle;
+
+            // Normalize angle to -135 to +135 range
+            if (normalizedAngle > 180) normalizedAngle -= 360;
+            if (normalizedAngle < -180) normalizedAngle += 360;
+
+            // Clamp to valid range
+            normalizedAngle = Math.max(-135, Math.min(135, normalizedAngle));
+
+            // Convert to 0-1 range
+            const progress = (normalizedAngle + 135) / 270;
+
+            const min = parseFloat(slider.min);
+            const max = parseFloat(slider.max);
+            const step = parseFloat(slider.step);
+
+            let value = min + (max - min) * progress;
+
+            // Round to step
+            if (step) {
+              value = Math.round(value / step) * step;
+              value = Math.max(min, Math.min(max, value));
+            }
+
+            slider.value = value;
+            slider.dispatchEvent(new Event('input'));
+          };
+
+          const handleStart = (clientX, clientY) => {
+            isDragging = true;
+            startAngle = getAngleFromMouse(clientX, clientY);
+            startValue = parseFloat(slider.value);
+
+            knob.style.transform = 'scale(1.1)';
+            document.body.style.cursor = 'grabbing';
+
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleEnd);
+            document.addEventListener('touchmove', handleTouchMove, { passive: false });
+            document.addEventListener('touchend', handleEnd);
+          };
+
+          const handleMouseMove = (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+
+            const currentAngle = getAngleFromMouse(e.clientX, e.clientY);
+            updateSliderFromAngle(currentAngle);
+          };
+
+          const handleTouchMove = (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+
+            const touch = e.touches[0];
+            const currentAngle = getAngleFromMouse(touch.clientX, touch.clientY);
+            updateSliderFromAngle(currentAngle);
+          };
+
+          const handleEnd = () => {
+            if (!isDragging) return;
+
+            isDragging = false;
+            knob.style.transform = '';
+            document.body.style.cursor = '';
+
+            document.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mouseup', handleEnd);
+            document.removeEventListener('touchmove', handleTouchMove);
+            document.removeEventListener('touchend', handleEnd);
+          };
+
+          // Mouse events
+          knob.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            handleStart(e.clientX, e.clientY);
+          });
+
+          // Touch events
+          knob.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            handleStart(touch.clientX, touch.clientY);
+          });
+
+          // Update knob when slider changes programmatically
+          slider.addEventListener('input', () => {
+            this.updateKnobPosition(knobId);
+          });
+        });
+      }
+
+      updateKnobPosition(knobId) {
+        const slider = document.getElementById(`${knobId}-slider`);
+        const pointer = document.getElementById(`${knobId}-pointer`);
+
+        if (!slider || !pointer) return;
+
+        const min = parseFloat(slider.min);
+        const max = parseFloat(slider.max);
+        const value = parseFloat(slider.value);
+
+        // Convert value to 0-1 range
+        const progress = (value - min) / (max - min);
+
+        // Convert to angle (-135 to +135 degrees)
+        const angle = -135 + (progress * 270);
+
+        pointer.style.transform = `rotate(${angle}deg)`;
+      }
+
+      setupSlider(sliderId, valueId, callback, suffix = '') {
+        const slider = document.getElementById(sliderId);
+        const valueDisplay = document.getElementById(valueId);
+
+        slider.addEventListener('input', (e) => {
+          const value = e.target.value;
+          valueDisplay.textContent = value + suffix;
+          callback(value);
+        });
+      }
+
+      async loadAudioFile(file) {
+        try {
+          const arrayBuffer = await file.arrayBuffer();
+          this.audioBuffer = await this.audioContext.decodeAudioData(arrayBuffer);
+
+          this.drawWaveform();
+          this.enableControls();
+
+          // Hide drop overlay and show filename
+          const dropOverlay = document.getElementById('drop-overlay');
+          dropOverlay.classList.add('hidden');
+
+          // Add filename indicator if not exists
+          let filenameIndicator = document.getElementById('filename-indicator');
+          if (!filenameIndicator) {
+            filenameIndicator = document.createElement('div');
+            filenameIndicator.id = 'filename-indicator';
+            filenameIndicator.style.cssText = 'position: absolute; top: 5px; left: 10px; background: rgba(0,0,0,0.7); color: #18bfef; padding: 0.3em 0.8em; border-radius: 8px; font-size: 0.8em; z-index: 5; font-weight: 600;';
+            document.querySelector('.file-drop-zone-integrated').appendChild(filenameIndicator);
+          }
+          filenameIndicator.textContent = `📄 ${file.name}`;
+
+        } catch (error) {
+          console.error('Failed to load audio file:', error);
+          alert('Failed to load audio file. Please try a different file.');
+        }
+      }
+
+      async loadSampleAudio() {
+        try {
+          // Load the Gnosienne sample from the music catalog - try multiple paths
+          const possibleUrls = [
+            '../assets/audio/tracks/gnosienne1.wav',
+            'assets/audio/tracks/gnosienne1.wav',
+            '/assets/audio/tracks/gnosienne1.wav'
+          ];
+
+          const btn = document.getElementById('load-sample-btn');
+          btn.textContent = 'Loading...';
+          btn.disabled = true;
+
+          let audioBuffer = null;
+          let loadedUrl = null;
+
+          for (const sampleUrl of possibleUrls) {
+            try {
+              const response = await fetch(sampleUrl);
+
+              if (response.ok) {
+                const arrayBuffer = await response.arrayBuffer();
+                audioBuffer = await this.audioContext.decodeAudioData(arrayBuffer);
+                loadedUrl = sampleUrl;
+                break;
+              }
+            } catch (e) {
+              continue;
+            }
+          }
+
+          if (!audioBuffer) {
+            throw new Error('Could not load sample from any location');
+          }
+
+          this.audioBuffer = audioBuffer;
+          this.drawWaveform();
+          this.enableControls();
+
+          // Hide drop overlay and show sample name
+          const dropOverlay = document.getElementById('drop-overlay');
+          dropOverlay.classList.add('hidden');
+
+          // Add filename indicator if not exists
+          let filenameIndicator = document.getElementById('filename-indicator');
+          if (!filenameIndicator) {
+            filenameIndicator = document.createElement('div');
+            filenameIndicator.id = 'filename-indicator';
+            filenameIndicator.style.cssText = 'position: absolute; top: 5px; left: 10px; background: rgba(0,0,0,0.7); color: #18bfef; padding: 0.3em 0.8em; border-radius: 8px; font-size: 0.8em; z-index: 5; font-weight: 600;';
+            document.querySelector('.file-drop-zone-integrated').appendChild(filenameIndicator);
+          }
+          filenameIndicator.textContent = `🎵 Gnosienne No. 1 (Sample)`;
+
+          btn.textContent = '🎵 Load Sample';
+          btn.disabled = false;
+
+        } catch (error) {
+          console.error('Failed to load sample audio:', error);
+
+          const btn = document.getElementById('load-sample-btn');
+          btn.textContent = '❌ Sample not found';
+          btn.disabled = false;
+
+          // Reset button text after 3 seconds
+          setTimeout(() => {
+            btn.textContent = '🎵 Load Gnosienne Sample';
+          }, 3000);
+        }
+      }
+
+      drawWaveform() {
+        const canvas = document.getElementById('waveform-canvas');
+        const ctx = canvas.getContext('2d');
+        const data = this.audioBuffer.getChannelData(0);
+        const width = canvas.width;
+        const height = canvas.height;
+
+        // Store waveform data for real-time drawing
+        this.waveformData = [];
+        const samples = data.length;
+        const samplesPerPixel = samples / width;
+
+        for (let x = 0; x < width; x++) {
+          const startSample = Math.floor(x * samplesPerPixel);
+          const endSample = Math.floor((x + 1) * samplesPerPixel);
+
+          let min = 1, max = -1;
+          for (let i = startSample; i < endSample; i++) {
+            if (data[i] < min) min = data[i];
+            if (data[i] > max) max = data[i];
+          }
+
+          this.waveformData.push({ min, max });
+        }
+
+        this.drawWaveformWithProgress();
+        this.startWaveformAnimation();
+        this.setupWaveformInteraction();
+        this.updateEffectIndicators();
+      }
+
+      drawWaveformWithProgress() {
+        const canvas = document.getElementById('waveform-canvas');
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+
+        ctx.clearRect(0, 0, width, height);
+
+        if (!this.waveformData) return;
+
+        // Calculate progress position
+        let progress = 0;
+        if (this.audioBuffer) {
+          if (this.isPlaying && this.sourceNode) {
+            // Calculate from playback time
+            progress = (this.audioContext.currentTime - this.playStartTime) / this.audioBuffer.duration;
+            this.currentPosition = progress;
+          } else if (this.currentSeekTime !== null) {
+            // Use seek time when paused
+            progress = this.currentSeekTime / this.audioBuffer.duration;
+            this.currentPosition = progress;
+          } else {
+            // Use stored position
+            progress = this.currentPosition;
+          }
+        }
+        const progressX = Math.max(0, Math.min(width, progress * width));
+
+        // Draw waveform
+        for (let x = 0; x < this.waveformData.length; x++) {
+          const { min, max } = this.waveformData[x];
+          const y1 = (1 + min) * height / 2;
+          const y2 = (1 + max) * height / 2;
+
+          // Color based on progress and selection
+          if (this.selectionStart !== null && this.selectionEnd !== null) {
+            const selStart = Math.min(this.selectionStart, this.selectionEnd);
+            const selEnd = Math.max(this.selectionStart, this.selectionEnd);
+            if (x >= selStart && x <= selEnd) {
+              ctx.fillStyle = '#ff6ea9'; // Selected region - bright pink
+            } else if (x < progressX) {
+              ctx.fillStyle = '#18bfef'; // Played portion - bright blue
+            } else {
+              ctx.fillStyle = 'rgba(24, 191, 239, 0.3)'; // Unplayed portion - dim
+            }
+          } else if (x < progressX) {
+            ctx.fillStyle = '#18bfef'; // Played portion - bright blue
+          } else {
+            ctx.fillStyle = 'rgba(24, 191, 239, 0.3)'; // Unplayed portion - dim
+          }
+
+          ctx.fillRect(x, y1, 1, y2 - y1);
+        }
+
+        // Draw selection borders
+        if (this.selectionStart !== null && this.selectionEnd !== null) {
+          const selStart = Math.min(this.selectionStart, this.selectionEnd);
+          const selEnd = Math.max(this.selectionStart, this.selectionEnd);
+
+          ctx.strokeStyle = '#ff6ea9';
+          ctx.lineWidth = 3;
+          ctx.setLineDash([5, 5]);
+
+          // Left border
+          ctx.beginPath();
+          ctx.moveTo(selStart, 0);
+          ctx.lineTo(selStart, height);
+          ctx.stroke();
+
+          // Right border
+          ctx.beginPath();
+          ctx.moveTo(selEnd, 0);
+          ctx.lineTo(selEnd, height);
+          ctx.stroke();
+
+          ctx.setLineDash([]);
+        }
+
+        // Draw progress line
+        if (this.isPlaying && progressX > 0) {
+          ctx.strokeStyle = '#9a6cff';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(progressX, 0);
+          ctx.lineTo(progressX, height);
+          ctx.stroke();
+        }
+      }
+
+      startWaveformAnimation() {
+        const animate = () => {
+          if (this.isPlaying) {
+            this.drawWaveformWithProgress();
+          }
+          requestAnimationFrame(animate);
+        };
+        animate();
+      }
+
+      setupEffectToggles() {
+        // Filters toggle
+        document.getElementById('filter-enable').addEventListener('change', (e) => {
+          this.filtersEnabled = e.target.checked;
+          if (!this.filtersEnabled) {
+            // Bypass filters
+            this.lpFilter.frequency.value = 20000;
+            this.hpFilter.frequency.value = 20;
+          }
+          this.updateEffectIndicators();
+        });
+
+        // Compressor toggle
+        document.getElementById('compressor-enable').addEventListener('change', (e) => {
+          this.compressorEnabled = e.target.checked;
+          if (!this.compressorEnabled) {
+            // Bypass compressor
+            this.compressor.threshold.value = 0;
+            this.compressor.ratio.value = 1;
+          }
+          this.updateEffectIndicators();
+        });
+
+        // Tremolo toggle
+        document.getElementById('tremolo-enable').addEventListener('change', (e) => {
+          this.tremoloEnabled = e.target.checked;
+          if (!this.tremoloEnabled) {
+            this.tremoloGain.gain.value = 1.0;
+          }
+          this.updateEffectIndicators();
+        });
+
+        // Initialize states
+        this.filtersEnabled = true;
+        this.compressorEnabled = true;
+        this.tremoloEnabled = false;
+      }
+
+      updateEffectIndicators() {
+        const filterBadge = document.getElementById('filter-badge');
+        const compressorBadge = document.getElementById('compressor-badge');
+        const tremoloBadge = document.getElementById('tremolo-badge');
+
+        // Update filter badge
+        if (this.filtersEnabled) {
+          filterBadge.classList.add('active');
+        } else {
+          filterBadge.classList.remove('active');
+        }
+
+        // Update compressor badge
+        if (this.compressorEnabled) {
+          compressorBadge.classList.add('active');
+        } else {
+          compressorBadge.classList.remove('active');
+        }
+
+        // Update tremolo badge
+        if (this.tremoloEnabled) {
+          tremoloBadge.classList.add('active');
+        } else {
+          tremoloBadge.classList.remove('active');
+        }
+
+        // Also update the old indicators for backward compatibility
+        const filterIndicator = document.getElementById('filter-indicator');
+        const compressorIndicator = document.getElementById('compressor-indicator');
+        const tremoloIndicator = document.getElementById('tremolo-indicator');
+
+        if (filterIndicator) {
+          if (this.filtersEnabled) {
+            filterIndicator.classList.add('active');
+          } else {
+            filterIndicator.classList.remove('active');
+          }
+        }
+
+        if (compressorIndicator) {
+          if (this.compressorEnabled) {
+            compressorIndicator.classList.add('active');
+          } else {
+            compressorIndicator.classList.remove('active');
+          }
+        }
+
+        if (tremoloIndicator) {
+          if (this.tremoloEnabled) {
+            tremoloIndicator.classList.add('active');
+          } else {
+            tremoloIndicator.classList.remove('active');
+          }
+        }
+      }
+
+      setupWaveformInteraction() {
+        const canvas = document.getElementById('waveform-canvas');
+        let isSelecting = false;
+
+        canvas.addEventListener('mousedown', (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          const rect = canvas.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const canvasX = (x / rect.width) * canvas.width;
+
+          if (e.shiftKey) {
+            // Start selection
+            isSelecting = true;
+            this.selectionStart = canvasX;
+            this.selectionEnd = canvasX;
+            this.isDraggingSelection = true;
+          } else {
+            // Seek to position
+            if (this.audioBuffer) {
+              const progress = canvasX / canvas.width;
+              const seekTime = progress * this.audioBuffer.duration;
+              const wasPlaying = this.isPlaying;
+
+              // Always stop current playback
+              this.stop();
+
+              // Set seek time and restart if was playing
+              this.currentSeekTime = seekTime;
+              if (wasPlaying) {
+                this.playFromCurrentPosition();
+              }
+
+              // Update waveform to show new position
+              this.drawWaveformWithProgress();
+            }
+            // Clear selection
+            this.selectionStart = null;
+            this.selectionEnd = null;
+          }
+          this.drawWaveformWithProgress();
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+          if (isSelecting && this.isDraggingSelection) {
+            e.stopPropagation();
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const canvasX = (x / rect.width) * canvas.width;
+            this.selectionEnd = canvasX;
+            this.drawWaveformWithProgress();
+          }
+        });
+
+        canvas.addEventListener('mouseup', (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          isSelecting = false;
+          this.isDraggingSelection = false;
+
+          // Add export button if selection exists
+          if (this.selectionStart !== null && this.selectionEnd !== null) {
+            this.showExportButton();
+          }
+        });
+
+        // Prevent context menu on canvas
+        canvas.addEventListener('contextmenu', (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+        });
+
+        // Add keyboard shortcut info
+        const waveformDisplay = document.querySelector('.waveform-display');
+        if (waveformDisplay && !waveformDisplay.querySelector('.waveform-help')) {
+          const helpText = document.createElement('div');
+          helpText.className = 'waveform-help';
+          helpText.innerHTML = '<small style="color: #888; position: absolute; bottom: 5px; right: 10px;">Click to seek • Shift+drag to select region for export</small>';
+          waveformDisplay.appendChild(helpText);
+        }
+      }
+
+      showExportButton() {
+        // Remove existing export button
+        const existing = document.getElementById('export-selection-btn');
+        if (existing) existing.remove();
+
+        const button = document.createElement('button');
+        button.id = 'export-selection-btn';
+        button.className = 'sample-button';
+        button.style.cssText = 'margin-top: 1em; max-width: 200px;';
+        button.innerHTML = '💾 Export Selection as MP3';
+        button.addEventListener('click', () => this.exportSelection());
+
+        const waveformDisplay = document.querySelector('.waveform-display');
+        waveformDisplay.appendChild(button);
+      }
+
+      async exportSelection() {
+        if (!this.audioBuffer || this.selectionStart === null || this.selectionEnd === null) return;
+
+        try {
+          const canvas = document.getElementById('waveform-canvas');
+          const startX = Math.min(this.selectionStart, this.selectionEnd);
+          const endX = Math.max(this.selectionStart, this.selectionEnd);
+
+          const startTime = (startX / canvas.width) * this.audioBuffer.duration;
+          const endTime = (endX / canvas.width) * this.audioBuffer.duration;
+          const duration = endTime - startTime;
+
+          // Create new buffer for selection
+          const sampleRate = this.audioBuffer.sampleRate;
+          const startSample = Math.floor(startTime * sampleRate);
+          const endSample = Math.floor(endTime * sampleRate);
+          const selectionLength = endSample - startSample;
+
+          const selectionBuffer = this.audioContext.createBuffer(
+            this.audioBuffer.numberOfChannels,
+            selectionLength,
+            sampleRate
+          );
+
+          // Copy audio data
+          for (let channel = 0; channel < this.audioBuffer.numberOfChannels; channel++) {
+            const channelData = this.audioBuffer.getChannelData(channel);
+            const selectionData = selectionBuffer.getChannelData(channel);
+            for (let i = 0; i < selectionLength; i++) {
+              selectionData[i] = channelData[startSample + i] || 0;
+            }
+          }
+
+          // Export as WAV first, then convert to MP3 using browser
+          this.exportAsWAV(selectionBuffer, `selection_${Date.now()}.wav`);
+
+        } catch (error) {
+          console.error('Export failed:', error);
+          alert('Export failed. Please try again.');
+        }
+      }
+
+      exportAsWAV(audioBuffer, filename) {
+        const length = audioBuffer.length;
+        const sampleRate = audioBuffer.sampleRate;
+        const channels = audioBuffer.numberOfChannels;
+
+        const buffer = new ArrayBuffer(44 + length * channels * 2);
+        const view = new DataView(buffer);
+
+        // WAV header
+        const writeString = (offset, string) => {
+          for (let i = 0; i < string.length; i++) {
+            view.setUint8(offset + i, string.charCodeAt(i));
+          }
+        };
+
+        writeString(0, 'RIFF');
+        view.setUint32(4, 36 + length * channels * 2, true);
+        writeString(8, 'WAVE');
+        writeString(12, 'fmt ');
+        view.setUint32(16, 16, true);
+        view.setUint16(20, 1, true);
+        view.setUint16(22, channels, true);
+        view.setUint32(24, sampleRate, true);
+        view.setUint32(28, sampleRate * channels * 2, true);
+        view.setUint16(32, channels * 2, true);
+        view.setUint16(34, 16, true);
+        writeString(36, 'data');
+        view.setUint32(40, length * channels * 2, true);
+
+        // Convert audio data
+        let offset = 44;
+        for (let i = 0; i < length; i++) {
+          for (let channel = 0; channel < channels; channel++) {
+            const sample = Math.max(-1, Math.min(1, audioBuffer.getChannelData(channel)[i]));
+            view.setInt16(offset, sample * 0x7FFF, true);
+            offset += 2;
+          }
+        }
+
+        // Download
+        const blob = new Blob([buffer], { type: 'audio/wav' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+
+      enableControls() {
+        document.getElementById('play-btn').disabled = false;
+        document.getElementById('stop-btn').disabled = false;
+        document.getElementById('loop-btn').disabled = false;
+      }
+
+      togglePlay() {
+        if (this.isPlaying) {
+          this.pause();
+        } else {
+          this.playFromCurrentPosition();
+        }
+      }
+
+      pause() {
+        if (this.sourceNode && this.isPlaying) {
+          // Calculate current position before stopping
+          const currentTime = this.audioContext.currentTime;
+          const elapsed = currentTime - this.playStartTime;
+          this.currentPosition = elapsed / this.audioBuffer.duration;
+          this.currentSeekTime = elapsed;
+        }
+        this.stop();
+        document.getElementById('play-btn').textContent = 'Play';
+      }
+
+      async playFromCurrentPosition() {
+        if (!this.audioBuffer) return;
+
+        if (this.audioContext.state === 'suspended') {
+          await this.audioContext.resume();
+        }
+
+        this.stop(); // Stop any current playback
+
+        this.sourceNode = this.audioContext.createBufferSource();
+        this.sourceNode.buffer = this.audioBuffer;
+        this.sourceNode.playbackRate.value = this.playbackRate;
+        this.sourceNode.loop = this.isLooping;
+
+        // Connect source to filter chain
+        this.sourceNode.connect(this.hpFilter);
+
+        // Start from current position (not from beginning)
+        const startTime = this.currentSeekTime || (this.currentPosition * this.audioBuffer.duration) || 0;
+        this.sourceNode.start(0, startTime);
+        this.isPlaying = true;
+        this.playStartTime = this.audioContext.currentTime - startTime;
+        this.lastTime = this.audioContext.currentTime;
+        this.currentSeekTime = null; // Reset seek time
+
+        document.getElementById('play-btn').textContent = 'Pause';
+
+        this.sourceNode.onended = () => {
+          if (this.isPlaying) {
+            this.isPlaying = false;
+            document.getElementById('play-btn').textContent = 'Play';
+            this.drawWaveformWithProgress(); // Update waveform when stopped
+          }
+        };
+      }
+
+      async play() {
+        if (!this.audioBuffer) return;
+
+        if (this.audioContext.state === 'suspended') {
+          await this.audioContext.resume();
+        }
+
+        this.stop(); // Stop any current playback
+
+        this.sourceNode = this.audioContext.createBufferSource();
+        this.sourceNode.buffer = this.audioBuffer;
+        this.sourceNode.playbackRate.value = this.playbackRate;
+        this.sourceNode.loop = this.isLooping;
+
+        // Connect source to filter chain
+        this.sourceNode.connect(this.hpFilter);
+
+        // Start from seek position if set
+        const startTime = this.currentSeekTime || 0;
+        this.sourceNode.start(0, startTime);
+        this.isPlaying = true;
+        this.playStartTime = this.audioContext.currentTime - startTime;
+        this.lastTime = this.audioContext.currentTime;
+        this.currentSeekTime = null; // Reset seek time
+
+        document.getElementById('play-btn').textContent = 'Playing...';
+
+        this.sourceNode.onended = () => {
+          if (this.isPlaying) {
+            this.isPlaying = false;
+            document.getElementById('play-btn').textContent = 'Play';
+            this.drawWaveformWithProgress(); // Update waveform when stopped
+          }
+        };
+      }
+
+      stop() {
+        if (this.sourceNode) {
+          this.sourceNode.stop();
+          this.sourceNode = null;
+        }
+        this.isPlaying = false;
+        this.playStartTime = 0;
+        document.getElementById('play-btn').textContent = 'Play';
+
+        // Reset waveform to beginning only if not seeking
+        if (this.waveformData) {
+          this.drawWaveformWithProgress();
+        }
+      }
+
+      stopAndReset() {
+        this.stop();
+        this.currentPosition = 0;
+        this.currentSeekTime = null;
+        if (this.waveformData) {
+          this.drawWaveformWithProgress();
+        }
+      }
+
+      toggleLoop() {
+        this.isLooping = !this.isLooping;
+        const loopBtn = document.getElementById('loop-btn');
+        loopBtn.textContent = this.isLooping ? 'Loop: ON' : 'Loop';
+        loopBtn.style.background = this.isLooping ? '#18bfef' : 'rgba(24, 191, 239, 0.2)';
+
+        if (this.sourceNode) {
+          this.sourceNode.loop = this.isLooping;
+        }
+      }
+
+      setPlayMode(mode) {
+        this.playMode = mode;
+
+        // Update button states
+        document.querySelectorAll('.mode-buttons button').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        document.getElementById(mode + '-mode').classList.add('active');
+      }
+
+      startTremoloLoop() {
+        const updateTremolo = () => {
+          if (this.tremoloEnabled && this.isPlaying) {
+            const rate = parseFloat(document.getElementById('tremolo-rate-slider').value);
+            const depth = parseFloat(document.getElementById('tremolo-depth-slider').value);
+
+            const currentTime = this.audioContext.currentTime;
+            const deltaTime = currentTime - this.lastTime;
+            this.lastTime = currentTime;
+
+            this.tremoloPhase += 2 * Math.PI * rate * deltaTime;
+            if (this.tremoloPhase > 2 * Math.PI) {
+              this.tremoloPhase -= 2 * Math.PI;
+            }
+
+            const tremolo = (1 - depth) + depth * (0.5 + 0.5 * Math.sin(this.tremoloPhase));
+            this.tremoloGain.gain.value = tremolo;
+          }
+
+          requestAnimationFrame(updateTremolo);
+        };
+
+        updateTremolo();
+      }
+    }
+
+    // Video Modal Functions (Global scope)
+    window.openVideoModal = function() {
+      const modal = document.getElementById('video-modal');
+      const video = document.getElementById('modal-video');
+      modal.style.display = 'flex';
+      video.play();
+    }
+
+    window.closeVideoModal = function() {
+      const modal = document.getElementById('video-modal');
+      const video = document.getElementById('modal-video');
+      modal.style.display = 'none';
+      video.pause();
+      video.currentTime = 0;
+    }
+
+    // Initialize loader and demo when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      // Start epic loading animation first
+      new AudioQLoader();
+
+      // Initialize AudioQ demo after loading completes
+      setTimeout(() => {
+        new AudioQDemo();
+
+        // Initialize tutorial for first-time users
+        setTimeout(() => {
+          new AudioQTutorial();
+        }, 200); // Show tutorial faster after demo loads
+      }, 800); // Start demo after loader finishes
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>All Projects — Igor Szuniewicz</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+  <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="../assets/icons/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png" sizes="180x180">
+  
+  <meta name="description" content="Selected projects by Igor Szuniewicz — interactive music systems, sound design, game audio, and DSP." />
+  <link rel="canonical" href="https://igorszuniewicz.com/projects/index.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Igor Szuniewicz" />
+  <meta property="og:title" content="All Projects — Igor Szuniewicz" />
+  <meta property="og:description" content="Filter and explore music, sound design, and game audio projects." />
+  <meta property="og:url" content="https://igorszuniewicz.com/projects/index.html" />
+  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects/plugins.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="All Projects — Igor Szuniewicz" />
+  <meta name="twitter:description" content="Filter and explore music, sound design, and game audio projects." />
+  <meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects/plugins.jpg" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "All Projects",
+    "url": "https://igorszuniewicz.com/projects/index.html",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://igorszuniewicz.com/"},
+        {"@type":"ListItem","position":2,"name":"Projects","item":"https://igorszuniewicz.com/projects/index.html"}
+      ]
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/custom-styles.css?v=20251011" />
+  <link rel="stylesheet" href="../assets/css/pro-theme.css?v=20250212" />
+  <style>
+    @media (min-width: 981px){ html { font-size: 12pt; } }
+    @media (min-width: 1280px){ html { font-size: 11pt; } }
+  </style>
+  <style>
+    body, #wrapper, #main { background: transparent !important; }
+  </style>
+  <style>
+    /* Project badges - new minimalist design */
+    .project-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      padding: 8px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 12px;
+      text-transform: none;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      z-index: 2;
+      line-height: 1.2;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .project-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Game Audio badge - Vibrant Purple */
+    .project-badge.game-badge {
+      background: linear-gradient(135deg, rgba(138, 43, 226, 0.95) 0%, rgba(75, 0, 130, 0.9) 100%);
+      border: 1px solid rgba(138, 43, 226, 0.5);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+    }
+
+    /* Animation Sound Design - Coral/Salmon */
+    .project-badge.animation-badge {
+      background: linear-gradient(135deg, rgba(255, 127, 80, 0.95) 0%, rgba(220, 20, 60, 0.9) 100%);
+      border: 1px solid rgba(255, 127, 80, 0.5);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(255, 127, 80, 0.3);
+    }
+
+    /* Horror/WIP badge - Deep Red */
+    .project-badge.horror-badge {
+      background: linear-gradient(135deg, rgba(220, 20, 60, 0.95) 0%, rgba(139, 0, 0, 0.9) 100%);
+      border: 1px solid rgba(220, 20, 60, 0.5);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(220, 20, 60, 0.4);
+    }
+
+    /* Interactive/Middleware badge - Teal */
+    .project-badge.middleware-badge {
+      background: linear-gradient(135deg, rgba(0, 206, 209, 0.95) 0%, rgba(0, 128, 128, 0.9) 100%);
+      border: 1px solid rgba(0, 206, 209, 0.5);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(0, 206, 209, 0.3);
+    }
+
+    /* Music Project badge - Gold/Amber */
+    .project-badge.music-badge {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.95) 0%, rgba(255, 140, 0, 0.9) 100%);
+      border: 1px solid rgba(255, 215, 0, 0.5);
+      color: #000000;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    }
+
+    /* 3D Environments badge - Blue */
+    .project-badge.environments-badge {
+      background: linear-gradient(135deg, rgba(30, 144, 255, 0.95) 0%, rgba(0, 105, 148, 0.9) 100%);
+      border: 1px solid rgba(30, 144, 255, 0.5);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+    }
+
+    /* Developer Tool badge - Orange */
+    .project-badge.tool-badge {
+      background: linear-gradient(135deg, rgba(255, 140, 0, 0.95) 0%, rgba(255, 69, 0, 0.9) 100%);
+      border: 1px solid rgba(255, 140, 0, 0.5);
+      color: #ffffff;
+      box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+    }
+
+    /* Audio Plugin badge - Cyan */
+    .project-badge.plugin-badge {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.95) 0%, rgba(0, 191, 255, 0.9) 100%);
+      border: 1px solid rgba(0, 255, 255, 0.5);
+      color: #000000;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+    }
+    .project-card { position: relative; }
+
+    /* Keep identical scaling and gutters with homepage */
+    html { scrollbar-gutter: stable; }
+    html, body { overflow-x: hidden; background: transparent !important; }
+
+    /* Modern Masonry-style Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 980px) {
+      .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 736px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    /* Enhanced Project Cards */
+    .project-card {
+      position: relative;
+      background: rgba(20, 30, 40, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(24, 191, 239, 0.3);
+      border-color: rgba(24, 191, 239, 0.5);
+    }
+
+    .project-card .image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+    }
+
+    .project-card .image img,
+    .project-card .image video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-card:hover .image img,
+    .project-card:hover .image video {
+      transform: scale(1.08);
+    }
+
+    .project-card-content {
+      padding: 1.5rem;
+      background: linear-gradient(180deg, rgba(10, 15, 20, 0.9) 0%, rgba(15, 22, 30, 0.95) 100%);
+    }
+
+    .project-card-content h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+      transition: color 0.3s ease;
+    }
+
+    .project-card:hover .project-card-content h3 {
+      color: #18bfef;
+    }
+
+    .project-card-content p {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Stats badges hover effect */
+    .stat-badge {
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .stat-badge:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Hidden state for filtered projects */
+    .project-card.hidden {
+      display: none;
+    }
+
+    /* Loading skeleton (optional future enhancement) */
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+  </style>
+  <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload" style="background: transparent !important;">
+  <div id="lang-fixed" role="group" aria-label="Language selection">
+    <button type="button" data-lang="en" aria-label="Switch to English" aria-pressed="true">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 12">
+          <rect width="18" height="12" fill="#012169"/>
+          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#fff" stroke-width="3"/>
+          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#C8102E" stroke-width="1.2"/>
+          <rect x="0" y="5" width="18" height="2" fill="#fff"/>
+          <rect x="8" y="0" width="2" height="12" fill="#fff"/>
+          <rect x="0" y="5.5" width="18" height="1" fill="#C8102E"/>
+          <rect x="8.5" y="0" width="1" height="12" fill="#C8102E"/>
+        </svg>
+      </span>
+      <span class="label">EN</span>
+    </button>
+    <button type="button" data-lang="pl" aria-label="Przełącz na język polski" aria-pressed="false">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
+          <rect width="3" height="1" fill="#fff"/>
+          <rect y="1" width="3" height="1" fill="#dc143c"/>
+        </svg>
+      </span>
+      <span class="label">PL</span>
+    </button>
+    <button type="button" data-lang="nl" aria-label="Schakel over naar Nederlands" aria-pressed="false">
+      <span class="flag" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
+          <rect width="3" height="2" fill="#21468B"/>
+          <rect width="3" height="1.333" fill="#fff"/>
+          <rect width="3" height="0.666" fill="#AE1C28"/>
+        </svg>
+      </span>
+      <span class="label">NL</span>
+    </button>
+  </div>
+
+  <div class="bg-gradient"></div>
+  <div class="bg-orbs">
+    <div class="orb blue" style="top:10%;left:8%"></div>
+    <div class="orb cyan" style="top:60%;left:75%"></div>
+    <div class="orb teal" style="top:75%;left:15%"></div>
+  </div>
+  <svg class="bg-waves" viewBox="0 0 1200 600" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="gradWave1" x1="0%" x2="100%" y1="0%" y2="0%">
+        <stop offset="0%" stop-color="#18bfef" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#58b6ff" stop-opacity="0.3"/>
+      </linearGradient>
+      <linearGradient id="gradWave2" x1="0%" x2="100%" y1="0%" y2="0%">
+        <stop offset="0%" stop-color="#9a6cff" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#18bfef" stop-opacity="0.3"/>
+      </linearGradient>
+      <linearGradient id="gradWave3" x1="0%" x2="100%" y1="0%" y2="0%">
+        <stop offset="0%" stop-color="#ff6ea9" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#9a6cff" stop-opacity="0.25"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#gradWave1)" opacity="0.6" d="M0 320 L1200 300 L1200 600 L0 600 Z"></path>
+    <path fill="url(#gradWave2)" opacity="0.4" d="M0 340 L1200 330 L1200 600 L0 600 Z"></path>
+    <path fill="url(#gradWave3)" opacity="0.3" d="M0 360 L1200 360 L1200 600 L0 600 Z"></path>
+  </svg>
+  <canvas class="bg-eq"></canvas>
+  <div class="bg-glow"></div>
+  <div id="wrapper" class="fade-in">
+    <header id="header">
+      <a href="../index.html" class="logo">Igor Szuniewicz</a>
+    </header>
+    <nav id="nav">
+      <ul class="links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li class="active"><a href="#">Projects</a></li>
+        <li><a href="../music.html">Music</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Extra</a>
+          <ul class="dropdown-menu">
+            <li><a href="audioq.html">AudioQ Plugin</a></li>
+            <li><a href="unreal-engine-rebuilder.html">Unreal Engine Rebuilder</a></li>
+            <li><a href="#" class="disabled-link" data-tooltip="Not yet released - In Development">QSlicer</a></li>
+          </ul>
+        </li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+      <ul class="icons"></ul>
+    </nav>
+    <div id="main">
+      <section class="post projects-page" data-reveal>
+        <header class="major">
+          <h2>All Projects</h2>
+          <p id="bgWhite">Selected works across music, sound design, game audio & development.</p>
+        </header>
+
+        <!-- Quick Stats -->
+        <div class="projects-stats" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; justify-content: center;">
+          <div class="stat-badge" style="background: rgba(154, 108, 255, 0.15); border: 1px solid rgba(154, 108, 255, 0.3); padding: 0.8rem 1.5rem; border-radius: 12px; text-align: center;">
+            <div style="font-size: 1.8rem; font-weight: 900; color: #9a6cff;">4</div>
+            <div style="font-size: 0.85rem; color: #bbb; text-transform: uppercase; letter-spacing: 1px;">Music</div>
+          </div>
+          <div class="stat-badge" style="background: rgba(24, 191, 239, 0.15); border: 1px solid rgba(24, 191, 239, 0.3); padding: 0.8rem 1.5rem; border-radius: 12px; text-align: center;">
+            <div style="font-size: 1.8rem; font-weight: 900; color: #18bfef;">3</div>
+            <div style="font-size: 0.85rem; color: #bbb; text-transform: uppercase; letter-spacing: 1px;">Sound Design</div>
+          </div>
+          <div class="stat-badge" style="background: rgba(255, 140, 0, 0.15); border: 1px solid rgba(255, 140, 0, 0.3); padding: 0.8rem 1.5rem; border-radius: 12px; text-align: center;">
+            <div style="font-size: 1.8rem; font-weight: 900; color: #ff8c00;">4</div>
+            <div style="font-size: 0.85rem; color: #bbb; text-transform: uppercase; letter-spacing: 1px;">Game Audio</div>
+          </div>
+          <div class="stat-badge" style="background: rgba(78, 205, 196, 0.15); border: 1px solid rgba(78, 205, 196, 0.3); padding: 0.8rem 1.5rem; border-radius: 12px; text-align: center;">
+            <div style="font-size: 1.8rem; font-weight: 900; color: #4ecdc4;">1</div>
+            <div style="font-size: 0.85rem; color: #bbb; text-transform: uppercase; letter-spacing: 1px;">3D Design</div>
+          </div>
+        </div>
+
+        <!-- Simple Search Bar -->
+        <div class="projects-search-bar" style="max-width: 600px; margin: 0 auto 2.5rem; position: relative;">
+          <input type="search" id="projects-search" data-i18n-placeholder="projects_search_placeholder" placeholder="🔍 Search projects by name or type..." aria-label="Search projects" 
+            style="width: 100%; padding: 1rem 1.5rem; font-size: 1rem; background: rgba(20, 30, 40, 0.6); border: 1px solid rgba(24, 191, 239, 0.3); border-radius: 50px; color: #e0e0e0; outline: none; transition: all 0.3s ease;" 
+            onfocus="this.style.borderColor='#18bfef'; this.style.boxShadow='0 0 20px rgba(24, 191, 239, 0.3)';" 
+            onblur="this.style.borderColor='rgba(24, 191, 239, 0.3)'; this.style.boxShadow='none';" />
+          <span id="projects-count" style="position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%); color: #888; font-size: 0.9rem;" aria-live="polite"></span>
+        </div>
+
+        <div class="projects-grid" id="projects-list">
+          <!-- 1. Not Today Darling -->
+          <article class="project-card" data-type="game-audio" data-title="NotTodayDarling" data-date="2025-05-01">
+            <span class="project-badge game-badge">Game Audio</span>
+            <a href="not-today-darling.html" class="image fit">
+              <video class="project-video gif-replacement-video" autoplay loop muted playsinline loading="lazy">
+                <source src="../assets/images/projects/NotTodayGIF.webm" type="video/webm">
+                <source src="../assets/images/projects/NotTodayGIF.mp4" type="video/mp4">
+                <img src="../assets/images/projects/NotTodayGIF.gif" alt="Not Today, Darling!" class="gif-fallback">
+              </video>
+            </a>
+            <div class="project-card-content">
+              <h3>NotTodayDarling — Game Audio</h3>
+              <p>Retro-inspired audio implementation.</p>
+            </div>
+          </article>
+          <!-- 2. Amorak -->
+          <article class="project-card" data-type="sound-design" data-title="Amorak" data-date="2025-03-01">
+            <span class="project-badge animation-badge">Animation Project</span>
+            <a href="amorak.html" class="image fit">
+              <video class="project-video gif-replacement-video" autoplay loop muted playsinline loading="lazy">
+                <source src="../assets/images/projects/AmorakGIF.webm" type="video/webm">
+                <source src="../assets/images/projects/AmorakGIF.mp4" type="video/mp4">
+                <img src="../assets/images/projects/AmorakGIF.gif" alt="Amorak" class="gif-fallback">
+              </video>
+            </a>
+            <div class="project-card-content">
+              <h3>Amorak — Sound Design</h3>
+              <p>Soundscapes and character audio for animation.</p>
+            </div>
+          </article>
+          <!-- 3. Pause & Deserve -->
+          <article class="project-card" data-type="game-audio" data-title="Pause & Deserve" data-date="2025-02-15">
+            <span class="project-badge horror-badge">Horror Game - WIP</span>
+            <a href="pause-and-deserve.html" class="image fit">
+              <video class="project-video gif-replacement-video" autoplay loop muted playsinline loading="lazy">
+                <source src="../assets/images/projects-pausedeserve/pausedeservegif.webm" type="video/webm">
+                <source src="../assets/images/projects-pausedeserve/pausedeservegif.mp4" type="video/mp4">
+                <img src="../assets/images/projects-pausedeserve/pausedeservegif.gif" alt="Pause & Deserve" class="gif-fallback">
+              </video>
+            </a>
+            <div class="project-card-content">
+              <h3>Pause & Deserve — Singleplayer Horror Game</h3>
+              <p>First-person survival game with psychological horror elements.</p>
+            </div>
+          </article>
+          <!-- 4. Transientica -->
+          <article class="project-card" data-type="game-audio" data-title="Transientica AudioLab" data-date="2025-02-01">
+            <span class="project-badge game-badge">ML Audio Game</span>
+            <a href="audiolab.html" class="image fit">
+              <video class="project-video gif-replacement-video" autoplay loop muted playsinline loading="lazy">
+                <source src="../assets/images/projects/AudioLabGif.webm" type="video/webm">
+                <source src="../assets/images/projects/AudioLabGif.mp4" type="video/mp4">
+                <img src="../assets/images/projects/AudioLabGif.gif" alt="Transientica AudioLab" class="gif-fallback">
+              </video>
+            </a>
+            <div class="project-card-content">
+              <h3>Transientica: AudioLab — Beatbox Game</h3>
+              <p>Real-time ML classification with 45ms latency.</p>
+            </div>
+          </article>
+          <!-- 5. Interactive Music Design -->
+          <article class="project-card" data-type="music" data-title="Interactive Music Design" data-date="2025-01-01">
+            <span class="project-badge music-badge">Interactive Music</span>
+            <a href="musicforgames.html" class="image fit"><img src="../assets/images/projects/musicforgames.png" data-src="../assets/images/projects/musicforgames.png" alt="Interactive Music Design" loading="lazy" decoding="async" /></a>
+            <div class="project-card-content">
+              <h3>Interactive Music Design — Wwise Projects</h3>
+              <p>Adaptive audio systems with vertical layering.</p>
+            </div>
+          </article>
+          <!-- 6. Akantilado -->
+          <article class="project-card" data-type="sound-design" data-title="Akantilado" data-date="2025-04-01">
+            <span class="project-badge animation-badge">Animation Sound</span>
+            <a href="akantilado.html" class="image fit">
+              <video class="project-video gif-replacement-video" autoplay loop muted playsinline loading="lazy">
+                <source src="../assets/images/projects/AkantiladoGIF.webm" type="video/webm">
+                <source src="../assets/images/projects/AkantiladoGIF.mp4" type="video/mp4">
+                <img src="../assets/images/projects/AkantiladoGIF.gif" alt="Akantilado" class="gif-fallback">
+              </video>
+            </a>
+            <div class="project-card-content">
+              <h3>Akantilado — Sound Design</h3>
+              <p>Complete foley and ambience for 3D animation.</p>
+            </div>
+          </article>
+          <!-- 7. Middleware 2 -->
+          <article class="project-card" data-type="game-audio" data-title="Middleware2" data-date="2025-01-15">
+            <span class="project-badge middleware-badge">Middleware</span>
+            <a href="middleware2.html" class="image fit"><img src="../assets/images/projects-middleware2/ellen.png" data-src="../assets/images/projects-middleware2/ellen.png" alt="Middleware 2" loading="lazy" decoding="async" /></a>
+            <div class="project-card-content">
+              <h3>Middleware 2 — Wwise Implementation</h3>
+              <p>Complete audio implementation for game level.</p>
+            </div>
+          </article>
+          <!-- 8. Ray -->
+          <article class="project-card" data-type="music" data-title="Ray" data-date="2025-06-01">
+            <span class="project-badge music-badge">Music Composition</span>
+            <a href="ray-animation.html" class="image fit">
+              <video class="project-video gif-replacement-video" autoplay loop muted playsinline loading="lazy">
+                <source src="../assets/images/projects/RayGIF.webm" type="video/webm">
+                <source src="../assets/images/projects/RayGIF.mp4" type="video/mp4">
+                <img src="../assets/images/projects/RayGIF.gif" alt="Ray" class="gif-fallback">
+              </video>
+            </a>
+            <div class="project-card-content">
+              <h3>Ray — Music Composition</h3>
+              <p>Original score supporting narrative beats.</p>
+            </div>
+          </article>
+          <!-- 9. Richter -->
+          <article class="project-card" data-type="sound-design" data-title="Richter" data-date="2024-11-01">
+            <span class="project-badge animation-badge">Animation Sound</span>
+            <a href="richter.html" class="image fit">
+              <video class="project-video gif-replacement-video" autoplay loop muted playsinline loading="lazy">
+                <source src="../assets/images/projects-daw2/richtergif.webm" type="video/webm">
+                <source src="../assets/images/projects-daw2/richtergif.mp4" type="video/mp4">
+                <img src="../assets/images/projects-daw2/richtergif.gif" alt="Richter" class="gif-fallback">
+              </video>
+            </a>
+            <div class="project-card-content">
+              <h3>Richter — Sound Design</h3>
+              <p>Sound design with minimal recording gear.</p>
+            </div>
+          </article>
+          <!-- 10. 3D Environments -->
+          <article class="project-card" data-type="3d-design" data-title="3D Environments" data-date="2024-10-01">
+            <span class="project-badge environments-badge">3D Design</span>
+            <a href="environments.html" class="image fit"><img src="../assets/images/projects/Main Beauty Corridor.jpg" data-src="../assets/images/projects/Main Beauty Corridor.jpg" alt="3D Environments" loading="lazy" decoding="async" /></a>
+            <div class="project-card-content">
+              <h3>3D Environments — 3D Design</h3>
+              <p>Interior modeling, materials and realistic lighting.</p>
+            </div>
+          </article>
+          <!-- Lower priority projects -->
+          <article class="project-card" data-type="music" data-title="AudioQ" data-date="2024-12-01">
+            <span class="project-badge plugin-badge">Audio Plugin</span>
+            <a href="audioq.html" class="image fit"><img src="../assets/images/projects-audioq/AudioQPicture.png" data-src="../assets/images/projects-audioq/AudioQPicture.png" alt="AudioQ" loading="lazy" decoding="async" /></a>
+            <div class="project-card-content">
+              <h3>AudioQ — Audio Plugin Development</h3>
+              <p>JUCE-based sampler with granular synthesis and custom DSP.</p>
+            </div>
+          </article>
+          <article class="project-card" data-type="game-audio" data-title="UnrealEngineRebuilder" data-date="2024-11-15">
+            <span class="project-badge tool-badge">Developer Tool</span>
+            <a href="unreal-engine-rebuilder.html" class="image fit"><img src="../assets/images/projects-unrealrebuilder/appscreenshot.png" data-src="../assets/images/projects-unrealrebuilder/appscreenshot.png" alt="Unreal Engine Rebuilder" loading="lazy" decoding="async" /></a>
+            <div class="project-card-content">
+              <h3>Unreal Engine Rebuilder — Automation Tool</h3>
+              <p>Professional workflow automation for UE developers.</p>
+            </div>
+          </article>
+          <article class="project-card" data-type="music" data-title="Dynamic Music System" data-date="2024-10-01">
+            <a href="dynamic-music-system.html" class="image fit"><img src="../assets/images/projects/maxresdefault.jpg" data-src="../assets/images/projects/maxresdefault.jpg" alt="Dynamic Music System" loading="lazy" decoding="async" /></a>
+            <div class="project-card-content">
+              <h3>Dynamic Music System (Wwise & UE5)</h3>
+              <p>Adaptive music with states, layers, and beat-accurate transitions.</p>
+            </div>
+          </article>
+          <article class="project-card" data-type="music" data-title="3D Audio Plugin Suite" data-date="2024-09-01">
+            <a href="audio-plugin-suite.html" class="image fit"><img src="../assets/images/projects/plugins.jpg" data-src="../assets/images/projects/plugins.jpg" alt="3D Audio Plugin Suite" loading="lazy" decoding="async" /></a>
+            <div class="project-card-content">
+              <h3>3D Audio Plugin Suite</h3>
+              <p>HRTF spatialization and convolution reverb plugins.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+    <footer id="footer"></footer>
+    <div id="copyright">
+      <ul>
+        <li>&copy; Igor Szuniewicz 2025. All rights reserved.</li>
+      </ul>
+    </div>
+  </div>
+  <script src="../assets/js/components/enhancements.js?v=20250210"></script>
+  <script src="../assets/js/components/reveal.js" defer></script>
+  <script src="../assets/js/components/theme-toggle.js"></script>
+  <script src="../assets/js/pages/projects.js"></script>
+  <script src="../assets/js/components/lang-badge.js" defer></script>
+  <script type="module" src="../assets/js/bootstrap.js" defer></script>
+</body>
+</html>

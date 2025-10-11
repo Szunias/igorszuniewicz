@@ -1,0 +1,1051 @@
+<!DOCTYPE HTML>
+<html lang="en" style="background:#0b1410;">
+<head>
+  <style>
+    /* CRITICAL: Load immediately before anything else */
+    html, body {
+      background: #0b1410 !important;
+      margin: 0;
+      padding: 0;
+    }
+    /* Hide content until fully loaded */
+    .content {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    body.loaded .content {
+      opacity: 1;
+    }
+  </style>
+  <title>Akantilado — Sound Design</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+  <meta name="description" content="Akantilado — sound design for 3D animation by Igor Szuniewicz" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* === RESET & BASE === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(180deg, rgba(11, 20, 16, 0.85) 0%, rgba(15, 29, 20, 0.90) 60%, rgba(11, 20, 16, 0.95) 100%),
+        url('../assets/images/projects-akantilado/background/Jungle.jpg') center/cover no-repeat fixed;
+      color: #f0fff0;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    /* === CONTENT WRAPPER === */
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    /* === BACK BUTTON === */
+    .back-button {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 100;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(16, 28, 20, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(50, 205, 50, 0.4);
+      border-radius: 50px;
+      color: #90EE90;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    .back-button:hover {
+      background: rgba(30, 60, 20, 0.8);
+      border-color: #FFD700;
+      transform: translateX(-5px);
+      box-shadow: 0 6px 30px rgba(255, 165, 0, 0.4);
+      color: #FFD700;
+    }
+    
+    .back-button::before {
+      content: '←';
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    
+    /* === LANGUAGE SWITCHER === */
+    .lang-switcher {
+      position: fixed !important;
+      top: 2rem !important;
+      right: 2rem !important;
+      z-index: 1000 !important;
+      display: flex !important;
+      gap: 0.5rem;
+      background: rgba(16, 28, 20, 0.7) !important;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(50, 205, 50, 0.4) !important;
+      border-radius: 50px;
+      padding: 0.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(50, 205, 50, 0.2) !important;
+    }
+    
+    .lang-btn {
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: none;
+      border-radius: 50px;
+      color: #999 !important;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.9rem;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+      display: flex !important;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .lang-btn:hover {
+      color: #90EE90 !important;
+      background: rgba(50, 205, 50, 0.15);
+    }
+    
+    .lang-btn.active {
+      color: #90EE90 !important;
+      background: rgba(50, 205, 50, 0.25);
+      font-weight: 600;
+    }
+    
+    .lang-flag {
+      width: 20px;
+      height: 14px;
+      border-radius: 2px;
+      overflow: hidden;
+      display: block;
+    }
+    
+    /* === HERO SECTION === */
+    .hero {
+      text-align: center;
+      padding: 8rem 0 4rem;
+      margin-bottom: 3rem;
+      position: relative;
+      background: linear-gradient(135deg, #0b1410 0%, #0f1d14 60%, #0b1410 100%);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 25% 30%, rgba(180, 210, 180, 0.06) 0%, transparent 55%),
+        radial-gradient(circle at 75% 70%, rgba(100, 160, 120, 0.05) 0%, transparent 55%),
+        radial-gradient(circle at 50% 20%, rgba(200, 220, 200, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    
+    .hero h1 {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+      color: #F0FFF0;
+      position: relative;
+      z-index: 1;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    }
+    
+    .hero .tagline {
+      font-size: 1.2rem;
+      color: #FFD700;
+      font-style: italic;
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* === METADATA BADGES === */
+    .meta-badges {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .meta-badge {
+      background: rgba(34, 139, 34, 0.15);
+      border: 1px solid rgba(255, 165, 0, 0.3);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .meta-badge:hover {
+      background: rgba(255, 165, 0, 0.2);
+      border-color: rgba(50, 205, 50, 0.5);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .meta-label {
+      display: block;
+      font-size: 0.85rem;
+      color: #999;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .meta-value {
+      display: block;
+      font-weight: 600;
+      color: #90EE90;
+      font-size: 1.1rem;
+    }
+    
+    /* === VIDEO SECTION === */
+    .video-section {
+      margin: 4rem 0;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .video-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .video-section h2 {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-size: 2.2rem;
+      color: #90EE90;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      border-bottom: 2px solid rgba(255, 165, 0, 0.3);
+      padding-bottom: 0.8rem;
+    }
+    
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      border: 1px solid rgba(140, 200, 160, 0.3);
+      transition: all 0.4s ease;
+      background: #000;
+    }
+    
+    .video-container:hover {
+      box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 50px rgba(50, 205, 50, 0.3);
+      border-color: rgba(50, 205, 50, 0.6);
+      transform: scale(1.01) translateY(-3px);
+    }
+    
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    
+    .video-description {
+      margin-top: 1.5rem;
+      font-style: italic;
+      color: #999;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    
+    /* === HERO IMAGE === */
+    .hero-image {
+      margin: 4rem 0;
+      text-align: center;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .hero-image.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      transition: transform 0.4s ease;
+    }
+    
+    .hero-image:hover img {
+      transform: scale(1.02);
+    }
+    
+    /* === SECTION === */
+    section {
+      margin: 5rem 0;
+      padding: 2.5rem;
+      background: linear-gradient(135deg, rgba(16, 28, 20, 0.5) 0%, rgba(12, 22, 18, 0.4) 100%);
+      border-radius: 20px;
+      border: 1px solid rgba(140, 200, 160, 0.18);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    section h2 {
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-size: 2.2rem;
+      color: #90EE90;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      border-bottom: 2px solid rgba(255, 165, 0, 0.3);
+      padding-bottom: 0.8rem;
+    }
+    
+    section h3 {
+      font-size: 1.6rem;
+      color: #FFD700;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    
+    section p {
+      color: rgba(240, 255, 240, 0.9);
+      line-height: 1.7;
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* === GRID === */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .grid-item {
+      background: rgba(10, 40, 10, 0.4);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 1px solid rgba(50, 205, 50, 0.2);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .grid-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #228B22, #FF8C00, #32CD32);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .grid-item:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .grid-item:hover {
+      background: rgba(30, 60, 20, 0.5);
+      border-color: rgba(255, 165, 0, 0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+    
+    .grid-item h4 {
+      color: #FFD700;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    
+    /* === GALLERY === */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      border: 1px solid rgba(140, 200, 160, 0.2);
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(50, 205, 50, 0.3);
+      border-color: rgba(50, 205, 50, 0.5);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: all 0.4s ease;
+      filter: brightness(0.85) contrast(1.1);
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.08);
+      filter: brightness(0.95) contrast(1.15);
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.95));
+      color: #FFD700;
+      padding: 2rem 1.5rem 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    
+    .gallery-overlay span {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    /* === BUTTON === */
+    .button-container {
+      text-align: center;
+      margin: 4rem 0;
+    }
+    
+    .button {
+      display: inline-block;
+      padding: 1.2rem 3rem;
+      background: linear-gradient(135deg, #228B22 0%, #FF8C00 100%);
+      border: 2px solid transparent;
+      border-radius: 50px;
+      color: #f0fff0;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+    
+    .button:hover {
+      background: linear-gradient(135deg, #FF8C00 0%, #32CD32 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(255, 165, 0, 0.4);
+      color: #fff;
+    }
+    
+    /* === FOOTER === */
+    .footer {
+      text-align: center;
+      padding: 3rem 0;
+      color: #666;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(140, 200, 160, 0.2);
+      margin-top: 5rem;
+    }
+    
+    /* === LIGHTBOX === */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    
+    .lightbox.active {
+      display: flex;
+    }
+    
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 0 50px rgba(50, 205, 50, 0.5);
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 3rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 10001;
+    }
+    
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .back-button, .lang-switcher {
+        top: 1rem;
+        left: 1rem;
+        right: 1rem;
+      }
+      
+      .lang-switcher {
+        right: 1rem;
+        left: auto;
+      }
+      
+      .hero {
+        padding: 4rem 1rem 3rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      section {
+        padding: 2rem 1.5rem;
+      }
+      
+      section h2 {
+        font-size: 1.8rem;
+      }
+      
+      .meta-badges {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .meta-badges {
+        grid-template-columns: 1fr;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .gallery-item img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body style="background:#0b1410;margin:0;padding:0;">
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  
+  <!-- Content -->
+  <div class="content">
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="en">
+        <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30">
+          <rect width="60" height="30" fill="#012169"/>
+          <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+          <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/>
+          <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+          <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+        </svg>
+        <span>EN</span>
+      </button>
+      <button class="lang-btn" data-lang="pl">
+        <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10">
+          <rect width="16" height="5" fill="#fff"/>
+          <rect y="5" width="16" height="5" fill="#dc143c"/>
+        </svg>
+        <span>PL</span>
+      </button>
+      <button class="lang-btn" data-lang="nl">
+        <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6">
+          <rect width="9" height="6" fill="#21468B"/>
+          <rect width="9" height="4" fill="#fff"/>
+          <rect width="9" height="2" fill="#AE1C28"/>
+        </svg>
+        <span>NL</span>
+      </button>
+    </div>
+    
+    <!-- Back Button -->
+    <a href="../projects/index.html" class="back-button">
+      <span data-i18n="back">Back to Projects</span>
+    </a>
+    
+    <!-- Hero -->
+    <section class="hero">
+      <div class="meta-badges">
+        <div class="meta-badge">
+          <span class="meta-label" data-i18n="meta.role.label">Role</span>
+          <span class="meta-value" data-i18n="meta.role.value">Sound Designer</span>
+        </div>
+        <div class="meta-badge">
+          <span class="meta-label" data-i18n="meta.setting.label">Setting</span>
+          <span class="meta-value" data-i18n="meta.setting.value">Jungle Adventure</span>
+        </div>
+        <div class="meta-badge">
+          <span class="meta-label" data-i18n="meta.characters.label">Characters</span>
+          <span class="meta-value" data-i18n="meta.characters.value">Two Cat Creatures</span>
+        </div>
+        <div class="meta-badge">
+          <span class="meta-label" data-i18n="meta.theme.label">Theme</span>
+          <span class="meta-value" data-i18n="meta.theme.value">Love vs Greed</span>
+        </div>
+      </div>
+      <h1 data-i18n="title">Akantilado — Sound Design</h1>
+      <p class="tagline" data-i18n="tagline">A heartwarming jungle adventure where love triumphs over greed through immersive audio storytelling.</p>
+    </section>
+    
+    <!-- Video -->
+    <div class="video-section">
+      <h2 data-i18n="showcase.title">Audio Showcase</h2>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/ALQy5r7B1Bw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="video-description" data-i18n="showcase.desc">Watch how sound design enhances every moment of this jungle adventure, from playful competition to heartfelt resolution. Notice how the audio guides emotional transitions and supports character development.</p>
+    </div>
+    
+    <!-- Hero Image -->
+    <div class="hero-image">
+      <img src="../assets/images/projects-akantilado/orangecatalikecreaturewithgoldenshinyballbegining.png" alt="Akantilado Beginning" />
+    </div>
+    
+    <!-- Overview -->
+    <section>
+      <h2 data-i18n="overview.title">Story Overview</h2>
+      <p data-i18n="overview.desc">Akantilado tells the enchanting story of two cat-like creatures racing through a lush jungle, driven by their desire to claim a mystical golden orb. What begins as a competitive chase transforms into a profound tale of love and sacrifice when one creature must choose between the coveted treasure and saving their companion from a deadly fall. The story culminates in a heartwarming ending where love conquers greed.</p>
+    </section>
+    
+    <!-- Sound Design Philosophy -->
+    <section>
+      <h2 data-i18n="philosophy.title">Sound Design Philosophy</h2>
+      <div class="grid">
+        <div class="grid-item">
+          <h4 data-i18n="philosophy.emotional.title">Emotional Journey</h4>
+          <p data-i18n="philosophy.emotional.desc">The audio design mirrors the characters' emotional arc, starting with playful competitive energy and evolving into suspenseful tension before resolving in tender, heartfelt moments. Each phase is supported by carefully crafted soundscapes that guide the audience through the narrative transformation.</p>
+        </div>
+        <div class="grid-item">
+          <h4 data-i18n="philosophy.jungle.title">Jungle Immersion</h4>
+          <p data-i18n="philosophy.jungle.desc">The lush jungle environment comes alive through layered natural recordings - rustling leaves, distant animal calls, flowing water, and wind through canopy. These elements create a rich, organic backdrop that makes the audience feel present in this magical world.</p>
+        </div>
+        <div class="grid-item">
+          <h4 data-i18n="philosophy.character.title">Character Expression</h4>
+          <p data-i18n="philosophy.character.desc">Each cat creature has distinct vocal characteristics and movement sounds that reflect their personality. The orange creature's determined footsteps contrast with the pink creature's more graceful movements, while their vocalizations evolve from competitive calls to expressions of genuine care and love.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Technical Approach -->
+    <section>
+      <h2 data-i18n="technical.title">Technical Implementation</h2>
+      <div class="grid">
+        <div class="grid-item">
+          <h4 data-i18n="technical.foley.title">Custom Foley Library</h4>
+          <p data-i18n="technical.foley.desc">Built a comprehensive foley library specifically for cat-like creature movements, including paw steps on various jungle surfaces, climbing sounds, and interaction with vegetation. Each sound was recorded and processed to match the animated characters' unique physiology and movement style.</p>
+        </div>
+        <div class="grid-item">
+          <h4 data-i18n="technical.environmental.title">Environmental Layering</h4>
+          <p data-i18n="technical.environmental.desc">Created multi-layered jungle ambiences with distinct zones - canopy sounds, ground-level activity, and distance perspectives. The mix dynamically shifts based on camera movement and story pacing, ensuring the environment supports rather than overwhelms the narrative focus.</p>
+        </div>
+        <div class="grid-item">
+          <h4 data-i18n="technical.emotional.title">Emotional Sound Scoring</h4>
+          <p data-i18n="technical.emotional.desc">Developed a sound palette that transitions seamlessly between playful chase sequences, intense cliff-hanger moments, and tender emotional resolution. The golden orb itself has a distinctive magical shimmer that represents both temptation and the characters' goals.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Key Scenes -->
+    <section>
+      <h2 data-i18n="scenes.title">Key Audio Moments</h2>
+      <div class="grid">
+        <div class="grid-item">
+          <h4 data-i18n="scenes.chase.title">The Great Chase</h4>
+          <p data-i18n="scenes.chase.desc">Fast-paced sequence featuring rhythmic paw steps, heavy breathing, and dynamic jungle sounds that build excitement. The golden orb's magical resonance guides the audio rhythm, creating a musical quality to the competitive pursuit.</p>
+        </div>
+        <div class="grid-item">
+          <h4 data-i18n="scenes.cliff.title">The Cliff Edge Crisis</h4>
+          <p data-i18n="scenes.cliff.desc">Tension peaks with wind effects, distant echoes from the chasm, and the contrast between the falling creature's desperate calls and the choice-making creature's internal struggle. The golden orb's shine intensifies, representing the magnitude of the decision.</p>
+        </div>
+        <div class="grid-item">
+          <h4 data-i18n="scenes.love.title">Love's Triumph</h4>
+          <p data-i18n="scenes.love.desc">The climactic moment where the creature chooses love over treasure is marked by a gentle musical sting, soft vocalizations of relief and affection, and the gradual return of peaceful jungle ambience as harmony is restored.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Gallery -->
+    <section>
+      <h2 data-i18n="gallery.title">Visual Journey</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="../assets/images/projects-akantilado/jungleviewfromtopshot.png" alt="Jungle Overview" />
+          <div class="gallery-overlay">
+            <span data-i18n="gallery.jungle_top">Jungle Canopy View</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/projects-akantilado/junglewithbranchesfromnormalview.png" alt="Jungle Ground Level" />
+          <div class="gallery-overlay">
+            <span data-i18n="gallery.jungle_ground">Ground Level Perspective</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/projects-akantilado/orangecatalikecreaturewithgoldenball.png" alt="Orange Creature with Ball" />
+          <div class="gallery-overlay">
+            <span data-i18n="gallery.orange_ball">Orange Creature's Quest</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/projects-akantilado/pinkcatalikecreature.png" alt="Pink Creature" />
+          <div class="gallery-overlay">
+            <span data-i18n="gallery.pink_creature">Pink Creature Character</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Button -->
+    <div class="button-container">
+      <a href="../projects/index.html" class="button" data-i18n="button.projects">All Projects</a>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; Igor Szuniewicz 2025. All rights reserved.</p>
+    </footer>
+  </div>
+  
+  <!-- Translation Data -->
+  <script>
+    const translations = {
+      en: {
+        back: 'Back to Projects',
+        title: 'Akantilado — Sound Design',
+        tagline: 'A heartwarming jungle adventure where love triumphs over greed through immersive audio storytelling.',
+        'meta.role.label': 'Role',
+        'meta.role.value': 'Sound Designer',
+        'meta.setting.label': 'Setting',
+        'meta.setting.value': 'Jungle Adventure',
+        'meta.characters.label': 'Characters',
+        'meta.characters.value': 'Two Cat Creatures',
+        'meta.theme.label': 'Theme',
+        'meta.theme.value': 'Love vs Greed',
+        'showcase.title': 'Audio Showcase',
+        'showcase.desc': 'Watch how sound design enhances every moment of this jungle adventure, from playful competition to heartfelt resolution. Notice how the audio guides emotional transitions and supports character development.',
+        'overview.title': 'Story Overview',
+        'overview.desc': 'Akantilado tells the enchanting story of two cat-like creatures racing through a lush jungle, driven by their desire to claim a mystical golden orb. What begins as a competitive chase transforms into a profound tale of love and sacrifice when one creature must choose between the coveted treasure and saving their companion from a deadly fall. The story culminates in a heartwarming ending where love conquers greed.',
+        'philosophy.title': 'Sound Design Philosophy',
+        'philosophy.emotional.title': 'Emotional Journey',
+        'philosophy.emotional.desc': 'The audio design mirrors the characters\' emotional arc, starting with playful competitive energy and evolving into suspenseful tension before resolving in tender, heartfelt moments. Each phase is supported by carefully crafted soundscapes that guide the audience through the narrative transformation.',
+        'philosophy.jungle.title': 'Jungle Immersion',
+        'philosophy.jungle.desc': 'The lush jungle environment comes alive through layered natural recordings - rustling leaves, distant animal calls, flowing water, and wind through canopy. These elements create a rich, organic backdrop that makes the audience feel present in this magical world.',
+        'philosophy.character.title': 'Character Expression',
+        'philosophy.character.desc': 'Each cat creature has distinct vocal characteristics and movement sounds that reflect their personality. The orange creature\'s determined footsteps contrast with the pink creature\'s more graceful movements, while their vocalizations evolve from competitive calls to expressions of genuine care and love.',
+        'technical.title': 'Technical Implementation',
+        'technical.foley.title': 'Custom Foley Library',
+        'technical.foley.desc': 'Built a comprehensive foley library specifically for cat-like creature movements, including paw steps on various jungle surfaces, climbing sounds, and interaction with vegetation. Each sound was recorded and processed to match the animated characters\' unique physiology and movement style.',
+        'technical.environmental.title': 'Environmental Layering',
+        'technical.environmental.desc': 'Created multi-layered jungle ambiences with distinct zones - canopy sounds, ground-level activity, and distance perspectives. The mix dynamically shifts based on camera movement and story pacing, ensuring the environment supports rather than overwhelms the narrative focus.',
+        'technical.emotional.title': 'Emotional Sound Scoring',
+        'technical.emotional.desc': 'Developed a sound palette that transitions seamlessly between playful chase sequences, intense cliff-hanger moments, and tender emotional resolution. The golden orb itself has a distinctive magical shimmer that represents both temptation and the characters\' goals.',
+        'scenes.title': 'Key Audio Moments',
+        'scenes.chase.title': 'The Great Chase',
+        'scenes.chase.desc': 'Fast-paced sequence featuring rhythmic paw steps, heavy breathing, and dynamic jungle sounds that build excitement. The golden orb\'s magical resonance guides the audio rhythm, creating a musical quality to the competitive pursuit.',
+        'scenes.cliff.title': 'The Cliff Edge Crisis',
+        'scenes.cliff.desc': 'Tension peaks with wind effects, distant echoes from the chasm, and the contrast between the falling creature\'s desperate calls and the choice-making creature\'s internal struggle. The golden orb\'s shine intensifies, representing the magnitude of the decision.',
+        'scenes.love.title': 'Love\'s Triumph',
+        'scenes.love.desc': 'The climactic moment where the creature chooses love over treasure is marked by a gentle musical sting, soft vocalizations of relief and affection, and the gradual return of peaceful jungle ambience as harmony is restored.',
+        'gallery.title': 'Visual Journey',
+        'gallery.jungle_top': 'Jungle Canopy View',
+        'gallery.jungle_ground': 'Ground Level Perspective',
+        'gallery.orange_ball': 'Orange Creature\'s Quest',
+        'gallery.pink_creature': 'Pink Creature Character',
+        'button.projects': 'All Projects'
+      },
+      pl: {
+        back: 'Powrót do projektów',
+        title: 'Akantilado — Sound Design',
+        tagline: 'Wzruszająca przygoda w dżungli, gdzie miłość triumfuje nad chciwością poprzez immersyjną narrację audio.',
+        'meta.role.label': 'Rola',
+        'meta.role.value': 'Sound Designer',
+        'meta.setting.label': 'Miejsce',
+        'meta.setting.value': 'Przygoda w Dżungli',
+        'meta.characters.label': 'Postacie',
+        'meta.characters.value': 'Dwa Stworzenia Przypominające Koty',
+        'meta.theme.label': 'Temat',
+        'meta.theme.value': 'Miłość kontra Chciwość',
+        'showcase.title': 'Prezentacja Audio',
+        'showcase.desc': 'Zobacz jak sound design wzbogaca każdy moment tej przygody w dżungli, od wesołej rywalizacji po wzruszające rozwiązanie. Zwróć uwagę jak audio prowadzi przejścia emocjonalne i wspiera rozwój postaci.',
+        'overview.title': 'Opis Fabuły',
+        'overview.desc': 'Akantilado opowiada czarującą historię dwóch stworzeń przypominających koty, ścigających się przez bujną dżunglę, kierowanych pragnieniem zdobycia mistycznej złotej kuli. To co zaczyna się jako rywalizacja, przekształca się w głęboką opowieść o miłości i poświęceniu, gdy jedno stworzenie musi wybrać między pożądanym skarbem a ratowaniem towarzysza przed śmiertelnym upadkiem. Historia kończy się wzruszającym zakończeniem, gdzie miłość zwycięża chciwość.',
+        'philosophy.title': 'Filozofia Sound Designu',
+        'philosophy.emotional.title': 'Podróż Emocjonalna',
+        'philosophy.emotional.desc': 'Design audio odzwierciedla emocjonalny łuk postaci, zaczynając od wesołej konkurencyjnej energii i ewoluując w napięcie pełne suspense, zanim rozwiąże się w delikatnych, wzruszających momentach. Każda faza wspierana jest starannie skonstruowanymi krajobrazami dźwiękowymi, które prowadzą publiczność przez transformację narracji.',
+        'philosophy.jungle.title': 'Immersja w Dżungli',
+        'philosophy.jungle.desc': 'Bujna dżungla ożywa poprzez warstwowe nagrania naturalne - szelest liści, odległe wołania zwierząt, płynącą wodę i wiatr w koronach drzew. Te elementy tworzą bogate, organiczne tło, które sprawia, że publiczność czuje obecność w tym magicznym świecie.',
+        'philosophy.character.title': 'Ekspresja Postaci',
+        'philosophy.character.desc': 'Każde stworzenie-kot ma odmienne charakterystyki wokalne i dźwięki ruchu odzwierciedlające jego osobowość. Zdecydowane kroki pomarańczowego stworzenia kontrastują z bardziej gracjalnymi ruchami różowego, podczas gdy ich wokalizacje ewoluują od konkurencyjnych wołań do wyrażeń prawdziwej troski i miłości.',
+        'technical.title': 'Implementacja Techniczna',
+        'technical.foley.title': 'Biblioteka Custom Foley',
+        'technical.foley.desc': 'Zbudowałem kompleksową bibliotekę foley specjalnie dla ruchów stworzeń przypominających koty, obejmującą kroki łap na różnych powierzchniach dżungli, dźwięki wspinaczki i interakcje z roślinnością. Każdy dźwięk był nagrany i przetworzony aby pasował do unikalnej fizjologii i stylu ruchu animowanych postaci.',
+        'technical.environmental.title': 'Warstwowanie Środowiskowe',
+        'technical.environmental.desc': 'Stworzyłem wielowarstwowe ambience dżungli z odrębnymi strefami - dźwięki korony drzew, aktywność na poziomie gruntu i perspektywy odległościowe. Miks dynamicznie się zmienia w oparciu o ruch kamery i tempo opowieści, zapewniając że środowisko wspiera zamiast przytłaczać fokus narracyjny.',
+        'technical.emotional.title': 'Emocjonalne Scoreowanie Dźwięku',
+        'technical.emotional.desc': 'Rozwinąłem paletę dźwiękową która przechodzi płynnie między wesołymi sekwencjami pogoni, intensywnymi momentami na krawędzi klifu i delikatną emocjonalną rozdzielczością. Sama złota kula ma charakterystyczny magiczny połysk reprezentujący zarówno pokusę jak i cele postaci.',
+        'scenes.title': 'Kluczowe Momenty Audio',
+        'scenes.chase.title': 'Wielki Pościg',
+        'scenes.chase.desc': 'Szybka sekwencja z rytmicznymi krokami łap, ciężkim oddechem i dynamicznymi dźwiękami dżungli budującymi ekscytację. Magiczny rezonans złotej kuli prowadzi rytm audio, tworząc muzyczną jakość konkurencyjnego pościgu.',
+        'scenes.cliff.title': 'Kryzys na Krawędzi Urwiska',
+        'scenes.cliff.desc': 'Napięcie osiąga szczyt z efektami wiatru, odległymi echami z przepaści i kontrastem między desperackimi wołaniami spadającego stworzenia a wewnętrzną walką tego podejmującego decyzję. Blask złotej kuli intensyfikuje się, reprezentując wagę decyzji.',
+        'scenes.love.title': 'Triumf Miłości',
+        'scenes.love.desc': 'Kulminacyjny moment gdy stworzenie wybiera miłość nad skarb jest zaznaczony delikatnym muzycznym akcentem, miękkimi wokalizacjami ulgi i uczucia, oraz stopniowym powrotem spokojnego ambientu dżungli gdy harmonia zostaje przywrócona.',
+        'gallery.title': 'Wizualna Podróż',
+        'gallery.jungle_top': 'Widok Korony Dżungli',
+        'gallery.jungle_ground': 'Perspektywa z Poziomu Gruntu',
+        'gallery.orange_ball': 'Misja Pomarańczowego Stworzenia',
+        'gallery.pink_creature': 'Postać Różowego Stworzenia',
+        'button.projects': 'Wszystkie Projekty'
+      },
+      nl: {
+        back: 'Terug naar Projecten',
+        title: 'Akantilado — Sound Design',
+        tagline: 'Een hartverwarmend jungle avontuur waar liefde triumfeert over hebzucht door meeslepende audio storytelling.',
+        'meta.role.label': 'Rol',
+        'meta.role.value': 'Sound Designer',
+        'meta.setting.label': 'Setting',
+        'meta.setting.value': 'Jungle Avontuur',
+        'meta.characters.label': 'Personages',
+        'meta.characters.value': 'Twee Kat-achtige Wezens',
+        'meta.theme.label': 'Thema',
+        'meta.theme.value': 'Liefde vs Hebzucht',
+        'showcase.title': 'Audio Showcase',
+        'showcase.desc': 'Bekijk hoe sound design elk moment van dit jungle avontuur verrijkt, van speelse competitie tot hartverwarmende oplossing. Merk op hoe de audio emotionele overgangen begeleidt en karakterontwikkeling ondersteunt.',
+        'overview.title': 'Verhaal Overzicht',
+        'overview.desc': 'Akantilado vertelt het betoverende verhaal van twee katachtige wezens die door een weelderige jungle racen, gedreven door hun verlangen om een mystieke gouden bol te claimen. Wat begint als een competitieve achtervolging transformeert in een diepgaand verhaal van liefde en opoffering wanneer één wezen moet kiezen tussen de begeerde schat en het redden van hun metgezel van een dodelijke val. Het verhaal culmineert in een hartverwarmend einde waar liefde hebzucht overwint.',
+        'philosophy.title': 'Sound Design Filosofie',
+        'philosophy.emotional.title': 'Emotionele Reis',
+        'philosophy.emotional.desc': 'Het audiodesign weerspiegelt de emotionele boog van de personages, beginnend met speelse competitieve energie en evoluerend naar spannende spanning voordat het oplost in tedere, hartverwarmende momenten. Elke fase wordt ondersteund door zorgvuldig vervaardigde soundscapes die het publiek door de narratieve transformatie leiden.',
+        'philosophy.jungle.title': 'Jungle Immersie',
+        'philosophy.jungle.desc': 'De weelderige jungle omgeving komt tot leven door gelaagde natuurlijke opnames - ritselende bladeren, verre dierengeluiden, stromend water en wind door het bladerdak. Deze elementen creëren een rijk, organisch achtergrond dat het publiek het gevoel geeft aanwezig te zijn in deze magische wereld.',
+        'philosophy.character.title': 'Karakter Expressie',
+        'philosophy.character.desc': 'Elk katwezen heeft onderscheidende vocale kenmerken en bewegingsgeluiden die hun persoonlijkheid weerspiegelen. De vastberaden voetstappen van het oranje wezen contrasteren met de meer sierlijke bewegingen van het roze, terwijl hun vocalisaties evolueren van competitieve roepen naar uitingen van oprechte zorg en liefde.',
+        'technical.title': 'Technische Implementatie',
+        'technical.foley.title': 'Aangepaste Foley Bibliotheek',
+        'technical.foley.desc': 'Bouwde een uitgebreide foley bibliotheek specifiek voor katachtige wezensbewegingen, inclusief potentreden op verschillende jungle oppervlakken, klimgeluiden en interactie met vegetatie. Elk geluid werd opgenomen en verwerkt om te passen bij de unieke fysiologie en bewegingsstijl van de geanimeerde personages.',
+        'technical.environmental.title': 'Omgevingslagen',
+        'technical.environmental.desc': 'Creëerde meergelaagde jungle ambiances met verschillende zones - bladerdakgeluiden, grondniveau activiteit en afstandsperspectieven. De mix verschuift dynamisch op basis van camerabewegingen en verhaaltempo, waarbij ervoor wordt gezorgd dat de omgeving de narratieve focus ondersteunt in plaats van overweldigt.',
+        'technical.emotional.title': 'Emotionele Sound Scoring',
+        'technical.emotional.desc': 'Ontwikkelde een geluidspalet dat naadloos overgaat tussen speelse achtervolging sequenties, intense cliffhanger momenten en tedere emotionele oplossing. De gouden bol zelf heeft een onderscheidende magische schittering die zowel verleiding als de doelen van de personages vertegenwoordigt.',
+        'scenes.title': 'Belangrijke Audio Momenten',
+        'scenes.chase.title': 'De Grote Achtervolging',
+        'scenes.chase.desc': 'Snelle sequentie met ritmische potenstappen, zwaar ademhalen en dynamische jungle geluiden die opwinding opbouwen. De magische resonantie van de gouden bol leidt het audio ritme, waardoor een muzikale kwaliteit ontstaat aan de competitieve achtervolging.',
+        'scenes.cliff.title': 'De Klif Rand Crisis',
+        'scenes.cliff.desc': 'Spanning piekt met wind effecten, verre echo\'s uit de kloof en het contrast tussen de wanhopige roepen van het vallende wezen en de innerlijke strijd van het beslissende wezen. De glans van de gouden bol intensifieert, wat de omvang van de beslissing vertegenwoordigt.',
+        'scenes.love.title': 'Triomf van Liefde',
+        'scenes.love.desc': 'Het climactische moment waarop het wezen liefde boven schat kiest wordt gemarkeerd door een zachte muzikale accent, zachte vocalisaties van opluchting en genegenheid, en de geleidelijke terugkeer van vredige jungle ambiance terwijl harmonie wordt hersteld.',
+        'gallery.title': 'Visuele Reis',
+        'gallery.jungle_top': 'Jungle Bladerdak Uitzicht',
+        'gallery.jungle_ground': 'Grondniveau Perspectief',
+        'gallery.orange_ball': 'Oranje Wezen\'s Zoektocht',
+        'gallery.pink_creature': 'Roze Wezen Karakter',
+        'button.projects': 'Alle Projecten'
+      }
+    };
+    
+    // Language switcher
+    let currentLang = localStorage.getItem('language') || 'en';
+    
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('language', lang);
+      
+      // Update all translatable elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+    
+    // Initialize language on load
+    document.addEventListener('DOMContentLoaded', () => {
+      setLanguage(currentLang);
+      
+      // Add click handlers
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setLanguage(btn.dataset.lang);
+        });
+      });
+    });
+  </script>
+  
+  <!-- Lightbox Script -->
+  <script>
+    (function() {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.getElementById('lightbox-close');
+      
+      function openLightbox(imgSrc) {
+        lightboxImg.src = imgSrc;
+        lightbox.classList.add('active');
+      }
+      
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+      }
+      
+      // Bind gallery items
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.gallery-item').forEach(item => {
+          item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            if (img) {
+              openLightbox(img.src);
+            }
+          });
+        });
+        
+        // Close on click
+        lightbox.addEventListener('click', closeLightbox);
+        lightboxClose.addEventListener('click', closeLightbox);
+        
+        // Prevent close when clicking on image
+        lightboxImg.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+        
+        // Close on escape
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+          }
+        });
+      });
+    })();
+  </script>
+  
+  <!-- Scroll Reveal Animation Script -->
+  <script>
+    // Remove preload state
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+    
+    // Smooth scroll reveal
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all sections
+    document.addEventListener('DOMContentLoaded', () => {
+      // Show content immediately on DOM ready
+      setTimeout(() => {
+        document.body.classList.add('loaded');
+      }, 100);
+      
+      const sections = document.querySelectorAll('section, .video-section, .hero-image');
+      sections.forEach(section => observer.observe(section));
+      
+      // Stagger animation for cards
+      const cards = document.querySelectorAll('.grid-item, .gallery-item, .meta-badge');
+      cards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.08}s`;
+      });
+    });
+  </script>
+</body>
+</html>

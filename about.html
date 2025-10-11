@@ -1,209 +1,478 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-  <title>About — Igor Szuniewicz</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Spline+Sans:wght@300;400;600;700&display=swap"></noscript>
+  <title>About — Igor Szuniewicz</title>
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
-  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" href="assets/icons/favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="assets/icons/favicon-16x16.png" sizes="16x16">
-  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" sizes="180x180">
+  <meta name="description" content="About Igor Szuniewicz — Audio designer, composer, and developer specialized in interactive music systems and game audio." />
   
-  <meta name="description" content="About Igor Szuniewicz — composer, audio engineer, and software developer blending creative sound with technical systems." />
-  <link rel="canonical" href="https://igorszuniewicz.com/about.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Igor Szuniewicz" />
-  <meta property="og:title" content="About — Igor Szuniewicz" />
-  <meta property="og:description" content="Composer, audio engineer, and software developer focused on interactive sound and DSP." />
-  <meta property="og:url" content="https://igorszuniewicz.com/about.html" />
-  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects/maxresdefault.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About — Igor Szuniewicz" />
-  <meta name="twitter:description" content="Composer, audio engineer, and software developer focused on interactive sound and DSP." />
-  <meta name="twitter:image" content="https://igorszuniewicz.com/assets/images/projects/maxresdefault.jpg" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "About",
-    "url": "https://igorszuniewicz.com/about.html",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type":"ListItem","position":1,"name":"Home","item":"https://igorszuniewicz.com/"},
-        {"@type":"ListItem","position":2,"name":"About","item":"https://igorszuniewicz.com/about.html"}
-      ]
-    }
-  }
-  </script>
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="assets/css/custom-styles.css?v=20250210" />
-  <link rel="stylesheet" href="assets/css/pro-theme.css?v=20250212" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* Ensure same base scale as homepage */
-    @media (min-width: 981px){ html { font-size: 12pt; } }
-    @media (min-width: 1280px){ html { font-size: 11pt; } }
+    /* === RESET === */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000000;
+      color: #e0e6ed;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* === BACKGROUND === */
+    .bg-gradient {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at top, #0f172a 0%, #000000 50%, #000000 100%);
+      z-index: -3;
+    }
+    
+    .bg-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(96, 165, 250, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(96, 165, 250, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: -2;
+      opacity: 0.4;
+    }
+    
+    .bg-orbs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+      opacity: 0.6;
+    }
+    
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      animation: float 25s infinite ease-in-out;
+      mix-blend-mode: screen;
+    }
+    
+    .orb-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.5) 0%, rgba(59, 130, 246, 0.2) 30%, transparent 70%);
+      top: -15%;
+      left: -10%;
+      animation-delay: 0s;
+    }
+    
+    .orb-2 {
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.4) 0%, rgba(139, 92, 246, 0.2) 30%, transparent 70%);
+      top: 40%;
+      right: -20%;
+      animation-delay: -8s;
+    }
+    
+    .orb-3 {
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.35) 0%, rgba(6, 182, 212, 0.15) 30%, transparent 70%);
+      bottom: -25%;
+      left: 25%;
+      animation-delay: -16s;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+      25% { transform: translate(40px, -40px) scale(1.15) rotate(90deg); }
+      50% { transform: translate(-30px, 30px) scale(0.85) rotate(180deg); }
+      75% { transform: translate(35px, 35px) scale(1.05) rotate(270deg); }
+    }
+    
+    /* === CONTAINER === */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* === HEADER === */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem 0;
+      backdrop-filter: blur(10px);
+      background: rgba(10, 14, 18, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .header.scrolled {
+      padding: 1rem 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+    
+    .nav-links a {
+      color: #9ca3af;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #60a5fa;
+    }
+    
+    /* === PAGE CONTENT === */
+    .page-content {
+      padding: 10rem 0 4rem;
+      min-height: 100vh;
+    }
+    
+    .page-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+    
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+    }
+    
+    .page-description {
+      font-size: 1.35rem;
+      color: #cbd5e1;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+    
+    /* === CONTENT SECTIONS === */
+    .content-section {
+      margin-bottom: 5rem;
+    }
+    
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .section-text {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* === CARDS === */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .card {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      padding: 2rem;
+      transition: all 0.4s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(96, 165, 250, 0.4);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+    
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .card-icon {
+      font-size: 1.8rem;
+    }
+    
+    .card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .card-list li {
+      color: #cbd5e1;
+      padding-left: 1.5rem;
+      position: relative;
+      line-height: 1.7;
+    }
+    
+    .card-list li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: #60a5fa;
+      font-weight: 700;
+    }
+    
+    .card-list strong {
+      color: #fff;
+      font-weight: 600;
+    }
+    
+    /* === STATS === */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+    
+    .stat-card {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(15, 23, 42, 0.4);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      border-color: rgba(96, 165, 250, 0.3);
+      transform: translateY(-5px);
+    }
+    
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      color: #9ca3af;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   </style>
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
-<body class="is-preload">
-  <div id="lang-fixed" role="group" aria-label="Language selection">
-    <button type="button" data-lang="en" aria-label="Switch to English" aria-pressed="true">
-      <span class="flag" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 18 12">
-          <rect width="18" height="12" fill="#012169"/>
-          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#fff" stroke-width="3"/>
-          <path d="M0,0 L18,12 M18,0 L0,12" stroke="#C8102E" stroke-width="1.2"/>
-          <rect x="0" y="5" width="18" height="2" fill="#fff"/>
-          <rect x="8" y="0" width="2" height="12" fill="#fff"/>
-          <rect x="0" y="5.5" width="18" height="1" fill="#C8102E"/>
-          <rect x="8.5" y="0" width="1" height="12" fill="#C8102E"/>
-        </svg>
-      </span>
-      <span class="label">EN</span>
-    </button>
-    <button type="button" data-lang="pl" aria-label="Przełącz na język polski" aria-pressed="false">
-      <span class="flag" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
-          <rect width="3" height="1" fill="#fff"/>
-          <rect y="1" width="3" height="1" fill="#dc143c"/>
-        </svg>
-      </span>
-      <span class="label">PL</span>
-    </button>
-    <button type="button" data-lang="nl" aria-label="Schakel over naar Nederlands" aria-pressed="false">
-      <span class="flag" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 3 2">
-          <rect width="3" height="2" fill="#21468B"/>
-          <rect width="3" height="1.333" fill="#fff"/>
-          <rect width="3" height="0.666" fill="#AE1C28"/>
-        </svg>
-      </span>
-      <span class="label">NL</span>
-    </button>
-  </div>
-
+<body>
+  <!-- Background -->
   <div class="bg-gradient"></div>
-  <div class="bg-orbs" aria-hidden="true">
-    <div class="orb blue" style="top:10%;left:8%"></div>
-    <div class="orb cyan" style="top:60%;left:75%"></div>
-    <div class="orb teal" style="top:75%;left:15%"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
   </div>
-  <svg class="bg-waves" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <defs>
-      <linearGradient id="gradWave1" x1="0%" x2="100%" y1="0%" y2="0%">
-        <stop offset="0%" stop-color="#18bfef" stop-opacity="0.6"/>
-        <stop offset="100%" stop-color="#58b6ff" stop-opacity="0.3"/>
-      </linearGradient>
-      <linearGradient id="gradWave2" x1="0%" x2="100%" y1="0%" y2="0%">
-        <stop offset="0%" stop-color="#9a6cff" stop-opacity="0.6"/>
-        <stop offset="100%" stop-color="#18bfef" stop-opacity="0.3"/>
-      </linearGradient>
-      <linearGradient id="gradWave3" x1="0%" x2="100%" y1="0%" y2="0%">
-        <stop offset="0%" stop-color="#ff6ea9" stop-opacity="0.5"/>
-        <stop offset="100%" stop-color="#9a6cff" stop-opacity="0.25"/>
-      </linearGradient>
-    </defs>
-    <path fill="url(#gradWave1)" opacity="0.6" d="M0 320 L1200 300 L1200 600 L0 600 Z"></path>
-    <path fill="url(#gradWave2)" opacity="0.4" d="M0 340 L1200 330 L1200 600 L0 600 Z"></path>
-    <path fill="url(#gradWave3)" opacity="0.3" d="M0 360 L1200 360 L1200 600 L0 600 Z"></path>
-  </svg>
-  <canvas class="bg-eq" aria-hidden="true"></canvas>
-  <div class="bg-glow"></div>
-  <div id="wrapper" class="fade-in">
-    <header id="header">
-      <a href="index.html" class="logo">Igor Szuniewicz</a>
-    </header>
-    <nav id="nav">
-      <ul class="links">
-        <li><a href="index.html">Home</a></li>
-        <li class="active"><a href="about.html">About</a></li>
-        <li><a href="projects/index.html">Projects</a></li>
-        <li><a href="music.html">Music</a></li>
-        <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">Extra</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="projects/audioq.html">AudioQ Plugin</a></li>
-                        <li><a href="projects/unreal-engine-rebuilder.html">Unreal Engine Rebuilder</a></li>
-                        <li><a href="#" class="disabled-link" data-tooltip="Not yet released - In Development">QSlicer</a></li>
-                    </ul>
-                </li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <ul class="icons"></ul>
-    </nav>
-    <div id="main">
-      <section class="post" data-reveal>
-        <div class="about-hero">
-          <h1 data-i18n="about_title">About Me</h1>
-          <p class="roles" data-i18n="about_roles">Composer, Audio Engineer, and Software Developer focused on interactive sound.</p>
-          <div class="rays">
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-          </div>
-        </div>
-
-        <div class="about-main-content">
-          <p data-i18n="about_paragraph">I'm an audio engineer and composer who believes technology should enhance creativity, not complicate it. From real-time beatbox classification with 45ms latency to dynamic music systems in Unreal Engine, I build audio tools that actually work in production. Whether it's implementing adaptive soundscapes for games, developing custom VST plugins for 3D audio, or composing original scores for animations, I approach each project with both creative intuition and technical precision. My background spans classical piano training, mathematics and physics, and now game audio integration at DAE Belgium. I thrive on solving complex audio challenges and creating systems that respond intelligently to user interaction.</p>
-        </div>
-
-        <div class="about-sections">
-          <div class="about-section" data-reveal style="--reveal-delay: .1s;">
-            <h3 data-i18n="about_journey_title">My Journey</h3>
-            <p data-i18n="about_journey_text">My path into audio technology started with classical piano at age 6, where I learned discipline and musical structure. During high school, I discovered the mathematical beauty behind sound — how frequencies, harmonics, and digital signal processing could create entirely new sonic possibilities. This led me to develop machine learning systems for real-time audio analysis, create custom DSP algorithms for spatial audio, and build interactive music systems that adapt to player behavior. Now at DAE, I'm focusing on game audio integration, learning how to make audio systems that enhance gameplay and create emotional connections between players and virtual worlds.</p>
-          </div>
-
-          <div class="about-section" data-reveal style="--reveal-delay: .2s;">
-            <h3 data-i18n="about_philosophy_title">What Drives Me</h3>
-            <p data-i18n="about_philosophy_text">I believe great audio should feel magical to users while being robust under the hood. Every millisecond of latency matters when creating responsive systems. Every frequency band matters when crafting immersive soundscapes. I'm passionate about bridging the gap between artistic vision and technical implementation — creating tools that let composers and designers focus on creativity while the technology handles the complexity. Whether it's achieving 45ms latency for real-time beat detection or designing adaptive music that seamlessly responds to gameplay, I'm driven by the challenge of making the impossible feel effortless.</p>
-          </div>
-        </div>
-
-        <div class="about-cards">
-          <div class="about-card" data-reveal style="--reveal-delay: .3s;">
-            <div class="card-header">
-              <div class="card-icon">
-                <i class="fas fa-graduation-cap"></i>
-              </div>
-              <h4 data-i18n="about_edu_title">Education</h4>
-            </div>
-            <ul>
-              <li data-i18n="about_edu_1"><strong>Howest — Digital Arts and Entertainment</strong>: Game Development — Game Sound Integration (ongoing)</li>
-              <li data-i18n="about_edu_2"><strong>Bilingual Copernicus High School</strong>: Maths & Physics (graduated)</li>
-              <li data-i18n="about_edu_3"><strong>State Music School in Kołobrzeg</strong>: Classical Piano & Music Theory (graduated)</li>
-            </ul>
-          </div>
-          <div class="about-card" data-reveal style="--reveal-delay: .4s;">
-            <div class="card-header">
-              <div class="card-icon">
-                <i class="fas fa-code"></i>
-              </div>
-              <h4 data-i18n="about_comp_title">Technical Expertise</h4>
-            </div>
-            <ul>
-              <li data-i18n="about_comp_1"><strong>Game Audio:</strong> Wwise, FMOD, Unreal Engine, Unity — Professional implementation</li>
-              <li data-i18n="about_comp_2"><strong>DSP & Programming:</strong> C++/JUCE for VST development, real-time audio processing</li>
-              <li data-i18n="about_comp_3"><strong>Machine Learning:</strong> Real-time classification, 45ms latency beatbox recognition</li>
-              <li data-i18n="about_comp_4"><strong>Production Tools:</strong> Reaper, Pro Tools, Logic Pro, Studio One — Professional workflows</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+  
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="logo">Igor Szuniewicz</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="projects/index.html">Projects</a></li>
+          <li><a href="music.html">Music</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-    <footer id="footer"></footer>
-    <div id="copyright">
-      <ul>
-        <li>&copy; Igor Szuniewicz 2025. All rights reserved.</li>
-      </ul>
+  </header>
+  
+  <!-- Page Content -->
+  <div class="page-content">
+    <div class="container">
+      <div class="page-header">
+        <h1 class="page-title">About Me</h1>
+        <p class="page-description">
+          Audio designer, composer, and developer specialized in interactive music systems, game audio implementation, and real-time DSP. Combining creative intuition with technical precision.
+        </p>
+      </div>
+      
+      <div class="content-section">
+        <h2 class="section-title">My Journey</h2>
+        <p class="section-text">
+          My path into audio technology started with classical piano at age 6, where I learned discipline and musical structure. During high school, I discovered the mathematical beauty behind sound — how frequencies, harmonics, and digital signal processing could create entirely new sonic possibilities.
+        </p>
+        <p class="section-text">
+          This led me to develop machine learning systems for real-time audio analysis (achieving 45ms latency), create custom DSP algorithms for spatial audio, and build interactive music systems that adapt to player behavior. Currently at DAE Belgium, I'm focusing on professional game audio integration, learning how to make audio systems that enhance gameplay and create emotional connections between players and virtual worlds.
+        </p>
+      </div>
+      
+      <div class="content-section">
+        <h2 class="section-title">What Drives Me</h2>
+        <p class="section-text">
+          I believe great audio should feel magical to users while being robust under the hood. Every millisecond of latency matters when creating responsive systems. Every frequency band matters when crafting immersive soundscapes.
+        </p>
+        <p class="section-text">
+          I'm passionate about bridging the gap between artistic vision and technical implementation — creating tools that let composers and designers focus on creativity while the technology handles the complexity. Whether it's real-time beat detection or designing adaptive music that seamlessly responds to gameplay, I'm driven by making the impossible feel effortless.
+        </p>
+      </div>
+      
+      <div class="cards-grid">
+        <div class="card">
+          <h3 class="card-title">
+            <span class="card-icon">🎓</span>
+            Education
+          </h3>
+          <ul class="card-list">
+            <li><strong>Howest — DAE</strong><br>Game Development — Sound Integration (ongoing)</li>
+            <li><strong>Bilingual High School</strong><br>Maths & Physics (graduated)</li>
+            <li><strong>State Music School</strong><br>Classical Piano & Theory (graduated)</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <h3 class="card-title">
+            <span class="card-icon">🎵</span>
+            Audio Tools
+          </h3>
+          <ul class="card-list">
+            <li><strong>Middleware:</strong> Wwise, FMOD — Professional implementation</li>
+            <li><strong>Engines:</strong> Unreal Engine, Unity — Game integration</li>
+            <li><strong>Production:</strong> Reaper, Pro Tools, Logic Pro, Studio One</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <h3 class="card-title">
+            <span class="card-icon">💻</span>
+            Development
+          </h3>
+          <ul class="card-list">
+            <li><strong>DSP & Audio:</strong> C++/JUCE for VST development</li>
+            <li><strong>Machine Learning:</strong> Real-time audio classification (45ms latency)</li>
+            <li><strong>Systems:</strong> Python, C#, scripting for automation</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Years of Music</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">45ms</div>
+          <div class="stat-label">ML Audio Latency</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">12+</div>
+          <div class="stat-label">Projects Shipped</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Languages Fluent</div>
+        </div>
+      </div>
     </div>
   </div>
-  <script src="assets/js/components/enhancements.js?v=20250210"></script>
-  <script src="assets/js/components/theme-toggle.js"></script>
+  
+  <!-- Scripts -->
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>
