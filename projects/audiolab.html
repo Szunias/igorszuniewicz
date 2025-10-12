@@ -455,17 +455,19 @@
       }
     }
   </style>
+  <style>.lang-switcher{position:fixed!important;top:2rem!important;right:2rem!important;z-index:1000!important;display:flex!important;gap:.5rem;background:rgba(255,255,255,.08)!important;backdrop-filter:blur(10px);border:1px solid rgba(24,191,239,.5)!important;border-radius:50px;padding:.5rem;box-shadow:0 4px 20px rgba(0,0,0,.3)!important}.lang-btn{padding:.5rem 1rem;background:0 0;border:none;border-radius:50px;color:#999!important;cursor:pointer;font-weight:500;font-size:.9rem;font-family:Inter,sans-serif;transition:all .3s ease;display:flex!important;align-items:center;gap:.5rem}.lang-btn:hover{color:#18bfef!important;background:rgba(24,191,239,.1)}.lang-btn.active{color:#18bfef!important;background:rgba(24,191,239,.15);font-weight:600}.lang-flag{width:20px;height:14px;border-radius:2px;overflow:hidden;display:block}@media (max-width:768px){.lang-switcher{top:1rem!important;right:1rem!important;padding:.4rem}.lang-btn{padding:.4rem .8rem;font-size:.85rem}}</style>
 </head>
 <body>
-  <a href="index.html" class="back-button">← Back to Projects</a>
+  <div class="lang-switcher"><button class="lang-btn active" data-lang="en"><svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg><span>EN</span></button><button class="lang-btn" data-lang="pl"><svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10"><rect width="16" height="5" fill="#fff"/><rect y="5" width="16" height="5" fill="#dc143c"/></svg><span>PL</span></button><button class="lang-btn" data-lang="nl"><svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><rect width="9" height="6" fill="#21468B"/><rect width="9" height="4" fill="#fff"/><rect width="9" height="2" fill="#AE1C28"/></svg><span>NL</span></button></div>
+  <a href="index.html" class="back-button" data-i18n="back">← Back to Projects</a>
   
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <div class="hero-badge">🎮 Research Project</div>
-        <h1>Transientica: AudioLab</h1>
-        <p class="hero-subtitle">
+        <div class="hero-badge" data-i18n="hero.badge">🎮 Research Project</div>
+        <h1 data-i18n="hero.title">Transientica: AudioLab</h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">
           Beatbox-controlled rhythm game using real-time ML classification, spectral flux analysis, and low-latency OSC control. 
           Replace button presses with vocal percussion.
         </p>
@@ -487,7 +489,7 @@
     <div class="container">
       <div class="section-header">
         <div class="section-badge">Gameplay Demo</div>
-        <h2>See It in Action</h2>
+        <h2 data-i18n="video.title">See It in Action</h2>
       </div>
       <div class="video-wrapper">
         <video controls poster="../assets/images/projects/AudioLabGif.mp4">
@@ -503,7 +505,7 @@
     <div class="container">
       <div class="section-header">
         <div class="section-badge">Performance Metrics</div>
-        <h2>Real-time Performance Results</h2>
+        <h2 data-i18n="stats.title">Real-time Performance Results</h2>
       </div>
       
       <div class="stats-grid">
@@ -535,7 +537,7 @@
     <div class="container">
       <div class="section-header">
         <div class="section-badge">Project Overview</div>
-        <h2>Revolutionary Vocal Percussion Interface</h2>
+        <h2 data-i18n="overview.title">Revolutionary Vocal Percussion Interface</h2>
       </div>
       
       <div class="overview-text">
@@ -559,13 +561,13 @@
     <div class="container">
       <div class="section-header">
         <div class="section-badge">Technology Stack</div>
-        <h2>Technical Implementation</h2>
+        <h2 data-i18n="tech.title">Technical Implementation</h2>
       </div>
       
       <div class="tech-grid">
         <div class="tech-card">
           <span class="tech-icon">🎤</span>
-          <h3>Audio Processing</h3>
+          <h3 data-i18n="tech.audio">Audio Processing</h3>
           <p>
             44.1 kHz sampling with 2048-sample blocks. Spectral flux onset detection and MFCC feature extraction 
             producing 39-dimensional vectors for real-time classification.
@@ -574,7 +576,7 @@
         
         <div class="tech-card">
           <span class="tech-icon">🧠</span>
-          <h3>Machine Learning</h3>
+          <h3 data-i18n="tech.ml">Machine Learning</h3>
           <p>
             User-trained RBF-SVM classifier (C=10, γ=0.01) for beatbox sound recognition. Achieves 0.16ms inference time 
             with 80%+ accuracy on kick, snare, and hi-hat sounds.
@@ -583,7 +585,7 @@
         
         <div class="tech-card">
           <span class="tech-icon">🔗</span>
-          <h3>OSC Communication</h3>
+          <h3 data-i18n="tech.osc">OSC Communication</h3>
           <p>
             Low-latency UDP messaging between Python backend and Unity frontend. Timestamped events enable 
             precise latency measurement and synchronization.
@@ -592,7 +594,7 @@
         
         <div class="tech-card">
           <span class="tech-icon">🎮</span>
-          <h3>Game Engine</h3>
+          <h3 data-i18n="tech.engine">Game Engine</h3>
           <p>
             Unity-based rhythm game with JSON beatmaps, hit detection windows (±70ms), and real-time feedback systems 
             for responsive vocal percussion gameplay.
@@ -607,7 +609,7 @@
     <div class="container">
       <div class="section-header">
         <div class="section-badge">Research Impact</div>
-        <h2>Key Contributions</h2>
+        <h2 data-i18n="contrib.title">Key Contributions</h2>
       </div>
       
       <div class="contributions-list">
@@ -659,5 +661,11 @@
     </div>
   </footer>
 
+  <script>
+const translations={en:{back:'Back to Projects','hero.badge':'🎮 Research Project','hero.title':'Transientica: AudioLab','hero.subtitle':'Beatbox-controlled rhythm game using real-time ML classification, spectral flux analysis, and low-latency OSC control. Replace button presses with vocal percussion.','video.title':'See It in Action','stats.title':'Real-time Performance Results','overview.title':'Revolutionary Vocal Percussion Interface','tech.title':'Technical Implementation','tech.audio':'Audio Processing','tech.ml':'Machine Learning','tech.osc':'OSC Communication','tech.engine':'Game Engine','contrib.title':'Key Contributions'},pl:{back:'Powrót do Projektów','hero.badge':'🎮 Projekt Badawczy','hero.title':'Transientica: AudioLab','hero.subtitle':'Gra rytmiczna sterowana beatboxem wykorzystująca klasyfikację ML w czasie rzeczywistym, analizę spektralnego flux i kontrolę OSC o niskim opóźnieniu. Zastąp naciśnięcia przycisków perkusją wokalną.','video.title':'Zobacz w Akcji','stats.title':'Wyniki Wydajności w Czasie Rzeczywistym','overview.title':'Rewolucyjny Interfejs Perkusji Wokalnej','tech.title':'Implementacja Techniczna','tech.audio':'Przetwarzanie Audio','tech.ml':'Uczenie Maszynowe','tech.osc':'Komunikacja OSC','tech.engine':'Silnik Gry','contrib.title':'Kluczowe Wkłady'},nl:{back:'Terug naar Projecten','hero.badge':'🎮 Onderzoeksproject','hero.title':'Transientica: AudioLab','hero.subtitle':'Beatbox-gestuurde ritmegame met realtime ML-classificatie, spectrale flux-analyse en lage-latentie OSC-besturing. Vervang knopdrukken door vocale percussie.','video.title':'Zie Het in Actie','stats.title':'Realtime Prestatieresu ltaten','overview.title':'Revolutionaire Vocale Percussie Interface','tech.title':'Technische Implementatie','tech.audio':'Audioverwerking','tech.ml':'Machine Learning','tech.osc':'OSC Communicatie','tech.engine':'Game Engine','contrib.title':'Belangrijkste Bijdragen'}};
+let currentLang=localStorage.getItem('language')||'en';
+function setLanguage(lang){currentLang=lang;localStorage.setItem('language',lang);document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.getAttribute('data-i18n');if(translations[lang]&&translations[lang][key]){el.innerHTML=translations[lang][key];}});document.querySelectorAll('.lang-btn').forEach(btn=>{btn.classList.toggle('active',btn.dataset.lang===lang);});}
+document.addEventListener('DOMContentLoaded',()=>{setLanguage(currentLang);document.querySelectorAll('.lang-btn').forEach(btn=>{btn.addEventListener('click',()=>{setLanguage(btn.dataset.lang);});});});
+  </script>
 </body>
 </html>

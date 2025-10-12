@@ -111,12 +111,12 @@
 
     <nav id="nav">
       <ul class="links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li class="active"><a href="../projects/index.html">Projects</a></li>
-        <li><a href="../music.html">Music</a></li>
-        <li><a href="../extras.html">Extra</a></li>
-        <li><a href="../contact.html">Contact</a></li>
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../about.html" data-i18n="nav.about">About</a></li>
+        <li class="active"><a href="../projects/index.html" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="../music.html" data-i18n="nav.music">Music</a></li>
+        <li><a href="../extras.html" data-i18n="nav.extra">Extra</a></li>
+        <li><a href="../contact.html" data-i18n="nav.contact">Contact</a></li>
       </ul>
       <ul class="icons"></ul>
     </nav>
@@ -124,24 +124,24 @@
     <div id="main">
       <section class="post" data-reveal>
         <header class="major">
-          <h2>3D Audio Plugin Suite (VST Development)</h2>
-          <p id="bgWhite">Custom DSP for HRTF spatialization, real-time convolution, and UI design.</p>
+          <h2 data-i18n="hero.title">3D Audio Plugin Suite (VST Development)</h2>
+          <p id="bgWhite" data-i18n="hero.subtitle">Custom DSP for HRTF spatialization, real-time convolution, and UI design.</p>
         </header>
 
         <span class="image main"><img src="../assets/images/projects/plugins.jpg" alt="3D Audio Plugin Suite" /></span>
 
-        <h3 id="bgColor">Overview</h3>
-        <p>I developed a small suite of 3D audio plugins as a vehicle to deepen my DSP skills. The focus was on perceptual quality and CPU efficiency. I iterated on UI affordances to make complex processing discoverable and musical for everyday mixing.</p>
+        <h3 id="bgColor" data-i18n="overview.title">Overview</h3>
+        <p data-i18n="overview.desc">I developed a small suite of 3D audio plugins as a vehicle to deepen my DSP skills. The focus was on perceptual quality and CPU efficiency. I iterated on UI affordances to make complex processing discoverable and musical for everyday mixing.</p>
 
-        <h3 id="bgColor">Highlights</h3>
+        <h3 id="bgColor" data-i18n="highlights.title">Highlights</h3>
         <ul>
-          <li>Custom HRTF interpolation and binaural rendering with diffusion</li>
-          <li>Partitioned FFT convolution with latency management</li>
-          <li>Responsive UI, sensible ranges, and parameter smoothing</li>
+          <li data-i18n="highlights.l1">Custom HRTF interpolation and binaural rendering with diffusion</li>
+          <li data-i18n="highlights.l2">Partitioned FFT convolution with latency management</li>
+          <li data-i18n="highlights.l3">Responsive UI, sensible ranges, and parameter smoothing</li>
         </ul>
 
         <ul class="actions" style="margin-top:2em">
-          <li><a href="../index.html#projects-showcase" class="button">Back to Projects</a></li>
+          <li><a href="../index.html#projects-showcase" class="button" data-i18n="back">Back to Projects</a></li>
         </ul>
       </section>
     </div>
@@ -164,5 +164,81 @@
   <script src="../assets/js/util.js"></script>
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/components/enhancements.js?v=20250210"></script>
+  
+  <script>
+    const translations = {
+      en: {
+        'nav.home': 'Home',
+        'nav.about': 'About',
+        'nav.projects': 'Projects',
+        'nav.music': 'Music',
+        'nav.extra': 'Extra',
+        'nav.contact': 'Contact',
+        'hero.title': '3D Audio Plugin Suite (VST Development)',
+        'hero.subtitle': 'Custom DSP for HRTF spatialization, real-time convolution, and UI design.',
+        'overview.title': 'Overview',
+        'overview.desc': 'I developed a small suite of 3D audio plugins as a vehicle to deepen my DSP skills. The focus was on perceptual quality and CPU efficiency. I iterated on UI affordances to make complex processing discoverable and musical for everyday mixing.',
+        'highlights.title': 'Highlights',
+        'highlights.l1': 'Custom HRTF interpolation and binaural rendering with diffusion',
+        'highlights.l2': 'Partitioned FFT convolution with latency management',
+        'highlights.l3': 'Responsive UI, sensible ranges, and parameter smoothing',
+        'back': 'Back to Projects'
+      },
+      pl: {
+        'nav.home': 'Start',
+        'nav.about': 'O mnie',
+        'nav.projects': 'Projekty',
+        'nav.music': 'Muzyka',
+        'nav.extra': 'Extra',
+        'nav.contact': 'Kontakt',
+        'hero.title': 'Pakiet Plugin\u00f3w Audio 3D (Rozw\u00f3j VST)',
+        'hero.subtitle': 'Niestandardowe DSP dla spacjalizacji HRTF, konwolucji w czasie rzeczywistym i projektowania UI.',
+        'overview.title': 'Przegl\u0105d',
+        'overview.desc': 'Opracowa\u0142em ma\u0142y pakiet plugin\u00f3w audio 3D jako narz\u0119dzie do pog\u0142\u0119bienia moich umiej\u0119tno\u015bci DSP. Skupi\u0142em si\u0119 na jako\u015bci percepcyjnej i wydajno\u015bci CPU. Iterowalem nad funkcjami UI, aby uczyni\u0107 z\u0142o\u017cone przetwarzanie odkrywalne i muzyczne dla codziennego miksowania.',
+        'highlights.title': 'Najwa\u017cniejsze',
+        'highlights.l1': 'Niestandardowa interpolacja HRTF i renderowanie binauralne z dyfuzj\u0105',
+        'highlights.l2': 'Podzielona konwolucja FFT z zarz\u0105dzaniem op\u00f3\u017anieniem',
+        'highlights.l3': 'Responsywny UI, rozs\u0105dne zakresy i wyg\u0142adzanie parametr\u00f3w',
+        'back': 'Powr\u00f3t do Projekt\u00f3w'
+      },
+      nl: {
+        'nav.home': 'Home',
+        'nav.about': 'Over',
+        'nav.projects': 'Projecten',
+        'nav.music': 'Muziek',
+        'nav.extra': 'Extra',
+        'nav.contact': 'Contact',
+        'hero.title': '3D Audio Plugin Suite (VST-ontwikkeling)',
+        'hero.subtitle': 'Aangepaste DSP voor HRTF-ruimtelijkheid, realtime convolutie en UI-ontwerp.',
+        'overview.title': 'Overzicht',
+        'overview.desc': 'Ik heb een kleine suite van 3D-audioplugins ontwikkeld om mijn DSP-vaardigheden te verdiepen. De focus lag op waarnemingskwaliteit en CPU-effici\u00ebntie. Ik itereerde op UI-affordances om complexe verwerking vindbaar en muzikaal te maken voor dagelijks mixen.',
+        'highlights.title': 'Hoogtepunten',
+        'highlights.l1': 'Aangepaste HRTF-interpolatie en binaurale rendering met diffusie',
+        'highlights.l2': 'Gepartitioneerde FFT-convolutie met latentiebeheer',
+        'highlights.l3': 'Responsieve UI, verstandige bereiken en parameterverzachting',
+        'back': 'Terug naar Projecten'
+      }
+    };
+    let currentLang = localStorage.getItem('language') || 'en';
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('language', lang);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+      document.querySelectorAll('button[data-lang]').forEach(btn => {
+        btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      setLanguage(currentLang);
+      document.querySelectorAll('button[data-lang]').forEach(btn => {
+        btn.addEventListener('click', () => { setLanguage(btn.dataset.lang); });
+      });
+    });
+  </script>
 </body>
 </html>

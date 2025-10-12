@@ -429,43 +429,93 @@
       }
     }
   </style>
+  <style>
+    /* Language Switcher */
+    .lang-switcher {
+      position: fixed !important;
+      top: 2rem !important;
+      right: 2rem !important;
+      z-index: 1000 !important;
+      display: flex !important;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.08) !important;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(74, 148, 208, 0.5) !important;
+      border-radius: 50px;
+      padding: 0.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+    }
+    .lang-btn {
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: none;
+      border-radius: 50px;
+      color: #999 !important;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+      display: flex !important;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .lang-btn:hover { color: #4a94d0 !important; background: rgba(74, 148, 208, 0.1); }
+    .lang-btn.active { color: #4a94d0 !important; background: rgba(74, 148, 208, 0.15); font-weight: 600; }
+    .lang-flag { width: 20px; height: 14px; border-radius: 2px; overflow: hidden; display: block; }
+    @media (max-width: 768px) {
+      .lang-switcher { top: 1rem !important; right: 1rem !important; padding: 0.4rem; }
+      .lang-btn { padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+    }
+  </style>
 </head>
 <body>
-  <a href="index.html" class="back-button">← Back to Projects</a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="en">
+      <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg><span>EN</span>
+    </button>
+    <button class="lang-btn" data-lang="pl">
+      <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10"><rect width="16" height="5" fill="#fff"/><rect y="5" width="16" height="5" fill="#dc143c"/></svg><span>PL</span>
+    </button>
+    <button class="lang-btn" data-lang="nl">
+      <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><rect width="9" height="6" fill="#21468B"/><rect width="9" height="4" fill="#fff"/><rect width="9" height="2" fill="#AE1C28"/></svg><span>NL</span>
+    </button>
+  </div>
+  <a href="index.html" class="back-button" data-i18n="back">← Back to Projects</a>
   
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <div class="hero-badge">✨ Free Developer Tool</div>
-        <h1>Unreal Engine<br>Rebuilder</h1>
-        <p class="hero-subtitle">
+        <div class="hero-badge" data-i18n="hero.badge">✨ Free Developer Tool</div>
+        <h1 data-i18n="hero.title">Unreal Engine<br>Rebuilder</h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">
           Automate UE project maintenance. Clean, rebuild, and backup with one click. Save 5-10 minutes per build and reclaim gigabytes of disk space.
         </p>
         
         <div class="cta-buttons">
           <a href="https://github.com/Szunias/UnrealEngineRebuilder/releases/latest" class="btn btn-primary" target="_blank" rel="noopener">
             <span class="btn-icon">⬇️</span>
-            Download Now
+            <span data-i18n="hero.download">Download Now</span>
           </a>
           <a href="https://github.com/Szunias/UnrealEngineRebuilder" class="btn btn-secondary" target="_blank" rel="noopener">
             <span class="btn-icon">⭐</span>
-            View on GitHub
+            <span data-i18n="hero.github">View on GitHub</span>
           </a>
         </div>
         
         <div class="stats">
           <div class="stat-card">
-            <span class="stat-value">5-10</span>
-            <span class="stat-label">Minutes Saved Per Build</span>
+            <span class="stat-value" data-i18n="stats.value1">5-10</span>
+            <span class="stat-label" data-i18n="stats.label1">Minutes Saved Per Build</span>
           </div>
           <div class="stat-card">
-            <span class="stat-value">5-50 GB</span>
-            <span class="stat-label">Disk Space Reclaimed</span>
+            <span class="stat-value" data-i18n="stats.value2">5-50 GB</span>
+            <span class="stat-label" data-i18n="stats.label2">Disk Space Reclaimed</span>
           </div>
           <div class="stat-card">
-            <span class="stat-value">100%</span>
-            <span class="stat-label">Automation Coverage</span>
+            <span class="stat-value" data-i18n="stats.value3">100%</span>
+            <span class="stat-label" data-i18n="stats.label3">Automation Coverage</span>
           </div>
         </div>
       </div>
@@ -485,9 +535,9 @@
   <section class="features">
     <div class="container">
       <div class="section-header">
-        <div class="section-badge">Key Features</div>
-        <h2>Everything You Need</h2>
-        <p class="section-subtitle">
+        <div class="section-badge" data-i18n="features.badge">Key Features</div>
+        <h2 data-i18n="features.title">Everything You Need</h2>
+        <p class="section-subtitle" data-i18n="features.subtitle">
           Professional-grade automation for Unreal Engine developers
         </p>
       </div>
@@ -495,38 +545,38 @@
       <div class="features-grid">
         <div class="feature-card">
           <span class="feature-icon">🔄</span>
-          <h3>Total Rebuild Clean</h3>
-          <p>Complete project refresh: removes Binaries, Intermediate, and Saved folders, regenerates Visual Studio solution, and compiles with build time tracking.</p>
+          <h3 data-i18n="features.f1.title">Total Rebuild Clean</h3>
+          <p data-i18n="features.f1.desc">Complete project refresh: removes Binaries, Intermediate, and Saved folders, regenerates Visual Studio solution, and compiles with build time tracking.</p>
         </div>
         
         <div class="feature-card">
           <span class="feature-icon">💾</span>
-          <h3>Automated Backups</h3>
-          <p>One-click project archiving with smart compression, timestamped archives, and selective backup of essential files (Source/Config/Content/Plugins).</p>
+          <h3 data-i18n="features.f2.title">Automated Backups</h3>
+          <p data-i18n="features.f2.desc">One-click project archiving with smart compression, timestamped archives, and selective backup of essential files (Source/Config/Content/Plugins).</p>
         </div>
         
         <div class="feature-card">
           <span class="feature-icon">📊</span>
-          <h3>Disk Management</h3>
-          <p>Detailed folder size breakdown with DDC cleaning that can free up gigabytes instantly. Smart formatting shows human-readable sizes with before/after stats.</p>
+          <h3 data-i18n="features.f3.title">Disk Management</h3>
+          <p data-i18n="features.f3.desc">Detailed folder size breakdown with DDC cleaning that can free up gigabytes instantly. Smart formatting shows human-readable sizes with before/after stats.</p>
         </div>
         
         <div class="feature-card">
           <span class="feature-icon">🔍</span>
-          <h3>Intelligent Detection</h3>
-          <p>Auto-finds UE installations by scanning drives and checking Windows Registry. Supports multiple UE versions (4.x and 5.x) with fallback GUI folder picker.</p>
+          <h3 data-i18n="features.f4.title">Intelligent Detection</h3>
+          <p data-i18n="features.f4.desc">Auto-finds UE installations by scanning drives and checking Windows Registry. Supports multiple UE versions (4.x and 5.x) with fallback GUI folder picker.</p>
         </div>
         
         <div class="feature-card">
           <span class="feature-icon">📝</span>
-          <h3>Professional Logging</h3>
-          <p>Automatic documentation of every operation with timestamped files, auto-cleanup of logs older than 30 days, and detailed error reporting.</p>
+          <h3 data-i18n="features.f5.title">Professional Logging</h3>
+          <p data-i18n="features.f5.desc">Automatic documentation of every operation with timestamped files, auto-cleanup of logs older than 30 days, and detailed error reporting.</p>
         </div>
         
         <div class="feature-card">
           <span class="feature-icon">🎨</span>
-          <h3>Modern Interface</h3>
-          <p>Dark theme with custom borderless title bar, color-coded buttons for visual distinction, and real-time console feedback with green terminal text.</p>
+          <h3 data-i18n="features.f6.title">Modern Interface</h3>
+          <p data-i18n="features.f6.desc">Dark theme with custom borderless title bar, color-coded buttons for visual distinction, and real-time console feedback with green terminal text.</p>
         </div>
       </div>
     </div>
@@ -536,8 +586,8 @@
   <section class="tech-section">
     <div class="container">
       <div class="section-header">
-        <div class="section-badge">Technology</div>
-        <h2>Built With Modern Tools</h2>
+        <div class="section-badge" data-i18n="tech.badge">Technology</div>
+        <h2 data-i18n="tech.title">Built With Modern Tools</h2>
       </div>
       
       <div class="tech-stack">
@@ -554,16 +604,16 @@
   <!-- Download CTA -->
   <section class="download-cta">
     <div class="container">
-      <h2>Ready to Save Time?</h2>
-      <p>Download Unreal Engine Rebuilder now and streamline your development workflow.</p>
+      <h2 data-i18n="cta.title">Ready to Save Time?</h2>
+      <p data-i18n="cta.subtitle">Download Unreal Engine Rebuilder now and streamline your development workflow.</p>
       <div class="cta-buttons">
         <a href="https://github.com/Szunias/UnrealEngineRebuilder/releases/latest" class="btn btn-primary" target="_blank" rel="noopener">
           <span class="btn-icon">⬇️</span>
-          Download Latest Release
+          <span data-i18n="cta.download">Download Latest Release</span>
         </a>
         <a href="https://github.com/Szunias/UnrealEngineRebuilder" class="btn btn-secondary" target="_blank" rel="noopener">
           <span class="btn-icon">💻</span>
-          View Source Code
+          <span data-i18n="cta.source">View Source Code</span>
         </a>
       </div>
     </div>
@@ -581,6 +631,136 @@
       </p>
     </div>
   </footer>
+
+  <script>
+    const translations = {
+      en: {
+        back: 'Back to Projects',
+        'hero.badge': '✨ Free Developer Tool',
+        'hero.title': 'Unreal Engine<br>Rebuilder',
+        'hero.subtitle': 'Automate UE project maintenance. Clean, rebuild, and backup with one click. Save 5-10 minutes per build and reclaim gigabytes of disk space.',
+        'hero.download': 'Download Now',
+        'hero.github': 'View on GitHub',
+        'stats.value1': '5-10',
+        'stats.label1': 'Minutes Saved Per Build',
+        'stats.value2': '5-50 GB',
+        'stats.label2': 'Disk Space Reclaimed',
+        'stats.value3': '100%',
+        'stats.label3': 'Automation Coverage',
+        'features.badge': 'Key Features',
+        'features.title': 'Everything You Need',
+        'features.subtitle': 'Professional-grade automation for Unreal Engine developers',
+        'features.f1.title': 'Total Rebuild Clean',
+        'features.f1.desc': 'Complete project refresh: removes Binaries, Intermediate, and Saved folders, regenerates Visual Studio solution, and compiles with build time tracking.',
+        'features.f2.title': 'Automated Backups',
+        'features.f2.desc': 'One-click project archiving with smart compression, timestamped archives, and selective backup of essential files (Source/Config/Content/Plugins).',
+        'features.f3.title': 'Disk Management',
+        'features.f3.desc': 'Detailed folder size breakdown with DDC cleaning that can free up gigabytes instantly. Smart formatting shows human-readable sizes with before/after stats.',
+        'features.f4.title': 'Intelligent Detection',
+        'features.f4.desc': 'Auto-finds UE installations by scanning drives and checking Windows Registry. Supports multiple UE versions (4.x and 5.x) with fallback GUI folder picker.',
+        'features.f5.title': 'Professional Logging',
+        'features.f5.desc': 'Automatic documentation of every operation with timestamped files, auto-cleanup of logs older than 30 days, and detailed error reporting.',
+        'features.f6.title': 'Modern Interface',
+        'features.f6.desc': 'Dark theme with custom borderless title bar, color-coded buttons for visual distinction, and real-time console feedback with green terminal text.',
+        'tech.badge': 'Technology',
+        'tech.title': 'Built With Modern Tools',
+        'cta.title': 'Ready to Save Time?',
+        'cta.subtitle': 'Download Unreal Engine Rebuilder now and streamline your development workflow.',
+        'cta.download': 'Download Latest Release',
+        'cta.source': 'View Source Code'
+      },
+      pl: {
+        back: 'Powrót do Projektów',
+        'hero.badge': '✨ Darmowe Narzędzie Deweloperskie',
+        'hero.title': 'Unreal Engine<br>Rebuilder',
+        'hero.subtitle': 'Automatyzacja utrzymania projektów UE. Czyszczenie, rebuild i backup jednym kliknięciem. Oszczędzasz 5-10 minut na build i odzyskujesz gigabajty miejsca na dysku.',
+        'hero.download': 'Pobierz Teraz',
+        'hero.github': 'Zobacz na GitHub',
+        'stats.value1': '5-10',
+        'stats.label1': 'Minut Zaoszczędzonych na Build',
+        'stats.value2': '5-50 GB',
+        'stats.label2': 'Odzyskanej Przestrzeni Dyskowej',
+        'stats.value3': '100%',
+        'stats.label3': 'Pokrycie Automatyzacji',
+        'features.badge': 'Kluczowe Funkcje',
+        'features.title': 'Wszystko Czego Potrzebujesz',
+        'features.subtitle': 'Automatyzacja na poziomie profesjonalnym dla deweloperów Unreal Engine',
+        'features.f1.title': 'Całkowite Czyszczenie Rebuildu',
+        'features.f1.desc': 'Kompletne odświeżenie projektu: usuwa foldery Binaries, Intermediate i Saved, regeneruje rozwiązanie Visual Studio i kompiluje ze śledzeniem czasu buildu.',
+        'features.f2.title': 'Automatyczne Backupy',
+        'features.f2.desc': 'Archiwizacja projektu jednym kliknięciem z inteligentną kompresją, archiwami z timestampów i selektywnym backupem istotnych plików (Source/Config/Content/Plugins).',
+        'features.f3.title': 'Zarządzanie Dyskiem',
+        'features.f3.desc': 'Szczegółowy podział rozmiaru folderów z czyszczeniem DDC, które może natychmiast zwolnić gigabajty. Inteligentne formatowanie pokazuje czytelne rozmiary ze statystykami przed/po.',
+        'features.f4.title': 'Inteligentne Wykrywanie',
+        'features.f4.desc': 'Automatycznie znajduje instalacje UE poprzez skanowanie dysków i sprawdzanie Windows Registry. Obsługuje wiele wersji UE (4.x i 5.x) z fallback GUI folder picker.',
+        'features.f5.title': 'Profesjonalne Logowanie',
+        'features.f5.desc': 'Automatyczna dokumentacja każdej operacji z plikami oznaczonymi timestampem, auto-czyszczenie logów starszych niż 30 dni i szczegółowe raportowanie błędów.',
+        'features.f6.title': 'Nowoczesny Interfejs',
+        'features.f6.desc': 'Ciemny motyw z custom borderless paskiem tytułu, przyciskami oznaczonymi kolorami dla wizualnego rozróżnienia i real-time feedback konsoli z zielonym tekstem terminala.',
+        'tech.badge': 'Technologia',
+        'tech.title': 'Zbudowane z Nowoczesnymi Narzędziami',
+        'cta.title': 'Gotowy Zaoszczędzić Czas?',
+        'cta.subtitle': 'Pobierz Unreal Engine Rebuilder teraz i usprawnij swój workflow developmentu.',
+        'cta.download': 'Pobierz Najnowsze Wydanie',
+        'cta.source': 'Zobacz Kod Źródłowy'
+      },
+      nl: {
+        back: 'Terug naar Projecten',
+        'hero.badge': '✨ Gratis Ontwikkelaarstool',
+        'hero.title': 'Unreal Engine<br>Rebuilder',
+        'hero.subtitle': 'Automatiseer UE-projectonderhoud. Schoon, herbouw en back-up met één klik. Bespaar 5-10 minuten per build en win gigabytes schijfruimte terug.',
+        'hero.download': 'Nu Downloaden',
+        'hero.github': 'Bekijk op GitHub',
+        'stats.value1': '5-10',
+        'stats.label1': 'Minuten Bespaard Per Build',
+        'stats.value2': '5-50 GB',
+        'stats.label2': 'Schijfruimte Teruggewonnen',
+        'stats.value3': '100%',
+        'stats.label3': 'Automatisering Dekking',
+        'features.badge': 'Belangrijkste Functies',
+        'features.title': 'Alles Wat Je Nodig Hebt',
+        'features.subtitle': 'Professionele automatisering voor Unreal Engine-ontwikkelaars',
+        'features.f1.title': 'Totale Rebuild Schoonmaak',
+        'features.f1.desc': 'Volledige projectverversing: verwijdert Binaries, Intermediate en Saved mappen, regenereert Visual Studio oplossing en compileert met build time tracking.',
+        'features.f2.title': 'Geautomatiseerde Back-ups',
+        'features.f2.desc': 'Eén-klik projectarchivering met slimme compressie, getimestampte archieven en selectieve back-up van essentiële bestanden (Source/Config/Content/Plugins).',
+        'features.f3.title': 'Schijfbeheer',
+        'features.f3.desc': 'Gedetailleerde mapdeling met DDC-schoonmaak die onmiddellijk gigabytes kan vrijmaken. Slimme formattering toont leesbare groottes met voor/na statistieken.',
+        'features.f4.title': 'Intelligente Detectie',
+        'features.f4.desc': 'Vindt automatisch UE-installaties door drives te scannen en Windows Registry te controleren. Ondersteunt meerdere UE-versies (4.x en 5.x) met fallback GUI mappenkiezer.',
+        'features.f5.title': 'Professionele Logging',
+        'features.f5.desc': 'Automatische documentatie van elke operatie met getimestampte bestanden, auto-opruiming van logs ouder dan 30 dagen en gedetailleerde foutrapportage.',
+        'features.f6.title': 'Moderne Interface',
+        'features.f6.desc': 'Donker thema met aangepaste randloze titelbalk, kleurgecodeerde knoppen voor visueel onderscheid en real-time consolefeedback met groene terminaltekst.',
+        'tech.badge': 'Technologie',
+        'tech.title': 'Gebouwd Met Moderne Tools',
+        'cta.title': 'Klaar om Tijd te Besparen?',
+        'cta.subtitle': 'Download Unreal Engine Rebuilder nu en stroomlijn je ontwikkelworkflow.',
+        'cta.download': 'Download Laatste Release',
+        'cta.source': 'Bekijk Broncode'
+      }
+    };
+    let currentLang = localStorage.getItem('language') || 'en';
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('language', lang);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      setLanguage(currentLang);
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => { setLanguage(btn.dataset.lang); });
+      });
+    });
+  </script>
 
 </body>
 </html>

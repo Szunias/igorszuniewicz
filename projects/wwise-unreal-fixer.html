@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wwise Unreal Engine Fixer - Developer Tool by Igor Szuniewicz</title>
+  <meta name="description" content="Automated solution for fixing Wwise integration issues in Unreal Engine projects. Save hours of manual troubleshooting with one-click restoration.">
+  <meta name="keywords" content="Wwise, Unreal Engine, UE5, audio middleware, automation, game audio, developer tools">
+  <meta name="author" content="Igor Szuniewicz">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Wwise Unreal Engine Fixer - Developer Tool">
+  <meta property="og:description" content="Automated solution for Wwise integration issues in UE projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://igorszuniewicz.com/projects/wwise-unreal-fixer.html">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1419 100%);
+      color: #e0e6ed;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* Back button */
+    .back-button {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 140, 0, 0.3);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      color: #ff8c00;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .back-button:hover {
+      background: rgba(255, 140, 0, 0.15);
+      border-color: #ff8c00;
+      transform: translateX(-3px);
+      box-shadow: 0 6px 30px rgba(255, 140, 0, 0.3);
+    }
+    
+    /* Hero Section */
+    .hero {
+      padding: 8rem 0 6rem;
+      text-align: center;
+      position: relative;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 140, 0, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background: rgba(255, 140, 0, 0.1);
+      border: 1px solid rgba(255, 140, 0, 0.3);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ff8c00;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #ff8c00 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.35rem;
+      color: #9ca3af;
+      margin-bottom: 3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+    }
+    
+    /* CTA Buttons */
+    .cta-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #ff8c00 0%, #ffa500 100%);
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(255, 140, 0, 0.4);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(255, 140, 0, 0.6);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 140, 0, 0.3);
+      transform: translateY(-3px);
+    }
+    
+    .btn-icon {
+      font-size: 1.3rem;
+    }
+    
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .stat-card {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 140, 0, 0.2);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      background: rgba(255, 140, 0, 0.05);
+      border-color: rgba(255, 140, 0, 0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
+    }
+    
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #ff8c00;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      font-weight: 500;
+    }
+    
+    /* Content Section */
+    .content-section {
+      padding: 4rem 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .section-badge {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      background: rgba(255, 140, 0, 0.1);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #ff8c00;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    
+    .section-subtitle {
+      font-size: 1.15rem;
+      color: #9ca3af;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .feature-card {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 2.5rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      background: rgba(255, 140, 0, 0.05);
+      border-color: rgba(255, 140, 0, 0.3);
+      transform: translateY(-5px);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    
+    .feature-card p {
+      color: #9ca3af;
+      line-height: 1.7;
+    }
+    
+    /* Story Section */
+    .story-section {
+      padding: 4rem 0;
+      background: rgba(255, 140, 0, 0.03);
+      border-top: 1px solid rgba(255, 140, 0, 0.1);
+      border-bottom: 1px solid rgba(255, 140, 0, 0.1);
+    }
+    
+    .story-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .story-content p {
+      font-size: 1.1rem;
+      color: #c0c5cc;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    
+    .story-content strong {
+      color: #ff8c00;
+      font-weight: 600;
+    }
+    
+    /* Tech Stack */
+    .tech-section {
+      padding: 4rem 0;
+    }
+    
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .tech-badge {
+      padding: 0.75rem 1.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 140, 0, 0.2);
+      border-radius: 50px;
+      font-weight: 500;
+      color: #e0e6ed;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+    
+    .tech-badge:hover {
+      background: rgba(255, 140, 0, 0.1);
+      border-color: rgba(255, 140, 0, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    /* Footer */
+    footer {
+      padding: 3rem 0;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    
+    footer p {
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+    
+    footer a {
+      color: #ff8c00;
+      text-decoration: none;
+    }
+    
+    footer a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .back-button {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+      }
+      
+      .hero {
+        padding: 4rem 0 3rem;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <style>
+    /* Language Switcher */
+    .lang-switcher {
+      position: fixed !important;
+      top: 2rem !important;
+      right: 2rem !important;
+      z-index: 1000 !important;
+      display: flex !important;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.08) !important;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 140, 0, 0.5) !important;
+      border-radius: 50px;
+      padding: 0.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 140, 0, 0.15) !important;
+    }
+    
+    .lang-btn {
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: none;
+      border-radius: 50px;
+      color: #999 !important;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+      display: flex !important;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .lang-btn:hover {
+      color: #ff8c00 !important;
+      background: rgba(255, 140, 0, 0.1);
+    }
+    
+    .lang-btn.active {
+      color: #ff8c00 !important;
+      background: rgba(255, 140, 0, 0.15);
+      font-weight: 600;
+    }
+    
+    .lang-flag {
+      width: 20px;
+      height: 14px;
+      border-radius: 2px;
+      overflow: hidden;
+      display: block;
+    }
+    
+    @media (max-width: 768px) {
+      .lang-switcher {
+        top: 1rem !important;
+        right: 1rem !important;
+        padding: 0.4rem;
+      }
+      
+      .lang-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="en">
+      <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30">
+        <rect width="60" height="30" fill="#012169"/>
+        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/>
+        <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+        <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+      </svg>
+      <span>EN</span>
+    </button>
+    <button class="lang-btn" data-lang="pl">
+      <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10">
+        <rect width="16" height="5" fill="#fff"/>
+        <rect y="5" width="16" height="5" fill="#dc143c"/>
+      </svg>
+      <span>PL</span>
+    </button>
+    <button class="lang-btn" data-lang="nl">
+      <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6">
+        <rect width="9" height="6" fill="#21468B"/>
+        <rect width="9" height="4" fill="#fff"/>
+        <rect width="9" height="2" fill="#AE1C28"/>
+      </svg>
+      <span>NL</span>
+    </button>
+  </div>
+  
+  <a href="index.html" class="back-button" data-i18n="back">← Back to Projects</a>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge" data-i18n="hero.badge">🎓 Built for Students & Developers</div>
+        <h1 data-i18n="hero.title">Wwise Unreal<br>Engine Fixer</h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">
+          Automated solution for restoring Wwise integration in Unreal Engine projects. One click to fix missing plugin references and restore audio functionality.
+        </p>
+        
+        <div class="cta-buttons">
+          <a href="https://github.com/Szunias/WwiseUnrealEngineFixer/releases/latest" class="btn btn-primary" target="_blank" rel="noopener">
+            <span class="btn-icon">⬇️</span>
+            <span data-i18n="hero.download">Download Now</span>
+          </a>
+          <a href="https://github.com/Szunias/WwiseUnrealEngineFixer" class="btn btn-secondary" target="_blank" rel="noopener">
+            <span class="btn-icon">⭐</span>
+            <span data-i18n="hero.github">View on GitHub</span>
+          </a>
+        </div>
+        
+        <div class="stats">
+          <div class="stat-card">
+            <span class="stat-value" data-i18n="stats.value1">Hours</span>
+            <span class="stat-label" data-i18n="stats.label1">Troubleshooting Time Saved</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" data-i18n="stats.value2">1-Click</span>
+            <span class="stat-label" data-i18n="stats.label2">Complete Restoration</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" data-i18n="stats.value3">100%</span>
+            <span class="stat-label" data-i18n="stats.label3">Automation Coverage</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Story Section -->
+  <section class="story-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge" data-i18n="problem.badge">Background</div>
+        <h2 data-i18n="problem.title">The Problem</h2>
+      </div>
+      
+      <div class="story-content">
+        <p data-i18n="problem.p1">
+          During my work with Unreal Engine and Wwise audio middleware, I encountered a recurring issue: after certain project operations or version updates, <strong>Wwise plugin references would break</strong>, causing audio systems to fail and requiring manual intervention to restore functionality.
+        </p>
+        <p data-i18n="problem.p2">
+          The manual fix involved navigating through project files, editing configuration files, and carefully restoring plugin settings—a process that could take hours and was prone to human error. This was particularly challenging for students and junior developers learning the engine.
+        </p>
+        <p data-i18n="problem.p3">
+          To solve this workflow bottleneck, I <strong>developed the core automation logic as Windows batch scripts</strong>, designing the workflow and implementing the file manipulation logic myself. Once the functionality was proven and stable, I collaborated with <strong>AI development tools to refine and transform the batch scripts into a modern Python application</strong> with a polished GUI interface, better error handling, and cross-platform compatibility—demonstrating effective use of modern development workflows to enhance accessibility for the broader developer community.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Development Process -->
+  <section class="content-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge" data-i18n="journey.badge">Development Journey</div>
+        <h2 data-i18n="journey.title">From Concept to Application</h2>
+        <p class="section-subtitle" data-i18n="journey.subtitle">
+          A two-phase approach combining manual scripting with AI-assisted refinement
+        </p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">💻</span>
+          <h3 data-i18n="journey.phase1.title">Phase 1: Manual Development</h3>
+          <p data-i18n="journey.phase1.desc">I personally wrote the original Windows batch scripts, designing the automation workflow, implementing file system operations, and debugging the core functionality. This phase established the proven logic and workflow.</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">🤖</span>
+          <h3 data-i18n="journey.phase2.title">Phase 2: AI-Assisted Refinement</h3>
+          <p data-i18n="journey.phase2.desc">Using modern AI development tools, the proven batch script functionality was transformed into a Python application with a graphical interface, improved error handling, and better maintainability—leveraging AI to accelerate the GUI development process.</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">✨</span>
+          <h3 data-i18n="journey.phase3.title">Best of Both Worlds</h3>
+          <p data-i18n="journey.phase3.desc">This hybrid approach combines hands-on problem-solving with efficient use of modern development tools. The result: robust functionality from manual development enhanced with professional polish from AI assistance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section class="content-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge" data-i18n="features.badge">Key Features</div>
+        <h2 data-i18n="features.title">Powerful Automation</h2>
+        <p class="section-subtitle" data-i18n="features.subtitle">
+          Everything you need to restore Wwise integration quickly and reliably
+        </p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">🔍</span>
+          <h3 data-i18n="features.f1.title">Smart Detection</h3>
+          <p data-i18n="features.f1.desc">Automatically identifies Wwise integration issues in your Unreal Engine project and determines the required fixes without manual inspection.</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">⚡</span>
+          <h3 data-i18n="features.f2.title">One-Click Restoration</h3>
+          <p data-i18n="features.f2.desc">Complete plugin reference restoration with a single command. No manual file editing, no complex configurations—just fast, reliable results.</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">💾</span>
+          <h3 data-i18n="features.f3.title">Safe Operations</h3>
+          <p data-i18n="features.f3.desc">Automatic backup creation before making changes ensures you can always revert if needed. Your project data remains protected throughout the process.</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">📝</span>
+          <h3 data-i18n="features.f4.title">Detailed Logging</h3>
+          <p data-i18n="features.f4.desc">Comprehensive operation logs document every step of the restoration process, making troubleshooting and verification straightforward.</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">🎯</span>
+          <h3 data-i18n="features.f5.title">Precision Fixes</h3>
+          <p data-i18n="features.f5.desc">Targets specific configuration files and plugin references without affecting other project settings. Surgical precision for maximum reliability.</p>
+        </div>
+        
+        <div class="feature-card">
+          <span class="feature-icon">🚀</span>
+          <h3 data-i18n="features.f6.title">Production Ready</h3>
+          <p data-i18n="features.f6.desc">Built from real-world workflow challenges, tested in production environments. Originally designed to help students and developers save time, now reliable enough for professional game development pipelines.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Tech Stack -->
+  <section class="tech-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge" data-i18n="tech.badge">Technology</div>
+        <h2 data-i18n="tech.title">Development Stack</h2>
+        <p class="section-subtitle" style="margin-top: 1rem; font-size: 0.95rem;" data-i18n="tech.subtitle">
+          Manual: Batch Scripting + Windows APIs | AI-Assisted: Python GUI + Error Handling
+        </p>
+      </div>
+      
+      <div class="tech-stack">
+        <div class="tech-badge">Windows Batch Scripts</div>
+        <div class="tech-badge">Python (AI-Enhanced)</div>
+        <div class="tech-badge">AI Development Tools</div>
+        <div class="tech-badge">Windows API</div>
+        <div class="tech-badge">File System Operations</div>
+        <div class="tech-badge">Configuration Parsing</div>
+        <div class="tech-badge">GUI Development (AI-Assisted)</div>
+        <div class="tech-badge">Error Handling</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Download CTA -->
+  <section class="story-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="cta.title">Start Saving Time Today</h2>
+        <p class="section-subtitle" data-i18n="cta.subtitle">
+          Download Wwise Unreal Engine Fixer and eliminate manual troubleshooting from your workflow.
+        </p>
+      </div>
+      <div class="cta-buttons">
+        <a href="https://github.com/Szunias/WwiseUnrealEngineFixer/releases/latest" class="btn btn-primary" target="_blank" rel="noopener">
+          <span class="btn-icon">⬇️</span>
+          <span data-i18n="cta.download">Download Latest Release</span>
+        </a>
+        <a href="https://github.com/Szunias/WwiseUnrealEngineFixer" class="btn btn-secondary" target="_blank" rel="noopener">
+          <span class="btn-icon">💻</span>
+          <span data-i18n="cta.source">View Source Code</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>
+        Created by <a href="https://igorszuniewicz.com" target="_blank" rel="noopener">Igor Szuniewicz</a> | 
+        Open Source on <a href="https://github.com/Szunias/WwiseUnrealEngineFixer" target="_blank" rel="noopener">GitHub</a>
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+        © 2025 Igor Szuniewicz. Free for personal and commercial use.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Translation Script -->
+  <script>
+    const translations = {
+      en: {
+        back: 'Back to Projects',
+        'hero.badge': '🎓 Built for Students & Developers',
+        'hero.title': 'Wwise Unreal<br>Engine Fixer',
+        'hero.subtitle': 'Automated solution for restoring Wwise integration in Unreal Engine projects. One click to fix missing plugin references and restore audio functionality.',
+        'hero.download': 'Download Now',
+        'hero.github': 'View on GitHub',
+        'stats.value1': 'Hours',
+        'stats.label1': 'Troubleshooting Time Saved',
+        'stats.value2': '1-Click',
+        'stats.label2': 'Complete Restoration',
+        'stats.value3': '100%',
+        'stats.label3': 'Automation Coverage',
+        'problem.badge': 'Background',
+        'problem.title': 'The Problem',
+        'problem.p1': 'During my work with Unreal Engine and Wwise audio middleware, I encountered a recurring issue: after certain project operations or version updates, <strong>Wwise plugin references would break</strong>, causing audio systems to fail and requiring manual intervention to restore functionality.',
+        'problem.p2': 'The manual fix involved navigating through project files, editing configuration files, and carefully restoring plugin settings—a process that could take hours and was prone to human error. This was particularly challenging for students and junior developers learning the engine.',
+        'problem.p3': 'To solve this workflow bottleneck, I <strong>developed the core automation logic as Windows batch scripts</strong>, designing the workflow and implementing the file manipulation logic myself. Once the functionality was proven and stable, I collaborated with <strong>AI development tools to refine and transform the batch scripts into a modern Python application</strong> with a polished GUI interface, better error handling, and cross-platform compatibility—demonstrating effective use of modern development workflows to enhance accessibility for the broader developer community.',
+        'journey.badge': 'Development Journey',
+        'journey.title': 'From Concept to Application',
+        'journey.subtitle': 'A two-phase approach combining manual scripting with AI-assisted refinement',
+        'journey.phase1.title': 'Phase 1: Manual Development',
+        'journey.phase1.desc': 'I personally wrote the original Windows batch scripts, designing the automation workflow, implementing file system operations, and debugging the core functionality. This phase established the proven logic and workflow.',
+        'journey.phase2.title': 'Phase 2: AI-Assisted Refinement',
+        'journey.phase2.desc': 'Using modern AI development tools, the proven batch script functionality was transformed into a Python application with a graphical interface, improved error handling, and better maintainability—leveraging AI to accelerate the GUI development process.',
+        'journey.phase3.title': 'Best of Both Worlds',
+        'journey.phase3.desc': 'This hybrid approach combines hands-on problem-solving with efficient use of modern development tools. The result: robust functionality from manual development enhanced with professional polish from AI assistance.',
+        'features.badge': 'Key Features',
+        'features.title': 'Powerful Automation',
+        'features.subtitle': 'Everything you need to restore Wwise integration quickly and reliably',
+        'features.f1.title': 'Smart Detection',
+        'features.f1.desc': 'Automatically identifies Wwise integration issues in your Unreal Engine project and determines the required fixes without manual inspection.',
+        'features.f2.title': 'One-Click Restoration',
+        'features.f2.desc': 'Complete plugin reference restoration with a single command. No manual file editing, no complex configurations—just fast, reliable results.',
+        'features.f3.title': 'Safe Operations',
+        'features.f3.desc': 'Automatic backup creation before making changes ensures you can always revert if needed. Your project data remains protected throughout the process.',
+        'features.f4.title': 'Detailed Logging',
+        'features.f4.desc': 'Comprehensive operation logs document every step of the restoration process, making troubleshooting and verification straightforward.',
+        'features.f5.title': 'Precision Fixes',
+        'features.f5.desc': 'Targets specific configuration files and plugin references without affecting other project settings. Surgical precision for maximum reliability.',
+        'features.f6.title': 'Production Ready',
+        'features.f6.desc': 'Built from real-world workflow challenges, tested in production environments. Originally designed to help students and developers save time, now reliable enough for professional game development pipelines.',
+        'tech.badge': 'Technology',
+        'tech.title': 'Development Stack',
+        'tech.subtitle': 'Manual: Batch Scripting + Windows APIs | AI-Assisted: Python GUI + Error Handling',
+        'cta.title': 'Start Saving Time Today',
+        'cta.subtitle': 'Download Wwise Unreal Engine Fixer and eliminate manual troubleshooting from your workflow.',
+        'cta.download': 'Download Latest Release',
+        'cta.source': 'View Source Code'
+      },
+      pl: {
+        back: 'Powrót do Projektów',
+        'hero.badge': '🎓 Stworzone dla Studentów i Deweloperów',
+        'hero.title': 'Wwise Unreal<br>Engine Fixer',
+        'hero.subtitle': 'Automatyczne rozwiązanie do przywracania integracji Wwise w projektach Unreal Engine. Jedno kliknięcie naprawia brakujące referencje pluginów i przywraca funkcjonalność audio.',
+        'hero.download': 'Pobierz Teraz',
+        'hero.github': 'Zobacz na GitHub',
+        'stats.value1': 'Godziny',
+        'stats.label1': 'Zaoszczędzonego Czasu Troubleshootingu',
+        'stats.value2': '1-Klik',
+        'stats.label2': 'Kompletna Naprawa',
+        'stats.value3': '100%',
+        'stats.label3': 'Pokrycie Automatyzacji',
+        'problem.badge': 'Tło',
+        'problem.title': 'Problem',
+        'problem.p1': 'Podczas pracy z Unreal Engine i middleware audio Wwise napotkałem powtarzający się problem: po niektórych operacjach na projekcie lub aktualizacjach wersji <strong>referencje pluginu Wwise się psuły</strong>, powodując awarie systemów audio i wymagając ręcznej interwencji do przywrócenia funkcjonalności.',
+        'problem.p2': 'Ręczna naprawa wymagała nawigacji przez pliki projektu, edycji plików konfiguracyjnych i ostrożnego przywracania ustawień pluginu—proces który mógł trwać godzinami i był podatny na błędy. Było to szczególnie trudne dla studentów i junior deweloperów uczących się silnika.',
+        'problem.p3': 'Aby rozwiązać ten problem w workflow, <strong>samodzielnie stworzyłem podstawową logikę automatyzacji jako skrypty batch systemu Windows</strong>, projektując workflow i implementując logikę manipulacji plikami. Gdy funkcjonalność została sprawdzona i stabilna, współpracowałem z <strong>narzędziami AI do udoskonalenia i transformacji skryptów batch w nowoczesną aplikację Python</strong> z dopracowanym interfejsem GUI, lepszą obsługą błędów i kompatybilnością cross-platform—demonstrując efektywne wykorzystanie nowoczesnych workflow development do zwiększenia dostępności dla szerszej społeczności deweloperów.',
+        'journey.badge': 'Podróż Rozwojowa',
+        'journey.title': 'Od Koncepcji do Aplikacji',
+        'journey.subtitle': 'Dwufazowe podejście łączące ręczne skryptowanie z udoskonaleniem wspomaganym AI',
+        'journey.phase1.title': 'Faza 1: Rozwój Manualny',
+        'journey.phase1.desc': 'Osobiście napisałem oryginalne skrypty batch Windows, projektując workflow automatyzacji, implementując operacje na systemie plików i debugując podstawową funkcjonalność. Ta faza ustanowiła sprawdzoną logikę i workflow.',
+        'journey.phase2.title': 'Faza 2: Udoskonalenie Wspomagane AI',
+        'journey.phase2.desc': 'Używając nowoczesnych narzędzi AI development, sprawdzona funkcjonalność skryptów batch została przekształcona w aplikację Python z interfejsem graficznym, ulepszoną obsługą błędów i lepszą łatwością utrzymania—wykorzystując AI do przyspieszenia procesu rozwoju GUI.',
+        'journey.phase3.title': 'Najlepsze z Obu Światów',
+        'journey.phase3.desc': 'To hybrydowe podejście łączy praktyczne rozwiązywanie problemów z efektywnym wykorzystaniem nowoczesnych narzędzi development. Rezultat: solidna funkcjonalność z manualnego developmentu wzbogacona profesjonalnym wykończeniem dzięki asystencji AI.',
+        'features.badge': 'Kluczowe Funkcje',
+        'features.title': 'Potężna Automatyzacja',
+        'features.subtitle': 'Wszystko czego potrzebujesz do szybkiego i niezawodnego przywrócenia integracji Wwise',
+        'features.f1.title': 'Inteligentne Wykrywanie',
+        'features.f1.desc': 'Automatycznie identyfikuje problemy integracji Wwise w projekcie Unreal Engine i określa wymagane poprawki bez ręcznej inspekcji.',
+        'features.f2.title': 'Naprawa Jednym Kliknięciem',
+        'features.f2.desc': 'Kompletne przywrócenie referencji pluginu jednym poleceniem. Bez ręcznej edycji plików, bez skomplikowanych konfiguracji—po prostu szybkie, niezawodne rezultaty.',
+        'features.f3.title': 'Bezpieczne Operacje',
+        'features.f3.desc': 'Automatyczne tworzenie backupu przed wprowadzeniem zmian zapewnia możliwość cofnięcia w razie potrzeby. Dane projektu pozostają chronione przez cały proces.',
+        'features.f4.title': 'Szczegółowe Logowanie',
+        'features.f4.desc': 'Kompleksowe logi operacji dokumentują każdy krok procesu przywracania, ułatwiając troubleshooting i weryfikację.',
+        'features.f5.title': 'Precyzyjne Poprawki',
+        'features.f5.desc': 'Celuje w konkretne pliki konfiguracyjne i referencje pluginów nie wpływając na inne ustawienia projektu. Chirurgiczna precyzja dla maksymalnej niezawodności.',
+        'features.f6.title': 'Gotowe do Produkcji',
+        'features.f6.desc': 'Zbudowane na podstawie rzeczywistych wyzwań workflow, przetestowane w środowiskach produkcyjnych. Pierwotnie zaprojektowane by pomóc studentom i deweloperom zaoszczędzić czas, teraz wystarczająco niezawodne dla profesjonalnych pipeline rozwoju gier.',
+        'tech.badge': 'Technologia',
+        'tech.title': 'Stos Rozwojowy',
+        'tech.subtitle': 'Manualne: Batch Scripting + Windows APIs | Wspomagane AI: Python GUI + Obsługa Błędów',
+        'cta.title': 'Zacznij Oszczędzać Czas Już Dziś',
+        'cta.subtitle': 'Pobierz Wwise Unreal Engine Fixer i wyeliminuj ręczny troubleshooting ze swojego workflow.',
+        'cta.download': 'Pobierz Najnowsze Wydanie',
+        'cta.source': 'Zobacz Kod Źródłowy'
+      },
+      nl: {
+        back: 'Terug naar Projecten',
+        'hero.badge': '🎓 Gemaakt voor Studenten & Ontwikkelaars',
+        'hero.title': 'Wwise Unreal<br>Engine Fixer',
+        'hero.subtitle': 'Geautomatiseerde oplossing voor het herstellen van Wwise-integratie in Unreal Engine-projecten. Één klik om ontbrekende plugin-referenties te repareren en audiofunctionaliteit te herstellen.',
+        'hero.download': 'Nu Downloaden',
+        'hero.github': 'Bekijk op GitHub',
+        'stats.value1': 'Uren',
+        'stats.label1': 'Troubleshooting Tijd Bespaard',
+        'stats.value2': '1-Klik',
+        'stats.label2': 'Volledig Herstel',
+        'stats.value3': '100%',
+        'stats.label3': 'Automatisering Dekking',
+        'problem.badge': 'Achtergrond',
+        'problem.title': 'Het Probleem',
+        'problem.p1': 'Tijdens mijn werk met Unreal Engine en Wwise audio middleware kwam ik een terugkerend probleem tegen: na bepaalde projectoperaties of versie-updates <strong>braken Wwise plugin-referenties</strong>, waardoor audiosystemen faalden en handmatige interventie vereist was om functionaliteit te herstellen.',
+        'problem.p2': 'De handmatige fix vereiste navigeren door projectbestanden, bewerken van configuratiebestanden en zorgvuldig herstellen van plugin-instellingen—een proces dat uren kon duren en gevoelig was voor menselijke fouten. Dit was bijzonder uitdagend voor studenten en junior ontwikkelaars die de engine leerden.',
+        'problem.p3': 'Om dit workflow-knelpunt op te lossen, <strong>ontwikkelde ik de kernautomatiseringslogica als Windows batch-scripts</strong>, waarbij ik de workflow ontwierp en de bestandsmanipulatielogica zelf implementeerde. Toen de functionaliteit bewezen en stabiel was, werkte ik samen met <strong>AI-ontwikkeltools om de batch-scripts te verfijnen en te transformeren naar een moderne Python-applicatie</strong> met een gepolijste GUI-interface, betere foutafhandeling en cross-platform compatibiliteit—waarmee effectief gebruik van moderne ontwikkelworkflows werd gedemonstreerd om toegankelijkheid voor de bredere ontwikkelaarsgemeenschap te verbeteren.',
+        'journey.badge': 'Ontwikkelingsreis',
+        'journey.title': 'Van Concept naar Applicatie',
+        'journey.subtitle': 'Een tweefasenaanpak die handmatig scripten combineert met AI-ondersteunde verfijning',
+        'journey.phase1.title': 'Fase 1: Handmatige Ontwikkeling',
+        'journey.phase1.desc': 'Ik schreef persoonlijk de originele Windows batch-scripts, ontwierp de automatiseringsworkflow, implementeerde bestandssysteemoperaties en debugde de kernfunctionaliteit. Deze fase legde de bewezen logica en workflow vast.',
+        'journey.phase2.title': 'Fase 2: AI-Ondersteunde Verfijning',
+        'journey.phase2.desc': 'Met behulp van moderne AI-ontwikkeltools werd de bewezen batch-scriptfunctionaliteit getransformeerd naar een Python-applicatie met een grafische interface, verbeterde foutafhandeling en betere onderhoudbaarheid—waarbij AI werd ingezet om het GUI-ontwikkelingsproces te versnellen.',
+        'journey.phase3.title': 'Het Beste van Beide Werelden',
+        'journey.phase3.desc': 'Deze hybride aanpak combineert hands-on probleemoplossing met efficiënt gebruik van moderne ontwikkeltools. Het resultaat: robuuste functionaliteit van handmatige ontwikkeling verrijkt met professionele afwerking door AI-assistentie.',
+        'features.badge': 'Belangrijkste Functies',
+        'features.title': 'Krachtige Automatisering',
+        'features.subtitle': 'Alles wat je nodig hebt om Wwise-integratie snel en betrouwbaar te herstellen',
+        'features.f1.title': 'Slimme Detectie',
+        'features.f1.desc': 'Identificeert automatisch Wwise-integratieproblemen in je Unreal Engine-project en bepaalt de vereiste fixes zonder handmatige inspectie.',
+        'features.f2.title': 'Herstel met Één Klik',
+        'features.f2.desc': 'Volledig herstel van plugin-referenties met één commando. Geen handmatige bestandsbewerking, geen complexe configuraties—gewoon snelle, betrouwbare resultaten.',
+        'features.f3.title': 'Veilige Operaties',
+        'features.f3.desc': 'Automatische back-upcreatie voordat wijzigingen worden aangebracht zorgt ervoor dat je altijd kunt terugkeren indien nodig. Je projectgegevens blijven beschermd tijdens het hele proces.',
+        'features.f4.title': 'Gedetailleerde Logging',
+        'features.f4.desc': 'Uitgebreide operatielogs documenteren elke stap van het herstelproces, waardoor troubleshooting en verificatie eenvoudig worden.',
+        'features.f5.title': 'Precisie Fixes',
+        'features.f5.desc': 'Richt zich op specifieke configuratiebestanden en plugin-referenties zonder andere projectinstellingen te beïnvloeden. Chirurgische precisie voor maximale betrouwbaarheid.',
+        'features.f6.title': 'Productie Klaar',
+        'features.f6.desc': 'Gebouwd vanuit echte workflow-uitdagingen, getest in productieomgevingen. Oorspronkelijk ontworpen om studenten en ontwikkelaars tijd te besparen, nu betrouwbaar genoeg voor professionele game-ontwikkelingspipelines.',
+        'tech.badge': 'Technologie',
+        'tech.title': 'Ontwikkelstack',
+        'tech.subtitle': 'Handmatig: Batch Scripting + Windows APIs | AI-Ondersteund: Python GUI + Foutafhandeling',
+        'cta.title': 'Begin Vandaag Tijd te Besparen',
+        'cta.subtitle': 'Download Wwise Unreal Engine Fixer en elimineer handmatige troubleshooting uit je workflow.',
+        'cta.download': 'Download Laatste Release',
+        'cta.source': 'Bekijk Broncode'
+      }
+    };
+
+    // Language switcher logic
+    let currentLang = localStorage.getItem('language') || 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('language', lang);
+
+      // Update all translatable elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+
+    // Initialize language on load
+    document.addEventListener('DOMContentLoaded', () => {
+      setLanguage(currentLang);
+
+      // Add click handlers
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setLanguage(btn.dataset.lang);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
