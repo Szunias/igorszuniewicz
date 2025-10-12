@@ -208,7 +208,7 @@
     
     /* === PAGE CONTENT === */
     .page-content {
-      padding: 10rem 0 4rem;
+      padding: 10rem 0 8rem;
       min-height: 100vh;
     }
     
@@ -236,154 +236,85 @@
       margin: 0 auto;
     }
     
-    /* === FLOATING PLAYER === */
-    .floating-player {
+    /* === MODERN PLAYER BAR === */
+    .player-bar {
       position: fixed;
-      bottom: 2rem;
-      right: 2rem;
+      bottom: 0;
+      left: 0;
+      right: 0;
       z-index: 10000;
-      cursor: grab;
-      user-select: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: rgba(10, 15, 20, 0.92);
+      backdrop-filter: blur(40px) saturate(180%);
+      border-top: 1px solid rgba(236, 72, 153, 0.2);
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
-    .floating-player.dragging {
-      cursor: grabbing;
-      transform: scale(1.05);
-      box-shadow: 0 30px 80px rgba(236, 72, 153, 0.5) !important;
+    .player-bar.visible {
+      transform: translateY(0);
     }
     
-    .floating-player.minimized .player-island {
-      width: 80px;
-      height: 80px;
+    .player-bar-content {
+      max-width: 1800px;
+      margin: 0 auto;
+      padding: 1.25rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 2rem;
+      align-items: center;
     }
     
-    .floating-player.minimized .player-expanded {
-      opacity: 0;
-      pointer-events: none;
-      transform: scale(0.8);
-    }
-    
-    .player-island {
-      width: 380px;
-      height: 380px;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(30px);
-      border-radius: 50%;
-      border: 2px solid rgba(236, 72, 153, 0.3);
-      box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.6),
-        0 0 100px rgba(236, 72, 153, 0.2),
-        inset 0 0 80px rgba(236, 72, 153, 0.03);
-      position: relative;
+    /* Left: Track Info */
+    .player-track-info {
       display: flex;
       align-items: center;
-      justify-content: center;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 1rem;
+      min-width: 0;
     }
     
-    .player-island::before {
+    .player-album-art {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+    
+    .player-album-art::after {
       content: '';
       position: absolute;
-      inset: -2px;
-      border-radius: 50%;
-      padding: 2px;
-      background: linear-gradient(135deg, #ec4899, #a78bfa, #60a5fa);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      opacity: 0.5;
-      animation: rotate 8s linear infinite;
+      inset: 0;
+      border-radius: 8px;
+      border: 1px solid rgba(236, 72, 153, 0.2);
     }
     
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    .player-album-art.playing::after {
+      animation: albumBorder 2s ease-in-out infinite;
     }
     
-    .player-content {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2.5rem;
-      position: relative;
+    @keyframes albumBorder {
+      0%, 100% { border-color: rgba(236, 72, 153, 0.2); }
+      50% { border-color: rgba(236, 72, 153, 0.6); }
     }
     
-    /* Progress Ring */
-    .progress-ring {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 340px;
-      height: 340px;
-    }
-    
-    .progress-ring-circle {
-      transform: rotate(-90deg);
-      transform-origin: 50% 50%;
-    }
-    
-    .progress-ring-bg {
-      fill: none;
-      stroke: rgba(255, 255, 255, 0.05);
-      stroke-width: 6;
-    }
-    
-    .progress-ring-progress {
-      fill: none;
-      stroke: url(#gradient);
-      stroke-width: 6;
-      stroke-linecap: round;
-      stroke-dasharray: 1068.14;
-      stroke-dashoffset: 1068.14;
-      transition: stroke-dashoffset 0.1s linear;
-    }
-    
-    /* Album Art Center */
-    .player-album {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 
-        0 15px 40px rgba(0, 0, 0, 0.5),
-        0 0 40px rgba(236, 72, 153, 0.3);
-      margin-bottom: 1.5rem;
-      border: 3px solid rgba(236, 72, 153, 0.3);
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    
-    .player-album.playing {
-      animation: albumPulse 2s ease-in-out infinite;
-    }
-    
-    @keyframes albumPulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(236, 72, 153, 0.3); }
-      50% { transform: scale(1.03); box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6), 0 0 60px rgba(236, 72, 153, 0.5); }
-    }
-    
-    .player-album img {
+    .player-album-art img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
     
-    /* Track Info */
     .player-info {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      max-width: 250px;
+      min-width: 0;
+      flex: 1;
     }
     
     .player-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
+      font-size: 0.95rem;
+      font-weight: 600;
       color: #fff;
       margin-bottom: 0.25rem;
       white-space: nowrap;
@@ -392,82 +323,132 @@
     }
     
     .player-artist {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #9ca3af;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     
-    /* Time Display */
-    .player-time {
+    /* Center: Controls */
+    .player-center {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      max-width: 200px;
-      font-size: 0.75rem;
-      color: #9ca3af;
-      margin-bottom: 1rem;
+      flex-direction: column;
+      gap: 0.75rem;
     }
     
-    /* Controls */
     .player-controls {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
+      gap: 0.75rem;
     }
     
     .player-btn {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       border: none;
       background: rgba(255, 255, 255, 0.08);
-      color: #fff;
-      font-size: 0.95rem;
+      color: #e0e6ed;
+      font-size: 0.9rem;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      backdrop-filter: blur(10px);
     }
     
     .player-btn:hover {
       background: rgba(255, 255, 255, 0.15);
-      transform: scale(1.1);
-    }
-    
-    .player-btn-play {
-      width: 56px;
-      height: 56px;
-      background: linear-gradient(135deg, #ec4899, #a78bfa);
-      font-size: 1.3rem;
-      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.4);
-    }
-    
-    .player-btn-play:hover {
-      box-shadow: 0 12px 35px rgba(236, 72, 153, 0.6);
       transform: scale(1.05);
     }
     
-    /* Volume Control */
-    .player-volume {
+    .player-btn:active {
+      transform: scale(0.95);
+    }
+    
+    .player-btn-play {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #ec4899, #a78bfa);
+      color: #fff;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 16px rgba(236, 72, 153, 0.4);
+    }
+    
+    .player-btn-play:hover {
+      box-shadow: 0 6px 24px rgba(236, 72, 153, 0.6);
+      background: linear-gradient(135deg, #f472b6, #c4b5fd);
+    }
+    
+    /* Progress Bar */
+    .player-progress-container {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      width: 100%;
-      max-width: 200px;
+    }
+    
+    .player-time {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      font-variant-numeric: tabular-nums;
+      min-width: 40px;
+      text-align: center;
+    }
+    
+    .player-progress-bar {
+      flex: 1;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .player-progress-bar:hover .player-progress-fill::after {
+      opacity: 1;
+    }
+    
+    .player-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #ec4899, #a78bfa);
+      border-radius: 10px;
+      position: relative;
+      transition: width 0.1s linear;
+    }
+    
+    .player-progress-fill::after {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 12px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(236, 72, 153, 0.6);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    
+    /* Right: Volume */
+    .player-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.75rem;
     }
     
     .player-volume-icon {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #ec4899;
       cursor: pointer;
       transition: transform 0.2s ease;
+      min-width: 24px;
+      text-align: center;
     }
     
     .player-volume-icon:hover {
@@ -475,7 +456,7 @@
     }
     
     .player-volume-slider {
-      flex: 1;
+      width: 100px;
       height: 4px;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 10px;
@@ -499,6 +480,11 @@
       border-radius: 50%;
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(236, 72, 153, 0.4);
+      transition: transform 0.2s ease;
+    }
+    
+    .player-volume-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
     }
     
     .player-volume-slider::-moz-range-thumb {
@@ -511,102 +497,80 @@
       box-shadow: 0 2px 8px rgba(236, 72, 153, 0.4);
     }
     
-    .player-volume-value {
-      font-size: 0.75rem;
-      color: #9ca3af;
-      min-width: 32px;
-      text-align: right;
-    }
-    
-    /* Minimize Button */
-    .player-minimize {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: none;
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-    }
-    
-    .player-minimize:hover {
-      background: rgba(255, 255, 255, 0.15);
-      transform: scale(1.1);
-    }
-    
     /* Responsive */
+    @media (max-width: 1024px) {
+      .player-bar-content {
+        grid-template-columns: 1fr 1.5fr 1fr;
+        gap: 1.5rem;
+      }
+      
+      .player-volume-slider {
+        width: 80px;
+      }
+    }
+    
     @media (max-width: 768px) {
-      .floating-player {
-        bottom: 1rem;
-        right: 1rem;
+      .player-bar-content {
+        grid-template-columns: 1fr;
+        padding: 1rem 1.5rem;
+        gap: 1rem;
       }
       
-      .player-island {
-        width: 320px;
-        height: 320px;
+      .player-track-info {
+        grid-row: 1;
       }
       
-      .progress-ring {
-        width: 280px;
-        height: 280px;
+      .player-center {
+        grid-row: 2;
+        gap: 0.5rem;
       }
       
-      .player-album {
-        width: 110px;
-        height: 110px;
+      .player-right {
+        display: none;
       }
       
-      .player-content {
-        padding: 2rem;
+      .player-progress-container {
+        gap: 0.5rem;
+      }
+      
+      .player-time {
+        font-size: 0.7rem;
+        min-width: 35px;
       }
     }
     
     @media (max-width: 480px) {
-      .floating-player {
-        bottom: 0.5rem;
-        right: 0.5rem;
+      .player-bar-content {
+        padding: 0.75rem 1rem;
       }
       
-      .player-island {
-        width: 280px;
-        height: 280px;
-      }
-      
-      .progress-ring {
-        width: 240px;
-        height: 240px;
-      }
-      
-      .player-album {
-        width: 90px;
-        height: 90px;
-      }
-      
-      .player-content {
-        padding: 1.5rem;
+      .player-album-art {
+        width: 48px;
+        height: 48px;
       }
       
       .player-title {
-        font-size: 1rem;
+        font-size: 0.875rem;
+      }
+      
+      .player-artist {
+        font-size: 0.75rem;
       }
       
       .player-btn {
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
       }
       
       .player-btn-play {
-        width: 48px;
-        height: 48px;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+      
+      .player-controls {
+        gap: 0.5rem;
       }
     }
     
@@ -911,59 +875,40 @@
     </div>
   </div>
   
-  <!-- Floating Circular Player -->
-  <div class="floating-player" id="floating-player">
-    <div class="player-island">
-      <!-- Progress Ring -->
-      <svg class="progress-ring" viewBox="0 0 340 340">
-        <defs>
-          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
-            <stop offset="50%" style="stop-color:#a78bfa;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
-          </linearGradient>
-        </defs>
-        <g class="progress-ring-circle">
-          <circle class="progress-ring-bg" cx="170" cy="170" r="170"/>
-          <circle class="progress-ring-progress" id="progress-ring" cx="170" cy="170" r="170"/>
-        </g>
-      </svg>
-      
-      <!-- Player Content -->
-      <div class="player-content">
-        <!-- Minimize Button -->
-        <button class="player-minimize" id="player-minimize">−</button>
-        
-        <!-- Album Art -->
-        <div class="player-album" id="player-album">
+  <!-- Modern Player Bar -->
+  <div class="player-bar" id="player-bar">
+    <div class="player-bar-content">
+      <!-- Left: Track Info -->
+      <div class="player-track-info">
+        <div class="player-album-art" id="player-album-art">
           <img id="player-cover" src="assets/images/covers/project5.png" alt="Album Art">
         </div>
-        
-        <!-- Track Info -->
         <div class="player-info">
           <div class="player-title" id="player-title">Select a track</div>
           <div class="player-artist" id="player-artist">Igor Szuniewicz</div>
         </div>
-        
-        <!-- Time -->
-        <div class="player-time">
-          <span id="player-current-time">0:00</span>
-          <span id="player-total-time">0:00</span>
-        </div>
-        
-        <!-- Controls -->
+      </div>
+      
+      <!-- Center: Controls & Progress -->
+      <div class="player-center">
         <div class="player-controls">
-          <button class="player-btn" id="player-prev-btn">⏮</button>
-          <button class="player-btn player-btn-play" id="player-play-btn">▶</button>
-          <button class="player-btn" id="player-next-btn">⏭</button>
+          <button class="player-btn" id="player-prev-btn" aria-label="Previous track">⏮</button>
+          <button class="player-btn player-btn-play" id="player-play-btn" aria-label="Play/Pause">▶</button>
+          <button class="player-btn" id="player-next-btn" aria-label="Next track">⏭</button>
         </div>
-        
-        <!-- Volume -->
-        <div class="player-volume">
-          <span class="player-volume-icon" id="player-volume-icon">🔊</span>
-          <input type="range" min="0" max="100" value="70" class="player-volume-slider" id="player-volume-slider">
-          <span class="player-volume-value" id="player-volume-value">70</span>
+        <div class="player-progress-container">
+          <span class="player-time" id="player-current-time">0:00</span>
+          <div class="player-progress-bar" id="player-progress-bar">
+            <div class="player-progress-fill" id="player-progress-fill"></div>
+          </div>
+          <span class="player-time" id="player-total-time">0:00</span>
         </div>
+      </div>
+      
+      <!-- Right: Volume -->
+      <div class="player-right">
+        <span class="player-volume-icon" id="player-volume-icon">🔊</span>
+        <input type="range" min="0" max="100" value="70" class="player-volume-slider" id="player-volume-slider" aria-label="Volume">
       </div>
     </div>
   </div>
@@ -983,19 +928,14 @@
     const playBtn = document.getElementById('player-play-btn');
     const prevBtn = document.getElementById('player-prev-btn');
     const nextBtn = document.getElementById('player-next-btn');
-    const progressRing = document.getElementById('progress-ring');
+    const progressBar = document.getElementById('player-progress-bar');
+    const progressFill = document.getElementById('player-progress-fill');
     const currentTimeEl = document.getElementById('player-current-time');
     const totalTimeEl = document.getElementById('player-total-time');
     const volumeSlider = document.getElementById('player-volume-slider');
     const volumeIcon = document.getElementById('player-volume-icon');
-    const volumeValue = document.getElementById('player-volume-value');
-    const playerAlbum = document.getElementById('player-album');
-    const floatingPlayer = document.getElementById('floating-player');
-    const minimizeBtn = document.getElementById('player-minimize');
-    
-    // Progress ring calculations
-    const radius = 170;
-    const circumference = 2 * Math.PI * radius;
+    const playerAlbumArt = document.getElementById('player-album-art');
+    const playerBar = document.getElementById('player-bar');
     
     // Set initial volume
     audio.volume = 0.7; // 70%
@@ -1014,6 +954,7 @@
         renderPlaylist();
         if (tracks.length > 0) {
           loadTrack(0);
+          playerBar.classList.add('visible');
         }
       })
       .catch(err => {
@@ -1080,14 +1021,15 @@
       audio.play();
       isPlaying = true;
       playBtn.textContent = '⏸';
-      playerAlbum.classList.add('playing');
+      playerAlbumArt.classList.add('playing');
+      playerBar.classList.add('visible');
     }
     
     function pause() {
       audio.pause();
       isPlaying = false;
       playBtn.textContent = '▶';
-      playerAlbum.classList.remove('playing');
+      playerAlbumArt.classList.remove('playing');
     }
     
     function togglePlay() {
@@ -1132,60 +1074,25 @@
     });
     
     audio.addEventListener('timeupdate', () => {
-      const progress = (audio.currentTime / audio.duration);
-      const offset = circumference - (progress * circumference);
-      progressRing.style.strokeDashoffset = offset;
+      const progress = (audio.currentTime / audio.duration) * 100;
+      progressFill.style.width = progress + '%';
       currentTimeEl.textContent = formatTime(audio.currentTime);
     });
     
     audio.addEventListener('ended', nextTrack);
     
-    // Initialize progress ring
-    progressRing.style.strokeDasharray = `${circumference} ${circumference}`;
-    progressRing.style.strokeDashoffset = circumference;
+    // Progress bar click to seek
+    progressBar.addEventListener('click', (e) => {
+      const rect = progressBar.getBoundingClientRect();
+      const percent = (e.clientX - rect.left) / rect.width;
+      audio.currentTime = percent * audio.duration;
+    });
     
     // Volume control
     volumeSlider.addEventListener('input', (e) => {
       const volume = e.target.value / 100;
       audio.volume = volume;
-      volumeValue.textContent = e.target.value;
       updateVolumeIcon(volume);
-    });
-    
-    // Minimize/Maximize toggle
-    minimizeBtn.addEventListener('click', () => {
-      floatingPlayer.classList.toggle('minimized');
-      minimizeBtn.textContent = floatingPlayer.classList.contains('minimized') ? '+' : '−';
-    });
-    
-    // Draggable floating player
-    let isDragging = false;
-    let currentX, currentY, initialX, initialY;
-    
-    floatingPlayer.addEventListener('mousedown', (e) => {
-      if (e.target.closest('.player-btn') || e.target.closest('.player-volume-slider') || e.target === minimizeBtn) return;
-      isDragging = true;
-      floatingPlayer.classList.add('dragging');
-      initialX = e.clientX - floatingPlayer.offsetLeft;
-      initialY = e.clientY - floatingPlayer.offsetTop;
-    });
-    
-    document.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      e.preventDefault();
-      currentX = e.clientX - initialX;
-      currentY = e.clientY - initialY;
-      floatingPlayer.style.left = currentX + 'px';
-      floatingPlayer.style.top = currentY + 'px';
-      floatingPlayer.style.right = 'auto';
-      floatingPlayer.style.bottom = 'auto';
-    });
-    
-    document.addEventListener('mouseup', () => {
-      if (isDragging) {
-        isDragging = false;
-        floatingPlayer.classList.remove('dragging');
-      }
     });
     
     // Volume icon click to mute/unmute
@@ -1195,12 +1102,10 @@
         previousVolume = audio.volume;
         audio.volume = 0;
         volumeSlider.value = 0;
-        volumeValue.textContent = '0';
         updateVolumeIcon(0);
       } else {
         audio.volume = previousVolume;
         volumeSlider.value = previousVolume * 100;
-        volumeValue.textContent = Math.round(previousVolume * 100);
         updateVolumeIcon(previousVolume);
       }
     });
