@@ -1,0 +1,185 @@
+{
+  "en": {
+    "back": "Back to Projects",
+    "hero": {
+      "subtitle": "MUSIC COMPOSITION",
+      "description": "Complete musical composition for 3D animation project."
+    },
+    "tags": {
+      "role": "Replacement Composer",
+      "style": "Disco-inspired",
+      "location": "Ghent, Belgium",
+      "type": "Animation Score"
+    },
+    "showcase": {
+      "title": "Project Showcase",
+      "description": "When the original composer from Ghent couldn't deliver, I stepped in to create the entire soundtrack from scratch. The result is a funky disco-inspired score that brings the animation to life with catchy melodies and vibrant energy.",
+      "list1": "Complete original score composition",
+      "list2": "Disco-inspired musical themes",
+      "list3": "Character-driven harmonic progression",
+      "list4": "Professional mixing and mastering"
+    },
+    "details": {
+      "title": "Project Details",
+      "duration": "Duration",
+      "original": "Original",
+      "style": "Style",
+      "year": "Year"
+    },
+    "music": {
+      "title": "Music Composition",
+      "description": "Built on classic disco sounds - funky bass lines, groovy drums, and shimmering synths. Everything was composed to match the animation's vibe while keeping that authentic retro feel.",
+      "list1": "Funky bass lines and groovy drums",
+      "list2": "Shimmering retro synths",
+      "list3": "Layered string arrangements",
+      "list4": "Catchy melodic hooks",
+      "list5": "Authentic disco vibe"
+    },
+    "technical": {
+      "title": "Technical Approach",
+      "description": "Mixed and mastered to sound big and cinematic. Every instrument has its space in the mix, creating that warm, punchy disco sound that works perfectly with the visuals.",
+      "list1": "Clear instrument separation",
+      "list2": "Warm, punchy disco sound",
+      "list3": "Cinematic depth and space",
+      "list4": "Dynamic range optimization",
+      "list5": "Professional mastering"
+    },
+    "creative": {
+      "title": "Creative Process",
+      "description": "Took over when the Ghent-based composer dropped out. Working closely with the director, I composed everything from scratch, making sure the music hit all the right beats and emotions.",
+      "list1": "Took over from Ghent composer",
+      "list2": "Close collaboration with director",
+      "list3": "Composed everything from scratch",
+      "list4": "Multiple revisions for perfect timing",
+      "list5": "Delivered on time for festival"
+    },
+    "gallery": {
+      "title": "Visual Gallery"
+    },
+    "button": {
+      "projects": "All Projects"
+    }
+  },
+  "pl": {
+    "back": "Powrót do projektów",
+    "hero": {
+      "subtitle": "KOMPOZYCJA MUZYCZNA",
+      "description": "Kompletna kompozycja muzyczna do projektu animacji 3D."
+    },
+    "tags": {
+      "role": "Zastępczy Kompozytor",
+      "style": "Inspirowane disco",
+      "location": "Gandawa, Belgia",
+      "type": "Muzyka do Animacji"
+    },
+    "showcase": {
+      "title": "Prezentacja Projektu",
+      "description": "Kiedy oryginalny kompozytor z Gandawy nie mógł dostarczyć muzyki, przejąłem projekt i stworzyłem całą ścieżkę od zera. Wyszło funky disco, które ożywia animację chwytliwymi melodiami i pełną energii.",
+      "list1": "Kompletna oryginalna kompozycja",
+      "list2": "Motywy muzyczne inspirowane disco",
+      "list3": "Progresje harmoniczne oparte na emocjach",
+      "list4": "Profesjonalne miksy i mastering"
+    },
+    "details": {
+      "title": "Szczegóły Projektu",
+      "duration": "Czas trwania",
+      "original": "Oryginalna",
+      "style": "Styl",
+      "year": "Rok"
+    },
+    "music": {
+      "title": "Kompozycja Muzyczna",
+      "description": "Oparte na klasycznych brzmieniach disco - funky linie basu, groovy perkusja i migoczące synthy. Wszystko skomponowane tak, żeby pasowało do klimatu animacji przy zachowaniu autentycznego retro klimatu.",
+      "list1": "Funky linie basu i groovy perkusja",
+      "list2": "Migoczące retro syntezatory",
+      "list3": "Warstwowe aranżacje smyczkowe",
+      "list4": "Chwytliwe melodyjne hooki",
+      "list5": "Autentyczny klimat disco"
+    },
+    "technical": {
+      "title": "Podejście Techniczne",
+      "description": "Miksy i mastering zrobione tak, żeby brzmiało duże i filmowo. Każdy instrument ma swoje miejsce w miksie, tworząc to ciepłe, uderzające brzmienie disco, które idealnie współgra z obrazem.",
+      "list1": "Czyste rozdzielenie instrumentów",
+      "list2": "Ciepłe, uderzające brzmienie disco",
+      "list3": "Kinematograficzna głębia i przestrzeń",
+      "list4": "Optymalizacja dynamiki",
+      "list5": "Profesjonalny mastering"
+    },
+    "creative": {
+      "title": "Proces Kreatywny",
+      "description": "Przejąłem projekt gdy kompozytor z Gandawy wypadł. W ścisłej współpracy z reżyserem skomponowałem wszystko od podstaw, dbając żeby muzyka trafiała we wszystkie właściwe momenty i emocje.",
+      "list1": "Przejęcie po kompozytorze z Gandawy",
+      "list2": "Bliska współpraca z reżyserem",
+      "list3": "Skomponowane wszystko od zera",
+      "list4": "Wiele rewizji dla idealnego timingu",
+      "list5": "Dostarczone na czas na festiwal"
+    },
+    "gallery": {
+      "title": "Galeria Wizualna"
+    },
+    "button": {
+      "projects": "Wszystkie Projekty"
+    }
+  },
+  "nl": {
+    "back": "Terug naar Projecten",
+    "hero": {
+      "subtitle": "MUZIEKCOMPOSITIE",
+      "description": "Volledige muziekcompositie voor 3D-animatieproject."
+    },
+    "tags": {
+      "role": "Vervangende Componist",
+      "style": "Disco-geïnspireerd",
+      "location": "Gent, België",
+      "type": "Animatiemuziek"
+    },
+    "showcase": {
+      "title": "Projectpresentatie",
+      "description": "Toen de originele componist uit Gent niet kon leveren, nam ik het over en maakte de hele soundtrack vanaf nul. Het resultaat is een funky disco-score die de animatie tot leven brengt met catchy melodieën en levendige energie.",
+      "list1": "Volledige originele scorecompositie",
+      "list2": "Disco-geïnspireerde muzikale thema's",
+      "list3": "Karaktergedreven harmonische progressie",
+      "list4": "Professioneel mixen en masteren"
+    },
+    "details": {
+      "title": "Projectdetails",
+      "duration": "Duur",
+      "original": "Origineel",
+      "style": "Stijl",
+      "year": "Jaar"
+    },
+    "music": {
+      "title": "Muziekcompositie",
+      "description": "Gebouwd op klassieke disco-klanken - funky baslijnen, groovy drums en glinsterende synths. Alles gecomponeerd om bij de vibe van de animatie te passen, met behoud van dat authentieke retro-gevoel.",
+      "list1": "Funky baslijnen en groovy drums",
+      "list2": "Glinsterende retro synths",
+      "list3": "Gelaagde strijkarrangementen",
+      "list4": "Pakkende melodische hooks",
+      "list5": "Authentieke disco-sfeer"
+    },
+    "technical": {
+      "title": "Technische Aanpak",
+      "description": "Gemixt en gemastered om groot en cinematografisch te klinken. Elk instrument heeft zijn plek in de mix, wat dat warme, punchy disco-geluid creëert dat perfect werkt met de beelden.",
+      "list1": "Heldere instrumentscheiding",
+      "list2": "Warm, punchy disco-geluid",
+      "list3": "Cinematografische diepte en ruimte",
+      "list4": "Dynamische bereikoptimalisatie",
+      "list5": "Professionele mastering"
+    },
+    "creative": {
+      "title": "Creatief Proces",
+      "description": "Nam het over toen de Gentse componist uitviel. In nauwe samenwerking met de regisseur componeerde ik alles vanaf nul, ervoor zorgend dat de muziek alle juiste beats en emoties raakte.",
+      "list1": "Overgenomen van Gentse componist",
+      "list2": "Nauwe samenwerking met regisseur",
+      "list3": "Alles vanaf nul gecomponeerd",
+      "list4": "Meerdere revisies voor perfecte timing",
+      "list5": "Op tijd geleverd voor festival"
+    },
+    "gallery": {
+      "title": "Visuele Galerij"
+    },
+    "button": {
+      "projects": "Alle Projecten"
+    }
+  }
+}
