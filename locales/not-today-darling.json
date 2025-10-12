@@ -11,7 +11,12 @@
       "modes": "Modes: Local multiplayer (1–4)"
     },
     "video": {
-      "title": "🎬 Watch the Madness Unfold"
+      "title": "🎬 Watch the Madness Unfold",
+      "description": "Race against time. Outsmart your grannies. Win big! This chaotic multiplayer game combines fast-paced action with strategic thinking."
+    },
+    "walkthrough": {
+      "title": "🎮 Single Player Walkthrough",
+      "desc": "Watch the complete single player gameplay walkthrough. This video showcases complete gameplay and all game mechanics."
     },
     "role": {
       "title": "Role — Audio",
@@ -25,6 +30,7 @@
     },
     "implementation": {
       "title": "Implementation",
+      "desc": "All audio was integrated in Unreal Engine with attention to performance and system flexibility.",
       "li1": "Parameters/states for cooldowns and bursts",
       "li2": "Efficient asset organization, consistent volume levels",
       "li3": "Quick iterations with gameplay team"
@@ -84,7 +90,12 @@
       "modes": "Tryby: Lokalny multiplayer (1–4)"
     },
     "video": {
-      "title": "🎬 Obejrzyj trailer"
+      "title": "🎬 Obejrzyj trailer",
+      "description": "Wyścig z czasem. Przechytrz babcie. Wygraj wszystko! Ta chaotyczna gra wieloosobowa łączy szybką akcję z przemyślaną strategią."
+    },
+    "walkthrough": {
+      "title": "🎮 Single Player Walkthrough",
+      "desc": "Zobacz pełne przejście gry w trybie single player. Ten materiał pokazuje kompletną rozgrywkę oraz wszystkie mechaniki gameplayu."
     },
     "role": {
       "title": "Rola — Audio",
@@ -98,6 +109,7 @@
     },
     "implementation": {
       "title": "Implementacja",
+      "desc": "Całość audio została zintegrowana w Unreal Engine z dbałością o wydajność i elastyczność systemu.",
       "li1": "Parametry/stany dla cooldownów i burstów",
       "li2": "Oszczędna organizacja assetów, spójne poziomy głośności",
       "li3": "Szybkie iteracje z zespołem gameplay"
@@ -157,7 +169,12 @@
       "modes": "Modi: Lokale multiplayer (1–4)"
     },
     "video": {
-      "title": "🎬 Bekijk de waanzin"
+      "title": "🎬 Bekijk de waanzin",
+      "description": "Ren tegen de tijd. Slim af je oma's. Win groot! Deze chaotische multiplayer game combineert snelle actie met strategisch denken."
+    },
+    "walkthrough": {
+      "title": "🎮 Single Player Walkthrough",
+      "desc": "Bekijk de volledige single player gameplay walkthrough. Deze video toont volledige gameplay en alle game mechanics."
     },
     "role": {
       "title": "Rol — Audio",
@@ -171,6 +188,7 @@
     },
     "implementation": {
       "title": "Implementatie",
+      "desc": "Alle audio werd geïntegreerd in Unreal Engine met aandacht voor prestaties en systeemflexibiliteit.",
       "li1": "Parameters/staten voor cooldowns en bursts",
       "li2": "Efficiënte asset-organisatie, consistente volumeniveaus",
       "li3": "Snelle iteraties met gameplay team"
