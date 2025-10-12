@@ -1,0 +1,230 @@
+{
+  "en": {
+    "back": "← Back to Projects",
+    "hero": {
+      "badge": "🎵 Audio Plugin",
+      "brandMain": "AUDIO<span style=\"color: #ff6ea9;\">Q</span>",
+      "brandTagline": "Advanced Audio Sampler",
+      "subtitle": "JUCE-based audio sampler with granular synthesis, tremolo effects, and professional DSP processing. Perfect for music producers and sound designers.",
+      "downloadPlugin": "Download Plugin",
+      "viewGithub": "View on GitHub"
+    },
+    "stats": {
+      "value1": "10+",
+      "label1": "DSP Effects",
+      "value2": "Real-time",
+      "label2": "Processing",
+      "value3": "VST/AU",
+      "label3": "Format Support",
+      "value4": "Free",
+      "label4": "Open Source"
+    },
+    "features": {
+      "badge": "Key Features",
+      "title": "Professional Audio Processing",
+      "subtitle": "Everything you need for creative sound manipulation",
+      "f1": {
+        "title": "Drag & Drop Loading",
+        "desc": "Seamlessly load audio files (WAV, AIFF, MP3) with intuitive drag-and-drop interface. Instant waveform visualization and playback control."
+      },
+      "f2": {
+        "title": "Granular Synthesis",
+        "desc": "Advanced granular synthesis mode for textural manipulation. Control grain size, random playback, and crossfade transitions for unique sound design."
+      },
+      "f3": {
+        "title": "Custom Tremolo Effect",
+        "desc": "Manual DSP implementation with LFO calculation and per-sample amplitude modulation. Full control over rate and depth parameters."
+      },
+      "f4": {
+        "title": "Filter System",
+        "desc": "High/Low-pass filtering with real-time parameter control. Frequency range from 20Hz to 20kHz for precise tonal shaping."
+      },
+      "f5": {
+        "title": "Built-in Compressor",
+        "desc": "Professional compressor with full parameter automation. Control threshold, ratio, attack, and release for dynamic range management."
+      },
+      "f6": {
+        "title": "Advanced Looping",
+        "desc": "User-defined loop regions with tempo adjustment (20-300 BPM). Perfect for creating rhythmic patterns and sustained textures."
+      },
+      "f7": {
+        "title": "Dual Waveform Display",
+        "desc": "Offline and real-time waveform visualization. Monitor your audio processing with professional-grade visual feedback."
+      },
+      "f8": {
+        "title": "Volume Safety System",
+        "desc": "Built-in peak protection with automatic detection. Prevents audio damage with smart volume monitoring and safety alerts."
+      },
+      "f9": {
+        "title": "Full Automation",
+        "desc": "AudioProcessorValueTreeState for complete parameter automation. All controls can be automated in your DAW for dynamic performances."
+      }
+    },
+    "demo": {
+      "badge": "Demo",
+      "title": "See AudioQ in Action"
+    },
+    "tech": {
+      "badge": "Technology",
+      "title": "Built With Industry Standards"
+    },
+    "cta": {
+      "title": "Ready to Create Amazing Sounds?",
+      "subtitle": "Download AudioQ now and explore professional audio sampling and granular synthesis.",
+      "download": "Download Latest Release",
+      "source": "View Source Code"
+    }
+  },
+  "pl": {
+    "back": "← Powrót do Projektów",
+    "hero": {
+      "badge": "🎵 Plugin Audio",
+      "brandMain": "AUDIO<span style=\"color: #ff6ea9;\">Q</span>",
+      "brandTagline": "Zaawansowany Sampler Audio",
+      "subtitle": "Sampler audio oparty na JUCE z syntezą granularną, efektami tremolo i profesjonalnym przetwarzaniem DSP. Idealny dla producentów muzycznych i sound designerów.",
+      "downloadPlugin": "Pobierz Plugin",
+      "viewGithub": "Zobacz na GitHub"
+    },
+    "stats": {
+      "value1": "10+",
+      "label1": "Efektów DSP",
+      "value2": "W czasie rzeczywistym",
+      "label2": "Przetwarzanie",
+      "value3": "VST/AU",
+      "label3": "Obsługa Formatów",
+      "value4": "Darmowy",
+      "label4": "Open Source"
+    },
+    "features": {
+      "badge": "Kluczowe Funkcje",
+      "title": "Profesjonalne Przetwarzanie Audio",
+      "subtitle": "Wszystko czego potrzebujesz do kreatywnej manipulacji dźwiękiem",
+      "f1": {
+        "title": "Ładowanie Przeciągnij i Upuść",
+        "desc": "Bezproblemowe ładowanie plików audio (WAV, AIFF, MP3) z intuicyjnym interfejsem przeciągnij-upuść. Natychmiastowa wizualizacja przebiegu i kontrola odtwarzania."
+      },
+      "f2": {
+        "title": "Synteza Granularna",
+        "desc": "Zaawansowany tryb syntezy granularnej do manipulacji teksturami. Kontroluj rozmiar ziaren, losowe odtwarzanie i przejścia crossfade dla unikalnego sound designu."
+      },
+      "f3": {
+        "title": "Niestandardowy Efekt Tremolo",
+        "desc": "Manualna implementacja DSP z kalkulacją LFO i modulacją amplitudy dla każdej próbki. Pełna kontrola nad parametrami tempa i głębokości."
+      },
+      "f4": {
+        "title": "System Filtrów",
+        "desc": "Filtrowanie górnoprzepustowe/dolnoprzepustowe z kontrolą parametrów w czasie rzeczywistym. Zakres częstotliwości od 20Hz do 20kHz dla precyzyjnego kształtowania tonalnego."
+      },
+      "f5": {
+        "title": "Wbudowany Kompresor",
+        "desc": "Profesjonalny kompresor z pełną automatyzacją parametrów. Kontroluj próg, współczynnik, atak i zwolnienie dla zarządzania zakresem dynamicznym."
+      },
+      "f6": {
+        "title": "Zaawansowane Zapętlanie",
+        "desc": "Regiony pętli definiowane przez użytkownika z dostosowaniem tempa (20-300 BPM). Idealny do tworzenia wzorów rytmicznych i podtrzymywanych tekstur."
+      },
+      "f7": {
+        "title": "Podwójny Wyświetlacz Przebiegu",
+        "desc": "Wizualizacja przebiegu offline i w czasie rzeczywistym. Monitoruj przetwarzanie audio z profesjonalną wizualną informacją zwrotną."
+      },
+      "f8": {
+        "title": "System Bezpieczeństwa Głośności",
+        "desc": "Wbudowana ochrona przed szczytami z automatyczną detekcją. Zapobiega uszkodzeniu audio dzięki inteligentnemu monitorowaniu głośności i alertom bezpieczeństwa."
+      },
+      "f9": {
+        "title": "Pełna Automatyzacja",
+        "desc": "AudioProcessorValueTreeState dla kompletnej automatyzacji parametrów. Wszystkie kontrolki mogą być automatyzowane w DAW dla dynamicznych występów."
+      }
+    },
+    "demo": {
+      "badge": "Demo",
+      "title": "Zobacz AudioQ w Akcji"
+    },
+    "tech": {
+      "badge": "Technologia",
+      "title": "Zbudowany ze Standardami Branżowymi"
+    },
+    "cta": {
+      "title": "Gotowy Stworzyć Niesamowite Dźwięki?",
+      "subtitle": "Pobierz AudioQ teraz i odkryj profesjonalny sampling audio oraz syntezę granularną.",
+      "download": "Pobierz Najnowsze Wydanie",
+      "source": "Zobacz Kod Źródłowy"
+    }
+  },
+  "nl": {
+    "back": "← Terug naar Projecten",
+    "hero": {
+      "badge": "🎵 Audio Plugin",
+      "brandMain": "AUDIO<span style=\"color: #ff6ea9;\">Q</span>",
+      "brandTagline": "Geavanceerde Audio Sampler",
+      "subtitle": "JUCE-gebaseerde audio sampler met granulaire synthese, tremolo-effecten en professionele DSP-verwerking. Perfect voor muziekproducers en sound designers.",
+      "downloadPlugin": "Download Plugin",
+      "viewGithub": "Bekijk op GitHub"
+    },
+    "stats": {
+      "value1": "10+",
+      "label1": "DSP Effecten",
+      "value2": "Real-time",
+      "label2": "Verwerking",
+      "value3": "VST/AU",
+      "label3": "Formaat Ondersteuning",
+      "value4": "Gratis",
+      "label4": "Open Source"
+    },
+    "features": {
+      "badge": "Belangrijkste Functies",
+      "title": "Professionele Audioverwerking",
+      "subtitle": "Alles wat je nodig hebt voor creatieve geluidmanipulatie",
+      "f1": {
+        "title": "Drag & Drop Laden",
+        "desc": "Naadloos audiobestanden laden (WAV, AIFF, MP3) met intuïtieve drag-and-drop interface. Direct golfvormvisualisatie en afspeelbediening."
+      },
+      "f2": {
+        "title": "Granulaire Synthese",
+        "desc": "Geavanceerde granulaire synthesemodus voor textuurmanipulatie. Beheer korrelgrootte, willekeurige afspelen en crossfade-overgangen voor uniek geluidsontwerp."
+      },
+      "f3": {
+        "title": "Aangepast Tremolo Effect",
+        "desc": "Handmatige DSP-implementatie met LFO-berekening en per-sample amplitudemodulatie. Volledige controle over snelheid- en diepteparameters."
+      },
+      "f4": {
+        "title": "Filtersysteem",
+        "desc": "Hoog/laag-doorlaatfiltering met real-time parametercontrole. Frequentiebereik van 20Hz tot 20kHz voor nauwkeurige tonale vorming."
+      },
+      "f5": {
+        "title": "Ingebouwde Compressor",
+        "desc": "Professionele compressor met volledige parameterautomatisering. Beheer drempel, ratio, attack en release voor dynamisch bereidsbeheer."
+      },
+      "f6": {
+        "title": "Geavanceerd Loopen",
+        "desc": "Door gebruiker gedefinieerde loop-regio's met tempo-aanpassing (20-300 BPM). Perfect voor het creëren van ritmische patronen en aanhoudende texturen."
+      },
+      "f7": {
+        "title": "Dubbele Golfvormweergave",
+        "desc": "Offline en real-time golfvormvisualisatie. Monitor je audioverwerking met professionele visuele feedback."
+      },
+      "f8": {
+        "title": "Volume Veiligheidssysteem",
+        "desc": "Ingebouwde piekbescherming met automatische detectie. Voorkomt audiobeschadiging met slimme volumemonitoring en veiligheidswaarschuwingen."
+      },
+      "f9": {
+        "title": "Volledige Automatisering",
+        "desc": "AudioProcessorValueTreeState voor complete parameterautomatisering. Alle bedieningselementen kunnen worden geautomatiseerd in je DAW voor dynamische uitvoeringen."
+      }
+    },
+    "demo": {
+      "badge": "Demo",
+      "title": "Zie AudioQ in Actie"
+    },
+    "tech": {
+      "badge": "Technologie",
+      "title": "Gebouwd met Industriestandaarden"
+    },
+    "cta": {
+      "title": "Klaar om Geweldige Geluiden te Creëren?",
+      "subtitle": "Download AudioQ nu en verken professionele audio sampling en granulaire synthese.",
+      "download": "Download Laatste Release",
+      "source": "Bekijk Broncode"
+    }
+  }
+}
