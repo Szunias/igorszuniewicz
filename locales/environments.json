@@ -1,0 +1,29 @@
+{
+  "en": {
+    "back": "← Back to Projects",
+    "title": "3D Environments",
+    "subtitle": "Professional interior design, architectural modeling, and realistic material creation using Blender 3D.",
+    "video": {
+      "badge": "Video Showcase",
+      "title": "See the Environment in Motion"
+    }
+  },
+  "pl": {
+    "back": "← Powrót do projektów",
+    "title": "Środowiska 3D",
+    "subtitle": "Profesjonalny design wnętrz, modelowanie architektoniczne i tworzenie realistycznych materiałów w Blender 3D.",
+    "video": {
+      "badge": "Prezentacja Wideo",
+      "title": "Zobacz Środowisko w Ruchu"
+    }
+  },
+  "nl": {
+    "back": "← Terug naar Projecten",
+    "title": "3D Omgevingen",
+    "subtitle": "Professioneel interieurontwerp, architectonische modellering en realistische materiaalontwikkeling met Blender 3D.",
+    "video": {
+      "badge": "Video Showcase",
+      "title": "Zie de Omgeving in Beweging"
+    }
+  }
+}

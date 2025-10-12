@@ -742,31 +742,24 @@
   
   <!-- Language Switcher Script -->
   <script>
-    const translations = {
-      en: {
-        back: '← Back to Projects',
-        title: '3D Environments',
-        subtitle: 'Professional interior design, architectural modeling, and realistic material creation using Blender 3D.',
-        'video.badge': 'Video Showcase',
-        'video.title': 'See the Environment in Motion'
-      },
-      pl: {
-        back: '← Powrót do projektów',
-        title: 'Środowiska 3D',
-        subtitle: 'Profesjonalny design wnętrz, modelowanie architektoniczne i tworzenie realistycznych materiałów w Blender 3D.',
-        'video.badge': 'Prezentacja Wideo',
-        'video.title': 'Zobacz Środowisko w Ruchu'
-      },
-      nl: {
-        back: '← Terug naar Projecten',
-        title: '3D Omgevingen',
-        subtitle: 'Professioneel interieurontwerp, architectonische modellering en realistische materiaalontwikkeling met Blender 3D.',
-        'video.badge': 'Video Showcase',
-        'video.title': 'Zie de Omgeving in Beweging'
+    let translations = {};
+    
+    // Load translations from JSON file
+    async function loadTranslations() {
+      try {
+        const response = await fetch('../locales/environments.json');
+        translations = await response.json();
+      } catch (error) {
+        console.error('Error loading translations:', error);
       }
-    };
+    }
     
     let currentLang = localStorage.getItem('language') || 'en';
+    
+    // Get nested value from object using dot notation
+    function getNestedValue(obj, path) {
+      return path.split('.').reduce((current, key) => current?.[key], obj);
+    }
     
     function setLanguage(lang) {
       currentLang = lang;
@@ -775,8 +768,9 @@
       // Update all translatable elements
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-          el.textContent = translations[lang][key];
+        const translation = getNestedValue(translations[lang], key);
+        if (translation) {
+          el.textContent = translation;
         }
       });
       
@@ -787,7 +781,8 @@
     }
     
     // Initialize language on load
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadTranslations();
       setLanguage(currentLang);
       
       // Add click handlers
