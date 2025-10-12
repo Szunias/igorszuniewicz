@@ -1,0 +1,167 @@
+{
+  "en": {
+    "back": "← Back to Projects",
+    "title": "Middleware 2",
+    "subtitle": "Complete Wwise audio implementation for game level, mimicking real-world production workflow with spatial audio, dynamic mixing, and Game Syncs integration.",
+    "overview": {
+      "badge": "Project Overview",
+      "title": "Real-World Audio Implementation",
+      "text": "The goal of this exam assignment was to mimic a real-world implementation scenario. I was provided with a working game build that included a Menu and the First Level, with all events and game parameter changes already implemented. My task was to implement all audio needed to create a fully finished gameplay experience, demonstrating professional Wwise workflow and best practices."
+    },
+    "objectives": {
+      "badge": "Implementation Goals",
+      "title": "Project Objectives"
+    },
+    "obj1": {
+      "title": "Clean Project Structure",
+      "item1": "Follow best practices for Wwise project structure",
+      "item2": "Optimize memory and CPU usage",
+      "item3": "Maintain organized asset hierarchy"
+    },
+    "obj2": {
+      "title": "Technical Implementation",
+      "item1": "Implement all provided events",
+      "item2": "Setup correct spatialization for in-world sounds",
+      "item3": "Configure orientation and attenuation settings",
+      "item4": "Apply reverb using provided Game Syncs"
+    },
+    "obj3": {
+      "title": "Audio Design Quality",
+      "item1": "Create a cohesive sound palette",
+      "item2": "Ensure correctness and loop sounds where needed",
+      "item3": "Avoid sync issues and cut-off sounds",
+      "item4": "Prevent repetitive sounds through variation"
+    },
+    "features": {
+      "badge": "Implementation Features",
+      "title": "Key Technical Features"
+    },
+    "feat1": {
+      "title": "Spatial Audio",
+      "desc": "3D spatialization with proper attenuation curves and orientation settings for immersive audio positioning throughout the game world."
+    },
+    "feat2": {
+      "title": "Dynamic Mix",
+      "desc": "Cohesive mix that adapts to gameplay, ensuring clarity and balance across all audio elements for optimal player experience."
+    },
+    "feat3": {
+      "title": "Game Syncs Integration",
+      "desc": "Integration of Game Syncs for reverb zones and parameter-driven audio changes, creating responsive and contextual soundscapes."
+    },
+    "technical": {
+      "badge": "Technical Approach",
+      "title": "Professional Implementation",
+      "text": "This project demonstrates professional Wwise implementation skills including event management, Game Sync integration, 3D audio positioning, and mix optimization. The implementation follows industry best practices for memory management and CPU efficiency. All audio assets were carefully selected and processed to create a cohesive sound palette that enhances gameplay while maintaining technical performance standards required for real-time game audio."
+    }
+  },
+  "pl": {
+    "back": "← Powrót do projektów",
+    "title": "Middleware 2",
+    "subtitle": "Kompletna implementacja audio Wwise dla poziomu gry, naśladująca rzeczywisty workflow produkcyjny z audio przestrzennym, dynamicznym miksowaniem i integracją Game Syncs.",
+    "overview": {
+      "badge": "Przegląd Projektu",
+      "title": "Implementacja Audio w Praktyce",
+      "text": "Celem tego egzaminacyjnego zadania było naśladowanie rzeczywistego scenariusza implementacji. Otrzymałem działającą kompilację gry zawierającą Menu i Pierwszy Poziom, ze wszystkimi eventami i zmianami parametrów gry już zaimplementowanymi. Moim zadaniem było zaimplementowanie całego audio potrzebnego do stworzenia w pełni ukończonego doświadczenia rozgrywki, demonstrując profesjonalny workflow Wwise i najlepsze praktyki."
+    },
+    "objectives": {
+      "badge": "Cele Implementacji",
+      "title": "Cele Projektu"
+    },
+    "obj1": {
+      "title": "Czysta Struktura Projektu",
+      "item1": "Przestrzeganie najlepszych praktyk struktury projektu Wwise",
+      "item2": "Optymalizacja wykorzystania pamięci i CPU",
+      "item3": "Utrzymanie zorganizowanej hierarchii zasobów"
+    },
+    "obj2": {
+      "title": "Implementacja Techniczna",
+      "item1": "Implementacja wszystkich dostarczonych eventów",
+      "item2": "Konfiguracja poprawnej spacjalizacji dla dźwięków w świecie gry",
+      "item3": "Konfiguracja orientacji i ustawień atenuacji",
+      "item4": "Zastosowanie reverbu z użyciem dostarczonych Game Syncs"
+    },
+    "obj3": {
+      "title": "Jakość Audio Design",
+      "item1": "Stworzenie spójnej palety dźwiękowej",
+      "item2": "Zapewnienie poprawności i zapętlenia dźwięków tam gdzie potrzeba",
+      "item3": "Unikanie problemów z synchronizacją i obcinaniem dźwięków",
+      "item4": "Zapobieganie powtarzalnym dźwiękom poprzez wariacje"
+    },
+    "features": {
+      "badge": "Cechy Implementacji",
+      "title": "Kluczowe Cechy Techniczne"
+    },
+    "feat1": {
+      "title": "Audio Przestrzenne",
+      "desc": "Spacjalizacja 3D z odpowiednimi krzywymi atenuacji i ustawieniami orientacji dla immersyjnego pozycjonowania audio w świecie gry."
+    },
+    "feat2": {
+      "title": "Dynamiczny Miks",
+      "desc": "Spójny miks adaptujący się do rozgrywki, zapewniający przejrzystość i balans wszystkich elementów audio dla optymalnego doświadczenia gracza."
+    },
+    "feat3": {
+      "title": "Integracja Game Syncs",
+      "desc": "Integracja Game Syncs dla stref reverbu i zmian audio opartych na parametrach, tworząc responsywne i kontekstowe krajobrazy dźwiękowe."
+    },
+    "technical": {
+      "badge": "Podejście Techniczne",
+      "title": "Profesjonalna Implementacja",
+      "text": "Ten projekt demonstruje profesjonalne umiejętności implementacji Wwise, włączając zarządzanie eventami, integrację Game Sync, pozycjonowanie audio 3D i optymalizację miksu. Implementacja przestrzega najlepszych praktyk branżowych dla zarządzania pamięcią i efektywności CPU. Wszystkie zasoby audio zostały starannie wybrane i przetworzone, aby stworzyć spójną paletę dźwiękową, która wzmacnia rozgrywkę przy jednoczesnym zachowaniu standardów wydajności technicznej wymaganych dla audio w czasie rzeczywistym."
+    }
+  },
+  "nl": {
+    "back": "← Terug naar Projecten",
+    "title": "Middleware 2",
+    "subtitle": "Volledige Wwise audio-implementatie voor game level, waarbij real-world productie workflow wordt nagebootst met ruimtelijke audio, dynamische mixing en Game Syncs integratie.",
+    "overview": {
+      "badge": "Projectoverzicht",
+      "title": "Real-World Audio Implementatie",
+      "text": "Het doel van deze examengelegenheid was om een real-world implementatiescenario na te bootsen. Ik kreeg een werkende game build met een Menu en het Eerste Level, met alle events en game parameter veranderingen al geïmplementeerd. Mijn taak was om alle audio te implementeren die nodig was om een volledig afgewerkte gameplay ervaring te creëren, waarbij professionele Wwise workflow en best practices werden gedemonstreerd."
+    },
+    "objectives": {
+      "badge": "Implementatiedoelen",
+      "title": "Projectdoelstellingen"
+    },
+    "obj1": {
+      "title": "Nette Projectstructuur",
+      "item1": "Volg best practices voor Wwise projectstructuur",
+      "item2": "Optimaliseer geheugen- en CPU-gebruik",
+      "item3": "Onderhoud georganiseerde asset hiërarchie"
+    },
+    "obj2": {
+      "title": "Technische Implementatie",
+      "item1": "Implementeer alle geleverde events",
+      "item2": "Stel correcte spatialisatie in voor in-world geluiden",
+      "item3": "Configureer oriëntatie en attenuatie-instellingen",
+      "item4": "Pas reverb toe met behulp van geleverde Game Syncs"
+    },
+    "obj3": {
+      "title": "Audiokwaliteit",
+      "item1": "Creëer een samenhangend geluidspalet",
+      "item2": "Zorg voor correctheid en loop geluiden waar nodig",
+      "item3": "Vermijd sync-problemen en afgesneden geluiden",
+      "item4": "Voorkom repetitieve geluiden door variatie"
+    },
+    "features": {
+      "badge": "Implementatiekenmerken",
+      "title": "Belangrijkste Technische Kenmerken"
+    },
+    "feat1": {
+      "title": "Ruimtelijke Audio",
+      "desc": "3D-spatialisatie met juiste attenuatiecurves en oriëntatie-instellingen voor meeslepende audiopositionering in de gamewereld."
+    },
+    "feat2": {
+      "title": "Dynamische Mix",
+      "desc": "Samenhangende mix die zich aanpast aan gameplay, waarbij helderheid en balans over alle audio-elementen wordt gegarandeerd voor optimale speelervaring."
+    },
+    "feat3": {
+      "title": "Game Syncs Integratie",
+      "desc": "Integratie van Game Syncs voor reverb zones en parameter-gestuurde audioveranderingen, waarbij responsieve en contextuele soundscapes worden gecreëerd."
+    },
+    "technical": {
+      "badge": "Technische Aanpak",
+      "title": "Professionele Implementatie",
+      "text": "Dit project demonstreert professionele Wwise-implementatievaardigheden, waaronder eventbeheer, Game Sync-integratie, 3D-audiopositionering en mixoptimalisatie. De implementatie volgt industriële best practices voor geheugenbeheer en CPU-efficiëntie. Alle audio-assets zijn zorgvuldig geselecteerd en verwerkt om een samenhangend geluidspalet te creëren dat de gameplay verbetert terwijl technische prestatiestandaarden worden gehandhaafd die vereist zijn voor realtime game audio."
+    }
+  }
+}
