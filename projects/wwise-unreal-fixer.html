@@ -31,16 +31,39 @@
     
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1419 100%);
+      background: 
+        radial-gradient(ellipse at top, rgba(255, 140, 0, 0.08) 0%, transparent 50%),
+        linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1419 100%);
       color: #e0e6ed;
       line-height: 1.6;
       overflow-x: hidden;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255, 140, 0, 0.03) 0%, transparent 70%);
+      animation: subtleFloat 20s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    @keyframes subtleFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-10%, -10%) scale(1.1); }
     }
     
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
+      position: relative;
+      z-index: 1;
     }
     
     /* Back button */
@@ -116,11 +139,18 @@
       font-size: clamp(2.5rem, 6vw, 4.5rem);
       font-weight: 700;
       margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #ffffff 0%, #ff8c00 100%);
+      background: linear-gradient(135deg, #ffffff 0%, #ffa500 50%, #ff8c00 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       line-height: 1.2;
+      text-shadow: 0 0 40px rgba(255, 140, 0, 0.3);
+      animation: titleGlow 3s ease-in-out infinite;
+    }
+    
+    @keyframes titleGlow {
+      0%, 100% { filter: drop-shadow(0 0 20px rgba(255, 140, 0, 0.3)); }
+      50% { filter: drop-shadow(0 0 30px rgba(255, 140, 0, 0.5)); }
     }
     
     .hero-subtitle {
@@ -193,19 +223,36 @@
     }
     
     .stat-card {
-      background: rgba(255, 255, 255, 0.03);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 140, 0, 0.02) 100%);
       padding: 2rem;
       border-radius: 16px;
       border: 1px solid rgba(255, 140, 0, 0.2);
       text-align: center;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 140, 0, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .stat-card:hover::before {
+      left: 100%;
     }
     
     .stat-card:hover {
-      background: rgba(255, 140, 0, 0.05);
-      border-color: rgba(255, 140, 0, 0.4);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
+      background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.05) 100%);
+      border-color: rgba(255, 140, 0, 0.5);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(255, 140, 0, 0.3);
     }
     
     .stat-value {
@@ -268,17 +315,36 @@
     }
     
     .feature-card {
-      background: rgba(255, 255, 255, 0.03);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 140, 0, 0.01) 100%);
       padding: 2.5rem;
       border-radius: 16px;
       border: 1px solid rgba(255, 255, 255, 0.06);
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #ff8c00, transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    
+    .feature-card:hover::after {
+      transform: scaleX(1);
     }
     
     .feature-card:hover {
-      background: rgba(255, 140, 0, 0.05);
-      border-color: rgba(255, 140, 0, 0.3);
-      transform: translateY(-5px);
+      background: linear-gradient(135deg, rgba(255, 140, 0, 0.08) 0%, rgba(255, 140, 0, 0.03) 100%);
+      border-color: rgba(255, 140, 0, 0.4);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 35px rgba(255, 140, 0, 0.2);
     }
     
     .feature-icon {
