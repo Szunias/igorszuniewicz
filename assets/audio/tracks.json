@@ -1,5 +1,115 @@
 [
   {
+    "id": "gnosienne1",
+    "title": "Gnosienne No. 1 (Cover by Igor Szuniewicz)",
+    "artist": "Igor Szuniewicz",
+    "cover": "assets/images/covers/GnosienneAlbumCover.png",
+    "tags": [
+      "single",
+      "metal"
+    ],
+    "length": 0,
+    "date": "2025-09-16",
+    "year": 2025,
+    "sources": [
+      {
+        "url": "assets/audio/tracks/gnosienne1.mp3",
+        "type": "audio/mpeg"
+      },
+      {
+        "url": "assets/audio/tracks/gnosienne1.wav",
+        "type": "audio/wav"
+      }
+    ]
+  },
+  {
+    "id": "caplanetechno",
+    "title": "Ça Plane Pour Moi — Techno Remix",
+    "artist": "Igor Szuniewicz",
+    "cover": "assets/images/covers/caplanepourmoi.png",
+    "tags": [
+      "single",
+      "techno",
+      "electronic",
+      "remix"
+    ],
+    "length": 0,
+    "date": "2023-12-15",
+    "year": 2023,
+    "desc": {
+      "pl": "Techno‑remix klasyka 'Ça plane pour moi': szybki beat, sprężysty bas i energetyczne syntezatory.",
+      "en": "Techno remix of the classic 'Ça plane pour moi': fast four‑on‑the‑floor, punchy bass and energetic synths.",
+      "nl": "Techno‑remix van de klassieker 'Ça plane pour moi': snel vier‑op‑de‑vloer, stevige bas en energieke synths."
+    },
+    "sources": [
+      {
+        "url": "assets/audio/tracks/caplanetechno.mp3",
+        "type": "audio/mpeg"
+      },
+      {
+        "url": "assets/audio/tracks/caplanetechno.wav",
+        "type": "audio/wav"
+      }
+    ]
+  },
+  {
+    "id": "obsidian",
+    "title": "Obsidian",
+    "artist": "Igor Szuniewicz",
+    "cover": "assets/images/covers/Tribal.png",
+    "tags": [
+      "techno",
+      "electronic"
+    ],
+    "length": 0,
+    "date": "2023-01-01",
+    "year": 2023,
+    "desc": {
+      "pl": "Hipnotyczny techno z głębokimi basami i rytmicznymi motywami. Ciemne syntezatory tworzą hipnotyczną atmosferę.",
+      "en": "Hypnotic techno with deep bass and rhythmic motifs. Dark synthesizers create a mesmerizing atmosphere.",
+      "nl": "Hypnotische techno met diepe bas en ritmische motieven. Donkere synthesizers creëren een hypnotiserende sfeer."
+    },
+    "sources": [
+      {
+        "url": "assets/audio/tracks/trans2.mp3",
+        "type": "audio/mpeg"
+      },
+      {
+        "url": "assets/audio/tracks/trans2.wav",
+        "type": "audio/wav"
+      }
+    ]
+  },
+  {
+    "id": "thatsit_cover",
+    "title": "That's It — Cover",
+    "artist": "Igor Szuniewicz",
+    "cover": "assets/images/covers/ThatsItCover.png",
+    "tags": [
+      "all",
+      "single",
+      "jazz"
+    ],
+    "length": 0,
+    "date": "2025-09-16",
+    "year": 2025,
+    "desc": {
+      "pl": "Remix utworu 'That's It' zespołu Preservation Hall Jazz Band w stylistyce new jazz — w duchu tego, co zrobiono z 'Cantaloupe Island' tworząc 'Cantaloop'.",
+      "en": "A new‑jazz remix of 'That's It' by Preservation Hall Jazz Band — in the spirit of how 'Cantaloupe Island' became 'Cantaloop'.",
+      "nl": "Een new‑jazz‑remix van 'That's It' van Preservation Hall Jazz Band — in de geest van hoe 'Cantaloupe Island' veranderde in 'Cantaloop'."
+    },
+    "sources": [
+      {
+        "url": "assets/audio/tracks/ThatsItIgorSzuniewicz.mp3",
+        "type": "audio/mpeg"
+      },
+      {
+        "url": "assets/audio/tracks/ThatsItIgorSzuniewicz.wav",
+        "type": "audio/wav"
+      }
+    ]
+  },
+  {
     "id": "ray",
     "title": "Ray Animation — Credits Theme",
     "artist": "Igor Szuniewicz",
@@ -56,34 +166,6 @@
       {
         "url": "assets/audio/tracks/RichterMainTheme.mp3",
         "type": "audio/mpeg"
-      }
-    ]
-  },
-  {
-    "id": "obsidian",
-    "title": "Obsidian",
-    "artist": "Igor Szuniewicz",
-    "cover": "assets/images/covers/Tribal.png",
-    "tags": [
-      "techno",
-      "electronic"
-    ],
-    "length": 0,
-    "date": "2023-01-01",
-    "year": 2023,
-    "desc": {
-      "pl": "Hipnotyczny techno z głębokimi basami i rytmicznymi motywami. Ciemne syntezatory tworzą hipnotyczną atmosferę.",
-      "en": "Hypnotic techno with deep bass and rhythmic motifs. Dark synthesizers create a mesmerizing atmosphere.",
-      "nl": "Hypnotische techno met diepe bas en ritmische motieven. Donkere synthesizers creëren een hypnotiserende sfeer."
-    },
-    "sources": [
-      {
-        "url": "assets/audio/tracks/trans2.mp3",
-        "type": "audio/mpeg"
-      },
-      {
-        "url": "assets/audio/tracks/trans2.wav",
-        "type": "audio/wav"
       }
     ]
   },
@@ -305,58 +387,6 @@
     }
   },
   {
-    "id": "thatsit_cover",
-    "title": "That's It — Cover",
-    "artist": "Igor Szuniewicz",
-    "cover": "assets/images/covers/ThatsItCover.png",
-    "tags": [
-      "all",
-      "single",
-      "jazz"
-    ],
-    "length": 0,
-    "date": "2025-09-16",
-    "year": 2025,
-    "desc": {
-      "pl": "Remix utworu 'That's It' zespołu Preservation Hall Jazz Band w stylistyce new jazz — w duchu tego, co zrobiono z 'Cantaloupe Island' tworząc 'Cantaloop'.",
-      "en": "A new‑jazz remix of 'That's It' by Preservation Hall Jazz Band — in the spirit of how 'Cantaloupe Island' became 'Cantaloop'.",
-      "nl": "Een new‑jazz‑remix van 'That's It' van Preservation Hall Jazz Band — in de geest van hoe 'Cantaloupe Island' veranderde in 'Cantaloop'."
-    },
-    "sources": [
-      {
-        "url": "assets/audio/tracks/ThatsItIgorSzuniewicz.mp3",
-        "type": "audio/mpeg"
-      },
-      {
-        "url": "assets/audio/tracks/ThatsItIgorSzuniewicz.wav",
-        "type": "audio/wav"
-      }
-    ]
-  },
-  {
-    "id": "gnosienne1",
-    "title": "Gnosienne No. 1 (Cover by Igor Szuniewicz)",
-    "artist": "Igor Szuniewicz",
-    "cover": "assets/images/covers/GnosienneAlbumCover.png",
-    "tags": [
-      "single",
-      "metal"
-    ],
-    "length": 0,
-    "date": "2025-09-16",
-    "year": 2025,
-    "sources": [
-      {
-        "url": "assets/audio/tracks/gnosienne1.mp3",
-        "type": "audio/mpeg"
-      },
-      {
-        "url": "assets/audio/tracks/gnosienne1.wav",
-        "type": "audio/wav"
-      }
-    ]
-  },
-  {
     "id": "psy",
     "title": "Psy",
     "artist": "Igor Szuniewicz",
@@ -376,36 +406,6 @@
     "sources": [
       {
         "url": "assets/audio/tracks/psy(2).wav",
-        "type": "audio/wav"
-      }
-    ]
-  },
-  {
-    "id": "caplanetechno",
-    "title": "Ça Plane Pour Moi — Techno Remix",
-    "artist": "Igor Szuniewicz",
-    "cover": "assets/images/covers/caplanepourmoi.png",
-    "tags": [
-      "single",
-      "techno",
-      "electronic",
-      "remix"
-    ],
-    "length": 0,
-    "date": "2023-12-15",
-    "year": 2023,
-    "desc": {
-      "pl": "Techno‑remix klasyka 'Ça plane pour moi': szybki beat, sprężysty bas i energetyczne syntezatory.",
-      "en": "Techno remix of the classic 'Ça plane pour moi': fast four‑on‑the‑floor, punchy bass and energetic synths.",
-      "nl": "Techno‑remix van de klassieker 'Ça plane pour moi': snel vier‑op‑de‑vloer, stevige bas en energieke synths."
-    },
-    "sources": [
-      {
-        "url": "assets/audio/tracks/caplanetechno.mp3",
-        "type": "audio/mpeg"
-      },
-      {
-        "url": "assets/audio/tracks/caplanetechno.wav",
         "type": "audio/wav"
       }
     ]
