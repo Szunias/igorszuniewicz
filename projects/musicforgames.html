@@ -571,15 +571,15 @@
     </button>
   </div>
   
-  <a href="index.html" class="back-button">← Back to Projects</a>
+  <a href="index.html" class="back-button"><span data-i18n="back">← Back to Projects</span></a>
   
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
         <div class="hero-badge">🎵 Interactive Audio</div>
-        <h1>Interactive Music Design</h1>
-        <p class="hero-subtitle">
+        <h1 data-i18n="title">Interactive Music Design</h1>
+        <p class="hero-subtitle" data-i18n="subtitle">
           Music for Games — Three Wwise projects showcasing adaptive audio systems with vertical layering, 
           horizontal re-sequencing, and extensive RTPC control.
         </p>
@@ -819,9 +819,21 @@
   <!-- Language Switcher Script -->
   <script>
     const translations = {
-      en: {},
-      pl: {},
-      nl: {}
+      en: {
+        back: '← Back to Projects',
+        title: 'Interactive Music Design',
+        subtitle: 'Music for Games — Three Wwise projects showcasing adaptive audio systems with vertical layering, horizontal re-sequencing, and extensive RTPC control.'
+      },
+      pl: {
+        back: '← Powrót do projektów',
+        title: 'Interaktywny Design Muzyczny',
+        subtitle: 'Muzyka do Gier — Trzy projekty Wwise prezentujące adaptacyjne systemy audio z warstwowaniem pionowym, przesekwencjonowaniem poziomym i rozbudowaną kontrolą RTPC.'
+      },
+      nl: {
+        back: '← Terug naar Projecten',
+        title: 'Interactief Muziekontwerp',
+        subtitle: 'Muziek voor Games — Drie Wwise-projecten die adaptieve audiosystemen tonen met verticale gelaagdheid, horizontale her-sequencing en uitgebreide RTPC-controle.'
+      }
     };
     
     let currentLang = localStorage.getItem('language') || 'en';

@@ -563,15 +563,15 @@
     </button>
   </div>
   
-  <a href="index.html" class="back-button">← Back to Projects</a>
+  <a href="index.html" class="back-button"><span data-i18n="back">← Back to Projects</span></a>
   
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
         <div class="hero-badge">🎮 Audio Middleware</div>
-        <h1>Middleware 2</h1>
-        <p class="hero-subtitle">
+        <h1 data-i18n="title">Middleware 2</h1>
+        <p class="hero-subtitle" data-i18n="subtitle">
           Complete Wwise audio implementation for game level, mimicking real-world production workflow 
           with spatial audio, dynamic mixing, and Game Syncs integration.
         </p>
@@ -599,8 +599,8 @@
   <section class="overview-section">
     <div class="container">
       <div class="section-header">
-        <div class="section-badge">Project Overview</div>
-        <h2>Real-World Audio Implementation</h2>
+        <div class="section-badge" data-i18n="overview.badge">Project Overview</div>
+        <h2 data-i18n="overview.title">Real-World Audio Implementation</h2>
       </div>
       
       <p class="overview-text">
@@ -726,9 +726,27 @@
   <!-- Language Switcher Script -->
   <script>
     const translations = {
-      en: {},
-      pl: {},
-      nl: {}
+      en: {
+        back: '← Back to Projects',
+        title: 'Middleware 2',
+        subtitle: 'Complete Wwise audio implementation for game level, mimicking real-world production workflow with spatial audio, dynamic mixing, and Game Syncs integration.',
+        'overview.badge': 'Project Overview',
+        'overview.title': 'Real-World Audio Implementation'
+      },
+      pl: {
+        back: '← Powrót do projektów',
+        title: 'Middleware 2',
+        subtitle: 'Kompletna implementacja audio Wwise dla poziomu gry, naśladująca rzeczywisty workflow produkcyjny z audio przestrzennym, dynamicznym miksowaniem i integracją Game Syncs.',
+        'overview.badge': 'Przegląd Projektu',
+        'overview.title': 'Implementacja Audio w Praktyce'
+      },
+      nl: {
+        back: '← Terug naar Projecten',
+        title: 'Middleware 2',
+        subtitle: 'Volledige Wwise audio-implementatie voor game level, waarbij real-world productie workflow wordt nagebootst met ruimtelijke audio, dynamische mixing en Game Syncs integratie.',
+        'overview.badge': 'Projectoverzicht',
+        'overview.title': 'Real-World Audio Implementatie'
+      }
     };
     
     let currentLang = localStorage.getItem('language') || 'en';

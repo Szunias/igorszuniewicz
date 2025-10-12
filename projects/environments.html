@@ -560,15 +560,15 @@
     </button>
   </div>
   
-  <a href="index.html" class="back-button">← Back to Projects</a>
+  <a href="index.html" class="back-button"><span data-i18n="back">← Back to Projects</span></a>
   
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
         <div class="hero-badge">🏛️ 3D Architecture</div>
-        <h1>3D Environments</h1>
-        <p class="hero-subtitle">
+        <h1 data-i18n="title">3D Environments</h1>
+        <p class="hero-subtitle" data-i18n="subtitle">
           Professional interior design, architectural modeling, and realistic material creation using Blender 3D.
         </p>
         
@@ -586,8 +586,8 @@
   <section class="video-section">
     <div class="container">
       <div class="section-header">
-        <div class="section-badge">Video Showcase</div>
-        <h2>See the Environment in Motion</h2>
+        <div class="section-badge" data-i18n="video.badge">Video Showcase</div>
+        <h2 data-i18n="video.title">See the Environment in Motion</h2>
       </div>
       <div class="video-wrapper">
         <iframe 
@@ -743,9 +743,27 @@
   <!-- Language Switcher Script -->
   <script>
     const translations = {
-      en: {},
-      pl: {},
-      nl: {}
+      en: {
+        back: '← Back to Projects',
+        title: '3D Environments',
+        subtitle: 'Professional interior design, architectural modeling, and realistic material creation using Blender 3D.',
+        'video.badge': 'Video Showcase',
+        'video.title': 'See the Environment in Motion'
+      },
+      pl: {
+        back: '← Powrót do projektów',
+        title: 'Środowiska 3D',
+        subtitle: 'Profesjonalny design wnętrz, modelowanie architektoniczne i tworzenie realistycznych materiałów w Blender 3D.',
+        'video.badge': 'Prezentacja Wideo',
+        'video.title': 'Zobacz Środowisko w Ruchu'
+      },
+      nl: {
+        back: '← Terug naar Projecten',
+        title: '3D Omgevingen',
+        subtitle: 'Professioneel interieurontwerp, architectonische modellering en realistische materiaalontwikkeling met Blender 3D.',
+        'video.badge': 'Video Showcase',
+        'video.title': 'Zie de Omgeving in Beweging'
+      }
     };
     
     let currentLang = localStorage.getItem('language') || 'en';
