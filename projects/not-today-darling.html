@@ -943,162 +943,48 @@
   
   <!-- Translation Data -->
   <script>
-    const translations = {
-      en: {
-        back: 'Back to Projects',
-        tagline: '🏁 Race Against Time. Outsmart Your Grannies. Win Big!',
-        subtitle: 'A chaotic multiplayer side-scroller where strategy meets speed',
-        'meta.school': 'Digital Arts and Entertainment',
-        'meta.released': 'Released: May 25, 2025',
-        'meta.platforms': 'Platforms: Windows, Linux',
-        'meta.engine': 'Engine: Unreal Engine',
-        'meta.modes': 'Modes: Local multiplayer (1–4)',
-        'video.title': '🎬 Watch the Madness Unfold',
-        'role.title': 'Role — Audio',
-        'role.desc': 'Responsible for sound effects, implementation and mixing: gameplay SFX palette, UI, crowd/ambience layers and integration and in-engine mix for clarity during fast-paced action. System reacts to race states and player events.',
-        'gameplay.title': 'Gameplay Highlights',
-        'gameplay.li1': 'Responsive SFX tied to player actions and obstacles',
-        'gameplay.li2': 'Mix hierarchy optimized for clarity (1–4 players)',
-        'gameplay.li3': 'Non-intrusive dynamic layers during intense moments',
-        'implementation.title': 'Implementation',
-        'implementation.li1': 'Parameters/states for cooldowns and bursts',
-        'implementation.li2': 'Efficient asset organization, consistent volume levels',
-        'implementation.li3': 'Quick iterations with gameplay team',
-        'collaboration.title': 'Team Collaboration',
-        'collaboration.desc': 'My team are wonderful people! We worked so well together that we decided to add an extra element to the game — we recorded original voicelines for the granny characters. Each granny has her own unique character and voice, which adds charm and humor to the gameplay.',
-        'voicelines.title': 'Granny Voicelines',
-        'voicelines.desc': 'Listen to the original voice recordings of our characters:',
-        'grandma1.name': 'Grandma 1',
-        'grandma1.desc': 'Energetic and confident',
-        'grandma2.name': 'Grandma 2',
-        'grandma2.desc': 'Wise and experienced',
-        'grandma3.name': 'Grandma 3',
-        'grandma3.desc': 'Cheerful and playful',
-        'grandma4.name': 'Grandma 4',
-        'grandma4.desc': 'Calm and focused',
-        'grandma5.name': 'Grandma 5',
-        'grandma5.desc': 'Stern but fair',
-        'team.title': 'Team',
-        'gallery.title': 'Gallery',
-        'download.title': 'Download',
-        'download.desc': 'Download the game on itch.io:',
-        'download.sizes': 'Windows build (1.0 GB), Linux build (967 MB)',
-        'button.projects': 'All Projects'
-      },
-      pl: {
-        back: 'Powrót do projektów',
-        tagline: '🏁 Wyścig z czasem. Przechytrz babcie. Wygraj wszystko!',
-        subtitle: 'Chaotyczna wieloosobowa gra platformowa, gdzie strategia spotyka się z szybkością',
-        'meta.school': 'Digital Arts and Entertainment',
-        'meta.released': 'Wydano: 25 maja 2025',
-        'meta.platforms': 'Platformy: Windows, Linux',
-        'meta.engine': 'Silnik: Unreal Engine',
-        'meta.modes': 'Tryby: Lokalny multiplayer (1–4)',
-        'video.title': '🎬 Obejrzyj trailer',
-        'role.title': 'Rola — Audio',
-        'role.desc': 'Odpowiadałem za sound effects, implementację i miks: paleta SFX gameplayu, UI, warstwy crowd/ambience oraz integrację i miks w silniku dla czytelności przy szybkiej akcji. System reaguje na stany wyścigu i zdarzenia gracza.',
-        'gameplay.title': 'Gameplay Highlights',
-        'gameplay.li1': 'Responsywne SFX powiązane z akcjami gracza i przeszkodami',
-        'gameplay.li2': 'Hierarchia miksu zoptymalizowana pod czytelność (1–4 graczy)',
-        'gameplay.li3': 'Niewchodzące w drogę warstwy dynamiczne przy intensywnych momentach',
-        'implementation.title': 'Implementacja',
-        'implementation.li1': 'Parametry/stany dla cooldownów i burstów',
-        'implementation.li2': 'Oszczędna organizacja assetów, spójne poziomy głośności',
-        'implementation.li3': 'Szybkie iteracje z zespołem gameplay',
-        'collaboration.title': 'Współpraca zespołu',
-        'collaboration.desc': 'Mój zespół to wspaniali ludzie! Pracowaliśmy tak dobrze razem, że postanowiliśmy dodać dodatkowy element do gry — nagraliśmy oryginalne voiceline\'y dla postaci babć. Każda babcia ma swój unikalny charakter i głos, co dodaje uroku i humoru do rozgrywki.',
-        'voicelines.title': 'Voiceline\'y Babć',
-        'voicelines.desc': 'Posłuchaj oryginalnych nagrań głosowych naszych postaci:',
-        'grandma1.name': 'Babcia 1',
-        'grandma1.desc': 'Energiczna i pewna siebie',
-        'grandma2.name': 'Babcia 2',
-        'grandma2.desc': 'Mądra i doświadczona',
-        'grandma3.name': 'Babcia 3',
-        'grandma3.desc': 'Wesoła i żartobliwa',
-        'grandma4.name': 'Babcia 4',
-        'grandma4.desc': 'Spokojna i skupiona',
-        'grandma5.name': 'Babcia 5',
-        'grandma5.desc': 'Sroga ale sprawiedliwa',
-        'team.title': 'Zespół',
-        'gallery.title': 'Galeria',
-        'download.title': 'Pobierz',
-        'download.desc': 'Pobierz grę na itch.io:',
-        'download.sizes': 'Windows build (1.0 GB), Linux build (967 MB)',
-        'button.projects': 'Wszystkie Projekty'
-      },
-      nl: {
-        back: 'Terug naar Projecten',
-        tagline: '🏁 Ren tegen de tijd. Slim af je oma\'s. Win groot!',
-        subtitle: 'Een chaotische multiplayer side-scroller waar strategie snelheid ontmoet',
-        'meta.school': 'Digital Arts and Entertainment',
-        'meta.released': 'Uitgebracht: 25 mei 2025',
-        'meta.platforms': 'Platforms: Windows, Linux',
-        'meta.engine': 'Engine: Unreal Engine',
-        'meta.modes': 'Modi: Lokale multiplayer (1–4)',
-        'video.title': '🎬 Bekijk de waanzin',
-        'role.title': 'Rol — Audio',
-        'role.desc': 'Verantwoordelijk voor geluidseffecten, implementatie en mixing: gameplay SFX-palet, UI, crowd/ambience lagen en integratie en in-engine mix voor duidelijkheid tijdens snelle actie. Systeem reageert op race-staten en speler-evenementen.',
-        'gameplay.title': 'Gameplay Highlights',
-        'gameplay.li1': 'Responsieve SFX gekoppeld aan speleracties en obstakels',
-        'gameplay.li2': 'Mix hiërarchie geoptimaliseerd voor duidelijkheid (1–4 spelers)',
-        'gameplay.li3': 'Niet-opdringerige dynamische lagen tijdens intense momenten',
-        'implementation.title': 'Implementatie',
-        'implementation.li1': 'Parameters/staten voor cooldowns en bursts',
-        'implementation.li2': 'Efficiënte asset-organisatie, consistente volumeniveaus',
-        'implementation.li3': 'Snelle iteraties met gameplay team',
-        'collaboration.title': 'Teamsamenwerkig',
-        'collaboration.desc': 'Mijn team zijn geweldige mensen! We werkten zo goed samen dat we besloten een extra element aan het spel toe te voegen — we namen originele voicelines op voor de oma-personages. Elke oma heeft haar eigen unieke karakter en stem, wat charme en humor toevoegt aan de gameplay.',
-        'voicelines.title': 'Oma Voicelines',
-        'voicelines.desc': 'Luister naar de originele voice opnames van onze personages:',
-        'grandma1.name': 'Oma 1',
-        'grandma1.desc': 'Energiek en zelfverzekerd',
-        'grandma2.name': 'Oma 2',
-        'grandma2.desc': 'Wijs en ervaren',
-        'grandma3.name': 'Oma 3',
-        'grandma3.desc': 'Vrolijk en speels',
-        'grandma4.name': 'Oma 4',
-        'grandma4.desc': 'Kalm en gefocust',
-        'grandma5.name': 'Oma 5',
-        'grandma5.desc': 'Streng maar eerlijk',
-        'team.title': 'Team',
-        'gallery.title': 'Galerij',
-        'download.title': 'Download',
-        'download.desc': 'Download het spel op itch.io:',
-        'download.sizes': 'Windows build (1.0 GB), Linux build (967 MB)',
-        'button.projects': 'Alle Projecten'
-      }
-    };
-    
-    // Language switcher
+    let translations = {};
     let currentLang = localStorage.getItem('language') || 'pl';
-    
+
+    // Helper function to get nested translation value
+    function getNestedTranslation(obj, path) {
+      return path.split('.').reduce((current, key) => current?.[key], obj);
+    }
+
     function setLanguage(lang) {
       currentLang = lang;
       localStorage.setItem('language', lang);
       
-      // Update all translatable elements
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-          el.textContent = translations[lang][key];
+        const translation = getNestedTranslation(translations[lang], key);
+        if (translation) {
+          el.textContent = translation;
         }
       });
       
-      // Update active button
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
     }
-    
+
+    // Load translations from JSON file
+    async function loadTranslations() {
+      try {
+        const response = await fetch('../locales/not-today-darling.json');
+        translations = await response.json();
+        setLanguage(currentLang);
+      } catch (error) {
+        console.error('Failed to load translations:', error);
+      }
+    }
+
     // Initialize language on load
     document.addEventListener('DOMContentLoaded', () => {
-      setLanguage(currentLang);
+      loadTranslations();
       
-      // Add click handlers
       document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          setLanguage(btn.dataset.lang);
-        });
+        btn.addEventListener('click', () => { setLanguage(btn.dataset.lang); });
       });
     });
   </script>
