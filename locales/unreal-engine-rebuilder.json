@@ -1,0 +1,173 @@
+{
+  "en": {
+    "back": "Back to Projects",
+    "hero": {
+      "badge": "✨ Free Developer Tool",
+      "title": "Unreal Engine<br>Rebuilder",
+      "subtitle": "Automate UE project maintenance. Clean, rebuild, and backup with one click. Save 5-10 minutes per build and reclaim gigabytes of disk space.",
+      "download": "Download Now",
+      "github": "View on GitHub"
+    },
+    "stats": {
+      "value1": "5-10",
+      "label1": "Minutes Saved Per Build",
+      "value2": "5-50 GB",
+      "label2": "Disk Space Reclaimed",
+      "value3": "100%",
+      "label3": "Automation Coverage"
+    },
+    "features": {
+      "badge": "Key Features",
+      "title": "Everything You Need",
+      "subtitle": "Professional-grade automation for Unreal Engine developers",
+      "f1": {
+        "title": "Total Rebuild Clean",
+        "desc": "Complete project refresh: removes Binaries, Intermediate, and Saved folders, regenerates Visual Studio solution, and compiles with build time tracking."
+      },
+      "f2": {
+        "title": "Automated Backups",
+        "desc": "One-click project archiving with smart compression, timestamped archives, and selective backup of essential files (Source/Config/Content/Plugins)."
+      },
+      "f3": {
+        "title": "Disk Management",
+        "desc": "Detailed folder size breakdown with DDC cleaning that can free up gigabytes instantly. Smart formatting shows human-readable sizes with before/after stats."
+      },
+      "f4": {
+        "title": "Intelligent Detection",
+        "desc": "Auto-finds UE installations by scanning drives and checking Windows Registry. Supports multiple UE versions (4.x and 5.x) with fallback GUI folder picker."
+      },
+      "f5": {
+        "title": "Professional Logging",
+        "desc": "Automatic documentation of every operation with timestamped files, auto-cleanup of logs older than 30 days, and detailed error reporting."
+      },
+      "f6": {
+        "title": "Modern Interface",
+        "desc": "Dark theme with custom borderless title bar, color-coded buttons for visual distinction, and real-time console feedback with green terminal text."
+      }
+    },
+    "tech": {
+      "badge": "Technology",
+      "title": "Built With Modern Tools"
+    },
+    "cta": {
+      "title": "Ready to Save Time?",
+      "subtitle": "Download Unreal Engine Rebuilder now and streamline your development workflow.",
+      "download": "Download Latest Release",
+      "source": "View Source Code"
+    }
+  },
+  "pl": {
+    "back": "Powrót do Projektów",
+    "hero": {
+      "badge": "✨ Darmowe Narzędzie Deweloperskie",
+      "title": "Unreal Engine<br>Rebuilder",
+      "subtitle": "Automatyzacja utrzymania projektów UE. Czyszczenie, rebuild i backup jednym kliknięciem. Oszczędzasz 5-10 minut na build i odzyskujesz gigabajty miejsca na dysku.",
+      "download": "Pobierz Teraz",
+      "github": "Zobacz na GitHub"
+    },
+    "stats": {
+      "value1": "5-10",
+      "label1": "Minut Zaoszczędzonych na Build",
+      "value2": "5-50 GB",
+      "label2": "Odzyskanej Przestrzeni Dyskowej",
+      "value3": "100%",
+      "label3": "Pokrycie Automatyzacji"
+    },
+    "features": {
+      "badge": "Kluczowe Funkcje",
+      "title": "Wszystko Czego Potrzebujesz",
+      "subtitle": "Automatyzacja na poziomie profesjonalnym dla deweloperów Unreal Engine",
+      "f1": {
+        "title": "Całkowite Czyszczenie Rebuildu",
+        "desc": "Kompletne odświeżenie projektu: usuwa foldery Binaries, Intermediate i Saved, regeneruje rozwiązanie Visual Studio i kompiluje ze śledzeniem czasu buildu."
+      },
+      "f2": {
+        "title": "Automatyczne Backupy",
+        "desc": "Archiwizacja projektu jednym kliknięciem z inteligentną kompresją, archiwami z timestampów i selektywnym backupem istotnych plików (Source/Config/Content/Plugins)."
+      },
+      "f3": {
+        "title": "Zarządzanie Dyskiem",
+        "desc": "Szczegółowy podział rozmiaru folderów z czyszczeniem DDC, które może natychmiast zwolnić gigabajty. Inteligentne formatowanie pokazuje czytelne rozmiary ze statystykami przed/po."
+      },
+      "f4": {
+        "title": "Inteligentne Wykrywanie",
+        "desc": "Automatycznie znajduje instalacje UE poprzez skanowanie dysków i sprawdzanie Windows Registry. Obsługuje wiele wersji UE (4.x i 5.x) z fallback GUI folder picker."
+      },
+      "f5": {
+        "title": "Profesjonalne Logowanie",
+        "desc": "Automatyczna dokumentacja każdej operacji z plikami oznaczonymi timestampem, auto-czyszczenie logów starszych niż 30 dni i szczegółowe raportowanie błędów."
+      },
+      "f6": {
+        "title": "Nowoczesny Interfejs",
+        "desc": "Ciemny motyw z custom borderless paskiem tytułu, przyciskami oznaczonymi kolorami dla wizualnego rozróżnienia i real-time feedback konsoli z zielonym tekstem terminala."
+      }
+    },
+    "tech": {
+      "badge": "Technologia",
+      "title": "Zbudowane z Nowoczesnymi Narzędziami"
+    },
+    "cta": {
+      "title": "Gotowy Zaoszczędzić Czas?",
+      "subtitle": "Pobierz Unreal Engine Rebuilder teraz i usprawnij swój workflow developmentu.",
+      "download": "Pobierz Najnowsze Wydanie",
+      "source": "Zobacz Kod Źródłowy"
+    }
+  },
+  "nl": {
+    "back": "Terug naar Projecten",
+    "hero": {
+      "badge": "✨ Gratis Ontwikkelaarstool",
+      "title": "Unreal Engine<br>Rebuilder",
+      "subtitle": "Automatiseer UE-projectonderhoud. Schoon, herbouw en back-up met één klik. Bespaar 5-10 minuten per build en win gigabytes schijfruimte terug.",
+      "download": "Nu Downloaden",
+      "github": "Bekijk op GitHub"
+    },
+    "stats": {
+      "value1": "5-10",
+      "label1": "Minuten Bespaard Per Build",
+      "value2": "5-50 GB",
+      "label2": "Schijfruimte Teruggewonnen",
+      "value3": "100%",
+      "label3": "Automatisering Dekking"
+    },
+    "features": {
+      "badge": "Belangrijkste Functies",
+      "title": "Alles Wat Je Nodig Hebt",
+      "subtitle": "Professionele automatisering voor Unreal Engine-ontwikkelaars",
+      "f1": {
+        "title": "Totale Rebuild Schoonmaak",
+        "desc": "Volledige projectverversing: verwijdert Binaries, Intermediate en Saved mappen, regenereert Visual Studio oplossing en compileert met build time tracking."
+      },
+      "f2": {
+        "title": "Geautomatiseerde Back-ups",
+        "desc": "Eén-klik projectarchivering met slimme compressie, getimestampte archieven en selectieve back-up van essentiële bestanden (Source/Config/Content/Plugins)."
+      },
+      "f3": {
+        "title": "Schijfbeheer",
+        "desc": "Gedetailleerde mapdeling met DDC-schoonmaak die onmiddellijk gigabytes kan vrijmaken. Slimme formattering toont leesbare groottes met voor/na statistieken."
+      },
+      "f4": {
+        "title": "Intelligente Detectie",
+        "desc": "Vindt automatisch UE-installaties door drives te scannen en Windows Registry te controleren. Ondersteunt meerdere UE-versies (4.x en 5.x) met fallback GUI mappenkiezer."
+      },
+      "f5": {
+        "title": "Professionele Logging",
+        "desc": "Automatische documentatie van elke operatie met getimestampte bestanden, auto-opruiming van logs ouder dan 30 dagen en gedetailleerde foutrapportage."
+      },
+      "f6": {
+        "title": "Moderne Interface",
+        "desc": "Donker thema met aangepaste randloze titelbalk, kleurgecodeerde knoppen voor visueel onderscheid en real-time consolefeedback met groene terminaltekst."
+      }
+    },
+    "tech": {
+      "badge": "Technologie",
+      "title": "Gebouwd Met Moderne Tools"
+    },
+    "cta": {
+      "title": "Klaar om Tijd te Besparen?",
+      "subtitle": "Download Unreal Engine Rebuilder nu en stroomlijn je ontwikkelworkflow.",
+      "download": "Download Laatste Release",
+      "source": "Bekijk Broncode"
+    }
+  }
+}

@@ -633,129 +633,45 @@
   </footer>
 
   <script>
-    const translations = {
-      en: {
-        back: 'Back to Projects',
-        'hero.badge': '✨ Free Developer Tool',
-        'hero.title': 'Unreal Engine<br>Rebuilder',
-        'hero.subtitle': 'Automate UE project maintenance. Clean, rebuild, and backup with one click. Save 5-10 minutes per build and reclaim gigabytes of disk space.',
-        'hero.download': 'Download Now',
-        'hero.github': 'View on GitHub',
-        'stats.value1': '5-10',
-        'stats.label1': 'Minutes Saved Per Build',
-        'stats.value2': '5-50 GB',
-        'stats.label2': 'Disk Space Reclaimed',
-        'stats.value3': '100%',
-        'stats.label3': 'Automation Coverage',
-        'features.badge': 'Key Features',
-        'features.title': 'Everything You Need',
-        'features.subtitle': 'Professional-grade automation for Unreal Engine developers',
-        'features.f1.title': 'Total Rebuild Clean',
-        'features.f1.desc': 'Complete project refresh: removes Binaries, Intermediate, and Saved folders, regenerates Visual Studio solution, and compiles with build time tracking.',
-        'features.f2.title': 'Automated Backups',
-        'features.f2.desc': 'One-click project archiving with smart compression, timestamped archives, and selective backup of essential files (Source/Config/Content/Plugins).',
-        'features.f3.title': 'Disk Management',
-        'features.f3.desc': 'Detailed folder size breakdown with DDC cleaning that can free up gigabytes instantly. Smart formatting shows human-readable sizes with before/after stats.',
-        'features.f4.title': 'Intelligent Detection',
-        'features.f4.desc': 'Auto-finds UE installations by scanning drives and checking Windows Registry. Supports multiple UE versions (4.x and 5.x) with fallback GUI folder picker.',
-        'features.f5.title': 'Professional Logging',
-        'features.f5.desc': 'Automatic documentation of every operation with timestamped files, auto-cleanup of logs older than 30 days, and detailed error reporting.',
-        'features.f6.title': 'Modern Interface',
-        'features.f6.desc': 'Dark theme with custom borderless title bar, color-coded buttons for visual distinction, and real-time console feedback with green terminal text.',
-        'tech.badge': 'Technology',
-        'tech.title': 'Built With Modern Tools',
-        'cta.title': 'Ready to Save Time?',
-        'cta.subtitle': 'Download Unreal Engine Rebuilder now and streamline your development workflow.',
-        'cta.download': 'Download Latest Release',
-        'cta.source': 'View Source Code'
-      },
-      pl: {
-        back: 'Powrót do Projektów',
-        'hero.badge': '✨ Darmowe Narzędzie Deweloperskie',
-        'hero.title': 'Unreal Engine<br>Rebuilder',
-        'hero.subtitle': 'Automatyzacja utrzymania projektów UE. Czyszczenie, rebuild i backup jednym kliknięciem. Oszczędzasz 5-10 minut na build i odzyskujesz gigabajty miejsca na dysku.',
-        'hero.download': 'Pobierz Teraz',
-        'hero.github': 'Zobacz na GitHub',
-        'stats.value1': '5-10',
-        'stats.label1': 'Minut Zaoszczędzonych na Build',
-        'stats.value2': '5-50 GB',
-        'stats.label2': 'Odzyskanej Przestrzeni Dyskowej',
-        'stats.value3': '100%',
-        'stats.label3': 'Pokrycie Automatyzacji',
-        'features.badge': 'Kluczowe Funkcje',
-        'features.title': 'Wszystko Czego Potrzebujesz',
-        'features.subtitle': 'Automatyzacja na poziomie profesjonalnym dla deweloperów Unreal Engine',
-        'features.f1.title': 'Całkowite Czyszczenie Rebuildu',
-        'features.f1.desc': 'Kompletne odświeżenie projektu: usuwa foldery Binaries, Intermediate i Saved, regeneruje rozwiązanie Visual Studio i kompiluje ze śledzeniem czasu buildu.',
-        'features.f2.title': 'Automatyczne Backupy',
-        'features.f2.desc': 'Archiwizacja projektu jednym kliknięciem z inteligentną kompresją, archiwami z timestampów i selektywnym backupem istotnych plików (Source/Config/Content/Plugins).',
-        'features.f3.title': 'Zarządzanie Dyskiem',
-        'features.f3.desc': 'Szczegółowy podział rozmiaru folderów z czyszczeniem DDC, które może natychmiast zwolnić gigabajty. Inteligentne formatowanie pokazuje czytelne rozmiary ze statystykami przed/po.',
-        'features.f4.title': 'Inteligentne Wykrywanie',
-        'features.f4.desc': 'Automatycznie znajduje instalacje UE poprzez skanowanie dysków i sprawdzanie Windows Registry. Obsługuje wiele wersji UE (4.x i 5.x) z fallback GUI folder picker.',
-        'features.f5.title': 'Profesjonalne Logowanie',
-        'features.f5.desc': 'Automatyczna dokumentacja każdej operacji z plikami oznaczonymi timestampem, auto-czyszczenie logów starszych niż 30 dni i szczegółowe raportowanie błędów.',
-        'features.f6.title': 'Nowoczesny Interfejs',
-        'features.f6.desc': 'Ciemny motyw z custom borderless paskiem tytułu, przyciskami oznaczonymi kolorami dla wizualnego rozróżnienia i real-time feedback konsoli z zielonym tekstem terminala.',
-        'tech.badge': 'Technologia',
-        'tech.title': 'Zbudowane z Nowoczesnymi Narzędziami',
-        'cta.title': 'Gotowy Zaoszczędzić Czas?',
-        'cta.subtitle': 'Pobierz Unreal Engine Rebuilder teraz i usprawnij swój workflow developmentu.',
-        'cta.download': 'Pobierz Najnowsze Wydanie',
-        'cta.source': 'Zobacz Kod Źródłowy'
-      },
-      nl: {
-        back: 'Terug naar Projecten',
-        'hero.badge': '✨ Gratis Ontwikkelaarstool',
-        'hero.title': 'Unreal Engine<br>Rebuilder',
-        'hero.subtitle': 'Automatiseer UE-projectonderhoud. Schoon, herbouw en back-up met één klik. Bespaar 5-10 minuten per build en win gigabytes schijfruimte terug.',
-        'hero.download': 'Nu Downloaden',
-        'hero.github': 'Bekijk op GitHub',
-        'stats.value1': '5-10',
-        'stats.label1': 'Minuten Bespaard Per Build',
-        'stats.value2': '5-50 GB',
-        'stats.label2': 'Schijfruimte Teruggewonnen',
-        'stats.value3': '100%',
-        'stats.label3': 'Automatisering Dekking',
-        'features.badge': 'Belangrijkste Functies',
-        'features.title': 'Alles Wat Je Nodig Hebt',
-        'features.subtitle': 'Professionele automatisering voor Unreal Engine-ontwikkelaars',
-        'features.f1.title': 'Totale Rebuild Schoonmaak',
-        'features.f1.desc': 'Volledige projectverversing: verwijdert Binaries, Intermediate en Saved mappen, regenereert Visual Studio oplossing en compileert met build time tracking.',
-        'features.f2.title': 'Geautomatiseerde Back-ups',
-        'features.f2.desc': 'Eén-klik projectarchivering met slimme compressie, getimestampte archieven en selectieve back-up van essentiële bestanden (Source/Config/Content/Plugins).',
-        'features.f3.title': 'Schijfbeheer',
-        'features.f3.desc': 'Gedetailleerde mapdeling met DDC-schoonmaak die onmiddellijk gigabytes kan vrijmaken. Slimme formattering toont leesbare groottes met voor/na statistieken.',
-        'features.f4.title': 'Intelligente Detectie',
-        'features.f4.desc': 'Vindt automatisch UE-installaties door drives te scannen en Windows Registry te controleren. Ondersteunt meerdere UE-versies (4.x en 5.x) met fallback GUI mappenkiezer.',
-        'features.f5.title': 'Professionele Logging',
-        'features.f5.desc': 'Automatische documentatie van elke operatie met getimestampte bestanden, auto-opruiming van logs ouder dan 30 dagen en gedetailleerde foutrapportage.',
-        'features.f6.title': 'Moderne Interface',
-        'features.f6.desc': 'Donker thema met aangepaste randloze titelbalk, kleurgecodeerde knoppen voor visueel onderscheid en real-time consolefeedback met groene terminaltekst.',
-        'tech.badge': 'Technologie',
-        'tech.title': 'Gebouwd Met Moderne Tools',
-        'cta.title': 'Klaar om Tijd te Besparen?',
-        'cta.subtitle': 'Download Unreal Engine Rebuilder nu en stroomlijn je ontwikkelworkflow.',
-        'cta.download': 'Download Laatste Release',
-        'cta.source': 'Bekijk Broncode'
-      }
-    };
+    let translations = {};
     let currentLang = localStorage.getItem('language') || 'en';
+
+    // Helper function to get nested translation value
+    function getNestedTranslation(obj, path) {
+      return path.split('.').reduce((current, key) => current?.[key], obj);
+    }
+
     function setLanguage(lang) {
       currentLang = lang;
       localStorage.setItem('language', lang);
+      
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-          el.innerHTML = translations[lang][key];
+        const translation = getNestedTranslation(translations[lang], key);
+        if (translation) {
+          el.innerHTML = translation;
         }
       });
+      
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
     }
+
+    // Load translations from JSON file
+    async function loadTranslations() {
+      try {
+        const response = await fetch('../locales/unreal-engine-rebuilder.json');
+        translations = await response.json();
+        setLanguage(currentLang);
+      } catch (error) {
+        console.error('Failed to load translations:', error);
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
-      setLanguage(currentLang);
+      loadTranslations();
+      
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => { setLanguage(btn.dataset.lang); });
       });
