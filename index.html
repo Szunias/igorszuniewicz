@@ -1739,6 +1739,36 @@
       }
     })();
     
+    // Global scroll unlock failsafe - zawsze odblokuj scroll po załadowaniu
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        document.body.classList.remove('preloader-active');
+      }, 100);
+    });
+    
+    // Emergency scroll unlock on any interaction
+    let scrollUnlocked = false;
+    function emergencyUnlock() {
+      if (!scrollUnlocked) {
+        scrollUnlocked = true;
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        document.body.classList.remove('preloader-active');
+      }
+    }
+    
+    setTimeout(() => {
+      document.addEventListener('wheel', emergencyUnlock, { once: true, passive: true });
+      document.addEventListener('touchmove', emergencyUnlock, { once: true, passive: true });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'PageDown' || e.key === 'PageUp' || e.key === ' ') {
+          emergencyUnlock();
+        }
+      }, { once: true });
+    }, 2000);
+    
     // Mobile menu toggle
     (function() {
       const toggle = document.querySelector('.mobile-menu-toggle');
@@ -1750,14 +1780,20 @@
         toggle.classList.remove('active');
         menu.classList.remove('active');
         overlay.classList.remove('active');
-        document.body.style.overflow = '';
+        // Tylko zablokuj scroll jeśli preloader nie jest aktywny
+        if (!document.body.classList.contains('preloader-active')) {
+          document.body.style.overflow = '';
+        }
       }
       
       function openMobileMenu() {
         toggle.classList.add('active');
         menu.classList.add('active');
         overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        // Tylko zablokuj scroll jeśli preloader nie jest aktywny
+        if (!document.body.classList.contains('preloader-active')) {
+          document.body.style.overflow = 'hidden';
+        }
       }
       
       toggle.addEventListener('click', () => {
