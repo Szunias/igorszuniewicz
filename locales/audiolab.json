@@ -1,0 +1,83 @@
+{
+  "en": {
+    "back": "Back to Projects",
+    "hero": {
+      "badge": "🎮 Research Project",
+      "title": "Transientica: AudioLab",
+      "subtitle": "Beatbox-controlled rhythm game using real-time ML classification, spectral flux analysis, and low-latency OSC control. Replace button presses with vocal percussion."
+    },
+    "video": {
+      "title": "See It in Action"
+    },
+    "stats": {
+      "title": "Real-time Performance Results"
+    },
+    "overview": {
+      "title": "Revolutionary Vocal Percussion Interface"
+    },
+    "tech": {
+      "title": "Technical Implementation",
+      "audio": "Audio Processing",
+      "ml": "Machine Learning",
+      "osc": "OSC Communication",
+      "engine": "Game Engine"
+    },
+    "contrib": {
+      "title": "Key Contributions"
+    }
+  },
+  "pl": {
+    "back": "Powrót do Projektów",
+    "hero": {
+      "badge": "🎮 Projekt Badawczy",
+      "title": "Transientica: AudioLab",
+      "subtitle": "Gra rytmiczna sterowana beatboxem wykorzystująca klasyfikację ML w czasie rzeczywistym, analizę spektralnego flux i kontrolę OSC o niskim opóźnieniu. Zastąp naciśnięcia przycisków perkusją wokalną."
+    },
+    "video": {
+      "title": "Zobacz w Akcji"
+    },
+    "stats": {
+      "title": "Wyniki Wydajności w Czasie Rzeczywistym"
+    },
+    "overview": {
+      "title": "Rewolucyjny Interfejs Perkusji Wokalnej"
+    },
+    "tech": {
+      "title": "Implementacja Techniczna",
+      "audio": "Przetwarzanie Audio",
+      "ml": "Uczenie Maszynowe",
+      "osc": "Komunikacja OSC",
+      "engine": "Silnik Gry"
+    },
+    "contrib": {
+      "title": "Kluczowe Wkłady"
+    }
+  },
+  "nl": {
+    "back": "Terug naar Projecten",
+    "hero": {
+      "badge": "🎮 Onderzoeksproject",
+      "title": "Transientica: AudioLab",
+      "subtitle": "Beatbox-gestuurde ritmegame met realtime ML-classificatie, spectrale flux-analyse en lage-latentie OSC-besturing. Vervang knopdrukken door vocale percussie."
+    },
+    "video": {
+      "title": "Zie Het in Actie"
+    },
+    "stats": {
+      "title": "Realtime Prestatieresultaten"
+    },
+    "overview": {
+      "title": "Revolutionaire Vocale Percussie Interface"
+    },
+    "tech": {
+      "title": "Technische Implementatie",
+      "audio": "Audioverwerking",
+      "ml": "Machine Learning",
+      "osc": "OSC Communicatie",
+      "engine": "Game Engine"
+    },
+    "contrib": {
+      "title": "Belangrijkste Bijdragen"
+    }
+  }
+}
