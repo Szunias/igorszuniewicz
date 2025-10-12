@@ -1006,117 +1006,48 @@
   
   <!-- Translation Data -->
   <script>
-    const translations = {
-      en: {
-        back: 'Back to Projects',
-        wip_badge: 'Work in Progress',
-        title: 'Pause & Deserve',
-        tagline: 'First-person survival game with psychological horror elements and strategic pause mechanics.',
-        'gameplay.title': 'Gameplay Preview',
-        'overview.title': 'Game Overview',
-        'overview.desc': 'You play as a sinner trying to escape eternal punishment. Death chases you relentlessly through a surreal, nightmarish landscape. Using your \'pause\' power, you can freeze Death momentarily to find better escape routes. Death becomes faster over time and every time you pause him, challenging your reflexes and strategy.',
-        'mechanics.chase.title': 'Relentless Chase',
-        'mechanics.chase.desc': 'Death uses advanced pathfinding to navigate obstacles and adapts to your movements, creating an ever-present threat.',
-        'mechanics.pause.title': 'Strategic Pause',
-        'mechanics.pause.desc': 'Temporarily freeze Death\'s movement to create escape opportunities. Each use has a cooldown and makes Death faster.',
-        'mechanics.world.title': 'Dynamic Environment',
-        'mechanics.world.desc': 'The nightmare landscape shifts as time progresses—walls close in, pathways change, and lighting dims.',
-        'mechanics.score.title': 'Survival Challenge',
-        'mechanics.score.desc': 'Endless survival game that tracks your best times and tests both reflexes and strategic thinking.',
-        'design.title': 'Design Philosophy',
-        'design.desc': 'This project focuses on creating immersive tension through first-person perspective, intelligent AI behavior, and audio design that enhances the psychological horror atmosphere. The development emphasizes rapid prototyping and iterative design based on playtesting feedback.',
-        'tech.title': 'Technology Stack',
-        'gallery.title': 'Development Gallery',
-        'gallery.death': 'Death Approaches',
-        'gallery.bushes': 'Nightmare Landscape',
-        'gallery.corridor': 'The Red Corridor',
-        'gallery.key': 'Interactive Elements',
-        'button.projects': 'All Projects'
-      },
-      pl: {
-        back: 'Powrót do projektów',
-        wip_badge: 'W trakcie realizacji',
-        title: 'Pause & Deserve',
-        tagline: 'Gra survivalowa FPP z elementami psychologicznego horroru i strategiczną mechaniką pauzy.',
-        'gameplay.title': 'Podgląd rozgrywki',
-        'overview.title': 'Opis gry',
-        'overview.desc': 'Grasz jako grzesznik próbujący uciec przed wieczną karą. Śmierć ściga cię nieustannie przez surrealistyczny, koszmarny krajobraz. Używając swojej mocy \'pauzy\', możesz na chwilę zamrozić Śmierć, aby znaleźć lepsze drogi ucieczki. Śmierć staje się szybsza z czasem i za każdym razem gdy ją zatrzymujesz, stawiając wyzwanie twojej reakcji i strategii.',
-        'mechanics.chase.title': 'Nieustanna pogoń',
-        'mechanics.chase.desc': 'Śmierć używa zaawansowanego pathfindingu do omijania przeszkód i dostosowuje się do twoich ruchów, tworząc ciągle obecne zagrożenie.',
-        'mechanics.pause.title': 'Strategiczna pauza',
-        'mechanics.pause.desc': 'Tymczasowo zamroź ruch Śmierci aby stworzyć okazje do ucieczki. Każde użycie ma czas odnowienia i sprawia że Śmierć jest szybsza.',
-        'mechanics.world.title': 'Dynamiczne środowisko',
-        'mechanics.world.desc': 'Koszmarny krajobraz zmienia się wraz z upływem czasu—ściany zbliżają się, ścieżki się zmieniają, a oświetlenie przygasa.',
-        'mechanics.score.title': 'Wyzwanie przetrwania',
-        'mechanics.score.desc': 'Nieskończona gra survivalowa, która śledzi twoje najlepsze czasy i testuje zarówno refleks jak i strategiczne myślenie.',
-        'design.title': 'Filozofia projektu',
-        'design.desc': 'Ten projekt skupia się na tworzeniu immersyjnego napięcia poprzez perspektywę pierwszoosobową, inteligentne zachowanie AI i design dźwięku wzmacniający atmosferę psychologicznego horroru. Rozwój kładzie nacisk na szybkie prototypowanie i iteracyjny design oparty na feedbacku z playtestów.',
-        'tech.title': 'Stos technologiczny',
-        'gallery.title': 'Galeria rozwoju',
-        'gallery.death': 'Śmierć zbliża się',
-        'gallery.bushes': 'Koszmarny krajobraz',
-        'gallery.corridor': 'Czerwony korytarz',
-        'gallery.key': 'Elementy interaktywne',
-        'button.projects': 'Wszystkie Projekty'
-      },
-      nl: {
-        back: 'Terug naar Projecten',
-        wip_badge: 'In ontwikkeling',
-        title: 'Pause & Deserve',
-        tagline: 'First-person survival game met psychologische horror elementen en strategische pauze mechanica.',
-        'gameplay.title': 'Gameplay Preview',
-        'overview.title': 'Game Overzicht',
-        'overview.desc': 'Je speelt als een zondaar die probeert te ontsnappen aan eeuwige straf. De Dood achtervolgt je meedogenloos door een surrealistische, nachtmerrieachtige landschap. Met je \'pauze\' kracht kun je de Dood tijdelijk bevriezen om betere ontsnappingsroutes te vinden. De Dood wordt sneller na verloop van tijd en elke keer dat je hem pauzeert, waardoor je reflexen en strategie uitgedaagd worden.',
-        'mechanics.chase.title': 'Meedogenloze Achtervolging',
-        'mechanics.chase.desc': 'De Dood gebruikt geavanceerde pathfinding om obstakels te navigeren en past zich aan aan jouw bewegingen, wat een constant aanwezige dreiging creëert.',
-        'mechanics.pause.title': 'Strategische Pauze',
-        'mechanics.pause.desc': 'Bevries tijdelijk de beweging van de Dood om ontsnappingsmogelijkheden te creëren. Elk gebruik heeft een cooldown en maakt de Dood sneller.',
-        'mechanics.world.title': 'Dynamische Omgeving',
-        'mechanics.world.desc': 'Het nachtmerrie landschap verschuift terwijl de tijd verstrijkt—muren komen dichterbij, paden veranderen en de verlichting dimt.',
-        'mechanics.score.title': 'Survival Uitdaging',
-        'mechanics.score.desc': 'Eindeloze survival game die je beste tijden bijhoudt en zowel reflexen als strategisch denken test.',
-        'design.title': 'Design Filosofie',
-        'design.desc': 'Dit project richt zich op het creëren van meeslepende spanning door first-person perspectief, intelligent AI gedrag en audio design dat de psychologische horror atmosfeer versterkt. De ontwikkeling legt de nadruk op snel prototypen en iteratief design gebaseerd op playtesting feedback.',
-        'tech.title': 'Technology Stack',
-        'gallery.title': 'Ontwikkelingsgalerij',
-        'gallery.death': 'De Dood nadert',
-        'gallery.bushes': 'Nachtmerrie Landschap',
-        'gallery.corridor': 'De Rode Corridor',
-        'gallery.key': 'Interactieve Elementen',
-        'button.projects': 'Alle Projecten'
-      }
-    };
-    
-    // Language switcher
+    let translations = {};
     let currentLang = localStorage.getItem('language') || 'en';
-    
+
+    // Helper function to get nested translation value
+    function getNestedTranslation(obj, path) {
+      return path.split('.').reduce((current, key) => current?.[key], obj);
+    }
+
     function setLanguage(lang) {
       currentLang = lang;
       localStorage.setItem('language', lang);
       
-      // Update all translatable elements
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-          el.textContent = translations[lang][key];
+        const translation = getNestedTranslation(translations[lang], key);
+        if (translation) {
+          el.textContent = translation;
         }
       });
       
-      // Update active button
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
     }
-    
+
+    // Load translations from JSON file
+    async function loadTranslations() {
+      try {
+        const response = await fetch('../locales/pause-and-deserve.json');
+        translations = await response.json();
+        setLanguage(currentLang);
+      } catch (error) {
+        console.error('Failed to load translations:', error);
+      }
+    }
+
     // Initialize language on load
     document.addEventListener('DOMContentLoaded', () => {
-      setLanguage(currentLang);
+      loadTranslations();
       
-      // Add click handlers
       document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          setLanguage(btn.dataset.lang);
-        });
+        btn.addEventListener('click', () => { setLanguage(btn.dataset.lang); });
       });
     });
   </script>
