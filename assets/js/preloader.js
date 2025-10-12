@@ -6,16 +6,26 @@
 (function() {
   'use strict';
   
-  // Sprawdź czy użytkownik już odwiedził stronę
-  const hasVisited = sessionStorage.getItem('hasVisited');
+  // Sprawdź czy użytkownik już odwiedził stronę w ostatnich 30 minutach
+  const visitData = localStorage.getItem('preloaderVisit');
+  const now = Date.now();
+  const VISIT_DURATION = 30 * 60 * 1000; // 30 minut
   
-  // Jeśli już odwiedził, nie pokazuj loadera
+  let hasVisited = false;
+  if (visitData) {
+    const visitTime = parseInt(visitData, 10);
+    if (now - visitTime < VISIT_DURATION) {
+      hasVisited = true;
+    }
+  }
+  
+  // Jeśli już odwiedził niedawno, nie pokazuj loadera
   if (hasVisited) {
     return;
   }
   
   // Oznacz że użytkownik odwiedził stronę (natychmiast)
-  sessionStorage.setItem('hasVisited', 'true');
+  localStorage.setItem('preloaderVisit', now.toString());
   
   // Blokuj przewijanie od razu
   document.documentElement.style.overflow = 'hidden';
@@ -156,10 +166,27 @@
   setTimeout(() => {
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
+    document.body.classList.remove('preloader-active');
   }, 2000);
   
   // Dodatkowy failsafe gdy okno się załaduje
   window.addEventListener('load', () => {
     setTimeout(cleanupPreloader, 100);
   });
+  
+  // Jeszcze jeden failsafe - odblokuj na interakcję użytkownika
+  const unlockOnInteraction = () => {
+    cleanupPreloader();
+    document.removeEventListener('click', unlockOnInteraction);
+    document.removeEventListener('scroll', unlockOnInteraction);
+    document.removeEventListener('wheel', unlockOnInteraction);
+    document.removeEventListener('touchstart', unlockOnInteraction);
+  };
+  
+  setTimeout(() => {
+    document.addEventListener('click', unlockOnInteraction);
+    document.addEventListener('scroll', unlockOnInteraction);
+    document.addEventListener('wheel', unlockOnInteraction);
+    document.addEventListener('touchstart', unlockOnInteraction);
+  }, 1600); // Dodaj listenery dopiero po animacji
 })();
