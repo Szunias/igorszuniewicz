@@ -1,0 +1,218 @@
+{
+  "en": {
+    "back": "Back to Projects",
+    "title": "Amorak — Sound Design",
+    "tagline": "World-building through immersive audio design and character sound signatures.",
+    "meta": {
+      "role": {
+        "label": "Role",
+        "value": "Sound Designer"
+      },
+      "style": {
+        "label": "Style",
+        "value": "Atmospheric / Horror"
+      },
+      "team": {
+        "label": "Team",
+        "value": "3D Animation Studio"
+      },
+      "scope": {
+        "label": "Scope",
+        "value": "Complete Audio Pass"
+      }
+    },
+    "showcase": {
+      "title": "Audio Showcase",
+      "desc": "Experience the complete audio design in context with the animation. Notice how sound elements respond to visual cues and support the narrative progression."
+    },
+    "overview": {
+      "title": "Overview",
+      "desc": "Amorak was an exercise in world‑building through sound. I created character signatures and environmental layers that scale with camera proximity, keeping the mix readable while reinforcing the story tone."
+    },
+    "approach": {
+      "title": "Sound Design Approach",
+      "creatures": {
+        "title": "Creature Signatures",
+        "desc": "Each creature in Amorak has a unique sonic identity built from organic textures, processed animal vocalizations, and synthesized sub-frequencies. The beast's presence is felt through low-frequency rumbles that scale with proximity, creating an unsettling atmosphere even when off-screen."
+      },
+      "environment": {
+        "title": "Environmental Layers",
+        "desc": "The basement environment uses layered ambient textures - dripping water, creaking wood, distant echoes, and subtle electrical hums. These elements dynamically respond to the camera position, creating depth and spatial awareness that guides the viewer's attention."
+      },
+      "narrative": {
+        "title": "Narrative Support",
+        "desc": "Sound design reinforces the story's emotional beats through careful frequency manipulation and dynamic range control. Tension builds through gradual introduction of discordant elements, while release moments use natural reverb and space to provide breathing room."
+      }
+    },
+    "technical": {
+      "title": "Technical Implementation",
+      "proximity": {
+        "title": "Proximity-Based Mixing",
+        "desc": "Implemented a 3D spatial audio system where sound elements adjust based on camera distance and angle. Close-up shots emphasize intimate details like breathing and footsteps, while wide shots focus on environmental ambience and creature calls."
+      },
+      "frequency": {
+        "title": "Frequency Design Strategy",
+        "desc": "Careful frequency allocation ensures clarity across all elements. Creature sounds occupy the 40-200Hz range for body and presence, while environmental details fill the mid-range. High frequencies are reserved for tension-building textures and detail work."
+      },
+      "layering": {
+        "title": "Dynamic Layering",
+        "desc": "Audio layers build progressively throughout scenes, starting with minimal ambience and adding complexity as tension increases. This approach maintains listener engagement while avoiding overwhelming the mix during critical dialogue moments."
+      }
+    },
+    "gallery": {
+      "title": "Visual Showcase",
+      "basement": "Basement Environment",
+      "beast": "Beast Roar Sequence",
+      "chimney": "Chimney Tension Scene",
+      "creature": "Creature Perspective",
+      "character": "Character Focus Shot"
+    },
+    "button": {
+      "projects": "All Projects"
+    }
+  },
+  "pl": {
+    "back": "Powrót do projektów",
+    "title": "Amorak — Sound Design",
+    "tagline": "Kreowanie świata poprzez immersyjny design dźwięku i unikalne sygnatury postaci.",
+    "meta": {
+      "role": {
+        "label": "Rola",
+        "value": "Sound Designer"
+      },
+      "style": {
+        "label": "Styl",
+        "value": "Atmosferyczny / Horror"
+      },
+      "team": {
+        "label": "Zespół",
+        "value": "Studio Animacji 3D"
+      },
+      "scope": {
+        "label": "Zakres",
+        "value": "Kompletne Audio"
+      }
+    },
+    "showcase": {
+      "title": "Prezentacja Audio",
+      "desc": "Doświadcz kompletnego designu dźwięku w kontekście animacji. Zwróć uwagę, jak elementy dźwiękowe reagują na sygnały wizualne i wspierają progresję narracji."
+    },
+    "overview": {
+      "title": "Przegląd",
+      "desc": "Amorak był ćwiczeniem w budowaniu świata poprzez dźwięk. Stworzyłem sygnatury postaci i warstwy środowiskowe, które skalują się z bliskością kamery, utrzymując czytelność miksu przy jednoczesnym wzmacnianiu tonu opowieści."
+    },
+    "approach": {
+      "title": "Podejście do Sound Designu",
+      "creatures": {
+        "title": "Sygnatury Stworzeń",
+        "desc": "Każde stworzenie w Amorak ma unikalną tożsamość dźwiękową zbudowaną z organicznych tekstur, przetworzonych wokalizacji zwierząt i syntezowanych sub-częstotliwości. Obecność bestii odczuwalna jest przez niskofrequencyjne dźwięki, które skalują się z bliskością, tworząc niepokojącą atmosferę nawet poza ekranem."
+      },
+      "environment": {
+        "title": "Warstwy Środowiskowe",
+        "desc": "Środowisko piwnicy wykorzystuje warstwowe tekstury ambientowe - kapanie wody, skrzypienie drewna, odległe echa i subtelne brzęczenie elektryczne. Te elementy dynamicznie reagują na pozycję kamery, tworząc głębię i świadomość przestrzenną, która kieruje uwagą widza."
+      },
+      "narrative": {
+        "title": "Wsparcie Narracji",
+        "desc": "Sound design wzmacnia emocjonalne momenty opowieści poprzez staranne manipulowanie częstotliwościami i kontrolę zakresu dynamicznego. Napięcie narasta poprzez stopniowe wprowadzanie dysharmonijnych elementów, podczas gdy momenty odprężenia wykorzystują naturalną pogłos i przestrzeń."
+      }
+    },
+    "technical": {
+      "title": "Implementacja Techniczna",
+      "proximity": {
+        "title": "Miksowanie Oparte na Bliskości",
+        "desc": "Zaimplementowano system audio przestrzennego 3D, gdzie elementy dźwiękowe dostosowują się do odległości i kąta kamery. Zbliżenia podkreślają intymne detale jak oddech i kroki, podczas gdy szerokie ujęcia skupiają się na ambiencie środowiskowym i wołaniach stworzeń."
+      },
+      "frequency": {
+        "title": "Strategia Projektowania Częstotliwości",
+        "desc": "Staranna alokacja częstotliwości zapewnia przejrzystość wszystkich elementów. Dźwięki stworzeń zajmują zakres 40-200Hz dla ciała i obecności, podczas gdy detale środowiskowe wypełniają średni zakres. Wysokie częstotliwości zarezerwowane są dla tekstur budujących napięcie i pracy nad detalami."
+      },
+      "layering": {
+        "title": "Dynamiczne Warstwowanie",
+        "desc": "Warstwy audio budują się progresywnie przez sceny, rozpoczynając od minimalnego ambientu i dodając złożoność w miarę narastania napięcia. To podejście utrzymuje zaangażowanie słuchacza, unikając przytłaczania miksu podczas krytycznych momentów dialogowych."
+      }
+    },
+    "gallery": {
+      "title": "Prezentacja Wizualna",
+      "basement": "Środowisko Piwnicy",
+      "beast": "Sekwencja Ryku Bestii",
+      "chimney": "Scena Napięcia przy Kominie",
+      "creature": "Perspektywa Stworzenia",
+      "character": "Ujęcie Postaci"
+    },
+    "button": {
+      "projects": "Wszystkie Projekty"
+    }
+  },
+  "nl": {
+    "back": "Terug naar Projecten",
+    "title": "Amorak — Sound Design",
+    "tagline": "Wereldcreatie door meeslepend audiodesign en karakter geluidssignaturen.",
+    "meta": {
+      "role": {
+        "label": "Rol",
+        "value": "Sound Designer"
+      },
+      "style": {
+        "label": "Stijl",
+        "value": "Atmosferisch / Horror"
+      },
+      "team": {
+        "label": "Team",
+        "value": "3D Animatiestudio"
+      },
+      "scope": {
+        "label": "Bereik",
+        "value": "Volledige Audio Pass"
+      }
+    },
+    "showcase": {
+      "title": "Audio Showcase",
+      "desc": "Ervaar het complete audiodesign in de context van de animatie. Let op hoe geluidelementen reageren op visuele signalen en de verhaalontwikkeling ondersteunen."
+    },
+    "overview": {
+      "title": "Overzicht",
+      "desc": "Amorak was een oefening in wereldcreatie door geluid. Ik creëerde karaktersignaturen en omgevingslagen die schalen met camera nabijheid, waarbij de mix leesbaar blijft terwijl de verhaaltoon wordt versterkt."
+    },
+    "approach": {
+      "title": "Sound Design Aanpak",
+      "creatures": {
+        "title": "Wezen Signaturen",
+        "desc": "Elk wezen in Amorak heeft een unieke sonische identiteit gebouwd uit organische texturen, verwerkte dierlijke vocalisaties en gesynthetiseerde sub-frequenties. De aanwezigheid van het beest wordt gevoeld door lage-frequentie gerommel dat schaalt met nabijheid, waardoor een verontrustende atmosfeer ontstaat zelfs wanneer het off-screen is."
+      },
+      "environment": {
+        "title": "Omgevingslagen",
+        "desc": "De kelderomgeving gebruikt gelaagde ambient texturen - druppelend water, krakend hout, verre echo's en subtiele elektrische zoemen. Deze elementen reageren dynamisch op de camerapositie, waardoor diepte en ruimtelijk bewustzijn ontstaat dat de aandacht van de kijker leidt."
+      },
+      "narrative": {
+        "title": "Narratieve Ondersteuning",
+        "desc": "Sound design versterkt de emotionele beats van het verhaal door zorgvuldige frequentiemanipulatie en dynamische bereikcontrole. Spanning bouwt op door geleidelijke introductie van dissonante elementen, terwijl release-momenten natuurlijke reverb en ruimte gebruiken om ademruimte te bieden."
+      }
+    },
+    "technical": {
+      "title": "Technische Implementatie",
+      "proximity": {
+        "title": "Nabijheid-Gebaseerde Mixing",
+        "desc": "Implementeerde een 3D ruimtelijk audiosysteem waar geluidelementen aanpassen op basis van camera-afstand en hoek. Close-ups benadrukken intieme details zoals ademhaling en voetstappen, terwijl brede shots zich richten op omgevingsambiance en wezenroepen."
+      },
+      "frequency": {
+        "title": "Frequentie Design Strategie",
+        "desc": "Zorgvuldige frequentietoewijzing zorgt voor helderheid over alle elementen. Wezengeluiden bezetten het 40-200Hz bereik voor body en aanwezigheid, terwijl omgevingsdetails het mid-bereik vullen. Hoge frequenties zijn gereserveerd voor spanning-opbouwende texturen en detailwerk."
+      },
+      "layering": {
+        "title": "Dynamische Gelaagdheid",
+        "desc": "Audiolagen bouwen progressief op doorheen scènes, beginnend met minimale ambiance en complexiteit toevoegend naarmate de spanning toeneemt. Deze aanpak houdt luisteraarsbetrokkenheid vast terwijl het overweldigen van de mix tijdens kritieke dialoogmomenten wordt vermeden."
+      }
+    },
+    "gallery": {
+      "title": "Visuele Showcase",
+      "basement": "Kelderomgeving",
+      "beast": "Beest Gebrul Sequentie",
+      "chimney": "Schoorsteen Spanning Scène",
+      "creature": "Wezen Perspectief",
+      "character": "Karakter Focus Shot"
+    },
+    "button": {
+      "projects": "Alle Projecten"
+    }
+  }
+}
