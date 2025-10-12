@@ -902,83 +902,13 @@
   <!-- Scripts -->
   <script>
     // Translations
-    const translations = {
-      en: {
-        'nav.work': 'Work',
-        'nav.about': 'About',
-        'nav.projects': 'All Projects',
-        'nav.contact': 'Contact',
-        'hero.label': 'Audio Designer & Developer',
-        'hero.title': 'Crafting Immersive<br>Audio Experiences',
-        'hero.description': 'Interactive music systems, sound design for animation & games, and innovative audio tools.',
-        'hero.cta1': 'View My Work',
-        'hero.cta2': 'Get In Touch',
-        'projects.label': 'Featured Work',
-        'projects.title': 'Selected Projects',
-        'projects.description': 'A curated selection of recent work spanning game audio, sound design, and interactive music.',
-        'projects.viewall': 'View All Projects',
-        'stats.label': 'By The Numbers',
-        'stats.title': 'Experience & Impact',
-        'stats.projects': 'Projects Completed',
-        'stats.tools': 'Audio Tools Built',
-        'stats.languages': 'Languages',
-        'stats.passion': 'Passion',
-        'footer.projects': 'Projects',
-        'footer.about': 'About',
-        'footer.contact': 'Contact'
-      },
-      pl: {
-        'nav.work': 'Projekty',
-        'nav.about': 'O mnie',
-        'nav.projects': 'Wszystkie Projekty',
-        'nav.contact': 'Kontakt',
-        'hero.label': 'Audio Designer & Developer',
-        'hero.title': 'Tworzenie Immersyjnych<br>Doświadczeń Audio',
-        'hero.description': 'Interaktywne systemy muzyczne, sound design dla animacji i gier oraz innowacyjne narzędzia audio.',
-        'hero.cta1': 'Zobacz Moje Prace',
-        'hero.cta2': 'Skontaktuj Się',
-        'projects.label': 'Wybrane Prace',
-        'projects.title': 'Wybrane Projekty',
-        'projects.description': 'Starannie wybrane najnowsze prace obejmujące audio dla gier, sound design i interaktywną muzykę.',
-        'projects.viewall': 'Wszystkie Projekty',
-        'stats.label': 'W Liczbach',
-        'stats.title': 'Doświadczenie & Wpływ',
-        'stats.projects': 'Ukończone Projekty',
-        'stats.tools': 'Zbudowane Narzędzia',
-        'stats.languages': 'Języki',
-        'stats.passion': 'Pasja',
-        'footer.projects': 'Projekty',
-        'footer.about': 'O mnie',
-        'footer.contact': 'Kontakt'
-      },
-      nl: {
-        'nav.work': 'Werk',
-        'nav.about': 'Over',
-        'nav.projects': 'Alle Projecten',
-        'nav.contact': 'Contact',
-        'hero.label': 'Audio Designer & Developer',
-        'hero.title': 'Het Creëren van Meeslepende<br>Audio Ervaringen',
-        'hero.description': 'Interactieve muzieksystemen, geluidsontwerp voor animatie & games, en innovatieve audio tools.',
-        'hero.cta1': 'Bekijk Mijn Werk',
-        'hero.cta2': 'Neem Contact Op',
-        'projects.label': 'Uitgelicht Werk',
-        'projects.title': 'Geselecteerde Projecten',
-        'projects.description': 'Een selectie van recent werk spanning game audio, geluidsontwerp en interactieve muziek.',
-        'projects.viewall': 'Alle Projecten',
-        'stats.label': 'In Cijfers',
-        'stats.title': 'Ervaring & Impact',
-        'stats.projects': 'Voltooide Projecten',
-        'stats.tools': 'Gebouwde Tools',
-        'stats.languages': 'Talen',
-        'stats.passion': 'Passie',
-        'footer.projects': 'Projecten',
-        'footer.about': 'Over',
-        'footer.contact': 'Contact'
-      }
-    };
-    
-    // Language switcher
+    let translations = {};
     let currentLang = localStorage.getItem('language') || 'en';
+
+    // Helper function to get nested translation value
+    function getNestedTranslation(obj, path) {
+      return path.split('.').reduce((current, key) => current?.[key], obj);
+    }
     
     function setLanguage(lang) {
       currentLang = lang;
@@ -986,11 +916,12 @@
       
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-          if (key.includes('.title') && translations[lang][key].includes('<br>')) {
-            el.innerHTML = translations[lang][key];
+        const translation = getNestedTranslation(translations[lang], key);
+        if (translation) {
+          if (key.includes('.title') && translation.includes('<br>')) {
+            el.innerHTML = translation;
           } else {
-            el.textContent = translations[lang][key];
+            el.textContent = translation;
           }
         }
       });
@@ -999,10 +930,21 @@
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
     }
+
+    // Load translations from JSON file
+    async function loadTranslations() {
+      try {
+        const response = await fetch('locales/index-new.json');
+        translations = await response.json();
+        setLanguage(currentLang);
+      } catch (error) {
+        console.error('Failed to load translations:', error);
+      }
+    }
     
     // Init language
     document.addEventListener('DOMContentLoaded', () => {
-      setLanguage(currentLang);
+      loadTranslations();
       
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
