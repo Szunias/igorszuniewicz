@@ -740,17 +740,21 @@
     </div>
   </footer>
   
+  <!-- Translations Data -->
+  <script type="application/json" id="translations-data" src="../locales/environments.json"></script>
+  
   <!-- Language Switcher Script -->
   <script>
     let translations = {};
     
-    // Load translations from JSON file
+    // Load translations from JSON file  
     async function loadTranslations() {
       try {
         const response = await fetch('../locales/environments.json');
         translations = await response.json();
       } catch (error) {
-        console.error('Error loading translations:', error);
+        console.error('Failed to load translations:', error);
+        translations = { en: {}, pl: {}, nl: {} };
       }
     }
     

@@ -816,6 +816,9 @@
     </div>
   </footer>
   
+  <!-- Translations Data -->
+  <script type="application/json" id="translations-data" src="../locales/musicforgames.json"></script>
+  
   <!-- Language Switcher Script -->
   <script>
     let translations = {};
@@ -826,7 +829,8 @@
         const response = await fetch('../locales/musicforgames.json');
         translations = await response.json();
       } catch (error) {
-        console.error('Error loading translations:', error);
+        console.error('Failed to load translations:', error);
+        translations = { en: {}, pl: {}, nl: {} };
       }
     }
     
