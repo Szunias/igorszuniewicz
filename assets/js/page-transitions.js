@@ -8,7 +8,7 @@
   
   // Konfiguracja
   const config = {
-    duration: 350, // Czas trwania animacji w ms (zoptymalizowane dla płynności)
+    duration: 200, // Skrócony czas dla szybszych przejść
     easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)'
   };
   
@@ -29,11 +29,11 @@
   `;
   document.body.appendChild(overlay);
   
-  // Animacja fade-in przy ładowaniu strony
+  // Animacja fade-in przy ładowaniu strony (szybka)
   window.addEventListener('DOMContentLoaded', () => {
     document.body.style.opacity = '0';
     requestAnimationFrame(() => {
-      document.body.style.transition = `opacity ${config.duration}ms ${config.easing}`;
+      document.body.style.transition = `opacity 150ms ${config.easing}`;
       document.body.style.opacity = '1';
     });
   });
