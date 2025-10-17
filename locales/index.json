@@ -9,7 +9,7 @@
     },
     "hero": {
       "label": "Audio Designer & Developer",
-      "title": "Interactive Sound<br>for Modern Games",
+      "title": "Interactive <span class=\"highlight-sound\">Sound</span><br>for Modern Games",
       "description": "Interactive music systems, sound design for animation & games, and innovative audio tools.",
       "cta1": "View My Work",
       "cta_cv": "CV",
@@ -46,7 +46,7 @@
     },
     "hero": {
       "label": "Audio Designer & Developer",
-      "title": "Interaktywny Dźwięk<br>dla Nowoczesnych Gier",
+      "title": "Interaktywny <span class=\"highlight-sound\">Dźwięk</span><br>dla Nowoczesnych Gier",
       "description": "Interaktywne systemy muzyczne, sound design dla animacji i gier oraz innowacyjne narzędzia audio.",
       "cta1": "Zobacz Moje Prace",
       "cta_cv": "CV",
@@ -83,7 +83,7 @@
     },
     "hero": {
       "label": "Audio Designer & Developer",
-      "title": "Interactief Geluid<br>voor Moderne Games",
+      "title": "Interactief <span class=\"highlight-sound\">Geluid</span><br>voor Moderne Games",
       "description": "Interactieve muzieksystemen, geluidsontwerp voor animatie & games, en innovatieve audio tools.",
       "cta1": "Bekijk Mijn Werk",
       "cta_cv": "CV",
