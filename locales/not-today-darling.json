@@ -56,6 +56,13 @@
       "b2": "Submixes: UI, Gameplay, Ambience + limiter on Master",
       "b3": "Concurrency and collision trigger thresholds"
     },
+    "metasounds": {
+      "title": "MetaSounds",
+      "desc": "Entire audio system built in MetaSounds – a modern procedural-parametric framework in Unreal Engine. Enables reactive, modular sound design responding to gameplay in real-time.",
+      "b1": "Procedural layers driven by speed and game state",
+      "b2": "Parametric controllers for pitch/filters/modulation",
+      "b3": "Modular patches enabling rapid iteration"
+    },
     "player": {
       "label": "Play sample"
     },
@@ -131,6 +138,13 @@
       "b2": "Submixy: UI, Gameplay, Ambience + limiter na Master",
       "b3": "Concurrency i progi wyzwalania kolizji"
     },
+    "metasounds": {
+      "title": "MetaSounds",
+      "desc": "Cały system audio zbudowany w MetaSounds – nowoczesnym systemie proceduralno-parametrycznym w Unreal Engine. Pozwala na reaktywny, modularny sound design reagujący na gameplay w czasie rzeczywistym.",
+      "b1": "Proceduralne warstwy zależne od prędkości i stanu gry",
+      "b2": "Parametryczne kontrolery dla pitch/filtrów/modulacji",
+      "b3": "Modularne patche umożliwiające szybkie iteracje"
+    },
     "player": {
       "label": "Odtwórz próbkę"
     },
@@ -205,6 +219,13 @@
       "b1": "Race‑status + snelheid/camera als inputs",
       "b2": "Submixen: UI, Gameplay, Ambience + limiter op Master",
       "b3": "Concurrency en drempels voor botsingstriggers"
+    },
+    "metasounds": {
+      "title": "MetaSounds",
+      "desc": "Volledig audiosysteem gebouwd in MetaSounds – een modern procedureel-parametrisch framework in Unreal Engine. Maakt reactief, modulair geluidontwerp mogelijk dat reageert op gameplay in realtime.",
+      "b1": "Procedurale lagen aangestuurd door snelheid en game-status",
+      "b2": "Parametrische controllers voor pitch/filters/modulatie",
+      "b3": "Modulaire patches voor snelle iteratie"
     },
     "player": {
       "label": "Speel sample"

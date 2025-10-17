@@ -469,6 +469,155 @@
       font-size: 1.2rem;
     }
     
+    /* === METASOUNDS GALLERY === */
+    .metasounds-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .metasounds-gallery img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(78, 205, 196, 0.3);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+    }
+    
+    .metasounds-gallery img:hover {
+      transform: translateY(-5px);
+      border-color: #4ecdc4;
+      box-shadow: 0 15px 50px rgba(78, 205, 196, 0.3);
+    }
+    
+    /* === FIXED PLAYER === */
+    .fixed-player {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 320px;
+      background: rgba(15, 20, 25, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(78, 205, 196, 0.3);
+      border-radius: 16px;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 20px rgba(78, 205, 196, 0.1);
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    }
+    
+    .fixed-player.active {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+    
+    .fixed-player-top {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .fixed-player-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #ff6b6b, #ff9ff3);
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+      flex-shrink: 0;
+    }
+    
+    .fixed-player-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+    }
+    
+    .fixed-player-btn .icon {
+      width: 0;
+      height: 0;
+      border-left: 14px solid white;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      margin-left: 3px;
+    }
+    
+    .fixed-player-btn.playing .icon {
+      border: none;
+      width: 12px;
+      height: 12px;
+      position: relative;
+    }
+    
+    .fixed-player-btn.playing .icon::before,
+    .fixed-player-btn.playing .icon::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 16px;
+      background: white;
+      border-radius: 2px;
+    }
+    
+    .fixed-player-btn.playing .icon::before { left: 0; }
+    .fixed-player-btn.playing .icon::after { left: 8px; }
+    
+    .fixed-player-info {
+      flex: 1;
+      overflow: hidden;
+    }
+    
+    .fixed-player-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .fixed-player-subtitle {
+      font-size: 0.75rem;
+      color: #888;
+    }
+    
+    .fixed-player-progress {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+    }
+    
+    .fixed-player-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #4ecdc4, #ff9ff3);
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+    
+    .fixed-player-time {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: #666;
+    }
+    
     /* === VOICELINES === */
     .voicelines-section {
       margin: 5rem 0;
@@ -858,6 +1007,17 @@
       .gallery-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       }
+      
+      .fixed-player {
+        bottom: 1rem;
+        right: 1rem;
+        width: 280px;
+        padding: 0.75rem 1rem;
+      }
+      
+      .metasounds-gallery {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -932,54 +1092,24 @@
       </div>
     </div>
 
-    <!-- SFX System -->
+    <!-- MetaSounds Implementation -->
     <div class="row">
       <div class="row-visual">
-        <img src="../assets/images/projects/NotTodayPic1.png" alt="SFX system visuals" />
+        <div class="metasounds-gallery">
+          <!-- Tutaj wklej screenshoty MetaSounds -->
+          <img src="../assets/images/projects/NotTodayPic1.png" alt="MetaSound patch example" />
+          <img src="../assets/images/projects/NotTodayPic3.png" alt="MetaSound patch example" />
+        </div>
       </div>
       <div class="row-text">
-        <h3 data-i18n="sfxSystem.title">System SFX</h3>
-        <p data-i18n="sfxSystem.desc">Biblioteka efektów jest parametryczna: prędkość, stan toru i cooldowny sterują warstwami materiałów i transientami. Booster/burst ma własne krzywe obrotów i dopalacz szumów, a kolizje używają wag i progów, by uniknąć „spamowania”.</p>
+        <h3 data-i18n="metasounds.title">MetaSounds</h3>
+        <p data-i18n="metasounds.desc">Cały system audio zbudowany w MetaSounds – nowoczesnym systemie proceduralno-parametrycznym w Unreal Engine. Pozwala na reaktywny, modularny sound design reagujący na gameplay w czasie rzeczywistym.</p>
         <ul>
-          <li data-i18n="sfxSystem.b1">Materiały toru (asfalt/piasek/metal) – przełączane płynnie</li>
-          <li data-i18n="sfxSystem.b2">Hazardy i slip – pitch/LPF zależnie od camery i prędkości</li>
-          <li data-i18n="sfxSystem.b3">Start/odliczanie i fanfary finiszu jako wyróżniki rund</li>
+          <li data-i18n="metasounds.b1">Proceduralne warstwy zależne od prędkości i stanu gry</li>
+          <li data-i18n="metasounds.b2">Parametryczne kontrolery dla pitch/filtrów/modulacji</li>
+          <li data-i18n="metasounds.b3">Modularne patche umożliwiające szybkie iteracje</li>
         </ul>
-        <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play sample - SFX"></div>
-      </div>
-    </div>
-
-    <!-- Mix & Dynamics -->
-    <div class="row reverse">
-      <div class="row-visual">
-        <img src="../assets/images/projects/NotTodayPic4.png" alt="Mix and dynamics visuals" />
-      </div>
-      <div class="row-text">
-        <h3 data-i18n="mix.title">Mix & Dynamika</h3>
-        <p data-i18n="mix.desc">Hierarchia miksu z priorytetami i duckingiem: callouty i UI mają pierwszeństwo nad tłem, crowd „oddycha” wraz z przebiegiem wyścigu. Submiks kontroluje szczyty, a limity per-bus trzymają całość w ryzach podczas chaosu.</p>
-        <ul>
-          <li data-i18n="mix.b1">Sidechain ducking dla UI/calloutów nad gameplay</li>
-          <li data-i18n="mix.b2">Automatyka crowd/ambience zależna od pozycji i stanu</li>
-          <li data-i18n="mix.b3">Gain staging i ograniczenie maskowania częstotliwości</li>
-        </ul>
-        <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play sample - Mix"></div>
-      </div>
-    </div>
-
-    <!-- Unreal Integration -->
-    <div class="row">
-      <div class="row-visual">
-        <img src="../assets/images/projects/NotTodayPic2.png" alt="Unreal integration visuals" />
-      </div>
-      <div class="row-text">
-        <h3 data-i18n="integration.title">Integracja w Unreal</h3>
-        <p data-i18n="integration.desc">Implementacja oparta o Sound Cues/parametry i Submix Bus. Używam concurrency, by zapobiegać nakładaniu się dźwięków, profili tłumienia dla dystansu oraz lekkiej kompresji busów, by utrzymać stałą głośność przy dużej liczbie zdarzeń.</p>
-        <ul>
-          <li data-i18n="integration.b1">Parametry stanów wyścigu + prędkość/kamera</li>
-          <li data-i18n="integration.b2">Submixy: UI, Gameplay, Ambience + limiter na Master</li>
-          <li data-i18n="integration.b3">Concurrency i progi wyzwalania kolizji</li>
-        </ul>
-        <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play sample - Implementation"></div>
+        <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play sample - MetaSounds"></div>
       </div>
     </div>
 
@@ -1111,6 +1241,26 @@
     </footer>
   </div>
   
+  <!-- Fixed Player -->
+  <div class="fixed-player" id="fixedPlayer">
+    <div class="fixed-player-top">
+      <button class="fixed-player-btn" id="fixedPlayerBtn">
+        <div class="icon"></div>
+      </button>
+      <div class="fixed-player-info">
+        <div class="fixed-player-title" id="fixedPlayerTitle">Audio Sample</div>
+        <div class="fixed-player-subtitle">Not Today, Darling!</div>
+      </div>
+    </div>
+    <div class="fixed-player-progress" id="fixedPlayerProgress">
+      <div class="fixed-player-progress-bar" id="fixedPlayerProgressBar"></div>
+    </div>
+    <div class="fixed-player-time">
+      <span id="fixedPlayerCurrentTime">0:00</span>
+      <span id="fixedPlayerDuration">0:00</span>
+    </div>
+  </div>
+  
   <!-- Translation Data -->
   <script>
     window.translations = {};
@@ -1190,10 +1340,25 @@
 
     (function() {
       let active = { audio:null, el:null };
+      const fixedPlayer = document.getElementById('fixedPlayer');
+      const fixedBtn = document.getElementById('fixedPlayerBtn');
+      const fixedTitle = document.getElementById('fixedPlayerTitle');
+      const fixedProgressBar = document.getElementById('fixedPlayerProgressBar');
+      const fixedProgress = document.getElementById('fixedPlayerProgress');
+      const fixedCurrentTime = document.getElementById('fixedPlayerCurrentTime');
+      const fixedDuration = document.getElementById('fixedPlayerDuration');
+
+      function formatTime(seconds) {
+        const m = Math.floor(seconds / 60);
+        const s = Math.floor(seconds % 60);
+        return `${m}:${s.toString().padStart(2, '0')}`;
+      }
 
       function stopActive(){
         if(active.audio){ try{ active.audio.pause(); }catch{} }
         if(active.el){ active.el.querySelector('button')?.classList.remove('paused'); active.el.style.setProperty('--p','0deg'); }
+        fixedPlayer.classList.remove('active');
+        fixedBtn.classList.remove('playing');
         active = { audio:null, el:null };
       }
 
@@ -1212,6 +1377,9 @@
           if(!audio.duration) return raf = requestAnimationFrame(loop);
           const p = Math.min(1, audio.currentTime / audio.duration);
           el.style.setProperty('--p', `${(p*360).toFixed(1)}deg`);
+          fixedProgressBar.style.width = `${(p*100).toFixed(1)}%`;
+          fixedCurrentTime.textContent = formatTime(audio.currentTime);
+          fixedDuration.textContent = formatTime(audio.duration);
           if(!audio.paused) raf = requestAnimationFrame(loop);
         }
 
@@ -1219,6 +1387,10 @@
           if(active.el && active.el !== el) stopActive();
           active = { audio, el };
           btn.classList.add('paused');
+          fixedPlayer.classList.add('active');
+          fixedBtn.classList.add('playing');
+          const sectionTitle = el.closest('.row')?.querySelector('h3')?.textContent || 'Audio Sample';
+          fixedTitle.textContent = sectionTitle;
           audio.play().then(()=>{ raf = requestAnimationFrame(loop); }).catch(()=>{ stopActive(); });
         }
 
@@ -1230,9 +1402,32 @@
           if(audio.paused) play(); else pause();
         });
 
-        audio.addEventListener('ended', ()=>{ pause(); audio.currentTime = 0; el.style.setProperty('--p','0deg'); });
+        audio.addEventListener('ended', ()=>{ pause(); audio.currentTime = 0; el.style.setProperty('--p','0deg'); fixedProgressBar.style.width = '0%'; });
         audio.addEventListener('error', stopActive);
       }
+
+      // Fixed player controls
+      fixedBtn.addEventListener('click', () => {
+        if(active.audio) {
+          if(active.audio.paused) {
+            active.audio.play();
+            fixedBtn.classList.add('playing');
+            active.el?.querySelector('button')?.classList.add('paused');
+          } else {
+            active.audio.pause();
+            fixedBtn.classList.remove('playing');
+            active.el?.querySelector('button')?.classList.remove('paused');
+          }
+        }
+      });
+
+      fixedProgress.addEventListener('click', (e) => {
+        if(active.audio) {
+          const rect = fixedProgress.getBoundingClientRect();
+          const percent = (e.clientX - rect.left) / rect.width;
+          active.audio.currentTime = active.audio.duration * percent;
+        }
+      });
 
       document.addEventListener('DOMContentLoaded', ()=>{
         document.querySelectorAll('.audio-player').forEach(bindPlayer);
