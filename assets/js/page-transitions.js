@@ -1,57 +1,50 @@
 /**
- * Smooth Page Transitions
- * Dodaje płynne przejścia między stronami
+ * Modern Slide Transition
+ * Szybkie przesunięcie z blur efektem
  */
 
 (function() {
   'use strict';
   
-  // Konfiguracja
   const config = {
-    duration: 200, // Skrócony czas dla szybszych przejść
+    duration: 150,
     easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)'
   };
   
-  // Tworzenie elementu overlay
-  const overlay = document.createElement('div');
-  overlay.id = 'page-transition-overlay';
-  overlay.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
-    z-index: 999999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity ${config.duration}ms ${config.easing};
+  const style = document.createElement('style');
+  style.textContent = `
+    body {
+      transition: all ${config.duration}ms ${config.easing};
+    }
+    body.page-transitioning {
+      opacity: 0;
+      transform: translateX(-20px);
+      filter: blur(4px);
+    }
+    body.page-entering {
+      opacity: 0;
+      transform: translateX(20px);
+      filter: blur(4px);
+    }
   `;
-  document.body.appendChild(overlay);
+  document.head.appendChild(style);
   
-  // Animacja fade-in przy ładowaniu strony (szybka)
+  // Wejście na stronę
   window.addEventListener('DOMContentLoaded', () => {
-    document.body.style.opacity = '0';
+    document.body.classList.add('page-entering');
+    
     requestAnimationFrame(() => {
-      document.body.style.transition = `opacity 150ms ${config.easing}`;
-      document.body.style.opacity = '1';
+      document.body.classList.remove('page-entering');
     });
   });
   
-  // Przechwytywanie kliknięć w linki
+  // Kliknięcia
   document.addEventListener('click', (e) => {
     const link = e.target.closest('a');
-    
-    // Sprawdzamy czy to link do innej strony (nie anchor, nie external)
     if (!link) return;
     
     const href = link.getAttribute('href');
     
-    // Ignoruj jeśli:
-    // - to anchor link (#)
-    // - to external link
-    // - ma target="_blank"
-    // - to download link
     if (!href || 
         href.startsWith('#') || 
         href.startsWith('http://') || 
@@ -63,26 +56,17 @@
       return;
     }
     
-    // Zapobiegamy domyślnemu zachowaniu
     e.preventDefault();
+    document.body.classList.add('page-transitioning');
     
-    // Uruchamiamy animację wyjścia
-    overlay.style.pointerEvents = 'all';
-    overlay.style.opacity = '1';
-    
-    // Po zakończeniu animacji przechodzimy na nową stronę
     setTimeout(() => {
       window.location.href = href;
     }, config.duration);
   });
   
-  // Obsługa przycisku wstecz/do przodu w przeglądarce
   window.addEventListener('pageshow', (event) => {
     if (event.persisted) {
-      // Strona została załadowana z cache (back/forward)
-      overlay.style.opacity = '0';
-      overlay.style.pointerEvents = 'none';
-      document.body.style.opacity = '1';
+      document.body.classList.remove('page-transitioning', 'page-entering');
     }
   });
 })();
