@@ -33,6 +33,70 @@
       overflow-x: hidden;
     }
     
+    /* === AUDIO WAVEFORM BACKGROUND === */
+    .waveform-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.15;
+      overflow: hidden;
+    }
+    
+    .wave-line {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #60a5fa, transparent);
+      animation: wavePulse 3s ease-in-out infinite;
+    }
+    
+    .wave-line:nth-child(1) { top: 20%; animation-delay: 0s; }
+    .wave-line:nth-child(2) { top: 40%; animation-delay: 0.5s; }
+    .wave-line:nth-child(3) { top: 60%; animation-delay: 1s; }
+    .wave-line:nth-child(4) { top: 80%; animation-delay: 1.5s; }
+    
+    @keyframes wavePulse {
+      0%, 100% { transform: scaleX(0.5); opacity: 0.3; }
+      50% { transform: scaleX(1); opacity: 0.8; }
+    }
+    
+    /* === FREQUENCY BARS === */
+    .frequency-bars {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      gap: 4px;
+      padding: 0 2rem;
+      z-index: -1;
+      opacity: 0.1;
+    }
+    
+    .freq-bar {
+      width: 100%;
+      max-width: 20px;
+      background: linear-gradient(to top, #60a5fa, #a78bfa);
+      border-radius: 4px 4px 0 0;
+      animation: barDance 1.2s ease-in-out infinite;
+    }
+    
+    .freq-bar:nth-child(odd) { animation-duration: 0.8s; }
+    .freq-bar:nth-child(3n) { animation-duration: 1s; }
+    .freq-bar:nth-child(4n) { animation-duration: 1.4s; }
+    
+    @keyframes barDance {
+      0%, 100% { height: 20px; opacity: 0.5; }
+      50% { height: 100px; opacity: 1; }
+    }
+    
     /* === BACKGROUND === */
     .bg-gradient {
       position: fixed;
@@ -227,6 +291,31 @@
       background-clip: text;
       margin-bottom: 1rem;
       letter-spacing: -0.03em;
+      position: relative;
+      animation: glitchTitle 8s infinite;
+    }
+    
+    .page-title::before,
+    .page-title::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0;
+    }
+    
+    @keyframes glitchTitle {
+      0%, 90%, 100% { opacity: 1; }
+      91% { opacity: 0.8; transform: translate(-2px, 2px); }
+      92% { opacity: 1; transform: translate(0, 0); }
+      93% { opacity: 0.9; transform: translate(2px, -1px); }
+      94% { opacity: 1; transform: translate(0, 0); }
     }
     
     .page-description {
@@ -258,12 +347,13 @@
       margin-bottom: 1.5rem;
     }
     
-    /* === CARDS === */
+    /* === CARDS WITH 3D EFFECT === */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       margin-top: 3rem;
+      perspective: 1000px;
     }
     
     .card {
@@ -272,13 +362,38 @@
       border-radius: 24px;
       border: 1px solid rgba(96, 165, 250, 0.2);
       padding: 2rem;
-      transition: all 0.4s ease;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 0;
+    }
+    
+    .card:hover::before {
+      opacity: 1;
     }
     
     .card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(96, 165, 250, 0.4);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      transform: rotateX(2deg) rotateY(5deg) translateY(-12px);
+      border-color: rgba(96, 165, 250, 0.5);
+      box-shadow: 0 25px 60px rgba(96, 165, 250, 0.2), 0 0 50px rgba(167, 139, 250, 0.1);
+    }
+    
+    .card > * {
+      position: relative;
+      z-index: 1;
     }
     
     .card-title {
@@ -389,6 +504,38 @@
     <div class="orb orb-3"></div>
   </div>
   
+  <!-- Audio Waveform Background -->
+  <div class="waveform-bg">
+    <div class="wave-line"></div>
+    <div class="wave-line"></div>
+    <div class="wave-line"></div>
+    <div class="wave-line"></div>
+  </div>
+  
+  <!-- Frequency Bars -->
+  <div class="frequency-bars">
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+    <div class="freq-bar"></div>
+  </div>
+  
   <!-- Header -->
   <header class="header" id="header">
     <div class="container">
@@ -414,7 +561,7 @@
   <div class="page-content">
     <div class="container">
       <div class="page-header">
-        <h1 class="page-title" data-i18n="about_page_title">About Me</h1>
+        <h1 class="page-title" data-text="About Me" data-i18n="about_page_title">About Me</h1>
         <p class="page-description" data-i18n="about_page_description">
           Audio designer, composer, and developer specialized in interactive music systems, game audio implementation, and real-time DSP. Combining creative intuition with technical precision.
         </p>
@@ -509,6 +656,70 @@
       } else {
         header.classList.remove('scrolled');
       }
+    });
+    
+    // 3D card tilt effect on mouse move
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -5;
+        const rotateY = ((x - centerX) / centerX) * 5;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+      });
+    });
+    
+    // Parallax effect for waveform lines
+    const waveLines = document.querySelectorAll('.wave-line');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      waveLines.forEach((line, index) => {
+        const speed = 0.1 + (index * 0.05);
+        line.style.transform = `translateX(${scrolled * speed}px)`;
+      });
+    });
+    
+    // Mouse-reactive frequency bars
+    const freqBars = document.querySelectorAll('.freq-bar');
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX / window.innerWidth;
+      freqBars.forEach((bar, index) => {
+        const distance = Math.abs((index / freqBars.length) - mouseX);
+        const height = 20 + (1 - distance) * 120;
+        bar.style.height = `${height}px`;
+      });
+    });
+    
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all cards and sections
+    document.querySelectorAll('.card, .content-section, .stat-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(el);
     });
   </script>
   <script src="assets/js/translations.js"></script>
