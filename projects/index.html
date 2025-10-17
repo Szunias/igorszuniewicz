@@ -10,7 +10,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     /* === RESET === */
@@ -26,22 +26,35 @@
     }
     
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
       background: #000000;
       color: #e0e6ed;
       line-height: 1.6;
       overflow-x: hidden;
+      font-weight: 400;
     }
     
-    /* === BACKGROUND === */
+    /* === PREMIUM PROFESSIONAL BACKGROUND === */
     .bg-gradient {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(ellipse at top, #0f172a 0%, #000000 50%, #000000 100%);
-      z-index: -3;
+      z-index: -4;
+      background: 
+        radial-gradient(ellipse at 25% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+        radial-gradient(ellipse at 75% 85%, rgba(236, 72, 153, 0.06) 0%, transparent 40%),
+        linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #050508 100%);
+    }
+    
+    .bg-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      mix-blend-mode: overlay;
     }
     
     .bg-grid {
@@ -53,62 +66,36 @@
       background-image: 
         linear-gradient(rgba(96, 165, 250, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(96, 165, 250, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      z-index: -2;
+      background-size: 100px 100px;
+      z-index: -3;
       opacity: 0.4;
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 90%);
     }
     
     .bg-orbs {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
+      z-index: -2;
       overflow: hidden;
-      z-index: -1;
-      opacity: 0.6;
+      opacity: 0.12;
     }
     
-    .orb {
+    .bg-orbs::before {
+      content: '';
       position: absolute;
-      border-radius: 50%;
-      filter: blur(100px);
-      animation: float 25s infinite ease-in-out;
-      mix-blend-mode: screen;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.1) 50%, transparent 100%),
+        linear-gradient(0deg, transparent 0%, rgba(236, 72, 153, 0.08) 50%, transparent 100%);
+      animation: subtleRotate 60s linear infinite;
     }
     
-    .orb-1 {
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(96, 165, 250, 0.5) 0%, rgba(59, 130, 246, 0.2) 30%, transparent 70%);
-      top: -15%;
-      left: -10%;
-      animation-delay: 0s;
-    }
-    
-    .orb-2 {
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(167, 139, 250, 0.4) 0%, rgba(139, 92, 246, 0.2) 30%, transparent 70%);
-      top: 40%;
-      right: -20%;
-      animation-delay: -8s;
-    }
-    
-    .orb-3 {
-      width: 550px;
-      height: 550px;
-      background: radial-gradient(circle, rgba(236, 72, 153, 0.35) 0%, rgba(219, 39, 119, 0.15) 30%, transparent 70%);
-      bottom: -25%;
-      left: 25%;
-      animation-delay: -16s;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-      25% { transform: translate(40px, -40px) scale(1.15) rotate(90deg); }
-      50% { transform: translate(-30px, 30px) scale(0.85) rotate(180deg); }
-      75% { transform: translate(35px, 35px) scale(1.05) rotate(270deg); }
+    @keyframes subtleRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
     
     /* === CONTAINER === */
@@ -146,7 +133,7 @@
     }
     
     .logo {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-size: 1.5rem;
       font-weight: 700;
       color: #fff;
@@ -164,7 +151,7 @@
     .nav-links a {
       color: #9ca3af;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 400;
       font-size: 0.95rem;
       transition: color 0.3s ease;
     }
@@ -190,7 +177,7 @@
       border: none;
       color: #9ca3af;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 500;
       border-radius: 20px;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -218,7 +205,7 @@
     }
     
     .page-title {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-size: clamp(3rem, 7vw, 5rem);
       font-weight: 900;
       background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
@@ -252,7 +239,7 @@
       border-radius: 25px;
       color: #9ca3af;
       font-size: 0.9rem;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -380,7 +367,7 @@
     }
     
     .project-title {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-size: 1.5rem;
       font-weight: 700;
       color: #fff;
@@ -439,7 +426,7 @@
     }
     
     .coming-soon-text {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-size: 1.2rem;
       font-weight: 700;
       color: #60a5fa;
@@ -457,7 +444,7 @@
       font-size: 0.85rem;
       color: #94a3b8;
       margin-top: 0.5rem;
-      font-weight: 500;
+      font-weight: 400;
     }
     
     /* === RESPONSIVE === */

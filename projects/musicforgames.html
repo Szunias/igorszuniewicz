@@ -188,7 +188,7 @@
     }
     
     h1 {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-size: clamp(3rem, 8vw, 5rem);
       font-weight: 900;
       letter-spacing: 2px;
@@ -262,7 +262,7 @@
     }
     
     h2 {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       margin-bottom: 1rem;
@@ -359,7 +359,7 @@
       font-size: 2rem;
       font-weight: 700;
       color: #9a6cff;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Sora', sans-serif;
     }
     
     .project-bpm {
@@ -374,9 +374,13 @@
     .project-concept {
       color: #d9f2ff;
       font-style: italic;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       line-height: 1.7;
       font-size: 1.05rem;
+    }
+    
+    .project-card .audio-player {
+      margin: 2rem auto;
     }
     
     .sections-grid {
@@ -596,6 +600,115 @@
     </div>
   </section>
   
+  <!-- Audio Themes -->
+  <section class="projects-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Audio Themes</div>
+        <h2>Three Interactive Soundtracks</h2>
+      </div>
+
+      <div class="projects-grid">
+        <!-- CHASE -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">CHASE</div>
+            <div class="project-bpm">120 BPM</div>
+          </div>
+          <p class="project-concept">Relentless pursuit through five surreal realms with escalating horror elements.</p>
+          
+          <!-- Audio Player for CHASE -->
+          <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play - CHASE Full Track"></div>
+          
+          <div class="sections-grid">
+            <div class="section-item">
+              <div class="section-title">Forest Prelude</div>
+              <div class="section-desc">Suspenseful strings + plucked synth</div>
+            </div>
+            <div class="section-item">
+              <div class="section-title">Mechanical Catacombs</div>
+              <div class="section-desc">Brass + rhythmic loops</div>
+            </div>
+            <div class="section-item">
+              <div class="section-title">Haunted Cathedral</div>
+              <div class="section-desc">Ethereal horns + dissonant strings</div>
+            </div>
+            <div class="section-item">
+              <div class="section-title">Techno-Labyrinth</div>
+              <div class="section-desc">Dark arps, Reese bass</div>
+            </div>
+            <div class="section-item">
+              <div class="section-title">Liminal Zone</div>
+              <div class="section-desc">Glitched alarms, horror guitar</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RACE -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">RACE</div>
+            <div class="project-bpm">150 BPM</div>
+          </div>
+          <p class="project-concept">High-speed racing atop floating Egyptian pyramids, chased by celestial forces.</p>
+          
+          <!-- Audio Player for RACE -->
+          <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play - RACE Full Track"></div>
+          
+          <div class="sections-grid">
+            <div class="section-item">
+              <div class="section-title">Gate Prep</div>
+              <div class="section-desc">Bass groove + choir hints</div>
+            </div>
+            <div class="section-item">
+              <div class="section-title">First Lap</div>
+              <div class="section-desc">Metallic bass + breakbeats</div>
+            </div>
+            <div class="section-item">
+              <div class="section-title">Ambush in the Sky</div>
+              <div class="section-desc">Layered choirs + heavy bass</div>
+            </div>
+            <div class="section-item">
+              <div class="section-title">Final Sprint</div>
+              <div class="section-desc">Hybrid rock + electronic</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ELIMINATION -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">ELIMINATION</div>
+            <div class="project-bpm">90 BPM</div>
+          </div>
+          <p class="project-concept">Strategic opponent elimination in cyberpunk arena with advanced RTPC systems.</p>
+          
+          <!-- Audio Player for ELIMINATION -->
+          <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play - ELIMINATION Full Track"></div>
+          
+          <div class="sections-grid">
+            <div class="section-item">
+              <div class="section-title">Arena Entrance</div>
+              <div class="section-desc">Ethereal pads + subtle synth</div>
+            </div>
+            <div class="section-item">
+              <div class="section-title">Combat Escalation</div>
+              <div class="section-desc">Bass + drums</div>
+            </div>
+            <div class="section-item">
+              <div class="section-title">Last Stand</div>
+              <div class="section-desc">Glitchy electronics</div>
+            </div>
+            <div class="section-item">
+              <div class="section-title">Victory March</div>
+              <div class="section-desc">DOOM-style guitars</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <!-- Video Demonstration -->
   <section class="video-section">
     <div class="container">
@@ -611,197 +724,26 @@
       </div>
     </div>
   </section>
-  
-  <!-- Project Overview -->
-  <section class="overview-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge">Overview</div>
-        <h2>Adaptive Audio Systems</h2>
-      </div>
-      
-      <div class="overview-text">
-        <p>
-          This collection showcases three distinct <strong>interactive music systems</strong> developed for the Music for Games final exam. 
-          Each prototype demonstrates different approaches to adaptive audio design, featuring <strong>vertical layering</strong> between 
-          Calm and Intense states, <strong>horizontal re-sequencing</strong> for variation, and extensive <strong>RTPC control systems</strong>.
-        </p>
-        
-        <p>
-          All musical assets were <strong>composed, edited, and exported specifically for Wwise implementation</strong>, balancing 
-          coursework demands with creative exploration of interactive music techniques. Each project tells a unique story through 
-          dynamic audio that responds to gameplay in real-time.
-        </p>
+
+  <!-- Fixed Player -->
+  <div class="fixed-player" id="fixedPlayer">
+    <div class="fixed-player-top">
+      <button class="fixed-player-btn" id="fixedPlayerBtn">
+        <div class="icon"></div>
+      </button>
+      <div class="fixed-player-info">
+        <div class="fixed-player-title" id="fixedPlayerTitle">Audio Sample</div>
+        <div class="fixed-player-subtitle">Music for Games</div>
       </div>
     </div>
-  </section>
-  
-  <!-- Projects Showcase -->
-  <section class="projects-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge">Three Projects</div>
-        <h2>Musical Journeys</h2>
-      </div>
-      
-      <div class="projects-grid">
-        <!-- CHASE Project -->
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-title">CHASE</div>
-            <div class="project-bpm">120 BPM</div>
-          </div>
-          
-          <p class="project-concept">
-            Relentless pursuit through five surreal realms with escalating horror elements.
-          </p>
-          
-          <div class="sections-grid">
-            <div class="section-item">
-              <div class="section-title">Forest Prelude</div>
-              <div class="section-desc">Suspenseful strings + plucked synth → curiosity</div>
-            </div>
-            
-            <div class="section-item">
-              <div class="section-title">Mechanical Catacombs</div>
-              <div class="section-desc">Brass + rhythmic loops → rising tension</div>
-            </div>
-            
-            <div class="section-item">
-              <div class="section-title">Haunted Cathedral</div>
-              <div class="section-desc">Ethereal horns + dissonant strings → dread</div>
-            </div>
-            
-            <div class="section-item">
-              <div class="section-title">Techno-Labyrinth</div>
-              <div class="section-desc">Dark arps, Reese bass → frantic chase</div>
-            </div>
-            
-            <div class="section-item">
-              <div class="section-title">Liminal Zone</div>
-              <div class="section-desc">Glitched alarms, horror guitar → peak horror</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- RACE Project -->
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-title">RACE</div>
-            <div class="project-bpm">150 BPM</div>
-          </div>
-          
-          <p class="project-concept">
-            High-speed racing atop floating Egyptian pyramids, chased by celestial forces.
-          </p>
-          
-          <div class="sections-grid">
-            <div class="section-item">
-              <div class="section-title">Gate Prep</div>
-              <div class="section-desc">Bass groove + choir hints → anticipation</div>
-            </div>
-            
-            <div class="section-item">
-              <div class="section-title">First Lap</div>
-              <div class="section-desc">Metallic bass + breakbeats → momentum</div>
-            </div>
-            
-            <div class="section-item">
-              <div class="section-title">Ambush in the Sky</div>
-              <div class="section-desc">Layered choirs + heavy bass → tension</div>
-            </div>
-            
-            <div class="section-item">
-              <div class="section-title">Final Sprint</div>
-              <div class="section-desc">Hybrid rock + electronic → adrenaline</div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- ELIMINATION Project -->
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-title">ELIMINATION</div>
-            <div class="project-bpm">90 BPM</div>
-          </div>
-          
-          <p class="project-concept">
-            Strategic opponent elimination in cyberpunk arena with advanced RTPC systems.
-          </p>
-          
-          <div class="sections-grid">
-            <div class="section-item">
-              <div class="section-title">Arena Entrance</div>
-              <div class="section-desc">Ethereal pads + subtle synth → uneasy calm</div>
-            </div>
-            
-            <div class="section-item">
-              <div class="section-title">Combat Escalation</div>
-              <div class="section-desc">Bass + drums → heavy metal assault</div>
-            </div>
-            
-            <div class="section-item">
-              <div class="section-title">Last Stand</div>
-              <div class="section-desc">Glitchy electronics → frantic urgency</div>
-            </div>
-            
-            <div class="section-item">
-              <div class="section-title">Victory March</div>
-              <div class="section-desc">DOOM-style guitars → peak stress</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="fixed-player-progress" id="fixedPlayerProgress">
+      <div class="fixed-player-progress-bar" id="fixedPlayerProgressBar"></div>
     </div>
-  </section>
-  
-  <!-- Interactive Techniques -->
-  <section class="features-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge">Technical Implementation</div>
-        <h2>Interactive Techniques</h2>
-      </div>
-      
-      <div class="features-grid">
-        <div class="feature-card">
-          <span class="feature-icon">📊</span>
-          <h3>Vertical Layering</h3>
-          <p>
-            Dynamic transition between Calm (foundational stems) and Intense (full orchestration) states 
-            with 0.5s fade transitions, creating seamless intensity shifts based on gameplay.
-          </p>
-        </div>
-        
-        <div class="feature-card">
-          <span class="feature-icon">🔄</span>
-          <h3>Horizontal Re-sequencing</h3>
-          <p>
-            Alternating loop variations every 8 bars for key stems, creating organic musical evolution 
-            without repetition. Keeps the experience fresh throughout extended gameplay sessions.
-          </p>
-        </div>
-        
-        <div class="feature-card">
-          <span class="feature-icon">🎚️</span>
-          <h3>RTPC Control Systems</h3>
-          <p>
-            Real-time parameter control for GameState, LevelStep, Victory/Defeat states, and spatial audio 
-            (DistanceReverb in ELIMINATION). Enables precise dynamic audio responses.
-          </p>
-        </div>
-        
-        <div class="feature-card">
-          <span class="feature-icon">✨</span>
-          <h3>Seamless Transitions</h3>
-          <p>
-            Custom transition audio between sections: risers, brass smears, and granular glitch effects 
-            for narrative continuity. Maintains musical flow during level changes.
-          </p>
-        </div>
-      </div>
+    <div class="fixed-player-time">
+      <span id="fixedPlayerCurrentTime">0:00</span>
+      <span id="fixedPlayerDuration">0:00</span>
     </div>
-  </section>
+  </div>
   
   <!-- Footer -->
   <footer>
@@ -816,6 +758,93 @@
     </div>
   </footer>
   
+  <!-- Audio Player Component (purple/orange theme) -->
+  <script>
+    (function injectPlayerStyles(){
+      const css = `
+      .audio-player{ --p:0deg; position:relative; width:220px; height:220px; margin:1rem auto; display:block; }
+      .audio-player::before{ content:''; position:absolute; inset:0; border-radius:50%;
+        background:
+          radial-gradient(circle at 50% 50%, rgba(154,108,255,0.10) 0 40%, transparent 41%),
+          conic-gradient(#9a6cff var(--p), rgba(255,255,255,0.08) 0);
+        box-shadow: inset 0 0 0 6px rgba(154,108,255,0.15), 0 10px 30px rgba(0,0,0,0.4);
+      }
+      .audio-player .inner{ position:absolute; inset:18px; border-radius:50%; background:rgba(10,10,16,0.8);
+        display:flex; align-items:center; justify-content:center; box-shadow: inset 0 0 0 2px rgba(154,108,255,0.12);
+      }
+      .audio-player button{ width:96px; height:96px; border-radius:50%; border:none; cursor:pointer; color:#fff;
+        background: linear-gradient(135deg,#9a6cff,#ff6b35); box-shadow: 0 8px 24px rgba(154,108,255,.35);
+        transition: transform .2s ease, box-shadow .2s ease; position:relative; display:flex; align-items:center; justify-content:center; }
+      .audio-player button:hover{ transform: scale(1.05); box-shadow:0 12px 32px rgba(154,108,255,.5); }
+      .audio-player button .tri{ width:0; height:0; border-left:26px solid #fff; border-top:16px solid transparent; border-bottom:16px solid transparent; margin-left:3px; }
+      .audio-player button.paused .tri{ border-left-color:transparent; border-top:0; border-bottom:0; width:20px; height:20px; position:relative; }
+      .audio-player button.paused .tri::before,.audio-player button.paused .tri::after{ content:''; position:absolute; top:0; width:6px; height:24px; background:#fff; border-radius:2px; }
+      .audio-player button.paused .tri::before{ left:-8px; }
+      .audio-player button.paused .tri::after{ left:4px; }
+
+      /* Fixed Player */
+      .fixed-player { position: fixed; bottom: 2rem; right: 2rem; width: 320px; background: rgba(12, 12, 18, 0.92);
+        backdrop-filter: blur(14px); border: 1px solid rgba(154,108,255,0.3); border-radius: 16px; padding: 1rem 1.25rem;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(154,108,255,0.15); z-index: 1000; opacity: 0; transform: translateY(16px) scale(.98);
+        transition: all .35s cubic-bezier(.4,0,.2,1); pointer-events: none; }
+      .fixed-player.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+      .fixed-player-top { display: flex; align-items: center; gap: .75rem; margin-bottom: .75rem; }
+      .fixed-player-btn { width: 48px; height: 48px; border-radius: 50%; border:none; cursor: pointer; display:flex; align-items:center; justify-content:center;
+        background: linear-gradient(135deg,#9a6cff,#ff6b35); color:#0a0a0a; transition: transform .2s ease, box-shadow .2s ease; box-shadow: 0 4px 16px rgba(154,108,255,0.3); }
+      .fixed-player-btn:hover{ transform: scale(1.05); box-shadow: 0 6px 22px rgba(154,108,255,0.45); }
+      .fixed-player-btn .icon{ width:0; height:0; border-left:16px solid #0a0a0a; border-top:10px solid transparent; border-bottom:10px solid transparent; margin-left:2px; transition: all .2s ease; }
+      .fixed-player-btn.playing .icon{ width:12px; height:20px; border:none; background:#0a0a0a; position:relative; margin-left:0; }
+      .fixed-player-btn.playing .icon::before,.fixed-player-btn.playing .icon::after{ content:''; position:absolute; top:0; width:4px; height:20px; background:#0a0a0a; border-radius:1px; }
+      .fixed-player-btn.playing .icon::before{ left:0; } .fixed-player-btn.playing .icon::after{ right:0; }
+      .fixed-player-info{ flex:1; min-width:0; }
+      .fixed-player-title{ color:#fff; font-weight:600; font-size:.95rem; margin-bottom:.2rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+      .fixed-player-subtitle{ color:#9a6cff; font-size:.8rem; font-weight:500; }
+      .fixed-player-progress{ width:100%; height:6px; background: rgba(255,255,255,0.1); border-radius:3px; overflow:hidden; cursor:pointer; margin-bottom:.5rem; }
+      .fixed-player-progress-bar{ height:100%; width:0%; background: linear-gradient(90deg,#9a6cff,#ff6b35); border-radius:3px; transition: width .25s ease; }
+      .fixed-player-time{ display:flex; justify-content:space-between; color:#aaa; font-size:.75rem; font-variant-numeric: tabular-nums; }
+      @media (max-width: 768px){ .fixed-player{ bottom:1rem; right:1rem; width:280px; padding:.75rem 1rem; } }
+      `;
+      const style = document.createElement('style'); style.textContent = css; document.head.appendChild(style);
+    })();
+
+    (function(){
+      let active = { audio:null, el:null };
+      const fixedPlayer = document.getElementById('fixedPlayer');
+      const fixedBtn = document.getElementById('fixedPlayerBtn');
+      const fixedTitle = document.getElementById('fixedPlayerTitle');
+      const fixedProgressBar = document.getElementById('fixedPlayerProgressBar');
+      const fixedProgress = document.getElementById('fixedPlayerProgress');
+      const fixedCurrentTime = document.getElementById('fixedPlayerCurrentTime');
+      const fixedDuration = document.getElementById('fixedPlayerDuration');
+
+      function formatTime(seconds){ const m=Math.floor(seconds/60); const s=Math.floor(seconds%60); return `${m}:${s.toString().padStart(2,'0')}`; }
+      function stopActive(){ if(active.audio){ try{ active.audio.pause(); }catch{} } if(active.el){ active.el.querySelector('button')?.classList.remove('paused'); active.el.style.setProperty('--p','0deg'); }
+        fixedPlayer.classList.remove('active'); fixedBtn.classList.remove('playing'); active = { audio:null, el:null }; }
+
+      function bindPlayer(el){
+        const src = el.getAttribute('data-audio') || '../assets/audio/tracks/placeholder.wav';
+        const btn = document.createElement('button'); btn.setAttribute('aria-label', el.getAttribute('aria-label') || 'Play sample');
+        const inner = document.createElement('div'); inner.className='inner'; const tri = document.createElement('div'); tri.className='tri';
+        btn.appendChild(tri); inner.appendChild(btn); el.appendChild(inner);
+        let audio = new Audio(src); audio.preload = 'metadata'; let raf = null;
+        function loop(){ if(!audio.duration){ raf = requestAnimationFrame(loop); return; } const p=Math.min(1, audio.currentTime/audio.duration);
+          el.style.setProperty('--p', `${(p*360).toFixed(1)}deg`); fixedProgressBar.style.width = `${(p*100).toFixed(1)}%`;
+          fixedCurrentTime.textContent = formatTime(audio.currentTime); fixedDuration.textContent = formatTime(audio.duration); if(!audio.paused) raf = requestAnimationFrame(loop); }
+        function play(){ if(active.el && active.el!==el) stopActive(); active = { audio, el }; btn.classList.add('paused'); fixedPlayer.classList.add('active'); fixedBtn.classList.add('playing');
+          const projectTitle = el.closest('.project-card')?.querySelector('.project-title')?.textContent || 'Audio Sample';
+          fixedTitle.textContent = projectTitle; audio.play().then(()=>{ raf = requestAnimationFrame(loop); }).catch(()=>{ stopActive(); }); }
+        function pause(){ audio.pause(); btn.classList.remove('paused'); cancelAnimationFrame(raf); raf=null; }
+        btn.addEventListener('click', ()=>{ if(audio.paused) play(); else pause(); });
+        audio.addEventListener('ended', ()=>{ pause(); audio.currentTime=0; el.style.setProperty('--p','0deg'); fixedProgressBar.style.width='0%'; });
+        audio.addEventListener('error', stopActive);
+      }
+
+      fixedBtn.addEventListener('click', ()=>{ if(active.audio){ if(active.audio.paused){ active.audio.play(); fixedBtn.classList.add('playing'); active.el?.querySelector('button')?.classList.add('paused'); } else { active.audio.pause(); fixedBtn.classList.remove('playing'); active.el?.querySelector('button')?.classList.remove('paused'); } } });
+      fixedProgress.addEventListener('click', (e)=>{ if(active.audio){ const rect=fixedProgress.getBoundingClientRect(); const percent=(e.clientX-rect.left)/rect.width; active.audio.currentTime = active.audio.duration * percent; } });
+      document.addEventListener('DOMContentLoaded', ()=>{ document.querySelectorAll('.audio-player').forEach(bindPlayer); });
+    })();
+  </script>
+
   <!-- Translations Data -->
   <script type="application/json" id="translations-data" src="../locales/musicforgames.json"></script>
   
