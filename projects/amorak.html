@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" style="background:#120607;">
+<html lang="en" style="background:#0a0a0a;">
 <head>
   <style>
     /* CRITICAL: Load immediately before anything else */
@@ -29,7 +29,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: amorakFadeOut 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      animation: amorakFadeOut 2.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       pointer-events: none;
       overflow: hidden;
     }
@@ -56,9 +56,8 @@
         radial-gradient(ellipse at 20% 60%, rgba(139, 69, 19, 0.3) 0%, transparent 30%),
         radial-gradient(ellipse at 80% 40%, rgba(120, 50, 30, 0.25) 0%, transparent 35%),
         radial-gradient(ellipse at 50% 80%, rgba(100, 40, 20, 0.2) 0%, transparent 40%);
-      animation: mistDrift 15s ease-in-out infinite;
+      animation: mistDrift 15s ease-in-out infinite, mistFade 2s ease-in-out forwards;
       opacity: 0;
-      animation: mistFade 2s ease-in-out forwards;
     }
     
     @keyframes mistDrift {
@@ -114,7 +113,7 @@
     .amorak-title {
       position: relative;
       z-index: 10;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-size: clamp(3rem, 10vw, 6rem);
       font-weight: 900;
       color: #8b4513;
@@ -223,27 +222,6 @@
       0%, 100% { opacity: 0.7; }
       50% { opacity: 1; }
     }
-    
-    /* Claw scratch reveal */
-    .claw-scratch {
-      position: absolute;
-      width: 4px;
-      height: 0;
-      background: linear-gradient(to bottom, rgba(139, 69, 19, 0.8), transparent);
-      transform: rotate(-25deg);
-      animation: scratchReveal 1.5s ease-out forwards;
-    }
-    
-    @keyframes scratchReveal {
-      0% { height: 0; top: 30%; }
-      100% { height: 200px; top: 35%; }
-    }
-    
-    .claw-scratch:nth-child(1) { left: 20%; animation-delay: 2s; }
-    .claw-scratch:nth-child(2) { left: 22%; animation-delay: 2.1s; width: 5px; }
-    .claw-scratch:nth-child(3) { left: 24%; animation-delay: 2.2s; }
-    .claw-scratch:nth-child(4) { right: 20%; animation-delay: 2.3s; }
-    .claw-scratch:nth-child(5) { right: 22%; animation-delay: 2.4s; width: 5px; }
   </style>
   <title>Amorak — Sound Design</title>
   <meta charset="utf-8" />
@@ -254,7 +232,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
     /* === RESET & BASE === */
@@ -267,8 +245,8 @@
     html, body {
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, #120607 0%, #1b090b 55%, #24090a 100%);
-      color: #e0d0c0;
+      background: #120607;
+      color: #ffffff;
       font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
       scroll-behavior: smooth;
@@ -282,9 +260,7 @@
       width: 100%;
       height: 100%;
       z-index: 0;
-      background: 
-        linear-gradient(180deg, rgba(18, 6, 7, 0.85) 0%, rgba(27, 9, 11, 0.90) 55%, rgba(36, 9, 10, 0.95) 100%),
-        url('../assets/images/projects-amorak/background/8.jpg') center/cover no-repeat fixed;
+      background: url('../assets/images/projects-amorak/background/8.jpg') center/cover no-repeat fixed;
     }
     
     .horror-background::before {
@@ -295,9 +271,9 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(ellipse at 20% 30%, rgba(120, 20, 30, 0.10) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 70%, rgba(160, 30, 40, 0.08) 0%, transparent 55%),
-        radial-gradient(ellipse at 50% 50%, rgba(139, 69, 19, 0.05) 0%, transparent 60%);
+        radial-gradient(ellipse at 30% 20%, rgba(139, 69, 19, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(178, 34, 34, 0.03) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(18,6,7,0.88) 0%, rgba(18,6,7,0.92) 50%, rgba(18,6,7,0.95) 100%);
     }
     
     .horror-background::after {
@@ -307,20 +283,20 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 50% 30%, rgba(178, 34, 34, 0.03) 0%, transparent 40%);
-      animation: bgPulse 10s ease-in-out infinite;
+      background: radial-gradient(circle at 50% 30%, rgba(139, 69, 19, 0.02) 0%, transparent 40%);
+      animation: bgPulse 8s ease-in-out infinite;
     }
     
     @keyframes bgPulse {
       0%, 100% { opacity: 0.15; }
-      50% { opacity: 0.3; }
+      50% { opacity: 0.25; }
     }
     
     /* === CONTENT WRAPPER === */
     .content {
       position: relative;
       z-index: 1;
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
       padding: 2rem;
     }
@@ -335,9 +311,9 @@
       align-items: center;
       gap: 0.8rem;
       padding: 0.8rem 1.5rem;
-      background: rgba(40, 25, 15, 0.7);
+      background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(178, 34, 34, 0.4);
+      border: 1px solid rgba(139, 69, 19, 0.3);
       border-radius: 50px;
       color: #cd853f;
       text-decoration: none;
@@ -346,14 +322,14 @@
       letter-spacing: 0.02em;
       text-transform: uppercase;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
     
     .back-button:hover {
-      background: rgba(50, 30, 20, 0.8);
-      border-color: #b22222;
+      background: rgba(139, 69, 19, 0.15);
+      border-color: #8b4513;
       transform: translateX(-5px);
-      box-shadow: 0 6px 30px rgba(178, 34, 34, 0.4);
+      box-shadow: 0 6px 30px rgba(139, 69, 19, 0.3);
       color: #d2b48c;
     }
     
@@ -371,12 +347,12 @@
       z-index: 1000 !important;
       display: flex !important;
       gap: 0.5rem;
-      background: rgba(40, 25, 15, 0.7) !important;
+      background: rgba(255, 255, 255, 0.08) !important;
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(178, 34, 34, 0.4) !important;
+      border: 1px solid rgba(139, 69, 19, 0.5) !important;
       border-radius: 50px;
       padding: 0.5rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(178, 34, 34, 0.2) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 20px rgba(139, 69, 19, 0.15) !important;
     }
     
     .lang-btn {
@@ -397,12 +373,12 @@
     
     .lang-btn:hover {
       color: #cd853f !important;
-      background: rgba(178, 34, 34, 0.15);
+      background: rgba(139, 69, 19, 0.1);
     }
     
     .lang-btn.active {
       color: #cd853f !important;
-      background: rgba(178, 34, 34, 0.25);
+      background: rgba(139, 69, 19, 0.15);
       font-weight: 600;
     }
     
@@ -418,128 +394,147 @@
     .hero {
       text-align: center;
       padding: 8rem 0 4rem;
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
       position: relative;
-      background: linear-gradient(135deg, #18090b 0%, #260c10 55%, #18090b 100%);
-      border-radius: 20px;
-      overflow: hidden;
     }
     
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(120, 20, 30, 0.10) 0%, transparent 55%),
-        radial-gradient(circle at 70% 80%, rgba(160, 30, 40, 0.08) 0%, transparent 55%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(139, 69, 19, 0.03) 0%, transparent 70%);
       pointer-events: none;
     }
     
     .hero h1 {
-      font-family: 'Space Grotesk', 'Inter', sans-serif;
-      font-size: 4rem;
+      font-family: 'Sora', sans-serif;
+      font-size: 5.5rem;
       font-weight: 700;
       margin-bottom: 1rem;
       letter-spacing: -0.02em;
-      color: #f5f5dc;
+      text-transform: uppercase;
+      line-height: 1.1;
+      color: #ffffff;
       position: relative;
       z-index: 1;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+      background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #b8b8b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
     }
     
-    .hero .tagline {
-      font-size: 1.2rem;
-      color: #cd853f;
-      font-style: italic;
-      margin-bottom: 2.5rem;
-      position: relative;
-      z-index: 1;
+    .hero .subtitle-small {
+      display: block;
+      font-size: 0.55em;
+      font-weight: 500;
+      color: #888;
+      margin-top: 0.8rem;
+      letter-spacing: 0.2em;
+      background: linear-gradient(135deg, #888 0%, #666 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     
-    /* === METADATA BADGES === */
-    .meta-badges {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    .hero .subtitle {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.15rem;
+      color: #999;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      font-weight: 400;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .tags {
+      display: flex;
       gap: 1rem;
-      margin-top: 2.5rem;
-      position: relative;
-      z-index: 2;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
     }
     
-    .meta-badge {
-      background: rgba(120, 20, 30, 0.14);
-      border: 1px solid rgba(178, 34, 34, 0.35);
-      padding: 1rem 1.5rem;
-      border-radius: 12px;
-      backdrop-filter: blur(10px);
+    .tags span {
+      padding: 0.6rem 1.3rem;
+      background: rgba(139, 69, 19, 0.1);
+      border: 1px solid rgba(139, 69, 19, 0.3);
+      border-radius: 25px;
+      font-size: 0.9rem;
+      color: #cd853f;
+      font-weight: 500;
       transition: all 0.3s ease;
     }
     
-    .meta-badge:hover {
-      background: rgba(178, 34, 34, 0.22);
-      border-color: rgba(178, 34, 34, 0.5);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-    
-    .meta-label {
-      display: block;
-      font-size: 0.85rem;
-      color: #888;
-      margin-bottom: 0.4rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    
-    .meta-value {
-      display: block;
-      font-weight: 600;
+    .tags span:hover {
+      background: rgba(139, 69, 19, 0.2);
+      border-color: #8b4513;
       color: #d2b48c;
-      font-size: 1.1rem;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(139, 69, 19, 0.4);
     }
     
-    /* === VIDEO SECTION === */
-    .video-section {
-      margin: 4rem 0;
+    /* === CONTENT ROW === */
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      margin: 5rem 0;
       opacity: 0;
       transform: translateY(50px);
       transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
-    .video-section.visible {
+    .row.visible {
       opacity: 1;
       transform: translateY(0);
     }
     
-    .video-section h2 {
-      font-family: 'Space Grotesk', 'Inter', sans-serif;
-      font-size: 2.2rem;
-      color: #d2b48c;
-      margin-bottom: 2rem;
-      font-weight: 700;
-      border-bottom: 2px solid rgba(178, 34, 34, 0.3);
-      padding-bottom: 0.8rem;
+    .row.reverse {
+      flex-direction: row-reverse;
+    }
+    
+    .row-visual {
+      flex: 1;
+    }
+    
+    .row-visual img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(139, 69, 19, 0.15);
+      border: 1px solid rgba(139, 69, 19, 0.2);
+      transition: all 0.4s ease;
+      filter: brightness(0.9) contrast(1.1);
+    }
+    
+    .row-visual img:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 50px rgba(139, 69, 19, 0.4);
+      border-color: rgba(139, 69, 19, 0.6);
+      filter: brightness(1) contrast(1.15);
     }
     
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
-      border-radius: 20px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(139, 69, 19, 0.1);
       border: 1px solid rgba(139, 69, 19, 0.3);
       transition: all 0.4s ease;
-      background: #000;
     }
     
     .video-container:hover {
-      box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 50px rgba(178, 34, 34, 0.3);
-      border-color: rgba(178, 34, 34, 0.6);
-      transform: scale(1.01) translateY(-3px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 50px rgba(139, 69, 19, 0.3);
+      border-color: rgba(139, 69, 19, 0.6);
+      transform: translateY(-5px);
     }
     
     .video-container iframe {
@@ -548,188 +543,204 @@
       left: 0;
       width: 100%;
       height: 100%;
-      border: 0;
     }
     
-    .video-description {
-      margin-top: 1.5rem;
-      font-style: italic;
-      color: #999;
-      text-align: center;
-      font-size: 0.95rem;
+    .row-text {
+      flex: 1;
     }
     
-    /* === HERO IMAGE === */
-    .hero-image {
-      margin: 4rem 0;
-      text-align: center;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
-    .hero-image.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .hero-image img {
-      width: 100%;
-      height: auto;
-      border-radius: 20px;
-      transition: transform 0.4s ease;
-    }
-    
-    .hero-image:hover img {
-      transform: scale(1.02);
-    }
-    
-    /* === SECTION === */
-    section {
-      margin: 5rem 0;
-      padding: 2.5rem;
-      background: linear-gradient(135deg, rgba(40, 25, 15, 0.6) 0%, rgba(50, 30, 20, 0.4) 100%);
-      border-radius: 20px;
-      border: 1px solid rgba(139, 69, 19, 0.2);
-      backdrop-filter: blur(5px);
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    section h2 {
-      font-family: 'Space Grotesk', 'Inter', sans-serif;
+    .row-text h3 {
+      font-family: 'Sora', sans-serif;
       font-size: 2.2rem;
-      color: #d2b48c;
-      margin-bottom: 2rem;
+      color: #ffffff;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      border-bottom: 2px solid rgba(178, 34, 34, 0.3);
-      padding-bottom: 0.8rem;
-    }
-    
-    section h3 {
-      font-size: 1.6rem;
-      color: #cd853f;
       margin-bottom: 1rem;
-      font-weight: 600;
+      border-left: 4px solid #8b4513;
+      padding-left: 1rem;
+      position: relative;
+      letter-spacing: -0.02em;
     }
     
-    section p {
-      color: rgba(224, 208, 192, 0.9);
-      line-height: 1.7;
-      font-size: 1.05rem;
+    .row-text h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #8b4513, transparent);
+      border-radius: 2px;
+    }
+    
+    .row-text p {
+      color: #aaa;
+      line-height: 1.8;
+      font-size: 1rem;
       margin-bottom: 1.5rem;
     }
     
-    /* === APPROACH GRID === */
-    .approach-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+    .row-text ul {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
     }
     
-    .approach-item {
-      background: rgba(40, 25, 15, 0.4);
-      padding: 2rem;
-      border-radius: 15px;
-      border: 1px solid rgba(139, 69, 19, 0.2);
-      transition: all 0.4s ease;
+    .row-text li {
+      padding: 0.6rem 0 0.6rem 1.8rem;
+      position: relative;
+      color: #999;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    
+    .row-text li::before {
+      content: '▸';
+      position: absolute;
+      left: 0.2rem;
+      color: #8b4513;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    /* === STATS === */
+    .stats {
+      margin: 5rem 0;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .stats.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .stats h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 2.5rem;
+      color: #ffffff;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .stat-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(139, 69, 19, 0.3);
+      border-radius: 12px;
+      padding: 2.5rem 1.5rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
       position: relative;
       overflow: hidden;
     }
     
-    .approach-item::before {
+    .stat-card::before {
       content: '';
       position: absolute;
       top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #8b4513, #b22222, #cd853f);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.1), transparent);
+      transition: left 0.5s ease;
     }
     
-    .approach-item:hover::before {
-      transform: scaleX(1);
+    .stat-card:hover::before {
+      left: 100%;
     }
     
-    .approach-item:hover {
-      background: rgba(50, 30, 20, 0.5);
-      border-color: rgba(178, 34, 34, 0.4);
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    .stat-card:hover {
+      border-color: #8b4513;
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 15px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(139, 69, 19, 0.4);
+      background: rgba(255, 255, 255, 0.05);
     }
     
-    .approach-item h4 {
-      color: #cd853f;
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-      font-weight: 700;
+    .stat-value {
+      font-family: 'Sora', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #8b4513;
+      display: block;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.03em;
     }
     
-    /* === TECH DETAILS === */
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    .tech-item {
-      background: rgba(40, 25, 15, 0.4);
-      padding: 2rem;
-      border-radius: 15px;
-      border: 1px solid rgba(139, 69, 19, 0.2);
-      transition: all 0.4s ease;
-    }
-    
-    .tech-item:hover {
-      background: rgba(50, 30, 20, 0.5);
-      border-color: rgba(178, 34, 34, 0.4);
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-    }
-    
-    .tech-item h4 {
-      color: #cd853f;
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-      font-weight: 700;
+    .stat-label {
+      font-size: 0.85rem;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
     }
     
     /* === GALLERY === */
+    .gallery {
+      margin: 5rem 0;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .gallery.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .gallery h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 2.5rem;
+      color: #ffffff;
+      margin-bottom: 3rem;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+      gap: 2rem;
     }
     
     .gallery-item {
       position: relative;
-      border-radius: 15px;
+      border-radius: 12px;
       overflow: hidden;
       cursor: pointer;
       transition: all 0.4s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
       border: 1px solid rgba(139, 69, 19, 0.2);
     }
     
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(139, 69, 19, 0) 0%, rgba(139, 69, 19, 0.15) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    
     .gallery-item:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(178, 34, 34, 0.3);
-      border-color: rgba(178, 34, 34, 0.5);
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(139, 69, 19, 0.4);
+      border-color: rgba(139, 69, 19, 0.6);
+    }
+    
+    .gallery-item:hover::after {
+      opacity: 1;
     }
     
     .gallery-item img {
@@ -737,33 +748,12 @@
       height: 250px;
       object-fit: cover;
       transition: all 0.4s ease;
-      filter: brightness(0.85) contrast(1.1);
+      filter: brightness(0.9) contrast(1.1);
     }
     
     .gallery-item:hover img {
-      transform: scale(1.08);
-      filter: brightness(0.95) contrast(1.15);
-    }
-    
-    .gallery-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.95));
-      color: #d2b48c;
-      padding: 2rem 1.5rem 1.5rem;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-    
-    .gallery-item:hover .gallery-overlay {
-      transform: translateY(0);
-    }
-    
-    .gallery-overlay span {
-      font-weight: 600;
-      font-size: 1.1rem;
+      transform: scale(1.1);
+      filter: brightness(1) contrast(1.2);
     }
     
     /* === BUTTON === */
@@ -774,25 +764,25 @@
     
     .button {
       display: inline-block;
-      padding: 1.2rem 3rem;
-      background: linear-gradient(135deg, #8b4513 0%, #b22222 100%);
-      border: 2px solid transparent;
+      padding: 1rem 2.5rem;
+      background: rgba(139, 69, 19, 0.1);
+      border: 2px solid rgba(139, 69, 19, 0.3);
       border-radius: 50px;
-      color: #f5f5dc;
+      color: #8b4513;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
     }
     
     .button:hover {
-      background: linear-gradient(135deg, #b22222 0%, #8b4513 100%);
+      background: rgba(139, 69, 19, 0.2);
+      border-color: #8b4513;
+      color: #cd853f;
       transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(139, 69, 19, 0.5);
-      color: #fff;
+      box-shadow: 0 10px 30px rgba(139, 69, 19, 0.4);
     }
     
     /* === FOOTER === */
@@ -801,103 +791,57 @@
       padding: 3rem 0;
       color: #666;
       font-size: 0.9rem;
-      border-top: 1px solid rgba(139, 69, 19, 0.2);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
       margin-top: 5rem;
-    }
-    
-    /* === LIGHTBOX === */
-    .lightbox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.95);
-      z-index: 10000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-    
-    .lightbox.active {
-      display: flex;
-    }
-    
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 8px;
-      box-shadow: 0 0 50px rgba(178, 34, 34, 0.5);
-    }
-    
-    .lightbox-close {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      font-size: 3rem;
-      color: #fff;
-      cursor: pointer;
-      z-index: 10001;
     }
     
     /* === RESPONSIVE === */
     @media (max-width: 768px) {
-      .back-button, .lang-switcher {
+      .back-button {
         top: 1rem;
         left: 1rem;
-        right: 1rem;
-      }
-      
-      .lang-switcher {
-        right: 1rem;
-        left: auto;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
       }
       
       .hero {
-        padding: 4rem 1rem 3rem;
+        padding: 4rem 0 2rem;
       }
       
       .hero h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
       }
       
-      section {
-        padding: 2rem 1.5rem;
+      .row, .row.reverse {
+        flex-direction: column;
+        gap: 2rem;
+        margin: 3rem 0;
       }
       
-      section h2 {
+      .row-text h3 {
         font-size: 1.8rem;
       }
       
-      .meta-badges {
-        grid-template-columns: repeat(2, 1fr);
+      .stats h3, .gallery h3 {
+        font-size: 2rem;
       }
       
-      .approach-grid, .tech-grid {
-        grid-template-columns: 1fr;
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
       
       .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
       }
     }
     
     @media (max-width: 480px) {
       .hero h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
       
-      .meta-badges {
+      .stats-grid {
         grid-template-columns: 1fr;
-      }
-      
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .gallery-item img {
-        height: 200px;
       }
     }
     
@@ -906,7 +850,7 @@
       opacity: 1 !important;
       transform: translateY(0) !important;
     }
-    .video-section:first-of-type,
+    .row:first-of-type,
     section:first-of-type {
       opacity: 1 !important;
       transform: translateY(0) !important;
@@ -927,22 +871,11 @@
       <div class="eye"></div>
       <div class="eye"></div>
     </div>
-    <div class="claw-scratch"></div>
-    <div class="claw-scratch"></div>
-    <div class="claw-scratch"></div>
-    <div class="claw-scratch"></div>
-    <div class="claw-scratch"></div>
     <div class="amorak-title">AMORAK</div>
   </div>
   
   <!-- Background -->
-  <div class="horror-background"></div>
-  
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <span class="lightbox-close" id="lightbox-close">&times;</span>
-    <img id="lightbox-img" src="" alt="">
-  </div>
+  <div class="horror-background" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;background:url('../assets/images/projects-amorak/background/8.jpg') center/cover no-repeat fixed;"></div>
   
   <!-- Content -->
   <div class="content">
@@ -982,107 +915,121 @@
     
     <!-- Hero -->
     <section class="hero">
-      <div class="meta-badges">
-        <div class="meta-badge">
-          <span class="meta-label" data-i18n="meta.role.label">Role</span>
-          <span class="meta-value" data-i18n="meta.role.value">Sound Designer</span>
-        </div>
-        <div class="meta-badge">
-          <span class="meta-label" data-i18n="meta.style.label">Style</span>
-          <span class="meta-value" data-i18n="meta.style.value">Atmospheric / Horror</span>
-        </div>
-        <div class="meta-badge">
-          <span class="meta-label" data-i18n="meta.team.label">Team</span>
-          <span class="meta-value" data-i18n="meta.team.value">3D Animation Studio</span>
-        </div>
-        <div class="meta-badge">
-          <span class="meta-label" data-i18n="meta.scope.label">Scope</span>
-          <span class="meta-value" data-i18n="meta.scope.value">Complete Audio Pass</span>
-        </div>
+      <h1>
+        AMORAK
+        <span class="subtitle-small" data-i18n="hero.subtitle">SOUND DESIGN</span>
+      </h1>
+      <p class="subtitle" data-i18n="hero.description">World-building through immersive audio design and creature sound signatures</p>
+      
+      <div class="tags">
+        <span data-i18n="tags.role">Sound Designer</span>
+        <span data-i18n="tags.style">Atmospheric Horror</span>
+        <span data-i18n="tags.team">3D Animation Studio</span>
+        <span data-i18n="tags.type">Complete Audio Pass</span>
       </div>
-      <h1 data-i18n="title">Amorak — Sound Design</h1>
-      <p class="tagline" data-i18n="tagline">World-building through immersive audio design and character sound signatures.</p>
     </section>
     
     <!-- Video Showcase -->
-    <div class="video-section">
-      <h2 data-i18n="showcase.title">Audio in Context</h2>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/VZgEK1CjlNM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="row">
+      <div class="row-visual">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/VZgEK1CjlNM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
       </div>
-      <p class="video-description" data-i18n="showcase.desc">Watch how sound design builds the horror atmosphere. Every creature growl, environmental layer, and spatial detail was crafted to create immersive tension.</p>
+      <div class="row-text">
+        <h3 data-i18n="showcase.title">Audio in Context</h3>
+        <p data-i18n="showcase.description">Watch how sound design builds the horror atmosphere. Every creature growl, environmental layer, and spatial detail was crafted to create immersive tension that scales dynamically with the visuals.</p>
+        <ul>
+          <li data-i18n="showcase.list1">Creature sound signatures</li>
+          <li data-i18n="showcase.list2">Environmental atmosphere layers</li>
+          <li data-i18n="showcase.list3">Dynamic spatial audio mixing</li>
+          <li data-i18n="showcase.list4">Proximity-based intensity scaling</li>
+        </ul>
+      </div>
     </div>
     
-    <!-- Overview -->
-    <section>
-      <h2 data-i18n="overview.title">Audio-Driven Storytelling</h2>
-      <p data-i18n="overview.desc">Amorak's world is built through sound. Character signatures, environmental layers, and spatial audio create atmospheric horror that scales with camera proximity, keeping the mix readable while reinforcing the story's dark tone.</p>
-    </section>
-    
-    <!-- Creature Audio Design -->
-    <section>
-      <h2 data-i18n="approach.title">Creature Audio Design</h2>
-      <p data-i18n="approach.creatures.desc">Each creature has a unique sonic identity built from organic textures, processed animal vocalizations, and synthesized sub-frequencies. The beast's presence is felt through low-frequency rumbles that scale with proximity, creating an unsettling atmosphere even when off-screen.</p>
-      <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play sample - Creature Sounds"></div>
-      <div class="approach-grid">
-        <div class="approach-item">
-          <h4>Sub-Bass Foundation</h4>
-          <p>40-200Hz rumbles provide body and presence, felt more than heard, creating visceral unease</p>
+    <!-- Stats -->
+    <section class="stats">
+      <h3 data-i18n="details.title">Project Details</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-value">100%</span>
+          <span class="stat-label" data-i18n="details.original">Original</span>
         </div>
-        <div class="approach-item">
-          <h4>Organic Texture Layers</h4>
-          <p>Processed animal vocalizations create believable yet otherworldly creature sounds</p>
+        <div class="stat-card">
+          <span class="stat-value">Horror</span>
+          <span class="stat-label" data-i18n="details.style">Genre</span>
         </div>
-        <div class="approach-item">
-          <h4>Proximity-Based Mix</h4>
-          <p>Audio intensity and detail scale with camera distance for dynamic immersion</p>
+        <div class="stat-card">
+          <span class="stat-value">3D</span>
+          <span class="stat-label" data-i18n="details.spatial">Spatial Audio</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">2024</span>
+          <span class="stat-label" data-i18n="details.year">Year</span>
         </div>
       </div>
     </section>
     
-    <!-- Environmental Soundscapes -->
-    <section>
-      <h2>Environmental Sound Design</h2>
-      <p data-i18n="approach.environment.desc">The basement environment uses layered ambient textures - dripping water, creaking wood, distant echoes, and subtle electrical hums. These elements dynamically respond to the camera position, creating depth and spatial awareness.</p>
-      <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play sample - Environment"></div>
-      <div class="approach-grid">
-        <div class="approach-item">
-          <h4>Layered Ambience</h4>
-          <p>Dripping water, creaking wood, and electrical hums build oppressive atmosphere</p>
+    <!-- Creature Design Section -->
+    <div class="row reverse">
+      <div class="row-visual">
+        <img src="../assets/images/projects-amorak/beastroar.png" alt="Creature Design" />
+      </div>
+      <div class="row-text">
+        <h3 data-i18n="creature.title">Creature Audio Design</h3>
+        <p data-i18n="creature.description">Each creature has a unique sonic identity built from organic textures, processed animal vocalizations, and synthesized sub-frequencies. The beast's presence is felt through low-frequency rumbles that scale with proximity.</p>
+        <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play - Creature Sounds"></div>
+      </div>
+    </div>
+    
+    <!-- Environment Section -->
+    <div class="row">
+      <div class="row-visual">
+        <img src="../assets/images/projects-amorak/basement.png" alt="Environment" />
+      </div>
+      <div class="row-text">
+        <h3 data-i18n="environment.title">Environmental Soundscapes</h3>
+        <p data-i18n="environment.description">The basement environment uses layered ambient textures - dripping water, creaking wood, distant echoes, and subtle electrical hums. These elements dynamically respond to camera position, creating depth and spatial awareness.</p>
+        <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play - Environment"></div>
+      </div>
+    </div>
+    
+    <!-- Technical Approach -->
+    <div class="row reverse">
+      <div class="row-visual">
+        <img src="../assets/images/projects-amorak/creatureviewfrombasement.png" alt="Technical" />
+      </div>
+      <div class="row-text">
+        <h3 data-i18n="technical.title">Technical Implementation</h3>
+        <p data-i18n="technical.description">Strategic frequency architecture ensures clarity and impact. Creature sounds occupy 40-200Hz for body and presence. Environmental details fill mid-range. High frequencies reserved for tension-building textures.</p>
+        <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play - Technical Demo"></div>
+      </div>
+    </div>
+    
+    <!-- Gallery -->
+    <section class="gallery">
+      <h3 data-i18n="gallery.title">Visual Gallery</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="../assets/images/projects-amorak/beastroar.png" alt="Beast Roar" />
         </div>
-        <div class="approach-item">
-          <h4>Spatial Audio Design</h4>
-          <p>Elements positioned in 3D space guide viewer attention and create depth</p>
+        <div class="gallery-item">
+          <img src="../assets/images/projects-amorak/basement.png" alt="Basement" />
         </div>
-        <div class="approach-item">
-          <h4>Dynamic Response</h4>
-          <p>Soundscapes adapt to camera movement for seamless immersion</p>
+        <div class="gallery-item">
+          <img src="../assets/images/projects-amorak/creatureviewfrombasement.png" alt="Creature View" />
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/projects-amorak/chimneywithaknife.png" alt="Chimney Scene" />
+        </div>
+        <div class="gallery-item">
+          <img src="../assets/images/projects-amorak/malelooksatchimney.png" alt="Male Looks at Chimney" />
         </div>
       </div>
     </section>
     
-    <!-- Technical Audio Approach -->
-    <section>
-      <h2 data-i18n="technical.title">Technical Audio Implementation</h2>
-      <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play sample - Technical Demo"></div>
-      <div class="tech-grid">
-        <div class="tech-item">
-          <h4 data-i18n="technical.frequency.title">Frequency Architecture</h4>
-          <p data-i18n="technical.frequency.desc">Creature sounds occupy 40-200Hz for body and presence. Environmental details fill mid-range. High frequencies reserved for tension-building textures. Strategic allocation ensures clarity and impact.</p>
-        </div>
-        <div class="tech-item">
-          <h4 data-i18n="technical.layering.title">Progressive Layering</h4>
-          <p data-i18n="technical.layering.desc">Audio layers build throughout scenes, starting minimal and adding complexity as tension increases. Maintains engagement without overwhelming the mix during critical moments.</p>
-        </div>
-        <div class="tech-item">
-          <h4 data-i18n="technical.proximity.title">3D Spatial Mixing</h4>
-          <p data-i18n="technical.proximity.desc">Sound elements adjust based on camera distance and angle. Close-ups emphasize intimate details; wide shots focus on ambience. Creates seamless immersive experience.</p>
-        </div>
-      </div>
-    </section>
-    
-    
-    <!-- Button -->
+    <!-- Back Button -->
     <div class="button-container">
       <a href="../projects/index.html" class="button" data-i18n="button.projects">All Projects</a>
     </div>
@@ -1112,48 +1059,176 @@
       <span id="fixedPlayerDuration">0:00</span>
     </div>
   </div>
-
+  
   <!-- Audio Player Component -->
   <script>
+    // Styles for circular player with horror brown theme
     (function injectPlayerStyles(){
       const css = `
-      .audio-player{ --p:0deg; position:relative; width:220px; height:220px; margin:1rem auto; display:block; }
+      /* Audio Player Circular */
+      .audio-player{ --p:0deg; position:relative; width:220px; height:220px; margin:1.5rem auto; display:block; }
       .audio-player::before{ content:''; position:absolute; inset:0; border-radius:50%;
         background:
-          radial-gradient(circle at 50% 50%, rgba(255,255,255,0.06) 0 40%, transparent 41%),
-          conic-gradient(#a16207 var(--p), rgba(255,255,255,0.08) 0);
-        box-shadow: inset 0 0 0 6px rgba(255,255,255,0.06), 0 10px 30px rgba(0,0,0,0.4);
+          radial-gradient(circle at 50% 50%, rgba(139,69,19,0.08) 0 40%, transparent 41%),
+          conic-gradient(#8b4513 var(--p), rgba(255,255,255,0.08) 0);
+        box-shadow: inset 0 0 0 6px rgba(139,69,19,0.15), 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(139,69,19,0.2);
       }
-      .audio-player .inner{ position:absolute; inset:18px; border-radius:50%; background:rgba(0,0,0,0.6);
-        display:flex; align-items:center; justify-content:center; box-shadow: inset 0 0 0 2px rgba(255,255,255,0.08);
+      .audio-player .inner{ position:absolute; inset:18px; border-radius:50%; background:rgba(18,6,7,0.8);
+        display:flex; align-items:center; justify-content:center; box-shadow: inset 0 0 0 2px rgba(139,69,19,0.12);
       }
-      .audio-player button{ width:96px; height:96px; border-radius:50%; border:none; cursor:pointer; color:#fff;
-        background: linear-gradient(135deg,#8b4513,#b45309); box-shadow: 0 8px 24px rgba(180, 83, 9,.35);
+      .audio-player button{ width:96px; height:96px; border-radius:50%; border:none; cursor:pointer; color:#120607;
+        background: linear-gradient(135deg,#8b4513,#cd853f); box-shadow: 0 8px 24px rgba(139,69,19,.4);
         transition: transform .2s ease, box-shadow .2s ease; position:relative; display:flex; align-items:center; justify-content:center; }
-      .audio-player button:hover{ transform: scale(1.05); box-shadow:0 12px 32px rgba(180, 83, 9,.5); }
-      .audio-player button .tri{ width:0; height:0; border-left:26px solid #fff; border-top:16px solid transparent; border-bottom:16px solid transparent; margin-left:3px; }
+      .audio-player button:hover{ transform: scale(1.05); box-shadow:0 12px 32px rgba(139,69,19,.6); }
+      .audio-player button .tri{ width:0; height:0; border-left:26px solid #120607; border-top:16px solid transparent; border-bottom:16px solid transparent; margin-left:3px; }
       .audio-player button.paused .tri{ border-left-color:transparent; border-top:0; border-bottom:0; width:20px; height:20px; position:relative; }
-      .audio-player button.paused .tri::before,.audio-player button.paused .tri::after{ content:''; position:absolute; top:0; width:6px; height:24px; background:#fff; border-radius:2px; }
+      .audio-player button.paused .tri::before,.audio-player button.paused .tri::after{ content:''; position:absolute; top:0; width:6px; height:24px; background:#120607; border-radius:2px; }
       .audio-player button.paused .tri::before{ left:-8px; }
       .audio-player button.paused .tri::after{ left:4px; }
-      /* Fixed player styles */
-      .fixed-player { position: fixed; bottom: 2rem; right: 2rem; width: 320px; background: rgba(18, 10, 6, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(161, 98, 7, 0.3); border-radius: 16px; padding: 1rem 1.25rem; box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 20px rgba(161, 98, 7,0.1); z-index: 999; opacity: 0; pointer-events: none; transform: translateY(20px); transition: all 0.3s ease; }
-      .fixed-player.active { opacity: 1; pointer-events: all; transform: translateY(0); }
-      .fixed-player-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
-      .fixed-player-btn { width: 48px; height: 48px; border-radius: 50%; border: none; background: linear-gradient(135deg, #8b4513, #b45309); color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(161, 98, 7, 0.3); flex-shrink: 0; }
-      .fixed-player-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(161, 98, 7, 0.5); }
-      .fixed-player-btn .icon { width: 0; height: 0; border-left: 14px solid white; border-top: 8px solid transparent; border-bottom: 8px solid transparent; margin-left: 3px; }
-      .fixed-player-btn.playing .icon { border: none; width: 12px; height: 12px; position: relative; }
-      .fixed-player-btn.playing .icon::before, .fixed-player-btn.playing .icon::after { content: ''; position: absolute; width: 4px; height: 16px; background: white; border-radius: 2px; }
-      .fixed-player-btn.playing .icon::before { left: 0; } .fixed-player-btn.playing .icon::after { left: 8px; }
-      .fixed-player-info { flex: 1; overflow: hidden; }
-      .fixed-player-title { font-size: 0.9rem; font-weight: 600; color: #fff; margin-bottom: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-      .fixed-player-subtitle { font-size: 0.75rem; color: #b08a6a; }
-      .fixed-player-progress { width: 100%; height: 4px; background: rgba(255, 255, 255, 0.1); border-radius: 2px; overflow: hidden; margin-bottom: 0.5rem; cursor: pointer; }
-      .fixed-player-progress-bar { height: 100%; background: linear-gradient(90deg, #a16207, #b45309); width: 0%; transition: width 0.1s linear; }
-      .fixed-player-time { display: flex; justify-content: space-between; font-size: 0.7rem; color: #9a7b5c; }
+      
+      /* Fixed Player Styles - Horror Theme */
+      .fixed-player {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 320px;
+        background: rgba(18,6,7,0.92);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(139,69,19,0.3);
+        border-radius: 16px;
+        padding: 1rem 1.25rem;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(139,69,19,0.15);
+        z-index: 1000;
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+      }
+      
+      .fixed-player.active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+      }
+      
+      .fixed-player-top {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+      
+      .fixed-player-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: none;
+        background: linear-gradient(135deg, #8b4513, #cd853f);
+        color: #120607;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 16px rgba(139,69,19,0.3);
+      }
+      
+      .fixed-player-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(139,69,19,0.4);
+      }
+      
+      .fixed-player-btn .icon {
+        width: 0;
+        height: 0;
+        border-left: 16px solid #120607;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        margin-left: 2px;
+        transition: all 0.3s ease;
+      }
+      
+      .fixed-player-btn.playing .icon {
+        width: 12px;
+        height: 20px;
+        border: none;
+        background: #120607;
+        position: relative;
+        margin-left: 0;
+      }
+      
+      .fixed-player-btn.playing .icon::before,
+      .fixed-player-btn.playing .icon::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 4px;
+        height: 20px;
+        background: #120607;
+        border-radius: 1px;
+      }
+      
+      .fixed-player-btn.playing .icon::before { left: 0; }
+      .fixed-player-btn.playing .icon::after { right: 0; }
+      
+      .fixed-player-info {
+        flex: 1;
+        min-width: 0;
+      }
+      
+      .fixed-player-title {
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .fixed-player-subtitle {
+        color: #8b4513;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+      
+      .fixed-player-progress {
+        width: 100%;
+        height: 6px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 3px;
+        overflow: hidden;
+        cursor: pointer;
+        margin-bottom: 0.5rem;
+      }
+      
+      .fixed-player-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #8b4513, #cd853f);
+        border-radius: 3px;
+        transition: width 0.3s ease;
+      }
+      
+      .fixed-player-time {
+        display: flex;
+        justify-content: space-between;
+        color: #aaa;
+        font-size: 0.75rem;
+        font-variant-numeric: tabular-nums;
+      }
+      
+      @media (max-width: 768px) {
+        .fixed-player {
+          bottom: 1rem;
+          right: 1rem;
+          width: 280px;
+          padding: 0.75rem 1rem;
+        }
+      }
       `;
-      const style = document.createElement('style'); style.textContent = css; document.head.appendChild(style);
+      const style = document.createElement('style');
+      style.textContent = css; document.head.appendChild(style);
     })();
 
     (function() {
@@ -1183,7 +1258,7 @@
       function bindPlayer(el){
         const src = el.getAttribute('data-audio') || '../assets/audio/tracks/placeholder.wav';
         const btn = document.createElement('button');
-        btn.setAttribute('aria-label','Play sample');
+        btn.setAttribute('aria-label', el.getAttribute('aria-label') || 'Play sample');
         const inner = document.createElement('div'); inner.className='inner';
         const tri = document.createElement('div'); tri.className='tri';
         btn.appendChild(tri); inner.appendChild(btn); el.appendChild(inner);
@@ -1207,7 +1282,7 @@
           btn.classList.add('paused');
           fixedPlayer.classList.add('active');
           fixedBtn.classList.add('playing');
-          const sectionTitle = el.closest('section')?.querySelector('h2')?.textContent || 'Audio Sample';
+          const sectionTitle = el.closest('.row')?.querySelector('h3')?.textContent || 'Audio Sample';
           fixedTitle.textContent = sectionTitle;
           audio.play().then(()=>{ raf = requestAnimationFrame(loop); }).catch(()=>{ stopActive(); });
         }
@@ -1216,7 +1291,10 @@
           audio.pause(); btn.classList.remove('paused'); cancelAnimationFrame(raf); raf=null;
         }
 
-        btn.addEventListener('click', ()=>{ if(audio.paused) play(); else pause(); });
+        btn.addEventListener('click', ()=>{
+          if(audio.paused) play(); else pause();
+        });
+
         audio.addEventListener('ended', ()=>{ pause(); audio.currentTime = 0; el.style.setProperty('--p','0deg'); fixedProgressBar.style.width = '0%'; });
         audio.addEventListener('error', stopActive);
       }
@@ -1224,8 +1302,15 @@
       // Fixed player controls
       fixedBtn.addEventListener('click', () => {
         if(active.audio) {
-          if(active.audio.paused) { active.audio.play(); fixedBtn.classList.add('playing'); active.el?.querySelector('button')?.classList.add('paused'); }
-          else { active.audio.pause(); fixedBtn.classList.remove('playing'); active.el?.querySelector('button')?.classList.remove('paused'); }
+          if(active.audio.paused) {
+            active.audio.play();
+            fixedBtn.classList.add('playing');
+            active.el?.querySelector('button')?.classList.add('paused');
+          } else {
+            active.audio.pause();
+            fixedBtn.classList.remove('playing');
+            active.el?.querySelector('button')?.classList.remove('paused');
+          }
         }
       });
 
@@ -1237,114 +1322,58 @@
         }
       });
 
-      document.addEventListener('DOMContentLoaded', ()=>{ document.querySelectorAll('.audio-player').forEach(bindPlayer); });
+      document.addEventListener('DOMContentLoaded', ()=>{
+        document.querySelectorAll('.audio-player').forEach(bindPlayer);
+      });
     })();
   </script>
-
-  <!-- Translations Data -->
-  <script type="application/json" id="translations-data" src="../locales/amorak.json"></script>
   
-  <!-- Translation Script -->
+  <!-- Translation Data -->
   <script>
     let translations = {};
-    
-    async function loadTranslations() {
-      try {
-        const response = await fetch('../locales/amorak.json');
-        translations = await response.json();
-      } catch (error) {
-        console.error('Failed to load translations:', error);
-        translations = {
-en: {}, pl: {}, nl: {}
-        };
-      }
-    }
-    
     let currentLang = localStorage.getItem('language') || 'en';
-    
-    // Get nested value from object using dot notation
-    function getNestedValue(obj, path) {
+
+    // Helper function to get nested translation value
+    function getNestedTranslation(obj, path) {
       return path.split('.').reduce((current, key) => current?.[key], obj);
     }
-    
+
     function setLanguage(lang) {
       currentLang = lang;
       localStorage.setItem('language', lang);
       
-      // Update all translatable elements
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        const translation = getNestedValue(translations[lang], key);
+        const translation = getNestedTranslation(translations[lang], key);
         if (translation) {
           el.textContent = translation;
         }
       });
       
-      // Update active button
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
     }
-    
+
+    // Load translations from JSON file
+    async function loadTranslations() {
+      try {
+        const response = await fetch('../locales/amorak.json');
+        translations = await response.json();
+        setLanguage(currentLang);
+      } catch (error) {
+        console.error('Failed to load translations:', error);
+      }
+    }
+
     // Initialize language on load
-    document.addEventListener('DOMContentLoaded', async () => {
-      await loadTranslations();
-      setLanguage(currentLang);
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTranslations();
       
-      // Add click handlers
       document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          setLanguage(btn.dataset.lang);
-        });
+        btn.addEventListener('click', () => { setLanguage(btn.dataset.lang); });
       });
     });
-  </script>
-  
-  <!-- Lightbox Script -->
-  <script>
-    (function() {
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
-      const lightboxClose = document.getElementById('lightbox-close');
-      
-      function openLightbox(imgSrc) {
-        lightboxImg.src = imgSrc;
-        lightbox.classList.add('active');
-      }
-      
-      function closeLightbox() {
-        lightbox.classList.remove('active');
-        lightboxImg.src = '';
-      }
-      
-      // Bind gallery items
-      document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.gallery-item').forEach(item => {
-          item.addEventListener('click', () => {
-            const img = item.querySelector('img');
-            if (img) {
-              openLightbox(img.src);
-            }
-          });
-        });
-        
-        // Close on click
-        lightbox.addEventListener('click', closeLightbox);
-        lightboxClose.addEventListener('click', closeLightbox);
-        
-        // Prevent close when clicking on image
-        lightboxImg.addEventListener('click', (e) => {
-          e.stopPropagation();
-        });
-        
-        // Close on escape
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-            closeLightbox();
-          }
-        });
-      });
-    })();
   </script>
   
   <!-- Scroll Reveal Animation Script -->
@@ -1370,18 +1399,28 @@ en: {}, pl: {}, nl: {}
     
     // Observe all sections
     document.addEventListener('DOMContentLoaded', () => {
-      // Show content immediately on DOM ready
+      // Show content immediately on DOM ready (don't wait for images)
       setTimeout(() => {
         document.body.classList.add('loaded');
       }, 100);
+      const rows = document.querySelectorAll('.row');
+      const stats = document.querySelector('.stats');
+      const gallery = document.querySelector('.gallery');
       
-      const sections = document.querySelectorAll('section, .video-section, .hero-image');
-      sections.forEach(section => observer.observe(section));
+      rows.forEach(row => observer.observe(row));
+      if (stats) observer.observe(stats);
+      if (gallery) observer.observe(gallery);
       
-      // Stagger animation for cards
-      const cards = document.querySelectorAll('.approach-item, .tech-item, .gallery-item, .meta-badge');
-      cards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 0.08}s`;
+      // Stagger animation for stat cards
+      const statCards = document.querySelectorAll('.stat-card');
+      statCards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.1}s`;
+      });
+      
+      // Stagger animation for gallery items
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      galleryItems.forEach((item, index) => {
+        item.style.transitionDelay = `${index * 0.1}s`;
       });
     });
   </script>
