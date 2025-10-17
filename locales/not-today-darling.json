@@ -28,40 +28,36 @@
       "li2": "Mix hierarchy optimized for clarity (1–4 players)",
       "li3": "Non-intrusive dynamic layers during intense moments"
     },
-    "implementation": {
-      "title": "Implementation",
-      "desc": "All audio was integrated in Unreal Engine with attention to performance and system flexibility.",
-      "li1": "Parameters/states for cooldowns and bursts",
-      "li2": "Efficient asset organization, consistent volume levels",
-      "li3": "Quick iterations with gameplay team"
+    "audioDirection": {
+      "title": "Audio Direction",
+      "desc": "Designed for race readability and energy: clear event telemetry, dynamic crowd and UI that never buries gameplay. An arcade-leaning palette with controlled transients and tasteful saturation to keep the mix tight with up to four players.",
+      "b1": "Layering: gameplay > UI clarity > crowd/ambience",
+      "b2": "State cues (start, bursts, hazards, finish)",
+      "b3": "Spectral masking control and event priorities"
     },
-    "collaboration": {
-      "title": "Team Collaboration",
-      "desc": "My team are wonderful people! We worked so well together that we decided to add an extra element to the game — we recorded original voicelines for the granny characters. Each granny has her own unique character and voice, which adds charm and humor to the gameplay."
+    "sfxSystem": {
+      "title": "SFX System",
+      "desc": "A parametric library: speed, track surface and cooldown windows drive layers and transients. Boost/burst has its own RPM curves and noise sweetener. Collisions use weights and thresholds to avoid spam.",
+      "b1": "Track materials (asphalt/sand/metal) with smooth crossfades",
+      "b2": "Hazards/slip – pitch/LPF dependent on camera and speed",
+      "b3": "Countdown/Start and Finish stingers as round anchors"
     },
-    "voicelines": {
-      "title": "Granny Voicelines",
-      "desc": "Listen to the original voice recordings of our characters:"
+    "mix": {
+      "title": "Mix & Dynamics",
+      "desc": "Priority‑based mix with ducking: callouts and UI sit above the bed while the crowd ‘breathes’ with race momentum. Submix processing reins in peaks and keeps loudness consistent during chaos.",
+      "b1": "Side‑chain ducking for UI/callouts over gameplay",
+      "b2": "Automatic crowd/ambience rides from state and position",
+      "b3": "Gain staging and reduced spectral masking"
     },
-    "grandma1": {
-      "name": "Grandma 1",
-      "desc": "Energetic and confident"
+    "integration": {
+      "title": "Unreal Integration",
+      "desc": "Sound Cues with parameters and Submix buses. Concurrency prevents event pile‑ups; attenuation profiles shape distance; light bus limiting stabilizes perceived loudness at scale.",
+      "b1": "Race state parameters + speed/camera inputs",
+      "b2": "Submixes: UI, Gameplay, Ambience + limiter on Master",
+      "b3": "Concurrency and collision trigger thresholds"
     },
-    "grandma2": {
-      "name": "Grandma 2",
-      "desc": "Wise and experienced"
-    },
-    "grandma3": {
-      "name": "Grandma 3",
-      "desc": "Cheerful and playful"
-    },
-    "grandma4": {
-      "name": "Grandma 4",
-      "desc": "Calm and focused"
-    },
-    "grandma5": {
-      "name": "Grandma 5",
-      "desc": "Stern but fair"
+    "player": {
+      "label": "Play sample"
     },
     "team": {
       "title": "Team"
@@ -107,40 +103,36 @@
       "li2": "Hierarchia miksu zoptymalizowana pod czytelność (1–4 graczy)",
       "li3": "Niewchodzące w drogę warstwy dynamiczne przy intensywnych momentach"
     },
-    "implementation": {
-      "title": "Implementacja",
-      "desc": "Całość audio została zintegrowana w Unreal Engine z dbałością o wydajność i elastyczność systemu.",
-      "li1": "Parametry/stany dla cooldownów i burstów",
-      "li2": "Oszczędna organizacja assetów, spójne poziomy głośności",
-      "li3": "Szybkie iteracje z zespołem gameplay"
+    "audioDirection": {
+      "title": "Kierunek Audio",
+      "desc": "Audio pod czytelność i energię wyścigu: wyraźna telemetria zdarzeń, dynamiczny tłum i UI, które nie zagłusza gry. Paleta bliżej „arcade”, ale z kontrolą transjentów i nasycenia, by miks był ciasny przy 1–4 graczach.",
+      "b1": "Warstwy: gameplay > czytelność UI > crowd/ambience",
+      "b2": "Wskaźniki stanów (start, bursty, hazardy, finisz)",
+      "b3": "Kontrola maskowania widmem i priorytety zdarzeń"
     },
-    "collaboration": {
-      "title": "Współpraca zespołu",
-      "desc": "Mój zespół to wspaniali ludzie! Pracowaliśmy tak dobrze razem, że postanowiliśmy dodać dodatkowy element do gry — nagraliśmy oryginalne voiceline'y dla postaci babć. Każda babcia ma swój unikalny charakter i głos, co dodaje uroku i humoru do rozgrywki."
+    "sfxSystem": {
+      "title": "System SFX",
+      "desc": "Biblioteka efektów jest parametryczna: prędkość, nawierzchnia toru i okna cooldown sterują warstwami i transientami. Booster/burst ma własne krzywe obrotów i szumowy sweetener. Kolizje korzystają z wag i progów, by uniknąć spamu.",
+      "b1": "Materiały toru (asfalt/piasek/metal) – płynne przejścia",
+      "b2": "Hazardy/slip – pitch/LPF zależnie od kamery i prędkości",
+      "b3": "Odliczanie/Start i fanfary finiszu jako kotwice rundy"
     },
-    "voicelines": {
-      "title": "Voiceline'y Babć",
-      "desc": "Posłuchaj oryginalnych nagrań głosowych naszych postaci:"
+    "mix": {
+      "title": "Mix & Dynamika",
+      "desc": "Miks z priorytetami i duckingiem: callouty i UI ponad bedem, crowd „oddycha” z tempem wyścigu. Submix processing trzyma piki i stabilizuje głośność w chaosie.",
+      "b1": "Sidechain ducking dla UI/calloutów nad gameplay",
+      "b2": "Automatyka crowd/ambience od stanu i pozycji",
+      "b3": "Gain staging i redukcja maskowania widmem"
     },
-    "grandma1": {
-      "name": "Babcia 1",
-      "desc": "Energiczna i pewna siebie"
+    "integration": {
+      "title": "Integracja w Unreal",
+      "desc": "Sound Cues z parametrami i Submix Bus. Concurrency zapobiega nawarstwianiu zdarzeń; profile tłumienia kształtują dystans; lekki limiter na busach stabilizuje głośność.",
+      "b1": "Parametry stanów + prędkość/kamera",
+      "b2": "Submixy: UI, Gameplay, Ambience + limiter na Master",
+      "b3": "Concurrency i progi wyzwalania kolizji"
     },
-    "grandma2": {
-      "name": "Babcia 2",
-      "desc": "Mądra i doświadczona"
-    },
-    "grandma3": {
-      "name": "Babcia 3",
-      "desc": "Wesoła i żartobliwa"
-    },
-    "grandma4": {
-      "name": "Babcia 4",
-      "desc": "Spokojna i skupiona"
-    },
-    "grandma5": {
-      "name": "Babcia 5",
-      "desc": "Sroga ale sprawiedliwa"
+    "player": {
+      "label": "Odtwórz próbkę"
     },
     "team": {
       "title": "Zespół"
@@ -186,40 +178,36 @@
       "li2": "Mix hiërarchie geoptimaliseerd voor duidelijkheid (1–4 spelers)",
       "li3": "Niet-opdringerige dynamische lagen tijdens intense momenten"
     },
-    "implementation": {
-      "title": "Implementatie",
-      "desc": "Alle audio werd geïntegreerd in Unreal Engine met aandacht voor prestaties en systeemflexibiliteit.",
-      "li1": "Parameters/staten voor cooldowns en bursts",
-      "li2": "Efficiënte asset-organisatie, consistente volumeniveaus",
-      "li3": "Snelle iteraties met gameplay team"
+    "audioDirection": {
+      "title": "Audio Direction",
+      "desc": "Ontworpen voor leesbaarheid en energie van de race: duidelijke event-telemetrie, dynamisch publiek en UI die gameplay niet overstemt. Arcade-achtige klank met gecontroleerde transiënten en subtiele saturatie voor 1–4 spelers.",
+      "b1": "Laagstructuur: gameplay > UI-duidelijkheid > crowd/ambience",
+      "b2": "Statuscues (start, bursts, hazards, finish)",
+      "b3": "Minder spectrale masking en eventprioriteiten"
     },
-    "collaboration": {
-      "title": "Teamsamenwerkig",
-      "desc": "Mijn team zijn geweldige mensen! We werkten zo goed samen dat we besloten een extra element aan het spel toe te voegen — we namen originele voicelines op voor de oma-personages. Elke oma heeft haar eigen unieke karakter en stem, wat charme en humor toevoegt aan de gameplay."
+    "sfxSystem": {
+      "title": "SFX-systeem",
+      "desc": "Parametrische bibliotheek: snelheid, baanoppervlak en cooldownvensters sturen lagen en transiënten. Boost/burst met eigen RPM-curves en noise sweetener. Botsingen met gewichten en drempels om spam te vermijden.",
+      "b1": "Baanmaterialen (asfalt/zand/metaal) met soepele crossfades",
+      "b2": "Hazards/slip – pitch/LPF afhankelijk van camera en snelheid",
+      "b3": "Countdown/Start en Finish-stingers als rondeankers"
     },
-    "voicelines": {
-      "title": "Oma Voicelines",
-      "desc": "Luister naar de originele voice opnames van onze personages:"
+    "mix": {
+      "title": "Mix & Dynamiek",
+      "desc": "Mix met prioriteiten en ducking: callouts en UI boven de bed; het publiek ‘ademt’ mee met de race. Submix-processing temt pieken en houdt loudness stabiel.",
+      "b1": "Sidechain ducking voor UI/callouts boven gameplay",
+      "b2": "Automatische crowd/ambience rides via status en positie",
+      "b3": "Gain staging en minder spectrale masking"
     },
-    "grandma1": {
-      "name": "Oma 1",
-      "desc": "Energiek en zelfverzekerd"
+    "integration": {
+      "title": "Unreal-integratie",
+      "desc": "Sound Cues met parameters en Submix-bussen. Concurrency voorkomt stapeling; attenuatieprofielen vormen afstand; lichte bus‑limiting stabiliseert loudness.",
+      "b1": "Race‑status + snelheid/camera als inputs",
+      "b2": "Submixen: UI, Gameplay, Ambience + limiter op Master",
+      "b3": "Concurrency en drempels voor botsingstriggers"
     },
-    "grandma2": {
-      "name": "Oma 2",
-      "desc": "Wijs en ervaren"
-    },
-    "grandma3": {
-      "name": "Oma 3",
-      "desc": "Vrolijk en speels"
-    },
-    "grandma4": {
-      "name": "Oma 4",
-      "desc": "Kalm en gefocust"
-    },
-    "grandma5": {
-      "name": "Oma 5",
-      "desc": "Streng maar eerlijk"
+    "player": {
+      "label": "Speel sample"
     },
     "team": {
       "title": "Team"
