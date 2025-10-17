@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transientica: AudioLab - Beatbox-Controlled Rhythm Game by Igor Szuniewicz</title>
+  <meta name="description" content="Innovative beatbox-controlled rhythm game using real-time ML classification, spectral flux analysis, and low-latency OSC control. Research by Igor Szuniewicz.">
+  <meta name="keywords" content="beatbox, rhythm game, machine learning, audio classification, real-time audio, OSC, Unity, Python, vocal percussion">
+  <meta name="author" content="Igor Szuniewicz">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Transientica: AudioLab - Beatbox-Controlled Rhythm Game">
+  <meta property="og:description" content="Interactive rhythm game driven by real-time beatbox recognition and low-latency OSC control. ML-powered vocal percussion gameplay.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://igorszuniewicz.com/projects/audiolab.html">
+  <meta property="og:image" content="https://igorszuniewicz.com/assets/images/projects/AudioLabGif.mp4">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Transientica: AudioLab - Beatbox-Controlled Rhythm Game">
+  <meta name="twitter:description" content="Beatbox-controlled rhythm game with real-time ML classification and 45ms latency.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Back button */
+    .back-button {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(24, 191, 239, 0.5);
+      transform: translateX(-3px);
+    }
+    @media (max-width: 768px) {
+      .back-button { top: 1rem; left: 1rem; padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #0c1218 50%, #0a1420 100%);
+      color: #e0e6ed;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(24, 191, 239, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(154, 108, 255, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Hero Section */
+    .hero {
+      padding: 8rem 0 4rem;
+      text-align: center;
+      position: relative;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(24, 191, 239, 0.2) 0%, rgba(154, 108, 255, 0.1) 50%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.2), rgba(154, 108, 255, 0.2));
+      border: 1px solid rgba(24, 191, 239, 0.4);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #18bfef;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #18bfef 0%, #9a6cff 50%, #ff6ea9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.35rem;
+      color: #9ca3af;
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+    }
+    
+    /* Meta Pills */
+    .meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 4rem;
+    }
+    
+    .pill {
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.1), rgba(154, 108, 255, 0.1));
+      border: 1px solid rgba(24, 191, 239, 0.3);
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e8f6fb;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .pill:hover {
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.2), rgba(154, 108, 255, 0.2));
+      border-color: rgba(24, 191, 239, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(24, 191, 239, 0.2);
+    }
+    
+    /* Video Section */
+    .video-section {
+      padding: 4rem 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-badge {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      background: rgba(24, 191, 239, 0.1);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #18bfef;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    
+    .video-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(24, 191, 239, 0.2);
+    }
+    
+    .video-wrapper video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* Overview Section */
+    .overview-section {
+      padding: 4rem 0;
+    }
+    
+    .overview-text {
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #d9f2ff;
+    }
+    
+    .overview-text p {
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .stat-card {
+      background: linear-gradient(135deg, rgba(24, 191, 239, 0.1), rgba(154, 108, 255, 0.05));
+      border: 1px solid rgba(24, 191, 239, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(24, 191, 239, 0.2);
+      border-color: rgba(24, 191, 239, 0.4);
+    }
+    
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #18bfef, #9a6cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      color: #e8f6fb;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+    
+    /* Tech Section */
+    .tech-section {
+      padding: 4rem 0;
+      background: linear-gradient(135deg, rgba(12, 18, 24, 0.4), rgba(10, 16, 22, 0.6));
+      border-radius: 30px;
+      margin: 4rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .tech-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .tech-card:hover {
+      background: rgba(24, 191, 239, 0.05);
+      border-color: rgba(24, 191, 239, 0.2);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(24, 191, 239, 0.15);
+    }
+    
+    .tech-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .tech-card h3 {
+      color: #18bfef;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    
+    .tech-card p {
+      color: #d9f2ff;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    /* Contributions Section */
+    .contributions-section {
+      padding: 4rem 0;
+    }
+    
+    .contributions-list {
+      max-width: 900px;
+      margin: 3rem auto 0;
+    }
+    
+    .contribution-item {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 4px solid #18bfef;
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .contribution-item:hover {
+      background: rgba(24, 191, 239, 0.05);
+      transform: translateX(5px);
+    }
+    
+    .contribution-item strong {
+      color: #18bfef;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .contribution-item p {
+      color: #d9f2ff;
+      margin: 0;
+      line-height: 1.6;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 4rem 0 3rem;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: 4rem;
+    }
+    
+    footer p {
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+    
+    footer a {
+      color: #18bfef;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    
+    footer a:hover {
+      color: #9a6cff;
+      text-decoration: underline;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 4rem 0 3rem;
+      }
+      
+      h1 {
+        font-size: 3rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .meta-pills {
+        gap: 0.8rem;
+      }
+      
+      .pill {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .overview-text {
+        font-size: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .tech-card {
+        padding: 1.5rem;
+      }
+      
+      .contribution-item {
+        padding: 1.2rem 1.5rem;
+      }
+    }
+  </style>
+  <style>.lang-switcher{position:fixed!important;top:2rem!important;right:2rem!important;z-index:1000!important;display:flex!important;gap:.5rem;background:rgba(255,255,255,.08)!important;backdrop-filter:blur(10px);border:1px solid rgba(24,191,239,.5)!important;border-radius:50px;padding:.5rem;box-shadow:0 4px 20px rgba(0,0,0,.3)!important}.lang-btn{padding:.5rem 1rem;background:0 0;border:none;border-radius:50px;color:#999!important;cursor:pointer;font-weight:500;font-size:.9rem;font-family:Inter,sans-serif;transition:all .3s ease;display:flex!important;align-items:center;gap:.5rem}.lang-btn:hover{color:#18bfef!important;background:rgba(24,191,239,.1)}.lang-btn.active{color:#18bfef!important;background:rgba(24,191,239,.15);font-weight:600}.lang-flag{width:20px;height:14px;border-radius:2px;overflow:hidden;display:block}@media (max-width:768px){.lang-switcher{top:1rem!important;right:1rem!important;padding:.4rem}.lang-btn{padding:.4rem .8rem;font-size:.85rem}}</style>
+</head>
+<body>
+  <div class="lang-switcher"><button class="lang-btn active" data-lang="en"><svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg><span>EN</span></button><button class="lang-btn" data-lang="pl"><svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10"><rect width="16" height="5" fill="#fff"/><rect y="5" width="16" height="5" fill="#dc143c"/></svg><span>PL</span></button><button class="lang-btn" data-lang="nl"><svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6"><rect width="9" height="6" fill="#21468B"/><rect width="9" height="4" fill="#fff"/><rect width="9" height="2" fill="#AE1C28"/></svg><span>NL</span></button></div>
+  <a href="index.html" class="back-button" data-i18n="back">← Back to Projects</a>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge" data-i18n="hero.badge">🎮 Research Project</div>
+        <h1 data-i18n="hero.title">Transientica: AudioLab</h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">
+          Beatbox-controlled rhythm game using real-time ML classification, spectral flux analysis, and low-latency OSC control. 
+          Replace button presses with vocal percussion.
+        </p>
+        
+        <div class="meta-pills">
+          <div class="pill">🎤 Real-time ML Classification</div>
+          <div class="pill">⚡ 45ms Median Latency</div>
+          <div class="pill">🐍 Python + Unity</div>
+          <div class="pill">🎵 Beatbox Recognition</div>
+          <div class="pill">📊 Spectral Flux Analysis</div>
+          <div class="pill">🎯 82% Hit Accuracy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Video Demonstration -->
+  <section class="video-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Gameplay Demo</div>
+        <h2 data-i18n="video.title">See It in Action</h2>
+      </div>
+      <div class="video-wrapper">
+        <video controls poster="../assets/images/projects/AudioLabGif.mp4">
+          <source src="../videos/AudiioLab.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Performance Stats -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Performance Metrics</div>
+        <h2 data-i18n="stats.title">Real-time Performance Results</h2>
+      </div>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-value">45ms</span>
+          <span class="stat-label">Median Latency</span>
+        </div>
+        
+        <div class="stat-card">
+          <span class="stat-value">64ms</span>
+          <span class="stat-label">90th Percentile</span>
+        </div>
+        
+        <div class="stat-card">
+          <span class="stat-value">82.1%</span>
+          <span class="stat-label">Hit Accuracy</span>
+        </div>
+        
+        <div class="stat-card">
+          <span class="stat-value">80.2%</span>
+          <span class="stat-label">F1 Score</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Project Overview -->
+  <section class="overview-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Project Overview</div>
+        <h2 data-i18n="overview.title">Revolutionary Vocal Percussion Interface</h2>
+      </div>
+      
+      <div class="overview-text">
+        <p>
+          <strong>Transientica</strong> replaces traditional button presses with beatboxing in rhythm games. Using real-time audio analysis, 
+          machine learning classification, and OSC networking, the system achieves <strong>sub-60ms latency</strong> while maintaining 
+          <strong>82% hit accuracy</strong> for vocal percussion gameplay.
+        </p>
+        
+        <p>
+          This research explores whether beatboxing alone can satisfy the tight timing requirements of competitive rhythm games, 
+          combining spectral-flux onset detection with user-trained <strong>RBF-SVM classification</strong> for kick, snare, and hi-hat sounds. 
+          The system uses a Python backend for audio processing and a Unity frontend for gameplay, connected via OSC messaging.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Technical Implementation -->
+  <section class="tech-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Technology Stack</div>
+        <h2 data-i18n="tech.title">Technical Implementation</h2>
+      </div>
+      
+      <div class="tech-grid">
+        <div class="tech-card">
+          <span class="tech-icon">🎤</span>
+          <h3 data-i18n="tech.audio">Audio Processing</h3>
+          <p>
+            44.1 kHz sampling with 2048-sample blocks. Spectral flux onset detection and MFCC feature extraction 
+            producing 39-dimensional vectors for real-time classification.
+          </p>
+        </div>
+        
+        <div class="tech-card">
+          <span class="tech-icon">🧠</span>
+          <h3 data-i18n="tech.ml">Machine Learning</h3>
+          <p>
+            User-trained RBF-SVM classifier (C=10, γ=0.01) for beatbox sound recognition. Achieves 0.16ms inference time 
+            with 80%+ accuracy on kick, snare, and hi-hat sounds.
+          </p>
+        </div>
+        
+        <div class="tech-card">
+          <span class="tech-icon">🔗</span>
+          <h3 data-i18n="tech.osc">OSC Communication</h3>
+          <p>
+            Low-latency UDP messaging between Python backend and Unity frontend. Timestamped events enable 
+            precise latency measurement and synchronization.
+          </p>
+        </div>
+        
+        <div class="tech-card">
+          <span class="tech-icon">🎮</span>
+          <h3 data-i18n="tech.engine">Game Engine</h3>
+          <p>
+            Unity-based rhythm game with JSON beatmaps, hit detection windows (±70ms), and real-time feedback systems 
+            for responsive vocal percussion gameplay.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Research Contributions -->
+  <section class="contributions-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Research Impact</div>
+        <h2 data-i18n="contrib.title">Key Contributions</h2>
+      </div>
+      
+      <div class="contributions-list">
+        <div class="contribution-item">
+          <strong>Low-latency Vocal Interface</strong>
+          <p>
+            Achieved sub-60ms end-to-end latency suitable for competitive rhythm gaming, demonstrating that 
+            vocal percussion can match traditional button-based input methods.
+          </p>
+        </div>
+        
+        <div class="contribution-item">
+          <strong>Real-time Beatbox Classification</strong>
+          <p>
+            User-trained machine learning models with 80%+ accuracy on kick, snare, and hi-hat sounds. 
+            Personalized training adapts to individual vocal techniques and styles.
+          </p>
+        </div>
+        
+        <div class="contribution-item">
+          <strong>OSC-based Architecture</strong>
+          <p>
+            Modular system design enabling integration with DAWs, lighting systems, and haptic feedback devices. 
+            Opens possibilities for expanded creative applications beyond gaming.
+          </p>
+        </div>
+        
+        <div class="contribution-item">
+          <strong>Personalized Training Approach</strong>
+          <p>
+            Local ML training avoids privacy concerns and cloud latency issues. Users can train models on their 
+            own vocal characteristics for optimal recognition performance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>
+        Research & Development by <a href="https://igorszuniewicz.com" target="_blank" rel="noopener">Igor Szuniewicz</a> | 
+        Transientica: AudioLab Project
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+        © 2025 Igor Szuniewicz. Research project exploring vocal percussion interfaces for rhythm gaming.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    let translations = {};
+    let currentLang = localStorage.getItem('language') || 'en';
+
+    // Helper function to get nested translation value
+    function getNestedTranslation(obj, path) {
+      return path.split('.').reduce((current, key) => current?.[key], obj);
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('language', lang);
+      
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const translation = getNestedTranslation(translations[lang], key);
+        if (translation) {
+          el.innerHTML = translation;
+        }
+      });
+      
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+
+    // Load translations from JSON file
+    async function loadTranslations() {
+      try {
+        const response = await fetch('../locales/audiolab.json');
+        translations = await response.json();
+        setLanguage(currentLang);
+      } catch (error) {
+        console.error('Failed to load translations:', error);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTranslations();
+      
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => { setLanguage(btn.dataset.lang); });
+      });
+    });
+  </script>
+</body>
+</html>

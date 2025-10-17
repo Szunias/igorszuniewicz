@@ -1,6 +1,7 @@
 {
   "en": {
     "nav": {
+      "home": "Home",
       "work": "Work",
       "about": "About",
       "projects": "All Projects",
@@ -38,6 +39,7 @@
   },
   "pl": {
     "nav": {
+      "home": "Strona główna",
       "work": "Projekty",
       "about": "O mnie",
       "projects": "Wszystkie Projekty",
@@ -75,6 +77,7 @@
   },
   "nl": {
     "nav": {
+      "home": "Home",
       "work": "Werk",
       "about": "Over",
       "projects": "Alle Projecten",

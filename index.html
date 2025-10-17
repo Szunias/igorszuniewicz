@@ -1192,7 +1192,7 @@
       <nav class="nav">
         <a href="#" class="logo">Igor Szuniewicz</a>
         <ul class="nav-links">
-          <li><a href="#work" data-i18n="nav.work">Work</a></li>
+          <li><a href="index.html" class="active" data-i18n="nav.home">Home</a></li>
           <li><a href="about.html" data-i18n="nav.about">About</a></li>
           <li><a href="projects/index.html" data-i18n="nav.projects">All Projects</a></li>
           <li><a href="music.html" data-i18n="nav.music">Music</a></li>
@@ -1218,7 +1218,7 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu">
     <ul class="mobile-nav-links">
-      <li><a href="#work" data-i18n="nav.work">Work</a></li>
+      <li><a href="index.html" data-i18n="nav.home">Home</a></li>
       <li><a href="about.html" data-i18n="nav.about">About</a></li>
       <li><a href="projects/index.html" data-i18n="nav.projects">All Projects</a></li>
       <li><a href="music.html" data-i18n="nav.music">Music</a></li>
@@ -1548,8 +1548,8 @@
       document.body.style.setProperty('--cursor-y', `${cursorY}px`);
       
       if (document.body.classList.contains('cursor-active')) {
-        document.body.style.setProperty('--before-left', `${cursorX - 300}px`);
-        document.body.style.setProperty('--before-top', `${cursorY - 300}px`);
+        document.body.style.setProperty('--before-left', `${cursorX - 150}px`);
+        document.body.style.setProperty('--before-top', `${cursorY - 150}px`);
       }
       
       requestAnimationFrame(updateCursor);
