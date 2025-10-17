@@ -33,6 +33,9 @@
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
+    
+    // Update HTML lang attribute
+    document.documentElement.setAttribute('lang', lang);
   }
 
   // Load translations from JSON file
