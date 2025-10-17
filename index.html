@@ -735,7 +735,7 @@
     .project-image {
       position: relative;
       width: 100%;
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 4 / 3;
       overflow: hidden;
       background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     }
@@ -756,6 +756,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center center;
       transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       z-index: 1;
@@ -763,7 +764,7 @@
     
     .project-card:hover .project-image img,
     .project-card:hover .project-image video {
-      transform: scale(1.15);
+      transform: scale(1.05);
     }
     
     .project-badge {
@@ -1292,7 +1293,6 @@
       
       <div class="projects-grid">
         <!-- Not Today Darling -->
-        <article itemscope itemtype="https://schema.org/CreativeWork">
         <a href="projects/not-today-darling.html" class="project-card fade-in" aria-label="Not Today Darling game audio project">
           <div class="project-image">
             <span class="project-badge badge-game">Game Audio</span>
@@ -1306,10 +1306,8 @@
             <p class="project-description" itemprop="description">Retro-inspired audio implementation for chaotic multiplayer racing game.</p>
           </div>
         </a>
-        </article>
         
-        <!-- Amorak -->
-        <article itemscope itemtype="https://schema.org/CreativeWork">
+        <!-- Amorak        <!-- Amorak -->
         <a href="projects/amorak.html" class="project-card fade-in" aria-label="Amorak horror animation sound design project">
           <div class="project-image">
             <span class="project-badge badge-sound">Sound Design</span>
@@ -1323,7 +1321,6 @@
             <p class="project-description" itemprop="description">Atmospheric soundscapes and creature audio for horror animation.</p>
           </div>
         </a>
-        </article>
         
         <!-- Pause & Deserve -->
         <a href="projects/pause-and-deserve.html" class="project-card fade-in">
@@ -1356,7 +1353,6 @@
         </a>
         
         <!-- Interactive Music -->
-        <article itemscope itemtype="https://schema.org/CreativeWork">
         <a href="projects/musicforgames.html" class="project-card fade-in" aria-label="Interactive music design project">
           <div class="project-image">
             <span class="project-badge badge-music">Music</span>
@@ -1367,7 +1363,6 @@
             <p class="project-description" itemprop="description">Adaptive audio systems with vertical layering in Wwise.</p>
           </div>
         </a>
-        </article>
         
         <!-- Akantilado -->
         <a href="projects/akantilado.html" class="project-card fade-in">
