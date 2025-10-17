@@ -3,18 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>About — Igor Szuniewicz</title>
+  <title>About — Igor Szuniewicz | Audio Designer & Developer</title>
+  <meta name="description" content="Audio designer and developer specialized in game audio, interactive music systems, and real-time DSP." />
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
-  <meta name="description" content="About Igor Szuniewicz — Audio designer, composer, and developer specialized in interactive music systems and game audio." />
   
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* === RESET === */
-    *, *::before, *::after {
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -22,144 +20,25 @@
     
     html {
       scroll-behavior: smooth;
-      font-size: 15px;
     }
     
     body {
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Poppins', sans-serif;
       background: #000000;
       color: #e0e6ed;
       line-height: 1.6;
       overflow-x: hidden;
-      font-weight: 400;
     }
     
-    /* === AUDIO WAVEFORM BACKGROUND === */
-    .waveform-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      opacity: 0.15;
-      overflow: hidden;
-    }
-    
-    .wave-line {
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #60a5fa, transparent);
-      animation: wavePulse 3s ease-in-out infinite;
-    }
-    
-    .wave-line:nth-child(1) { top: 20%; animation-delay: 0s; }
-    .wave-line:nth-child(2) { top: 40%; animation-delay: 0.5s; }
-    .wave-line:nth-child(3) { top: 60%; animation-delay: 1s; }
-    .wave-line:nth-child(4) { top: 80%; animation-delay: 1.5s; }
-    
-    @keyframes wavePulse {
-      0%, 100% { transform: scaleX(0.5); opacity: 0.3; }
-      50% { transform: scaleX(1); opacity: 0.8; }
-    }
-    
-    /* === FREQUENCY BARS === */
-    .frequency-bars {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 200px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-around;
-      gap: 4px;
-      padding: 0 2rem;
-      z-index: -1;
-      opacity: 0.1;
-    }
-    
-    .freq-bar {
-      width: 100%;
-      max-width: 20px;
-      background: linear-gradient(to top, #60a5fa, #a78bfa);
-      border-radius: 4px 4px 0 0;
-      animation: barDance 1.2s ease-in-out infinite;
-    }
-    
-    .freq-bar:nth-child(odd) { animation-duration: 0.8s; }
-    .freq-bar:nth-child(3n) { animation-duration: 1s; }
-    .freq-bar:nth-child(4n) { animation-duration: 1.4s; }
-    
-    @keyframes barDance {
-      0%, 100% { height: 20px; opacity: 0.5; }
-      50% { height: 100px; opacity: 1; }
-    }
-    
-    /* === PREMIUM PROFESSIONAL BACKGROUND === */
+    /* === BACKGROUND === */
     .bg-gradient {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -4;
-      background: 
-        radial-gradient(ellipse at 20% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
-        radial-gradient(ellipse at 80% 70%, rgba(14, 165, 233, 0.06) 0%, transparent 40%),
-        linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #050508 100%);
-    }
-    
-    .bg-gradient::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
-      opacity: 0.5;
-      mix-blend-mode: overlay;
-    }
-    
-    .bg-grid {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-      background-size: 100px 100px;
-      z-index: -3;
-      opacity: 0.4;
-      mask-image: radial-gradient(ellipse at center, black 0%, transparent 90%);
-    }
-    
-    .bg-orbs {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      overflow: hidden;
-      opacity: 0.12;
-    }
-    
-    .bg-orbs::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: 
-        linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.1) 50%, transparent 100%),
-        linear-gradient(0deg, transparent 0%, rgba(14, 165, 233, 0.08) 50%, transparent 100%);
-      animation: subtleRotate 60s linear infinite;
-    }
-    
-    @keyframes subtleRotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      z-index: -1;
+      background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #050508 100%);
     }
     
     /* === CONTAINER === */
@@ -194,6 +73,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
     }
     
     .logo {
@@ -257,162 +139,225 @@
       color: #fff;
     }
     
-    /* === PAGE CONTENT === */
-    .page-content {
-      padding: 10rem 0 4rem;
-      min-height: 100vh;
-    }
-    
-    .page-header {
+    /* === HERO SECTION === */
+    .hero {
+      padding: 10rem 0 5rem;
       text-align: center;
-      margin-bottom: 5rem;
     }
     
-    .page-title {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(3rem, 7vw, 5rem);
-      font-weight: 900;
-      background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1rem;
-      letter-spacing: -0.03em;
+    .avatar-container {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 2rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(96, 165, 250, 0.3);
+      box-shadow: 0 10px 40px rgba(96, 165, 250, 0.2);
       position: relative;
-      animation: glitchTitle 8s infinite;
     }
     
-    .page-title::before,
-    .page-title::after {
-      content: attr(data-text);
+    .avatar-container::after {
+      content: '';
       position: absolute;
-      top: 0;
-      left: 0;
+      inset: -4px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .avatar-container:hover::after {
+      opacity: 1;
+    }
+    
+    .avatar {
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      opacity: 0;
+      object-fit: cover;
+      filter: grayscale(20%);
+      transition: all 0.3s ease;
     }
     
-    @keyframes glitchTitle {
-      0%, 90%, 100% { opacity: 1; }
-      91% { opacity: 0.8; transform: translate(-2px, 2px); }
-      92% { opacity: 1; transform: translate(0, 0); }
-      93% { opacity: 0.9; transform: translate(2px, -1px); }
-      94% { opacity: 1; transform: translate(0, 0); }
+    .avatar-container:hover .avatar {
+      filter: grayscale(0%);
+      transform: scale(1.05);
     }
     
-    .page-description {
-      font-size: 1.35rem;
-      color: #cbd5e1;
+    .hero-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .hero-role {
+      font-size: 1.25rem;
+      color: #60a5fa;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    
+    .hero-bio {
       max-width: 700px;
       margin: 0 auto;
+      font-size: 1.1rem;
+      color: #cbd5e1;
       line-height: 1.8;
     }
     
-    /* === CONTENT SECTIONS === */
-    .content-section {
-      margin-bottom: 5rem;
+    /* === SECTION === */
+    .section {
+      padding: 5rem 0;
     }
     
     .section-title {
       font-family: 'Sora', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 2rem;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 3rem;
+      text-align: center;
       letter-spacing: -0.02em;
     }
     
-    .section-text {
-      font-size: 1.1rem;
-      color: #cbd5e1;
-      line-height: 1.9;
-      margin-bottom: 1.5rem;
-    }
-    
-    /* === CARDS WITH 3D EFFECT === */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-      perspective: 1000px;
-    }
-    
-    .card {
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(20px);
-      border-radius: 24px;
-      border: 1px solid rgba(96, 165, 250, 0.2);
-      padding: 2rem;
-      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-      transform-style: preserve-3d;
+    /* === TIMELINE === */
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
       position: relative;
-      overflow: hidden;
     }
     
-    .card::before {
+    .timeline::before {
       content: '';
       position: absolute;
+      left: 50%;
       top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1));
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      z-index: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, transparent, #60a5fa, transparent);
+      transform: translateX(-50%);
     }
     
-    .card:hover::before {
-      opacity: 1;
-    }
-    
-    .card:hover {
-      transform: rotateX(2deg) rotateY(5deg) translateY(-12px);
-      border-color: rgba(96, 165, 250, 0.5);
-      box-shadow: 0 25px 60px rgba(96, 165, 250, 0.2), 0 0 50px rgba(167, 139, 250, 0.1);
-    }
-    
-    .card > * {
+    .timeline-item {
+      display: flex;
+      justify-content: flex-start;
+      padding: 2rem 0;
       position: relative;
-      z-index: 1;
     }
     
-    .card-title {
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    
+    .timeline-content {
+      width: 45%;
+      background: rgba(15, 23, 42, 0.5);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-content:hover {
+      border-color: #60a5fa;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(96, 165, 250, 0.2);
+    }
+    
+    .timeline-year {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      color: #fff;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .timeline-title {
       font-family: 'Sora', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-description {
+      color: #9ca3af;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 2.5rem;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      background: #60a5fa;
+      border-radius: 50%;
+      border: 4px solid #000;
+      box-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+    }
+    
+    /* === SKILLS GRID === */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .skill-category {
+      background: rgba(15, 23, 42, 0.5);
+      padding: 2rem;
+      border-radius: 16px;
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .skill-category:hover {
+      border-color: #60a5fa;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(96, 165, 250, 0.2);
+    }
+    
+    .skill-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .skill-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
       color: #fff;
       margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
     }
     
-    .card-icon {
-      font-size: 1.8rem;
-    }
-    
-    .card-list {
+    .skill-list {
       list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
     }
     
-    .card-list li {
-      color: #cbd5e1;
+    .skill-list li {
+      color: #9ca3af;
+      padding: 0.5rem 0;
       padding-left: 1.5rem;
       position: relative;
-      line-height: 1.7;
+      font-size: 0.95rem;
     }
     
-    .card-list li::before {
+    .skill-list li::before {
       content: '▹';
       position: absolute;
       left: 0;
@@ -420,9 +365,34 @@
       font-weight: 700;
     }
     
-    .card-list strong {
+    /* === TOOLS === */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .tool-card {
+      background: rgba(15, 23, 42, 0.5);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .tool-card:hover {
+      border-color: #60a5fa;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(96, 165, 250, 0.2);
+    }
+    
+    .tool-name {
       color: #fff;
       font-weight: 600;
+      font-size: 0.95rem;
     }
     
     /* === STATS === */
@@ -430,21 +400,23 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 2rem;
-      margin-top: 4rem;
+      max-width: 1000px;
+      margin: 0 auto;
     }
     
     .stat-card {
       text-align: center;
       padding: 2rem;
-      background: rgba(15, 23, 42, 0.4);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 16px;
+      border: 1px solid rgba(96, 165, 250, 0.2);
       transition: all 0.3s ease;
     }
     
     .stat-card:hover {
-      border-color: rgba(96, 165, 250, 0.3);
+      border-color: #60a5fa;
       transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(96, 165, 250, 0.2);
     }
     
     .stat-number {
@@ -465,14 +437,45 @@
       letter-spacing: 1px;
     }
     
+    /* === FOOTER === */
+    .footer {
+      text-align: center;
+      padding: 3rem 0;
+      color: #666;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: 5rem;
+    }
+    
     /* === RESPONSIVE === */
     @media (max-width: 768px) {
       .nav-links {
         display: none;
       }
       
-      .cards-grid {
+      .timeline::before {
+        left: 0;
+      }
+      
+      .timeline-item {
+        flex-direction: column !important;
+      }
+      
+      .timeline-content {
+        width: 100%;
+        margin-left: 2rem;
+      }
+      
+      .timeline-dot {
+        left: 0;
+      }
+      
+      .skills-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
       
       .stats-grid {
@@ -484,158 +487,179 @@
 <body>
   <!-- Background -->
   <div class="bg-gradient"></div>
-  <div class="bg-grid"></div>
-  <div class="bg-orbs">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-  </div>
-  
-  <!-- Audio Waveform Background -->
-  <div class="waveform-bg">
-    <div class="wave-line"></div>
-    <div class="wave-line"></div>
-    <div class="wave-line"></div>
-    <div class="wave-line"></div>
-  </div>
-  
-  <!-- Frequency Bars -->
-  <div class="frequency-bars">
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-    <div class="freq-bar"></div>
-  </div>
   
   <!-- Header -->
   <header class="header" id="header">
-    <div class="container">
-      <nav class="nav">
-        <a href="index.html" class="logo">Igor Szuniewicz</a>
-        <ul class="nav-links">
-          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
-          <li><a href="about.html" class="active" data-i18n="nav_about">About</a></li>
-          <li><a href="projects/index.html" data-i18n="nav_projects">All Projects</a></li>
-          <li><a href="music.html" data-i18n="nav_music">Music</a></li>
-          <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
-          <li class="lang-switcher">
-            <button class="lang-btn active" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="pl">PL</button>
-            <button class="lang-btn" data-lang="nl">NL</button>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <nav class="nav">
+      <a href="index.html" class="logo">Igor Szuniewicz</a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+        <li><a href="about.html" class="active" data-i18n="nav_about">About</a></li>
+        <li><a href="projects/index.html" data-i18n="nav_projects">All Projects</a></li>
+        <li><a href="music.html" data-i18n="nav_music">Music</a></li>
+        <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="pl">PL</button>
+          <button class="lang-btn" data-lang="nl">NL</button>
+        </li>
+      </ul>
+    </nav>
   </header>
   
-  <!-- Page Content -->
-  <div class="page-content">
+  <!-- Hero -->
+  <section class="hero">
     <div class="container">
-      <div class="page-header">
-        <h1 class="page-title" data-text="About Me" data-i18n="about_page_title">About Me</h1>
-        <p class="page-description" data-i18n="about_page_description">
-          Audio designer, composer, and developer specialized in interactive music systems, game audio implementation, and real-time DSP. Combining creative intuition with technical precision.
-        </p>
+      <div class="avatar-container">
+        <img src="assets/images/avatar.jpg" alt="Igor Szuniewicz" class="avatar">
       </div>
-      
-      <div class="content-section">
-        <h2 class="section-title" data-i18n="about_journey_title">My Journey</h2>
-        <p class="section-text" data-i18n="about_journey_p1">
-          My path into audio technology started with classical piano at age 6, where I learned discipline and musical structure. During high school, I discovered the mathematical beauty behind sound — how frequencies, harmonics, and digital signal processing could create entirely new sonic possibilities.
-        </p>
-        <p class="section-text" data-i18n="about_journey_p2">
-          This led me to develop machine learning systems for real-time audio analysis (achieving 45ms latency), create custom DSP algorithms for spatial audio, and build interactive music systems that adapt to player behavior. Currently at DAE Belgium, I'm focusing on professional game audio integration, learning how to make audio systems that enhance gameplay and create emotional connections between players and virtual worlds.
-        </p>
+      <h1 class="hero-title" data-i18n="about_title">Igor Szuniewicz</h1>
+      <p class="hero-role" data-i18n="about_role">Audio Designer & Developer</p>
+      <p class="hero-bio" data-i18n="about_bio">
+        Combining technical precision with creative intuition to craft immersive soundscapes and interactive audio systems. Specialized in game audio implementation, real-time DSP, and adaptive music design.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Journey Timeline -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="about_journey_title">Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-year">2024</span>
+            <h3 class="timeline-title" data-i18n="timeline_dae_title">DAE — Game Development</h3>
+            <p class="timeline-description" data-i18n="timeline_dae_desc">Studying audio integration, Wwise/FMOD middleware, and professional game audio pipelines at Howest Belgium.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-year">2023</span>
+            <h3 class="timeline-title" data-i18n="timeline_ml_title">Machine Learning Audio</h3>
+            <p class="timeline-description" data-i18n="timeline_ml_desc">Built real-time beatbox classification system with 45ms latency using Python, LibROSA, and SVM algorithms.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-year">2020</span>
+            <h3 class="timeline-title" data-i18n="timeline_music_title">Music Production</h3>
+            <p class="timeline-description" data-i18n="timeline_music_desc">Started releasing original music on Spotify. Explored electronic, film scoring, and experimental sound design.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-year">2010</span>
+            <h3 class="timeline-title" data-i18n="timeline_piano_title">Classical Training</h3>
+            <p class="timeline-description" data-i18n="timeline_piano_desc">Began classical piano education at State Music School, building foundation in music theory and performance.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
       </div>
-      
-      <div class="content-section">
-        <h2 class="section-title" data-i18n="about_drives_title">What Drives Me</h2>
-        <p class="section-text" data-i18n="about_drives_p1">
-          I believe great audio should feel magical to users while being robust under the hood. Every millisecond of latency matters when creating responsive systems. Every frequency band matters when crafting immersive soundscapes.
-        </p>
-        <p class="section-text" data-i18n="about_drives_p2">
-          I'm passionate about bridging the gap between artistic vision and technical implementation — creating tools that let composers and designers focus on creativity while the technology handles the complexity. Whether it's real-time beat detection or designing adaptive music that seamlessly responds to gameplay, I'm driven by making the impossible feel effortless.
-        </p>
-      </div>
-      
-      <div class="cards-grid">
-        <div class="card">
-          <h3 class="card-title">
-            <span class="card-icon">🎓</span>
-            <span data-i18n="about_education_title">Education</span>
-          </h3>
-          <ul class="card-list">
-            <li><strong data-i18n="about_education_dae">Howest — DAE</strong><br><span data-i18n="about_education_dae_desc">Game Development — Sound Integration (ongoing)</span></li>
-            <li><strong data-i18n="about_education_hs">Bilingual High School</strong><br><span data-i18n="about_education_hs_desc">Maths & Physics (graduated)</span></li>
-            <li><strong data-i18n="about_education_music">State Music School</strong><br><span data-i18n="about_education_music_desc">Classical Piano & Theory (graduated)</span></li>
+    </div>
+  </section>
+  
+  <!-- Skills -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="about_skills_title">Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <span class="skill-icon">🎮</span>
+          <h3 class="skill-title" data-i18n="skill_game_title">Game Audio</h3>
+          <ul class="skill-list">
+            <li data-i18n="skill_game_1">Interactive music systems</li>
+            <li data-i18n="skill_game_2">Wwise & FMOD integration</li>
+            <li data-i18n="skill_game_3">Unity & Unreal Engine</li>
+            <li data-i18n="skill_game_4">Adaptive soundscapes</li>
           </ul>
         </div>
         
-        <div class="card">
-          <h3 class="card-title">
-            <span class="card-icon">🎵</span>
-            <span data-i18n="about_tools_title">Audio Tools</span>
-          </h3>
-          <ul class="card-list">
-            <li><strong data-i18n="about_tools_middleware">Middleware:</strong> <span data-i18n="about_tools_middleware_desc">Wwise, FMOD — Professional implementation</span></li>
-            <li><strong data-i18n="about_tools_engines">Engines:</strong> <span data-i18n="about_tools_engines_desc">Unreal Engine, Unity — Game integration</span></li>
-            <li><strong data-i18n="about_tools_production">Production:</strong> <span data-i18n="about_tools_production_desc">Reaper, Pro Tools, Logic Pro, Studio One</span></li>
+        <div class="skill-category">
+          <span class="skill-icon">🎵</span>
+          <h3 class="skill-title" data-i18n="skill_production_title">Production</h3>
+          <ul class="skill-list">
+            <li data-i18n="skill_production_1">Music composition</li>
+            <li data-i18n="skill_production_2">Sound design</li>
+            <li data-i18n="skill_production_3">Mixing & mastering</li>
+            <li data-i18n="skill_production_4">Field recording</li>
           </ul>
         </div>
         
-        <div class="card">
-          <h3 class="card-title">
-            <span class="card-icon">💻</span>
-            <span data-i18n="about_dev_title">Development</span>
-          </h3>
-          <ul class="card-list">
-            <li><strong data-i18n="about_dev_dsp">DSP & Audio:</strong> <span data-i18n="about_dev_dsp_desc">C++/JUCE for VST development</span></li>
-            <li><strong data-i18n="about_dev_ml">Machine Learning:</strong> <span data-i18n="about_dev_ml_desc">Real-time audio classification (45ms latency)</span></li>
-            <li><strong data-i18n="about_dev_systems">Systems:</strong> <span data-i18n="about_dev_systems_desc">Python, C#, scripting for automation</span></li>
+        <div class="skill-category">
+          <span class="skill-icon">💻</span>
+          <h3 class="skill-title" data-i18n="skill_dev_title">Development</h3>
+          <ul class="skill-list">
+            <li data-i18n="skill_dev_1">Real-time DSP</li>
+            <li data-i18n="skill_dev_2">Python audio tools</li>
+            <li data-i18n="skill_dev_3">C# scripting</li>
+            <li data-i18n="skill_dev_4">Audio plugins</li>
           </ul>
         </div>
       </div>
-      
+    </div>
+  </section>
+  
+  <!-- Tools -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="about_tools_title">Tools & Software</h2>
+      <div class="tools-grid">
+        <div class="tool-card"><div class="tool-name">Wwise</div></div>
+        <div class="tool-card"><div class="tool-name">FMOD</div></div>
+        <div class="tool-card"><div class="tool-name">Unreal Engine</div></div>
+        <div class="tool-card"><div class="tool-name">Unity</div></div>
+        <div class="tool-card"><div class="tool-name">Reaper</div></div>
+        <div class="tool-card"><div class="tool-name">Pro Tools</div></div>
+        <div class="tool-card"><div class="tool-name">Logic Pro</div></div>
+        <div class="tool-card"><div class="tool-name">Python</div></div>
+        <div class="tool-card"><div class="tool-name">C#</div></div>
+        <div class="tool-card"><div class="tool-name">Max/MSP</div></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Stats -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="about_stats_title">By The Numbers</h2>
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-number">10+</div>
-          <div class="stat-label" data-i18n="about_stat_music">Years of Music</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">45ms</div>
-          <div class="stat-label" data-i18n="about_stat_latency">ML Audio Latency</div>
-        </div>
-        <div class="stat-card">
           <div class="stat-number">12+</div>
-          <div class="stat-label" data-i18n="about_stat_projects">Projects Shipped</div>
+          <div class="stat-label" data-i18n="stat_projects">Projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4</div>
+          <div class="stat-label" data-i18n="stat_tools">Audio Tools</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">3</div>
-          <div class="stat-label" data-i18n="about_stat_languages">Languages Fluent</div>
+          <div class="stat-label" data-i18n="stat_languages">Languages</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100%</div>
+          <div class="stat-label" data-i18n="stat_passion">Passion</div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Igor Szuniewicz. All rights reserved.</p>
+    </div>
+  </footer>
   
   <!-- Scripts -->
   <script>
-    // Header scroll effect
+    // Header scroll
     window.addEventListener('scroll', () => {
       const header = document.getElementById('header');
       if (window.scrollY > 50) {
@@ -645,72 +669,14 @@
       }
     });
     
-    // 3D card tilt effect on mouse move
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -5;
-        const rotateY = ((x - centerX) / centerX) * 5;
-        
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px)`;
+    // Language switcher (placeholder - add your translation logic)
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // Add translation logic here
       });
-      
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-      });
-    });
-    
-    // Parallax effect for waveform lines
-    const waveLines = document.querySelectorAll('.wave-line');
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      waveLines.forEach((line, index) => {
-        const speed = 0.1 + (index * 0.05);
-        line.style.transform = `translateX(${scrolled * speed}px)`;
-      });
-    });
-    
-    // Mouse-reactive frequency bars
-    const freqBars = document.querySelectorAll('.freq-bar');
-    document.addEventListener('mousemove', (e) => {
-      const mouseX = e.clientX / window.innerWidth;
-      freqBars.forEach((bar, index) => {
-        const distance = Math.abs((index / freqBars.length) - mouseX);
-        const height = 20 + (1 - distance) * 120;
-        bar.style.height = `${height}px`;
-      });
-    });
-    
-    // Intersection Observer for fade-in animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-    
-    // Observe all cards and sections
-    document.querySelectorAll('.card, .content-section, .stat-card').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      observer.observe(el);
     });
   </script>
-  <script src="assets/js/components/custom-cursor.js"></script>
-  <script src="assets/js/translations.js"></script>
-  <script src="assets/js/page-transitions.js"></script>
 </body>
 </html>
