@@ -16,6 +16,14 @@
       "cta_cv": "CV",
       "cta2": "Get In Touch"
     },
+    "demo_reel": {
+      "badge": "🎬 Audio Showcase",
+      "title": "Demo Reel",
+      "description": "A curated showcase of game audio implementation, sound design, interactive music systems, and technical audio work. Highlighting real-time DSP, middleware integration, and adaptive soundscapes.",
+      "coming_soon": "Coming Soon",
+      "placeholder_title": "Demo Reel In Production",
+      "placeholder_note": "A comprehensive 2-3 minute audio showcase featuring game audio implementation, sound design breakdowns, and middleware workflow demonstrations."
+    },
     "projects": {
       "label": "Featured Work",
       "title": "Selected Projects",
@@ -53,6 +61,14 @@
       "cta_cv": "CV",
       "cta2": "Skontaktuj Się"
     },
+    "demo_reel": {
+      "badge": "🎬 Prezentacja Audio",
+      "title": "Demo Reel",
+      "description": "Wyselekcjonowana prezentacja implementacji audio dla gier, sound designu, interaktywnych systemów muzycznych i technicznej pracy audio. Pokazująca real-time DSP, integrację middleware i adaptywne soundscapy.",
+      "coming_soon": "Wkrótce",
+      "placeholder_title": "Demo Reel w Produkcji",
+      "placeholder_note": "Kompleksowa 2-3 minutowa prezentacja audio pokazująca implementację audio dla gier, breakdowny sound designu i demonstracje workflow middleware."
+    },
     "projects": {
       "label": "Wybrane Prace",
       "title": "Wybrane Projekty",
@@ -89,6 +105,14 @@
       "cta1": "Bekijk Mijn Werk",
       "cta_cv": "CV",
       "cta2": "Neem Contact Op"
+    },
+    "demo_reel": {
+      "badge": "🎬 Audio Showcase",
+      "title": "Demo Reel",
+      "description": "Een verzameling van game audio implementatie, geluidsontwerp, interactieve muzieksystemen en technisch audiowerk. Met realtime DSP, middleware integratie en adaptieve soundscapes.",
+      "coming_soon": "Binnenkort",
+      "placeholder_title": "Demo Reel in Productie",
+      "placeholder_note": "Een uitgebreide 2-3 minuten audio showcase met game audio implementatie, geluidsontwerp breakdowns en middleware workflow demonstraties."
     },
     "projects": {
       "label": "Uitgelicht Werk",
