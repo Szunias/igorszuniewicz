@@ -684,6 +684,85 @@
       font-weight: 500;
     }
     
+    /* === AMORAK CHALLENGE CARDS === */
+    .challenge-cards-amorak {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    
+    .challenge-card-amorak {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(139, 69, 19, 0.3);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .challenge-card-amorak::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .challenge-card-amorak:hover::before {
+      left: 100%;
+    }
+    
+    .challenge-card-amorak:hover {
+      border-color: #8b4513;
+      transform: translateY(-8px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(139, 69, 19, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .challenge-icon-amorak {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      filter: drop-shadow(0 4px 10px rgba(139, 69, 19, 0.4));
+    }
+    
+    .challenge-card-amorak h4 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.4rem;
+      color: #cd853f;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    
+    .challenge-content-amorak {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .challenge-label-amorak {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.85rem;
+      color: #8b4513;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .challenge-label-amorak:first-of-type {
+      margin-top: 0;
+    }
+    
     /* === GALLERY === */
     .gallery {
       margin: 5rem 0;
@@ -1006,6 +1085,45 @@
         <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play - Technical Demo"></div>
       </div>
     </div>
+    
+    <!-- Technical Challenges & Solutions -->
+    <section class="stats">
+      <h3 data-i18n="challenges.title">Technical Challenges</h3>
+      <div class="challenge-cards-amorak">
+        <div class="challenge-card-amorak">
+          <div class="challenge-icon-amorak">🔊</div>
+          <h4 data-i18n="challenges.challenge1.title">Creature Low-End Without Muddiness</h4>
+          <div class="challenge-content-amorak">
+            <p class="challenge-label-amorak">Problem:</p>
+            <p data-i18n="challenges.challenge1.problem" style="color: #aaa; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">Beast presence needed 40-200Hz body, but overlapped with environmental rumble causing muddy mix and loss of impact.</p>
+            <p class="challenge-label-amorak">Solution:</p>
+            <p data-i18n="challenges.challenge1.solution" style="color: #bbb; font-size: 0.95rem; line-height: 1.7;">Implemented frequency carving: environmental bass sits at 60-90Hz (sub rumble), creature body at 120-180Hz (chest punch), with notch filter at 80Hz on environment when creature is on-screen. Added M/S processing: creature mono-centered for focus, environment wide-stereo for space. Dynamic EQ boosts creature fundamentals +3dB during roar peak.</p>
+          </div>
+        </div>
+        
+        <div class="challenge-card-amorak">
+          <div class="challenge-icon-amorak">🎥</div>
+          <h4 data-i18n="challenges.challenge2.title">Spatial Realism with Camera Cuts</h4>
+          <div class="challenge-content-amorak">
+            <p class="challenge-label-amorak">Problem:</p>
+            <p data-i18n="challenges.challenge2.problem" style="color: #aaa; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">Rapid camera cuts between wide shots and close-ups caused disorienting spatial jumps in ambience and creature sounds.</p>
+            <p class="challenge-label-amorak">Solution:</p>
+            <p data-i18n="challenges.challenge2.solution" style="color: #bbb; font-size: 0.95rem; line-height: 1.7;">Built proximity-adaptive layering system: 3 ambience layers (distant/mid/close) with automated crossfades based on camera distance metadata. Added 300ms smoothing on level changes to prevent jarring transitions. Creature breathing/footsteps have separate close-mic layer (activated <5m) with different reverb send (-15dB IR time) for intimacy.</p>
+          </div>
+        </div>
+        
+        <div class="challenge-card-amorak">
+          <div class="challenge-icon-amorak">🎤</div>
+          <h4 data-i18n="challenges.challenge3.title">Dialogue Clarity in Dense Soundscape</h4>
+          <div class="challenge-content-amorak">
+            <p class="challenge-label-amorak">Problem:</p>
+            <p data-i18n="challenges.challenge3.problem" style="color: #aaa; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">Basement scene has layered drips, creaks, and creature movement—dialogue was getting masked in 800Hz-3kHz range.</p>
+            <p class="challenge-label-amorak">Solution:</p>
+            <p data-i18n="challenges.challenge3.solution" style="color: #bbb; font-size: 0.95rem; line-height: 1.7;">Applied dynamic ducking: when dialogue present, environmental elements duck -8dB with 100ms attack, 500ms release. Carved 1-3kHz notch in ambience bed (permanent -4dB). Used spectral shaping on dialogue: gentle presence boost at 2.5kHz, de-essing at 6-8kHz, and HPF at 80Hz to remove rumble bleed. Result: dialogue sits clearly without sounding isolated.</p>
+          </div>
+        </div>
+      </div>
+    </section>
     
     <!-- Gallery -->
     <section class="gallery">
