@@ -1094,9 +1094,9 @@
           <div class="challenge-icon-amorak">🔊</div>
           <h4 data-i18n="challenges.challenge1.title">Creature Low-End Without Muddiness</h4>
           <div class="challenge-content-amorak">
-            <p class="challenge-label-amorak">Problem:</p>
+            <p class="challenge-label-amorak" data-i18n="challenges.problem_label">Problem:</p>
             <p data-i18n="challenges.challenge1.problem" style="color: #aaa; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">Beast presence needed 40-200Hz body, but overlapped with environmental rumble causing muddy mix and loss of impact.</p>
-            <p class="challenge-label-amorak">Solution:</p>
+            <p class="challenge-label-amorak" data-i18n="challenges.solution_label">Solution:</p>
             <p data-i18n="challenges.challenge1.solution" style="color: #bbb; font-size: 0.95rem; line-height: 1.7;">Implemented frequency carving: environmental bass sits at 60-90Hz (sub rumble), creature body at 120-180Hz (chest punch), with notch filter at 80Hz on environment when creature is on-screen. Added M/S processing: creature mono-centered for focus, environment wide-stereo for space. Dynamic EQ boosts creature fundamentals +3dB during roar peak.</p>
           </div>
         </div>
@@ -1105,9 +1105,9 @@
           <div class="challenge-icon-amorak">🎥</div>
           <h4 data-i18n="challenges.challenge2.title">Spatial Realism with Camera Cuts</h4>
           <div class="challenge-content-amorak">
-            <p class="challenge-label-amorak">Problem:</p>
+            <p class="challenge-label-amorak" data-i18n="challenges.problem_label">Problem:</p>
             <p data-i18n="challenges.challenge2.problem" style="color: #aaa; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">Rapid camera cuts between wide shots and close-ups caused disorienting spatial jumps in ambience and creature sounds.</p>
-            <p class="challenge-label-amorak">Solution:</p>
+            <p class="challenge-label-amorak" data-i18n="challenges.solution_label">Solution:</p>
             <p data-i18n="challenges.challenge2.solution" style="color: #bbb; font-size: 0.95rem; line-height: 1.7;">Built proximity-adaptive layering system: 3 ambience layers (distant/mid/close) with automated crossfades based on camera distance metadata. Added 300ms smoothing on level changes to prevent jarring transitions. Creature breathing/footsteps have separate close-mic layer (activated <5m) with different reverb send (-15dB IR time) for intimacy.</p>
           </div>
         </div>
@@ -1116,9 +1116,9 @@
           <div class="challenge-icon-amorak">🎤</div>
           <h4 data-i18n="challenges.challenge3.title">Dialogue Clarity in Dense Soundscape</h4>
           <div class="challenge-content-amorak">
-            <p class="challenge-label-amorak">Problem:</p>
+            <p class="challenge-label-amorak" data-i18n="challenges.problem_label">Problem:</p>
             <p data-i18n="challenges.challenge3.problem" style="color: #aaa; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">Basement scene has layered drips, creaks, and creature movement—dialogue was getting masked in 800Hz-3kHz range.</p>
-            <p class="challenge-label-amorak">Solution:</p>
+            <p class="challenge-label-amorak" data-i18n="challenges.solution_label">Solution:</p>
             <p data-i18n="challenges.challenge3.solution" style="color: #bbb; font-size: 0.95rem; line-height: 1.7;">Applied dynamic ducking: when dialogue present, environmental elements duck -8dB with 100ms attack, 500ms release. Carved 1-3kHz notch in ambience bed (permanent -4dB). Used spectral shaping on dialogue: gentle presence boost at 2.5kHz, de-essing at 6-8kHz, and HPF at 80Hz to remove rumble bleed. Result: dialogue sits clearly without sounding isolated.</p>
           </div>
         </div>

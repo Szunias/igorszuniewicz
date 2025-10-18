@@ -27,6 +27,8 @@
     },
     "challenges": {
       "title": "Development Challenges",
+      "problem_label": "Problem:",
+      "solution_label": "Solution:",
       "challenge1": {
         "title": "Achieving <50ms End-to-End Latency",
         "problem": "Initial prototype had ~180ms latency (audio capture → feature extraction → ML inference → OSC send → game response), making gameplay feel sluggish and unresponsive.",
@@ -72,6 +74,8 @@
     },
     "challenges": {
       "title": "Wyzwania Rozwoju",
+      "problem_label": "Problem:",
+      "solution_label": "Rozwiązanie:",
       "challenge1": {
         "title": "Osiągnięcie <50ms Latencji End-to-End",
         "problem": "Początkowy prototyp miał ~180ms latencji (audio capture → feature extraction → ML inference → OSC send → game response), przez co gameplay był ociężały i niereaktywny.",
@@ -117,6 +121,8 @@
     },
     "challenges": {
       "title": "Ontwikkelingsuitdagingen",
+      "problem_label": "Probleem:",
+      "solution_label": "Oplossing:",
       "challenge1": {
         "title": "<50ms End-to-End Latentie Bereiken",
         "problem": "Initieel prototype had ~180ms latentie (audio capture → feature extraction → ML inference → OSC send → game response), waardoor gameplay traag en niet-responsief aanvoelde.",

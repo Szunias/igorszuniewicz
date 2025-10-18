@@ -1027,9 +1027,9 @@
           <div class="challenge-icon-audiolab">⏱️</div>
           <h4 data-i18n="challenges.challenge1.title">Achieving <50ms End-to-End Latency</h4>
           <div class="challenge-content-audiolab">
-            <p class="challenge-label-audiolab">Problem:</p>
+            <p class="challenge-label-audiolab" data-i18n="challenges.problem_label">Problem:</p>
             <p data-i18n="challenges.challenge1.problem" style="color: #aaa; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">Initial prototype had ~180ms latency (audio capture → feature extraction → ML inference → OSC send → game response), making gameplay feel sluggish and unresponsive.</p>
-            <p class="challenge-label-audiolab">Solution:</p>
+            <p class="challenge-label-audiolab" data-i18n="challenges.solution_label">Solution:</p>
             <p data-i18n="challenges.challenge1.solution" style="color: #bbb; font-size: 0.95rem; line-height: 1.7;">Optimized entire pipeline: reduced FFT window to 512 samples (11ms @ 44.1kHz), implemented circular buffer to eliminate I/O blocking, moved to lightweight SVM classifier (inference <2ms vs. 15ms for neural net), and used UDP for OSC (zero handshake overhead). Achieved final 45ms latency with 92% accuracy maintained.</p>
           </div>
         </div>
@@ -1038,9 +1038,9 @@
           <div class="challenge-icon-audiolab">🎵</div>
           <h4 data-i18n="challenges.challenge2.title">Beatbox Sound Similarity (Kick vs. Snare)</h4>
           <div class="challenge-content-audiolab">
-            <p class="challenge-label-audiolab">Problem:</p>
+            <p class="challenge-label-audiolab" data-i18n="challenges.problem_label">Problem:</p>
             <p data-i18n="challenges.challenge2.problem" style="color: #aaa; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">Kick and snare beatbox sounds share overlapping spectral content (both have transients + noise), causing frequent misclassification especially during rapid patterns.</p>
-            <p class="challenge-label-audiolab">Solution:</p>
+            <p class="challenge-label-audiolab" data-i18n="challenges.solution_label">Solution:</p>
             <p data-i18n="challenges.challenge2.solution" style="color: #bbb; font-size: 0.95rem; line-height: 1.7;">Enhanced feature set beyond MFCCs: added spectral centroid (kick = lower, snare = higher), zero-crossing rate (snare has more HF content), and temporal envelope shape analysis (kick = sharp attack + quick decay, snare = attack + sustained noise). Trained separate models for solo hits vs. patterns. Accuracy improved from 78% to 92%.</p>
           </div>
         </div>
@@ -1049,9 +1049,9 @@
           <div class="challenge-icon-audiolab">⚡</div>
           <h4 data-i18n="challenges.challenge3.title">Real-time Performance Without Audio Dropouts</h4>
           <div class="challenge-content-audiolab">
-            <p class="challenge-label-audiolab">Problem:</p>
+            <p class="challenge-label-audiolab" data-i18n="challenges.problem_label">Problem:</p>
             <p data-i18n="challenges.challenge3.problem" style="color: #aaa; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">Heavy ML processing caused periodic audio buffer underruns on weaker CPUs, resulting in clicks and missed classifications.</p>
-            <p class="challenge-label-audiolab">Solution:</p>
+            <p class="challenge-label-audiolab" data-i18n="challenges.solution_label">Solution:</p>
             <p data-i18n="challenges.challenge3.solution" style="color: #bbb; font-size: 0.95rem; line-height: 1.7;">Decoupled audio capture thread from ML inference thread using lock-free ringbuffer. Audio runs on high-priority real-time thread (never blocks), while ML runs on separate worker thread processing buffered data. Added graceful degradation: if inference takes >15ms, system skips that frame and continues (better to miss one classification than dropout audio).</p>
           </div>
         </div>

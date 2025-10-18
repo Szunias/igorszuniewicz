@@ -73,6 +73,8 @@
     "challenges": {
       "title": "Challenges & Solutions",
       "desc": "Real-world problems encountered during development and the technical solutions implemented.",
+      "problem_label": "Problem:",
+      "solution_label": "Solution:",
       "challenge1": {
         "title": "4-Player Mix Clarity",
         "problem": "With up to 4 simultaneous players, collision and boost sounds would stack and cause frequency masking, making UI feedback inaudible.",
@@ -188,6 +190,8 @@
     "challenges": {
       "title": "Wyzwania i Rozwiązania",
       "desc": "Realne problemy napotkane podczas developmentu i zaimplementowane rozwiązania techniczne.",
+      "problem_label": "Problem:",
+      "solution_label": "Rozwiązanie:",
       "challenge1": {
         "title": "Czytelność Miksu przy 4 Graczach",
         "problem": "Przy 4 graczach jednocześnie, dźwięki kolizji i boost'ów się nawarstwiały i powodowały maskowanie częstotliwości, przez co UI feedback był niesłyszalny.",
@@ -303,6 +307,8 @@
     "challenges": {
       "title": "Uitdagingen & Oplossingen",
       "desc": "Real-world problemen tijdens ontwikkeling en de geïmplementeerde technische oplossingen.",
+      "problem_label": "Probleem:",
+      "solution_label": "Oplossing:",
       "challenge1": {
         "title": "4-Speler Mix Helderheid",
         "problem": "Met tot 4 gelijktijdige spelers zouden botsing- en boost-geluiden stapelen en frequentie-masking veroorzaken, waardoor UI-feedback onhoorbaar werd.",

@@ -1256,9 +1256,9 @@
           <div class="challenge-icon">⚠️</div>
           <h4 data-i18n="challenges.challenge1.title">4-Player Mix Clarity</h4>
           <div class="challenge-content">
-            <p class="challenge-label">Problem:</p>
+            <p class="challenge-label" data-i18n="challenges.problem_label">Problem:</p>
             <p data-i18n="challenges.challenge1.problem" style="color: #999; margin-bottom: 1rem;">With up to 4 simultaneous players, collision and boost sounds would stack and cause frequency masking, making UI feedback inaudible.</p>
-            <p class="challenge-label">Solution:</p>
+            <p class="challenge-label" data-i18n="challenges.solution_label">Solution:</p>
             <p data-i18n="challenges.challenge1.solution" style="color: #aaa;">Implemented priority-based concurrency limiting (max 4 collision sounds at once) with intelligent voice stealing. Added frequency-conscious EQ curves per player slot (slot 1: 200-800Hz focus, slot 2: 800-2kHz, etc.) and applied sidechain ducking on crowd/ambience when UI events trigger (-6dB duck, 50ms attack, 200ms release).</p>
           </div>
         </div>
@@ -1267,9 +1267,9 @@
           <div class="challenge-icon">🔊</div>
           <h4 data-i18n="challenges.challenge2.title">Surface Transition Pops</h4>
           <div class="challenge-content">
-            <p class="challenge-label">Problem:</p>
+            <p class="challenge-label" data-i18n="challenges.problem_label">Problem:</p>
             <p data-i18n="challenges.challenge2.problem" style="color: #999; margin-bottom: 1rem;">Players moving between track materials (asphalt → sand → metal) caused audible pops due to instant layer switching.</p>
-            <p class="challenge-label">Solution:</p>
+            <p class="challenge-label" data-i18n="challenges.solution_label">Solution:</p>
             <p data-i18n="challenges.challenge2.solution" style="color: #aaa;">Replaced instant switches with crossfade system using Unreal's blend containers. Added 150ms crossfade time with equal-power curve. Surface detection uses overlap sphere with 0.2s cooldown to prevent rapid transitions.</p>
           </div>
         </div>
@@ -1278,9 +1278,9 @@
           <div class="challenge-icon">💾</div>
           <h4 data-i18n="challenges.challenge3.title">Boost Sound Memory Spikes</h4>
           <div class="challenge-content">
-            <p class="challenge-label">Problem:</p>
+            <p class="challenge-label" data-i18n="challenges.problem_label">Problem:</p>
             <p data-i18n="challenges.challenge3.problem" style="color: #999; margin-bottom: 1rem;">Original boost SFX used 4-layer system with 24-bit WAV files, causing 40MB memory spikes per instance (x4 players = potential 160MB spike).</p>
-            <p class="challenge-label">Solution:</p>
+            <p class="challenge-label" data-i18n="challenges.solution_label">Solution:</p>
             <p data-i18n="challenges.challenge3.solution" style="color: #aaa;">Refactored to procedural MetaSounds patch: noise generator + band-pass filter sweep + pitch modulation driven by boost intensity parameter. Reduced to <2MB per instance while maintaining sonic character. Added RPM-style pitch curve for organic acceleration feel.</p>
           </div>
         </div>

@@ -69,6 +69,8 @@
     },
     "challenges": {
       "title": "Technical Challenges",
+      "problem_label": "Problem:",
+      "solution_label": "Solution:",
       "challenge1": {
         "title": "Creature Low-End Without Muddiness",
         "problem": "Beast presence needed 40-200Hz body, but overlapped with environmental rumble causing muddy mix and loss of impact.",
@@ -159,6 +161,8 @@
     },
     "challenges": {
       "title": "Wyzwania Techniczne",
+      "problem_label": "Problem:",
+      "solution_label": "Rozwiązanie:",
       "challenge1": {
         "title": "Niskotonowe Stworzenie Bez Błota",
         "problem": "Obecność bestii wymagała body 40-200Hz, ale nachodziło na environmental rumble powodując muddy mix i utratę impaktu.",
@@ -249,6 +253,8 @@
     },
     "challenges": {
       "title": "Technische Uitdagingen",
+      "problem_label": "Probleem:",
+      "solution_label": "Oplossing:",
       "challenge1": {
         "title": "Wezen Low-End Zonder Troebel",
         "problem": "Beast aanwezigheid had 40-200Hz body nodig, maar overlapte met omgevingsrommel wat troebele mix en verlies van impact veroorzaakte.",
