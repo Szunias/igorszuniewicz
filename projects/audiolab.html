@@ -656,6 +656,88 @@
       font-weight: 500;
     }
     
+    /* === AUDIOLAB CHALLENGE CARDS === */
+    .challenge-cards-audiolab {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    
+    .challenge-card-audiolab {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(24, 191, 239, 0.3);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .challenge-card-audiolab::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(24, 191, 239, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .challenge-card-audiolab:hover::before {
+      left: 100%;
+    }
+    
+    .challenge-card-audiolab:hover {
+      border-color: #18bfef;
+      transform: translateY(-8px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(24, 191, 239, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .challenge-icon-audiolab {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      filter: drop-shadow(0 4px 10px rgba(24, 191, 239, 0.4));
+    }
+    
+    .challenge-card-audiolab h4 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.4rem;
+      background: linear-gradient(135deg, #18bfef, #9a6cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    
+    .challenge-content-audiolab {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .challenge-label-audiolab {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.85rem;
+      color: #18bfef;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .challenge-label-audiolab:first-of-type {
+      margin-top: 0;
+    }
+    
     /* === TECH STACK === */
     .tech-stack {
       margin: 5rem 0;
@@ -934,6 +1016,45 @@
         <div class="tech-item">scikit-learn</div>
         <div class="tech-item">OSC Protocol</div>
         <div class="tech-item">RBF-SVM</div>
+      </div>
+    </section>
+    
+    <!-- Development Challenges -->
+    <section class="stats">
+      <h3 data-i18n="challenges.title">Development Challenges</h3>
+      <div class="challenge-cards-audiolab">
+        <div class="challenge-card-audiolab">
+          <div class="challenge-icon-audiolab">⏱️</div>
+          <h4 data-i18n="challenges.challenge1.title">Achieving <50ms End-to-End Latency</h4>
+          <div class="challenge-content-audiolab">
+            <p class="challenge-label-audiolab">Problem:</p>
+            <p data-i18n="challenges.challenge1.problem" style="color: #aaa; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">Initial prototype had ~180ms latency (audio capture → feature extraction → ML inference → OSC send → game response), making gameplay feel sluggish and unresponsive.</p>
+            <p class="challenge-label-audiolab">Solution:</p>
+            <p data-i18n="challenges.challenge1.solution" style="color: #bbb; font-size: 0.95rem; line-height: 1.7;">Optimized entire pipeline: reduced FFT window to 512 samples (11ms @ 44.1kHz), implemented circular buffer to eliminate I/O blocking, moved to lightweight SVM classifier (inference <2ms vs. 15ms for neural net), and used UDP for OSC (zero handshake overhead). Achieved final 45ms latency with 92% accuracy maintained.</p>
+          </div>
+        </div>
+        
+        <div class="challenge-card-audiolab">
+          <div class="challenge-icon-audiolab">🎵</div>
+          <h4 data-i18n="challenges.challenge2.title">Beatbox Sound Similarity (Kick vs. Snare)</h4>
+          <div class="challenge-content-audiolab">
+            <p class="challenge-label-audiolab">Problem:</p>
+            <p data-i18n="challenges.challenge2.problem" style="color: #aaa; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">Kick and snare beatbox sounds share overlapping spectral content (both have transients + noise), causing frequent misclassification especially during rapid patterns.</p>
+            <p class="challenge-label-audiolab">Solution:</p>
+            <p data-i18n="challenges.challenge2.solution" style="color: #bbb; font-size: 0.95rem; line-height: 1.7;">Enhanced feature set beyond MFCCs: added spectral centroid (kick = lower, snare = higher), zero-crossing rate (snare has more HF content), and temporal envelope shape analysis (kick = sharp attack + quick decay, snare = attack + sustained noise). Trained separate models for solo hits vs. patterns. Accuracy improved from 78% to 92%.</p>
+          </div>
+        </div>
+        
+        <div class="challenge-card-audiolab">
+          <div class="challenge-icon-audiolab">⚡</div>
+          <h4 data-i18n="challenges.challenge3.title">Real-time Performance Without Audio Dropouts</h4>
+          <div class="challenge-content-audiolab">
+            <p class="challenge-label-audiolab">Problem:</p>
+            <p data-i18n="challenges.challenge3.problem" style="color: #aaa; margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">Heavy ML processing caused periodic audio buffer underruns on weaker CPUs, resulting in clicks and missed classifications.</p>
+            <p class="challenge-label-audiolab">Solution:</p>
+            <p data-i18n="challenges.challenge3.solution" style="color: #bbb; font-size: 0.95rem; line-height: 1.7;">Decoupled audio capture thread from ML inference thread using lock-free ringbuffer. Audio runs on high-priority real-time thread (never blocks), while ML runs on separate worker thread processing buffered data. Added graceful degradation: if inference takes >15ms, system skips that frame and continues (better to miss one classification than dropout audio).</p>
+          </div>
+        </div>
       </div>
     </section>
     
