@@ -726,6 +726,89 @@
       font-style: italic;
     }
     
+    /* === CHALLENGE CARDS === */
+    .challenge-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .challenge-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(78, 205, 196, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .challenge-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.08), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .challenge-card:hover::before {
+      left: 100%;
+    }
+    
+    .challenge-card:hover {
+      border-color: rgba(78, 205, 196, 0.5);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(78, 205, 196, 0.2);
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .challenge-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      filter: drop-shadow(0 4px 10px rgba(78, 205, 196, 0.3));
+    }
+    
+    .challenge-card h4 {
+      font-family: 'Sora', 'Inter', sans-serif;
+      font-size: 1.4rem;
+      color: #4ecdc4;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    
+    .challenge-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .challenge-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: #ff9ff3;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .challenge-label:first-of-type {
+      margin-top: 0;
+    }
+    
+    .challenge-content p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    
     /* === TEAM === */
     .team-section {
       margin: 5rem 0;
@@ -1162,6 +1245,47 @@
         <p data-i18n="walkthrough.desc">Zobacz pełne przejście gry w trybie single player. Ten materiał pokazuje kompletną rozgrywkę oraz wszystkie mechaniki gameplayu.</p>
       </div>
     </div>
+    
+    <!-- Technical Challenges & Solutions -->
+    <section class="voicelines-section">
+      <h3 data-i18n="challenges.title">Challenges & Solutions</h3>
+      <p data-i18n="challenges.desc" style="text-align: center; color: #aaa; max-width: 800px; margin: 0 auto 3rem;">Real-world problems encountered during development and the technical solutions implemented.</p>
+      
+      <div class="challenge-cards">
+        <div class="challenge-card">
+          <div class="challenge-icon">⚠️</div>
+          <h4 data-i18n="challenges.challenge1.title">4-Player Mix Clarity</h4>
+          <div class="challenge-content">
+            <p class="challenge-label">Problem:</p>
+            <p data-i18n="challenges.challenge1.problem" style="color: #999; margin-bottom: 1rem;">With up to 4 simultaneous players, collision and boost sounds would stack and cause frequency masking, making UI feedback inaudible.</p>
+            <p class="challenge-label">Solution:</p>
+            <p data-i18n="challenges.challenge1.solution" style="color: #aaa;">Implemented priority-based concurrency limiting (max 4 collision sounds at once) with intelligent voice stealing. Added frequency-conscious EQ curves per player slot (slot 1: 200-800Hz focus, slot 2: 800-2kHz, etc.) and applied sidechain ducking on crowd/ambience when UI events trigger (-6dB duck, 50ms attack, 200ms release).</p>
+          </div>
+        </div>
+        
+        <div class="challenge-card">
+          <div class="challenge-icon">🔊</div>
+          <h4 data-i18n="challenges.challenge2.title">Surface Transition Pops</h4>
+          <div class="challenge-content">
+            <p class="challenge-label">Problem:</p>
+            <p data-i18n="challenges.challenge2.problem" style="color: #999; margin-bottom: 1rem;">Players moving between track materials (asphalt → sand → metal) caused audible pops due to instant layer switching.</p>
+            <p class="challenge-label">Solution:</p>
+            <p data-i18n="challenges.challenge2.solution" style="color: #aaa;">Replaced instant switches with crossfade system using Unreal's blend containers. Added 150ms crossfade time with equal-power curve. Surface detection uses overlap sphere with 0.2s cooldown to prevent rapid transitions.</p>
+          </div>
+        </div>
+        
+        <div class="challenge-card">
+          <div class="challenge-icon">💾</div>
+          <h4 data-i18n="challenges.challenge3.title">Boost Sound Memory Spikes</h4>
+          <div class="challenge-content">
+            <p class="challenge-label">Problem:</p>
+            <p data-i18n="challenges.challenge3.problem" style="color: #999; margin-bottom: 1rem;">Original boost SFX used 4-layer system with 24-bit WAV files, causing 40MB memory spikes per instance (x4 players = potential 160MB spike).</p>
+            <p class="challenge-label">Solution:</p>
+            <p data-i18n="challenges.challenge3.solution" style="color: #aaa;">Refactored to procedural MetaSounds patch: noise generator + band-pass filter sweep + pitch modulation driven by boost intensity parameter. Reduced to <2MB per instance while maintaining sonic character. Added RPM-style pitch curve for organic acceleration feel.</p>
+          </div>
+        </div>
+      </div>
+    </section>
     
     <!-- Team -->
     <section class="team-section">
