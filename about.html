@@ -365,34 +365,171 @@
       font-weight: 700;
     }
     
-    /* === TOOLS === */
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1.5rem;
-      max-width: 900px;
+    /* === TECHNICAL SKILLS MATRIX === */
+    .tech-matrix {
+      max-width: 1100px;
       margin: 0 auto;
+      display: grid;
+      gap: 2.5rem;
     }
     
-    .tool-card {
+    .tech-category {
       background: rgba(15, 23, 42, 0.5);
-      padding: 1.5rem;
-      border-radius: 12px;
+      padding: 2.5rem;
+      border-radius: 20px;
       border: 1px solid rgba(96, 165, 250, 0.2);
-      text-align: center;
       transition: all 0.3s ease;
     }
     
-    .tool-card:hover {
+    .tech-category:hover {
       border-color: #60a5fa;
       transform: translateY(-5px);
       box-shadow: 0 10px 40px rgba(96, 165, 250, 0.2);
     }
     
-    .tool-name {
-      color: #fff;
+    .tech-category-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #60a5fa;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .tech-category-icon {
+      font-size: 1.6rem;
+    }
+    
+    .tech-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .tech-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .tech-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .tech-item-name {
       font-weight: 600;
+      color: #fff;
+      font-size: 1rem;
+    }
+    
+    .tech-item-level {
+      font-size: 0.8rem;
+      color: #60a5fa;
+      font-weight: 500;
+      padding: 0.25rem 0.6rem;
+      background: rgba(96, 165, 250, 0.15);
+      border-radius: 12px;
+    }
+    
+    .tech-item-bar {
+      height: 6px;
+      background: rgba(96, 165, 250, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .tech-item-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      border-radius: 10px;
+      transition: width 1s ease;
+      box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+    }
+    
+    .tech-item-desc {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+    
+    /* === AUDIO PHILOSOPHY === */
+    .philosophy-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(15, 23, 42, 0.5);
+      padding: 3rem;
+      border-radius: 20px;
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .philosophy-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.05) 0%, transparent 70%);
+      animation: philosophyGlow 8s ease-in-out infinite;
+    }
+    
+    @keyframes philosophyGlow {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-20%, -20%); }
+    }
+    
+    .philosophy-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .philosophy-quote {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #cbd5e1;
+      margin-bottom: 2rem;
+      font-style: italic;
+      position: relative;
+      padding-left: 1.5rem;
+      border-left: 3px solid #60a5fa;
+    }
+    
+    .philosophy-principles {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .principle-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    
+    .principle-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    
+    .principle-content h4 {
+      font-family: 'Sora', sans-serif;
+      color: #fff;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .principle-content p {
+      color: #9ca3af;
       font-size: 0.95rem;
+      line-height: 1.6;
     }
     
     /* === STATS === */
@@ -606,21 +743,220 @@
     </div>
   </section>
   
-  <!-- Tools -->
+  <!-- Technical Skills Matrix -->
   <section class="section">
     <div class="container">
-      <h2 class="section-title" data-i18n="about_tools_title">Tools & Software</h2>
-      <div class="tools-grid">
-        <div class="tool-card"><div class="tool-name">Wwise</div></div>
-        <div class="tool-card"><div class="tool-name">FMOD</div></div>
-        <div class="tool-card"><div class="tool-name">Unreal Engine</div></div>
-        <div class="tool-card"><div class="tool-name">Unity</div></div>
-        <div class="tool-card"><div class="tool-name">Reaper</div></div>
-        <div class="tool-card"><div class="tool-name">Pro Tools</div></div>
-        <div class="tool-card"><div class="tool-name">Logic Pro</div></div>
-        <div class="tool-card"><div class="tool-name">Python</div></div>
-        <div class="tool-card"><div class="tool-name">C#</div></div>
-        <div class="tool-card"><div class="tool-name">Max/MSP</div></div>
+      <h2 class="section-title" data-i18n="about_tech_title">Technical Skills Matrix</h2>
+      <div class="tech-matrix">
+        <!-- Audio Middleware -->
+        <div class="tech-category">
+          <h3 class="tech-category-title">
+            <span class="tech-category-icon">🔊</span>
+            <span data-i18n="tech_middleware_title">Audio Middleware & Implementation</span>
+          </h3>
+          <div class="tech-items">
+            <div class="tech-item">
+              <div class="tech-item-header">
+                <span class="tech-item-name">Wwise</span>
+                <span class="tech-item-level" data-i18n="level_advanced">Advanced</span>
+              </div>
+              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 85%"></div></div>
+              <p class="tech-item-desc" data-i18n="tech_wwise_desc">RTPCs, States/Switches, HDR mixing, attenuation curves, music system design</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-header">
+                <span class="tech-item-name">FMOD Studio</span>
+                <span class="tech-item-level" data-i18n="level_intermediate">Intermediate</span>
+              </div>
+              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 70%"></div></div>
+              <p class="tech-item-desc" data-i18n="tech_fmod_desc">Event-based implementation, parameters, adaptive music, 3D spatialization</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-header">
+                <span class="tech-item-name">Unreal MetaSounds</span>
+                <span class="tech-item-level" data-i18n="level_advanced">Advanced</span>
+              </div>
+              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 80%"></div></div>
+              <p class="tech-item-desc" data-i18n="tech_metasounds_desc">Procedural audio, parametric sound design, real-time modulation systems</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Game Engines -->
+        <div class="tech-category">
+          <h3 class="tech-category-title">
+            <span class="tech-category-icon">🎮</span>
+            <span data-i18n="tech_engines_title">Game Engines & Integration</span>
+          </h3>
+          <div class="tech-items">
+            <div class="tech-item">
+              <div class="tech-item-header">
+                <span class="tech-item-name">Unreal Engine 5</span>
+                <span class="tech-item-level" data-i18n="level_advanced">Advanced</span>
+              </div>
+              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 85%"></div></div>
+              <p class="tech-item-desc" data-i18n="tech_unreal_desc">Sound Cues, Blueprints, Audio submixes, Concurrency, Attenuation, MetaSounds integration</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-header">
+                <span class="tech-item-name">Unity</span>
+                <span class="tech-item-level" data-i18n="level_intermediate">Intermediate</span>
+              </div>
+              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 65%"></div></div>
+              <p class="tech-item-desc" data-i18n="tech_unity_desc">Audio Mixer, C# scripting for audio, middleware integration (Wwise/FMOD)</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- DAWs & Production -->
+        <div class="tech-category">
+          <h3 class="tech-category-title">
+            <span class="tech-category-icon">🎚️</span>
+            <span data-i18n="tech_production_title">DAWs & Audio Production</span>
+          </h3>
+          <div class="tech-items">
+            <div class="tech-item">
+              <div class="tech-item-header">
+                <span class="tech-item-name">Reaper</span>
+                <span class="tech-item-level" data-i18n="level_expert">Expert</span>
+              </div>
+              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 95%"></div></div>
+              <p class="tech-item-desc" data-i18n="tech_reaper_desc">Sound design, SFX editing, batch processing, custom scripts, game audio workflows</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-header">
+                <span class="tech-item-name">Pro Tools</span>
+                <span class="tech-item-level" data-i18n="level_intermediate">Intermediate</span>
+              </div>
+              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 70%"></div></div>
+              <p class="tech-item-desc" data-i18n="tech_protools_desc">Mixing, editing, post-production workflows</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-header">
+                <span class="tech-item-name">Logic Pro</span>
+                <span class="tech-item-level" data-i18n="level_advanced">Advanced</span>
+              </div>
+              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 80%"></div></div>
+              <p class="tech-item-desc" data-i18n="tech_logic_desc">Music composition, MIDI sequencing, orchestral arrangements</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Programming & Scripting -->
+        <div class="tech-category">
+          <h3 class="tech-category-title">
+            <span class="tech-category-icon">💻</span>
+            <span data-i18n="tech_scripting_title">Programming & Scripting</span>
+          </h3>
+          <div class="tech-items">
+            <div class="tech-item">
+              <div class="tech-item-header">
+                <span class="tech-item-name">Python</span>
+                <span class="tech-item-level" data-i18n="level_advanced">Advanced</span>
+              </div>
+              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 80%"></div></div>
+              <p class="tech-item-desc" data-i18n="tech_python_desc">Audio analysis (LibROSA), ML models (scikit-learn), automation tools, OSC communication</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-header">
+                <span class="tech-item-name">C#</span>
+                <span class="tech-item-level" data-i18n="level_intermediate">Intermediate</span>
+              </div>
+              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 65%"></div></div>
+              <p class="tech-item-desc" data-i18n="tech_csharp_desc">Unity audio scripting, custom audio tools, middleware integration</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-header">
+                <span class="tech-item-name">Blueprints (UE)</span>
+                <span class="tech-item-level" data-i18n="level_advanced">Advanced</span>
+              </div>
+              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 85%"></div></div>
+              <p class="tech-item-desc" data-i18n="tech_blueprints_desc">Audio triggers, parameter control, event systems, gameplay integration</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- DSP & Audio Tools -->
+        <div class="tech-category">
+          <h3 class="tech-category-title">
+            <span class="tech-category-icon">⚡</span>
+            <span data-i18n="tech_dsp_title">DSP & Specialized Tools</span>
+          </h3>
+          <div class="tech-items">
+            <div class="tech-item">
+              <div class="tech-item-header">
+                <span class="tech-item-name">Max/MSP</span>
+                <span class="tech-item-level" data-i18n="level_intermediate">Intermediate</span>
+              </div>
+              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 65%"></div></div>
+              <p class="tech-item-desc" data-i18n="tech_maxmsp_desc">Real-time DSP, generative audio, prototyping interactive systems</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-header">
+                <span class="tech-item-name">iZotope RX</span>
+                <span class="tech-item-level" data-i18n="level_advanced">Advanced</span>
+              </div>
+              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 80%"></div></div>
+              <p class="tech-item-desc" data-i18n="tech_rx_desc">Audio restoration, dialogue cleaning, spectral editing</p>
+            </div>
+            <div class="tech-item">
+              <div class="tech-item-header">
+                <span class="tech-item-name">FabFilter Suite</span>
+                <span class="tech-item-level" data-i18n="level_expert">Expert</span>
+              </div>
+              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 90%"></div></div>
+              <p class="tech-item-desc" data-i18n="tech_fabfilter_desc">Pro-Q 3, Pro-L 2, Pro-MB – mixing, mastering, frequency sculpting</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Audio Philosophy -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="about_philosophy_title">Audio Philosophy & Approach</h2>
+      <div class="philosophy-box">
+        <div class="philosophy-content">
+          <div class="philosophy-quote" data-i18n="philosophy_quote">
+            "Sound should serve the experience, not demand attention. Every audio element—from subtle ambience to explosive SFX—exists to enhance gameplay clarity, emotional impact, and player immersion. Technical precision meets creative intuition."
+          </div>
+          
+          <div class="philosophy-principles">
+            <div class="principle-item">
+              <div class="principle-icon">🎯</div>
+              <div class="principle-content">
+                <h4 data-i18n="principle_clarity_title">Clarity First, Always</h4>
+                <p data-i18n="principle_clarity_desc">In game audio, readability trumps everything. I design from gameplay telemetry outward—ensuring critical feedback is never masked. Mix hierarchy, frequency allocation, and dynamic ducking keep the player informed without overwhelming them.</p>
+              </div>
+            </div>
+            
+            <div class="principle-item">
+              <div class="principle-icon">🔬</div>
+              <div class="principle-content">
+                <h4 data-i18n="principle_technical_title">Technical Foundation, Creative Expression</h4>
+                <p data-i18n="principle_technical_desc">Understanding the technical constraints—voice counts, memory budgets, CPU limits—enables better creative decisions. I build systems that scale, iterate quickly, and stay performant across platforms.</p>
+              </div>
+            </div>
+            
+            <div class="principle-item">
+              <div class="principle-icon">🎨</div>
+              <div class="principle-content">
+                <h4 data-i18n="principle_layering_title">Layering & Parametric Design</h4>
+                <p data-i18n="principle_layering_desc">I approach sound design as modular layering: transients for impact, body for presence, texture for character. Parameters like speed, intensity, and camera distance drive real-time transformations, creating responsive, adaptive audio.</p>
+              </div>
+            </div>
+            
+            <div class="principle-item">
+              <div class="principle-icon">🤝</div>
+              <div class="principle-content">
+                <h4 data-i18n="principle_collaboration_title">Collaborative Iteration</h4>
+                <p data-i18n="principle_collaboration_desc">Great audio comes from feedback loops with designers, programmers, and players. I document my work, explain technical choices, and iterate based on playtesting—audio is never "done" until the game ships.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

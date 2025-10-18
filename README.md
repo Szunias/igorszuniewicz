@@ -1,35 +1,35 @@
-# 🎵 Igor Szuniewicz - Portfolio Website
+# 🎮 Igor Szuniewicz — Game Audio Portfolio
 
-> **Professional portfolio showcasing music composition, audio production, and creative projects**
+> **Professional game audio designer specializing in interactive music, sound design, and real-time audio implementation for games**
 
-[![Website](https://img.shields.io/badge/Website-igorszuniewicz.com-ff8c00?style=for-the-badge)](https://igorszuniewicz.com)
+[![Website](https://img.shields.io/badge/Website-igorszuniewicz.com-60a5fa?style=for-the-badge)](https://igorszuniewicz.com)
 [![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red?style=for-the-badge)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-AAA%20Ready-00ff00?style=for-the-badge)](PORTFOLIO_IMPROVEMENTS.md)
 
 ---
 
 ## ✨ Features
 
+### 🎯 **AAA-Ready Portfolio**
+Designed for professional game audio positions:
+- 🔊 **Technical Skills Matrix** — Detailed proficiency levels (Wwise, FMOD, MetaSounds, Unreal, Unity)
+- 📊 **Project Metrics** — Concrete numbers (320+ events, 45ms latency, memory budgets)
+- 🔧 **Challenges & Solutions** — Real-world problems solved with technical depth
+- 🎬 **Demo Reel Section** — Prominent showcase placeholder ready for content
+- 🎨 **Audio Philosophy** — Professional sound design approach and principles
+
 ### 🌍 **Multi-Language Support**
-Switch seamlessly between **3 languages** with instant translation:
-- 🇬🇧 **English** 
-- 🇵🇱 **Polski** 
-- 🇳🇱 **Nederlands**
+Full internationalization across **3 languages**:
+- 🇬🇧 **English** | 🇵🇱 **Polski** | 🇳🇱 **Nederlands**
+- Language preference persists across sessions
+- Project descriptions, metrics, and challenges fully translated
 
-Language preference persists across sessions using localStorage.
-
-### 🎨 **Premium Project Showcase**
-Each project page features:
-- ✅ **Standalone Architecture** - No script conflicts or dependencies
-- ✅ **Custom Backgrounds** - Unique textures and overlays
-- ✅ **Scroll Animations** - Smooth reveal effects as you scroll
-- ✅ **Fully Responsive** - Perfect on mobile, tablet, and desktop
-- ✅ **Professional Typography** - Clean, modern Google Fonts
-
-### 🚀 **Performance First**
-- ⚡ **Lightweight** - Minimal JavaScript, CSS-first approach
-- 🎯 **Fast Loading** - Optimized assets and lazy loading
-- 📱 **Mobile Optimized** - Smooth performance on all devices
-- ♿ **Accessible** - Semantic HTML and ARIA labels
+### 🎨 **Professional Project Showcase**
+- ✅ **Detailed Technical Metrics** — Event counts, memory footprint, latency, voice management
+- ✅ **Implementation Details** — Middleware setup, RTPC systems, state-based music
+- ✅ **Problem-Solving Documentation** — Challenges faced and technical solutions
+- ✅ **Responsive Design** — Perfect on all devices
+- ✅ **Scroll Animations** — Smooth reveal effects
 
 ---
 
@@ -62,26 +62,54 @@ igorszuniewicz/
 
 ---
 
-## 🎬 Featured Projects
+## 🎮 Featured Projects
 
-### 🎵 Ray Animation
-**Music Composition for 3D Animation**
+### 🏁 Not Today, Darling!
+**Complete Game Audio Implementation — Unreal Engine + MetaSounds**
 
-When the original composer from Ghent couldn't deliver, I stepped in to create the entire soundtrack from scratch.
+Retro-inspired audio implementation for chaotic multiplayer racing game.
 
-- **Genre:** Disco-inspired original score
-- **Tech:** Composition, mixing, mastering
-- **Year:** 2024
-- **Location:** Ghent, Belgium collaboration
+**Technical Scope:**
+- 📊 **320+ audio events** across 12 categories
+- 💾 **180 MB audio footprint** (optimized with streaming)
+- 🔊 **Max 32 concurrent voices** with priority-based culling
+- ⚡ **<45ms latency** maintained with real-time modulation
+- 🎯 **MetaSounds procedural audio** for boost/drift systems
 
-**Highlights:**
-- 🎹 Funky bass lines and groovy drums
-- ✨ Shimmering retro synths
-- 🎻 Layered string arrangements
-- 🎧 Professional mixing and mastering
-- 🎬 Perfect sync with animation
+**Challenges Solved:**
+- 4-player mix clarity with frequency-conscious EQ and sidechain ducking
+- Surface transition pops eliminated via crossfade system
+- Memory optimization (40MB → 2MB per boost instance)
 
-[**View Project →**](https://igorszuniewicz.com/projects/ray-animation.html)
+[**View Project →**](https://igorszuniewicz.com/projects/not-today-darling.html)
+
+---
+
+### 🐺 Amorak
+**Atmospheric Sound Design — Horror Animation**
+
+Creature design and spatial audio for 3D horror animation.
+
+**Approach:**
+- 🔊 **Frequency carving** (60-90Hz env, 120-180Hz creature)
+- 🎚️ **Proximity-adaptive layering** with 3 ambience layers
+- 🎭 **Dynamic ducking** for dialogue clarity in dense soundscape
+
+[**View Project →**](https://igorszuniewicz.com/projects/amorak.html)
+
+---
+
+### 🤖 Transientica: AudioLab
+**Real-time ML Audio Classification — Python + Unity**
+
+Beatbox-controlled rhythm game using machine learning.
+
+**Technical Achievement:**
+- ⚡ **45ms end-to-end latency** (audio → ML → game)
+- 🎯 **92% classification accuracy** (kick, snare, hi-hat)
+- 🔧 **Optimized pipeline**: FFT (512 samples) + SVM classifier + OSC
+
+[**View Project →**](https://igorszuniewicz.com/projects/audiolab.html)
 
 ---
 
@@ -106,40 +134,46 @@ When the original composer from Ghent couldn't deliver, I stepped in to create t
 
 ---
 
-## 🎯 Key Features
+## 🎯 Portfolio Highlights
 
-| Feature | Description |
-|---------|-------------|
-| 🌐 **i18n** | Full internationalization support for EN/PL/NL |
-| 🎨 **Custom Styling** | Unique design for each project page |
-| 📱 **Responsive** | Optimized for all screen sizes |
-| ⚡ **Fast** | Minimal dependencies, optimized assets |
-| ♿ **Accessible** | WCAG compliant, keyboard navigation |
-| 🔍 **SEO Ready** | Meta tags, structured data, sitemaps |
+|| Feature | Description | Impact |
+||---------|-------------|--------|
+|| 🎬 **Demo Reel** | Placeholder section ready for showcase video | First thing hiring managers see |
+|| 🔊 **Technical Skills** | Proficiency matrix with percentages (Wwise 85%, Unreal 85%, Reaper 95%) | No guessing — instant clarity |
+|| 📊 **Project Metrics** | Concrete numbers: events, memory, latency, voice counts | Shows scale and technical depth |
+|| 🔧 **Challenges** | 9 real-world problems + technical solutions | Demonstrates problem-solving |
+|| 🎨 **Audio Philosophy** | 4 core principles: clarity, technical foundation, layering, collaboration | Professional maturity |
+|| 🌐 **Multi-Language** | Full EN/PL/NL support across all content | International-ready |
 
 ---
 
 ## 📝 Recent Updates
 
-### **v2.0** - October 2025 🎉
+### **v3.0** - October 2025 🎮 **AAA AUDIO READY**
 
-#### ✨ New Features
-- 🌍 **Multi-language support** - EN/PL/NL translations
-- 🎨 **Redesigned Ray Animation page** - Clean, standalone version
-- 📱 **Enhanced mobile UX** - Better touch interactions
-- 🎬 **Scroll animations** - Smooth reveal effects
+#### 🎯 **Portfolio Transformation**
+- 🔊 **Technical Skills Matrix** — Added comprehensive proficiency breakdown (about.html)
+- 🎬 **Demo Reel Section** — Professional placeholder ready for showcase video (index.html)
+- 📊 **Project Metrics** — Added concrete numbers: 320+ events, 45ms latency, memory budgets
+- 🔧 **Challenges & Solutions** — 9 real-world problems solved across 3 projects
+- 🎨 **Audio Philosophy** — Professional sound design approach (4 core principles)
+- 💬 **Industry Terminology** — Upgraded to AAA standards (RTPC, state-based, HDR mixing)
 
-#### 🗂️ **Organization**
-- 📚 Created `/docs` folder for documentation
-- 🗃️ Moved old files to `/_archive`
-- 📖 Added technical guides and notes
-- 🧹 Cleaned up root directory
+#### 📁 **Files Updated**
+- `about.html` — Technical Skills Matrix + Audio Philosophy
+- `index.html` — Demo Reel placeholder section
+- `locales/not-today-darling.json` — Metrics + 3 challenges (EN/PL/NL)
+- `locales/amorak.json` — 3 challenges (EN/PL/NL)
+- `locales/audiolab.json` — 3 challenges (EN/PL/NL)
 
-#### 🔧 **Technical Improvements**
-- ⚡ Removed dependency conflicts
-- 🎯 Improved loading performance
-- ♿ Enhanced accessibility
-- 📝 Better code organization
+#### 📊 **Impact**
+Portfolio now demonstrates:
+✅ Technical competency with concrete metrics  
+✅ Problem-solving skills with real challenges  
+✅ Professional maturity with audio philosophy  
+✅ Industry-standard terminology throughout  
+
+**See full details:** [PORTFOLIO_IMPROVEMENTS.md](PORTFOLIO_IMPROVEMENTS.md)
 
 ---
 
@@ -155,13 +189,16 @@ Comprehensive docs available in [`/docs`](docs/):
 
 ## 🤝 About
 
-**Igor Szuniewicz** is a music composer and audio producer specializing in:
-- 🎬 Film & Animation Scoring
-- 🎵 Music Composition & Arrangement
-- 🎚️ Mixing & Mastering
-- 🔊 Sound Design
+**Igor Szuniewicz** is a game audio designer and developer specializing in:
+- 🎮 **Game Audio Implementation** (Wwise, FMOD, MetaSounds)
+- 🔊 **Interactive Music Systems** (state-based, vertical layering, adaptive)
+- 🎨 **Sound Design** (creatures, environments, SFX)
+- 💻 **Audio Programming** (Python, C#, Blueprints, real-time DSP)
+- 🎚️ **Technical Audio** (mixing, HDR, voice management, memory optimization)
 
-Based in the **Netherlands** 🇳🇱
+**Location:** Netherlands 🇳🇱  
+**Education:** Digital Arts & Entertainment — Game Development (Audio)  
+**Tools:** Wwise, FMOD, Unreal Engine 5, Unity, Reaper, Python, MetaSounds
 
 ---
 

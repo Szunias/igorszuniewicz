@@ -56,6 +56,39 @@
       "b2": "Submixes: UI, Gameplay, Ambience + limiter on Master",
       "b3": "Concurrency and collision trigger thresholds"
     },
+    "metrics": {
+      "title": "Technical Metrics",
+      "desc": "Comprehensive breakdown of audio implementation scope, performance metrics, and resource management.",
+      "events": "320+ audio events",
+      "events_desc": "Across 12 categories: player actions, environment, UI, crowd, hazards, boost, collision, surface transitions, state changes, countdowns, finishes, and victory stingers",
+      "footprint": "180 MB audio footprint",
+      "footprint_desc": "Optimized with streaming and compression (Vorbis @ variable quality). ~450 source files processed to final assets",
+      "voice_count": "Max 32 concurrent voices",
+      "voice_count_desc": "Priority-based voice culling: UI/gameplay critical (priority 1.0) > player SFX (0.8) > crowd/ambience (0.5). Automatic stealing on overflow",
+      "latency": "< 45ms input-to-audio",
+      "latency_desc": "Maintained across all gameplay scenarios with real-time parameter modulation and MetaSounds processing",
+      "memory": "~85 MB peak RAM usage",
+      "memory_desc": "Includes loaded banks, streaming buffer, and active DSP. Managed via Unreal's audio streaming system"
+    },
+    "challenges": {
+      "title": "Challenges & Solutions",
+      "desc": "Real-world problems encountered during development and the technical solutions implemented.",
+      "challenge1": {
+        "title": "4-Player Mix Clarity",
+        "problem": "With up to 4 simultaneous players, collision and boost sounds would stack and cause frequency masking, making UI feedback inaudible.",
+        "solution": "Implemented priority-based concurrency limiting (max 4 collision sounds at once) with intelligent voice stealing. Added frequency-conscious EQ curves per player slot (slot 1: 200-800Hz focus, slot 2: 800-2kHz, etc.) and applied sidechain ducking on crowd/ambience when UI events trigger (-6dB duck, 50ms attack, 200ms release)."
+      },
+      "challenge2": {
+        "title": "Surface Transition Pops",
+        "problem": "Players moving between track materials (asphalt → sand → metal) caused audible pops due to instant layer switching.",
+        "solution": "Replaced instant switches with crossfade system using Unreal's blend containers. Added 150ms crossfade time with equal-power curve. Surface detection uses overlap sphere with 0.2s cooldown to prevent rapid transitions."
+      },
+      "challenge3": {
+        "title": "Boost Sound Memory Spikes",
+        "problem": "Original boost SFX used 4-layer system with 24-bit WAV files, causing 40MB memory spikes per instance (x4 players = potential 160MB spike).",
+        "solution": "Refactored to procedural MetaSounds patch: noise generator + band-pass filter sweep + pitch modulation driven by boost intensity parameter. Reduced to <2MB per instance while maintaining sonic character. Added RPM-style pitch curve for organic acceleration feel."
+      }
+    },
     "metasounds": {
       "title": "MetaSounds",
       "desc": "Entire audio system built in MetaSounds – a modern procedural-parametric framework in Unreal Engine. Enables reactive, modular sound design responding to gameplay in real-time.",
@@ -138,6 +171,39 @@
       "b2": "Submixy: UI, Gameplay, Ambience + limiter na Master",
       "b3": "Concurrency i progi wyzwalania kolizji"
     },
+    "metrics": {
+      "title": "Metryki Techniczne",
+      "desc": "Szczegółowe zestawienie zakresu implementacji audio, metryk wydajności i zarządzania zasobami.",
+      "events": "320+ eventów audio",
+      "events_desc": "W 12 kategoriach: akcje gracza, środowisko, UI, crowd, hazardy, boost, kolizje, przejścia materiałów, zmiany stanów, odliczania, finisze, victory stingers",
+      "footprint": "180 MB audio footprint",
+      "footprint_desc": "Zoptymalizowane przez streaming i kompresję (Vorbis @ zmienna jakość). ~450 plików źródłowych przetworzonych do finalnych assetów",
+      "voice_count": "Max 32 równoczesne voice'y",
+      "voice_count_desc": "Voice culling oparty na priorytetach: UI/gameplay krytyczne (priorytet 1.0) > player SFX (0.8) > crowd/ambience (0.5). Automatyczne stealing przy overflow",
+      "latency": "< 45ms input-to-audio",
+      "latency_desc": "Utrzymane we wszystkich scenariuszach gameplay z real-time modulacją parametrów i przetwarzaniem MetaSounds",
+      "memory": "~85 MB peak RAM usage",
+      "memory_desc": "Wliczając załadowane banki, buffer streamingu i aktywny DSP. Zarządzane przez system streaming audio Unreala"
+    },
+    "challenges": {
+      "title": "Wyzwania i Rozwiązania",
+      "desc": "Realne problemy napotkane podczas developmentu i zaimplementowane rozwiązania techniczne.",
+      "challenge1": {
+        "title": "Czytelność Miksu przy 4 Graczach",
+        "problem": "Przy 4 graczach jednocześnie, dźwięki kolizji i boost'ów się nawarstwiały i powodowały maskowanie częstotliwości, przez co UI feedback był niesłyszalny.",
+        "solution": "Zaimplementowano concurrency limiting oparty na priorytetach (max 4 dźwięki kolizji jednocześnie) z inteligentnym voice stealing. Dodano EQ curves świadome częstotliwości per slot gracza (slot 1: focus 200-800Hz, slot 2: 800-2kHz, etc.) oraz sidechain ducking na crowd/ambience gdy triggują eventy UI (-6dB duck, 50ms attack, 200ms release)."
+      },
+      "challenge2": {
+        "title": "Popy przy Przejściach Materiałów",
+        "problem": "Gracze poruszający się między materiałami toru (asfalt → piasek → metal) powodowali słyszalne popy przez instant layer switching.",
+        "solution": "Zastąpiono instant switche systemem crossfade używając blend containers Unreala. Dodano 150ms crossfade time z equal-power curve. Detekcja materiału używa overlap sphere z 0.2s cooldown aby zapobiec szybkim przejściom."
+      },
+      "challenge3": {
+        "title": "Spike'i Pamięci przy Boost Sound",
+        "problem": "Oryginalny boost SFX używał 4-warstwowego systemu z 24-bit WAV, powodując 40MB spike pamięci per instancja (x4 gracze = potencjalnie 160MB spike).",
+        "solution": "Refaktor do proceduralnego MetaSounds patch: noise generator + band-pass filter sweep + pitch modulation sterowana przez boost intensity parameter. Zredukowano do <2MB per instancja przy zachowaniu sonic character. Dodano RPM-style pitch curve dla organicznego feel przyspieszenia."
+      }
+    },
     "metasounds": {
       "title": "MetaSounds",
       "desc": "Cały system audio zbudowany w MetaSounds – nowoczesnym systemie proceduralno-parametrycznym w Unreal Engine. Pozwala na reaktywny, modularny sound design reagujący na gameplay w czasie rzeczywistym.",
@@ -219,6 +285,39 @@
       "b1": "Race‑status + snelheid/camera als inputs",
       "b2": "Submixen: UI, Gameplay, Ambience + limiter op Master",
       "b3": "Concurrency en drempels voor botsingstriggers"
+    },
+    "metrics": {
+      "title": "Technische Metrics",
+      "desc": "Uitgebreide breakdown van audio-implementatie scope, prestatiemetrics en resource management.",
+      "events": "320+ audio events",
+      "events_desc": "Over 12 categorieën: speleracties, omgeving, UI, publiek, hazards, boost, botsing, oppervlakte-overgangen, statuswijzigingen, aftelllingen, finishes en overwinningsstingers",
+      "footprint": "180 MB audio footprint",
+      "footprint_desc": "Geoptimaliseerd met streaming en compressie (Vorbis @ variabele kwaliteit). ~450 bronbestanden verwerkt tot finale assets",
+      "voice_count": "Max 32 gelijktijdige voices",
+      "voice_count_desc": "Prioriteit-gebaseerde voice culling: UI/gameplay kritiek (prioriteit 1.0) > speler SFX (0.8) > crowd/ambience (0.5). Automatisch stealing bij overflow",
+      "latency": "< 45ms input-naar-audio",
+      "latency_desc": "Gehandhaafd over alle gameplay-scenario's met realtime parametermodulatie en MetaSounds-verwerking",
+      "memory": "~85 MB piek RAM-gebruik",
+      "memory_desc": "Inclusief geladen banks, streaming buffer en actieve DSP. Beheerd via Unreal's audio streaming systeem"
+    },
+    "challenges": {
+      "title": "Uitdagingen & Oplossingen",
+      "desc": "Real-world problemen tijdens ontwikkeling en de geïmplementeerde technische oplossingen.",
+      "challenge1": {
+        "title": "4-Speler Mix Helderheid",
+        "problem": "Met tot 4 gelijktijdige spelers zouden botsing- en boost-geluiden stapelen en frequentie-masking veroorzaken, waardoor UI-feedback onhoorbaar werd.",
+        "solution": "Implementeerde prioriteit-gebaseerde concurrency limiting (max 4 botsingsgeluiden tegelijk) met intelligente voice stealing. Toegevoegde frequentie-bewuste EQ curves per speler slot (slot 1: 200-800Hz focus, slot 2: 800-2kHz, etc.) en paste sidechain ducking toe op crowd/ambience wanneer UI events triggeren (-6dB duck, 50ms attack, 200ms release)."
+      },
+      "challenge2": {
+        "title": "Oppervlakte-overgang Pops",
+        "problem": "Spelers die tussen baanmaterialen bewogen (asfalt → zand → metaal) veroorzaakten hoorbare pops door instant layer switching.",
+        "solution": "Vervangen instant switches door crossfade systeem met Unreal's blend containers. Toegevoegd 150ms crossfade tijd met equal-power curve. Oppervlakte-detectie gebruikt overlap sphere met 0.2s cooldown om snelle overgangen te voorkomen."
+      },
+      "challenge3": {
+        "title": "Boost Sound Geheugenpieken",
+        "problem": "Originele boost SFX gebruikte 4-lagen systeem met 24-bit WAV bestanden, wat 40MB geheugenpieken veroorzaakte per instantie (x4 spelers = potentieel 160MB piek).",
+        "solution": "Gerefactored naar procedurele MetaSounds patch: noise generator + band-pass filter sweep + pitch modulatie aangestuurd door boost intensity parameter. Gereduceerd naar <2MB per instantie met behoud van sonisch karakter. Toegevoegd RPM-stijl pitch curve voor organisch acceleratie gevoel."
+      }
     },
     "metasounds": {
       "title": "MetaSounds",

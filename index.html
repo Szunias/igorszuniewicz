@@ -621,6 +621,167 @@
       box-shadow: 0 12px 40px rgba(96, 165, 250, 0.4);
     }
     
+    /* === DEMO REEL SECTION === */
+    .demo-reel-section {
+      padding: 8rem 0 6rem;
+      position: relative;
+      background: radial-gradient(ellipse at center, rgba(96, 165, 250, 0.03) 0%, transparent 70%);
+    }
+    
+    .demo-reel-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .demo-reel-badge {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(167, 139, 250, 0.15));
+      border: 2px solid rgba(96, 165, 250, 0.4);
+      border-radius: 30px;
+      color: #60a5fa;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      animation: badgePulse 3s ease-in-out infinite;
+    }
+    
+    @keyframes badgePulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(96, 165, 250, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(96, 165, 250, 0.6); }
+    }
+    
+    .demo-reel-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+    
+    .demo-reel-description {
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      margin-bottom: 3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+    
+    .demo-reel-player {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6));
+      border-radius: 24px;
+      border: 2px solid rgba(96, 165, 250, 0.3);
+      overflow: hidden;
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 100px rgba(96, 165, 250, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.5s ease;
+      cursor: pointer;
+    }
+    
+    .demo-reel-player:hover {
+      transform: translateY(-8px);
+      border-color: rgba(96, 165, 250, 0.6);
+      box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.6),
+        0 0 120px rgba(96, 165, 250, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+    
+    .demo-reel-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+      backdrop-filter: blur(10px);
+    }
+    
+    .demo-reel-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(96, 165, 250, 0.03) 2px, rgba(96, 165, 250, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(96, 165, 250, 0.03) 2px, rgba(96, 165, 250, 0.03) 4px);
+      animation: gridMove 20s linear infinite;
+    }
+    
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(4px, 4px); }
+    }
+    
+    .demo-reel-icon {
+      font-size: 5rem;
+      color: #60a5fa;
+      position: relative;
+      z-index: 1;
+      animation: iconFloat 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 30px rgba(96, 165, 250, 0.6));
+    }
+    
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .demo-reel-placeholder-text {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #e0e6ed;
+      position: relative;
+      z-index: 1;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .demo-reel-placeholder-note {
+      font-size: 0.95rem;
+      color: #9ca3af;
+      position: relative;
+      z-index: 1;
+      font-style: italic;
+      max-width: 500px;
+    }
+    
+    /* Coming Soon Badge */
+    .coming-soon-badge {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 25px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      z-index: 2;
+      box-shadow: 0 4px 20px rgba(96, 165, 250, 0.4);
+      animation: badgePulse 3s ease-in-out infinite;
+    }
+    
     /* === SECTION === */
     section {
       padding: 6rem 0;
@@ -1253,6 +1414,51 @@
             CV
           </a>
           <a href="contact.html" class="btn btn-secondary" data-i18n="hero.cta2" aria-label="Contact Igor Szuniewicz">Get In Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Demo Reel Section -->
+  <section class="demo-reel-section">
+    <div class="container">
+      <div class="demo-reel-container fade-in">
+        <div class="demo-reel-badge">🎬 Audio Showcase</div>
+        <h2 class="demo-reel-title">Demo Reel</h2>
+        <p class="demo-reel-description">
+          A curated showcase of game audio implementation, sound design, interactive music systems, and technical audio work. Highlighting real-time DSP, middleware integration, and adaptive soundscapes.
+        </p>
+        
+        <!-- Placeholder for Demo Reel Video/Player -->
+        <div class="demo-reel-player" id="demo-reel-player">
+          <div class="coming-soon-badge">Coming Soon</div>
+          <div class="demo-reel-placeholder">
+            <div class="demo-reel-icon">🎵</div>
+            <div class="demo-reel-placeholder-text">Demo Reel In Production</div>
+            <p class="demo-reel-placeholder-note">
+              A comprehensive 2-3 minute audio showcase featuring game audio implementation,
+              sound design breakdowns, and middleware workflow demonstrations.
+            </p>
+          </div>
+          
+          <!-- Replace placeholder with embedded video when ready:
+          <video controls width="100%" height="100%">
+            <source src="assets/videos/demo-reel.mp4" type="video/mp4">
+            <source src="assets/videos/demo-reel.webm" type="video/webm">
+            Your browser does not support the video tag.
+          </video>
+          -->
+          
+          <!-- Or use YouTube/Vimeo embed:
+          <iframe 
+            width="100%" 
+            height="100%" 
+            src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+          -->
         </div>
       </div>
     </div>

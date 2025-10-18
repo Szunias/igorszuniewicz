@@ -24,6 +24,24 @@
     },
     "contrib": {
       "title": "Key Contributions"
+    },
+    "challenges": {
+      "title": "Development Challenges",
+      "challenge1": {
+        "title": "Achieving <50ms End-to-End Latency",
+        "problem": "Initial prototype had ~180ms latency (audio capture → feature extraction → ML inference → OSC send → game response), making gameplay feel sluggish and unresponsive.",
+        "solution": "Optimized entire pipeline: reduced FFT window to 512 samples (11ms @ 44.1kHz), implemented circular buffer to eliminate I/O blocking, moved to lightweight SVM classifier (inference <2ms vs. 15ms for neural net), and used UDP for OSC (zero handshake overhead). Achieved final 45ms latency with 92% accuracy maintained."
+      },
+      "challenge2": {
+        "title": "Beatbox Sound Similarity (Kick vs. Snare)",
+        "problem": "Kick and snare beatbox sounds share overlapping spectral content (both have transients + noise), causing frequent misclassification especially during rapid patterns.",
+        "solution": "Enhanced feature set beyond MFCCs: added spectral centroid (kick = lower, snare = higher), zero-crossing rate (snare has more HF content), and temporal envelope shape analysis (kick = sharp attack + quick decay, snare = attack + sustained noise). Trained separate models for solo hits vs. patterns. Accuracy improved from 78% to 92%."
+      },
+      "challenge3": {
+        "title": "Real-time Performance Without Audio Dropouts",
+        "problem": "Heavy ML processing caused periodic audio buffer underruns on weaker CPUs, resulting in clicks and missed classifications.",
+        "solution": "Decoupled audio capture thread from ML inference thread using lock-free ringbuffer. Audio runs on high-priority real-time thread (never blocks), while ML runs on separate worker thread processing buffered data. Added graceful degradation: if inference takes >15ms, system skips that frame and continues (better to miss one classification than dropout audio)."
+      }
     }
   },
   "pl": {
@@ -51,6 +69,24 @@
     },
     "contrib": {
       "title": "Kluczowe Wkłady"
+    },
+    "challenges": {
+      "title": "Wyzwania Rozwoju",
+      "challenge1": {
+        "title": "Osiągnięcie <50ms Latencji End-to-End",
+        "problem": "Początkowy prototyp miał ~180ms latencji (audio capture → feature extraction → ML inference → OSC send → game response), przez co gameplay był ociężały i niereaktywny.",
+        "solution": "Zoptymalizowano cały pipeline: zredukowano FFT window do 512 sampli (11ms @ 44.1kHz), zaimplementowano circular buffer aby wyeliminować I/O blocking, przejście na lekki klasyfikator SVM (inference <2ms vs. 15ms dla neural net), i użycie UDP dla OSC (zero handshake overhead). Osiągnięto finalną latencję 45ms z utrzymaną accuracy 92%."
+      },
+      "challenge2": {
+        "title": "Podobieństwo Dźwięków Beatbox (Kick vs. Snare)",
+        "problem": "Kick i snare beatbox sounds dzielą nakładającą się zawartość spektralną (oba mają transjenty + noise), powodując częste błędne klasyfikacje szczególnie podczas szybkich patternów.",
+        "solution": "Rozszerzono feature set poza MFCC: dodano spectral centroid (kick = niższy, snare = wyższy), zero-crossing rate (snare ma więcej HF content), i temporal envelope shape analysis (kick = ostry attack + szybki decay, snare = attack + sustained noise). Wytrenowano osobne modele dla solo hits vs. patterns. Accuracy poprawiła się z 78% do 92%."
+      },
+      "challenge3": {
+        "title": "Real-time Performance Bez Audio Dropouts",
+        "problem": "Ciężkie przetwarzanie ML powodowało okresowe audio buffer underruns na słabszych CPU, skutkując kliknięciami i pominiętymi klasyfikacjami.",
+        "solution": "Oddzielono audio capture thread od ML inference thread używając lock-free ringbuffer. Audio działa na high-priority real-time thread (nigdy nie blokuje), podczas gdy ML działa na osobnym worker thread przetwarzającym buforowane dane. Dodano graceful degradation: jeśli inference trwa >15ms, system skipuje tę klatkę i kontynuuje (lepiej pominąć jedną klasyfikację niż dropout audio)."
+      }
     }
   },
   "nl": {
@@ -78,6 +114,24 @@
     },
     "contrib": {
       "title": "Belangrijkste Bijdragen"
+    },
+    "challenges": {
+      "title": "Ontwikkelingsuitdagingen",
+      "challenge1": {
+        "title": "<50ms End-to-End Latentie Bereiken",
+        "problem": "Initieel prototype had ~180ms latentie (audio capture → feature extraction → ML inference → OSC send → game response), waardoor gameplay traag en niet-responsief aanvoelde.",
+        "solution": "Geoptimaliseerde gehele pipeline: FFT window gereduceerd naar 512 samples (11ms @ 44.1kHz), circular buffer geïmplementeerd om I/O blocking te elimineren, overstap naar lichtgewicht SVM classifier (inference <2ms vs. 15ms voor neural net), en UDP gebruikt voor OSC (nul handshake overhead). Bereikte uiteindelijke 45ms latentie met behouden 92% nauwkeurigheid."
+      },
+      "challenge2": {
+        "title": "Beatbox Geluid Gelijkenis (Kick vs. Snare)",
+        "problem": "Kick en snare beatbox sounds delen overlappende spectrale inhoud (beide hebben transiënten + ruis), wat frequente misclassificatie veroorzaakte vooral tijdens snelle patronen.",
+        "solution": "Uitgebreide feature set voorbij MFCCs: spectral centroid toegevoegd (kick = lager, snare = hoger), zero-crossing rate (snare heeft meer HF content), en temporal envelope shape analyse (kick = scherpe attack + snelle decay, snare = attack + sustained noise). Aparte modellen getraind voor solo hits vs. patronen. Nauwkeurigheid verbeterd van 78% naar 92%."
+      },
+      "challenge3": {
+        "title": "Real-time Performance Zonder Audio Dropouts",
+        "problem": "Zware ML processing veroorzaakte periodieke audio buffer underruns op zwakkere CPU's, resulterend in klikken en gemiste classificaties.",
+        "solution": "Ontkoppelde audio capture thread van ML inference thread met lock-free ringbuffer. Audio draait op high-priority real-time thread (blokkeert nooit), terwijl ML op aparte worker thread gebufferde data verwerkt. Graceful degradation toegevoegd: als inference >15ms duurt, slaat systeem dat frame over en gaat door (beter één classificatie missen dan audio dropout)."
+      }
     }
   }
 }

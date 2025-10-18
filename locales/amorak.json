@@ -67,6 +67,24 @@
       "creature": "Creature Perspective",
       "character": "Character Focus Shot"
     },
+    "challenges": {
+      "title": "Technical Challenges",
+      "challenge1": {
+        "title": "Creature Low-End Without Muddiness",
+        "problem": "Beast presence needed 40-200Hz body, but overlapped with environmental rumble causing muddy mix and loss of impact.",
+        "solution": "Implemented frequency carving: environmental bass sits at 60-90Hz (sub rumble), creature body at 120-180Hz (chest punch), with notch filter at 80Hz on environment when creature is on-screen. Added M/S processing: creature mono-centered for focus, environment wide-stereo for space. Dynamic EQ boosts creature fundamentals +3dB during roar peak."
+      },
+      "challenge2": {
+        "title": "Spatial Realism with Camera Cuts",
+        "problem": "Rapid camera cuts between wide shots and close-ups caused disorienting spatial jumps in ambience and creature sounds.",
+        "solution": "Built proximity-adaptive layering system: 3 ambience layers (distant/mid/close) with automated crossfades based on camera distance metadata. Added 300ms smoothing on level changes to prevent jarring transitions. Creature breathing/footsteps have separate close-mic layer (activated <5m) with different reverb send (-15dB IR time) for intimacy."
+      },
+      "challenge3": {
+        "title": "Dialogue Clarity in Dense Soundscape",
+        "problem": "Basement scene has layered drips, creaks, and creature movement—dialogue was getting masked in 800Hz-3kHz range.",
+        "solution": "Applied dynamic ducking: when dialogue present, environmental elements duck -8dB with 100ms attack, 500ms release. Carved 1-3kHz notch in ambience bed (permanent -4dB). Used spectral shaping on dialogue: gentle presence boost at 2.5kHz, de-essing at 6-8kHz, and HPF at 80Hz to remove rumble bleed. Result: dialogue sits clearly without sounding isolated."
+      }
+    },
     "button": {
       "projects": "All Projects"
     }
@@ -139,6 +157,24 @@
       "creature": "Perspektywa Stworzenia",
       "character": "Ujęcie Postaci"
     },
+    "challenges": {
+      "title": "Wyzwania Techniczne",
+      "challenge1": {
+        "title": "Niskotonowe Stworzenie Bez Błota",
+        "problem": "Obecność bestii wymagała body 40-200Hz, ale nachodziło na environmental rumble powodując muddy mix i utratę impaktu.",
+        "solution": "Zaimplementowano frequency carving: environmental bass siedzi na 60-90Hz (sub rumble), creature body na 120-180Hz (chest punch), z notch filter na 80Hz w environment gdy creature jest on-screen. Dodano M/S processing: creature mono-centered dla focus, environment wide-stereo dla przestrzeni. Dynamic EQ boostuje creature fundamentals +3dB podczas roar peak."
+      },
+      "challenge2": {
+        "title": "Realizm Przestrzenny przy Cięciach Kamery",
+        "problem": "Szybkie cięcia kamery między wide shots a close-ups powodowały dezorientujące skoki przestrzenne w ambience i creature sounds.",
+        "solution": "Zbudowano proximity-adaptive layering system: 3 warstwy ambience (distant/mid/close) z automatycznymi crossfades opartymi na metadata odległości kamery. Dodano 300ms smoothing na zmiany poziomu aby zapobiec jarring transitions. Creature breathing/footsteps mają osobną close-mic layer (aktywowaną <5m) z innym reverb send (-15dB IR time) dla intymności."
+      },
+      "challenge3": {
+        "title": "Czytelność Dialogu w Gęstym Soundscape",
+        "problem": "Scena piwnicy ma warstwowe drips, creaks i creature movement—dialog był maskowany w zakresie 800Hz-3kHz.",
+        "solution": "Zastosowano dynamic ducking: gdy dialog obecny, environmental elements duckują -8dB z 100ms attack, 500ms release. Wyrzeźbiono 1-3kHz notch w ambience bed (permanent -4dB). Użyto spectral shaping na dialogu: gentle presence boost na 2.5kHz, de-essing na 6-8kHz, i HPF na 80Hz aby usunąć rumble bleed. Rezultat: dialog siedzi czysto bez brzmienia izolacji."
+      }
+    },
     "button": {
       "projects": "Wszystkie Projekty"
     }
@@ -210,6 +246,24 @@
       "chimney": "Schoorsteen Spanning Scène",
       "creature": "Wezen Perspectief",
       "character": "Karakter Focus Shot"
+    },
+    "challenges": {
+      "title": "Technische Uitdagingen",
+      "challenge1": {
+        "title": "Wezen Low-End Zonder Troebel",
+        "problem": "Beast aanwezigheid had 40-200Hz body nodig, maar overlapte met omgevingsrommel wat troebele mix en verlies van impact veroorzaakte.",
+        "solution": "Implementeerde frequency carving: omgevingsbas zit op 60-90Hz (sub rumble), creature body op 120-180Hz (chest punch), met notch filter op 80Hz op omgeving wanneer creature on-screen is. Toegevoegd M/S processing: creature mono-gecentreerd voor focus, omgeving wide-stereo voor ruimte. Dynamic EQ boost creature fundamentals +3dB tijdens roar peak."
+      },
+      "challenge2": {
+        "title": "Ruimtelijk Realisme bij Camera Cuts",
+        "problem": "Snelle camera cuts tussen wide shots en close-ups veroorzaakten desoriënterende ruimtelijke sprongen in ambiance en creature sounds.",
+        "solution": "Bouwde proximity-adaptive layering systeem: 3 ambiance lagen (distant/mid/close) met geautomatiseerde crossfades gebaseerd op camera afstandsmetadata. Toegevoegd 300ms smoothing op niveau wijzigingen om schokkende transities te voorkomen. Creature ademhaling/voetstappen hebben aparte close-mic laag (geactiveerd <5m) met andere reverb send (-15dB IR tijd) voor intimiteit."
+      },
+      "challenge3": {
+        "title": "Dialoog Helderheid in Dicht Soundscape",
+        "problem": "Kelderscène heeft gelaagde druppels, kraken en creature beweging—dialoog werd gemaskeerd in 800Hz-3kHz bereik.",
+        "solution": "Paste dynamic ducking toe: wanneer dialoog aanwezig, ducken omgevingselementen -8dB met 100ms attack, 500ms release. Uitgesneden 1-3kHz notch in ambiance bed (permanent -4dB). Gebruikte spectral shaping op dialoog: zachte presence boost op 2.5kHz, de-essing op 6-8kHz, en HPF op 80Hz om rumble bleed te verwijderen. Resultaat: dialoog zit helder zonder geïsoleerd te klinken."
+      }
     },
     "button": {
       "projects": "Alle Projecten"
