@@ -11,7 +11,84 @@
     "projects_filter_game": "Game Audio",
     "projects_filter_sound": "Sound Design",
     "projects_filter_music": "Music",
-    "projects_filter_tools": "Dev Tools"
+    "projects_filter_tools": "Dev Tools",
+    "projects": {
+      "ray": {
+        "badge": "Animation",
+        "title": "Ray Animation",
+        "description": "Funky credits theme with groove and luminous cadence."
+      },
+      "not_today": {
+        "badge": "Game Audio",
+        "title": "Not Today, Darling!",
+        "description": "Retro-inspired audio implementation for chaotic multiplayer racing game."
+      },
+      "amorak": {
+        "badge": "Sound Design",
+        "title": "Amorak",
+        "description": "Atmospheric soundscapes and creature audio for horror animation."
+      },
+      "pause_deserve": {
+        "badge": "Horror Game",
+        "title": "Pause & Deserve",
+        "description": "Psychological horror game with strategic pause mechanics."
+      },
+      "audiolab": {
+        "badge": "ML Audio",
+        "title": "Transientica: AudioLab",
+        "description": "Real-time ML beatbox classification with 45 ms latency."
+      },
+      "interactive_music": {
+        "badge": "Music",
+        "title": "Interactive Music Design",
+        "description": "Adaptive audio systems with vertical layering in Wwise."
+      },
+      "akantilado": {
+        "badge": "Animation",
+        "title": "Akantilado",
+        "description": "Complete foley and jungle ambience for 3D animation."
+      },
+      "richter": {
+        "badge": "Film Score",
+        "title": "Richter",
+        "description": "Suspense sequence with layered strings and action percussion."
+      },
+      "plugin_suite": {
+        "badge": "VST Plugin",
+        "title": "Audio Plugin Suite",
+        "description": "Custom VST plugins for 3D audio processing."
+      },
+      "audioq": {
+        "badge": "VST Plugin",
+        "title": "AudioQ",
+        "description": "Advanced EQ plugin with spectrum analysis."
+      },
+      "environments": {
+        "badge": "3D Design",
+        "title": "3D Audio Environments",
+        "description": "Immersive spatial audio for virtual spaces."
+      },
+      "pawism": {
+        "badge": "Game Jam",
+        "title": "Paw-ism",
+        "description": "Thriller game jam project created in 2 days. Execute your plans as an ambitious cat."
+      },
+      "middleware": {
+        "badge": "Middleware",
+        "title": "Middleware Integration",
+        "description": "FMOD and Wwise implementation expertise."
+      },
+      "ue_rebuilder": {
+        "badge": "Dev Tool",
+        "title": "Unreal Engine Rebuilder",
+        "description": "Automated build tool for UE projects."
+      },
+      "wwise_fixer": {
+        "badge": "Dev Tool",
+        "title": "Wwise Unreal Fixer",
+        "description": "Automated Wwise integration restoration for UE projects."
+      }
+    }
   },
   "pl": {
     "nav_home": "Główna",
@@ -20,12 +97,89 @@
     "nav_music": "Muzyka",
     "nav_contact": "Kontakt",
     "projects_page_title": "Wszystkie Projekty",
-    "projects_page_subtitle": "Kompleksowa kolekcja prac z zakresu projektowania audio obejmująca implementację w grach, sound design, interaktywną muzykę i narzędzia programistyczne.",
+    "projects_page_subtitle": "Kompleksowa kolekcja prac z zakresu projektowania audio obejmująca implementację w grach, sound design, interaktywną muzykę i narzędzia deweloperskie.",
     "projects_filter_all": "Wszystkie",
-    "projects_filter_game": "Audio do Gier",
-    "projects_filter_sound": "Sound Design",
+    "projects_filter_game": "Audio do gier",
+    "projects_filter_sound": "Sound design",
     "projects_filter_music": "Muzyka",
-    "projects_filter_tools": "Narzędzia Dev"
+    "projects_filter_tools": "Narzędzia dev",
+    "projects": {
+      "ray": {
+        "badge": "Animacja",
+        "title": "Ray Animation",
+        "description": "Funkowy motyw napisów końcowych z groove'em i świetlistą kadencją."
+      },
+      "not_today": {
+        "badge": "Audio do gier",
+        "title": "Not Today, Darling!",
+        "description": "Retro-inspirowana implementacja audio do chaotycznej wieloosobowej gry wyścigowej."
+      },
+      "amorak": {
+        "badge": "Sound design",
+        "title": "Amorak",
+        "description": "Atmosferyczne pejzaże dźwiękowe i audio postaci do horroru animowanego."
+      },
+      "pause_deserve": {
+        "badge": "Gra grozy",
+        "title": "Pause & Deserve",
+        "description": "Psychologiczny horror z mechaniką strategicznych pauz."
+      },
+      "audiolab": {
+        "badge": "Audio ML",
+        "title": "Transientica: AudioLab",
+        "description": "Klasyfikacja beatboxu w czasie rzeczywistym z opóźnieniem 45 ms."
+      },
+      "interactive_music": {
+        "badge": "Muzyka",
+        "title": "Projektowanie muzyki interaktywnej",
+        "description": "Adaptacyjne systemy audio z wertykalnym warstwowaniem w Wwise."
+      },
+      "akantilado": {
+        "badge": "Animacja",
+        "title": "Akantilado",
+        "description": "Kompletny foley i leśny ambience do animacji 3D."
+      },
+      "richter": {
+        "badge": "Muzyka filmowa",
+        "title": "Richter",
+        "description": "Sekwencja suspensu z warstwowymi smyczkami i perkusją akcji."
+      },
+      "plugin_suite": {
+        "badge": "Wtyczka VST",
+        "title": "Audio Plugin Suite",
+        "description": "Autorskie wtyczki VST do przestrzennego przetwarzania audio 3D."
+      },
+      "audioq": {
+        "badge": "Wtyczka VST",
+        "title": "AudioQ",
+        "description": "Zaawansowany korektor z analizą widma."
+      },
+      "environments": {
+        "badge": "Projekt 3D",
+        "title": "3D Audio Environments",
+        "description": "Immersyjne audio przestrzenne dla wirtualnych przestrzeni."
+      },
+      "pawism": {
+        "badge": "Game jam",
+        "title": "Paw-ism",
+        "description": "Thriller stworzony w 2 dni — wykonaj plan jako ambitny kot."
+      },
+      "middleware": {
+        "badge": "Middleware",
+        "title": "Middleware Integration",
+        "description": "Ekspercka implementacja FMOD i Wwise."
+      },
+      "ue_rebuilder": {
+        "badge": "Narzędzie dev",
+        "title": "Unreal Engine Rebuilder",
+        "description": "Zautomatyzowane narzędzie do buildów projektów UE."
+      },
+      "wwise_fixer": {
+        "badge": "Narzędzie dev",
+        "title": "Wwise Unreal Fixer",
+        "description": "Automatyczne przywracanie integracji Wwise w projektach UE."
+      }
+    }
   },
   "nl": {
     "nav_home": "Home",
@@ -34,11 +188,88 @@
     "nav_music": "Muziek",
     "nav_contact": "Contact",
     "projects_page_title": "Alle Projecten",
-    "projects_page_subtitle": "Een uitgebreide verzameling audiodesign werk spanning game-implementatie, geluidsontwerp, interactieve muziek en development tools.",
+    "projects_page_subtitle": "Een uitgebreide verzameling audiodesign-werk met game-implementatie, sounddesign, interactieve muziek en development tools.",
     "projects_filter_all": "Alle",
-    "projects_filter_game": "Game Audio",
-    "projects_filter_sound": "Sound Design",
+    "projects_filter_game": "Game-audio",
+    "projects_filter_sound": "Sounddesign",
     "projects_filter_music": "Muziek",
-    "projects_filter_tools": "Dev Tools"
+    "projects_filter_tools": "Dev-tools",
+    "projects": {
+      "ray": {
+        "badge": "Animatie",
+        "title": "Ray Animation",
+        "description": "Funky aftitelthema met groove en lichtgevende cadens."
+      },
+      "not_today": {
+        "badge": "Game-audio",
+        "title": "Not Today, Darling!",
+        "description": "Retro-geïnspireerde audio-implementatie voor chaotische multiplayer-racegame."
+      },
+      "amorak": {
+        "badge": "Sounddesign",
+        "title": "Amorak",
+        "description": "Atmosferische soundscapes en creature-audio voor horroranimatie."
+      },
+      "pause_deserve": {
+        "badge": "Horrorgame",
+        "title": "Pause & Deserve",
+        "description": "Psychologische horrorgame met strategische pauzemechaniek."
+      },
+      "audiolab": {
+        "badge": "ML-audio",
+        "title": "Transientica: AudioLab",
+        "description": "Realtime beatboxclassificatie met 45 ms latentie."
+      },
+      "interactive_music": {
+        "badge": "Muziek",
+        "title": "Interactive Music Design",
+        "description": "Adaptieve audiosystemen met verticale lagen in Wwise."
+      },
+      "akantilado": {
+        "badge": "Animatie",
+        "title": "Akantilado",
+        "description": "Volledige foley en jungle-ambience voor 3D-animatie."
+      },
+      "richter": {
+        "badge": "Filmscore",
+        "title": "Richter",
+        "description": "Spanningsscène met gelaagde strijkers en actieslagwerk."
+      },
+      "plugin_suite": {
+        "badge": "VST-plugin",
+        "title": "Audio Plugin Suite",
+        "description": "Eigen VST-plugins voor 3D-audioprocessing."
+      },
+      "audioq": {
+        "badge": "VST-plugin",
+        "title": "AudioQ",
+        "description": "Geavanceerde EQ met spectrumanalyse."
+      },
+      "environments": {
+        "badge": "3D-ontwerp",
+        "title": "3D Audio Environments",
+        "description": "Immersieve ruimtelijke audio voor virtuele omgevingen."
+      },
+      "pawism": {
+        "badge": "Game jam",
+        "title": "Paw-ism",
+        "description": "Thriller-gamejamproject in 2 dagen – voer je plan uit als ambitieuze kat."
+      },
+      "middleware": {
+        "badge": "Middleware",
+        "title": "Middleware Integration",
+        "description": "FMOD- en Wwise-implementatie-expertise."
+      },
+      "ue_rebuilder": {
+        "badge": "Dev-tool",
+        "title": "Unreal Engine Rebuilder",
+        "description": "Geautomatiseerde buildtool voor UE-projecten."
+      },
+      "wwise_fixer": {
+        "badge": "Dev-tool",
+        "title": "Wwise Unreal Fixer",
+        "description": "Automatisch herstel van Wwise-integratie voor UE-projecten."
+      }
+    }
   }
 }
