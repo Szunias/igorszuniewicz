@@ -1,0 +1,44 @@
+{
+  "en": {
+    "nav_home": "Home",
+    "nav_about": "About",
+    "nav_projects": "All Projects",
+    "nav_music": "Music",
+    "nav_contact": "Contact",
+    "projects_page_title": "All Projects",
+    "projects_page_subtitle": "A comprehensive collection of audio design work spanning game implementation, sound design, interactive music, and development tools.",
+    "projects_filter_all": "All",
+    "projects_filter_game": "Game Audio",
+    "projects_filter_sound": "Sound Design",
+    "projects_filter_music": "Music",
+    "projects_filter_tools": "Dev Tools"
+  },
+  "pl": {
+    "nav_home": "Główna",
+    "nav_about": "O mnie",
+    "nav_projects": "Wszystkie Projekty",
+    "nav_music": "Muzyka",
+    "nav_contact": "Kontakt",
+    "projects_page_title": "Wszystkie Projekty",
+    "projects_page_subtitle": "Kompleksowa kolekcja prac z zakresu projektowania audio obejmująca implementację w grach, sound design, interaktywną muzykę i narzędzia programistyczne.",
+    "projects_filter_all": "Wszystkie",
+    "projects_filter_game": "Audio do Gier",
+    "projects_filter_sound": "Sound Design",
+    "projects_filter_music": "Muzyka",
+    "projects_filter_tools": "Narzędzia Dev"
+  },
+  "nl": {
+    "nav_home": "Home",
+    "nav_about": "Over mij",
+    "nav_projects": "Alle Projecten",
+    "nav_music": "Muziek",
+    "nav_contact": "Contact",
+    "projects_page_title": "Alle Projecten",
+    "projects_page_subtitle": "Een uitgebreide verzameling audiodesign werk spanning game-implementatie, geluidsontwerp, interactieve muziek en development tools.",
+    "projects_filter_all": "Alle",
+    "projects_filter_game": "Game Audio",
+    "projects_filter_sound": "Sound Design",
+    "projects_filter_music": "Muziek",
+    "projects_filter_tools": "Dev Tools"
+  }
+}

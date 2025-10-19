@@ -38,26 +38,51 @@
     document.documentElement.setAttribute('lang', lang);
   }
 
+  // Detect which JSON file to load based on current page
+  function getTranslationFile() {
+    const path = window.location.pathname;
+    const filename = path.split('/').pop();
+
+    // Map HTML files to their JSON translation files
+    const fileMap = {
+      'index.html': 'index.json',
+      'about.html': 'about.json',
+      'contact.html': 'contact.json',
+      'music.html': 'music.json',
+      '': 'index.json', // root path
+      '/': 'index.json'
+    };
+
+    // For projects/index.html
+    if (path.includes('projects/')) {
+      return 'projects.json';
+    }
+
+    return fileMap[filename] || 'shared.json';
+  }
+
   // Load translations from JSON file
   async function loadTranslations() {
     try {
+      const translationFile = getTranslationFile();
+
       // Try different paths based on current location
       let response;
-      const paths = ['locales/shared.json', '../locales/shared.json', '../../locales/shared.json'];
-      
-      for (const path of paths) {
+      const basePaths = ['locales/', '../locales/', '../../locales/'];
+
+      for (const basePath of basePaths) {
         try {
-          response = await fetch(path);
+          response = await fetch(basePath + translationFile);
           if (response.ok) break;
         } catch (e) {
           continue;
         }
       }
-      
+
       if (!response?.ok) {
-        throw new Error('Failed to load translations from any path');
+        throw new Error(`Failed to load translations from ${translationFile}`);
       }
-      
+
       window.translations = await response.json();
       setLanguage(currentLang);
     } catch (error) {
