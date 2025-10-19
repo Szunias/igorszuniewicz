@@ -1659,13 +1659,17 @@
       
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        const translation = getNestedTranslation(translations[lang], key);
-        if (translation) {
+        const langPack = translations[lang] || {};
+        const translation = getNestedTranslation(langPack, key);
+        if (typeof translation === 'string') {
           if (translation.includes('<br>') || translation.includes('<span')) {
             el.innerHTML = translation;
           } else {
             el.textContent = translation;
           }
+        } else if (translation != null) {
+          // If translation is not a string (e.g. nested object), skip gracefully
+          console.warn('Missing string translation for', key, 'in', lang);
         }
       });
       
@@ -1680,7 +1684,7 @@
     // Load translations from JSON file
     async function loadTranslations() {
       try {
-        const response = await fetch('locales/index.json');
+        const response = await fetch('locales/index.json', { cache: 'no-store' });
         translations = await response.json();
         setLanguage(currentLang);
       } catch (error) {
