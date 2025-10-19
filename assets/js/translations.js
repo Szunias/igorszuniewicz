@@ -41,7 +41,23 @@
   // Load translations from JSON file
   async function loadTranslations() {
     try {
-      const response = await fetch('../locales/shared.json');
+      // Try different paths based on current location
+      let response;
+      const paths = ['locales/shared.json', '../locales/shared.json', '../../locales/shared.json'];
+      
+      for (const path of paths) {
+        try {
+          response = await fetch(path);
+          if (response.ok) break;
+        } catch (e) {
+          continue;
+        }
+      }
+      
+      if (!response?.ok) {
+        throw new Error('Failed to load translations from any path');
+      }
+      
       window.translations = await response.json();
       setLanguage(currentLang);
     } catch (error) {

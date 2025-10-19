@@ -11,7 +11,7 @@
     "hero": {
       "label": "Audio Designer & Developer",
       "title": "Interactive <span class=\"highlight-sound\">Sound</span><br>for Modern Games",
-      "description": "Interactive music systems, sound design for animation & games, and innovative audio tools.",
+      "description": "I make interactive music for games, design sounds for animations, and build audio tools.",
       "cta1": "View My Work",
       "cta_cv": "CV",
       "cta2": "Get In Touch"
@@ -19,10 +19,10 @@
     "demo_reel": {
       "badge": "🎬 Audio Showcase",
       "title": "Demo Reel",
-      "description": "A curated showcase of game audio implementation, sound design, interactive music systems, and technical audio work. Highlighting real-time DSP, middleware integration, and adaptive soundscapes.",
+      "description": "Examples of my work - game audio, sound effects, music that reacts to gameplay, and technical projects.",
       "coming_soon": "Coming Soon",
       "placeholder_title": "Demo Reel In Production",
-      "placeholder_note": "A comprehensive 2-3 minute audio showcase featuring game audio implementation, sound design breakdowns, and middleware workflow demonstrations."
+      "placeholder_note": "A 2-3 minute video showing my game audio work, sound design process, and how I use audio tools."
     },
     "projects": {
       "label": "Featured Work",
@@ -56,7 +56,7 @@
     "hero": {
       "label": "Audio Designer & Developer",
       "title": "Interaktywny <span class=\"highlight-sound\">Dźwięk</span><br>dla Nowoczesnych Gier",
-      "description": "Interaktywne systemy muzyczne, sound design dla animacji i gier oraz innowacyjne narzędzia audio.",
+      "description": "Robię interaktywną muzykę do gier, projektuję dźwięki do animacji i buduję narzędzia audio.",
       "cta1": "Zobacz Moje Prace",
       "cta_cv": "CV",
       "cta2": "Skontaktuj Się"
@@ -64,10 +64,10 @@
     "demo_reel": {
       "badge": "🎬 Prezentacja Audio",
       "title": "Demo Reel",
-      "description": "Wyselekcjonowana prezentacja implementacji audio dla gier, sound designu, interaktywnych systemów muzycznych i technicznej pracy audio. Pokazująca real-time DSP, integrację middleware i adaptywne soundscapy.",
+      "description": "Przykłady mojej pracy - audio do gier, efekty dźwiękowe, muzyka reagująca na rozgrywkę i projekty techniczne.",
       "coming_soon": "Wkrótce",
       "placeholder_title": "Demo Reel w Produkcji",
-      "placeholder_note": "Kompleksowa 2-3 minutowa prezentacja audio pokazująca implementację audio dla gier, breakdowny sound designu i demonstracje workflow middleware."
+      "placeholder_note": "2-3 minutowe wideo pokazujące moją pracę z audio do gier, proces sound designu i jak używam narzędzi audio."
     },
     "projects": {
       "label": "Wybrane Prace",
@@ -101,7 +101,7 @@
     "hero": {
       "label": "Audio Designer & Developer",
       "title": "Interactief <span class=\"highlight-sound\">Geluid</span><br>voor Moderne Games",
-      "description": "Interactieve muzieksystemen, geluidsontwerp voor animatie & games, en innovatieve audio tools.",
+      "description": "Ik maak interactieve muziek voor games, ontwerp geluiden voor animaties en bouw audio tools.",
       "cta1": "Bekijk Mijn Werk",
       "cta_cv": "CV",
       "cta2": "Neem Contact Op"
@@ -109,10 +109,10 @@
     "demo_reel": {
       "badge": "🎬 Audio Showcase",
       "title": "Demo Reel",
-      "description": "Een verzameling van game audio implementatie, geluidsontwerp, interactieve muzieksystemen en technisch audiowerk. Met realtime DSP, middleware integratie en adaptieve soundscapes.",
+      "description": "Voorbeelden van mijn werk - game audio, geluidseffecten, muziek die reageert op gameplay en technische projecten.",
       "coming_soon": "Binnenkort",
       "placeholder_title": "Demo Reel in Productie",
-      "placeholder_note": "Een uitgebreide 2-3 minuten audio showcase met game audio implementatie, geluidsontwerp breakdowns en middleware workflow demonstraties."
+      "placeholder_note": "Een 2-3 minuten video die mijn game audio werk, geluidsontwerp proces en hoe ik audio tools gebruik laat zien."
     },
     "projects": {
       "label": "Uitgelicht Werk",
