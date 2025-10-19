@@ -28,7 +28,39 @@
       "label": "Featured Work",
       "title": "Selected Projects",
       "description": "A curated selection of recent work spanning game audio, sound design, and interactive music.",
-      "viewall": "View All Projects"
+      "viewall": "View All Projects",
+      "cards": {
+        "not_today": {
+          "badge": "Game Audio",
+          "title": "Not Today, Darling!",
+          "description": "Retro-inspired audio implementation for chaotic multiplayer racing game."
+        },
+        "amorak": {
+          "badge": "Sound Design",
+          "title": "Amorak",
+          "description": "Atmospheric soundscapes and creature audio for horror animation."
+        },
+        "pause_deserve": {
+          "badge": "Horror Game",
+          "title": "Pause & Deserve",
+          "description": "Psychological horror game with strategic pause mechanics."
+        },
+        "audiolab": {
+          "badge": "ML Audio",
+          "title": "Transientica: AudioLab",
+          "description": "Real-time ML beatbox classification with 45ms latency."
+        },
+        "interactive_music": {
+          "badge": "Music",
+          "title": "Interactive Music Design",
+          "description": "Adaptive audio systems with vertical layering in Wwise."
+        },
+        "akantilado": {
+          "badge": "Animation",
+          "title": "Akantilado",
+          "description": "Complete foley and jungle ambience for 3D animation."
+        }
+      }
     },
     "stats": {
       "label": "By The Numbers",
@@ -73,7 +105,39 @@
       "label": "Wybrane Prace",
       "title": "Wybrane Projekty",
       "description": "Starannie wybrane najnowsze prace obejmujące audio dla gier, sound design i interaktywną muzykę.",
-      "viewall": "Wszystkie Projekty"
+      "viewall": "Wszystkie Projekty",
+      "cards": {
+        "not_today": {
+          "badge": "Audio do gier",
+          "title": "Not Today, Darling!",
+          "description": "Retro-inspirowana implementacja audio do chaotycznej wieloosobowej gry wyścigowej."
+        },
+        "amorak": {
+          "badge": "Sound design",
+          "title": "Amorak",
+          "description": "Atmosferyczne pejzaże dźwiękowe i audio postaci do horroru animowanego."
+        },
+        "pause_deserve": {
+          "badge": "Gra grozy",
+          "title": "Pause & Deserve",
+          "description": "Psychologiczny horror z mechaniką strategicznych pauz."
+        },
+        "audiolab": {
+          "badge": "Audio ML",
+          "title": "Transientica: AudioLab",
+          "description": "Klasyfikacja beatboxu w czasie rzeczywistym z opóźnieniem 45 ms."
+        },
+        "interactive_music": {
+          "badge": "Muzyka",
+          "title": "Projektowanie muzyki interaktywnej",
+          "description": "Adaptacyjne systemy audio z wertykalnym warstwowaniem w Wwise."
+        },
+        "akantilado": {
+          "badge": "Animacja",
+          "title": "Akantilado",
+          "description": "Kompletny foley i leśny ambience do animacji 3D."
+        }
+      }
     },
     "stats": {
       "label": "W Liczbach",
@@ -118,7 +182,39 @@
       "label": "Uitgelicht Werk",
       "title": "Geselecteerde Projecten",
       "description": "Een selectie van recent werk spanning game audio, geluidsontwerp en interactieve muziek.",
-      "viewall": "Alle Projecten"
+      "viewall": "Alle Projecten",
+      "cards": {
+        "not_today": {
+          "badge": "Game-audio",
+          "title": "Not Today, Darling!",
+          "description": "Retro-geïnspireerde audio-implementatie voor chaotische multiplayer-racegame."
+        },
+        "amorak": {
+          "badge": "Sounddesign",
+          "title": "Amorak",
+          "description": "Atmosferische soundscapes en creature-audio voor horroranimatie."
+        },
+        "pause_deserve": {
+          "badge": "Horrorgame",
+          "title": "Pause & Deserve",
+          "description": "Psychologische horrorgame met strategische pauzemechaniek."
+        },
+        "audiolab": {
+          "badge": "ML-audio",
+          "title": "Transientica: AudioLab",
+          "description": "Realtime beatboxclassificatie met 45 ms latentie."
+        },
+        "interactive_music": {
+          "badge": "Muziek",
+          "title": "Interactive Music Design",
+          "description": "Adaptieve audiosystemen met verticale lagen in Wwise."
+        },
+        "akantilado": {
+          "badge": "Animatie",
+          "title": "Akantilado",
+          "description": "Volledige foley en jungle-ambience voor 3D-animatie."
+        }
+      }
     },
     "stats": {
       "label": "In Cijfers",
