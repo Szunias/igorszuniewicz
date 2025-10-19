@@ -73,9 +73,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
     }
     
     .logo {
@@ -627,8 +624,9 @@
   
   <!-- Header -->
   <header class="header" id="header">
-    <nav class="nav">
-      <a href="index.html" class="logo">Igor Szuniewicz</a>
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="logo">Igor Szuniewicz</a>
       <ul class="nav-links">
         <li><a href="index.html" data-i18n="nav_home">Home</a></li>
         <li><a href="about.html" class="active" data-i18n="nav_about">About</a></li>
@@ -641,14 +639,15 @@
           <button class="lang-btn" data-lang="nl">NL</button>
         </li>
       </ul>
-    </nav>
+      </nav>
+    </div>
   </header>
   
   <!-- Hero -->
   <section class="hero">
     <div class="container">
       <div class="avatar-container">
-        <img src="assets/images/avatar.jpg" alt="Igor Szuniewicz" class="avatar">
+        <img src="cv/pieknyportret.png" alt="Igor Szuniewicz" class="avatar">
       </div>
       <h1 class="hero-title" data-i18n="about_title">Igor Szuniewicz</h1>
       <p class="hero-role" data-i18n="about_role">Audio Designer & Developer</p>
