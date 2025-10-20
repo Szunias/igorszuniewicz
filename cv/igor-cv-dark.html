@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Igor Szuniewicz - CV</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="pieknyportret_rect.webp" type="image/webp">
+    <link rel="preload" as="image" href="pieknyportret_rect.png" type="image/png">
     <style>
         * {
             margin: 0;
@@ -585,9 +587,12 @@
                     <div class="title">Audio Engineer & Interactive Sound Developer</div>
                 </div>
                 <div class="header-right">
-                    <div class="photo-box">
-                        <img src="pieknyportret.png" alt="Igor Szuniewicz">
-                    </div>
+        <div class="photo-box">
+            <picture>
+              <source srcset="pieknyportret_rect.webp" type="image/webp">
+              <img src="pieknyportret_rect.png" alt="Igor Szuniewicz">
+            </picture>
+        </div>
                 </div>
             </div>
             

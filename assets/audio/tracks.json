@@ -48,16 +48,12 @@
     },
     "sources": [
       {
+        "url": "assets/audio/tracks/Igor Szuniewicz - Astrophonic Dance.mp3",
+        "type": "audio/mpeg"
+      },
+      {
         "url": "assets/audio/tracks/Igor Szuniewicz - Astrophonic Dance.wav",
         "type": "audio/wav"
-      },
-      {
-        "url": "assets/audio/tracks/AstrophonicDance.m4a",
-        "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/AstrophonicDance.mp3",
-        "type": "audio/mpeg"
       }
     ]
   },
