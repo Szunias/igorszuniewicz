@@ -49,7 +49,7 @@
   <link rel="manifest" href="manifest.json">
   
   <!-- Preloader (must load first) -->
-  <script src="assets/js/preloader.js"></script>
+  <!-- <script src="assets/js/preloader.js"></script> -->
   
   <!-- Performance: DNS prefetch -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -181,7 +181,6 @@
       color: #e0e6ed;
       line-height: 1.6;
       overflow-x: hidden;
-      position: relative;
       font-weight: 400;
     }
     
@@ -279,13 +278,13 @@
       z-index: 1;
     }
     
-    /* === HEADER/NAV === */
+    /* === HEADER === */
     .header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 1000;
+      z-index: 1010;
       padding: 1.5rem 0;
       backdrop-filter: blur(10px);
       background: rgba(10, 14, 18, 0.8);
@@ -389,7 +388,7 @@
       border: none;
       cursor: pointer;
       padding: 8px;
-      z-index: 1001;
+      z-index: 1002;
     }
     
     .mobile-menu-toggle span {
@@ -423,7 +422,7 @@
       backdrop-filter: blur(20px);
       padding: 6rem 2rem 2rem;
       transition: right 0.4s ease;
-      z-index: 1000;
+      z-index: 1001;
       border-left: 1px solid rgba(96, 165, 250, 0.2);
       overflow-y: auto;
     }
@@ -442,7 +441,7 @@
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s ease;
-      z-index: 999;
+      z-index: 998;
     }
     
     .mobile-menu-overlay.active {
@@ -485,6 +484,7 @@
       background: rgba(30, 41, 59, 0.6);
       border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1;
     }
     
     .mobile-lang-switcher .lang-btn {
@@ -1701,15 +1701,28 @@
       });
     });
     
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
+    // Single header scroll effect implementation
+    function initHeaderScrollEffect() {
       const header = document.getElementById('header');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+      if (!header) return;
+      
+      function handleHeaderScroll() {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
       }
-    });
+      
+      // Add the scroll listener
+      window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+      
+      // Call once immediately to set correct initial state
+      handleHeaderScroll();
+    }
+    
+    // Initialize after DOM is ready
+    document.addEventListener('DOMContentLoaded', initHeaderScrollEffect);
     
     // Scroll reveal
     const observerOptions = {
@@ -1858,37 +1871,9 @@
       }
     })();
     
-    // Global scroll unlock failsafe - zawsze odblokuj scroll po załadowaniu
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        document.documentElement.style.overflow = '';
-        document.body.style.overflow = '';
-        document.body.classList.remove('preloader-active');
-      }, 100);
-    });
+    // Preloader scroll unlock mechanisms disabled
     
-    // Emergency scroll unlock on any interaction
-    let scrollUnlocked = false;
-    function emergencyUnlock() {
-      if (!scrollUnlocked) {
-        scrollUnlocked = true;
-        document.documentElement.style.overflow = '';
-        document.body.style.overflow = '';
-        document.body.classList.remove('preloader-active');
-      }
-    }
-    
-    setTimeout(() => {
-      document.addEventListener('wheel', emergencyUnlock, { once: true, passive: true });
-      document.addEventListener('touchmove', emergencyUnlock, { once: true, passive: true });
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'PageDown' || e.key === 'PageUp' || e.key === ' ') {
-          emergencyUnlock();
-        }
-      }, { once: true });
-    }, 2000);
-    
-    // Mobile menu toggle
+    // Mobile menu toggle - fixed to not break header
     (function() {
       const toggle = document.querySelector('.mobile-menu-toggle');
       const menu = document.querySelector('.mobile-menu');
@@ -1896,34 +1881,32 @@
       const menuLinks = document.querySelectorAll('.mobile-nav-links a');
       
       function closeMobileMenu() {
-        toggle.classList.remove('active');
-        menu.classList.remove('active');
-        overlay.classList.remove('active');
-        // Tylko zablokuj scroll jeśli preloader nie jest aktywny
-        if (!document.body.classList.contains('preloader-active')) {
-          document.body.style.overflow = '';
-        }
+        if (toggle) toggle.classList.remove('active');
+        if (menu) menu.classList.remove('active');
+        if (overlay) overlay.classList.remove('active');
+        // DON'T manipulate document.body.style.overflow - this breaks header!
       }
       
       function openMobileMenu() {
-        toggle.classList.add('active');
-        menu.classList.add('active');
-        overlay.classList.add('active');
-        // Tylko zablokuj scroll jeśli preloader nie jest aktywny
-        if (!document.body.classList.contains('preloader-active')) {
-          document.body.style.overflow = 'hidden';
-        }
+        if (toggle) toggle.classList.add('active');
+        if (menu) menu.classList.add('active');
+        if (overlay) overlay.classList.add('active');
+        // DON'T manipulate document.body.style.overflow - this breaks header!
       }
       
-      toggle.addEventListener('click', () => {
-        if (menu.classList.contains('active')) {
-          closeMobileMenu();
-        } else {
-          openMobileMenu();
-        }
-      });
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          if (menu && menu.classList.contains('active')) {
+            closeMobileMenu();
+          } else {
+            openMobileMenu();
+          }
+        });
+      }
       
-      overlay.addEventListener('click', closeMobileMenu);
+      if (overlay) {
+        overlay.addEventListener('click', closeMobileMenu);
+      }
       
       menuLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -1933,7 +1916,7 @@
       
       // Close on escape key
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && menu.classList.contains('active')) {
+        if (e.key === 'Escape' && menu && menu.classList.contains('active')) {
           closeMobileMenu();
         }
       });
@@ -1941,12 +1924,16 @@
       // Mobile lang switcher sync with main
       document.querySelectorAll('.mobile-lang-switcher .lang-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-          setLanguage(btn.dataset.lang);
+          if (window.setLanguage) {
+            window.setLanguage(btn.dataset.lang);
+          }
         });
       });
     })();
   </script>
   <script src="assets/js/components/custom-cursor.js"></script>
   <script src="assets/js/page-transitions.js"></script>
+  <!-- <script src="assets/js/components/enhancements.js"></script> BREAKS HEADER -->
+  
 </body>
 </html>

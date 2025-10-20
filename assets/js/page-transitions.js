@@ -20,20 +20,17 @@
 
   const style = document.createElement('style');
   style.textContent = `
-    /* Base to smooth property changes */
-    body { will-change: opacity, transform, filter; }
-
-    /* Swipe */
-    body.page-transitioning--swipe { opacity: 0; transform: translateX(-20px); filter: blur(4px); }
-    body.page-entering--swipe      { opacity: 0; transform: translateX(20px);  filter: blur(4px); }
-
-    /* Fade (default) */
-    body.page-transitioning--fade { opacity: 0; filter: blur(3px); }
-    body.page-entering--fade      { opacity: 0; filter: blur(3px); }
-
-    /* Scale */
-    body.page-transitioning--scale { opacity: 0; transform: scale(0.98); filter: blur(2px); }
-    body.page-entering--scale      { opacity: 0; transform: scale(1.02);  filter: blur(2px); }
+    /* Simple transitions - avoid header completely */
+    
+    /* Only transition main content, never body or header */
+    main.page-transitioning--swipe { opacity: 0; transform: translateX(-20px); }
+    main.page-entering--swipe { opacity: 0; transform: translateX(20px); }
+    
+    main.page-transitioning--fade { opacity: 0; }
+    main.page-entering--fade { opacity: 0; }
+    
+    main.page-transitioning--scale { opacity: 0; transform: scale(0.98); }
+    main.page-entering--scale { opacity: 0; transform: scale(1.02); }
   `;
   document.head.appendChild(style);
 
@@ -56,18 +53,16 @@
     return DEFAULT_TYPE;
   }
 
-  // Apply entry class based on previous click
+  // Apply entry class to main element instead of body
   window.addEventListener('DOMContentLoaded', () => {
     const lastType = sessionStorage.getItem('pageTransitionType') || DEFAULT_TYPE;
-    const cfg = config[lastType] || config[DEFAULT_TYPE];
-    // Temporarily set transition timing for smooth entry
-    document.body.style.transition = `all ${cfg.duration}ms ${cfg.easing}`;
-    document.body.classList.add(`page-entering--${lastType}`);
-    requestAnimationFrame(() => {
-      document.body.classList.remove(`page-entering--${lastType}`);
-      // cleanup inline style after entry
-      setTimeout(() => { document.body.style.transition = ''; }, cfg.duration);
-    });
+    const main = document.querySelector('main');
+    if (main) {
+      main.classList.add(`page-entering--${lastType}`);
+      requestAnimationFrame(() => {
+        main.classList.remove(`page-entering--${lastType}`);
+      });
+    }
   });
 
   // Intercept internal navigations
@@ -93,19 +88,23 @@
     e.preventDefault();
     const cfg = config[type] || config[DEFAULT_TYPE];
 
-    // set transition timing per type for exit
-    document.body.style.transition = `all ${cfg.duration}ms ${cfg.easing}`;
+    // Add transition class to main element instead of body
     sessionStorage.setItem('pageTransitionType', type);
-
-    document.body.classList.add(`page-transitioning--${type}`);
+    
+    const main = document.querySelector('main');
+    if (main) {
+      main.classList.add(`page-transitioning--${type}`);
+    }
     setTimeout(() => { window.location.href = href; }, cfg.duration);
   });
 
-  // bfcache restore: remove classes
+  // bfcache restore: remove classes from main
   window.addEventListener('pageshow', (event) => {
     if (event.persisted) {
-      document.body.classList.remove('page-transitioning--swipe','page-entering--swipe','page-transitioning--fade','page-entering--fade','page-transitioning--scale','page-entering--scale');
-      document.body.style.transition = '';
+      const main = document.querySelector('main');
+      if (main) {
+        main.classList.remove('page-transitioning--swipe','page-entering--swipe','page-transitioning--fade','page-entering--fade','page-transitioning--scale','page-entering--scale');
+      }
     }
   });
 })();
