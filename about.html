@@ -2,16 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <title>About — Igor Szuniewicz | Audio Designer & Developer</title>
-  <meta name="description" content="Audio designer and developer specialized in game audio, interactive music systems, and real-time DSP." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Igor Szuniewicz</title>
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="cv/pieknyportret_square.webp" type="image/webp">
-  <link rel="preload" as="image" href="cv/pieknyportret_square.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     * {
@@ -22,30 +19,82 @@
     
     html {
       scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
     }
     
     body {
-      font-family: 'Poppins', sans-serif;
-      background: #000000;
-      color: #e0e6ed;
-      line-height: 1.6;
-      overflow-x: hidden;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #000;
+      color: #f5f5f7;
+      line-height: 1.5;
     }
     
-    /* === BACKGROUND === */
+    /* === PREMIUM BACKGROUND === */
     .bg-gradient {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
-      background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #050508 100%);
+      z-index: -4;
+      background: 
+        radial-gradient(ellipse at 30% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 90%, rgba(139, 92, 246, 0.06) 0%, transparent 40%),
+        linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #050508 100%);
     }
     
-    /* === CONTAINER === */
+    .bg-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      mix-blend-mode: overlay;
+    }
+    
+    .bg-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(96, 165, 250, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(96, 165, 250, 0.03) 1px, transparent 1px);
+      background-size: 100px 100px;
+      z-index: -3;
+      opacity: 0.4;
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 90%);
+    }
+    
+    .bg-orbs {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+      opacity: 0.15;
+    }
+    
+    .bg-orbs::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.1) 50%, transparent 100%),
+        linear-gradient(0deg, transparent 0%, rgba(139, 92, 246, 0.08) 50%, transparent 100%);
+      animation: subtleRotate 60s linear infinite;
+    }
+    
+    @keyframes subtleRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
     .container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 0 2rem;
       position: relative;
@@ -58,7 +107,7 @@
       top: 0;
       left: 0;
       right: 0;
-      z-index: 1000;
+      z-index: 1010;
       padding: 1.5rem 0;
       backdrop-filter: blur(10px);
       background: rgba(10, 14, 18, 0.8);
@@ -77,8 +126,15 @@
       align-items: center;
     }
     
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      margin-left: auto;
+    }
+    
     .logo {
-      font-family: 'Sora', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 1.5rem;
       font-weight: 700;
       color: #fff;
@@ -91,6 +147,8 @@
       gap: 2.5rem;
       list-style: none;
       align-items: center;
+      margin: 0;
+      padding: 0;
     }
     
     .nav-links a {
@@ -99,9 +157,29 @@
       font-weight: 400;
       font-size: 0.95rem;
       transition: color 0.3s ease;
+      position: relative;
     }
     
-    .nav-links a:hover,
+    .nav-links a:hover {
+      color: #60a5fa;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+    
     .nav-links a.active {
       color: #60a5fa;
     }
@@ -126,6 +204,7 @@
       border-radius: 20px;
       cursor: pointer;
       transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
     }
     
     .lang-btn:hover {
@@ -138,868 +217,642 @@
       color: #fff;
     }
     
-    /* === HERO SECTION === */
-    .hero {
-      padding: 10rem 0 5rem;
-      text-align: center;
+    /* === MOBILE MENU === */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1002;
     }
     
-    .avatar-container {
-      width: 180px;
-      height: 180px;
-      margin: 0 auto 2rem;
-      border-radius: 50%; /* Circular for about page */
-      overflow: hidden;
-      border: 4px solid rgba(96, 165, 250, 0.3);
-      box-shadow: 0 10px 40px rgba(96, 165, 250, 0.2);
-      position: relative;
+    .mobile-menu-toggle span {
+      width: 25px;
+      height: 2px;
+      background: #fff;
+      transition: all 0.3s ease;
+      border-radius: 2px;
     }
     
-    .avatar-container::after {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%; /* Circular for about page */
-      padding: 4px;
-      background: linear-gradient(135deg, #60a5fa, #a78bfa);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
+    .mobile-menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
       opacity: 0;
-      transition: opacity 0.3s ease;
     }
     
-    .avatar-container:hover::after {
-      opacity: 1;
+    .mobile-menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
     }
     
-    .avatar {
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 350px;
+      height: 100vh;
+      background: rgba(10, 14, 18, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 6rem 2rem 2rem;
+      transition: right 0.4s ease;
+      z-index: 1001;
+      border-left: 1px solid rgba(96, 165, 250, 0.2);
+      overflow-y: auto;
+    }
+    
+    .mobile-menu.active {
+      right: 0;
+    }
+    
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      filter: grayscale(20%);
+      background: rgba(0, 0, 0, 0.8);
+      opacity: 0;
+      visibility: hidden;
       transition: all 0.3s ease;
+      z-index: 998;
     }
     
-    .avatar-container:hover .avatar {
-      filter: grayscale(0%);
-      transform: scale(1.05);
+    .mobile-menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
     }
     
-    .hero-title {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-    }
-    
-    .hero-role {
-      font-size: 1.25rem;
-      color: #60a5fa;
-      margin-bottom: 1.5rem;
-      font-weight: 500;
-    }
-    
-    .hero-bio {
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      color: #cbd5e1;
-      line-height: 1.8;
-    }
-    
-    /* === SECTION === */
-    .section {
-      padding: 5rem 0;
-    }
-    
-    .section-title {
-      font-family: 'Sora', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 3rem;
-      text-align: center;
-      letter-spacing: -0.02em;
-    }
-    
-    /* === TIMELINE === */
-    .timeline {
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
-    }
-    
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, transparent, #60a5fa, transparent);
-      transform: translateX(-50%);
-    }
-    
-    .timeline-item {
-      display: flex;
-      justify-content: flex-start;
-      padding: 2rem 0;
-      position: relative;
-    }
-    
-    .timeline-item:nth-child(even) {
-      flex-direction: row-reverse;
-    }
-    
-    .timeline-content {
-      width: 45%;
-      background: rgba(15, 23, 42, 0.5);
-      padding: 2rem;
-      border-radius: 16px;
-      border: 1px solid rgba(96, 165, 250, 0.2);
-      transition: all 0.3s ease;
-    }
-    
-    .timeline-content:hover {
-      border-color: #60a5fa;
-      transform: translateY(-5px);
-      box-shadow: 0 10px 40px rgba(96, 165, 250, 0.2);
-    }
-    
-    .timeline-year {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background: linear-gradient(135deg, #60a5fa, #a78bfa);
-      color: #fff;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    
-    .timeline-title {
-      font-family: 'Sora', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 0.5rem;
-    }
-    
-    .timeline-description {
-      color: #9ca3af;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    
-    .timeline-dot {
-      position: absolute;
-      left: 50%;
-      top: 2.5rem;
-      transform: translateX(-50%);
-      width: 16px;
-      height: 16px;
-      background: #60a5fa;
-      border-radius: 50%;
-      border: 4px solid #000;
-      box-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
-    }
-    
-    /* === SKILLS GRID === */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    
-    .skill-category {
-      background: rgba(15, 23, 42, 0.5);
-      padding: 2rem;
-      border-radius: 16px;
-      border: 1px solid rgba(96, 165, 250, 0.2);
-      transition: all 0.3s ease;
-    }
-    
-    .skill-category:hover {
-      border-color: #60a5fa;
-      transform: translateY(-5px);
-      box-shadow: 0 10px 40px rgba(96, 165, 250, 0.2);
-    }
-    
-    .skill-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-    
-    .skill-title {
-      font-family: 'Sora', sans-serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 1rem;
-    }
-    
-    .skill-list {
+    .mobile-nav-links {
       list-style: none;
-    }
-    
-    .skill-list li {
-      color: #9ca3af;
-      padding: 0.5rem 0;
-      padding-left: 1.5rem;
-      position: relative;
-      font-size: 0.95rem;
-    }
-    
-    .skill-list li::before {
-      content: '▹';
-      position: absolute;
-      left: 0;
-      color: #60a5fa;
-      font-weight: 700;
-    }
-    
-    /* === TECHNICAL SKILLS MATRIX === */
-    .tech-matrix {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      gap: 2.5rem;
-    }
-    
-    .tech-category {
-      background: rgba(15, 23, 42, 0.5);
-      padding: 2.5rem;
-      border-radius: 20px;
-      border: 1px solid rgba(96, 165, 250, 0.2);
-      transition: all 0.3s ease;
-    }
-    
-    .tech-category:hover {
-      border-color: #60a5fa;
-      transform: translateY(-5px);
-      box-shadow: 0 10px 40px rgba(96, 165, 250, 0.2);
-    }
-    
-    .tech-category-title {
-      font-family: 'Sora', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #60a5fa;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    
-    .tech-category-icon {
-      font-size: 1.6rem;
-    }
-    
-    .tech-items {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    
-    .tech-item {
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+      margin-bottom: 2rem;
     }
     
-    .tech-item-header {
+    .mobile-nav-links a {
+      display: block;
+      color: #e0e6ed;
+      text-decoration: none;
+      font-size: 1.25rem;
+      font-weight: 500;
+      padding: 1rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+    
+    .mobile-nav-links a:hover,
+    .mobile-nav-links a:active {
+      background: rgba(96, 165, 250, 0.1);
+      border-color: rgba(96, 165, 250, 0.3);
+      color: #60a5fa;
+      transform: translateX(8px);
+    }
+    
+    .mobile-lang-switcher {
+      display: flex;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: rgba(30, 41, 59, 0.6);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .mobile-lang-switcher .lang-btn {
+      flex: 1;
+      padding: 0.75rem;
+      font-size: 1rem;
+    }
+    
+    .hero {
+      padding: 140px 0 100px;
+      text-align: center;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .avatar-wrapper {
+      display: inline-block;
+      margin-bottom: 32px;
+    }
+    
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(99, 102, 241, 0.3);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hero-text {
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 64px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #f5f5f7 0%, #6366f1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .subtitle {
+      font-size: 21px;
+      color: #86868b;
+      margin-bottom: 40px;
+      line-height: 1.5;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .stats {
+      display: flex;
+      gap: 60px;
+      justify-content: center;
+      margin-top: 48px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    .stat-number {
+      font-size: 40px;
+      font-weight: 700;
+      color: #6366f1;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      color: #86868b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .skills {
+      padding: 80px 0;
+    }
+    
+    .skills h2 {
+      font-size: 48px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 60px;
+      background: linear-gradient(135deg, #f5f5f7 0%, #6366f1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .skill-table {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+    
+    .skill-category {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .skill-category:last-child {
+      border-bottom: none;
+    }
+    
+    .skill-header {
+      background: rgba(99, 102, 241, 0.05);
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .skill-header h3 {
+      font-size: 21px;
+      font-weight: 600;
+      color: #6366f1;
+    }
+    
+    .skill-items {
+      padding: 32px 40px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    
+    .skill-item {
+      display: grid;
+      gap: 12px;
+    }
+    
+    .skill-item-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     
-    .tech-item-name {
-      font-weight: 600;
-      color: #fff;
-      font-size: 1rem;
-    }
-    
-    .tech-item-level {
-      font-size: 0.8rem;
-      color: #60a5fa;
+    .skill-name {
+      font-size: 17px;
       font-weight: 500;
-      padding: 0.25rem 0.6rem;
-      background: rgba(96, 165, 250, 0.15);
-      border-radius: 12px;
+      color: #f5f5f7;
     }
     
-    .tech-item-bar {
+    .skill-level {
+      font-size: 14px;
+      color: #86868b;
+      font-weight: 500;
+    }
+    
+    .skill-bar {
+      width: 100%;
       height: 6px;
-      background: rgba(96, 165, 250, 0.1);
-      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
       overflow: hidden;
-      position: relative;
     }
     
-    .tech-item-fill {
+    .skill-fill {
       height: 100%;
-      background: linear-gradient(90deg, #60a5fa, #a78bfa);
-      border-radius: 10px;
-      transition: width 1s ease;
-      box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
-    }
-    
-    .tech-item-desc {
-      font-size: 0.85rem;
-      color: #9ca3af;
-      line-height: 1.5;
-    }
-    
-    /* === AUDIO PHILOSOPHY === */
-    .philosophy-box {
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(15, 23, 42, 0.5);
-      padding: 3rem;
-      border-radius: 20px;
-      border: 1px solid rgba(96, 165, 250, 0.3);
+      background: linear-gradient(90deg, #6366f1, #8b5cf6, #a855f7);
+      border-radius: 8px;
       position: relative;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
       overflow: hidden;
     }
     
-    .philosophy-box::before {
+    .skill-fill::before {
       content: '';
       position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(96, 165, 250, 0.05) 0%, transparent 70%);
-      animation: philosophyGlow 8s ease-in-out infinite;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: shimmer 2s infinite;
     }
     
-    @keyframes philosophyGlow {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(-20%, -20%); }
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
     }
     
-    .philosophy-content {
-      position: relative;
-      z-index: 1;
+    .skill-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+      border-radius: 8px 8px 0 0;
     }
     
-    .philosophy-quote {
-      font-size: 1.15rem;
-      line-height: 1.8;
-      color: #cbd5e1;
-      margin-bottom: 2rem;
-      font-style: italic;
-      position: relative;
-      padding-left: 1.5rem;
-      border-left: 3px solid #60a5fa;
+    .timeline {
+      padding: 80px 0;
     }
     
-    .philosophy-principles {
+    .timeline h2 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 60px;
+      text-align: center;
+    }
+    
+    .timeline-item {
       display: grid;
-      gap: 1.5rem;
-      margin-top: 2rem;
+      grid-template-columns: 140px 1fr;
+      gap: 40px;
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
     
-    .principle-item {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
+    .timeline-item:last-child {
+      border-bottom: none;
     }
     
-    .principle-icon {
-      font-size: 1.5rem;
-      flex-shrink: 0;
+    .timeline-year {
+      font-size: 17px;
+      color: #86868b;
+      font-weight: 500;
     }
     
-    .principle-content h4 {
-      font-family: 'Sora', sans-serif;
-      color: #fff;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+    .timeline-content h3 {
+      font-size: 28px;
       font-weight: 600;
+      margin-bottom: 12px;
     }
     
-    .principle-content p {
-      color: #9ca3af;
-      font-size: 0.95rem;
+    .timeline-content p {
+      font-size: 17px;
+      color: #86868b;
       line-height: 1.6;
+      max-width: 600px;
     }
     
-    /* === STATS === */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    
-    .stat-card {
+    footer {
+      padding: 60px 0;
       text-align: center;
-      padding: 2rem;
-      background: rgba(15, 23, 42, 0.5);
-      border-radius: 16px;
-      border: 1px solid rgba(96, 165, 250, 0.2);
-      transition: all 0.3s ease;
-    }
-    
-    .stat-card:hover {
-      border-color: #60a5fa;
-      transform: translateY(-5px);
-      box-shadow: 0 10px 40px rgba(96, 165, 250, 0.2);
-    }
-    
-    .stat-number {
-      font-family: 'Sora', sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #60a5fa, #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.5rem;
-    }
-    
-    .stat-label {
-      color: #9ca3af;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    
-    /* === FOOTER === */
-    .footer {
-      text-align: center;
-      padding: 3rem 0;
-      color: #666;
-      font-size: 0.9rem;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
-      margin-top: 5rem;
+      margin-top: 80px;
     }
     
-    /* === RESPONSIVE === */
+    footer p {
+      font-size: 12px;
+      color: #6e6e73;
+    }
+    
+    @media (max-width: 968px) {
+      .nav-links { display: none; }
+    }
+    
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      
-      .timeline::before {
-        left: 0;
-      }
-      
-      .timeline-item {
-        flex-direction: column !important;
-      }
-      
-      .timeline-content {
-        width: 100%;
-        margin-left: 2rem;
-      }
-      
-      .timeline-dot {
-        left: 0;
-      }
-      
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .tools-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .lang-switcher { display: none; }
+      .mobile-menu-toggle { display: flex; }
+      .avatar { width: 100px; height: 100px; }
+      h1 { font-size: 40px; }
+      .subtitle { font-size: 17px; }
+      .stats { flex-wrap: wrap; gap: 32px; }
+      .stat-number { font-size: 32px; }
+      .skill-items { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 12px; }
     }
   </style>
 </head>
 <body>
-  <!-- Background -->
   <div class="bg-gradient"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-orbs"></div>
   
-  <!-- Header -->
   <header class="header" id="header">
     <div class="container">
       <nav class="nav">
         <a href="index.html" class="logo">Igor Szuniewicz</a>
-      <ul class="nav-links">
-        <li><a href="index.html" data-i18n="nav_home">Home</a></li>
-        <li><a href="about.html" class="active" data-i18n="nav_about">About</a></li>
-        <li><a href="projects/index.html" data-i18n="nav_projects">All Projects</a></li>
-        <li><a href="music.html" data-i18n="nav_music">Music</a></li>
-        <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
-        <li class="lang-switcher">
-          <button class="lang-btn active" data-lang="en">EN</button>
-          <button class="lang-btn" data-lang="pl">PL</button>
-          <button class="lang-btn" data-lang="nl">NL</button>
-        </li>
-      </ul>
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="about.html" class="active" data-i18n="nav_about">About</a></li>
+            <li><a href="projects/index.html" data-i18n="nav_projects">Projects</a></li>
+            <li><a href="music.html" data-i18n="nav_music">Music</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+          <div class="lang-switcher">
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="pl">PL</button>
+            <button class="lang-btn" data-lang="nl">NL</button>
+          </div>
+          <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </nav>
     </div>
   </header>
   
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <div class="avatar-container">
-        <picture>
-          <source srcset="cv/pieknyportret_square.webp" type="image/webp">
-          <img src="cv/pieknyportret_square.png" alt="Igor Szuniewicz" class="avatar">
-        </picture>
-      </div>
-      <h1 class="hero-title" data-i18n="about_title">Igor Szuniewicz</h1>
-      <p class="hero-role" data-i18n="about_role">Audio Designer & Developer</p>
-      <p class="hero-bio" data-i18n="about_bio">
-        Combining technical precision with creative intuition to craft immersive soundscapes and interactive audio systems. Specialized in game audio implementation, real-time DSP, and adaptive music design.
-      </p>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+      <li><a href="about.html" data-i18n="nav_about">About</a></li>
+      <li><a href="projects/index.html" data-i18n="nav_projects">Projects</a></li>
+      <li><a href="music.html" data-i18n="nav_music">Music</a></li>
+      <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+    </ul>
+    <div class="mobile-lang-switcher">
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="pl">PL</button>
+      <button class="lang-btn" data-lang="nl">NL</button>
     </div>
-  </section>
+  </div>
   
-  <!-- Journey Timeline -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title" data-i18n="about_journey_title">Journey</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2024</span>
-            <h3 class="timeline-title" data-i18n="timeline_dae_title">DAE — Game Development</h3>
-            <p class="timeline-description" data-i18n="timeline_dae_desc">Studying audio integration, Wwise/FMOD middleware, and professional game audio pipelines at Howest Belgium.</p>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="avatar-wrapper">
+            <picture>
+              <source srcset="cv/pieknyportret_square.webp" type="image/webp">
+              <img src="cv/pieknyportret_square.png" alt="Igor Szuniewicz" class="avatar">
+            </picture>
           </div>
-          <div class="timeline-dot"></div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2023</span>
-            <h3 class="timeline-title" data-i18n="timeline_ml_title">Machine Learning Audio</h3>
-            <p class="timeline-description" data-i18n="timeline_ml_desc">Built real-time beatbox classification system with 45ms latency using Python, LibROSA, and SVM algorithms.</p>
+          <div class="hero-text">
+            <h1 data-i18n="about_role">Audio Designer<br>& Developer</h1>
+            <p class="subtitle" data-i18n="about_bio">Combining technical precision with creative intuition to craft immersive soundscapes and interactive audio systems for modern games.</p>
           </div>
-          <div class="timeline-dot"></div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2020</span>
-            <h3 class="timeline-title" data-i18n="timeline_music_title">Music Production</h3>
-            <p class="timeline-description" data-i18n="timeline_music_desc">Started releasing original music on Spotify. Explored electronic, film scoring, and experimental sound design.</p>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <span class="timeline-year">2010</span>
-            <h3 class="timeline-title" data-i18n="timeline_piano_title">Classical Training</h3>
-            <p class="timeline-description" data-i18n="timeline_piano_desc">Began classical piano education at State Music School, building foundation in music theory and performance.</p>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Skills -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title" data-i18n="about_skills_title">Expertise</h2>
-      <div class="skills-grid">
-        <div class="skill-category">
-          <span class="skill-icon">🎮</span>
-          <h3 class="skill-title" data-i18n="skill_game_title">Game Audio</h3>
-          <ul class="skill-list">
-            <li data-i18n="skill_game_1">Interactive music systems</li>
-            <li data-i18n="skill_game_2">Wwise & FMOD integration</li>
-            <li data-i18n="skill_game_3">Unity & Unreal Engine</li>
-            <li data-i18n="skill_game_4">Adaptive soundscapes</li>
-          </ul>
-        </div>
-        
-        <div class="skill-category">
-          <span class="skill-icon">🎵</span>
-          <h3 class="skill-title" data-i18n="skill_production_title">Production</h3>
-          <ul class="skill-list">
-            <li data-i18n="skill_production_1">Music composition</li>
-            <li data-i18n="skill_production_2">Sound design</li>
-            <li data-i18n="skill_production_3">Mixing & mastering</li>
-            <li data-i18n="skill_production_4">Field recording</li>
-          </ul>
-        </div>
-        
-        <div class="skill-category">
-          <span class="skill-icon">💻</span>
-          <h3 class="skill-title" data-i18n="skill_dev_title">Development</h3>
-          <ul class="skill-list">
-            <li data-i18n="skill_dev_1">Real-time DSP</li>
-            <li data-i18n="skill_dev_2">Python audio tools</li>
-            <li data-i18n="skill_dev_3">C# scripting</li>
-            <li data-i18n="skill_dev_4">Audio plugins</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Technical Skills Matrix -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title" data-i18n="about_tech_title">Technical Skills Matrix</h2>
-      <div class="tech-matrix">
-        <!-- Audio Middleware -->
-        <div class="tech-category">
-          <h3 class="tech-category-title">
-            <span class="tech-category-icon">🔊</span>
-            <span data-i18n="tech_middleware_title">Audio Middleware & Implementation</span>
-          </h3>
-          <div class="tech-items">
-            <div class="tech-item">
-              <div class="tech-item-header">
-                <span class="tech-item-name">Wwise</span>
-                <span class="tech-item-level" data-i18n="level_advanced">Advanced</span>
-              </div>
-              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 85%"></div></div>
-              <p class="tech-item-desc" data-i18n="tech_wwise_desc">RTPCs, States/Switches, HDR mixing, attenuation curves, music system design</p>
+          <div class="stats">
+            <div class="stat-item">
+              <span class="stat-number">12+</span>
+              <span class="stat-label" data-i18n="stat_projects">Projects</span>
             </div>
-            <div class="tech-item">
-              <div class="tech-item-header">
-                <span class="tech-item-name">FMOD Studio</span>
-                <span class="tech-item-level" data-i18n="level_intermediate">Intermediate</span>
-              </div>
-              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 70%"></div></div>
-              <p class="tech-item-desc" data-i18n="tech_fmod_desc">Event-based implementation, parameters, adaptive music, 3D spatialization</p>
+            <div class="stat-item">
+              <span class="stat-number">4</span>
+              <span class="stat-label" data-i18n="stat_tools">Tools Built</span>
             </div>
-            <div class="tech-item">
-              <div class="tech-item-header">
-                <span class="tech-item-name">Unreal MetaSounds</span>
-                <span class="tech-item-level" data-i18n="level_advanced">Advanced</span>
-              </div>
-              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 80%"></div></div>
-              <p class="tech-item-desc" data-i18n="tech_metasounds_desc">Procedural audio, parametric sound design, real-time modulation systems</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Game Engines -->
-        <div class="tech-category">
-          <h3 class="tech-category-title">
-            <span class="tech-category-icon">🎮</span>
-            <span data-i18n="tech_engines_title">Game Engines & Integration</span>
-          </h3>
-          <div class="tech-items">
-            <div class="tech-item">
-              <div class="tech-item-header">
-                <span class="tech-item-name">Unreal Engine 5</span>
-                <span class="tech-item-level" data-i18n="level_advanced">Advanced</span>
-              </div>
-              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 85%"></div></div>
-              <p class="tech-item-desc" data-i18n="tech_unreal_desc">Sound Cues, Blueprints, Audio submixes, Concurrency, Attenuation, MetaSounds integration</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-item-header">
-                <span class="tech-item-name">Unity</span>
-                <span class="tech-item-level" data-i18n="level_intermediate">Intermediate</span>
-              </div>
-              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 65%"></div></div>
-              <p class="tech-item-desc" data-i18n="tech_unity_desc">Audio Mixer, C# scripting for audio, middleware integration (Wwise/FMOD)</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- DAWs & Production -->
-        <div class="tech-category">
-          <h3 class="tech-category-title">
-            <span class="tech-category-icon">🎚️</span>
-            <span data-i18n="tech_production_title">DAWs & Audio Production</span>
-          </h3>
-          <div class="tech-items">
-            <div class="tech-item">
-              <div class="tech-item-header">
-                <span class="tech-item-name">Reaper</span>
-                <span class="tech-item-level" data-i18n="level_expert">Expert</span>
-              </div>
-              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 95%"></div></div>
-              <p class="tech-item-desc" data-i18n="tech_reaper_desc">Sound design, SFX editing, batch processing, custom scripts, game audio workflows</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-item-header">
-                <span class="tech-item-name">Pro Tools</span>
-                <span class="tech-item-level" data-i18n="level_intermediate">Intermediate</span>
-              </div>
-              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 70%"></div></div>
-              <p class="tech-item-desc" data-i18n="tech_protools_desc">Mixing, editing, post-production workflows</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-item-header">
-                <span class="tech-item-name">Logic Pro</span>
-                <span class="tech-item-level" data-i18n="level_advanced">Advanced</span>
-              </div>
-              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 80%"></div></div>
-              <p class="tech-item-desc" data-i18n="tech_logic_desc">Music composition, MIDI sequencing, orchestral arrangements</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Programming & Scripting -->
-        <div class="tech-category">
-          <h3 class="tech-category-title">
-            <span class="tech-category-icon">💻</span>
-            <span data-i18n="tech_scripting_title">Programming & Scripting</span>
-          </h3>
-          <div class="tech-items">
-            <div class="tech-item">
-              <div class="tech-item-header">
-                <span class="tech-item-name">Python</span>
-                <span class="tech-item-level" data-i18n="level_advanced">Advanced</span>
-              </div>
-              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 80%"></div></div>
-              <p class="tech-item-desc" data-i18n="tech_python_desc">Audio analysis (LibROSA), ML models (scikit-learn), automation tools, OSC communication</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-item-header">
-                <span class="tech-item-name">C#</span>
-                <span class="tech-item-level" data-i18n="level_intermediate">Intermediate</span>
-              </div>
-              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 65%"></div></div>
-              <p class="tech-item-desc" data-i18n="tech_csharp_desc">Unity audio scripting, custom audio tools, middleware integration</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-item-header">
-                <span class="tech-item-name">Blueprints (UE)</span>
-                <span class="tech-item-level" data-i18n="level_advanced">Advanced</span>
-              </div>
-              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 85%"></div></div>
-              <p class="tech-item-desc" data-i18n="tech_blueprints_desc">Audio triggers, parameter control, event systems, gameplay integration</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- DSP & Audio Tools -->
-        <div class="tech-category">
-          <h3 class="tech-category-title">
-            <span class="tech-category-icon">⚡</span>
-            <span data-i18n="tech_dsp_title">DSP & Specialized Tools</span>
-          </h3>
-          <div class="tech-items">
-            <div class="tech-item">
-              <div class="tech-item-header">
-                <span class="tech-item-name">Max/MSP</span>
-                <span class="tech-item-level" data-i18n="level_intermediate">Intermediate</span>
-              </div>
-              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 65%"></div></div>
-              <p class="tech-item-desc" data-i18n="tech_maxmsp_desc">Real-time DSP, generative audio, prototyping interactive systems</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-item-header">
-                <span class="tech-item-name">iZotope RX</span>
-                <span class="tech-item-level" data-i18n="level_advanced">Advanced</span>
-              </div>
-              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 80%"></div></div>
-              <p class="tech-item-desc" data-i18n="tech_rx_desc">Audio restoration, dialogue cleaning, spectral editing</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-item-header">
-                <span class="tech-item-name">FabFilter Suite</span>
-                <span class="tech-item-level" data-i18n="level_expert">Expert</span>
-              </div>
-              <div class="tech-item-bar"><div class="tech-item-fill" style="width: 90%"></div></div>
-              <p class="tech-item-desc" data-i18n="tech_fabfilter_desc">Pro-Q 3, Pro-L 2, Pro-MB – mixing, mastering, frequency sculpting</p>
+            <div class="stat-item">
+              <span class="stat-number">3</span>
+              <span class="stat-label" data-i18n="stat_languages">Languages</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  
-  <!-- Audio Philosophy -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title" data-i18n="about_philosophy_title">Audio Philosophy & Approach</h2>
-      <div class="philosophy-box">
-        <div class="philosophy-content">
-          <div class="philosophy-quote" data-i18n="philosophy_quote">
-            "Sound should serve the experience, not demand attention. Every audio element—from subtle ambience to explosive SFX—exists to enhance gameplay clarity, emotional impact, and player immersion. Technical precision meets creative intuition."
+    </section>
+    
+    <section class="skills">
+      <div class="container">
+        <h2 data-i18n="about_tech_title">Technical Expertise</h2>
+        <div class="skill-table">
+          <div class="skill-category">
+            <div class="skill-header">
+              <h3 data-i18n="tech_middleware_title">Game Audio</h3>
+            </div>
+            <div class="skill-items">
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Wwise</span>
+                  <span class="skill-level">Expert</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">FMOD Studio</span>
+                  <span class="skill-level">Expert</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Unreal Engine 5</span>
+                  <span class="skill-level">Advanced</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Unity</span>
+                  <span class="skill-level">Intermediate</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+              </div>
+            </div>
           </div>
           
-          <div class="philosophy-principles">
-            <div class="principle-item">
-              <div class="principle-icon">🎯</div>
-              <div class="principle-content">
-                <h4 data-i18n="principle_clarity_title">Clarity First, Always</h4>
-                <p data-i18n="principle_clarity_desc">In game audio, readability trumps everything. I design from gameplay telemetry outward—ensuring critical feedback is never masked. Mix hierarchy, frequency allocation, and dynamic ducking keep the player informed without overwhelming them.</p>
+          <div class="skill-category">
+            <div class="skill-header">
+              <h3 data-i18n="tech_production_title">Production & DAWs</h3>
+            </div>
+            <div class="skill-items">
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Reaper</span>
+                  <span class="skill-level">Expert</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Logic Pro</span>
+                  <span class="skill-level">Expert</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Studio One</span>
+                  <span class="skill-level">Advanced</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Sound Design</span>
+                  <span class="skill-level">Expert</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
               </div>
             </div>
-            
-            <div class="principle-item">
-              <div class="principle-icon">🔬</div>
-              <div class="principle-content">
-                <h4 data-i18n="principle_technical_title">Technical Foundation, Creative Expression</h4>
-                <p data-i18n="principle_technical_desc">Understanding the technical constraints—voice counts, memory budgets, CPU limits—enables better creative decisions. I build systems that scale, iterate quickly, and stay performant across platforms.</p>
-              </div>
+          </div>
+          
+          <div class="skill-category">
+            <div class="skill-header">
+              <h3 data-i18n="tech_scripting_title">Development & Programming</h3>
             </div>
-            
-            <div class="principle-item">
-              <div class="principle-icon">🎨</div>
-              <div class="principle-content">
-                <h4 data-i18n="principle_layering_title">Layering & Parametric Design</h4>
-                <p data-i18n="principle_layering_desc">I approach sound design as modular layering: transients for impact, body for presence, texture for character. Parameters like speed, intensity, and camera distance drive real-time transformations, creating responsive, adaptive audio.</p>
+            <div class="skill-items">
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Python</span>
+                  <span class="skill-level">Intermediate</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
               </div>
-            </div>
-            
-            <div class="principle-item">
-              <div class="principle-icon">🤝</div>
-              <div class="principle-content">
-                <h4 data-i18n="principle_collaboration_title">Collaborative Iteration</h4>
-                <p data-i18n="principle_collaboration_desc">Great audio comes from feedback loops with designers, programmers, and players. I document my work, explain technical choices, and iterate based on playtesting—audio is never "done" until the game ships.</p>
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">C#</span>
+                  <span class="skill-level">Advanced</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Blueprints (UE)</span>
+                  <span class="skill-level">Advanced</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Real-time DSP</span>
+                  <span class="skill-level">Intermediate</span>
+                </div>
+                <div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  
-  <!-- Stats -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title" data-i18n="about_stats_title">By The Numbers</h2>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-number">12+</div>
-          <div class="stat-label" data-i18n="stat_projects">Projects</div>
+    </section>
+    
+    <section class="timeline">
+      <div class="container">
+        <h2 data-i18n="about_journey_title">Experience</h2>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2024 — Present</div>
+          <div class="timeline-content">
+            <h3 data-i18n="timeline_dae_title">Game Audio Development</h3>
+            <p data-i18n="timeline_dae_desc">Audio integration, Wwise/FMOD middleware, and professional game audio pipelines at Howest Belgium.</p>
+          </div>
         </div>
-        <div class="stat-card">
-          <div class="stat-number">4</div>
-          <div class="stat-label" data-i18n="stat_tools">Audio Tools</div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-content">
+            <h3 data-i18n="timeline_middleware_title">Advanced Audio Middleware</h3>
+            <p data-i18n="timeline_middleware_desc">Professional Wwise & FMOD integration in Unreal Engine and Unity. Spatial audio, dynamic mixing, and Game Syncs implementation for AAA-quality game audio pipelines.</p>
+          </div>
         </div>
-        <div class="stat-card">
-          <div class="stat-number">3</div>
-          <div class="stat-label" data-i18n="stat_languages">Languages</div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2020</div>
+          <div class="timeline-content">
+            <h3 data-i18n="timeline_music_title">Music Production</h3>
+            <p data-i18n="timeline_music_desc">Releasing original music on streaming platforms. Electronic and film scoring.</p>
+          </div>
         </div>
-        <div class="stat-card">
-          <div class="stat-number">100%</div>
-          <div class="stat-label" data-i18n="stat_passion">Passion</div>
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2010</div>
+          <div class="timeline-content">
+            <h3 data-i18n="timeline_piano_title">Classical Training</h3>
+            <p data-i18n="timeline_piano_desc">Piano education at State Music School. Foundation in music theory.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
   
-  <!-- Footer -->
-  <footer class="footer">
+  <footer>
     <div class="container">
-      <p>&copy; 2025 Igor Szuniewicz. All rights reserved.</p>
+      <p>© 2025 Igor Szuniewicz. All rights reserved.</p>
     </div>
   </footer>
   
-  <!-- Scripts -->
+  <!-- Translation System -->
+  <script src="assets/js/i18n/translate.js"></script>
   <script>
-    // Single header scroll effect implementation
+    // Initialize translation system
+    const translator = new Translator('about');
+    translator.init().then(() => {
+      console.log('Translations loaded successfully');
+    }).catch(err => {
+      console.error('Translation loading failed:', err);
+    });
+  </script>
+  
+  <script>
+    // Header scroll effect
     function initHeaderScrollEffect() {
       const header = document.getElementById('header');
       if (!header) return;
@@ -1012,16 +865,75 @@
         }
       }
       
-      // Add the scroll listener
       window.addEventListener('scroll', handleHeaderScroll, { passive: true });
-      
-      // Call once immediately to set correct initial state
       handleHeaderScroll();
     }
     
-    // Initialize after DOM is ready
+    // Skill bars animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const fills = entry.target.querySelectorAll('.skill-fill');
+          fills.forEach(fill => {
+            const width = fill.style.width;
+            fill.style.width = '0';
+            setTimeout(() => fill.style.width = width, 100);
+          });
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    document.querySelectorAll('.skill-category').forEach(el => observer.observe(el));
+    
     document.addEventListener('DOMContentLoaded', initHeaderScrollEffect);
+    
+    // Language switcher functionality
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const lang = this.getAttribute('data-lang');
+        if (translator) {
+          translator.changeLanguage(lang);
+          // Update active state
+          document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll(`[data-lang="${lang}"]`).forEach(b => b.classList.add('active'));
+        }
+      });
+    });
+    
+    // Set initial active language
+    const currentLang = localStorage.getItem('language') || 'en';
+    document.querySelectorAll(`[data-lang="${currentLang}"]`).forEach(btn => btn.classList.add('active'));
+    
+    // Mobile menu toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    
+    if (mobileMenuToggle && mobileMenu && mobileMenuOverlay) {
+      mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+      });
+      
+      mobileMenuOverlay.addEventListener('click', () => {
+        mobileMenuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      
+      // Close menu on link click
+      document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenuToggle.classList.remove('active');
+          mobileMenu.classList.remove('active');
+          mobileMenuOverlay.classList.remove('active');
+          document.body.style.overflow = '';
+        });
+      });
+    }
   </script>
-  <script src="assets/js/translations.js"></script>
 </body>
 </html>
