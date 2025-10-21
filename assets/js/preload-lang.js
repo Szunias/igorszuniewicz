@@ -16,7 +16,7 @@
   const style = document.createElement('style');
   style.id = 'preload-style';
   style.textContent = `
-    html:not(.translations-ready) {
+    html:not(.translations-ready):not(.smooth-nav-ready) {
       opacity: 0 !important;
     }
     html.translations-ready {
@@ -26,6 +26,10 @@
     /* Prevent FOUC for language buttons */
     .lang-btn:not(.active) {
       opacity: 0.6;
+    }
+    /* Współpraca z smooth navigation */
+    html.smooth-nav-ready:not(.translations-ready) {
+      opacity: 0 !important;
     }
   `;
   

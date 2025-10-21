@@ -41,13 +41,18 @@
     requestAnimationFrame(() => {
       document.documentElement.classList.add('translations-ready');
       
-      // Remove preload style after transition completes
-      setTimeout(() => {
-        const preloadStyle = document.getElementById('preload-style');
-        if (preloadStyle) preloadStyle.remove();
-      }, 150);
+      // Remove preload style after transition completes (tylko jeśli nie ma smooth navigation)
+      if (!document.documentElement.classList.contains('smooth-nav-ready')) {
+        setTimeout(() => {
+          const preloadStyle = document.getElementById('preload-style');
+          if (preloadStyle) preloadStyle.remove();
+        }, 150);
+      }
     });
   }
+  
+  // Export dla smooth navigation
+  window.setLanguage = setLanguage;
 
   // Detect which JSON file to load based on current page
   function getTranslationFile() {

@@ -1,16 +1,25 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="en" style="background:#000!important">
 
 <head>
-  <!-- Basic Meta Tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#000000" />
+  
+  <!-- CRITICAL: Prevent white flash - inline styles load FIRST -->
+  <style>
+    html{color-scheme:dark;background:#000!important}
+    body{background:#000!important;margin:0;padding:0}
+  </style>
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="DENY" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
   <!-- Preload language to prevent flicker -->
   <script src="assets/js/preload-lang.js"></script>
+  
+  <!-- Smooth navigation - prevents white flash during page transitions -->
+  <script src="assets/js/simple-smooth-nav.js"></script>
 
   <!-- Primary Meta Tags -->
   <title>Igor Szuniewicz — Audio Designer & Developer | Game Audio, Interactive Music, DSP</title>
@@ -2117,8 +2126,6 @@
   </script>
   <script src="assets/js/components/custom-cursor.js"></script>
   <script src="assets/js/translations.js"></script>
-  <script src="assets/js/page-transitions.js"></script>
-  <script src="assets/js/smart-prefetch.js"></script>
   <!-- <script src="assets/js/components/enhancements.js"></script> BREAKS HEADER -->
 
 </body>
