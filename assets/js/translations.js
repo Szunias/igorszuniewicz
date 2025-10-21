@@ -37,10 +37,16 @@
     // Update HTML lang attribute
     document.documentElement.setAttribute('lang', lang);
     
-    // Mark translations as ready and show page
-    document.documentElement.classList.add('translations-ready');
-    const preloadStyle = document.getElementById('preload-style');
-    if (preloadStyle) preloadStyle.remove();
+    // Mark translations as ready and show page smoothly
+    requestAnimationFrame(() => {
+      document.documentElement.classList.add('translations-ready');
+      
+      // Remove preload style after transition completes
+      setTimeout(() => {
+        const preloadStyle = document.getElementById('preload-style');
+        if (preloadStyle) preloadStyle.remove();
+      }, 150);
+    });
   }
 
   // Detect which JSON file to load based on current page

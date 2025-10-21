@@ -197,7 +197,7 @@
     "id": "cathedral_of_time",
     "title": "Cathedral Of Time",
     "artist": "Igor Szuniewicz",
-    "cover": "assets/images/covers/project5.png",
+    "cover": "assets/images/covers/CathedralOfTime.png",
     "tags": [
       "film",
       "electronic"
@@ -221,7 +221,7 @@
     "id": "inflow",
     "title": "Inflow",
     "artist": "Igor Szuniewicz",
-    "cover": "assets/images/covers/project5.png",
+    "cover": "assets/images/covers/Inflow.png",
     "tags": [
       "electronic",
       "single"
@@ -245,7 +245,7 @@
     "id": "edge_of_life",
     "title": "Edge Of Life",
     "artist": "Igor Szuniewicz",
-    "cover": "assets/images/covers/project5.png",
+    "cover": "assets/images/covers/EdgeOfLife.png",
     "tags": [
       "film",
       "electronic"
@@ -269,7 +269,7 @@
     "id": "ray_credits",
     "title": "Ray — Credits Theme",
     "artist": "Igor Szuniewicz",
-    "cover": "assets/images/covers/project5.png",
+    "cover": "assets/images/covers/RayCredits.png",
     "tags": [
       "film"
     ],
@@ -292,7 +292,7 @@
     "id": "richter_main",
     "title": "Richter — Main Theme",
     "artist": "Igor Szuniewicz",
-    "cover": "assets/images/covers/project5.png",
+    "cover": "assets/images/covers/RichterTheme.png",
     "tags": [
       "film"
     ],
@@ -315,7 +315,7 @@
     "id": "run_main",
     "title": "Run — Main Theme",
     "artist": "Igor Szuniewicz",
-    "cover": "assets/images/covers/project5.png",
+    "cover": "assets/images/covers/RunTheme.png",
     "tags": [
       "film"
     ],
@@ -338,7 +338,7 @@
     "id": "xian_clash",
     "title": "Xian Clash — Main Theme",
     "artist": "Igor Szuniewicz",
-    "cover": "assets/images/covers/project5.png",
+    "cover": "assets/images/covers/XianClash.png",
     "tags": [
       "film"
     ],
@@ -361,7 +361,7 @@
     "id": "psy_trance",
     "title": "Psychedelic Journey",
     "artist": "Igor Szuniewicz",
-    "cover": "assets/images/covers/project5.png",
+    "cover": "assets/images/covers/PsychedelicJourney.png",
     "tags": [
       "electronic",
       "techno"

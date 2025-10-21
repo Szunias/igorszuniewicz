@@ -54,16 +54,29 @@
   }
 
   // Apply entry class to main element instead of body
-  window.addEventListener('DOMContentLoaded', () => {
+  // Wait for translations to be ready before showing transition
+  function initPageEntry() {
     const lastType = sessionStorage.getItem('pageTransitionType') || DEFAULT_TYPE;
-    const main = document.querySelector('main');
+    const main = document.querySelector('main') || document.body;
+    
     if (main) {
       main.classList.add(`page-entering--${lastType}`);
+      
+      // Use RAF for smooth animation
       requestAnimationFrame(() => {
-        main.classList.remove(`page-entering--${lastType}`);
+        requestAnimationFrame(() => {
+          main.classList.remove(`page-entering--${lastType}`);
+        });
       });
     }
-  });
+  }
+  
+  // Wait for both DOM and translations
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPageEntry);
+  } else {
+    initPageEntry();
+  }
 
   // Intercept internal navigations
   document.addEventListener('click', (e) => {
