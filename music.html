@@ -1085,6 +1085,10 @@
         item.className = 'playlist-item';
         if (globalIndex === currentTrackIndex) item.classList.add('active');
         
+        const durationEl = document.createElement('div');
+        durationEl.className = 'playlist-duration';
+        durationEl.textContent = '--:--';
+        
         item.innerHTML = `
           <div class="playlist-cover">
             <img src="${track.cover}" alt="${track.title}">
@@ -1093,8 +1097,18 @@
             <div class="playlist-track-title">${track.title}</div>
             <div class="playlist-track-artist">${track.artist}</div>
           </div>
-          <div class="playlist-duration">--:--</div>
         `;
+        
+        item.appendChild(durationEl);
+        
+        // Load duration from audio metadata
+        const tempAudio = new Audio();
+        const mp3Source = track.sources.find(s => s.type === 'audio/mpeg');
+        const source = mp3Source || track.sources[0];
+        tempAudio.src = source.url;
+        tempAudio.addEventListener('loadedmetadata', () => {
+          durationEl.textContent = formatTime(tempAudio.duration);
+        });
         
         item.addEventListener('click', () => {
           currentTrackIndex = globalIndex;
