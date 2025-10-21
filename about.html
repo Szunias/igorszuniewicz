@@ -408,6 +408,51 @@
       font-weight: 400;
     }
     
+    /* Value Propositions */
+    .value-props {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+      padding: 2rem 0;
+    }
+    
+    .value-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 2rem;
+      background: rgba(96, 165, 250, 0.03);
+      border: 1px solid rgba(96, 165, 250, 0.1);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .value-item:hover {
+      background: rgba(96, 165, 250, 0.06);
+      border-color: rgba(96, 165, 250, 0.2);
+      transform: translateY(-4px);
+    }
+    
+    .value-icon {
+      font-size: 2.5rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    
+    .value-content h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    
+    .value-content p {
+      font-size: 0.95rem;
+      color: #9ca3af;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
     .stats {
       display: flex;
       gap: 60px;
@@ -691,6 +736,11 @@
       .avatar { width: 100px; height: 100px; }
       h1 { font-size: 40px; }
       .subtitle { font-size: 17px; }
+      .value-props { grid-template-columns: 1fr; gap: 1.5rem; }
+      .value-item { padding: 1.5rem; }
+      .value-icon { font-size: 2rem; }
+      .value-content h3 { font-size: 1rem; }
+      .value-content p { font-size: 0.9rem; }
       .stats { flex-wrap: wrap; gap: 32px; }
       .stat-number { font-size: 32px; }
       .skill-items { grid-template-columns: 1fr; }
@@ -776,20 +826,46 @@
           </div>
           <div class="hero-text">
             <h1 data-i18n="about_role">Audio Designer<br>& Developer</h1>
-            <p class="subtitle" data-i18n="about_bio">Combining technical precision with creative intuition to craft immersive soundscapes and interactive audio systems for modern games.</p>
+            <p class="subtitle" data-i18n="about_bio">Specialized in building scalable interactive audio systems and custom tools that streamline game audio workflows. Expert in Wwise, FMOD, and Unreal Engine with proven ability to deliver production-ready solutions.</p>
           </div>
+          
+          <!-- Value Proposition Highlights -->
+          <div class="value-props">
+            <div class="value-item">
+              <div class="value-icon">🎯</div>
+              <div class="value-content">
+                <h3 data-i18n="value_systems_title">Interactive Systems</h3>
+                <p data-i18n="value_systems_desc">Built adaptive music systems and dynamic audio engines that respond to gameplay in real-time</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">🛠️</div>
+              <div class="value-content">
+                <h3 data-i18n="value_tools_title">Pipeline Optimization</h3>
+                <p data-i18n="value_tools_desc">Developed custom tools (Wwise Unreal Fixer, Unreal Rebuilder) that automate workflows and reduce iteration time</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">⚡</div>
+              <div class="value-content">
+                <h3 data-i18n="value_technical_title">Technical Problem Solving</h3>
+                <p data-i18n="value_technical_desc">Bridge between audio and engineering teams with C++, Python, and Blueprint scripting expertise</p>
+              </div>
+            </div>
+          </div>
+          
           <div class="stats">
             <div class="stat-item">
               <span class="stat-number">12+</span>
-              <span class="stat-label" data-i18n="stat_projects">Projects</span>
+              <span class="stat-label" data-i18n="stat_projects">Shipped Projects</span>
             </div>
             <div class="stat-item">
               <span class="stat-number">4</span>
-              <span class="stat-label" data-i18n="stat_tools">Tools Built</span>
+              <span class="stat-label" data-i18n="stat_tools">Production Tools</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">3</span>
-              <span class="stat-label" data-i18n="stat_languages">Languages</span>
+              <span class="stat-number">100%</span>
+              <span class="stat-label" data-i18n="stat_delivery">On-Time Delivery</span>
             </div>
           </div>
         </div>

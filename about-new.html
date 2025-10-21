@@ -1,0 +1,633 @@
+<!DOCTYPE HTML>
+<html lang="en" style="background:#000!important">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  
+  <!-- CRITICAL: Prevent white flash - inline styles load FIRST -->
+  <style>
+    html{color-scheme:dark;background:#000!important}
+    body{background:#000!important;margin:0;padding:0}
+  </style>
+  
+  <title>About — Igor Szuniewicz</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  
+  <!-- Preload language to prevent flicker -->
+  <script src="assets/js/preload-lang.js"></script>
+  
+  <!-- Smooth navigation - prevents white flash during page transitions -->
+  <script src="assets/js/simple-smooth-nav.js"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* === RESET === */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* === BASE === */
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #000;
+      color: #e0e6ed;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* === BACKGROUND === */
+    .bg-gradient {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(ellipse at 30% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+                  radial-gradient(ellipse at 70% 90%, rgba(139, 92, 246, 0.06) 0%, transparent 40%),
+                  linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #050508 100%);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    /* === HEADER === */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem 0;
+      backdrop-filter: blur(10px);
+      background: rgba(10, 14, 18, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    
+    .nav-links a {
+      color: #9ca3af;
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: #60a5fa;
+    }
+    
+    .lang-switcher {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(30, 41, 59, 0.6);
+      padding: 0.4rem;
+      border-radius: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .lang-btn {
+      padding: 0.4rem 0.8rem;
+      background: transparent;
+      border: none;
+      color: #9ca3af;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .lang-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .lang-btn.active {
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      color: #fff;
+    }
+    
+    /* === MOBILE MENU === */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    
+    .mobile-menu-toggle span {
+      width: 25px;
+      height: 2px;
+      background: #fff;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+    
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 350px;
+      height: 100vh;
+      background: rgba(10, 14, 18, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 6rem 2rem 2rem;
+      transition: right 0.4s ease;
+      z-index: 999;
+      border-left: 1px solid rgba(96, 165, 250, 0.2);
+    }
+    
+    .mobile-menu.active {
+      right: 0;
+    }
+    
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 998;
+    }
+    
+    .mobile-menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .mobile-nav-links a {
+      display: block;
+      color: #e0e6ed;
+      text-decoration: none;
+      font-size: 1.25rem;
+      font-weight: 500;
+      padding: 1rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-nav-links a:hover {
+      background: rgba(96, 165, 250, 0.1);
+      color: #60a5fa;
+    }
+    
+    .mobile-lang-switcher {
+      display: flex;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: rgba(30, 41, 59, 0.6);
+      border-radius: 12px;
+    }
+    
+    .mobile-lang-switcher .lang-btn {
+      flex: 1;
+      padding: 0.75rem;
+      font-size: 1rem;
+    }
+    
+    /* === HERO SECTION === */
+    .hero {
+      padding: 10rem 0 4rem;
+      text-align: center;
+    }
+    
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid rgba(96, 165, 250, 0.3);
+      margin-bottom: 2rem;
+      object-fit: cover;
+    }
+    
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero .subtitle {
+      font-size: 1.25rem;
+      color: #9ca3af;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+    
+    /* === VALUE PROPS === */
+    .value-props {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 4rem 0;
+    }
+    
+    .value-card {
+      padding: 2rem;
+      background: rgba(96, 165, 250, 0.03);
+      border: 1px solid rgba(96, 165, 250, 0.1);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .value-card:hover {
+      background: rgba(96, 165, 250, 0.06);
+      border-color: rgba(96, 165, 250, 0.2);
+      transform: translateY(-4px);
+    }
+    
+    .value-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .value-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    
+    .value-card p {
+      font-size: 0.95rem;
+      color: #9ca3af;
+      line-height: 1.6;
+    }
+    
+    /* === SKILLS SECTION === */
+    .skills-section {
+      padding: 4rem 0;
+    }
+    
+    .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #fff;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .skill-category {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(96, 165, 250, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    
+    .skill-category h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #60a5fa;
+      margin-bottom: 1.5rem;
+    }
+    
+    .skill-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .skill-item:last-child {
+      border-bottom: none;
+    }
+    
+    .skill-name {
+      font-weight: 500;
+      color: #e0e6ed;
+    }
+    
+    .skill-level {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      padding: 0.25rem 0.75rem;
+      background: rgba(96, 165, 250, 0.1);
+      border-radius: 12px;
+    }
+    
+    /* === STATS === */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      padding: 4rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      margin: 4rem 0;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #60a5fa;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .nav-links, .lang-switcher {
+        display: none;
+      }
+      
+      .mobile-menu-toggle {
+        display: flex;
+      }
+      
+      .hero {
+        padding: 8rem 0 3rem;
+      }
+      
+      .value-props {
+        grid-template-columns: 1fr;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-gradient"></div>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="logo">Igor Szuniewicz</a>
+        
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav_about">About</a></li>
+          <li><a href="projects/index.html" data-i18n="nav_projects">Projects</a></li>
+          <li><a href="music.html" data-i18n="nav_music">Music</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+        
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="pl">PL</button>
+          <button class="lang-btn" data-lang="nl">NL</button>
+        </div>
+        
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+      <li><a href="about.html" data-i18n="nav_about">About</a></li>
+      <li><a href="projects/index.html" data-i18n="nav_projects">Projects</a></li>
+      <li><a href="music.html" data-i18n="nav_music">Music</a></li>
+      <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+    </ul>
+    <div class="mobile-lang-switcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="pl">PL</button>
+      <button class="lang-btn" data-lang="nl">NL</button>
+    </div>
+  </div>
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <picture>
+          <source srcset="cv/pieknyportret_square.webp" type="image/webp">
+          <img src="cv/pieknyportret_square.png" alt="Igor Szuniewicz" class="avatar">
+        </picture>
+        
+        <h1 data-i18n="about_role">Audio Designer & Developer</h1>
+        <p class="subtitle" data-i18n="about_bio">Specialized in building scalable interactive audio systems and custom tools that streamline game audio workflows. Expert in Wwise, FMOD, and Unreal Engine with proven ability to deliver production-ready solutions.</p>
+        
+        <!-- Value Propositions -->
+        <div class="value-props">
+          <div class="value-card">
+            <div class="value-icon">🎯</div>
+            <h3 data-i18n="value_systems_title">Interactive Systems</h3>
+            <p data-i18n="value_systems_desc">Built adaptive music systems and dynamic audio engines that respond to gameplay in real-time</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🛠️</div>
+            <h3 data-i18n="value_tools_title">Pipeline Optimization</h3>
+            <p data-i18n="value_tools_desc">Developed custom tools (Wwise Unreal Fixer, Unreal Rebuilder) that automate workflows and reduce iteration time</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">⚡</div>
+            <h3 data-i18n="value_technical_title">Technical Problem Solving</h3>
+            <p data-i18n="value_technical_desc">Bridge between audio and engineering teams with C++, Python, and Blueprint scripting expertise</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Stats -->
+    <section class="container">
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-number">12+</span>
+          <span class="stat-label" data-i18n="stat_projects">Shipped Projects</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">4</span>
+          <span class="stat-label" data-i18n="stat_tools">Production Tools</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">100%</span>
+          <span class="stat-label" data-i18n="stat_delivery">On-Time Delivery</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section class="skills-section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="about_tech_title">Technical Expertise</h2>
+        
+        <div class="skills-grid">
+          <!-- Game Audio -->
+          <div class="skill-category">
+            <h3 data-i18n="tech_middleware_title">Game Audio</h3>
+            <div class="skill-item">
+              <span class="skill-name">Wwise</span>
+              <span class="skill-level" data-i18n="level_expert">Expert</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">FMOD Studio</span>
+              <span class="skill-level" data-i18n="level_expert">Expert</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Unreal Engine 5</span>
+              <span class="skill-level" data-i18n="level_advanced">Advanced</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Unity</span>
+              <span class="skill-level" data-i18n="level_advanced">Advanced</span>
+            </div>
+          </div>
+          
+          <!-- Production -->
+          <div class="skill-category">
+            <h3 data-i18n="tech_production_title">Production & DAWs</h3>
+            <div class="skill-item">
+              <span class="skill-name">Reaper</span>
+              <span class="skill-level" data-i18n="level_expert">Expert</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Logic Pro</span>
+              <span class="skill-level" data-i18n="level_expert">Expert</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Studio One</span>
+              <span class="skill-level" data-i18n="level_advanced">Advanced</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Sound Design</span>
+              <span class="skill-level" data-i18n="level_expert">Expert</span>
+            </div>
+          </div>
+          
+          <!-- Development -->
+          <div class="skill-category">
+            <h3 data-i18n="tech_scripting_title">Development</h3>
+            <div class="skill-item">
+              <span class="skill-name">Python</span>
+              <span class="skill-level" data-i18n="level_intermediate">Intermediate</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">C#</span>
+              <span class="skill-level" data-i18n="level_intermediate">Intermediate</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Blueprints</span>
+              <span class="skill-level" data-i18n="level_advanced">Advanced</span>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">C++</span>
+              <span class="skill-level" data-i18n="level_intermediate">Intermediate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Scripts -->
+  <script src="assets/js/translations.js"></script>
+  <script>
+    // Mobile menu toggle
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+    
+    mobileToggle.addEventListener('click', () => {
+      mobileToggle.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      mobileOverlay.classList.toggle('active');
+    });
+    
+    mobileOverlay.addEventListener('click', () => {
+      mobileToggle.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+    });
+    
+    // Language switcher
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (typeof setLanguage === 'function') {
+          setLanguage(btn.dataset.lang);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
