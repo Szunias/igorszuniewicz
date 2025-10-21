@@ -1092,6 +1092,7 @@
         console.log('Tracks loaded:', data.length);
         tracks = data;
         renderPlaylist();
+        preloadAllDurations(); // Load all durations in background
         if (tracks.length > 0) {
           loadTrack(0);
           playerBar.classList.add('visible');
@@ -1104,10 +1105,44 @@
 
     // Cache for track durations to avoid recreating Audio objects
     const trackDurations = new Map();
+    const durationElements = new Map(); // Store references to duration elements
+    
+    // Preload all track durations in background
+    function preloadAllDurations() {
+      tracks.forEach((track, index) => {
+        if (!trackDurations.has(index)) {
+          const tempAudio = new Audio();
+          const mp3Source = track.sources.find(s => s.type === 'audio/mpeg');
+          const source = mp3Source || track.sources[0];
+          tempAudio.preload = 'metadata';
+          
+          tempAudio.addEventListener('loadedmetadata', () => {
+            if (!isNaN(tempAudio.duration) && isFinite(tempAudio.duration)) {
+              const formattedTime = formatTime(tempAudio.duration);
+              trackDurations.set(index, formattedTime);
+              
+              // Update any visible duration elements
+              const durationEl = durationElements.get(index);
+              if (durationEl) {
+                durationEl.textContent = formattedTime;
+              }
+            }
+            tempAudio.src = '';
+          }, { once: true });
+          
+          tempAudio.addEventListener('error', () => {
+            tempAudio.src = '';
+          }, { once: true });
+          
+          tempAudio.src = source.url;
+        }
+      });
+    }
 
     function renderPlaylist() {
       const playlist = document.getElementById('playlist');
       playlist.innerHTML = '';
+      durationElements.clear();
 
       const filteredTracks = currentFilter === 'all'
         ? tracks
@@ -1121,35 +1156,15 @@
 
         const durationEl = document.createElement('div');
         durationEl.className = 'playlist-duration';
+        
+        // Store reference to duration element
+        durationElements.set(globalIndex, durationEl);
 
         // Check if we already have the duration cached
         if (trackDurations.has(globalIndex)) {
           durationEl.textContent = trackDurations.get(globalIndex);
         } else {
           durationEl.textContent = '--:--';
-
-          // Load duration from audio metadata only if not cached
-          const tempAudio = new Audio();
-          const mp3Source = track.sources.find(s => s.type === 'audio/mpeg');
-          const source = mp3Source || track.sources[0];
-          tempAudio.preload = 'metadata';
-          tempAudio.src = source.url;
-
-          tempAudio.addEventListener('loadedmetadata', () => {
-            if (!isNaN(tempAudio.duration) && isFinite(tempAudio.duration)) {
-              const formattedTime = formatTime(tempAudio.duration);
-              durationEl.textContent = formattedTime;
-              trackDurations.set(globalIndex, formattedTime);
-            }
-            // Clean up to prevent memory leak
-            tempAudio.src = '';
-          });
-
-          tempAudio.addEventListener('error', () => {
-            durationEl.textContent = '--:--';
-            // Clean up on error
-            tempAudio.src = '';
-          });
         }
 
         item.innerHTML = `

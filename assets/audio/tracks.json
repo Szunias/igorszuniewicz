@@ -192,5 +192,193 @@
       "en": "One of my heaviest tracks — industrial metal / hard rock: heavy guitars, massive groove and raw energy.",
       "nl": "Een van mijn hardste tracks — industrial metal / hard rock: zware gitaren, massieve groove en rauwe energie."
     }
+  },
+  {
+    "id": "cathedral_of_time",
+    "title": "Cathedral Of Time",
+    "artist": "Igor Szuniewicz",
+    "cover": "assets/images/covers/project5.png",
+    "tags": [
+      "film",
+      "electronic"
+    ],
+    "length": 0,
+    "date": "2024-06-01",
+    "year": 2024,
+    "sources": [
+      {
+        "url": "assets/audio/tracks/Igor Szuniewicz - Cathedral Of Time.mp3",
+        "type": "audio/mpeg"
+      }
+    ],
+    "desc": {
+      "pl": "Atmosferyczny utwór filmowy z przestrzennymi padami i tajemniczą melodią.",
+      "en": "Atmospheric cinematic track with spacious pads and mysterious melody.",
+      "nl": "Atmosferische filmtrack met ruimtelijke pads en mysterieuze melodie."
+    }
+  },
+  {
+    "id": "inflow",
+    "title": "Inflow",
+    "artist": "Igor Szuniewicz",
+    "cover": "assets/images/covers/project5.png",
+    "tags": [
+      "electronic",
+      "single"
+    ],
+    "length": 0,
+    "date": "2024-03-01",
+    "year": 2024,
+    "sources": [
+      {
+        "url": "assets/audio/tracks/Igor-Szuniewicz-Inflow.mp3",
+        "type": "audio/mpeg"
+      }
+    ],
+    "desc": {
+      "pl": "Płynny elektroniczny utwór z organicznymi teksturami i ewoluującymi syntezatorami.",
+      "en": "Flowing electronic piece with organic textures and evolving synthesizers.",
+      "nl": "Vloeiend elektronisch stuk met organische texturen en evoluerende synthesizers."
+    }
+  },
+  {
+    "id": "edge_of_life",
+    "title": "Edge Of Life",
+    "artist": "Igor Szuniewicz",
+    "cover": "assets/images/covers/project5.png",
+    "tags": [
+      "film",
+      "electronic"
+    ],
+    "length": 0,
+    "date": "2024-05-01",
+    "year": 2024,
+    "sources": [
+      {
+        "url": "assets/audio/tracks/EdgeOfLife.mp3",
+        "type": "audio/mpeg"
+      }
+    ],
+    "desc": {
+      "pl": "Dramatyczny utwór filmowy z narastającym napięciem i emocjonalną kulminacją.",
+      "en": "Dramatic cinematic piece with building tension and emotional climax.",
+      "nl": "Dramatisch filmstuk met opbouwende spanning en emotionele climax."
+    }
+  },
+  {
+    "id": "ray_credits",
+    "title": "Ray — Credits Theme",
+    "artist": "Igor Szuniewicz",
+    "cover": "assets/images/covers/project5.png",
+    "tags": [
+      "film"
+    ],
+    "length": 0,
+    "date": "2024-04-01",
+    "year": 2024,
+    "sources": [
+      {
+        "url": "assets/audio/tracks/RayCreditsTheme.mp3",
+        "type": "audio/mpeg"
+      }
+    ],
+    "desc": {
+      "pl": "Motyw końcowych napisów do projektu Ray — refleksyjny i emocjonalny.",
+      "en": "Credits theme for Ray project — reflective and emotional.",
+      "nl": "Credits thema voor Ray project — reflectief en emotioneel."
+    }
+  },
+  {
+    "id": "richter_main",
+    "title": "Richter — Main Theme",
+    "artist": "Igor Szuniewicz",
+    "cover": "assets/images/covers/project5.png",
+    "tags": [
+      "film"
+    ],
+    "length": 0,
+    "date": "2024-02-01",
+    "year": 2024,
+    "sources": [
+      {
+        "url": "assets/audio/tracks/RichterMainTheme.mp3",
+        "type": "audio/mpeg"
+      }
+    ],
+    "desc": {
+      "pl": "Główny motyw muzyczny do projektu Richter — epicka orkiestracja.",
+      "en": "Main theme for Richter project — epic orchestration.",
+      "nl": "Hoofdthema voor Richter project — epische orkestratie."
+    }
+  },
+  {
+    "id": "run_main",
+    "title": "Run — Main Theme",
+    "artist": "Igor Szuniewicz",
+    "cover": "assets/images/covers/project5.png",
+    "tags": [
+      "film"
+    ],
+    "length": 0,
+    "date": "2024-01-01",
+    "year": 2024,
+    "sources": [
+      {
+        "url": "assets/audio/tracks/RunMainTheme.mp3",
+        "type": "audio/mpeg"
+      }
+    ],
+    "desc": {
+      "pl": "Główny motyw do projektu Run — dynamiczny i pełen energii.",
+      "en": "Main theme for Run project — dynamic and energetic.",
+      "nl": "Hoofdthema voor Run project — dynamisch en energiek."
+    }
+  },
+  {
+    "id": "xian_clash",
+    "title": "Xian Clash — Main Theme",
+    "artist": "Igor Szuniewicz",
+    "cover": "assets/images/covers/project5.png",
+    "tags": [
+      "film"
+    ],
+    "length": 0,
+    "date": "2023-12-01",
+    "year": 2023,
+    "sources": [
+      {
+        "url": "assets/audio/tracks/XianClashMainTheme.mp3",
+        "type": "audio/mpeg"
+      }
+    ],
+    "desc": {
+      "pl": "Główny motyw do Xian Clash — intensywny i akcyjny.",
+      "en": "Main theme for Xian Clash — intense and action-packed.",
+      "nl": "Hoofdthema voor Xian Clash — intens en actievol."
+    }
+  },
+  {
+    "id": "psy_trance",
+    "title": "Psychedelic Journey",
+    "artist": "Igor Szuniewicz",
+    "cover": "assets/images/covers/project5.png",
+    "tags": [
+      "electronic",
+      "techno"
+    ],
+    "length": 0,
+    "date": "2023-11-01",
+    "year": 2023,
+    "sources": [
+      {
+        "url": "assets/audio/tracks/psy(2).mp3",
+        "type": "audio/mpeg"
+      }
+    ],
+    "desc": {
+      "pl": "Psychodeliczny utwór elektroniczny z hipnotycznymi rytmami i tripowymi syntezatorami.",
+      "en": "Psychedelic electronic track with hypnotic rhythms and trippy synthesizers.",
+      "nl": "Psychedelische elektronische track met hypnotische ritmes en trippy synthesizers."
+    }
   }
 ]
