@@ -1,216 +1,148 @@
 <!DOCTYPE HTML>
 <html lang="en" style="background:#000!important">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  
+
   <!-- CRITICAL: Prevent white flash - inline styles load FIRST -->
   <style>
-    html{color-scheme:dark;background:#000!important}
-    body{background:#000!important;margin:0;padding:0}
+    html {
+      color-scheme: dark;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0.1) 40%, transparent 70%),
+        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.35) 0%, rgba(139, 92, 246, 0.08) 40%, transparent 70%),
+        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.25) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 80%),
+        #000 !important;
+    }
+
+    body {
+      margin: 0;
+      padding: 0
+    }
   </style>
+
   <title>About — Igor Szuniewicz</title>
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
-  
+
   <!-- Preload language to prevent flicker -->
   <script src="assets/js/preload-lang.js"></script>
-  
-  <!-- Smooth navigation - MUST load early to prevent white flash -->
+
+  <!-- Smooth navigation - prevents white flash during page transitions -->
   <script src="assets/js/simple-smooth-nav.js"></script>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
   <style>
-    * {
+    /* === RESET === */
+    *,
+    *::before,
+    *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
+    /* === BASE === */
     html {
       scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
     }
-    
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #000;
-      color: #f5f5f7;
-      line-height: 1.5;
+      color: #e0e6ed;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* === BACKGROUND === */
+    .bg-gradient {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 0 !important;
+      pointer-events: none !important;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(0, 150, 255, 0.08) 0%, rgba(0, 150, 255, 0.02) 40%, transparent 70%),
+        radial-gradient(circle at 80% 80%, rgba(150, 50, 255, 0.07) 0%, rgba(150, 50, 255, 0.02) 40%, transparent 70%),
+        radial-gradient(circle at 50% 50%, rgba(255, 0, 150, 0.06) 0%, rgba(255, 0, 150, 0.01) 50%, transparent 80%),
+        #000 !important;
     }
     
-    /* === PREMIUM BACKGROUND === */
-    .bg-gradient {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -4;
-      background: 
-        radial-gradient(ellipse at 30% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
-        radial-gradient(ellipse at 70% 90%, rgba(139, 92, 246, 0.06) 0%, transparent 40%),
-        linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #050508 100%);
+    .header, .hero, section, main {
+      position: relative;
+      z-index: 1;
     }
     
     .bg-gradient::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
-      opacity: 0.5;
-      mix-blend-mode: overlay;
-    }
-    
-    .bg-grid {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
       background-image: 
-        linear-gradient(rgba(96, 165, 250, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(96, 165, 250, 0.03) 1px, transparent 1px);
-      background-size: 100px 100px;
-      z-index: -3;
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(96, 165, 250, 0.03) 2px, rgba(96, 165, 250, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(96, 165, 250, 0.03) 2px, rgba(96, 165, 250, 0.03) 4px);
       opacity: 0.4;
-      mask-image: radial-gradient(ellipse at center, black 0%, transparent 90%);
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
     }
-    
-    .bg-orbs {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      overflow: hidden;
-      opacity: 0.15;
-    }
-    
-    .bg-orbs::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: 
-        linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.1) 50%, transparent 100%),
-        linear-gradient(0deg, transparent 0%, rgba(139, 92, 246, 0.08) 50%, transparent 100%);
-      animation: subtleRotate 60s linear infinite;
-    }
-    
-    @keyframes subtleRotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    
+
     .container {
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
-      position: relative;
-      z-index: 1;
     }
-    
+
     /* === HEADER === */
     .header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 1010;
+      z-index: 1000;
       padding: 1.5rem 0;
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background: rgba(10, 14, 18, 0.85);
-      border-bottom: 1px solid rgba(96, 165, 250, 0.1);
-      transition: all 0.3s ease;
+      background: rgba(10, 14, 18, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
-    
-    .header.scrolled {
-      padding: 1rem 0;
-      background: rgba(10, 14, 18, 0.95);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-      border-bottom: 1px solid rgba(96, 165, 250, 0.15);
-    }
-    
+
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      margin-left: auto;
-    }
-    
+
     .logo {
       font-family: 'Sora', sans-serif;
       font-size: 1.5rem;
       font-weight: 700;
       color: #fff;
       text-decoration: none;
-      letter-spacing: -0.02em;
-      transition: opacity 0.3s ease;
     }
-    
-    .logo:hover {
-      opacity: 0.8;
-    }
-    
+
     .nav-links {
       display: flex;
       gap: 2.5rem;
       list-style: none;
-      align-items: center;
-      margin: 0;
-      padding: 0;
     }
-    
+
     .nav-links a {
       color: #9ca3af;
       text-decoration: none;
       font-weight: 400;
-      font-size: 0.95rem;
       transition: color 0.3s ease;
-      position: relative;
-      font-family: 'Inter', sans-serif;
     }
-    
+
     .nav-links a:hover {
       color: #60a5fa;
     }
-    
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #60a5fa, #a78bfa);
-      transition: width 0.3s ease;
-    }
-    
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-    
-    .nav-links a.active {
-      color: #60a5fa;
-      font-weight: 500;
-    }
-    
-    .nav-links a.active::after {
-      width: 100%;
-    }
-    
-    /* === LANGUAGE SWITCHER === */
+
     .lang-switcher {
       display: flex;
       gap: 0.5rem;
@@ -219,7 +151,7 @@
       border-radius: 25px;
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
+
     .lang-btn {
       padding: 0.4rem 0.8rem;
       background: transparent;
@@ -230,19 +162,18 @@
       border-radius: 20px;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-family: 'Inter', sans-serif;
     }
-    
+
     .lang-btn:hover {
       color: #fff;
       background: rgba(255, 255, 255, 0.1);
     }
-    
+
     .lang-btn.active {
       background: linear-gradient(135deg, #60a5fa, #a78bfa);
       color: #fff;
     }
-    
+
     /* === MOBILE MENU === */
     .mobile-menu-toggle {
       display: none;
@@ -252,9 +183,8 @@
       border: none;
       cursor: pointer;
       padding: 8px;
-      z-index: 1002;
     }
-    
+
     .mobile-menu-toggle span {
       width: 25px;
       height: 2px;
@@ -262,19 +192,7 @@
       transition: all 0.3s ease;
       border-radius: 2px;
     }
-    
-    .mobile-menu-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translate(7px, 7px);
-    }
-    
-    .mobile-menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-    
-    .mobile-menu-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(7px, -7px);
-    }
-    
+
     .mobile-menu {
       position: fixed;
       top: 0;
@@ -286,15 +204,14 @@
       backdrop-filter: blur(20px);
       padding: 6rem 2rem 2rem;
       transition: right 0.4s ease;
-      z-index: 1001;
+      z-index: 999;
       border-left: 1px solid rgba(96, 165, 250, 0.2);
-      overflow-y: auto;
     }
-    
+
     .mobile-menu.active {
       right: 0;
     }
-    
+
     .mobile-menu-overlay {
       position: fixed;
       top: 0;
@@ -307,12 +224,12 @@
       transition: all 0.3s ease;
       z-index: 998;
     }
-    
+
     .mobile-menu-overlay.active {
       opacity: 1;
       visibility: visible;
     }
-    
+
     .mobile-nav-links {
       list-style: none;
       display: flex;
@@ -320,7 +237,7 @@
       gap: 0.5rem;
       margin-bottom: 2rem;
     }
-    
+
     .mobile-nav-links a {
       display: block;
       color: #e0e6ed;
@@ -330,473 +247,437 @@
       padding: 1rem;
       border-radius: 12px;
       transition: all 0.3s ease;
-      border: 1px solid transparent;
     }
-    
-    .mobile-nav-links a:hover,
-    .mobile-nav-links a:active {
+
+    .mobile-nav-links a:hover {
       background: rgba(96, 165, 250, 0.1);
-      border-color: rgba(96, 165, 250, 0.3);
       color: #60a5fa;
-      transform: translateX(8px);
     }
-    
+
     .mobile-lang-switcher {
       display: flex;
       gap: 0.75rem;
       padding: 1rem;
       background: rgba(30, 41, 59, 0.6);
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
+
     .mobile-lang-switcher .lang-btn {
       flex: 1;
       padding: 0.75rem;
       font-size: 1rem;
     }
-    
+
+    /* === HERO SECTION === */
     .hero {
-      padding: 160px 0 120px;
+      padding: 10rem 0 4rem;
       text-align: center;
     }
-    
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .avatar-wrapper {
-      display: inline-block;
-      margin-bottom: 32px;
-    }
-    
+
     .avatar {
-      width: 120px;
-      height: 120px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(99, 102, 241, 0.3);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    }
-    
-    .hero-text {
-      text-align: center;
-    }
-    
-    h1 {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(3rem, 7vw, 5rem);
-      font-weight: 700;
-      line-height: 1.1;
+      border: 3px solid rgba(96, 165, 250, 0.3);
       margin-bottom: 2rem;
+      object-fit: cover;
+    }
+
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
       background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      letter-spacing: -0.03em;
     }
-    
-    .subtitle {
+
+    .hero .subtitle {
       font-size: 1.25rem;
-      color: #cbd5e1;
-      margin-bottom: 3rem;
-      line-height: 1.8;
+      color: #9ca3af;
       max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      font-weight: 400;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
     }
-    
-    /* Value Propositions */
+
+    /* === VALUE PROPS === */
     .value-props {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-      padding: 2rem 0;
-    }
-    
-    .value-item {
-      display: flex;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
+      margin: 4rem 0;
+    }
+
+    .value-card {
       padding: 2rem;
       background: rgba(96, 165, 250, 0.03);
       border: 1px solid rgba(96, 165, 250, 0.1);
       border-radius: 16px;
       transition: all 0.3s ease;
     }
-    
-    .value-item:hover {
+
+    .value-card:hover {
       background: rgba(96, 165, 250, 0.06);
       border-color: rgba(96, 165, 250, 0.2);
       transform: translateY(-4px);
     }
-    
+
     .value-icon {
       font-size: 2.5rem;
-      line-height: 1;
-      flex-shrink: 0;
+      margin-bottom: 1rem;
     }
-    
-    .value-content h3 {
+
+    .value-card h3 {
       font-size: 1.1rem;
       font-weight: 600;
       color: #fff;
       margin-bottom: 0.5rem;
     }
-    
-    .value-content p {
+
+    .value-card p {
       font-size: 0.95rem;
       color: #9ca3af;
       line-height: 1.6;
-      margin: 0;
     }
-    
-    .stats {
-      display: flex;
-      gap: 60px;
-      justify-content: center;
-      margin-top: 48px;
-      padding-top: 40px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    /* === SKILLS SECTION === */
+    .skills-section {
+      padding: 4rem 0;
     }
-    
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    
-    .stat-number {
-      font-size: 40px;
+
+    .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 2.5rem;
       font-weight: 700;
-      color: #6366f1;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #fff;
     }
-    
-    .stat-label {
-      font-size: 14px;
-      color: #86868b;
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(96, 165, 250, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .skill-category h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #60a5fa;
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-bar-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-bar-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-bar-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-name {
+      font-weight: 500;
+      color: #e0e6ed;
+    }
+
+    .skill-percent {
+      font-size: 0.9rem;
+      color: #60a5fa;
+      font-weight: 600;
+    }
+
+    .skill-bar-bg {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      border-radius: 10px;
+      width: 0;
+      animation: fillBar 1.5s ease-out forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes fillBar {
+      to {
+        width: var(--skill-width);
+      }
+    }
+
+    /* === TIMELINE === */
+    .timeline-section {
+      padding: 4rem 0;
+      background: rgba(96, 165, 250, 0.02);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-left: 3rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, #60a5fa, #a78bfa);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 2rem;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -3rem;
+      top: 0.5rem;
+      width: 16px;
+      height: 16px;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      border-radius: 50%;
+      border: 3px solid #000;
+      box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.2);
+    }
+
+    .timeline-content {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(96, 165, 250, 0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: rgba(96, 165, 250, 0.3);
+      transform: translateX(8px);
+    }
+
+    .timeline-year {
+      font-size: 0.85rem;
+      color: #60a5fa;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-    
-    .skills {
-      padding: 120px 0 80px;
-      overflow: visible;
-    }
-    
-    .skills h2 {
-      font-size: 48px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 60px;
-      background: linear-gradient(135deg, #f5f5f7 0%, #6366f1 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .skill-table {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      overflow: visible;
-    }
-    
-    .skill-category {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    
-    .skill-category:last-child {
-      border-bottom: none;
-    }
-    
-    .skill-header {
-      background: rgba(99, 102, 241, 0.05);
-      padding: 24px 40px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    
-    .skill-header h3 {
-      font-size: 21px;
+
+    .timeline-content h3 {
+      font-size: 1.25rem;
       font-weight: 600;
-      color: #6366f1;
+      color: #fff;
+      margin-bottom: 0.5rem;
     }
-    
-    .skill-items {
-      padding: 32px 40px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-      overflow: visible;
-    }
-    
-    .skill-item {
-      text-align: center;
-      position: relative;
-    }
-    
-    .skill-circle {
-      position: relative;
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 20px;
-    }
-    
-    .skill-circle svg {
-      transform: rotate(-90deg);
-      width: 100%;
-      height: 100%;
-    }
-    
-    .skill-circle-bg {
-      fill: none;
-      stroke: rgba(96, 165, 250, 0.1);
-      stroke-width: 8;
-    }
-    
-    .skill-circle-progress {
-      fill: none;
-      stroke: url(#skillGradient);
-      stroke-width: 8;
-      stroke-linecap: round;
-      stroke-dasharray: 314;
-      stroke-dashoffset: 314;
-      transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-      filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.4));
-    }
-    
-    .skill-item.active .skill-circle-progress {
-      stroke-dashoffset: var(--progress);
-    }
-    
-    
-    .skill-name {
-      font-size: 16px;
-      font-weight: 500;
-      color: #f5f5f7;
-      margin-bottom: 4px;
-    }
-    
-    .skill-level {
-      font-size: 13px;
-      color: #86868b;
-      font-weight: 500;
-    }
-    
-    /* Skill Tooltip */
-    .skill-tooltip {
-      position: absolute;
-      bottom: 120%;
-      left: 50%;
-      transform: translateX(-50%) translateY(10px);
-      background: rgba(10, 14, 18, 0.95);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(96, 165, 250, 0.3);
-      border-radius: 12px;
-      padding: 12px 16px;
-      min-width: 200px;
-      max-width: 280px;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      pointer-events: none;
-      z-index: 100;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    }
-    
-    .skill-tooltip::before {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 50%;
-      transform: translateX(-50%) rotate(45deg);
-      width: 12px;
-      height: 12px;
-      background: rgba(10, 14, 18, 0.95);
-      border-right: 1px solid rgba(96, 165, 250, 0.3);
-      border-bottom: 1px solid rgba(96, 165, 250, 0.3);
-    }
-    
-    .skill-item:hover .skill-tooltip {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) translateY(0);
-    }
-    
-    .skill-tooltip-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: #60a5fa;
-      margin-bottom: 6px;
-    }
-    
-    .skill-tooltip-desc {
-      font-size: 13px;
+
+    .timeline-content p {
       color: #9ca3af;
-      line-height: 1.5;
+      line-height: 1.6;
     }
-    
-    .timeline {
-      padding: 80px 0;
+
+    /* === PHILOSOPHY === */
+    .philosophy-section {
+      padding: 4rem 0;
     }
-    
-    .timeline h2 {
-      font-size: 48px;
-      font-weight: 700;
-      margin-bottom: 60px;
-      text-align: center;
-    }
-    
-    .timeline-container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    
-    .timeline-item {
+
+    .philosophy-grid {
       display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 48px;
-      padding: 40px;
-      margin-bottom: 24px;
-      background: rgba(96, 165, 250, 0.03);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .philosophy-card {
+      background: rgba(15, 23, 42, 0.6);
       border: 1px solid rgba(96, 165, 250, 0.1);
       border-radius: 16px;
+      padding: 2rem;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
     }
-    
-    .timeline-item::before {
+
+    .philosophy-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 4px;
-      height: 100%;
-      background: linear-gradient(180deg, #60a5fa, #a78bfa);
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
     }
-    
-    .timeline-item:hover {
-      background: rgba(96, 165, 250, 0.05);
-      border-color: rgba(96, 165, 250, 0.2);
-      transform: translateX(8px);
+
+    .philosophy-card:hover::before {
+      transform: scaleX(1);
     }
-    
-    .timeline-item:hover::before {
-      opacity: 1;
+
+    .philosophy-card:hover {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: rgba(96, 165, 250, 0.3);
+      transform: translateY(-8px);
     }
-    
-    .timeline-year {
-      font-size: 15px;
-      color: #60a5fa;
+
+    .philosophy-number {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 1rem;
+      opacity: 0.3;
+    }
+
+    .philosophy-card h3 {
+      font-size: 1.25rem;
       font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .philosophy-card p {
+      color: #9ca3af;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    /* === STATS === */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      padding: 4rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      margin: 4rem 0;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #60a5fa;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #9ca3af;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-    
-    .timeline-content h3 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 12px;
-      color: #f5f5f7;
-    }
-    
-    .timeline-content p {
-      font-size: 16px;
-      color: #9ca3af;
-      line-height: 1.7;
-    }
-    
-    footer {
-      padding: 60px 0;
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      margin-top: 80px;
-    }
-    
-    footer p {
-      font-size: 12px;
-      color: #6e6e73;
-    }
-    
-    @media (max-width: 968px) {
-      .nav-links { display: none; }
-    }
-    
+
+    /* === RESPONSIVE === */
     @media (max-width: 768px) {
-      .lang-switcher { display: none; }
-      .mobile-menu-toggle { display: flex; }
-      .avatar { width: 100px; height: 100px; }
-      h1 { font-size: 40px; }
-      .subtitle { font-size: 17px; }
-      .value-props { grid-template-columns: 1fr; gap: 1.5rem; }
-      .value-item { padding: 1.5rem; }
-      .value-icon { font-size: 2rem; }
-      .value-content h3 { font-size: 1rem; }
-      .value-content p { font-size: 0.9rem; }
-      .stats { flex-wrap: wrap; gap: 32px; }
-      .stat-number { font-size: 32px; }
-      .skill-items { grid-template-columns: 1fr; }
-      .timeline-item { grid-template-columns: 1fr; gap: 12px; }
-    }
-    
-    /* === PAGE FADE-IN ANIMATION === */
-    @keyframes pageFadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
+
+      .nav-links,
+      .lang-switcher {
+        display: none;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      .mobile-menu-toggle {
+        display: flex;
       }
-    }
-    
-    main {
-      animation: pageFadeIn 0.4s ease-out;
+
+      .hero {
+        padding: 8rem 0 3rem;
+      }
+
+      .value-props {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .timeline {
+        padding-left: 2rem;
+      }
+
+      .timeline-dot {
+        left: -2rem;
+      }
+
+      .philosophy-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
-  
   <div class="bg-gradient"></div>
-  <div class="bg-grid"></div>
-  <div class="bg-orbs"></div>
-  
-  <header class="header" id="header">
+
+  <!-- Header -->
+  <header class="header">
     <div class="container">
       <nav class="nav">
         <a href="index.html" class="logo">Igor Szuniewicz</a>
-        <div class="nav-right">
-          <ul class="nav-links">
-            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
-            <li><a href="about.html" class="active" data-i18n="nav_about">About</a></li>
-            <li><a href="projects/index.html" data-i18n="nav_projects">Projects</a></li>
-            <li><a href="music.html" data-i18n="nav_music">Music</a></li>
-            <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
-          </ul>
-          <div class="lang-switcher">
-            <button class="lang-btn active" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="pl">PL</button>
-            <button class="lang-btn" data-lang="nl">NL</button>
-          </div>
-          <button class="mobile-menu-toggle" aria-label="Toggle menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+
+        <ul class="nav-links">
+          <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+          <li><a href="about.html" data-i18n="nav_about">About</a></li>
+          <li><a href="projects/index.html" data-i18n="nav_projects">Projects</a></li>
+          <li><a href="music.html" data-i18n="nav_music">Music</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="pl">PL</button>
+          <button class="lang-btn" data-lang="nl">NL</button>
         </div>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </nav>
     </div>
   </header>
-  
+
   <!-- Mobile Menu -->
   <div class="mobile-menu-overlay"></div>
   <div class="mobile-menu">
@@ -813,422 +694,311 @@
       <button class="lang-btn" data-lang="nl">NL</button>
     </div>
   </div>
-  
+
   <main>
+    <!-- Hero Section -->
     <section class="hero">
       <div class="container">
-        <div class="hero-content">
-          <div class="avatar-wrapper">
-            <picture>
-              <source srcset="cv/pieknyportret_square.webp" type="image/webp">
-              <img src="cv/pieknyportret_square.png" alt="Igor Szuniewicz" class="avatar">
-            </picture>
+        <picture>
+          <source srcset="cv/pieknyportret_square.webp" type="image/webp">
+          <img src="cv/pieknyportret_square.png" alt="Igor Szuniewicz" class="avatar">
+        </picture>
+
+        <h1 data-i18n="about_role">Audio Designer & Developer</h1>
+        <p class="subtitle" data-i18n="about_bio">Specialized in building scalable interactive audio systems and custom
+          tools that streamline game audio workflows. Expert in Wwise, FMOD, and Unreal Engine with proven ability to
+          deliver production-ready solutions.</p>
+
+        <!-- Value Propositions -->
+        <div class="value-props">
+          <div class="value-card">
+            <div class="value-icon">🎯</div>
+            <h3 data-i18n="value_systems_title">Interactive Systems</h3>
+            <p data-i18n="value_systems_desc">Built adaptive music systems and dynamic audio engines that respond to
+              gameplay in real-time</p>
           </div>
-          <div class="hero-text">
-            <h1 data-i18n="about_role">Audio Designer<br>& Developer</h1>
-            <p class="subtitle" data-i18n="about_bio">Specialized in building scalable interactive audio systems and custom tools that streamline game audio workflows. Expert in Wwise, FMOD, and Unreal Engine with proven ability to deliver production-ready solutions.</p>
+          <div class="value-card">
+            <div class="value-icon">🛠️</div>
+            <h3 data-i18n="value_tools_title">Pipeline Optimization</h3>
+            <p data-i18n="value_tools_desc">Developed custom tools (Wwise Unreal Fixer, Unreal Rebuilder) that automate
+              workflows and reduce iteration time</p>
           </div>
-          
-          <!-- Value Proposition Highlights -->
-          <div class="value-props">
-            <div class="value-item">
-              <div class="value-icon">🎯</div>
-              <div class="value-content">
-                <h3 data-i18n="value_systems_title">Interactive Systems</h3>
-                <p data-i18n="value_systems_desc">Built adaptive music systems and dynamic audio engines that respond to gameplay in real-time</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <div class="value-icon">🛠️</div>
-              <div class="value-content">
-                <h3 data-i18n="value_tools_title">Pipeline Optimization</h3>
-                <p data-i18n="value_tools_desc">Developed custom tools (Wwise Unreal Fixer, Unreal Rebuilder) that automate workflows and reduce iteration time</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <div class="value-icon">⚡</div>
-              <div class="value-content">
-                <h3 data-i18n="value_technical_title">Technical Problem Solving</h3>
-                <p data-i18n="value_technical_desc">Bridge between audio and engineering teams with C++, Python, and Blueprint scripting expertise</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="stats">
-            <div class="stat-item">
-              <span class="stat-number">12+</span>
-              <span class="stat-label" data-i18n="stat_projects">Shipped Projects</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">4</span>
-              <span class="stat-label" data-i18n="stat_tools">Production Tools</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">100%</span>
-              <span class="stat-label" data-i18n="stat_delivery">On-Time Delivery</span>
-            </div>
+          <div class="value-card">
+            <div class="value-icon">⚡</div>
+            <h3 data-i18n="value_technical_title">Technical Problem Solving</h3>
+            <p data-i18n="value_technical_desc">Bridge between audio and engineering teams with C++, Python, and
+              Blueprint scripting expertise</p>
           </div>
         </div>
       </div>
     </section>
-    
-    <section class="skills">
+
+    <!-- Stats -->
+    <section class="container">
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-number">12+</span>
+          <span class="stat-label" data-i18n="stat_projects">Shipped Projects</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">4</span>
+          <span class="stat-label" data-i18n="stat_tools">Production Tools</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">100%</span>
+          <span class="stat-label" data-i18n="stat_delivery">On-Time Delivery</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section with Progress Bars -->
+    <section class="skills-section">
       <div class="container">
-        <h2 data-i18n="about_tech_title">Technical Expertise</h2>
-        <!-- SVG Gradient Definition -->
-        <svg width="0" height="0" style="position: absolute;">
-          <defs>
-            <linearGradient id="skillGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-        </svg>
-        <div class="skill-table">
+        <h2 class="section-title" data-i18n="about_tech_title">Technical Expertise</h2>
+
+        <div class="skills-grid">
+          <!-- Game Audio -->
           <div class="skill-category">
-            <div class="skill-header">
-              <h3 data-i18n="tech_middleware_title">Game Audio</h3>
+            <h3 data-i18n="tech_middleware_title">Game Audio</h3>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span class="skill-name">Wwise</span>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" style="--skill-width: 90%"></div>
+              </div>
             </div>
-            <div class="skill-items">
-              <div class="skill-item" data-progress="90">
-                <div class="skill-circle">
-                  <svg viewBox="0 0 120 120">
-                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
-                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
-                  </svg>
-                </div>
-                <div class="skill-name">Wwise</div>
-                <div class="skill-level">Expert</div>
-                <div class="skill-tooltip">
-                  <div class="skill-tooltip-title">90% - Expert</div>
-                  <div class="skill-tooltip-desc" data-i18n="tech_wwise_desc">RTPCs, States/Switches, HDR mixing, attenuation curves</div>
-                </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span class="skill-name">FMOD Studio</span>
+                <span class="skill-percent">90%</span>
               </div>
-              <div class="skill-item" data-progress="90">
-                <div class="skill-circle">
-                  <svg viewBox="0 0 120 120">
-                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
-                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
-                  </svg>
-                </div>
-                <div class="skill-name">FMOD Studio</div>
-                <div class="skill-level">Expert</div>
-                <div class="skill-tooltip">
-                  <div class="skill-tooltip-title">90% - Expert</div>
-                  <div class="skill-tooltip-desc" data-i18n="tech_fmod_desc">Event-based implementation, parameters, adaptive music, 3D spatialization</div>
-                </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" style="--skill-width: 90%"></div>
               </div>
-              <div class="skill-item" data-progress="85">
-                <div class="skill-circle">
-                  <svg viewBox="0 0 120 120">
-                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
-                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
-                  </svg>
-                </div>
-                <div class="skill-name">Unreal Engine 5</div>
-                <div class="skill-level">Advanced</div>
-                <div class="skill-tooltip">
-                  <div class="skill-tooltip-title">85% - Advanced</div>
-                  <div class="skill-tooltip-desc" data-i18n="tech_unreal_desc">Sound Cues, Blueprints, Audio submixes, MetaSounds integration</div>
-                </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span class="skill-name">Unreal Engine 5</span>
+                <span class="skill-percent">85%</span>
               </div>
-              <div class="skill-item" data-progress="75">
-                <div class="skill-circle">
-                  <svg viewBox="0 0 120 120">
-                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
-                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
-                  </svg>
-                </div>
-                <div class="skill-name">Unity</div>
-                <div class="skill-level">Advanced</div>
-                <div class="skill-tooltip">
-                  <div class="skill-tooltip-title">75% - Advanced</div>
-                  <div class="skill-tooltip-desc" data-i18n="tech_unity_desc">Audio Mixer, C# scripting for audio, middleware integration</div>
-                </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" style="--skill-width: 85%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span class="skill-name">Unity</span>
+                <span class="skill-percent">75%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" style="--skill-width: 75%"></div>
               </div>
             </div>
           </div>
-          
+
+          <!-- Production -->
           <div class="skill-category">
-            <div class="skill-header">
-              <h3 data-i18n="tech_production_title">Production & DAWs</h3>
+            <h3 data-i18n="tech_production_title">Production & DAWs</h3>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span class="skill-name">Reaper</span>
+                <span class="skill-percent">95%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" style="--skill-width: 95%"></div>
+              </div>
             </div>
-            <div class="skill-items">
-              <div class="skill-item" data-progress="95">
-                <div class="skill-circle">
-                  <svg viewBox="0 0 120 120">
-                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
-                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
-                  </svg>
-                </div>
-                <div class="skill-name">Reaper</div>
-                <div class="skill-level">Expert</div>
-                <div class="skill-tooltip">
-                  <div class="skill-tooltip-title">95% - Expert</div>
-                  <div class="skill-tooltip-desc" data-i18n="tech_reaper_desc">Sound design, SFX editing, batch processing, game audio workflows</div>
-                </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span class="skill-name">Logic Pro</span>
+                <span class="skill-percent">90%</span>
               </div>
-              <div class="skill-item" data-progress="90">
-                <div class="skill-circle">
-                  <svg viewBox="0 0 120 120">
-                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
-                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
-                  </svg>
-                </div>
-                <div class="skill-name">Logic Pro</div>
-                <div class="skill-level">Expert</div>
-                <div class="skill-tooltip">
-                  <div class="skill-tooltip-title">90% - Expert</div>
-                  <div class="skill-tooltip-desc" data-i18n="tech_logic_desc">Music composition, MIDI sequencing, orchestral arrangements</div>
-                </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" style="--skill-width: 90%"></div>
               </div>
-              <div class="skill-item" data-progress="75">
-                <div class="skill-circle">
-                  <svg viewBox="0 0 120 120">
-                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
-                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
-                  </svg>
-                </div>
-                <div class="skill-name">Studio One</div>
-                <div class="skill-level">Advanced</div>
-                <div class="skill-tooltip">
-                  <div class="skill-tooltip-title">75% - Advanced</div>
-                  <div class="skill-tooltip-desc" data-i18n="tech_protools_desc">Mixing, editing, post-production workflows</div>
-                </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span class="skill-name">Studio One</span>
+                <span class="skill-percent">75%</span>
               </div>
-              <div class="skill-item" data-progress="90">
-                <div class="skill-circle">
-                  <svg viewBox="0 0 120 120">
-                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
-                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
-                  </svg>
-                </div>
-                <div class="skill-name">Sound Design</div>
-                <div class="skill-level">Expert</div>
-                <div class="skill-tooltip">
-                  <div class="skill-tooltip-title">90% - Expert</div>
-                  <div class="skill-tooltip-desc">Layering, synthesis, processing, creative audio manipulation</div>
-                </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" style="--skill-width: 75%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span class="skill-name">Sound Design</span>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" style="--skill-width: 90%"></div>
               </div>
             </div>
           </div>
-          
+
+          <!-- Development -->
           <div class="skill-category">
-            <div class="skill-header">
-              <h3 data-i18n="tech_scripting_title">Development & Programming</h3>
+            <h3 data-i18n="tech_scripting_title">Development</h3>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span class="skill-name">Python</span>
+                <span class="skill-percent">55%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" style="--skill-width: 55%"></div>
+              </div>
             </div>
-            <div class="skill-items">
-              <div class="skill-item" data-progress="55">
-                <div class="skill-circle">
-                  <svg viewBox="0 0 120 120">
-                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
-                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
-                  </svg>
-                </div>
-                <div class="skill-name">Python</div>
-                <div class="skill-level">Intermediate</div>
-                <div class="skill-tooltip">
-                  <div class="skill-tooltip-title">55% - Intermediate</div>
-                  <div class="skill-tooltip-desc" data-i18n="tech_python_desc">Audio analysis (LibROSA), automation tools, scripting</div>
-                </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span class="skill-name">C#</span>
+                <span class="skill-percent">60%</span>
               </div>
-              <div class="skill-item" data-progress="75">
-                <div class="skill-circle">
-                  <svg viewBox="0 0 120 120">
-                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
-                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
-                  </svg>
-                </div>
-                <div class="skill-name">C#</div>
-                <div class="skill-level">Advanced</div>
-                <div class="skill-tooltip">
-                  <div class="skill-tooltip-title">75% - Advanced</div>
-                  <div class="skill-tooltip-desc" data-i18n="tech_csharp_desc">Unity audio scripting, custom audio tools, middleware integration</div>
-                </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" style="--skill-width: 60%"></div>
               </div>
-              <div class="skill-item" data-progress="80">
-                <div class="skill-circle">
-                  <svg viewBox="0 0 120 120">
-                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
-                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
-                  </svg>
-                </div>
-                <div class="skill-name">Blueprints (UE)</div>
-                <div class="skill-level">Advanced</div>
-                <div class="skill-tooltip">
-                  <div class="skill-tooltip-title">80% - Advanced</div>
-                  <div class="skill-tooltip-desc" data-i18n="tech_blueprints_desc">Audio triggers, parameter control, event systems, gameplay integration</div>
-                </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span class="skill-name">Blueprints</span>
+                <span class="skill-percent">80%</span>
               </div>
-              <div class="skill-item" data-progress="60">
-                <div class="skill-circle">
-                  <svg viewBox="0 0 120 120">
-                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
-                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
-                  </svg>
-                </div>
-                <div class="skill-name">Real-time DSP</div>
-                <div class="skill-level">Intermediate</div>
-                <div class="skill-tooltip">
-                  <div class="skill-tooltip-title">60% - Intermediate</div>
-                  <div class="skill-tooltip-desc">Audio effects, filters, modulation, procedural audio</div>
-                </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" style="--skill-width: 80%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header">
+                <span class="skill-name">C++</span>
+                <span class="skill-percent">50%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div class="skill-bar-fill" style="--skill-width: 50%"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    
-    <section class="timeline">
+
+    <!-- Journey Timeline -->
+    <section class="timeline-section">
       <div class="container">
-        <h2 data-i18n="about_journey_title">Experience</h2>
-        <div class="timeline-container">
-        <div class="timeline-item">
-          <div class="timeline-year">2024 — Present</div>
-          <div class="timeline-content">
-            <h3 data-i18n="timeline_dae_title">Game Audio Development</h3>
-            <p data-i18n="timeline_dae_desc">Audio integration, Wwise/FMOD middleware, and professional game audio pipelines at Howest Belgium.</p>
+        <h2 class="section-title" data-i18n="about_journey_title">Journey</h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2024 - Present</div>
+              <h3 data-i18n="timeline_dae_title">DAE — Game Development</h3>
+              <p data-i18n="timeline_dae_desc">Studying audio integration, Wwise/FMOD middleware, and professional game
+                audio pipelines at Howest Belgium.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2023 - 2024</div>
+              <h3 data-i18n="timeline_middleware_title">Advanced Audio Middleware</h3>
+              <p data-i18n="timeline_middleware_desc">Professional Wwise & FMOD integration in Unreal Engine and Unity.
+                Spatial audio, dynamic mixing, and Game Syncs implementation.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2022 - 2023</div>
+              <h3 data-i18n="timeline_music_title">Music Production</h3>
+              <p data-i18n="timeline_music_desc">Started releasing original music on Spotify. Explored electronic, film
+                scoring, and experimental sound design.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2016 - 2022</div>
+              <h3 data-i18n="timeline_piano_title">Classical Training</h3>
+              <p data-i18n="timeline_piano_desc">Classical piano education at State Music School, building foundation in
+                music theory and performance.</p>
+            </div>
           </div>
         </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-year">2024</div>
-          <div class="timeline-content">
-            <h3 data-i18n="timeline_middleware_title">Advanced Audio Middleware</h3>
-            <p data-i18n="timeline_middleware_desc">Professional Wwise & FMOD integration in Unreal Engine and Unity. Spatial audio, dynamic mixing, and Game Syncs implementation for AAA-quality game audio pipelines.</p>
+      </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy-section">
+      <div class="container">
+        <h2 class="section-title">Design Philosophy</h2>
+
+        <div class="philosophy-grid">
+          <div class="philosophy-card">
+            <div class="philosophy-number">01</div>
+            <h3 data-i18n="principle_clarity_title">Clarity First, Always</h3>
+            <p data-i18n="principle_clarity_desc">In game audio, readability trumps everything. I design from gameplay
+              telemetry outward—ensuring critical feedback is never masked.</p>
           </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-year">2020</div>
-          <div class="timeline-content">
-            <h3 data-i18n="timeline_music_title">Music Production</h3>
-            <p data-i18n="timeline_music_desc">Releasing original music on streaming platforms. Electronic and film scoring.</p>
+
+          <div class="philosophy-card">
+            <div class="philosophy-number">02</div>
+            <h3 data-i18n="principle_technical_title">Technical Foundation</h3>
+            <p data-i18n="principle_technical_desc">Understanding technical constraints—voice counts, memory budgets,
+              CPU limits—enables better creative decisions.</p>
           </div>
-        </div>
-        
-        <div class="timeline-item">
-          <div class="timeline-year">2010</div>
-          <div class="timeline-content">
-            <h3 data-i18n="timeline_piano_title">Classical Training</h3>
-            <p data-i18n="timeline_piano_desc">Piano education at State Music School. Foundation in music theory.</p>
+
+          <div class="philosophy-card">
+            <div class="philosophy-number">03</div>
+            <h3 data-i18n="principle_layering_title">Parametric Design</h3>
+            <p data-i18n="principle_layering_desc">I approach sound design as modular layering: transients for impact,
+              body for presence, texture for character.</p>
           </div>
-        </div>
+
+          <div class="philosophy-card">
+            <div class="philosophy-number">04</div>
+            <h3 data-i18n="principle_collaboration_title">Collaborative Iteration</h3>
+            <p data-i18n="principle_collaboration_desc">Great audio comes from feedback loops with designers,
+              programmers, and players. I document my work and iterate based on playtesting.</p>
+          </div>
         </div>
       </div>
     </section>
   </main>
-  
-  <footer>
-    <div class="container">
-      <p>© 2025 Igor Szuniewicz. All rights reserved.</p>
-    </div>
-  </footer>
-  
-  <!-- Translation System -->
-  <script src="assets/js/i18n/translate.js"></script>
-  
+
+  <!-- Scripts -->
+  <script src="assets/js/translations.js"></script>
   <script>
-    // Header scroll effect
-    function initHeaderScrollEffect() {
-      const header = document.getElementById('header');
-      if (!header) return;
-      
-      function handleHeaderScroll() {
-        if (window.scrollY > 50) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
-      }
-      
-      window.addEventListener('scroll', handleHeaderScroll, { passive: true });
-      handleHeaderScroll();
-    }
-    
-    // Circular progress animation
-    const skillObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.classList.contains('active')) {
-          entry.target.classList.add('active');
-          const progress = parseInt(entry.target.getAttribute('data-progress'));
-          const circle = entry.target.querySelector('.skill-circle-progress');
-          if (circle) {
-            const circumference = 2 * Math.PI * 50; // radius = 50
-            const offset = circumference - (progress / 100) * circumference;
-            circle.style.setProperty('--progress', offset);
-          }
-        }
-      });
-    }, { threshold: 0.5 });
-    
-    document.querySelectorAll('.skill-item').forEach(el => skillObserver.observe(el));
-    
-    document.addEventListener('DOMContentLoaded', initHeaderScrollEffect);
-    
-    
     // Mobile menu toggle
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
-    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
-    
-    if (mobileMenuToggle && mobileMenu && mobileMenuOverlay) {
-      mobileMenuToggle.addEventListener('click', () => {
-        mobileMenuToggle.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        mobileMenuOverlay.classList.toggle('active');
-        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-      });
-      
-      mobileMenuOverlay.addEventListener('click', () => {
-        mobileMenuToggle.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        mobileMenuOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-      
-      // Close menu on link click
-      document.querySelectorAll('.mobile-nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenuToggle.classList.remove('active');
-          mobileMenu.classList.remove('active');
-          mobileMenuOverlay.classList.remove('active');
-          document.body.style.overflow = '';
-        });
-      });
-    }
+    const mobileOverlay = document.querySelector('.mobile-menu-overlay');
 
-    // Scroll reveal animations - CRITICAL FOR FADE-IN EFFECTS
-    const observerOptions = {
-      threshold: 0.05,
-      rootMargin: '0px 0px 100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
+    mobileToggle.addEventListener('click', () => {
+      mobileToggle.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      mobileOverlay.classList.toggle('active');
     });
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    mobileOverlay.addEventListener('click', () => {
+      mobileToggle.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      mobileOverlay.classList.remove('active');
+    });
+
+    // Language switcher
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (typeof setLanguage === 'function') {
+          setLanguage(btn.dataset.lang);
         }
       });
     });
   </script>
-  <script src="assets/js/components/custom-cursor.js"></script>
-  <script src="assets/js/translations.js"></script>
 </body>
+
 </html>

@@ -8,7 +8,7 @@
   <!-- CRITICAL: Prevent white flash - inline styles load FIRST -->
   <style>
     html{color-scheme:dark;background:#000!important}
-    body{background:#000!important;margin:0;padding:0}
+    body{margin:0;padding:0}
   </style>
   <title>Contact — Igor Szuniewicz</title>
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
@@ -52,16 +52,23 @@
     
     /* === PREMIUM PROFESSIONAL BACKGROUND === */
     .bg-gradient {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -4;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 0 !important;
+      pointer-events: none !important;
       background: 
-        radial-gradient(ellipse at 30% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
-        radial-gradient(ellipse at 70% 80%, rgba(6, 182, 212, 0.06) 0%, transparent 40%),
-        linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #050508 100%);
+        radial-gradient(circle at 20% 20%, rgba(0, 200, 255, 0.08) 0%, rgba(0, 200, 255, 0.02) 40%, transparent 70%),
+        radial-gradient(circle at 80% 80%, rgba(0, 255, 200, 0.07) 0%, rgba(0, 255, 200, 0.02) 40%, transparent 70%),
+        radial-gradient(circle at 50% 50%, rgba(150, 50, 255, 0.06) 0%, rgba(150, 50, 255, 0.01) 50%, transparent 80%),
+        #000 !important;
+    }
+    
+    .header, section, main {
+      position: relative;
+      z-index: 1;
     }
     
     .bg-gradient::before {
