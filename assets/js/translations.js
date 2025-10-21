@@ -4,7 +4,7 @@
   
   // Initialize empty translations object
   window.translations = {};
-  let currentLang = localStorage.getItem('language') || 'en';
+  let currentLang = window.__preloadedLang || localStorage.getItem('language') || 'en';
 
   // Helper function to get nested translation value
   function getNestedTranslation(obj, path) {
@@ -36,6 +36,11 @@
     
     // Update HTML lang attribute
     document.documentElement.setAttribute('lang', lang);
+    
+    // Mark translations as ready and show page
+    document.documentElement.classList.add('translations-ready');
+    const preloadStyle = document.getElementById('preload-style');
+    if (preloadStyle) preloadStyle.remove();
   }
 
   // Detect which JSON file to load based on current page
@@ -90,13 +95,19 @@
     }
   }
 
-  // Initialize language on page load
-  document.addEventListener('DOMContentLoaded', () => {
+  // Start loading translations immediately (don't wait for DOMContentLoaded)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTranslations);
+  } else {
+    initTranslations();
+  }
+  
+  function initTranslations() {
     loadTranslations();
     
     // Add click handlers to language buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
-  });
+  }
 })();
