@@ -8,7 +8,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     * {
@@ -110,14 +110,17 @@
       z-index: 1010;
       padding: 1.5rem 0;
       backdrop-filter: blur(10px);
-      background: rgba(10, 14, 18, 0.8);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(10, 14, 18, 0.85);
+      border-bottom: 1px solid rgba(96, 165, 250, 0.1);
       transition: all 0.3s ease;
     }
     
     .header.scrolled {
       padding: 1rem 0;
+      background: rgba(10, 14, 18, 0.95);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(96, 165, 250, 0.15);
     }
     
     .nav {
@@ -134,12 +137,17 @@
     }
     
     .logo {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Sora', sans-serif;
       font-size: 1.5rem;
       font-weight: 700;
       color: #fff;
       text-decoration: none;
       letter-spacing: -0.02em;
+      transition: opacity 0.3s ease;
+    }
+    
+    .logo:hover {
+      opacity: 0.8;
     }
     
     .nav-links {
@@ -158,6 +166,7 @@
       font-size: 0.95rem;
       transition: color 0.3s ease;
       position: relative;
+      font-family: 'Inter', sans-serif;
     }
     
     .nav-links a:hover {
@@ -175,13 +184,17 @@
       transition: width 0.3s ease;
     }
     
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
+    .nav-links a:hover::after {
       width: 100%;
     }
     
     .nav-links a.active {
       color: #60a5fa;
+      font-weight: 500;
+    }
+    
+    .nav-links a.active::after {
+      width: 100%;
     }
     
     /* === LANGUAGE SWITCHER === */
@@ -331,7 +344,7 @@
     }
     
     .hero {
-      padding: 140px 0 100px;
+      padding: 160px 0 120px;
       text-align: center;
     }
     
@@ -359,24 +372,27 @@
     }
     
     h1 {
-      font-size: 64px;
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(3rem, 7vw, 5rem);
       font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.05;
-      margin-bottom: 24px;
-      background: linear-gradient(135deg, #f5f5f7 0%, #6366f1 100%);
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.03em;
     }
     
     .subtitle {
-      font-size: 21px;
-      color: #86868b;
-      margin-bottom: 40px;
-      line-height: 1.5;
+      font-size: 1.25rem;
+      color: #cbd5e1;
+      margin-bottom: 3rem;
+      line-height: 1.8;
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      font-weight: 400;
     }
     
     .stats {
@@ -408,7 +424,8 @@
     }
     
     .skills {
-      padding: 80px 0;
+      padding: 120px 0 80px;
+      overflow: visible;
     }
     
     .skills h2 {
@@ -427,7 +444,7 @@
       background: rgba(255, 255, 255, 0.02);
       border-radius: 24px;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      overflow: hidden;
+      overflow: visible;
     }
     
     .skill-category {
@@ -457,74 +474,113 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 28px;
+      overflow: visible;
     }
     
     .skill-item {
-      display: grid;
-      gap: 12px;
+      text-align: center;
+      position: relative;
     }
     
-    .skill-item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .skill-circle {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
     }
+    
+    .skill-circle svg {
+      transform: rotate(-90deg);
+      width: 100%;
+      height: 100%;
+    }
+    
+    .skill-circle-bg {
+      fill: none;
+      stroke: rgba(96, 165, 250, 0.1);
+      stroke-width: 8;
+    }
+    
+    .skill-circle-progress {
+      fill: none;
+      stroke: url(#skillGradient);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 314;
+      stroke-dashoffset: 314;
+      transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.4));
+    }
+    
+    .skill-item.active .skill-circle-progress {
+      stroke-dashoffset: var(--progress);
+    }
+    
     
     .skill-name {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 500;
       color: #f5f5f7;
+      margin-bottom: 4px;
     }
     
     .skill-level {
-      font-size: 14px;
+      font-size: 13px;
       color: #86868b;
       font-weight: 500;
     }
     
-    .skill-bar {
-      width: 100%;
-      height: 6px;
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 8px;
-      overflow: hidden;
+    /* Skill Tooltip */
+    .skill-tooltip {
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: rgba(10, 14, 18, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      border-radius: 12px;
+      padding: 12px 16px;
+      min-width: 200px;
+      max-width: 280px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      z-index: 100;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     }
     
-    .skill-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #6366f1, #8b5cf6, #a855f7);
-      border-radius: 8px;
-      position: relative;
-      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
-      overflow: hidden;
-    }
-    
-    .skill-fill::before {
+    .skill-tooltip::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      animation: shimmer 2s infinite;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 12px;
+      height: 12px;
+      background: rgba(10, 14, 18, 0.95);
+      border-right: 1px solid rgba(96, 165, 250, 0.3);
+      border-bottom: 1px solid rgba(96, 165, 250, 0.3);
     }
     
-    @keyframes shimmer {
-      0% { left: -100%; }
-      100% { left: 100%; }
+    .skill-item:hover .skill-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
     }
     
-    .skill-fill::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
-      border-radius: 8px 8px 0 0;
+    .skill-tooltip-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #60a5fa;
+      margin-bottom: 6px;
+    }
+    
+    .skill-tooltip-desc {
+      font-size: 13px;
+      color: #9ca3af;
+      line-height: 1.5;
     }
     
     .timeline {
@@ -538,35 +594,66 @@
       text-align: center;
     }
     
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      gap: 40px;
-      padding: 40px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    .timeline-container {
+      max-width: 900px;
+      margin: 0 auto;
     }
     
-    .timeline-item:last-child {
-      border-bottom: none;
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 48px;
+      padding: 40px;
+      margin-bottom: 24px;
+      background: rgba(96, 165, 250, 0.03);
+      border: 1px solid rgba(96, 165, 250, 0.1);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, #60a5fa, #a78bfa);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .timeline-item:hover {
+      background: rgba(96, 165, 250, 0.05);
+      border-color: rgba(96, 165, 250, 0.2);
+      transform: translateX(8px);
+    }
+    
+    .timeline-item:hover::before {
+      opacity: 1;
     }
     
     .timeline-year {
-      font-size: 17px;
-      color: #86868b;
-      font-weight: 500;
+      font-size: 15px;
+      color: #60a5fa;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     
     .timeline-content h3 {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 600;
       margin-bottom: 12px;
+      color: #f5f5f7;
     }
     
     .timeline-content p {
-      font-size: 17px;
-      color: #86868b;
-      line-height: 1.6;
-      max-width: 600px;
+      font-size: 16px;
+      color: #9ca3af;
+      line-height: 1.7;
     }
     
     footer {
@@ -595,6 +682,22 @@
       .stat-number { font-size: 32px; }
       .skill-items { grid-template-columns: 1fr; }
       .timeline-item { grid-template-columns: 1fr; gap: 12px; }
+    }
+    
+    /* === PAGE FADE-IN ANIMATION === */
+    @keyframes pageFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    main {
+      animation: pageFadeIn 0.4s ease-out;
     }
   </style>
 </head>
@@ -682,39 +785,76 @@
     <section class="skills">
       <div class="container">
         <h2 data-i18n="about_tech_title">Technical Expertise</h2>
+        <!-- SVG Gradient Definition -->
+        <svg width="0" height="0" style="position: absolute;">
+          <defs>
+            <linearGradient id="skillGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+        </svg>
         <div class="skill-table">
           <div class="skill-category">
             <div class="skill-header">
               <h3 data-i18n="tech_middleware_title">Game Audio</h3>
             </div>
             <div class="skill-items">
-              <div class="skill-item">
-                <div class="skill-item-header">
-                  <span class="skill-name">Wwise</span>
-                  <span class="skill-level">Expert</span>
+              <div class="skill-item" data-progress="90">
+                <div class="skill-circle">
+                  <svg viewBox="0 0 120 120">
+                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
+                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
+                  </svg>
                 </div>
-                <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+                <div class="skill-name">Wwise</div>
+                <div class="skill-level">Expert</div>
+                <div class="skill-tooltip">
+                  <div class="skill-tooltip-title">90% - Expert</div>
+                  <div class="skill-tooltip-desc" data-i18n="tech_wwise_desc">RTPCs, States/Switches, HDR mixing, attenuation curves</div>
+                </div>
               </div>
-              <div class="skill-item">
-                <div class="skill-item-header">
-                  <span class="skill-name">FMOD Studio</span>
-                  <span class="skill-level">Expert</span>
+              <div class="skill-item" data-progress="90">
+                <div class="skill-circle">
+                  <svg viewBox="0 0 120 120">
+                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
+                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
+                  </svg>
                 </div>
-                <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+                <div class="skill-name">FMOD Studio</div>
+                <div class="skill-level">Expert</div>
+                <div class="skill-tooltip">
+                  <div class="skill-tooltip-title">90% - Expert</div>
+                  <div class="skill-tooltip-desc" data-i18n="tech_fmod_desc">Event-based implementation, parameters, adaptive music, 3D spatialization</div>
+                </div>
               </div>
-              <div class="skill-item">
-                <div class="skill-item-header">
-                  <span class="skill-name">Unreal Engine 5</span>
-                  <span class="skill-level">Advanced</span>
+              <div class="skill-item" data-progress="85">
+                <div class="skill-circle">
+                  <svg viewBox="0 0 120 120">
+                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
+                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
+                  </svg>
                 </div>
-                <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+                <div class="skill-name">Unreal Engine 5</div>
+                <div class="skill-level">Advanced</div>
+                <div class="skill-tooltip">
+                  <div class="skill-tooltip-title">85% - Advanced</div>
+                  <div class="skill-tooltip-desc" data-i18n="tech_unreal_desc">Sound Cues, Blueprints, Audio submixes, MetaSounds integration</div>
+                </div>
               </div>
-              <div class="skill-item">
-                <div class="skill-item-header">
-                  <span class="skill-name">Unity</span>
-                  <span class="skill-level">Intermediate</span>
+              <div class="skill-item" data-progress="75">
+                <div class="skill-circle">
+                  <svg viewBox="0 0 120 120">
+                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
+                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
+                  </svg>
                 </div>
-                <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+                <div class="skill-name">Unity</div>
+                <div class="skill-level">Advanced</div>
+                <div class="skill-tooltip">
+                  <div class="skill-tooltip-title">75% - Advanced</div>
+                  <div class="skill-tooltip-desc" data-i18n="tech_unity_desc">Audio Mixer, C# scripting for audio, middleware integration</div>
+                </div>
               </div>
             </div>
           </div>
@@ -724,33 +864,61 @@
               <h3 data-i18n="tech_production_title">Production & DAWs</h3>
             </div>
             <div class="skill-items">
-              <div class="skill-item">
-                <div class="skill-item-header">
-                  <span class="skill-name">Reaper</span>
-                  <span class="skill-level">Expert</span>
+              <div class="skill-item" data-progress="95">
+                <div class="skill-circle">
+                  <svg viewBox="0 0 120 120">
+                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
+                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
+                  </svg>
                 </div>
-                <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+                <div class="skill-name">Reaper</div>
+                <div class="skill-level">Expert</div>
+                <div class="skill-tooltip">
+                  <div class="skill-tooltip-title">95% - Expert</div>
+                  <div class="skill-tooltip-desc" data-i18n="tech_reaper_desc">Sound design, SFX editing, batch processing, game audio workflows</div>
+                </div>
               </div>
-              <div class="skill-item">
-                <div class="skill-item-header">
-                  <span class="skill-name">Logic Pro</span>
-                  <span class="skill-level">Expert</span>
+              <div class="skill-item" data-progress="90">
+                <div class="skill-circle">
+                  <svg viewBox="0 0 120 120">
+                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
+                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
+                  </svg>
                 </div>
-                <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+                <div class="skill-name">Logic Pro</div>
+                <div class="skill-level">Expert</div>
+                <div class="skill-tooltip">
+                  <div class="skill-tooltip-title">90% - Expert</div>
+                  <div class="skill-tooltip-desc" data-i18n="tech_logic_desc">Music composition, MIDI sequencing, orchestral arrangements</div>
+                </div>
               </div>
-              <div class="skill-item">
-                <div class="skill-item-header">
-                  <span class="skill-name">Studio One</span>
-                  <span class="skill-level">Advanced</span>
+              <div class="skill-item" data-progress="75">
+                <div class="skill-circle">
+                  <svg viewBox="0 0 120 120">
+                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
+                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
+                  </svg>
                 </div>
-                <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+                <div class="skill-name">Studio One</div>
+                <div class="skill-level">Advanced</div>
+                <div class="skill-tooltip">
+                  <div class="skill-tooltip-title">75% - Advanced</div>
+                  <div class="skill-tooltip-desc" data-i18n="tech_protools_desc">Mixing, editing, post-production workflows</div>
+                </div>
               </div>
-              <div class="skill-item">
-                <div class="skill-item-header">
-                  <span class="skill-name">Sound Design</span>
-                  <span class="skill-level">Expert</span>
+              <div class="skill-item" data-progress="90">
+                <div class="skill-circle">
+                  <svg viewBox="0 0 120 120">
+                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
+                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
+                  </svg>
                 </div>
-                <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+                <div class="skill-name">Sound Design</div>
+                <div class="skill-level">Expert</div>
+                <div class="skill-tooltip">
+                  <div class="skill-tooltip-title">90% - Expert</div>
+                  <div class="skill-tooltip-desc">Layering, synthesis, processing, creative audio manipulation</div>
+                </div>
               </div>
             </div>
           </div>
@@ -760,33 +928,61 @@
               <h3 data-i18n="tech_scripting_title">Development & Programming</h3>
             </div>
             <div class="skill-items">
-              <div class="skill-item">
-                <div class="skill-item-header">
-                  <span class="skill-name">Python</span>
-                  <span class="skill-level">Intermediate</span>
+              <div class="skill-item" data-progress="55">
+                <div class="skill-circle">
+                  <svg viewBox="0 0 120 120">
+                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
+                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
+                  </svg>
                 </div>
-                <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+                <div class="skill-name">Python</div>
+                <div class="skill-level">Intermediate</div>
+                <div class="skill-tooltip">
+                  <div class="skill-tooltip-title">55% - Intermediate</div>
+                  <div class="skill-tooltip-desc" data-i18n="tech_python_desc">Audio analysis (LibROSA), automation tools, scripting</div>
+                </div>
               </div>
-              <div class="skill-item">
-                <div class="skill-item-header">
-                  <span class="skill-name">C#</span>
-                  <span class="skill-level">Advanced</span>
+              <div class="skill-item" data-progress="75">
+                <div class="skill-circle">
+                  <svg viewBox="0 0 120 120">
+                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
+                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
+                  </svg>
                 </div>
-                <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+                <div class="skill-name">C#</div>
+                <div class="skill-level">Advanced</div>
+                <div class="skill-tooltip">
+                  <div class="skill-tooltip-title">75% - Advanced</div>
+                  <div class="skill-tooltip-desc" data-i18n="tech_csharp_desc">Unity audio scripting, custom audio tools, middleware integration</div>
+                </div>
               </div>
-              <div class="skill-item">
-                <div class="skill-item-header">
-                  <span class="skill-name">Blueprints (UE)</span>
-                  <span class="skill-level">Advanced</span>
+              <div class="skill-item" data-progress="80">
+                <div class="skill-circle">
+                  <svg viewBox="0 0 120 120">
+                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
+                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
+                  </svg>
                 </div>
-                <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+                <div class="skill-name">Blueprints (UE)</div>
+                <div class="skill-level">Advanced</div>
+                <div class="skill-tooltip">
+                  <div class="skill-tooltip-title">80% - Advanced</div>
+                  <div class="skill-tooltip-desc" data-i18n="tech_blueprints_desc">Audio triggers, parameter control, event systems, gameplay integration</div>
+                </div>
               </div>
-              <div class="skill-item">
-                <div class="skill-item-header">
-                  <span class="skill-name">Real-time DSP</span>
-                  <span class="skill-level">Intermediate</span>
+              <div class="skill-item" data-progress="60">
+                <div class="skill-circle">
+                  <svg viewBox="0 0 120 120">
+                    <circle class="skill-circle-bg" cx="60" cy="60" r="50"/>
+                    <circle class="skill-circle-progress" cx="60" cy="60" r="50"/>
+                  </svg>
                 </div>
-                <div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div>
+                <div class="skill-name">Real-time DSP</div>
+                <div class="skill-level">Intermediate</div>
+                <div class="skill-tooltip">
+                  <div class="skill-tooltip-title">60% - Intermediate</div>
+                  <div class="skill-tooltip-desc">Audio effects, filters, modulation, procedural audio</div>
+                </div>
               </div>
             </div>
           </div>
@@ -797,7 +993,7 @@
     <section class="timeline">
       <div class="container">
         <h2 data-i18n="about_journey_title">Experience</h2>
-        
+        <div class="timeline-container">
         <div class="timeline-item">
           <div class="timeline-year">2024 — Present</div>
           <div class="timeline-content">
@@ -829,6 +1025,7 @@
             <p data-i18n="timeline_piano_desc">Piano education at State Music School. Foundation in music theory.</p>
           </div>
         </div>
+        </div>
       </div>
     </section>
   </main>
@@ -841,15 +1038,6 @@
   
   <!-- Translation System -->
   <script src="assets/js/i18n/translate.js"></script>
-  <script>
-    // Initialize translation system
-    const translator = new Translator('about');
-    translator.init().then(() => {
-      console.log('Translations loaded successfully');
-    }).catch(err => {
-      console.error('Translation loading failed:', err);
-    });
-  </script>
   
   <script>
     // Header scroll effect
@@ -869,40 +1057,26 @@
       handleHeaderScroll();
     }
     
-    // Skill bars animation
-    const observer = new IntersectionObserver((entries) => {
+    // Circular progress animation
+    const skillObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const fills = entry.target.querySelectorAll('.skill-fill');
-          fills.forEach(fill => {
-            const width = fill.style.width;
-            fill.style.width = '0';
-            setTimeout(() => fill.style.width = width, 100);
-          });
+        if (entry.isIntersecting && !entry.target.classList.contains('active')) {
+          entry.target.classList.add('active');
+          const progress = parseInt(entry.target.getAttribute('data-progress'));
+          const circle = entry.target.querySelector('.skill-circle-progress');
+          if (circle) {
+            const circumference = 2 * Math.PI * 50; // radius = 50
+            const offset = circumference - (progress / 100) * circumference;
+            circle.style.setProperty('--progress', offset);
+          }
         }
       });
     }, { threshold: 0.5 });
     
-    document.querySelectorAll('.skill-category').forEach(el => observer.observe(el));
+    document.querySelectorAll('.skill-item').forEach(el => skillObserver.observe(el));
     
     document.addEventListener('DOMContentLoaded', initHeaderScrollEffect);
     
-    // Language switcher functionality
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const lang = this.getAttribute('data-lang');
-        if (translator) {
-          translator.changeLanguage(lang);
-          // Update active state
-          document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-          document.querySelectorAll(`[data-lang="${lang}"]`).forEach(b => b.classList.add('active'));
-        }
-      });
-    });
-    
-    // Set initial active language
-    const currentLang = localStorage.getItem('language') || 'en';
-    document.querySelectorAll(`[data-lang="${currentLang}"]`).forEach(btn => btn.classList.add('active'));
     
     // Mobile menu toggle
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
