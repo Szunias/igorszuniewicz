@@ -279,8 +279,8 @@
       align-items: center;
       gap: 4rem;
       margin: 5rem 0;
-      opacity: 0;
-      transform: translateY(50px);
+      opacity: 1;
+      transform: translateY(20px);
       transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
@@ -590,8 +590,8 @@
     .stats {
       margin: 5rem 0;
       text-align: center;
-      opacity: 0;
-      transform: translateY(50px);
+      opacity: 1;
+      transform: translateY(20px);
       transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
@@ -1201,8 +1201,23 @@
       const techStack = document.querySelector('.tech-stack');
       const featuresGrid = document.querySelector('.features-grid');
       
-      rows.forEach(row => observer.observe(row));
-      if (stats) observer.observe(stats);
+      // Immediately show elements that are already in viewport
+      const checkInitialVisibility = (element) => {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        if (isVisible) {
+          element.classList.add("visible");
+        }
+      };
+      
+      rows.forEach(row => {
+        checkInitialVisibility(row);
+        observer.observe(row);
+      });
+      if (stats) {
+        checkInitialVisibility(stats);
+        observer.observe(stats);
+      }
       if (techStack) observer.observe(techStack);
       if (featuresGrid) observer.observe(featuresGrid);
       
