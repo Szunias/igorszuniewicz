@@ -22,8 +22,12 @@
       }
     },
     "showcase": {
-      "title": "Audio Showcase",
-      "desc": "Experience the complete audio design in context with the animation. Notice how sound elements respond to visual cues and support the narrative progression."
+      "title": "Audio in Context",
+      "description": "Watch how sound design builds the horror atmosphere. Every creature growl, environmental layer, and spatial detail was crafted to create immersive tension that scales dynamically with the visuals.",
+      "list1": "Creature sound signatures",
+      "list2": "Environmental atmosphere layers",
+      "list3": "Dynamic spatial audio mixing",
+      "list4": "Proximity-based intensity scaling"
     },
     "overview": {
       "title": "Overview",
@@ -87,6 +91,31 @@
         "solution": "Applied dynamic ducking: when dialogue present, environmental elements duck -8dB with 100ms attack, 500ms release. Carved 1-3kHz notch in ambience bed (permanent -4dB). Used spectral shaping on dialogue: gentle presence boost at 2.5kHz, de-essing at 6-8kHz, and HPF at 80Hz to remove rumble bleed. Result: dialogue sits clearly without sounding isolated."
       }
     },
+    "hero": {
+      "subtitle": "SOUND DESIGN",
+      "description": "World-building through immersive audio design and creature sound signatures"
+    },
+    "tags": {
+      "role": "Sound Designer",
+      "style": "Atmospheric Horror",
+      "team": "3D Animation Studio",
+      "type": "Complete Audio Pass"
+    },
+    "details": {
+      "title": "Project Details",
+      "original": "Original",
+      "style": "Genre",
+      "spatial": "Spatial Audio",
+      "year": "Year"
+    },
+    "creature": {
+      "title": "Creature Audio Design",
+      "description": "Each creature has a unique sonic identity built from organic textures, processed animal vocalizations, and synthesized sub-frequencies. The beast's presence is felt through low-frequency rumbles that scale with proximity."
+    },
+    "environment": {
+      "title": "Environmental Soundscapes",
+      "description": "The basement environment uses layered ambient textures - dripping water, creaking wood, distant echoes, and subtle electrical hums. These elements dynamically respond to camera position, creating depth and spatial awareness."
+    },
     "button": {
       "projects": "All Projects"
     }
@@ -114,8 +143,12 @@
       }
     },
     "showcase": {
-      "title": "Prezentacja Audio",
-      "desc": "Doświadcz kompletnego designu dźwięku w kontekście animacji. Zwróć uwagę, jak elementy dźwiękowe reagują na sygnały wizualne i wspierają progresję narracji."
+      "title": "Audio w Kontekście",
+      "description": "Zobacz jak sound design buduje atmosferę horroru. Każde warczenie stwora, warstwa środowiska i detal przestrzenny zostały stworzone by tworzyć immersyjne napięcie skalujące się dynamicznie z obrazem.",
+      "list1": "Sygnatury dźwiękowe stworów",
+      "list2": "Warstwy atmosfery środowiska",
+      "list3": "Dynamiczny miks przestrzenny",
+      "list4": "Skalowanie intensywności z bliskością"
     },
     "overview": {
       "title": "Przegląd",
@@ -179,6 +212,31 @@
         "solution": "Zastosowano dynamic ducking: gdy dialog obecny, environmental elements duckują -8dB z 100ms attack, 500ms release. Wyrzeźbiono 1-3kHz notch w ambience bed (permanent -4dB). Użyto spectral shaping na dialogu: gentle presence boost na 2.5kHz, de-essing na 6-8kHz, i HPF na 80Hz aby usunąć rumble bleed. Rezultat: dialog siedzi czysto bez brzmienia izolacji."
       }
     },
+    "hero": {
+      "subtitle": "SOUND DESIGN",
+      "description": "Budowanie świata przez immersyjny design dźwięku i sygnatury stworów"
+    },
+    "tags": {
+      "role": "Sound Designer",
+      "style": "Horror Atmosferyczny",
+      "team": "Studio Animacji 3D",
+      "type": "Kompletne Audio"
+    },
+    "details": {
+      "title": "Szczegóły Projektu",
+      "original": "Oryginalne",
+      "style": "Gatunek",
+      "spatial": "Audio Przestrzenne",
+      "year": "Rok"
+    },
+    "creature": {
+      "title": "Design Audio Stworów",
+      "description": "Każdy stwór ma unikalną tożsamość dźwiękową zbudowaną z organicznych tekstur, przetworzonych wokalizacji zwierząt i syntezowanych sub-częstotliwości. Obecność bestii jest odczuwalna przez niskofrequencyjne dudnienie skalujące się z bliskością."
+    },
+    "environment": {
+      "title": "Soundscapy Środowiskowe",
+      "description": "Środowisko piwnicy używa warstwowych tekstur ambient - kapiąca woda, skrzypiące drewno, odległe echa i subtelne elektryczne brzęczenie. Te elementy dynamicznie reagują na pozycję kamery, tworząc głębię i świadomość przestrzenną."
+    },
     "button": {
       "projects": "Wszystkie Projekty"
     }
@@ -206,8 +264,12 @@
       }
     },
     "showcase": {
-      "title": "Audio Showcase",
-      "desc": "Ervaar het complete audiodesign in de context van de animatie. Let op hoe geluidelementen reageren op visuele signalen en de verhaalontwikkeling ondersteunen."
+      "title": "Audio in Context",
+      "description": "Zie hoe sound design de horror atmosfeer opbouwt. Elk wezen gegrom, omgevingslaag en ruimtelijk detail werd gemaakt om meeslepende spanning te creëren die dynamisch schaalt met de beelden.",
+      "list1": "Wezen geluidssignaturen",
+      "list2": "Omgevingsatmosfeer lagen",
+      "list3": "Dynamische ruimtelijke audio mixing",
+      "list4": "Nabijheidsgebaseerde intensiteitsschaling"
     },
     "overview": {
       "title": "Overzicht",
@@ -270,6 +332,31 @@
         "problem": "Kelderscène heeft gelaagde druppels, kraken en creature beweging—dialoog werd gemaskeerd in 800Hz-3kHz bereik.",
         "solution": "Paste dynamic ducking toe: wanneer dialoog aanwezig, ducken omgevingselementen -8dB met 100ms attack, 500ms release. Uitgesneden 1-3kHz notch in ambiance bed (permanent -4dB). Gebruikte spectral shaping op dialoog: zachte presence boost op 2.5kHz, de-essing op 6-8kHz, en HPF op 80Hz om rumble bleed te verwijderen. Resultaat: dialoog zit helder zonder geïsoleerd te klinken."
       }
+    },
+    "hero": {
+      "subtitle": "SOUND DESIGN",
+      "description": "Wereldcreatie door meeslepend audiodesign en wezen geluidssignaturen"
+    },
+    "tags": {
+      "role": "Sound Designer",
+      "style": "Atmosferische Horror",
+      "team": "3D Animatiestudio",
+      "type": "Complete Audio Pass"
+    },
+    "details": {
+      "title": "Projectdetails",
+      "original": "Origineel",
+      "style": "Genre",
+      "spatial": "Ruimtelijke Audio",
+      "year": "Jaar"
+    },
+    "creature": {
+      "title": "Wezen Audio Design",
+      "description": "Elk wezen heeft een unieke sonische identiteit gebouwd uit organische texturen, verwerkte dierlijke vocalisaties en gesynthetiseerde sub-frequenties. De aanwezigheid van het beest wordt gevoeld door laagfrequente gerommel dat schaalt met nabijheid."
+    },
+    "environment": {
+      "title": "Omgevingssoundscapes",
+      "description": "De kelderomgeving gebruikt gelaagde ambient texturen - druppelend water, krakend hout, verre echo's en subtiele elektrische zoemen. Deze elementen reageren dynamisch op camerapositie, waardoor diepte en ruimtelijk bewustzijn ontstaat."
     },
     "button": {
       "projects": "Alle Projecten"
