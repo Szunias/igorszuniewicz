@@ -2,7 +2,7 @@
   "en": {
     "back": "Back to Projects",
     "title": "Amorak — Sound Design",
-    "tagline": "World-building through immersive audio design and character sound signatures.",
+    "tagline": "Horror short film. Built the world through sound. Each creature has its own voice.",
     "meta": {
       "role": {
         "label": "Role",
@@ -22,45 +22,45 @@
       }
     },
     "showcase": {
-      "title": "Audio in Context",
-      "description": "Watch how sound design builds the horror atmosphere. Every creature growl, environmental layer, and spatial detail was crafted to create immersive tension that scales dynamically with the visuals.",
-      "list1": "Creature sound signatures",
-      "list2": "Environmental atmosphere layers",
-      "list3": "Dynamic spatial audio mixing",
-      "list4": "Proximity-based intensity scaling"
+      "title": "Watch With Sound",
+      "description": "Sound builds the horror. Creature growls, environment layers, spatial details all scale with what you see.",
+      "list1": "Unique creature sounds",
+      "list2": "Layered environment",
+      "list3": "Spatial audio mix",
+      "list4": "Scales with proximity"
     },
     "overview": {
-      "title": "Overview",
-      "desc": "Amorak was an exercise in world‑building through sound. I created character signatures and environmental layers that scale with camera proximity, keeping the mix readable while reinforcing the story tone."
+      "title": "The Approach",
+      "desc": "Built the world through sound. Each creature has unique audio, environment layers scale with camera distance. Mix stays clear while supporting the story."
     },
     "approach": {
       "title": "Sound Design Approach",
       "creatures": {
-        "title": "Creature Signatures",
-        "desc": "Each creature in Amorak has a unique sonic identity built from organic textures, processed animal vocalizations, and synthesized sub-frequencies. The beast's presence is felt through low-frequency rumbles that scale with proximity, creating an unsettling atmosphere even when off-screen."
+        "title": "Creature Sounds",
+        "desc": "Each creature sounds different: organic textures, processed animal sounds, synth bass. Beast presence through low rumbles that get stronger when close. Unsettling even off screen."
       },
       "environment": {
-        "title": "Environmental Layers",
-        "desc": "The basement environment uses layered ambient textures - dripping water, creaking wood, distant echoes, and subtle electrical hums. These elements dynamically respond to the camera position, creating depth and spatial awareness that guides the viewer's attention."
+        "title": "Environment Layers",
+        "desc": "Basement has layered sounds: dripping water, creaking wood, distant echoes, electrical hums. Changes with camera position to create depth and guide attention."
       },
       "narrative": {
-        "title": "Narrative Support",
-        "desc": "Sound design reinforces the story's emotional beats through careful frequency manipulation and dynamic range control. Tension builds through gradual introduction of discordant elements, while release moments use natural reverb and space to provide breathing room."
+        "title": "Supporting Story",
+        "desc": "Sound follows emotions. Tension builds with discordant elements, release moments use reverb and space. Frequency work and dynamics keep it clear."
       }
     },
     "technical": {
       "title": "Technical Implementation",
       "proximity": {
-        "title": "Proximity-Based Mixing",
-        "desc": "Implemented a 3D spatial audio system where sound elements adjust based on camera distance and angle. Close-up shots emphasize intimate details like breathing and footsteps, while wide shots focus on environmental ambience and creature calls."
+        "title": "Distance Based Mix",
+        "desc": "Sound adjusts with camera distance and angle. Close ups emphasize breathing and footsteps, wide shots focus on environment and creature calls."
       },
       "frequency": {
-        "title": "Frequency Design Strategy",
-        "desc": "Careful frequency allocation ensures clarity across all elements. Creature sounds occupy the 40-200Hz range for body and presence, while environmental details fill the mid-range. High frequencies are reserved for tension-building textures and detail work."
+        "title": "Frequency Work",
+        "desc": "Creatures sit at 40-200Hz for body and presence. Environment fills mid range, highs for tension and details. Keeps everything clear."
       },
       "layering": {
-        "title": "Dynamic Layering",
-        "desc": "Audio layers build progressively throughout scenes, starting with minimal ambience and adding complexity as tension increases. This approach maintains listener engagement while avoiding overwhelming the mix during critical dialogue moments."
+        "title": "Building Layers",
+        "desc": "Starts minimal, adds complexity as tension grows. Keeps you engaged without drowning dialogue."
       }
     },
     "gallery": {
@@ -123,7 +123,7 @@
   "pl": {
     "back": "Powrót do projektów",
     "title": "Amorak — Sound Design",
-    "tagline": "Kreowanie świata poprzez immersyjny design dźwięku i unikalne sygnatury postaci.",
+    "tagline": "Krótki horror. Zbudowałem świat przez dźwięk. Każdy stwór ma swój głos.",
     "meta": {
       "role": {
         "label": "Rola",
@@ -143,45 +143,45 @@
       }
     },
     "showcase": {
-      "title": "Audio w Kontekście",
-      "description": "Zobacz jak sound design buduje atmosferę horroru. Każde warczenie stwora, warstwa środowiska i detal przestrzenny zostały stworzone by tworzyć immersyjne napięcie skalujące się dynamicznie z obrazem.",
-      "list1": "Sygnatury dźwiękowe stworów",
-      "list2": "Warstwy atmosfery środowiska",
-      "list3": "Dynamiczny miks przestrzenny",
-      "list4": "Skalowanie intensywności z bliskością"
+      "title": "Oglądaj ze Dźwiękiem",
+      "description": "Dźwięk buduje horror. Warczenia stworów, warstwy środowiska, detale przestrzenne skalują się z obrazem.",
+      "list1": "Unikalne dźwięki stworów",
+      "list2": "Warstwowe środowisko",
+      "list3": "Spatial audio mix",
+      "list4": "Skaluje się z bliskością"
     },
     "overview": {
-      "title": "Przegląd",
-      "desc": "Amorak był ćwiczeniem w budowaniu świata poprzez dźwięk. Stworzyłem sygnatury postaci i warstwy środowiskowe, które skalują się z bliskością kamery, utrzymując czytelność miksu przy jednoczesnym wzmacnianiu tonu opowieści."
+      "title": "Podejście",
+      "desc": "Zbudowałem świat przez dźwięk. Każdy stwór ma unikalne audio. Warstwy środowiska skalują się z odległością kamery. Miks pozostaje czysty wspierając historię."
     },
     "approach": {
       "title": "Podejście do Sound Designu",
       "creatures": {
-        "title": "Sygnatury Stworzeń",
-        "desc": "Każde stworzenie w Amorak ma unikalną tożsamość dźwiękową zbudowaną z organicznych tekstur, przetworzonych wokalizacji zwierząt i syntezowanych sub-częstotliwości. Obecność bestii odczuwalna jest przez niskofrequencyjne dźwięki, które skalują się z bliskością, tworząc niepokojącą atmosferę nawet poza ekranem."
+        "title": "Dźwięki Stworów",
+        "desc": "Każdy stwór brzmi inaczej: organiczne tekstury, przetworzone dźwięki zwierząt, synth bass. Obecność bestii przez niskie dudnienia które rosną z bliskością. Niepokojące nawet poza ekranem."
       },
       "environment": {
-        "title": "Warstwy Środowiskowe",
-        "desc": "Środowisko piwnicy wykorzystuje warstwowe tekstury ambientowe - kapanie wody, skrzypienie drewna, odległe echa i subtelne brzęczenie elektryczne. Te elementy dynamicznie reagują na pozycję kamery, tworząc głębię i świadomość przestrzenną, która kieruje uwagą widza."
+        "title": "Warstwy Środowiska",
+        "desc": "Piwnica ma warstwowe dźwięki: kapanie wody, skrzypienie drewna, odległe echa, brzęczenie elektryczne. Zmienia się z pozycją kamery żeby tworzyć głębię i kierować uwagę."
       },
       "narrative": {
-        "title": "Wsparcie Narracji",
-        "desc": "Sound design wzmacnia emocjonalne momenty opowieści poprzez staranne manipulowanie częstotliwościami i kontrolę zakresu dynamicznego. Napięcie narasta poprzez stopniowe wprowadzanie dysharmonijnych elementów, podczas gdy momenty odprężenia wykorzystują naturalną pogłos i przestrzeń."
+        "title": "Wspieranie Historii",
+        "desc": "Dźwięk podąża za emocjami. Napięcie buduje się dysharmonijnymi elementami, momenty odprężenia używają reverbu i przestrzeni. Praca z częstotliwościami i dynamiką trzyma to czysto."
       }
     },
     "technical": {
       "title": "Implementacja Techniczna",
       "proximity": {
-        "title": "Miksowanie Oparte na Bliskości",
-        "desc": "Zaimplementowano system audio przestrzennego 3D, gdzie elementy dźwiękowe dostosowują się do odległości i kąta kamery. Zbliżenia podkreślają intymne detale jak oddech i kroki, podczas gdy szerokie ujęcia skupiają się na ambiencie środowiskowym i wołaniach stworzeń."
+        "title": "Miks Oparty na Odległości",
+        "desc": "Dźwięk dostosowuje się do odległości i kąta kamery. Zbliżenia dostają oddech i kroki. Szerokie ujęcia dostają środowisko i wołania stworów. System 3D spatial."
       },
       "frequency": {
-        "title": "Strategia Projektowania Częstotliwości",
-        "desc": "Staranna alokacja częstotliwości zapewnia przejrzystość wszystkich elementów. Dźwięki stworzeń zajmują zakres 40-200Hz dla ciała i obecności, podczas gdy detale środowiskowe wypełniają średni zakres. Wysokie częstotliwości zarezerwowane są dla tekstur budujących napięcie i pracy nad detalami."
+        "title": "Praca z Częstotliwościami",
+        "desc": "Stwory siedzą na 40-200Hz dla ciała i obecności. Środowisko wypełnia środek, wysokie dla napięcia i detali. Wszystko pozostaje czyste."
       },
       "layering": {
-        "title": "Dynamiczne Warstwowanie",
-        "desc": "Warstwy audio budują się progresywnie przez sceny, rozpoczynając od minimalnego ambientu i dodając złożoność w miarę narastania napięcia. To podejście utrzymuje zaangażowanie słuchacza, unikając przytłaczania miksu podczas krytycznych momentów dialogowych."
+        "title": "Budowanie Warstw",
+        "desc": "Zaczyna minimalnie, dodaje złożoność jak napięcie rośnie. Trzyma cię w napięciu bez zagłuszania dialogu."
       }
     },
     "gallery": {
@@ -244,7 +244,7 @@
   "nl": {
     "back": "Terug naar Projecten",
     "title": "Amorak — Sound Design",
-    "tagline": "Wereldcreatie door meeslepend audiodesign en karakter geluidssignaturen.",
+    "tagline": "Horror korte film. Bouwde de wereld door geluid. Elk wezen heeft zijn eigen stem.",
     "meta": {
       "role": {
         "label": "Rol",
@@ -264,45 +264,45 @@
       }
     },
     "showcase": {
-      "title": "Audio in Context",
-      "description": "Zie hoe sound design de horror atmosfeer opbouwt. Elk wezen gegrom, omgevingslaag en ruimtelijk detail werd gemaakt om meeslepende spanning te creëren die dynamisch schaalt met de beelden.",
-      "list1": "Wezen geluidssignaturen",
-      "list2": "Omgevingsatmosfeer lagen",
-      "list3": "Dynamische ruimtelijke audio mixing",
-      "list4": "Nabijheidsgebaseerde intensiteitsschaling"
+      "title": "Kijk Met Geluid",
+      "description": "Geluid bouwt de horror. Wezen gegroms, omgevingslagen, ruimtelijke details schalen met wat je ziet.",
+      "list1": "Unieke wezen geluiden",
+      "list2": "Gelaagde omgeving",
+      "list3": "Ruimtelijke audio mix",
+      "list4": "Schaalt met nabijheid"
     },
     "overview": {
-      "title": "Overzicht",
-      "desc": "Amorak was een oefening in wereldcreatie door geluid. Ik creëerde karaktersignaturen en omgevingslagen die schalen met camera nabijheid, waarbij de mix leesbaar blijft terwijl de verhaaltoon wordt versterkt."
+      "title": "De Aanpak",
+      "desc": "Bouwde de wereld door geluid. Elk wezen heeft unieke audio. Omgevingslagen schalen met camera afstand. Mix blijft helder terwijl het verhaal ondersteunt."
     },
     "approach": {
       "title": "Sound Design Aanpak",
       "creatures": {
-        "title": "Wezen Signaturen",
-        "desc": "Elk wezen in Amorak heeft een unieke sonische identiteit gebouwd uit organische texturen, verwerkte dierlijke vocalisaties en gesynthetiseerde sub-frequenties. De aanwezigheid van het beest wordt gevoeld door lage-frequentie gerommel dat schaalt met nabijheid, waardoor een verontrustende atmosfeer ontstaat zelfs wanneer het off-screen is."
+        "title": "Wezen Geluiden",
+        "desc": "Elk wezen klinkt anders: organische texturen, verwerkte dierengeluiden, synth bass. Beest aanwezigheid door lage rommels die sterker worden dichtbij. Verontrustend zelfs off screen."
       },
       "environment": {
         "title": "Omgevingslagen",
-        "desc": "De kelderomgeving gebruikt gelaagde ambient texturen - druppelend water, krakend hout, verre echo's en subtiele elektrische zoemen. Deze elementen reageren dynamisch op de camerapositie, waardoor diepte en ruimtelijk bewustzijn ontstaat dat de aandacht van de kijker leidt."
+        "desc": "Kelder heeft gelaagde geluiden: druppelend water, krakend hout, verre echo's, elektrisch zoemen. Verandert met camerapositie om diepte te creëren en aandacht te leiden."
       },
       "narrative": {
-        "title": "Narratieve Ondersteuning",
-        "desc": "Sound design versterkt de emotionele beats van het verhaal door zorgvuldige frequentiemanipulatie en dynamische bereikcontrole. Spanning bouwt op door geleidelijke introductie van dissonante elementen, terwijl release-momenten natuurlijke reverb en ruimte gebruiken om ademruimte te bieden."
+        "title": "Verhaal Ondersteunen",
+        "desc": "Geluid volgt emoties. Spanning bouwt met dissonante elementen, release momenten gebruiken reverb en ruimte. Frequentie werk en dynamiek houden het helder."
       }
     },
     "technical": {
       "title": "Technische Implementatie",
       "proximity": {
-        "title": "Nabijheid-Gebaseerde Mixing",
-        "desc": "Implementeerde een 3D ruimtelijk audiosysteem waar geluidelementen aanpassen op basis van camera-afstand en hoek. Close-ups benadrukken intieme details zoals ademhaling en voetstappen, terwijl brede shots zich richten op omgevingsambiance en wezenroepen."
+        "title": "Afstand Gebaseerde Mix",
+        "desc": "Geluid past aan met camera afstand en hoek. Close ups benadrukken ademhaling en voetstappen, brede shots focussen op omgeving en wezen roepen."
       },
       "frequency": {
-        "title": "Frequentie Design Strategie",
-        "desc": "Zorgvuldige frequentietoewijzing zorgt voor helderheid over alle elementen. Wezengeluiden bezetten het 40-200Hz bereik voor body en aanwezigheid, terwijl omgevingsdetails het mid-bereik vullen. Hoge frequenties zijn gereserveerd voor spanning-opbouwende texturen en detailwerk."
+        "title": "Frequentie Werk",
+        "desc": "Wezens zitten op 40-200Hz voor body en aanwezigheid. Omgeving vult mid bereik. Hoge voor spanning en details. Houdt alles helder."
       },
       "layering": {
-        "title": "Dynamische Gelaagdheid",
-        "desc": "Audiolagen bouwen progressief op doorheen scènes, beginnend met minimale ambiance en complexiteit toevoegend naarmate de spanning toeneemt. Deze aanpak houdt luisteraarsbetrokkenheid vast terwijl het overweldigen van de mix tijdens kritieke dialoogmomenten wordt vermeden."
+        "title": "Lagen Bouwen",
+        "desc": "Begint minimaal, voegt complexiteit toe als spanning groeit. Houdt je betrokken zonder dialoog te overspoelen."
       }
     },
     "gallery": {
