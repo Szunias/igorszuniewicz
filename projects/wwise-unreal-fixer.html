@@ -20,7 +20,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
   
   <style>
     * {
@@ -30,10 +30,8 @@
     }
     
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: 
-        radial-gradient(ellipse at top, rgba(255, 140, 0, 0.08) 0%, transparent 50%),
-        linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1419 100%);
+      font-family: 'Roboto Mono', monospace;
+      background: #0a0e12;
       color: #e0e6ed;
       line-height: 1.6;
       overflow-x: hidden;
@@ -43,12 +41,22 @@
     body::before {
       content: '';
       position: fixed;
-      top: -50%;
-      right: -50%;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(255, 140, 0, 0.03) 0%, transparent 70%);
-      animation: subtleFloat 20s ease-in-out infinite;
+      inset: 0;
+      background: 
+        linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(circle, rgba(0, 255, 136, 0.15) 1px, transparent 1px);
+      background-size: 50px 50px;
       pointer-events: none;
       z-index: 0;
     }
@@ -135,7 +143,7 @@
     }
     
     h1 {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       font-size: clamp(2.5rem, 6vw, 4.5rem);
       font-weight: 700;
       margin-bottom: 1.5rem;
@@ -293,7 +301,7 @@
     }
     
     h2 {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       margin-bottom: 1rem;
@@ -581,31 +589,29 @@
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <div class="hero-badge" data-i18n="hero.badge">🎓 Built for Students & Developers</div>
-        <h1 data-i18n="hero.title">Wwise Unreal<br>Engine Fixer</h1>
+        <div class="hero-badge" data-i18n="hero.badge">// FREE TOOL</div>
+        <h1 data-i18n="hero.title">Wwise UE Fixer</h1>
         <p class="hero-subtitle" data-i18n="hero.subtitle">
-          Automated solution for restoring Wwise integration in Unreal Engine projects. One click to fix missing plugin references and restore audio functionality.
+          Fixes broken Wwise plugin references. Restores .uproject. Done.
         </p>
         
         <div class="cta-buttons">
           <a href="https://github.com/Szunias/WwiseUnrealEngineFixer/releases/latest" class="btn btn-primary" target="_blank" rel="noopener">
-            <span class="btn-icon">⬇️</span>
-            <span data-i18n="hero.download">Download Now</span>
+            <span data-i18n="hero.download">Download .exe</span>
           </a>
           <a href="https://github.com/Szunias/WwiseUnrealEngineFixer" class="btn btn-secondary" target="_blank" rel="noopener">
-            <span class="btn-icon">⭐</span>
-            <span data-i18n="hero.github">View on GitHub</span>
+            <span data-i18n="hero.github">GitHub</span>
           </a>
         </div>
         
         <div class="stats">
           <div class="stat-card">
-            <span class="stat-value" data-i18n="stats.value1">Hours</span>
-            <span class="stat-label" data-i18n="stats.label1">Troubleshooting Time Saved</span>
+            <span class="stat-value" data-i18n="stats.value1">~2 hrs</span>
+            <span class="stat-label" data-i18n="stats.label1">saved debugging</span>
           </div>
           <div class="stat-card">
-            <span class="stat-value" data-i18n="stats.value2">1-Click</span>
-            <span class="stat-label" data-i18n="stats.label2">Complete Restoration</span>
+            <span class="stat-value" data-i18n="stats.value2">1 click</span>
+            <span class="stat-label" data-i18n="stats.label2">fixed</span>
           </div>
           <div class="stat-card">
             <span class="stat-value" data-i18n="stats.value3">100%</span>
