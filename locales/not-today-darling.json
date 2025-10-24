@@ -20,20 +20,20 @@
     },
     "role": {
       "title": "Role — Audio",
-      "desc": "Responsible for sound effects, implementation and mixing: gameplay SFX palette, UI, crowd/ambience layers and integration and in-engine mix for clarity during fast-paced action. System reacts to race states and player events."
+      "desc": "Made all the sounds, hooked them up in Unreal, mixed everything. Gameplay SFX, UI, crowd reactions. Stays clear during chaos."
     },
     "gameplay": {
       "title": "Gameplay Highlights",
-      "li1": "Responsive SFX tied to player actions and obstacles",
-      "li2": "Mix hierarchy optimized for clarity (1–4 players)",
-      "li3": "Non-intrusive dynamic layers during intense moments"
+      "li1": "Sounds react to what you do",
+      "li2": "Clear mix with 1-4 players",
+      "li3": "Dynamic layers that don't get in the way"
     },
     "audioDirection": {
       "title": "Audio Direction",
-      "desc": "Designed for race readability and energy: clear event telemetry, dynamic crowd and UI that never buries gameplay. An arcade-leaning palette with controlled transients and tasteful saturation to keep the mix tight with up to four players.",
-      "b1": "Layering: gameplay > UI clarity > crowd/ambience",
-      "b2": "State cues (start, bursts, hazards, finish)",
-      "b3": "Spectral masking control and event priorities"
+      "desc": "Arcade-style sound that stays clear even with 4 players racing. Gameplay sounds always on top, UI never buried, crowd reacts to the action.",
+      "b1": "Priority: gameplay > UI > crowd",
+      "b2": "Clear audio cues for race events",
+      "b3": "Controlled mix, no frequency mud"
     },
     "sfxSystem": {
       "title": "SFX System",
@@ -72,31 +72,31 @@
     },
     "challenges": {
       "title": "Challenges & Solutions",
-      "desc": "Real-world problems encountered during development and the technical solutions implemented.",
+      "desc": "Problems I ran into and how I fixed them.",
       "problem_label": "Problem:",
       "solution_label": "Solution:",
       "challenge1": {
         "title": "4-Player Mix Clarity",
-        "problem": "With up to 4 simultaneous players, collision and boost sounds would stack and cause frequency masking, making UI feedback inaudible.",
-        "solution": "Implemented priority-based concurrency limiting (max 4 collision sounds at once) with intelligent voice stealing. Added frequency-conscious EQ curves per player slot (slot 1: 200-800Hz focus, slot 2: 800-2kHz, etc.) and applied sidechain ducking on crowd/ambience when UI events trigger (-6dB duck, 50ms attack, 200ms release)."
+        "problem": "With 4 players, sounds stacked up and UI became inaudible.",
+        "solution": "Limited max collision sounds to 4. Each player gets different EQ range. Crowd ducks when UI plays."
       },
       "challenge2": {
         "title": "Surface Transition Pops",
-        "problem": "Players moving between track materials (asphalt → sand → metal) caused audible pops due to instant layer switching.",
-        "solution": "Replaced instant switches with crossfade system using Unreal's blend containers. Added 150ms crossfade time with equal-power curve. Surface detection uses overlap sphere with 0.2s cooldown to prevent rapid transitions."
+        "problem": "Moving between surfaces (asphalt → sand → metal) caused audio pops.",
+        "solution": "Added 150ms crossfades between surfaces. Works smooth now."
       },
       "challenge3": {
         "title": "Boost Sound Memory Spikes",
-        "problem": "Original boost SFX used 4-layer system with 24-bit WAV files, causing 40MB memory spikes per instance (x4 players = potential 160MB spike).",
-        "solution": "Refactored to procedural MetaSounds patch: noise generator + band-pass filter sweep + pitch modulation driven by boost intensity parameter. Reduced to <2MB per instance while maintaining sonic character. Added RPM-style pitch curve for organic acceleration feel."
+        "problem": "Boost sounds used too much memory (160MB with 4 players).",
+        "solution": "Switched to procedural MetaSounds. Now uses <2MB per player. Sounds the same, way less memory."
       }
     },
     "metasounds": {
       "title": "MetaSounds",
-      "desc": "Entire audio system built in MetaSounds – a modern procedural-parametric framework in Unreal Engine. Enables reactive, modular sound design responding to gameplay in real-time.",
-      "b1": "Procedural layers driven by speed and game state",
-      "b2": "Parametric controllers for pitch/filters/modulation",
-      "b3": "Modular patches enabling rapid iteration"
+      "desc": "Built everything in MetaSounds (Unreal's procedural audio system). Sounds react to gameplay in real-time.",
+      "b1": "Layers change with speed and game state",
+      "b2": "Pitch/filters controlled by parameters",
+      "b3": "Modular setup, easy to tweak"
     },
     "player": {
       "label": "Play sample"
@@ -137,12 +137,12 @@
     },
     "role": {
       "title": "Rola — Audio",
-      "desc": "Odpowiadałem za sound effects, implementację i miks: paleta SFX gameplayu, UI, warstwy crowd/ambience oraz integrację i miks w silniku dla czytelności przy szybkiej akcji. System reaguje na stany wyścigu i zdarzenia gracza."
+      "desc": "Zrobiłem wszystkie dźwięki, podpiąłem w Unreal, zmiksowałem. SFX gameplay, UI, reakcje tłumu. Czytelne nawet w chaosie."
     },
     "gameplay": {
       "title": "Gameplay Highlights",
-      "li1": "Responsywne SFX powiązane z akcjami gracza i przeszkodami",
-      "li2": "Hierarchia miksu zoptymalizowana pod czytelność (1–4 graczy)",
+      "li1": "Dźwięki reagują na to co robisz",
+      "li2": "Czysty miks z 1-4 graczami",
       "li3": "Niewchodzące w drogę warstwy dynamiczne przy intensywnych momentach"
     },
     "audioDirection": {

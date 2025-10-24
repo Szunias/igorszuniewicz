@@ -16,42 +16,42 @@
       "ray": {
         "badge": "Animation",
         "title": "Ray Animation",
-        "description": "Funky credits theme with groove and luminous cadence."
+        "description": "Funky credits music. Groovy and bright."
       },
       "not_today": {
         "badge": "Game Audio",
         "title": "Not Today, Darling!",
-        "description": "Retro-inspired audio implementation for chaotic multiplayer racing game."
+        "description": "Retro audio for chaotic multiplayer racing."
       },
       "amorak": {
         "badge": "Sound Design",
         "title": "Amorak",
-        "description": "Atmospheric soundscapes and creature audio for horror animation."
+        "description": "Horror soundscapes and creature sounds."
       },
       "pause_deserve": {
         "badge": "Horror Game",
         "title": "Pause & Deserve",
-        "description": "Psychological horror game with strategic pause mechanics."
+        "description": "Horror game with pause mechanics."
       },
       "audiolab": {
         "badge": "ML Audio",
         "title": "Transientica: AudioLab",
-        "description": "Real-time ML beatbox classification with 45 ms latency."
+        "description": "Real time beatbox classification. 45ms latency."
       },
       "interactive_music": {
         "badge": "Music",
         "title": "Interactive Music Design",
-        "description": "Adaptive audio systems with vertical layering in Wwise."
+        "description": "Adaptive music with vertical layering in Wwise."
       },
       "akantilado": {
         "badge": "Animation",
         "title": "Akantilado",
-        "description": "Complete foley and jungle ambience for 3D animation."
+        "description": "Foley and jungle sounds for 3D animation."
       },
       "richter": {
         "badge": "Film Score",
         "title": "Richter",
-        "description": "Suspense sequence with layered strings and action percussion."
+        "description": "Sound design for short film."
       },
       "plugin_suite": {
         "badge": "VST Plugin",
@@ -66,27 +66,27 @@
       "environments": {
         "badge": "3D Design",
         "title": "3D Audio Environments",
-        "description": "Immersive spatial audio for virtual spaces."
+        "description": "Spatial audio for virtual spaces."
       },
       "pawism": {
         "badge": "Game Jam",
         "title": "Paw-ism",
-        "description": "Thriller game jam project created in 2 days. Execute your plans as an ambitious cat."
+        "description": "Thriller made in 2 days. Play as ambitious cat."
       },
       "middleware": {
         "badge": "Middleware",
         "title": "Middleware Integration",
-        "description": "FMOD and Wwise implementation expertise."
+        "description": "FMOD and Wwise implementation."
       },
       "ue_rebuilder": {
         "badge": "Dev Tool",
         "title": "Unreal Engine Rebuilder",
-        "description": "Automated build tool for UE projects."
+        "description": "Automated build tool for Unreal."
       },
       "wwise_fixer": {
         "badge": "Dev Tool",
         "title": "Wwise Unreal Fixer",
-        "description": "Automated Wwise integration restoration for UE projects."
+        "description": "Fixes Wwise integration in Unreal."
       }
     }
   },
@@ -107,42 +107,42 @@
       "ray": {
         "badge": "Animacja",
         "title": "Ray Animation",
-        "description": "Funkowy motyw napisów końcowych z groove'em i świetlistą kadencją."
+        "description": "Funkowa muzyka do napisów. Groovy i jasna."
       },
       "not_today": {
         "badge": "Audio do gier",
         "title": "Not Today, Darling!",
-        "description": "Retro-inspirowana implementacja audio do chaotycznej wieloosobowej gry wyścigowej."
+        "description": "Retro audio do chaotycznych wyścigów multiplayer."
       },
       "amorak": {
         "badge": "Sound design",
         "title": "Amorak",
-        "description": "Atmosferyczne pejzaże dźwiękowe i audio postaci do horroru animowanego."
+        "description": "Soundscapy horroru i dźwięki stworów."
       },
       "pause_deserve": {
         "badge": "Gra grozy",
         "title": "Pause & Deserve",
-        "description": "Psychologiczny horror z mechaniką strategicznych pauz."
+        "description": "Gra grozy z mechaniką pauzy."
       },
       "audiolab": {
         "badge": "Audio ML",
         "title": "Transientica: AudioLab",
-        "description": "Klasyfikacja beatboxu w czasie rzeczywistym z opóźnieniem 45 ms."
+        "description": "Klasyfikacja beatboxu w czasie rzeczywistym. 45ms opóźnienia."
       },
       "interactive_music": {
         "badge": "Muzyka",
         "title": "Projektowanie muzyki interaktywnej",
-        "description": "Adaptacyjne systemy audio z wertykalnym warstwowaniem w Wwise."
+        "description": "Adaptacyjna muzyka z wertykalnym warstwowaniem w Wwise."
       },
       "akantilado": {
         "badge": "Animacja",
         "title": "Akantilado",
-        "description": "Kompletny foley i leśny ambience do animacji 3D."
+        "description": "Foley i dźwięki dżungli do animacji 3D."
       },
       "richter": {
         "badge": "Muzyka filmowa",
         "title": "Richter",
-        "description": "Sekwencja suspensu z warstwowymi smyczkami i perkusją akcji."
+        "description": "Sound design do krótkiego filmu."
       },
       "plugin_suite": {
         "badge": "Wtyczka VST",
@@ -157,27 +157,27 @@
       "environments": {
         "badge": "Projekt 3D",
         "title": "3D Audio Environments",
-        "description": "Immersyjne audio przestrzenne dla wirtualnych przestrzeni."
+        "description": "Audio przestrzenne dla wirtualnych przestrzeni."
       },
       "pawism": {
         "badge": "Game jam",
         "title": "Paw-ism",
-        "description": "Thriller stworzony w 2 dni — wykonaj plan jako ambitny kot."
+        "description": "Thriller zrobiony w 2 dni. Grasz jako ambitny kot."
       },
       "middleware": {
         "badge": "Middleware",
         "title": "Middleware Integration",
-        "description": "Ekspercka implementacja FMOD i Wwise."
+        "description": "Implementacja FMOD i Wwise."
       },
       "ue_rebuilder": {
         "badge": "Narzędzie dev",
         "title": "Unreal Engine Rebuilder",
-        "description": "Zautomatyzowane narzędzie do buildów projektów UE."
+        "description": "Automatyczne buildy dla Unreala."
       },
       "wwise_fixer": {
         "badge": "Narzędzie dev",
         "title": "Wwise Unreal Fixer",
-        "description": "Automatyczne przywracanie integracji Wwise w projektach UE."
+        "description": "Naprawia integrację Wwise w Unrealu."
       }
     }
   },
@@ -198,42 +198,42 @@
       "ray": {
         "badge": "Animatie",
         "title": "Ray Animation",
-        "description": "Funky aftitelthema met groove en lichtgevende cadens."
+        "description": "Funky credits muziek. Groovy en helder."
       },
       "not_today": {
         "badge": "Game-audio",
         "title": "Not Today, Darling!",
-        "description": "Retro-geïnspireerde audio-implementatie voor chaotische multiplayer-racegame."
+        "description": "Retro audio voor chaotische multiplayer racing."
       },
       "amorak": {
         "badge": "Sounddesign",
         "title": "Amorak",
-        "description": "Atmosferische soundscapes en creature-audio voor horroranimatie."
+        "description": "Horror soundscapes en creature geluiden."
       },
       "pause_deserve": {
         "badge": "Horrorgame",
         "title": "Pause & Deserve",
-        "description": "Psychologische horrorgame met strategische pauzemechaniek."
+        "description": "Horror game met pauze mechaniek."
       },
       "audiolab": {
         "badge": "ML-audio",
         "title": "Transientica: AudioLab",
-        "description": "Realtime beatboxclassificatie met 45 ms latentie."
+        "description": "Real time beatbox classificatie. 45ms latentie."
       },
       "interactive_music": {
         "badge": "Muziek",
         "title": "Interactive Music Design",
-        "description": "Adaptieve audiosystemen met verticale lagen in Wwise."
+        "description": "Adaptieve muziek met verticale lagen in Wwise."
       },
       "akantilado": {
         "badge": "Animatie",
         "title": "Akantilado",
-        "description": "Volledige foley en jungle-ambience voor 3D-animatie."
+        "description": "Foley en jungle geluiden voor 3D animatie."
       },
       "richter": {
         "badge": "Filmscore",
         "title": "Richter",
-        "description": "Spanningsscène met gelaagde strijkers en actieslagwerk."
+        "description": "Sound design voor korte film."
       },
       "plugin_suite": {
         "badge": "VST-plugin",
@@ -248,27 +248,27 @@
       "environments": {
         "badge": "3D-ontwerp",
         "title": "3D Audio Environments",
-        "description": "Immersieve ruimtelijke audio voor virtuele omgevingen."
+        "description": "Ruimtelijke audio voor virtuele omgevingen."
       },
       "pawism": {
         "badge": "Game jam",
         "title": "Paw-ism",
-        "description": "Thriller-gamejamproject in 2 dagen – voer je plan uit als ambitieuze kat."
+        "description": "Thriller gemaakt in 2 dagen. Speel als ambitieuze kat."
       },
       "middleware": {
         "badge": "Middleware",
         "title": "Middleware Integration",
-        "description": "FMOD- en Wwise-implementatie-expertise."
+        "description": "FMOD en Wwise implementatie."
       },
       "ue_rebuilder": {
         "badge": "Dev-tool",
         "title": "Unreal Engine Rebuilder",
-        "description": "Geautomatiseerde buildtool voor UE-projecten."
+        "description": "Automatische builds voor Unreal."
       },
       "wwise_fixer": {
         "badge": "Dev-tool",
         "title": "Wwise Unreal Fixer",
-        "description": "Automatisch herstel van Wwise-integratie voor UE-projecten."
+        "description": "Repareert Wwise integratie in Unreal."
       }
     }
   }

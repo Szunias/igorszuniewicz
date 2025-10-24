@@ -270,7 +270,7 @@
 
     /* === HERO SECTION === */
     .hero {
-      padding: 10rem 0 4rem;
+      padding: 8rem 0 2rem;
       text-align: center;
     }
 
@@ -298,7 +298,7 @@
       font-size: 1.25rem;
       color: #9ca3af;
       max-width: 700px;
-      margin: 0 auto 3rem;
+      margin: 0 auto 2rem;
       line-height: 1.8;
     }
 
@@ -307,32 +307,27 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
-      margin: 4rem 0;
+      margin: 2rem 0;
     }
 
     .value-card {
-      padding: 2rem;
+      padding: 1.5rem;
       background: rgba(96, 165, 250, 0.03);
       border: 1px solid rgba(96, 165, 250, 0.1);
-      border-radius: 16px;
+      border-radius: 12px;
       transition: all 0.3s ease;
     }
 
     .value-card:hover {
       background: rgba(96, 165, 250, 0.06);
       border-color: rgba(96, 165, 250, 0.2);
-      transform: translateY(-4px);
-    }
-
-    .value-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      transform: translateY(-2px);
     }
 
     .value-card h3 {
       font-size: 1.1rem;
       font-weight: 600;
-      color: #fff;
+      color: #60a5fa;
       margin-bottom: 0.5rem;
     }
 
@@ -344,7 +339,7 @@
 
     /* === SKILLS SECTION === */
     .skills-section {
-      padding: 4rem 0;
+      padding: 3rem 0;
     }
 
     .section-title {
@@ -356,17 +351,25 @@
       color: #fff;
     }
 
+    /* Skills Grid */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
+      margin-top: 3rem;
     }
 
     .skill-category {
       background: rgba(15, 23, 42, 0.6);
       border: 1px solid rgba(96, 165, 250, 0.1);
-      border-radius: 16px;
+      border-radius: 12px;
       padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+      border-color: rgba(96, 165, 250, 0.3);
+      background: rgba(15, 23, 42, 0.8);
     }
 
     .skill-category h3 {
@@ -374,58 +377,48 @@
       font-weight: 600;
       color: #60a5fa;
       margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(96, 165, 250, 0.2);
     }
 
-    .skill-bar-item {
-      margin-bottom: 1.5rem;
+    .skill-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
-    .skill-bar-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .skill-bar-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-    }
-
-    .skill-name {
-      font-weight: 500;
+    .skill-list li {
+      padding: 0.75rem 0;
       color: #e0e6ed;
+      font-size: 1rem;
+      position: relative;
+      padding-left: 1.5rem;
+      transition: all 0.2s ease;
     }
 
-    .skill-percent {
-      font-size: 0.9rem;
+    .skill-list li:before {
+      content: '▸';
+      position: absolute;
+      left: 0;
       color: #60a5fa;
-      font-weight: 600;
+      font-weight: bold;
     }
 
-    .skill-bar-bg {
-      height: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      overflow: hidden;
+    .skill-list li:hover {
+      color: #60a5fa;
+      padding-left: 2rem;
     }
 
-    .skill-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #60a5fa, #a78bfa);
-      border-radius: 10px;
-      width: 0;
-      animation: fillBar 1.5s ease-out forwards;
-      animation-delay: 0.3s;
-    }
-
-    @keyframes fillBar {
-      to {
-        width: var(--skill-width);
+    @media (max-width: 768px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
     }
 
     /* === TIMELINE === */
     .timeline-section {
-      padding: 4rem 0;
+      padding: 3rem 0;
       background: rgba(96, 165, 250, 0.02);
     }
 
@@ -433,7 +426,7 @@
       position: relative;
       max-width: 800px;
       margin: 0 auto;
-      padding-left: 3rem;
+      padding-left: 2.5rem;
     }
 
     .timeline::before {
@@ -448,8 +441,7 @@
 
     .timeline-item {
       position: relative;
-      margin-bottom: 3rem;
-      padding-left: 2rem;
+      margin-bottom: 2rem;
     }
 
     .timeline-item:last-child {
@@ -458,14 +450,14 @@
 
     .timeline-dot {
       position: absolute;
-      left: -3rem;
+      left: -2.5rem;
       top: 0.5rem;
-      width: 16px;
-      height: 16px;
-      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      width: 10px;
+      height: 10px;
+      background: #60a5fa;
       border-radius: 50%;
-      border: 3px solid #000;
-      box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.2);
+      border: 2px solid #0a0e12;
+      transform: translateX(-1px);
     }
 
     .timeline-content {
@@ -492,7 +484,7 @@
     }
 
     .timeline-content h3 {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 600;
       color: #fff;
       margin-bottom: 0.5rem;
@@ -501,11 +493,12 @@
     .timeline-content p {
       color: #9ca3af;
       line-height: 1.6;
+      font-size: 0.95rem;
     }
 
     /* === PHILOSOPHY === */
     .philosophy-section {
-      padding: 4rem 0;
+      padding: 3rem 0;
     }
 
     .philosophy-grid {
@@ -577,10 +570,10 @@
       display: flex;
       justify-content: center;
       gap: 4rem;
-      padding: 4rem 0;
+      padding: 2rem 0;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      margin: 4rem 0;
+      margin: 2rem 0;
     }
 
     .stat-item {
@@ -712,22 +705,16 @@
         <!-- Value Propositions -->
         <div class="value-props">
           <div class="value-card">
-            <div class="value-icon">🎯</div>
             <h3 data-i18n="value_systems_title">Interactive Systems</h3>
-            <p data-i18n="value_systems_desc">Built adaptive music systems and dynamic audio engines that respond to
-              gameplay in real-time</p>
+            <p data-i18n="value_systems_desc">Built adaptive music systems and dynamic audio engines that respond to gameplay in real-time</p>
           </div>
           <div class="value-card">
-            <div class="value-icon">🛠️</div>
             <h3 data-i18n="value_tools_title">Pipeline Optimization</h3>
-            <p data-i18n="value_tools_desc">Developed custom tools (Wwise Unreal Fixer, Unreal Rebuilder) that automate
-              workflows and reduce iteration time</p>
+            <p data-i18n="value_tools_desc">Developed custom tools (Wwise Unreal Fixer, Unreal Rebuilder) that automate workflows and reduce iteration time</p>
           </div>
           <div class="value-card">
-            <div class="value-icon">⚡</div>
             <h3 data-i18n="value_technical_title">Technical Problem Solving</h3>
-            <p data-i18n="value_technical_desc">Bridge between audio and engineering teams with C++, Python, and
-              Blueprint scripting expertise</p>
+            <p data-i18n="value_technical_desc">Bridge between audio and engineering teams with C++, Python, and Blueprint scripting expertise</p>
           </div>
         </div>
       </div>
@@ -751,133 +738,43 @@
       </div>
     </section>
 
-    <!-- Skills Section with Progress Bars -->
+    <!-- Skills Section -->
     <section class="skills-section">
       <div class="container">
         <h2 class="section-title" data-i18n="about_tech_title">Technical Expertise</h2>
-
+        
         <div class="skills-grid">
           <!-- Game Audio -->
           <div class="skill-category">
             <h3 data-i18n="tech_middleware_title">Game Audio</h3>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header">
-                <span class="skill-name">Wwise</span>
-                <span class="skill-percent">90%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill" style="--skill-width: 90%"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header">
-                <span class="skill-name">FMOD Studio</span>
-                <span class="skill-percent">90%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill" style="--skill-width: 90%"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header">
-                <span class="skill-name">Unreal Engine 5</span>
-                <span class="skill-percent">85%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill" style="--skill-width: 85%"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header">
-                <span class="skill-name">Unity</span>
-                <span class="skill-percent">75%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill" style="--skill-width: 75%"></div>
-              </div>
-            </div>
+            <ul class="skill-list">
+              <li>Wwise</li>
+              <li>FMOD Studio</li>
+              <li>Unreal Engine 5</li>
+              <li>Unity</li>
+            </ul>
           </div>
 
           <!-- Production -->
           <div class="skill-category">
             <h3 data-i18n="tech_production_title">Production & DAWs</h3>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header">
-                <span class="skill-name">Reaper</span>
-                <span class="skill-percent">95%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill" style="--skill-width: 95%"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header">
-                <span class="skill-name">Logic Pro</span>
-                <span class="skill-percent">90%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill" style="--skill-width: 90%"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header">
-                <span class="skill-name">Studio One</span>
-                <span class="skill-percent">75%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill" style="--skill-width: 75%"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header">
-                <span class="skill-name">Sound Design</span>
-                <span class="skill-percent">90%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill" style="--skill-width: 90%"></div>
-              </div>
-            </div>
+            <ul class="skill-list">
+              <li>Reaper</li>
+              <li>Logic Pro</li>
+              <li>Studio One</li>
+              <li>Sound Design</li>
+            </ul>
           </div>
 
           <!-- Development -->
           <div class="skill-category">
             <h3 data-i18n="tech_scripting_title">Development</h3>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header">
-                <span class="skill-name">Python</span>
-                <span class="skill-percent">55%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill" style="--skill-width: 55%"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header">
-                <span class="skill-name">C#</span>
-                <span class="skill-percent">60%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill" style="--skill-width: 60%"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header">
-                <span class="skill-name">Blueprints</span>
-                <span class="skill-percent">80%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill" style="--skill-width: 80%"></div>
-              </div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-header">
-                <span class="skill-name">C++</span>
-                <span class="skill-percent">50%</span>
-              </div>
-              <div class="skill-bar-bg">
-                <div class="skill-bar-fill" style="--skill-width: 50%"></div>
-              </div>
-            </div>
+            <ul class="skill-list">
+              <li>Blueprints</li>
+              <li>C#</li>
+              <li>Python</li>
+              <li>C++</li>
+            </ul>
           </div>
         </div>
       </div>

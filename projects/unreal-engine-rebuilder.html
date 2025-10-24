@@ -27,7 +27,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
   
   <style>
     /* Back button */
@@ -72,9 +72,33 @@
     }
     
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1419 100%);
+      font-family: 'Roboto Mono', monospace;
+      background: #0a0e12;
       color: #e0e6ed;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: 
+        linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(circle, rgba(0, 255, 136, 0.15) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -82,6 +106,8 @@
     .container {
       max-width: 1200px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
       padding: 0 2rem;
     }
     
@@ -100,9 +126,10 @@
       transform: translateX(-50%);
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(74, 148, 208, 0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(0, 255, 136, 0.15) 0%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
+      animation: heroGlow 4s ease-in-out infinite;
       z-index: 0;
     }
     
@@ -114,23 +141,23 @@
     .hero-badge {
       display: inline-block;
       padding: 0.5rem 1.5rem;
-      background: rgba(74, 148, 208, 0.1);
-      border: 1px solid rgba(74, 148, 208, 0.3);
+      background: rgba(0, 255, 136, 0.1);
+      border: 1px solid rgba(0, 255, 136, 0.3);
       border-radius: 50px;
       font-size: 0.85rem;
       font-weight: 600;
-      color: #4a94d0;
+      color: #00ff88;
       letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 2rem;
     }
     
     h1 {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #ffffff 0%, #4a94d0 100%);
+      background: linear-gradient(135deg, #ffffff 0%, #00ff88 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -171,14 +198,14 @@
     }
     
     .btn-primary {
-      background: linear-gradient(135deg, #4a94d0 0%, #5aa4e0 100%);
+      background: linear-gradient(135deg, #00ff88 0%, #5aa4e0 100%);
       color: #fff;
-      box-shadow: 0 8px 30px rgba(74, 148, 208, 0.4);
+      box-shadow: 0 8px 30px rgba(0, 255, 136, 0.4);
     }
     
     .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(74, 148, 208, 0.6);
+      box-shadow: 0 12px 40px rgba(0, 255, 136, 0.6);
     }
     
     .btn-secondary {
@@ -217,14 +244,14 @@
     
     .stat-card:hover {
       background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(74, 148, 208, 0.3);
+      border-color: rgba(0, 255, 136, 0.3);
       transform: translateY(-5px);
     }
     
     .stat-value {
       font-size: 2.5rem;
       font-weight: 800;
-      color: #4a94d0;
+      color: #00ff88;
       display: block;
       margin-bottom: 0.5rem;
     }
@@ -248,18 +275,18 @@
     .section-badge {
       display: inline-block;
       padding: 0.4rem 1.2rem;
-      background: rgba(74, 148, 208, 0.1);
+      background: rgba(0, 255, 136, 0.1);
       border-radius: 50px;
       font-size: 0.8rem;
       font-weight: 600;
-      color: #4a94d0;
+      color: #00ff88;
       letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 1rem;
     }
     
     h2 {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
       margin-bottom: 1rem;
@@ -289,7 +316,7 @@
     
     .feature-card:hover {
       background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(74, 148, 208, 0.3);
+      border-color: rgba(0, 255, 136, 0.3);
       transform: translateY(-5px);
     }
     
@@ -360,9 +387,9 @@
     .download-cta {
       padding: 6rem 0;
       text-align: center;
-      background: rgba(74, 148, 208, 0.05);
-      border-top: 1px solid rgba(74, 148, 208, 0.1);
-      border-bottom: 1px solid rgba(74, 148, 208, 0.1);
+      background: rgba(0, 255, 136, 0.05);
+      border-top: 1px solid rgba(0, 255, 136, 0.1);
+      border-bottom: 1px solid rgba(0, 255, 136, 0.1);
     }
     
     .download-cta h2 {
@@ -391,7 +418,7 @@
     }
     
     footer a {
-      color: #4a94d0;
+      color: #00ff88;
       text-decoration: none;
     }
     
@@ -440,7 +467,7 @@
       gap: 0.5rem;
       background: rgba(255, 255, 255, 0.08) !important;
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(74, 148, 208, 0.5) !important;
+      border: 1px solid rgba(0, 255, 136, 0.5) !important;
       border-radius: 50px;
       padding: 0.5rem;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
@@ -460,16 +487,73 @@
       align-items: center;
       gap: 0.5rem;
     }
-    .lang-btn:hover { color: #4a94d0 !important; background: rgba(74, 148, 208, 0.1); }
-    .lang-btn.active { color: #4a94d0 !important; background: rgba(74, 148, 208, 0.15); font-weight: 600; }
+    .lang-btn:hover { color: #00ff88 !important; background: rgba(0, 255, 136, 0.1); }
+    .lang-btn.active { color: #00ff88 !important; background: rgba(0, 255, 136, 0.15); font-weight: 600; }
     .lang-flag { width: 20px; height: 14px; border-radius: 2px; overflow: hidden; display: block; }
     @media (max-width: 768px) {
       .lang-switcher { top: 1rem !important; right: 1rem !important; padding: 0.4rem; }
       .lang-btn { padding: 0.4rem 0.8rem; font-size: 0.85rem; }
     }
+    
+    /* === ENTRANCE ANIMATION === */
+    .ue-entrance {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #1a2332 0%, #0a0e12 70%, #000 100%);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: entranceFadeOut 1s ease-out 2.2s forwards;
+      pointer-events: none;
+    }
+    
+    @keyframes entranceFadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+    
+    .ue-logo {
+      font-size: 6rem;
+      animation: logoSpin 2s ease-out;
+      filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.6));
+    }
+    
+    @keyframes logoSpin {
+      0% { transform: rotate(0deg) scale(0.5); opacity: 0; }
+      50% { transform: rotate(180deg) scale(1.1); opacity: 1; }
+      100% { transform: rotate(360deg) scale(1); opacity: 1; }
+    }
+    
+    .ue-title {
+      position: absolute;
+      bottom: 35%;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800;
+      color: #00ff88;
+      letter-spacing: 0.05em;
+      animation: titleSlide 0.8s ease-out 0.8s both;
+    }
+    
+    @keyframes titleSlide {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes heroGlow {
+      0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+      50% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+    }
   </style>
 </head>
 <body>
+  
+  <!-- Entrance Animation -->
+  <div class="ue-entrance">
+    <div class="ue-logo">⚙️</div>
+    <div class="ue-title">REBUILDER</div>
+  </div>
+  
   <div class="lang-switcher">
     <button class="lang-btn active" data-lang="en">
       <svg class="lang-flag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg><span>EN</span>
@@ -487,35 +571,33 @@
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <div class="hero-badge" data-i18n="hero.badge">✨ Free Developer Tool</div>
-        <h1 data-i18n="hero.title">Unreal Engine<br>Rebuilder</h1>
+        <div class="hero-badge" data-i18n="hero.badge">// FREE TOOL</div>
+        <h1 data-i18n="hero.title">UE Rebuilder</h1>
         <p class="hero-subtitle" data-i18n="hero.subtitle">
-          Automate UE project maintenance. Clean, rebuild, and backup with one click. Save 5-10 minutes per build and reclaim gigabytes of disk space.
+          Cleans Binaries/Intermediate/Saved. Regenerates .sln. Compiles. Done.
         </p>
         
         <div class="cta-buttons">
           <a href="https://github.com/Szunias/UnrealEngineRebuilder/releases/latest" class="btn btn-primary" target="_blank" rel="noopener">
-            <span class="btn-icon">⬇️</span>
-            <span data-i18n="hero.download">Download Now</span>
+            <span data-i18n="hero.download">Download .exe</span>
           </a>
           <a href="https://github.com/Szunias/UnrealEngineRebuilder" class="btn btn-secondary" target="_blank" rel="noopener">
-            <span class="btn-icon">⭐</span>
-            <span data-i18n="hero.github">View on GitHub</span>
+            <span data-i18n="hero.github">GitHub</span>
           </a>
         </div>
         
         <div class="stats">
           <div class="stat-card">
-            <span class="stat-value" data-i18n="stats.value1">5-10</span>
-            <span class="stat-label" data-i18n="stats.label1">Minutes Saved Per Build</span>
+            <span class="stat-value" data-i18n="stats.value1">~7 min</span>
+            <span class="stat-label" data-i18n="stats.label1">saved per build</span>
           </div>
           <div class="stat-card">
-            <span class="stat-value" data-i18n="stats.value2">5-50 GB</span>
-            <span class="stat-label" data-i18n="stats.label2">Disk Space Reclaimed</span>
+            <span class="stat-value" data-i18n="stats.value2">~20 GB</span>
+            <span class="stat-label" data-i18n="stats.label2">freed up</span>
           </div>
           <div class="stat-card">
-            <span class="stat-value" data-i18n="stats.value3">100%</span>
-            <span class="stat-label" data-i18n="stats.label3">Automation Coverage</span>
+            <span class="stat-value" data-i18n="stats.value3">1 click</span>
+            <span class="stat-label" data-i18n="stats.label3">that's it</span>
           </div>
         </div>
       </div>
@@ -536,47 +618,47 @@
     <div class="container">
       <div class="section-header">
         <div class="section-badge" data-i18n="features.badge">Key Features</div>
-        <h2 data-i18n="features.title">Everything You Need</h2>
+        <h2 data-i18n="features.title">What It Does</h2>
         <p class="section-subtitle" data-i18n="features.subtitle">
-          Professional-grade automation for Unreal Engine developers
+          Automates the boring stuff
         </p>
       </div>
       
       <div class="features-grid">
         <div class="feature-card">
           <span class="feature-icon">🔄</span>
-          <h3 data-i18n="features.f1.title">Total Rebuild Clean</h3>
-          <p data-i18n="features.f1.desc">Complete project refresh: removes Binaries, Intermediate, and Saved folders, regenerates Visual Studio solution, and compiles with build time tracking.</p>
+          <h3 data-i18n="features.f1.title">Total Rebuild</h3>
+          <p data-i18n="features.f1.desc">Nukes Binaries/Intermediate/Saved, regenerates VS solution, compiles fresh</p>
         </div>
         
         <div class="feature-card">
           <span class="feature-icon">💾</span>
-          <h3 data-i18n="features.f2.title">Automated Backups</h3>
-          <p data-i18n="features.f2.desc">One-click project archiving with smart compression, timestamped archives, and selective backup of essential files (Source/Config/Content/Plugins).</p>
+          <h3 data-i18n="features.f2.title">Smart Backups</h3>
+          <p data-i18n="features.f2.desc">Archives Source/Config/Content/Plugins with timestamps</p>
         </div>
         
         <div class="feature-card">
           <span class="feature-icon">📊</span>
-          <h3 data-i18n="features.f3.title">Disk Management</h3>
-          <p data-i18n="features.f3.desc">Detailed folder size breakdown with DDC cleaning that can free up gigabytes instantly. Smart formatting shows human-readable sizes with before/after stats.</p>
+          <h3 data-i18n="features.f3.title">Disk Cleanup</h3>
+          <p data-i18n="features.f3.desc">Shows folder sizes, cleans DDC cache, frees gigabytes</p>
         </div>
         
         <div class="feature-card">
           <span class="feature-icon">🔍</span>
-          <h3 data-i18n="features.f4.title">Intelligent Detection</h3>
-          <p data-i18n="features.f4.desc">Auto-finds UE installations by scanning drives and checking Windows Registry. Supports multiple UE versions (4.x and 5.x) with fallback GUI folder picker.</p>
+          <h3 data-i18n="features.f4.title">Auto-Detection</h3>
+          <p data-i18n="features.f4.desc">Finds UE installs automatically (4.x and 5.x)</p>
         </div>
         
         <div class="feature-card">
           <span class="feature-icon">📝</span>
-          <h3 data-i18n="features.f5.title">Professional Logging</h3>
-          <p data-i18n="features.f5.desc">Automatic documentation of every operation with timestamped files, auto-cleanup of logs older than 30 days, and detailed error reporting.</p>
+          <h3 data-i18n="features.f5.title">Logging</h3>
+          <p data-i18n="features.f5.desc">Timestamped logs for every operation</p>
         </div>
         
         <div class="feature-card">
           <span class="feature-icon">🎨</span>
-          <h3 data-i18n="features.f6.title">Modern Interface</h3>
-          <p data-i18n="features.f6.desc">Dark theme with custom borderless title bar, color-coded buttons for visual distinction, and real-time console feedback with green terminal text.</p>
+          <h3 data-i18n="features.f6.title">Dark UI</h3>
+          <p data-i18n="features.f6.desc">Clean interface with real-time console feedback</p>
         </div>
       </div>
     </div>

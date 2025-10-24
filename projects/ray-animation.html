@@ -321,7 +321,7 @@
       background: 
         radial-gradient(ellipse at 30% 20%, rgba(255, 140, 0, 0.04) 0%, transparent 50%),
         radial-gradient(ellipse at 70% 80%, rgba(210, 125, 45, 0.03) 0%, transparent 50%),
-        linear-gradient(180deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.92) 50%, rgba(0,0,0,0.95) 100%);
+        linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.7) 100%);
     }
     
     .cave-background::after {
@@ -1471,13 +1471,32 @@
       setTimeout(() => {
         document.body.classList.add('loaded');
       }, 100);
+      
       const rows = document.querySelectorAll('.row');
       const stats = document.querySelector('.stats');
       const gallery = document.querySelector('.gallery');
       
-      rows.forEach(row => observer.observe(row));
-      if (stats) observer.observe(stats);
-      if (gallery) observer.observe(gallery);
+      // Immediately show elements that are already in viewport
+      const checkInitialVisibility = (element) => {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        if (isVisible) {
+          element.classList.add('visible');
+        }
+      };
+      
+      rows.forEach(row => {
+        checkInitialVisibility(row);
+        observer.observe(row);
+      });
+      if (stats) {
+        checkInitialVisibility(stats);
+        observer.observe(stats);
+      }
+      if (gallery) {
+        checkInitialVisibility(gallery);
+        observer.observe(gallery);
+      }
       
       // Stagger animation for stat cards
       const statCards = document.querySelectorAll('.stat-card');

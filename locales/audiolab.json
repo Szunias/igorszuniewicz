@@ -4,7 +4,7 @@
     "hero": {
       "badge": "🎮 Research Project",
       "title": "Transientica: AudioLab",
-      "subtitle": "Beatbox-controlled rhythm game using real-time ML classification, spectral flux analysis, and low-latency OSC control. Replace button presses with vocal percussion."
+      "subtitle": "Beatbox-controlled rhythm game with real-time ML classification"
     },
     "video": {
       "title": "See It in Action"
@@ -51,7 +51,7 @@
     "hero": {
       "badge": "🎮 Projekt Badawczy",
       "title": "Transientica: AudioLab",
-      "subtitle": "Gra rytmiczna sterowana beatboxem wykorzystująca klasyfikację ML w czasie rzeczywistym, analizę spektralnego flux i kontrolę OSC o niskim opóźnieniu. Zastąp naciśnięcia przycisków perkusją wokalną."
+      "subtitle": "Gra rytmiczna sterowana beatboxem z klasyfikacją ML w czasie rzeczywistym"
     },
     "video": {
       "title": "Zobacz w Akcji"

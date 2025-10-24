@@ -5,11 +5,42 @@
     "title": "Pause & Deserve",
     "tagline": "First-person survival game with psychological horror elements and strategic pause mechanics.",
     "gameplay": {
-      "title": "Gameplay Preview"
+      "title": "Sound is Everything",
+      "desc": "You hear Death getting closer. The world reacts when you freeze time. Every footstep builds tension. That's the game."
     },
     "overview": {
-      "title": "Game Overview",
-      "desc": "You play as a sinner trying to escape eternal punishment. Death chases you relentlessly through a surreal, nightmarish landscape. Using your 'pause' power, you can freeze Death momentarily to find better escape routes. Death becomes faster over time and every time you pause him, challenging your reflexes and strategy."
+      "title": "Sound Design Philosophy",
+      "desc": "The horror in this game comes from what you hear. Death's footsteps get louder as it closes in. The environment shifts and groans when you freeze time. Every sound layer works together to keep you on edge."
+    },
+    "soundscape": {
+      "title": "Building Atmosphere",
+      "desc": "Dark drones, distant screams, your own footsteps. It all creates this oppressive feeling. But it never drowns out what you need to hear.",
+      "oppressive_title": "Always Unsettling",
+      "oppressive_desc": "Low drones, distant screams, weird textures. Never lets you relax",
+      "proximity_title": "Death is Coming",
+      "proximity_desc": "Sounds get more intense as Death closes in. Your heartbeat starts pounding when it's really close",
+      "environmental_title": "The World Reacts",
+      "environmental_desc": "Walls moving, echoes changing, space shifting. You hear everything"
+    },
+    "audio_system": {
+      "title": "Dynamic Audio",
+      "desc": "Everything reacts in real time. Hit pause and time warps with pitch shifts. Death speeds up, audio gets more intense. Move around and reverb changes with the space.",
+      "pause_title": "Time Freeze Effect",
+      "pause_desc": "When you pause, everything slows down. Pitch drops, long reverb tails, the whole thing",
+      "threat_title": "Escalating Tension",
+      "threat_desc": "The closer Death gets, the more intense it becomes. Speed matters too",
+      "spatial_title": "3D Positioning",
+      "spatial_desc": "You can track Death by sound alone. Footsteps tell you exactly where it is"
+    },
+    "tension": {
+      "title": "Messing With Your Head",
+      "desc": "Bass frequencies you feel more than hear. Fake sounds that make you second guess everything. Silence that makes sudden noises hit way harder. All designed to keep you paranoid.",
+      "subbass_title": "Feel the Dread",
+      "subbass_desc": "Low frequencies you barely hear but feel in your chest. Makes you uneasy without knowing why",
+      "silence_title": "Silence is Scary",
+      "silence_desc": "Quiet moments make sudden sounds hit harder. You never get used to it",
+      "misdirection_title": "Trust Nothing",
+      "misdirection_desc": "Fake footsteps and misleading sounds. You never know what's real"
     },
     "mechanics": {
       "chase": {
@@ -34,7 +65,8 @@
       "desc": "This project focuses on creating immersive tension through first-person perspective, intelligent AI behavior, and audio design that enhances the psychological horror atmosphere. The development emphasizes rapid prototyping and iterative design based on playtesting feedback."
     },
     "tech": {
-      "title": "Technology Stack"
+      "title": "Audio Tools",
+      "desc": "Built with Wwise for real time audio control. Everything responds to distance, speed, player state. All mixed on the fly."
     },
     "gallery": {
       "title": "Development Gallery",
@@ -53,11 +85,42 @@
     "title": "Pause & Deserve",
     "tagline": "Gra survivalowa FPP z elementami psychologicznego horroru i strategiczną mechaniką pauzy.",
     "gameplay": {
-      "title": "Podgląd rozgrywki"
+      "title": "Dźwięk to Wszystko",
+      "desc": "Słyszysz jak Śmierć się zbliża. Świat reaguje kiedy zamrażasz czas. Każdy krok buduje napięcie. To jest ta gra."
     },
     "overview": {
-      "title": "Opis gry",
-      "desc": "Grasz jako grzesznik próbujący uciec przed wieczną karą. Śmierć ściga cię nieustannie przez surrealistyczny, koszmarny krajobraz. Używając swojej mocy 'pauzy', możesz na chwilę zamrozić Śmierć, aby znaleźć lepsze drogi ucieczki. Śmierć staje się szybsza z czasem i za każdym razem gdy ją zatrzymujesz, stawiając wyzwanie twojej reakcji i strategii."
+      "title": "Filozofia Sound Designu",
+      "desc": "Horror w tej grze to to co słyszysz. Kroki Śmierci robią się głośniejsze jak się zbliża. Środowisko jęczy i pęka kiedy zamrażasz czas. Każda warstwa dźwięku trzyma cię w napięciu."
+    },
+    "soundscape": {
+      "title": "Budowanie Atmosfery",
+      "desc": "Ciemne drony, odległe krzyki, twoje kroki. To wszystko tworzy przytłaczające uczucie. Ale nigdy nie zagłusza tego co musisz usłyszeć.",
+      "oppressive_title": "Zawsze Niepokojące",
+      "oppressive_desc": "Niskie drony, dalekie krzyki, dziwne tekstury. Nigdy nie daje ci odpocząć",
+      "proximity_title": "Śmierć Nadchodzi",
+      "proximity_desc": "Dźwięki robią się intensywniejsze jak Śmierć się zbliża. Serce zaczyna walić jak jest naprawdę blisko",
+      "environmental_title": "Świat Reaguje",
+      "environmental_desc": "Ściany się ruszają, echa się zmieniają, przestrzeń się zmienia. Słyszysz wszystko"
+    },
+    "audio_system": {
+      "title": "Dynamiczne Audio",
+      "desc": "Wszystko reaguje w czasie rzeczywistym. Wciśniesz pauzę i czas się wykrzywia. Śmierć przyspiesza, audio robi się intensywniejsze. Poruszasz się i reverb się zmienia.",
+      "pause_title": "Efekt Zamrożenia Czasu",
+      "pause_desc": "Kiedy pauzujesz, wszystko zwalnia. Obniżenie tonu, długie ogony reverbu, cała ta zabawa",
+      "threat_title": "Rosnące Napięcie",
+      "threat_desc": "Im bliżej Śmierć, tym bardziej intensywne. Prędkość też ma znaczenie",
+      "spatial_title": "Pozycjonowanie 3D",
+      "spatial_desc": "Możesz śledzić Śmierć tylko po dźwięku. Kroki mówią ci dokładnie gdzie jest"
+    },
+    "tension": {
+      "title": "Gry z Głową",
+      "desc": "Basy które czujesz bardziej niż słyszysz. Fałszywe dźwięki które cię mylą. Cisza która sprawia że nagłe hałasy biją mocniej. Wszystko żebyś był na skraju.",
+      "subbass_title": "Czujesz Strach",
+      "subbass_desc": "Niskie częstotliwości których ledwo słyszysz ale czujesz w klatce. Niepokoi cię bez powodu",
+      "silence_title": "Cisza Straszy",
+      "silence_desc": "Ciche momenty sprawiają że nagłe dźwięki biją mocniej. Nigdy się nie przyzwyczaisz",
+      "misdirection_title": "Nie Ufaj Niczemu",
+      "misdirection_desc": "Fałszywe kroki i mylące dźwięki. Nigdy nie wiesz co jest prawdziwe"
     },
     "mechanics": {
       "chase": {
@@ -82,7 +145,8 @@
       "desc": "Ten projekt skupia się na tworzeniu immersyjnego napięcia poprzez perspektywę pierwszoosobową, inteligentne zachowanie AI i design dźwięku wzmacniający atmosferę psychologicznego horroru. Rozwój kładzie nacisk na szybkie prototypowanie i iteracyjny design oparty na feedbacku z playtestów."
     },
     "tech": {
-      "title": "Stos technologiczny"
+      "title": "Narzędzia Audio",
+      "desc": "Zrobione w Wwise do kontroli audio w czasie rzeczywistym. Wszystko reaguje na dystans, prędkość, stan gracza. Wszystko miksowane w locie."
     },
     "gallery": {
       "title": "Galeria rozwoju",
@@ -101,11 +165,42 @@
     "title": "Pause & Deserve",
     "tagline": "First-person survival game met psychologische horror elementen en strategische pauze mechanica.",
     "gameplay": {
-      "title": "Gameplay Preview"
+      "title": "Geluid is Alles",
+      "desc": "Je hoort de Dood dichterbij komen. De wereld reageert als je tijd bevriest. Elke voetstap bouwt spanning. Dat is de game."
     },
     "overview": {
-      "title": "Game Overzicht",
-      "desc": "Je speelt als een zondaar die probeert te ontsnappen aan eeuwige straf. De Dood achtervolgt je meedogenloos door een surrealistische, nachtmerrieachtige landschap. Met je 'pauze' kracht kun je de Dood tijdelijk bevriezen om betere ontsnappingsroutes te vinden. De Dood wordt sneller na verloop van tijd en elke keer dat je hem pauzeert, waardoor je reflexen en strategie uitgedaagd worden."
+      "title": "Sound Design Filosofie",
+      "desc": "De horror in deze game is wat je hoort. De Dood's voetstappen worden luider als het dichterbij komt. De omgeving kreunt en kraakt als je tijd bevriest. Elke geluidslaag houdt je op scherp."
+    },
+    "soundscape": {
+      "title": "Atmosfeer Bouwen",
+      "desc": "Donkere drones, verre schreeuwen, je eigen voetstappen. Het creëert dit beklemmende gevoel. Maar het overspoelt nooit wat je moet horen.",
+      "oppressive_title": "Altijd Verontrustend",
+      "oppressive_desc": "Lage drones, verre schreeuwen, rare texturen. Laat je nooit ontspannen",
+      "proximity_title": "De Dood Komt",
+      "proximity_desc": "Geluiden worden intenser als de Dood dichterbij komt. Je hart begint te bonzen als het echt dichtbij is",
+      "environmental_title": "De Wereld Reageert",
+      "environmental_desc": "Muren bewegen, echo's veranderen, ruimte verschuift. Je hoort alles"
+    },
+    "audio_system": {
+      "title": "Dynamische Audio",
+      "desc": "Alles reageert in real time. Druk op pauze en tijd vervormt. De Dood versnelt, audio wordt intenser. Beweeg rond en reverb verandert.",
+      "pause_title": "Tijd Bevries Effect",
+      "pause_desc": "Als je pauzeert, vertraagt alles. Pitch drops, lange reverb staarten, het hele ding",
+      "threat_title": "Escalerende Spanning",
+      "threat_desc": "Hoe dichterbij de Dood komt, hoe intenser het wordt. Snelheid telt ook mee",
+      "spatial_title": "3D Positionering",
+      "spatial_desc": "Je kunt de Dood alleen op geluid volgen. Voetstappen vertellen je precies waar het is"
+    },
+    "tension": {
+      "title": "Met Je Hoofd Spelen",
+      "desc": "Bass frequenties die je meer voelt dan hoort. Nep geluiden die je doen twijfelen. Stilte die plotselinge geluiden harder laat aankomen. Alles om je paranoïde te houden.",
+      "subbass_title": "Voel de Angst",
+      "subbass_desc": "Lage frequenties die je nauwelijks hoort maar voelt in je borst. Maakt je onrustig zonder reden",
+      "silence_title": "Stilte is Eng",
+      "silence_desc": "Stille momenten maken plotselinge geluiden harder. Je went er nooit aan",
+      "misdirection_title": "Vertrouw Niets",
+      "misdirection_desc": "Nep voetstappen en misleidende geluiden. Je weet nooit wat echt is"
     },
     "mechanics": {
       "chase": {
@@ -130,7 +225,8 @@
       "desc": "Dit project richt zich op het creëren van meeslepende spanning door first-person perspectief, intelligent AI gedrag en audio design dat de psychologische horror atmosfeer versterkt. De ontwikkeling legt de nadruk op snel prototypen en iteratief design gebaseerd op playtesting feedback."
     },
     "tech": {
-      "title": "Technology Stack"
+      "title": "Audio Tools",
+      "desc": "Gebouwd met Wwise voor real time audio controle. Alles reageert op afstand, snelheid, speler staat. Alles live gemixt."
     },
     "gallery": {
       "title": "Ontwikkelingsgalerij",

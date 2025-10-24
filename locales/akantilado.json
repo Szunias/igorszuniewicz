@@ -2,7 +2,7 @@
   "en": {
     "back": "Back to Projects",
     "title": "Akantilado — Sound Design",
-    "tagline": "A heartwarming jungle adventure where love triumphs over greed through immersive audio storytelling.",
+    "tagline": "Jungle adventure where two cats race for treasure. Sound design tells the story of how love beats greed.",
     "meta": {
       "role": {
         "label": "Role",
@@ -22,41 +22,59 @@
       }
     },
     "showcase": {
-      "title": "Audio Showcase",
-      "desc": "Watch how sound design enhances every moment of this jungle adventure, from playful competition to heartfelt resolution. Notice how the audio guides emotional transitions and supports character development."
+      "title": "Watch With Sound On",
+      "desc": "Sound tells the story here. Starts playful, gets tense, ends heartfelt. Every sound matters."
     },
     "overview": {
-      "title": "Story Overview",
-      "desc": "Akantilado tells the enchanting story of two cat-like creatures racing through a lush jungle, driven by their desire to claim a mystical golden orb. What begins as a competitive chase transforms into a profound tale of love and sacrifice when one creature must choose between the coveted treasure and saving their companion from a deadly fall. The story culminates in a heartwarming ending where love conquers greed."
+      "title": "How Sound Tells the Story",
+      "desc": "Jungle comes alive through audio. Foley, voices, ambience. They guide you from competition to sacrifice. Sound matters as much as picture."
     },
     "philosophy": {
-      "title": "Sound Design Philosophy",
+      "title": "Jungle Audio Design",
       "emotional": {
-        "title": "Emotional Journey",
-        "desc": "The audio design mirrors the characters' emotional arc, starting with playful competitive energy and evolving into suspenseful tension before resolving in tender, heartfelt moments. Each phase is supported by carefully crafted soundscapes that guide the audience through the narrative transformation."
+        "title": "The Emotional Journey",
+        "desc": "Audio follows the emotions. Playful turns tense, then tender. Soundscapes guide you through it.",
+        "chase_title": "The Chase",
+        "chase_desc": "Upbeat rhythms, light foley, bright sounds. Competition energy",
+        "tension_title": "The Crisis",
+        "tension_desc": "Low rumbles, sparse sounds, wind. Cliff edge moment",
+        "resolution_title": "Love Wins",
+        "resolution_desc": "Gentle sting, soft voices, peace returns. That's it"
       },
       "jungle": {
-        "title": "Jungle Immersion",
-        "desc": "The lush jungle environment comes alive through layered natural recordings - rustling leaves, distant animal calls, flowing water, and wind through canopy. These elements create a rich, organic backdrop that makes the audience feel present in this magical world."
+        "title": "Making the Jungle Real",
+        "desc": "Leaves rustling, distant calls, water flowing, wind in trees. Layered recordings make it feel alive.",
+        "layered_title": "Natural Layers",
+        "layered_desc": "Leaves, calls, water. Builds the jungle vibe",
+        "spatial_title": "Spatial Mix",
+        "spatial_desc": "Sound moves with camera and action",
+        "organic_title": "Real Recordings",
+        "organic_desc": "Field recordings kept natural"
       },
       "character": {
-        "title": "Character Expression",
-        "desc": "Each cat creature has distinct vocal characteristics and movement sounds that reflect their personality. The orange creature's determined footsteps contrast with the pink creature's more graceful movements, while their vocalizations evolve from competitive calls to expressions of genuine care and love."
+        "title": "Character Sounds",
+        "desc": "Each cat sounds different. Orange is determined, pink is graceful. Voices change from competitive to caring.",
+        "personalities_title": "Different Voices",
+        "personalities_desc": "Each cat has unique pitch, tone, expression",
+        "foley_title": "Movement Sounds",
+        "foley_desc": "Paw steps, plants, climbing. Made for each cat",
+        "evolution_title": "Voice Changes",
+        "evolution_desc": "From competitive to caring"
       }
     },
     "technical": {
-      "title": "Technical Implementation",
+      "title": "How It's Made",
       "foley": {
-        "title": "Custom Foley Library",
-        "desc": "Built a comprehensive foley library specifically for cat-like creature movements, including paw steps on various jungle surfaces, climbing sounds, and interaction with vegetation. Each sound was recorded and processed to match the animated characters' unique physiology and movement style."
+        "title": "Custom Foley",
+        "desc": "Made foley for cat creatures. Paw steps, climbing, plants. Recorded to match how they move."
       },
       "environmental": {
-        "title": "Environmental Layering",
-        "desc": "Created multi-layered jungle ambiences with distinct zones - canopy sounds, ground-level activity, and distance perspectives. The mix dynamically shifts based on camera movement and story pacing, ensuring the environment supports rather than overwhelms the narrative focus."
+        "title": "Layered Zones",
+        "desc": "Jungle in layers. Canopy, ground, distance. Mix changes with camera. Supports story without drowning it."
       },
       "emotional": {
-        "title": "Emotional Sound Scoring",
-        "desc": "Developed a sound palette that transitions seamlessly between playful chase sequences, intense cliff-hanger moments, and tender emotional resolution. The golden orb itself has a distinctive magical shimmer that represents both temptation and the characters' goals."
+        "title": "Smooth Changes",
+        "desc": "Sound shifts between chase, tension, resolution. Golden orb has its own shimmer sound."
       }
     },
     "scenes": {
@@ -88,7 +106,7 @@
   "pl": {
     "back": "Powrót do projektów",
     "title": "Akantilado — Sound Design",
-    "tagline": "Wzruszająca przygoda w dżungli, gdzie miłość triumfuje nad chciwością poprzez immersyjną narrację audio.",
+    "tagline": "Przygoda w dżungli gdzie dwa koty ścigają się o skarb. Sound design opowiada jak miłość wygrywa z chciwością.",
     "meta": {
       "role": {
         "label": "Rola",
@@ -108,41 +126,59 @@
       }
     },
     "showcase": {
-      "title": "Prezentacja Audio",
-      "desc": "Zobacz jak sound design wzbogaca każdy moment tej przygody w dżungli, od wesołej rywalizacji po wzruszające rozwiązanie. Zwróć uwagę jak audio prowadzi przejścia emocjonalne i wspiera rozwój postaci."
+      "title": "Oglądaj ze Dźwiękiem",
+      "desc": "Dźwięk opowiada historię. Zaczyna się wesoło, robi się napięte, kończy wzruszająco. Każdy dźwięk się liczy."
     },
     "overview": {
-      "title": "Opis Fabuły",
-      "desc": "Akantilado opowiada czarującą historię dwóch stworzeń przypominających koty, ścigających się przez bujną dżunglę, kierowanych pragnieniem zdobycia mistycznej złotej kuli. To co zaczyna się jako rywalizacja, przekształca się w głęboką opowieść o miłości i poświęceniu, gdy jedno stworzenie musi wybrać między pożądanym skarbem a ratowaniem towarzysza przed śmiertelnym upadkiem. Historia kończy się wzruszającym zakończeniem, gdzie miłość zwycięża chciwość."
+      "title": "Jak Dźwięk Opowiada Historię",
+      "desc": "Dżungla ożywa przez audio. Foley, głosy, ambient. Prowadzą cię od rywalizacji do poświęcenia. Dźwięk liczy się tak samo jak obraz."
     },
     "philosophy": {
-      "title": "Filozofia Sound Designu",
+      "title": "Design Audio Dżungli",
       "emotional": {
         "title": "Podróż Emocjonalna",
-        "desc": "Design audio odzwierciedla emocjonalny łuk postaci, zaczynając od wesołej konkurencyjnej energii i ewoluując w napięcie pełne suspense, zanim rozwiąże się w delikatnych, wzruszających momentach. Każda faza wspierana jest starannie skonstruowanymi krajobrazami dźwiękowymi, które prowadzą publiczność przez transformację narracji."
+        "desc": "Audio podąża za emocjami. Wesoło robi się napięte, potem delikatne. Soundscapy cię prowadzą.",
+        "chase_title": "Pościg",
+        "chase_desc": "Rytmy w górę, lekkie foley, jasne dźwięki. Energia rywalizacji",
+        "tension_title": "Kryzys",
+        "tension_desc": "Niskie dudnienia, rzadkie dźwięki, wiatr. Moment na urwisku",
+        "resolution_title": "Miłość Wygrywa",
+        "resolution_desc": "Delikatny akcent, miękkie głosy, spokój wraca. To tyle"
       },
       "jungle": {
-        "title": "Immersja w Dżungli",
-        "desc": "Bujna dżungla ożywa poprzez warstwowe nagrania naturalne - szelest liści, odległe wołania zwierząt, płynącą wodę i wiatr w koronach drzew. Te elementy tworzą bogate, organiczne tło, które sprawia, że publiczność czuje obecność w tym magicznym świecie."
+        "title": "Robienie Prawdziwej Dżungli",
+        "desc": "Liście szelezczą, odległe wołania, woda płynie, wiatr w drzewach. Warstwowe nagrania sprawiają że żyje.",
+        "layered_title": "Naturalne Warstwy",
+        "layered_desc": "Liście, wołania, woda. Buduje vibe dżungli",
+        "spatial_title": "Spatial Mix",
+        "spatial_desc": "Dźwięk porusza się z kamerą i akcją",
+        "organic_title": "Prawdziwe Nagrania",
+        "organic_desc": "Nagrania terenowe zachowane naturalne"
       },
       "character": {
-        "title": "Ekspresja Postaci",
-        "desc": "Każde stworzenie-kot ma odmienne charakterystyki wokalne i dźwięki ruchu odzwierciedlające jego osobowość. Zdecydowane kroki pomarańczowego stworzenia kontrastują z bardziej gracjalnymi ruchami różowego, podczas gdy ich wokalizacje ewoluują od konkurencyjnych wołań do wyrażeń prawdziwej troski i miłości."
+        "title": "Dźwięki Postaci",
+        "desc": "Każdy kot brzmi inaczej. Pomarańczowy zdecydowany, różowy gracjalny. Głosy zmieniają się z konkurencyjnych na troskliwe.",
+        "personalities_title": "Różne Głosy",
+        "personalities_desc": "Każdy kot ma unikalny pitch, ton, ekspresję",
+        "foley_title": "Dźwięki Ruchu",
+        "foley_desc": "Kroki łap, rośliny, wspinaczka. Zrobione dla każdego kota",
+        "evolution_title": "Zmiana Głosu",
+        "evolution_desc": "Od konkurencyjnych do troskliwych"
       }
     },
     "technical": {
-      "title": "Implementacja Techniczna",
+      "title": "Jak To Zrobiłem",
       "foley": {
-        "title": "Biblioteka Custom Foley",
-        "desc": "Zbudowałem kompleksową bibliotekę foley specjalnie dla ruchów stworzeń przypominających koty, obejmującą kroki łap na różnych powierzchniach dżungli, dźwięki wspinaczki i interakcje z roślinnością. Każdy dźwięk był nagrany i przetworzony aby pasował do unikalnej fizjologii i stylu ruchu animowanych postaci."
+        "title": "Custom Foley",
+        "desc": "Zrobiłem foley dla kotów. Kroki łap, wspinaczka, rośliny. Nagrane żeby pasowały jak się ruszają."
       },
       "environmental": {
-        "title": "Warstwowanie Środowiskowe",
-        "desc": "Stworzyłem wielowarstwowe ambience dżungli z odrębnymi strefami - dźwięki korony drzew, aktywność na poziomie gruntu i perspektywy odległościowe. Miks dynamicznie się zmienia w oparciu o ruch kamery i tempo opowieści, zapewniając że środowisko wspiera zamiast przytłaczać fokus narracyjny."
+        "title": "Warstwowe Strefy",
+        "desc": "Dżungla w warstwach. Korona, grunt, odległość. Miks zmienia się z kamerą. Wspiera historię bez zagłuszania."
       },
       "emotional": {
-        "title": "Emocjonalne Scoreowanie Dźwięku",
-        "desc": "Rozwinąłem paletę dźwiękową która przechodzi płynnie między wesołymi sekwencjami pogoni, intensywnymi momentami na krawędzi klifu i delikatną emocjonalną rozdzielczością. Sama złota kula ma charakterystyczny magiczny połysk reprezentujący zarówno pokusę jak i cele postaci."
+        "title": "Gładkie Zmiany",
+        "desc": "Dźwięk przechodzi między pościgiem, napięciem, rozwiązaniem. Złota kula ma swój dźwięk połysku."
       }
     },
     "scenes": {
@@ -174,7 +210,7 @@
   "nl": {
     "back": "Terug naar Projecten",
     "title": "Akantilado — Sound Design",
-    "tagline": "Een hartverwarmend jungle avontuur waar liefde triumfeert over hebzucht door meeslepende audio storytelling.",
+    "tagline": "Jungle avontuur waar twee katten racen voor schat. Sound design vertelt hoe liefde hebzucht verslaat.",
     "meta": {
       "role": {
         "label": "Rol",
@@ -194,41 +230,59 @@
       }
     },
     "showcase": {
-      "title": "Audio Showcase",
-      "desc": "Bekijk hoe sound design elk moment van dit jungle avontuur verrijkt, van speelse competitie tot hartverwarmende oplossing. Merk op hoe de audio emotionele overgangen begeleidt en karakterontwikkeling ondersteunt."
+      "title": "Kijk Met Geluid Aan",
+      "desc": "Geluid vertelt het verhaal. Begint speels, wordt gespannen, eindigt hartverwarmend. Elk geluid telt."
     },
     "overview": {
-      "title": "Verhaal Overzicht",
-      "desc": "Akantilado vertelt het betoverende verhaal van twee katachtige wezens die door een weelderige jungle racen, gedreven door hun verlangen om een mystieke gouden bol te claimen. Wat begint als een competitieve achtervolging transformeert in een diepgaand verhaal van liefde en opoffering wanneer één wezen moet kiezen tussen de begeerde schat en het redden van hun metgezel van een dodelijke val. Het verhaal culmineert in een hartverwarmend einde waar liefde hebzucht overwint."
+      "title": "Hoe Geluid Vertelt",
+      "desc": "Jungle komt tot leven door audio. Foley, stemmen, ambiance. Ze leiden je van competitie naar opoffering. Geluid telt net zo veel als beeld."
     },
     "philosophy": {
-      "title": "Sound Design Filosofie",
+      "title": "Jungle Audio Design",
       "emotional": {
-        "title": "Emotionele Reis",
-        "desc": "Het audiodesign weerspiegelt de emotionele boog van de personages, beginnend met speelse competitieve energie en evoluerend naar spannende spanning voordat het oplost in tedere, hartverwarmende momenten. Elke fase wordt ondersteund door zorgvuldig vervaardigde soundscapes die het publiek door de narratieve transformatie leiden."
+        "title": "De Emotionele Reis",
+        "desc": "Audio volgt de emoties. Speels wordt gespannen, dan teder. Soundscapes leiden je erdoor.",
+        "chase_title": "De Achtervolging",
+        "chase_desc": "Opgewekte ritmes, lichte foley, heldere geluiden. Competitie energie",
+        "tension_title": "De Crisis",
+        "tension_desc": "Lage rommelingen, schaarse geluiden, wind. Klif rand moment",
+        "resolution_title": "Liefde Wint",
+        "resolution_desc": "Zachte accent, zachte stemmen, vrede keert terug. Dat is het"
       },
       "jungle": {
-        "title": "Jungle Immersie",
-        "desc": "De weelderige jungle omgeving komt tot leven door gelaagde natuurlijke opnames - ritselende bladeren, verre dierengeluiden, stromend water en wind door het bladerdak. Deze elementen creëren een rijk, organisch achtergrond dat het publiek het gevoel geeft aanwezig te zijn in deze magische wereld."
+        "title": "Echte Jungle Maken",
+        "desc": "Bladeren ritselen, verre roepen, water stroomt, wind door bomen. Gelaagde opnames maken het levend.",
+        "layered_title": "Natuurlijke Lagen",
+        "layered_desc": "Bladeren, roepen, water. Bouwt jungle vibe",
+        "spatial_title": "Ruimtelijke Mix",
+        "spatial_desc": "Geluid beweegt met camera en actie",
+        "organic_title": "Echte Opnames",
+        "organic_desc": "Veld opnames natuurlijk gehouden"
       },
       "character": {
-        "title": "Karakter Expressie",
-        "desc": "Elk katwezen heeft onderscheidende vocale kenmerken en bewegingsgeluiden die hun persoonlijkheid weerspiegelen. De vastberaden voetstappen van het oranje wezen contrasteren met de meer sierlijke bewegingen van het roze, terwijl hun vocalisaties evolueren van competitieve roepen naar uitingen van oprechte zorg en liefde."
+        "title": "Karakter Geluiden",
+        "desc": "Elke kat klinkt anders. Oranje vastberaden, roze sierlijk. Stemmen veranderen van competitief naar zorgzaam.",
+        "personalities_title": "Verschillende Stemmen",
+        "personalities_desc": "Elke kat heeft unieke pitch, toon, expressie",
+        "foley_title": "Bewegings Geluiden",
+        "foley_desc": "Poten stappen, planten, klimmen. Gemaakt voor elke kat",
+        "evolution_title": "Stem Veranderingen",
+        "evolution_desc": "Van competitief naar zorgzaam"
       }
     },
     "technical": {
-      "title": "Technische Implementatie",
+      "title": "Hoe Het Gemaakt Is",
       "foley": {
-        "title": "Aangepaste Foley Bibliotheek",
-        "desc": "Bouwde een uitgebreide foley bibliotheek specifiek voor katachtige wezensbewegingen, inclusief potentreden op verschillende jungle oppervlakken, klimgeluiden en interactie met vegetatie. Elk geluid werd opgenomen en verwerkt om te passen bij de unieke fysiologie en bewegingsstijl van de geanimeerde personages."
+        "title": "Aangepaste Foley",
+        "desc": "Maakte foley voor katten. Poten stappen, klimmen, planten. Opgenomen om te passen bij beweging."
       },
       "environmental": {
-        "title": "Omgevingslagen",
-        "desc": "Creëerde meergelaagde jungle ambiances met verschillende zones - bladerdakgeluiden, grondniveau activiteit en afstandsperspectieven. De mix verschuift dynamisch op basis van camerabewegingen en verhaaltempo, waarbij ervoor wordt gezorgd dat de omgeving de narratieve focus ondersteunt in plaats van overweldigt."
+        "title": "Gelaagde Zones",
+        "desc": "Jungle in lagen. Bladerdak, grond, afstand. Mix verandert met camera. Ondersteunt verhaal zonder overspoelen."
       },
       "emotional": {
-        "title": "Emotionele Sound Scoring",
-        "desc": "Ontwikkelde een geluidspalet dat naadloos overgaat tussen speelse achtervolging sequenties, intense cliffhanger momenten en tedere emotionele oplossing. De gouden bol zelf heeft een onderscheidende magische schittering die zowel verleiding als de doelen van de personages vertegenwoordigt."
+        "title": "Soepele Veranderingen",
+        "desc": "Geluid verschuift tussen achtervolging, spanning, oplossing. Gouden bol heeft eigen schitter geluid."
       }
     },
     "scenes": {
