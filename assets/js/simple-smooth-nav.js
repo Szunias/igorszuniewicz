@@ -29,13 +29,9 @@
     const styles = document.createElement('style');
     styles.id = 'simple-smooth-nav-styles';
     styles.textContent = `
-      /* Zapobieganie białemu flashowi */
-      html {
-        background: #000 !important;
-      }
-      
+      /* Nie nadpisuj tła - każda strona ma swoje tło w inline styles */
       body {
-        background: #000;
+        background: transparent;
       }
     `;
     
