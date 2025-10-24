@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Navigation Test</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background: #1a1a1a;
+      color: #00ff00;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .test-section {
+      background: #2a2a2a;
+      border: 2px solid #00ff00;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .test-title {
+      color: #00ffff;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    .pass { color: #00ff00; }
+    .fail { color: #ff0000; }
+    .warning { color: #ffaa00; }
+    .test-item {
+      margin: 10px 0;
+      padding: 10px;
+      background: #1a1a1a;
+      border-left: 3px solid #00ff00;
+    }
+    button {
+      background: #00ff00;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 4px;
+      margin: 5px;
+    }
+    button:hover {
+      background: #00ffff;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 Contact.html Navigation Test Suite</h1>
+  
+  <div class="test-section">
+    <div class="test-title">Test Controls</div>
+    <button onclick="runAllTests()">Run All Tests</button>
+    <button onclick="openContactPage()">Open contact.html</button>
+  </div>
+  
+  <div class="test-section">
+    <div class="test-title">Test Results</div>
+    <div id="results"></div>
+  </div>
+
+  <script>
+    const results = document.getElementById('results');
+
+    function log(message, type = 'pass') {
+      const div = document.createElement('div');
+      div.className = `test-item ${type}`;
+      div.innerHTML = message;
+      results.appendChild(div);
+    }
+
+    function openContactPage() {
+      window.open('contact.html', '_blank');
+    }
+
+    async function runAllTests() {
+      results.innerHTML = '<div class="test-item">Running tests...</div>';
+      
+      try {
+        // Test 1: Check if contact.html exists and loads
+        log('✓ Test 1: Checking if contact.html is accessible...', 'pass');
+        const response = await fetch('contact.html');
+        if (!response.ok) {
+          log('✗ Test 1 FAILED: contact.html not accessible', 'fail');
+          return;
+        }
+        const html = await response.text();
+        log('✓ Test 1 PASSED: contact.html loads successfully', 'pass');
+
+        // Test 2: Check for navigation.css link
+        log('✓ Test 2: Checking for navigation.css link...', 'pass');
+        if (html.includes('assets/css/navigation.css')) {
+          log('✓ Test 2 PASSED: navigation.css is linked', 'pass');
+        } else {
+          log('✗ Test 2 FAILED: navigation.css link not found', 'fail');
+        }
+
+        // Test 3: Check for navigation.js script
+        log('✓ Test 3: Checking for navigation.js script...', 'pass');
+        if (html.includes('assets/js/components/navigation.js')) {
+          log('✓ Test 3 PASSED: navigation.js is loaded', 'pass');
+        } else {
+          log('✗ Test 3 FAILED: navigation.js script not found', 'fail');
+        }
+
+        // Test 4: Check that inline navigation styles are removed
+        log('✓ Test 4: Checking for inline navigation styles...', 'pass');
+        const hasHeaderStyles = html.includes('.header {') && html.includes('position: fixed');
+        const hasNavStyles = html.includes('.nav {') && html.includes('display: flex');
+        const hasNavLinksStyles = html.includes('.nav-links {');
+        const hasLangSwitcherStyles = html.includes('.lang-switcher {');
+        
+        if (hasHeaderStyles || hasNavStyles || hasNavLinksStyles || hasLangSwitcherStyles) {
+          log('✗ Test 4 FAILED: Inline navigation styles still present', 'fail');
+          if (hasHeaderStyles) log('  - Found .header styles', 'warning');
+          if (hasNavStyles) log('  - Found .nav styles', 'warning');
+          if (hasNavLinksStyles) log('  - Found .nav-links styles', 'warning');
+          if (hasLangSwitcherStyles) log('  - Found .lang-switcher styles', 'warning');
+        } else {
+          log('✓ Test 4 PASSED: No inline navigation styles found', 'pass');
+        }
+
+        // Test 5: Check that no hardcoded navigation HTML exists
+        log('✓ Test 5: Checking for hardcoded navigation HTML...', 'pass');
+        const hasHardcodedNav = html.includes('<header') || html.includes('<nav');
+        if (hasHardcodedNav) {
+          log('⚠ Test 5 WARNING: Found <header> or <nav> tags (may be from component)', 'warning');
+        } else {
+          log('✓ Test 5 PASSED: No hardcoded navigation HTML in source', 'pass');
+        }
+
+        // Test 6: Check for translation integration
+        log('✓ Test 6: Checking for translation integration...', 'pass');
+        if (html.includes('assets/js/translations.js')) {
+          log('✓ Test 6 PASSED: translations.js is loaded', 'pass');
+        } else {
+          log('✗ Test 6 FAILED: translations.js not found', 'fail');
+        }
+
+        // Test 7: Check for smooth navigation integration
+        log('✓ Test 7: Checking for smooth navigation integration...', 'pass');
+        if (html.includes('simple-smooth-nav.js')) {
+          log('✓ Test 7 PASSED: smooth navigation is integrated', 'pass');
+        } else {
+          log('⚠ Test 7 WARNING: smooth navigation script not found', 'warning');
+        }
+
+        // Test 8: Check for contact form functionality
+        log('✓ Test 8: Checking for contact form...', 'pass');
+        if (html.includes('id="contact-form"')) {
+          log('✓ Test 8 PASSED: Contact form is present', 'pass');
+        } else {
+          log('✗ Test 8 FAILED: Contact form not found', 'fail');
+        }
+
+        log('<br><strong>All automated tests complete!</strong>', 'pass');
+        log('<br><strong>Manual Testing Required:</strong>', 'warning');
+        log('1. Click "Open contact.html" button above', 'warning');
+        log('2. Verify navigation bar appears at top', 'warning');
+        log('3. Verify "Contact" link is highlighted/active', 'warning');
+        log('4. Test clicking other navigation links (Home, About, Projects, Music)', 'warning');
+        log('5. Test language switcher (EN, PL, NL)', 'warning');
+        log('6. Resize browser to mobile width and test mobile menu', 'warning');
+        log('7. Scroll page and verify header scroll effect', 'warning');
+        log('8. Test contact form submission', 'warning');
+
+      } catch (error) {
+        log(`✗ ERROR: ${error.message}`, 'fail');
+      }
+    }
+
+    // Auto-run tests on load
+    window.addEventListener('load', () => {
+      setTimeout(runAllTests, 500);
+    });
+  </script>
+</body>
+</html>

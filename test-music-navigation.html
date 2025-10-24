@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Navigation Test</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #0a0e12;
+      color: #e0e6ed;
+    }
+    h1 {
+      color: #06b6d4;
+      border-bottom: 2px solid #06b6d4;
+      padding-bottom: 10px;
+    }
+    h2 {
+      color: #60a5fa;
+      margin-top: 30px;
+    }
+    .test-section {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .test-item {
+      padding: 10px;
+      margin: 10px 0;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      border-left: 3px solid #6b7280;
+    }
+    .test-item.pass {
+      border-left-color: #10b981;
+      background: rgba(16, 185, 129, 0.1);
+    }
+    .test-item.fail {
+      border-left-color: #ef4444;
+      background: rgba(239, 68, 68, 0.1);
+    }
+    .test-item.warning {
+      border-left-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.1);
+    }
+    .status {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    .pass .status { color: #10b981; }
+    .fail .status { color: #ef4444; }
+    .warning .status { color: #f59e0b; }
+    button {
+      background: #06b6d4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 5px;
+    }
+    button:hover {
+      background: #0891b2;
+    }
+    .code {
+      background: #1e293b;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+    #summary {
+      font-size: 1.2em;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+    #summary.all-pass {
+      background: rgba(16, 185, 129, 0.2);
+      border: 2px solid #10b981;
+      color: #10b981;
+    }
+    #summary.has-fail {
+      background: rgba(239, 68, 68, 0.2);
+      border: 2px solid #ef4444;
+      color: #ef4444;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎵 Music.html Navigation Test</h1>
+  <p>This test verifies that music.html has been successfully migrated to the unified navigation component.</p>
+  
+  <button onclick="runTests()">Run Tests</button>
+  <button onclick="location.href='music.html'">Open music.html</button>
+  
+  <div id="summary"></div>
+  
+  <div class="test-section">
+    <h2>Navigation Component Tests</h2>
+    <div id="nav-tests"></div>
+  </div>
+  
+  <div class="test-section">
+    <h2>Style Tests</h2>
+    <div id="style-tests"></div>
+  </div>
+  
+  <div class="test-section">
+    <h2>Music Player Compatibility Tests</h2>
+    <div id="player-tests"></div>
+  </div>
+
+  <script>
+    async function runTests() {
+      const results = {
+        pass: 0,
+        fail: 0,
+        warning: 0
+      };
+
+      // Fetch music.html content
+      let htmlContent = '';
+      try {
+        const response = await fetch('music.html');
+        htmlContent = await response.text();
+      } catch (error) {
+        alert('Failed to load music.html: ' + error.message);
+        return;
+      }
+
+      // Test 1: Navigation CSS is linked
+      const navCssTest = htmlContent.includes('assets/css/navigation.css');
+      addTestResult('nav-tests', 
+        'Navigation CSS is linked in head',
+        navCssTest,
+        navCssTest ? 'Found navigation.css link' : 'Missing navigation.css link'
+      );
+      updateResults(results, navCssTest);
+
+      // Test 2: Navigation JS is loaded
+      const navJsTest = htmlContent.includes('assets/js/components/navigation.js');
+      addTestResult('nav-tests',
+        'Navigation JS is loaded',
+        navJsTest,
+        navJsTest ? 'Found navigation.js script' : 'Missing navigation.js script'
+      );
+      updateResults(results, navJsTest);
+
+      // Test 3: No inline header styles
+      const noHeaderStyles = !htmlContent.match(/\.header\s*{[^}]*position:\s*fixed/);
+      addTestResult('style-tests',
+        'No inline .header styles',
+        noHeaderStyles,
+        noHeaderStyles ? 'No inline header styles found' : 'Found inline header styles - should be removed'
+      );
+      updateResults(results, noHeaderStyles);
+
+      // Test 4: No inline nav styles
+      const noNavStyles = !htmlContent.match(/\.nav\s*{[^}]*display:\s*flex/);
+      addTestResult('style-tests',
+        'No inline .nav styles',
+        noNavStyles,
+        noNavStyles ? 'No inline nav styles found' : 'Found inline nav styles - should be removed'
+      );
+      updateResults(results, noNavStyles);
+
+      // Test 5: No inline nav-links styles
+      const noNavLinksStyles = !htmlContent.match(/\.nav-links\s*{[^}]*display:\s*flex/);
+      addTestResult('style-tests',
+        'No inline .nav-links styles',
+        noNavLinksStyles,
+        noNavLinksStyles ? 'No inline nav-links styles found' : 'Found inline nav-links styles - should be removed'
+      );
+      updateResults(results, noNavLinksStyles);
+
+      // Test 6: No inline lang-switcher styles
+      const noLangStyles = !htmlContent.match(/\.lang-switcher\s*{[^}]*display:\s*flex/);
+      addTestResult('style-tests',
+        'No inline .lang-switcher styles',
+        noLangStyles,
+        noLangStyles ? 'No inline lang-switcher styles found' : 'Found inline lang-switcher styles - should be removed'
+      );
+      updateResults(results, noLangStyles);
+
+      // Test 7: No hardcoded navigation HTML
+      const noHardcodedNav = !htmlContent.match(/<header[^>]*class="header"/i) && 
+                             !htmlContent.match(/<nav[^>]*class="nav"/i);
+      addTestResult('nav-tests',
+        'No hardcoded navigation HTML',
+        noHardcodedNav,
+        noHardcodedNav ? 'No hardcoded navigation found' : 'Found hardcoded navigation HTML - should be removed'
+      );
+      updateResults(results, noHardcodedNav);
+
+      // Test 8: Music player bar styles preserved
+      const playerBarStyles = htmlContent.includes('.player-bar');
+      addTestResult('player-tests',
+        'Music player bar styles preserved',
+        playerBarStyles,
+        playerBarStyles ? 'Player bar styles found' : 'Player bar styles missing'
+      );
+      updateResults(results, playerBarStyles);
+
+      // Test 9: Audio player element exists
+      const audioElement = htmlContent.includes('<audio id="audio-player"');
+      addTestResult('player-tests',
+        'Audio player element exists',
+        audioElement,
+        audioElement ? 'Audio element found' : 'Audio element missing'
+      );
+      updateResults(results, audioElement);
+
+      // Test 10: Player controls exist
+      const playerControls = htmlContent.includes('player-play-btn') && 
+                            htmlContent.includes('player-prev-btn') &&
+                            htmlContent.includes('player-next-btn');
+      addTestResult('player-tests',
+        'Player controls exist',
+        playerControls,
+        playerControls ? 'All player controls found' : 'Some player controls missing'
+      );
+      updateResults(results, playerControls);
+
+      // Test 11: Playlist rendering code exists
+      const playlistCode = htmlContent.includes('renderPlaylist()');
+      addTestResult('player-tests',
+        'Playlist rendering code exists',
+        playlistCode,
+        playlistCode ? 'Playlist code found' : 'Playlist code missing'
+      );
+      updateResults(results, playlistCode);
+
+      // Test 12: Translation integration
+      const translationScript = htmlContent.includes('assets/js/translations.js');
+      addTestResult('nav-tests',
+        'Translation script loaded',
+        translationScript,
+        translationScript ? 'Translation script found' : 'Translation script missing'
+      );
+      updateResults(results, translationScript);
+
+      // Display summary
+      displaySummary(results);
+    }
+
+    function addTestResult(containerId, testName, passed, message) {
+      const container = document.getElementById(containerId);
+      const div = document.createElement('div');
+      div.className = `test-item ${passed ? 'pass' : 'fail'}`;
+      div.innerHTML = `
+        <span class="status">${passed ? '✓ PASS' : '✗ FAIL'}</span>
+        <strong>${testName}</strong><br>
+        <small>${message}</small>
+      `;
+      container.appendChild(div);
+    }
+
+    function updateResults(results, passed) {
+      if (passed) {
+        results.pass++;
+      } else {
+        results.fail++;
+      }
+    }
+
+    function displaySummary(results) {
+      const summary = document.getElementById('summary');
+      const total = results.pass + results.fail + results.warning;
+      const allPass = results.fail === 0;
+      
+      summary.className = allPass ? 'all-pass' : 'has-fail';
+      summary.innerHTML = `
+        Test Results: ${results.pass}/${total} passed
+        ${results.fail > 0 ? ` | ${results.fail} failed` : ''}
+        ${results.warning > 0 ? ` | ${results.warning} warnings` : ''}
+        ${allPass ? ' 🎉' : ' ⚠️'}
+      `;
+    }
+
+    // Auto-run tests on load
+    window.addEventListener('load', () => {
+      setTimeout(runTests, 500);
+    });
+  </script>
+</body>
+</html>

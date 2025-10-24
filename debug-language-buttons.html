@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug Language Buttons</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #1a1a1a;
+      color: #fff;
+    }
+    
+    .lang-btn {
+      padding: 10px 20px;
+      margin: 5px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .lang-btn.active {
+      background: #10b981;
+    }
+    
+    #log {
+      background: #2a2a2a;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 12px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    
+    .log-entry {
+      padding: 5px;
+      margin: 2px 0;
+      border-left: 3px solid #3b82f6;
+      padding-left: 10px;
+    }
+    
+    .log-capture {
+      border-left-color: #ef4444;
+    }
+    
+    .log-bubble {
+      border-left-color: #10b981;
+    }
+    
+    .log-lang {
+      border-left-color: #f59e0b;
+    }
+  </style>
+</head>
+<body>
+  <h1>🐛 Debug Language Buttons</h1>
+  
+  <h2>Przyciski Języka:</h2>
+  <div>
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="pl">PL</button>
+    <button class="lang-btn" data-lang="nl">NL</button>
+  </div>
+  
+  <h2>Log Zdarzeń:</h2>
+  <div id="log"></div>
+  
+  <script src="assets/js/simple-smooth-nav.js"></script>
+  
+  <script>
+    const logContainer = document.getElementById('log');
+    let eventCounter = 0;
+    
+    function addLog(message, type = 'info') {
+      eventCounter++;
+      const entry = document.createElement('div');
+      entry.className = `log-entry log-${type}`;
+      entry.textContent = `[${eventCounter}] ${new Date().toLocaleTimeString()}.${Date.now() % 1000} - ${message}`;
+      logContainer.appendChild(entry);
+      logContainer.scrollTop = logContainer.scrollHeight;
+    }
+    
+    // Test 1: Dodaj listener w capture phase (jak simple-smooth-nav)
+    document.addEventListener('click', (e) => {
+      if (e.target.classList && e.target.classList.contains('lang-btn')) {
+        addLog(`CAPTURE: Kliknięto przycisk ${e.target.dataset.lang}`, 'capture');
+      }
+    }, true); // capture phase
+    
+    // Test 2: Dodaj listener w bubble phase (jak translations.js)
+    document.addEventListener('click', (e) => {
+      if (e.target.classList && e.target.classList.contains('lang-btn')) {
+        addLog(`BUBBLE: Kliknięto przycisk ${e.target.dataset.lang}`, 'bubble');
+      }
+    }, false); // bubble phase
+    
+    // Test 3: Dodaj listener bezpośrednio do przycisków (jak translations.js)
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const lang = btn.dataset.lang;
+        addLog(`BUTTON LISTENER: Zmiana języka na ${lang}`, 'lang');
+        
+        // Symuluj zmianę języka
+        document.querySelectorAll('.lang-btn').forEach(b => {
+          b.classList.remove('active');
+        });
+        btn.classList.add('active');
+        
+        addLog(`✓ Język zmieniony na ${lang}`, 'lang');
+      });
+    });
+    
+    // Test 4: Sprawdź czy simple-smooth-nav jest załadowany
+    if (window.__simpleSmoothNavInitialized) {
+      addLog('✓ simple-smooth-nav załadowany', 'info');
+    } else {
+      addLog('✗ simple-smooth-nav NIE załadowany', 'info');
+    }
+    
+    // Test 5: Sprawdź czy isLanguageButton działa
+    const testBtn = document.querySelector('.lang-btn');
+    if (testBtn) {
+      // Nie możemy bezpośrednio wywołać isLanguageButton (jest w closure),
+      // ale możemy sprawdzić czy console.log się pojawia
+      addLog('Kliknij przycisk języka i sprawdź konsolę przeglądarki', 'info');
+    }
+    
+    addLog('=== Test gotowy - kliknij przyciski języka ===', 'info');
+  </script>
+</body>
+</html>

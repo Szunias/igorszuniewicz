@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Navigation Compatibility Test</title>
+    <link rel="stylesheet" href="assets/css/navigation.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        h1 {
+            color: #00d4ff;
+            border-bottom: 2px solid #00d4ff;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #00a8cc;
+            margin-top: 30px;
+        }
+        .test-section {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #00d4ff;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .pass {
+            background: #1a4d2e;
+            border-left: 4px solid #4caf50;
+        }
+        .fail {
+            background: #4d1a1a;
+            border-left: 4px solid #f44336;
+        }
+        .warning {
+            background: #4d3d1a;
+            border-left: 4px solid #ff9800;
+        }
+        .info {
+            background: #1a2a4d;
+            border-left: 4px solid #2196f3;
+        }
+        button {
+            background: #00d4ff;
+            color: #1a1a1a;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #00a8cc;
+        }
+        #results {
+            margin-top: 20px;
+        }
+        .nav-test-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .nav-test-link {
+            padding: 15px;
+            background: #333;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+            transition: all 0.3s;
+            display: block;
+        }
+        .nav-test-link:hover {
+            background: #00d4ff;
+            color: #1a1a1a;
+        }
+        .summary {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .summary-stat {
+            display: inline-block;
+            margin: 10px 20px 10px 0;
+            font-size: 18px;
+        }
+        .summary-stat strong {
+            color: #00d4ff;
+        }
+        code {
+            background: #1a1a1a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #00d4ff;
+        }
+        .checklist {
+            background: #333;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .checklist-item {
+            margin: 8px 0;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>🔄 Smooth Navigation Compatibility Test Suite</h1>
+        <p>This test validates compatibility between the navigation component and smooth navigation system.</p>
+
+        <div class="test-section">
+            <h2>Test Instructions</h2>
+            <ol>
+                <li>Click "Run All Tests" to perform automated checks</li>
+                <li>Use the test links below to navigate between pages</li>
+                <li>Verify smooth transitions occur (no white flash)</li>
+                <li>Check that navigation remains visible during transitions</li>
+                <li>Verify page content fades in smoothly</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h2>Automated Tests</h2>
+            <button onclick="runAllTests()">Run All Tests</button>
+            <button onclick="clearResults()">Clear Results</button>
+            <div id="results"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>Manual Navigation Tests</h2>
+            <p>Click these links and observe the transition behavior:</p>
+            <div class="nav-test-links">
+                <a href="index.html" class="nav-test-link">→ Home</a>
+                <a href="about.html" class="nav-test-link">→ About</a>
+                <a href="contact.html" class="nav-test-link">→ Contact</a>
+                <a href="music.html" class="nav-test-link">→ Music</a>
+                <a href="projects/index.html" class="nav-test-link">→ Projects</a>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>Expected Behavior Checklist</h2>
+            <div class="checklist">
+                <div class="checklist-item">✅ No white flash during page transitions</div>
+                <div class="checklist-item">✅ Smooth fade-out of current page</div>
+                <div class="checklist-item">✅ Smooth fade-in of new page</div>
+                <div class="checklist-item">✅ Navigation remains visible during transition</div>
+                <div class="checklist-item">✅ Active link updates on new page</div>
+                <div class="checklist-item">✅ Scroll position resets to top</div>
+                <div class="checklist-item">✅ Transition duration is reasonable (~300-500ms)</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>What to Look For</h2>
+            <ul>
+                <li><strong>Smooth Transitions:</strong> Pages should fade in/out smoothly</li>
+                <li><strong>No Flash:</strong> No white screen or jarring jumps</li>
+                <li><strong>Navigation Persistence:</strong> Header stays visible during transition</li>
+                <li><strong>Active State:</strong> Correct link highlighted after navigation</li>
+                <li><strong>Performance:</strong> Transitions feel responsive, not sluggish</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="assets/js/preload-lang.js"></script>
+    <script src="assets/js/simple-smooth-nav.js"></script>
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/components/navigation.js"></script>
+    <script>
+        let testResults = [];
+
+        function addResult(test, status, message) {
+            testResults.push({ test, status, message });
+            const resultsDiv = document.getElementById('results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${status}`;
+            resultDiv.innerHTML = `<strong>${test}:</strong> ${message}`;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            testResults = [];
+        }
+
+        async function checkSmoothNavScript() {
+            try {
+                const response = await fetch('assets/js/simple-smooth-nav.js');
+                const js = await response.text();
+                
+                return {
+                    exists: true,
+                    hasTransitionLogic: js.includes('transition') || js.includes('fade'),
+                    hasLinkHandling: js.includes('addEventListener') && js.includes('click'),
+                    hasPreventDefault: js.includes('preventDefault'),
+                    hasHistoryAPI: js.includes('history.pushState') || js.includes('pushState')
+                };
+            } catch (error) {
+                return { exists: false };
+            }
+        }
+
+        async function checkNavigationCompatibility() {
+            try {
+                const response = await fetch('assets/js/components/navigation.js');
+                const js = await response.text();
+                
+                // Check if navigation doesn't interfere with smooth nav
+                return {
+                    hasNoConflictingListeners: !js.includes('window.location.href ='),
+                    usesStandardLinks: js.includes('<a href='),
+                    hasProperStructure: js.includes('nav') || js.includes('header')
+                };
+            } catch (error) {
+                return null;
+            }
+        }
+
+        async function testSmoothNavigationSystem() {
+            addResult('Smooth Navigation Test', 'warning', 'Checking smooth navigation system...');
+            
+            const smoothNavCheck = await checkSmoothNavScript();
+            
+            if (!smoothNavCheck.exists) {
+                addResult('Smooth Nav Script', 'fail', 'simple-smooth-nav.js not found');
+                return;
+            }
+            
+            addResult('Smooth Nav Script', 'pass', 'simple-smooth-nav.js exists');
+            
+            if (smoothNavCheck.hasTransitionLogic) {
+                addResult('Transition Logic', 'pass', 'Transition/fade logic exists');
+            } else {
+                addResult('Transition Logic', 'warning', 'Transition logic may be missing');
+            }
+            
+            if (smoothNavCheck.hasLinkHandling) {
+                addResult('Link Handling', 'pass', 'Link click handling exists');
+            } else {
+                addResult('Link Handling', 'fail', 'Missing link click handling');
+            }
+            
+            if (smoothNavCheck.hasPreventDefault) {
+                addResult('Prevent Default', 'pass', 'preventDefault() used (prevents normal navigation)');
+            } else {
+                addResult('Prevent Default', 'warning', 'May not prevent default navigation');
+            }
+            
+            if (smoothNavCheck.hasHistoryAPI) {
+                addResult('History API', 'pass', 'Uses History API for navigation');
+            } else {
+                addResult('History API', 'warning', 'May not use History API');
+            }
+        }
+
+        async function testNavigationCompatibility() {
+            addResult('Navigation Compatibility Test', 'warning', 'Checking navigation compatibility...');
+            
+            const navCheck = await checkNavigationCompatibility();
+            
+            if (!navCheck) {
+                addResult('Navigation Check', 'fail', 'Could not load navigation.js');
+                return;
+            }
+            
+            if (navCheck.hasNoConflictingListeners) {
+                addResult('No Conflicts', 'pass', 'Navigation doesn\'t interfere with smooth nav');
+            } else {
+                addResult('No Conflicts', 'warning', 'Navigation may have conflicting event listeners');
+            }
+            
+            if (navCheck.usesStandardLinks) {
+                addResult('Standard Links', 'pass', 'Navigation uses standard <a> tags');
+            } else {
+                addResult('Standard Links', 'fail', 'Navigation may not use standard links');
+            }
+            
+            if (navCheck.hasProperStructure) {
+                addResult('Proper Structure', 'pass', 'Navigation has proper HTML structure');
+            } else {
+                addResult('Proper Structure', 'warning', 'Navigation structure may be non-standard');
+            }
+        }
+
+        async function testScriptLoadOrder() {
+            addResult('Script Load Order Test', 'warning', 'Checking script load order...');
+            
+            const scripts = Array.from(document.querySelectorAll('script[src]'));
+            const scriptOrder = scripts.map(s => s.src.split('/').pop());
+            
+            const smoothNavIndex = scriptOrder.findIndex(s => s.includes('smooth-nav'));
+            const navigationIndex = scriptOrder.findIndex(s => s.includes('navigation.js'));
+            
+            if (smoothNavIndex !== -1 && navigationIndex !== -1) {
+                if (smoothNavIndex < navigationIndex) {
+                    addResult('Load Order', 'pass', 'smooth-nav.js loads before navigation.js');
+                } else {
+                    addResult('Load Order', 'warning', 'navigation.js loads before smooth-nav.js (may cause issues)');
+                }
+            } else {
+                addResult('Load Order', 'info', 'Could not determine script load order');
+            }
+        }
+
+        async function testPageStructure() {
+            addResult('Page Structure Test', 'warning', 'Checking page structure...');
+            
+            // Wait for navigation to load
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            const header = document.querySelector('.header');
+            const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
+            
+            if (header) {
+                addResult('Header Element', 'pass', 'Header element exists');
+            } else {
+                addResult('Header Element', 'fail', 'Header element not found');
+            }
+            
+            if (navLinks.length > 0) {
+                addResult('Navigation Links', 'pass', `Found ${navLinks.length} navigation links`);
+                
+                // Check if links are standard <a> tags with href
+                let validLinks = 0;
+                navLinks.forEach(link => {
+                    if (link.tagName === 'A' && link.hasAttribute('href')) {
+                        validLinks++;
+                    }
+                });
+                
+                if (validLinks === navLinks.length) {
+                    addResult('Link Validity', 'pass', 'All links are valid <a> tags with href');
+                } else {
+                    addResult('Link Validity', 'warning', `${navLinks.length - validLinks} links may be invalid`);
+                }
+            } else {
+                addResult('Navigation Links', 'fail', 'No navigation links found');
+            }
+        }
+
+        async function runAllTests() {
+            clearResults();
+            
+            addResult('Test Suite', 'warning', 'Starting smooth navigation compatibility tests...');
+            
+            await testSmoothNavigationSystem();
+            await testNavigationCompatibility();
+            await testScriptLoadOrder();
+            await testPageStructure();
+            
+            // Generate summary
+            const passed = testResults.filter(r => r.status === 'pass').length;
+            const failed = testResults.filter(r => r.status === 'fail').length;
+            const warnings = testResults.filter(r => r.status === 'warning').length;
+            const info = testResults.filter(r => r.status === 'info').length;
+            
+            const summaryDiv = document.createElement('div');
+            summaryDiv.className = 'summary';
+            summaryDiv.innerHTML = `
+                <h3>Test Summary</h3>
+                <div class="summary-stat"><strong>Passed:</strong> ${passed}</div>
+                <div class="summary-stat"><strong>Failed:</strong> ${failed}</div>
+                <div class="summary-stat"><strong>Warnings:</strong> ${warnings}</div>
+                <div class="summary-stat"><strong>Info:</strong> ${info}</div>
+                <div class="summary-stat"><strong>Total:</strong> ${testResults.length}</div>
+            `;
+            document.getElementById('results').appendChild(summaryDiv);
+            
+            if (failed === 0 && passed > 0) {
+                addResult('Overall Result', 'pass', '✅ All compatibility tests passed!');
+                addResult('Manual Testing', 'info', '📋 Please click the navigation links above and verify smooth transitions occur without white flash.');
+            } else if (failed > 0) {
+                addResult('Overall Result', 'fail', `❌ ${failed} test(s) failed. Please review the issues above.`);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Integration Test</title>
+    <link rel="stylesheet" href="assets/css/navigation.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        h1 {
+            color: #00d4ff;
+            border-bottom: 2px solid #00d4ff;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #00a8cc;
+            margin-top: 30px;
+        }
+        .test-section {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #00d4ff;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .pass {
+            background: #1a4d2e;
+            border-left: 4px solid #4caf50;
+        }
+        .fail {
+            background: #4d1a1a;
+            border-left: 4px solid #f44336;
+        }
+        .warning {
+            background: #4d3d1a;
+            border-left: 4px solid #ff9800;
+        }
+        .info {
+            background: #1a2a4d;
+            border-left: 4px solid #2196f3;
+        }
+        button {
+            background: #00d4ff;
+            color: #1a1a1a;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #00a8cc;
+        }
+        #results {
+            margin-top: 20px;
+        }
+        .lang-test-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .lang-test-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background: #333;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .lang-test-button:hover {
+            background: #00d4ff;
+            color: #1a1a1a;
+        }
+        .current-lang-indicator {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #00d4ff;
+            color: #1a1a1a;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            z-index: 10000;
+        }
+        .nav-text-display {
+            background: #333;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .summary {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .summary-stat {
+            display: inline-block;
+            margin: 10px 20px 10px 0;
+            font-size: 18px;
+        }
+        .summary-stat strong {
+            color: #00d4ff;
+        }
+        code {
+            background: #1a1a1a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #00d4ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="current-lang-indicator" id="langIndicator">
+        Current: EN
+    </div>
+
+    <div class="content">
+        <h1>🌐 Translation Integration Test Suite</h1>
+        <p>This test validates translation integration with the navigation component.</p>
+
+        <div class="test-section">
+            <h2>Test Instructions</h2>
+            <ol>
+                <li>Click "Run All Tests" to perform automated checks</li>
+                <li>Use the language buttons below to switch languages</li>
+                <li>Verify navigation text updates in all languages</li>
+                <li>Check that <code>data-i18n</code> attributes are present</li>
+                <li>Test language switcher buttons in the navigation</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h2>Automated Tests</h2>
+            <button onclick="runAllTests()">Run All Tests</button>
+            <button onclick="clearResults()">Clear Results</button>
+            <div id="results"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>Manual Language Switching</h2>
+            <p>Click these buttons to switch languages and verify navigation updates:</p>
+            <div class="lang-test-buttons">
+                <button class="lang-test-button" onclick="switchToLanguage('en')">
+                    🇬🇧 English
+                </button>
+                <button class="lang-test-button" onclick="switchToLanguage('pl')">
+                    🇵🇱 Polski
+                </button>
+                <button class="lang-test-button" onclick="switchToLanguage('nl')">
+                    🇳🇱 Nederlands
+                </button>
+            </div>
+            <div id="navTextDisplay" class="nav-text-display">
+                Navigation text will appear here...
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>Expected Translations</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background: #333;">
+                        <th style="padding: 10px; border: 1px solid #555;">Key</th>
+                        <th style="padding: 10px; border: 1px solid #555;">English</th>
+                        <th style="padding: 10px; border: 1px solid #555;">Polski</th>
+                        <th style="padding: 10px; border: 1px solid #555;">Nederlands</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #555;"><code>nav.home</code></td>
+                        <td style="padding: 10px; border: 1px solid #555;">Home</td>
+                        <td style="padding: 10px; border: 1px solid #555;">Strona Główna</td>
+                        <td style="padding: 10px; border: 1px solid #555;">Home</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #555;"><code>nav.about</code></td>
+                        <td style="padding: 10px; border: 1px solid #555;">About</td>
+                        <td style="padding: 10px; border: 1px solid #555;">O Mnie</td>
+                        <td style="padding: 10px; border: 1px solid #555;">Over</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #555;"><code>nav.projects</code></td>
+                        <td style="padding: 10px; border: 1px solid #555;">Projects</td>
+                        <td style="padding: 10px; border: 1px solid #555;">Projekty</td>
+                        <td style="padding: 10px; border: 1px solid #555;">Projecten</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #555;"><code>nav.music</code></td>
+                        <td style="padding: 10px; border: 1px solid #555;">Music</td>
+                        <td style="padding: 10px; border: 1px solid #555;">Muzyka</td>
+                        <td style="padding: 10px; border: 1px solid #555;">Muziek</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #555;"><code>nav.contact</code></td>
+                        <td style="padding: 10px; border: 1px solid #555;">Contact</td>
+                        <td style="padding: 10px; border: 1px solid #555;">Kontakt</td>
+                        <td style="padding: 10px; border: 1px solid #555;">Contact</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="assets/js/preload-lang.js"></script>
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/components/navigation.js"></script>
+    <script>
+        let testResults = [];
+
+        function updateLangIndicator() {
+            const currentLang = localStorage.getItem('language') || 'en';
+            document.getElementById('langIndicator').textContent = `Current: ${currentLang.toUpperCase()}`;
+        }
+
+        function updateNavTextDisplay() {
+            setTimeout(() => {
+                const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
+                let text = 'Navigation Links:\n';
+                navLinks.forEach(link => {
+                    text += `- ${link.textContent.trim()}\n`;
+                });
+                document.getElementById('navTextDisplay').textContent = text || 'Navigation not loaded yet';
+            }, 500);
+        }
+
+        function switchToLanguage(lang) {
+            localStorage.setItem('language', lang);
+            updateLangIndicator();
+            
+            // Trigger translation update
+            if (window.updateTranslations) {
+                window.updateTranslations();
+            }
+            
+            setTimeout(updateNavTextDisplay, 500);
+        }
+
+        updateLangIndicator();
+        setTimeout(updateNavTextDisplay, 1000);
+
+        function addResult(test, status, message) {
+            testResults.push({ test, status, message });
+            const resultsDiv = document.getElementById('results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${status}`;
+            resultDiv.innerHTML = `<strong>${test}:</strong> ${message}`;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            testResults = [];
+        }
+
+        async function checkNavigationI18n() {
+            try {
+                const response = await fetch('assets/js/components/navigation.js');
+                const js = await response.text();
+                
+                return {
+                    hasDataI18n: js.includes('data-i18n'),
+                    hasTranslationKeys: js.includes('nav.home') || 
+                                       js.includes('nav.about') ||
+                                       js.includes('nav.'),
+                    hasLangSwitcher: js.includes('lang-btn') || js.includes('language')
+                };
+            } catch (error) {
+                return null;
+            }
+        }
+
+        async function checkTranslationFiles() {
+            const languages = ['en', 'pl', 'nl'];
+            const results = {};
+            
+            for (const lang of languages) {
+                try {
+                    const response = await fetch(`locales/shared.json`);
+                    const data = await response.json();
+                    results[lang] = {
+                        exists: true,
+                        hasNavKeys: data.nav !== undefined
+                    };
+                } catch (error) {
+                    results[lang] = {
+                        exists: false,
+                        hasNavKeys: false
+                    };
+                }
+            }
+            
+            return results;
+        }
+
+        async function testTranslationIntegration() {
+            addResult('Translation Integration Test', 'warning', 'Testing translation integration...');
+            
+            const navCheck = await checkNavigationI18n();
+            
+            if (!navCheck) {
+                addResult('Navigation Check', 'fail', 'Could not load navigation.js');
+                return;
+            }
+            
+            if (navCheck.hasDataI18n) {
+                addResult('Data-i18n Attributes', 'pass', 'Navigation uses data-i18n attributes');
+            } else {
+                addResult('Data-i18n Attributes', 'fail', 'Missing data-i18n attributes in navigation');
+            }
+            
+            if (navCheck.hasTranslationKeys) {
+                addResult('Translation Keys', 'pass', 'Navigation has translation keys (nav.*)');
+            } else {
+                addResult('Translation Keys', 'warning', 'Translation keys may be missing');
+            }
+            
+            if (navCheck.hasLangSwitcher) {
+                addResult('Language Switcher', 'pass', 'Language switcher exists in navigation');
+            } else {
+                addResult('Language Switcher', 'fail', 'Missing language switcher in navigation');
+            }
+        }
+
+        async function testTranslationSystem() {
+            addResult('Translation System Test', 'warning', 'Checking translation system...');
+            
+            // Check if translations.js is loaded
+            if (typeof window.updateTranslations === 'function') {
+                addResult('Translation Function', 'pass', 'updateTranslations() function exists');
+            } else {
+                addResult('Translation Function', 'fail', 'updateTranslations() function not found');
+            }
+            
+            // Check if preload-lang.js is loaded
+            const currentLang = localStorage.getItem('language');
+            if (currentLang) {
+                addResult('Language Storage', 'pass', `Language preference stored: ${currentLang}`);
+            } else {
+                addResult('Language Storage', 'warning', 'No language preference stored (will use default)');
+            }
+        }
+
+        async function testNavigationElements() {
+            addResult('Navigation Elements Test', 'warning', 'Checking navigation elements...');
+            
+            // Wait for navigation to load
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            if (navLinks.length > 0) {
+                addResult('Navigation Links', 'pass', `Found ${navLinks.length} navigation links`);
+                
+                // Check for data-i18n attributes
+                let hasI18n = 0;
+                navLinks.forEach(link => {
+                    if (link.hasAttribute('data-i18n')) {
+                        hasI18n++;
+                    }
+                });
+                
+                if (hasI18n > 0) {
+                    addResult('Links with data-i18n', 'pass', `${hasI18n} links have data-i18n attributes`);
+                } else {
+                    addResult('Links with data-i18n', 'fail', 'No links have data-i18n attributes');
+                }
+            } else {
+                addResult('Navigation Links', 'fail', 'No navigation links found');
+            }
+            
+            if (langButtons.length > 0) {
+                addResult('Language Buttons', 'pass', `Found ${langButtons.length} language buttons`);
+            } else {
+                addResult('Language Buttons', 'fail', 'No language buttons found');
+            }
+        }
+
+        async function runAllTests() {
+            clearResults();
+            
+            addResult('Test Suite', 'warning', 'Starting translation integration tests...');
+            
+            await testTranslationSystem();
+            await testTranslationIntegration();
+            await testNavigationElements();
+            
+            // Generate summary
+            const passed = testResults.filter(r => r.status === 'pass').length;
+            const failed = testResults.filter(r => r.status === 'fail').length;
+            const warnings = testResults.filter(r => r.status === 'warning').length;
+            
+            const summaryDiv = document.createElement('div');
+            summaryDiv.className = 'summary';
+            summaryDiv.innerHTML = `
+                <h3>Test Summary</h3>
+                <div class="summary-stat"><strong>Passed:</strong> ${passed}</div>
+                <div class="summary-stat"><strong>Failed:</strong> ${failed}</div>
+                <div class="summary-stat"><strong>Warnings:</strong> ${warnings}</div>
+                <div class="summary-stat"><strong>Total:</strong> ${testResults.length}</div>
+            `;
+            document.getElementById('results').appendChild(summaryDiv);
+            
+            if (failed === 0 && passed > 0) {
+                addResult('Overall Result', 'pass', '✅ All translation integration tests passed!');
+                addResult('Manual Testing', 'info', '📋 Please use the language buttons above to test translation switching.');
+            } else if (failed > 0) {
+                addResult('Overall Result', 'fail', `❌ ${failed} test(s) failed. Please review the issues above.`);
+            }
+        }
+    </script>
+</body>
+</html>

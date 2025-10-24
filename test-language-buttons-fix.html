@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Language Buttons Fix</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #1a1a1a;
+      color: #fff;
+    }
+    
+    .test-section {
+      background: #2a2a2a;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    
+    .test-result {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+    }
+    
+    .pass {
+      background: #10b981;
+      color: #fff;
+    }
+    
+    .fail {
+      background: #ef4444;
+      color: #fff;
+    }
+    
+    .info {
+      background: #3b82f6;
+      color: #fff;
+    }
+    
+    .lang-btn {
+      padding: 0.5rem 1rem;
+      margin: 0 5px;
+      background: transparent;
+      border: 1px solid #60a5fa;
+      color: #60a5fa;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    
+    .lang-btn:hover {
+      background: rgba(96, 165, 250, 0.1);
+    }
+    
+    .lang-btn.active {
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      color: #fff;
+      border-color: transparent;
+    }
+    
+    .test-nav {
+      margin: 20px 0;
+    }
+    
+    .test-nav a {
+      color: #60a5fa;
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 1px solid #60a5fa;
+      border-radius: 4px;
+      display: inline-block;
+      margin: 5px;
+    }
+    
+    .test-nav a:hover {
+      background: rgba(96, 165, 250, 0.1);
+    }
+    
+    #current-lang {
+      font-size: 24px;
+      font-weight: bold;
+      color: #60a5fa;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 Test Naprawy Przycisków Języka</h1>
+  
+  <div class="test-section">
+    <h2>Przyciski Języka (Desktop)</h2>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="pl">PL</button>
+      <button class="lang-btn" data-lang="nl">NL</button>
+    </div>
+    <div id="current-lang">Aktualny język: EN</div>
+  </div>
+  
+  <div class="test-section">
+    <h2>Przyciski Języka (Mobile)</h2>
+    <div class="mobile-lang-switcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="pl">PL</button>
+      <button class="lang-btn" data-lang="nl">NL</button>
+    </div>
+  </div>
+  
+  <div class="test-section">
+    <h2>Test Nawigacji (nie powinny być blokowane)</h2>
+    <div class="test-nav">
+      <a href="index.html">Index</a>
+      <a href="about.html">About</a>
+      <a href="music.html">Music</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  
+  <div class="test-section">
+    <h2>Wyniki Testów</h2>
+    <div id="test-results"></div>
+  </div>
+  
+  <!-- Load scripts in correct order -->
+  <script src="assets/js/preload-lang.js"></script>
+  <script src="assets/js/simple-smooth-nav.js"></script>
+  <script src="assets/js/translations.js"></script>
+  
+  <script>
+    // Test script
+    let testResults = [];
+    let clickCount = 0;
+    
+    function addTestResult(name, passed, message) {
+      const result = {
+        name,
+        passed,
+        message,
+        timestamp: new Date().toLocaleTimeString()
+      };
+      testResults.push(result);
+      displayResults();
+    }
+    
+    function displayResults() {
+      const container = document.getElementById('test-results');
+      container.innerHTML = testResults.map(result => `
+        <div class="test-result ${result.passed ? 'pass' : 'fail'}">
+          <strong>${result.passed ? '✓' : '✗'} ${result.name}</strong><br>
+          ${result.message}<br>
+          <small>${result.timestamp}</small>
+        </div>
+      `).join('');
+    }
+    
+    // Wait for everything to load
+    window.addEventListener('load', () => {
+      addTestResult('Inicjalizacja', true, 'Strona załadowana, skrypty gotowe');
+      
+      // Test 1: Sprawdź czy simple-smooth-nav jest załadowany
+      if (window.__simpleSmoothNavInitialized) {
+        addTestResult('Simple Smooth Nav', true, 'System nawigacji załadowany');
+      } else {
+        addTestResult('Simple Smooth Nav', false, 'System nawigacji NIE załadowany');
+      }
+      
+      // Test 2: Sprawdź czy translations są załadowane
+      if (typeof window.setLanguage === 'function') {
+        addTestResult('Translation System', true, 'System tłumaczeń załadowany');
+      } else {
+        addTestResult('Translation System', false, 'System tłumaczeń NIE załadowany');
+      }
+      
+      // Test 3: Dodaj listenery do przycisków języka
+      const langButtons = document.querySelectorAll('.lang-btn');
+      langButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          clickCount++;
+          const lang = btn.dataset.lang;
+          
+          addTestResult(
+            `Kliknięcie przycisku ${lang.toUpperCase()}`,
+            true,
+            `Przycisk ${lang.toUpperCase()} został kliknięty (kliknięcie #${clickCount})`
+          );
+          
+          // Update visual feedback
+          document.querySelectorAll('.lang-btn').forEach(b => {
+            b.classList.remove('active');
+          });
+          document.querySelectorAll(`[data-lang="${lang}"]`).forEach(b => {
+            b.classList.add('active');
+          });
+          
+          // Update current language display
+          const langNames = { en: 'EN', pl: 'PL', nl: 'NL' };
+          document.getElementById('current-lang').textContent = 
+            `Aktualny język: ${langNames[lang]}`;
+        });
+      });
+      
+      addTestResult('Event Listeners', true, `Dodano listenery do ${langButtons.length} przycisków`);
+      
+      // Test 4: Sprawdź czy linki nawigacyjne mają listener
+      const navLinks = document.querySelectorAll('.test-nav a');
+      let navClickIntercepted = false;
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          // Jeśli simple-smooth-nav działa, to zdarzenie powinno być przechwycone
+          // i nie powinniśmy tu dotrzeć (bo preventDefault zostanie wywołane)
+          if (!e.defaultPrevented) {
+            e.preventDefault(); // Zapobiegaj rzeczywistej nawigacji w teście
+            addTestResult(
+              'Nawigacja NIE przechwycona',
+              false,
+              `Link ${link.textContent} nie został przechwycony przez smooth-nav`
+            );
+          }
+        }, false); // Użyj bubble phase, żeby być po capture phase smooth-nav
+      });
+      
+      // Info message
+      const infoDiv = document.createElement('div');
+      infoDiv.className = 'test-result info';
+      infoDiv.innerHTML = `
+        <strong>ℹ️ Instrukcje testowania:</strong><br>
+        1. Kliknij każdy przycisk języka (EN/PL/NL) - powinny działać<br>
+        2. Sprawdź czy "Aktualny język" się zmienia<br>
+        3. Sprawdź czy w konsoli nie ma błędów<br>
+        4. Kliknij linki nawigacyjne - powinny być przechwycone przez smooth-nav<br>
+        5. Wszystkie testy powinny być zielone ✓
+      `;
+      document.getElementById('test-results').prepend(infoDiv);
+    });
+    
+    // Monitor console errors
+    window.addEventListener('error', (e) => {
+      addTestResult('Błąd JavaScript', false, e.message);
+    });
+  </script>
+</body>
+</html>

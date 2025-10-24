@@ -42,6 +42,21 @@
     document.head.appendChild(styles);
   }
   
+  // Sprawdź czy element to przycisk języka
+  function isLanguageButton(element) {
+    if (!element || !element.classList) return false;
+    
+    // Sprawdź bezpośrednio element
+    if (element.classList.contains('lang-btn')) return true;
+    
+    // Sprawdź rodziców (dla zagnieżdżonych elementów jak tekst wewnątrz przycisku)
+    if (typeof element.closest === 'function') {
+      return !!element.closest('.lang-btn');
+    }
+    
+    return false;
+  }
+  
   // Sprawdź czy link powinien być przechwycony
   function shouldInterceptLink(href, link) {
     if (!href) return false;
@@ -90,12 +105,27 @@
     
     // Przechwytuj kliknięcia w linki
     clickHandler = (event) => {
+      console.log('[simple-smooth-nav] Click detected on:', event.target);
+      
+      // Nie przechwytuj kliknięć w przyciski języka
+      if (isLanguageButton(event.target)) {
+        console.log('[simple-smooth-nav] ✓ Language button clicked, ignoring (no preventDefault)');
+        return;
+      }
+      
       const link = event.target.closest('a');
-      if (!link) return;
+      if (!link) {
+        console.log('[simple-smooth-nav] Not a link, ignoring');
+        return;
+      }
       
       const href = link.getAttribute('href');
-      if (!shouldInterceptLink(href, link)) return;
+      if (!shouldInterceptLink(href, link)) {
+        console.log('[simple-smooth-nav] Link should not be intercepted:', href);
+        return;
+      }
       
+      console.log('[simple-smooth-nav] ⚡ Intercepting navigation to:', href);
       event.preventDefault();
       event.stopPropagation();
       navigateToPage(href);

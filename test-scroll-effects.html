@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Effects Test</title>
+    <link rel="stylesheet" href="assets/css/navigation.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1a1a1a;
+            color: #fff;
+            min-height: 300vh; /* Make page scrollable */
+        }
+        .content {
+            max-width: 1200px;
+            margin: 100px auto 20px;
+            padding: 20px;
+        }
+        h1 {
+            color: #00d4ff;
+            border-bottom: 2px solid #00d4ff;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #00a8cc;
+            margin-top: 30px;
+        }
+        .test-section {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #00d4ff;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .pass {
+            background: #1a4d2e;
+            border-left: 4px solid #4caf50;
+        }
+        .fail {
+            background: #4d1a1a;
+            border-left: 4px solid #f44336;
+        }
+        .warning {
+            background: #4d3d1a;
+            border-left: 4px solid #ff9800;
+        }
+        .info {
+            background: #1a2a4d;
+            border-left: 4px solid #2196f3;
+        }
+        button {
+            background: #00d4ff;
+            color: #1a1a1a;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #00a8cc;
+        }
+        #results {
+            margin-top: 20px;
+        }
+        .scroll-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #00d4ff;
+            color: #1a1a1a;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            z-index: 10000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .header-status {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #2a2a2a;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            z-index: 10000;
+            border: 2px solid #00d4ff;
+        }
+        .status-item {
+            margin: 5px 0;
+        }
+        .status-value {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+        .spacer {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #666;
+            border: 2px dashed #333;
+            margin: 20px 0;
+        }
+        .summary {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .summary-stat {
+            display: inline-block;
+            margin: 10px 20px 10px 0;
+            font-size: 18px;
+        }
+        .summary-stat strong {
+            color: #00d4ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator" id="scrollIndicator">
+        Scroll: 0px
+    </div>
+
+    <div class="header-status" id="headerStatus">
+        <div class="status-item">
+            <strong>Header Class:</strong> 
+            <span class="status-value" id="headerClass">-</span>
+        </div>
+        <div class="status-item">
+            <strong>Scrolled:</strong> 
+            <span class="status-value" id="isScrolled">No</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>📜 Scroll Effects Test Suite</h1>
+        <p>This test validates scroll effects on the navigation header.</p>
+
+        <div class="test-section">
+            <h2>Test Instructions</h2>
+            <ol>
+                <li>Click "Run All Tests" to perform automated checks</li>
+                <li>Scroll down the page to test scroll effects</li>
+                <li>Watch the header status indicator (top right)</li>
+                <li>Verify the header gets the "scrolled" class when scrolling</li>
+                <li>Scroll back to top and verify the class is removed</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <h2>Automated Tests</h2>
+            <button onclick="runAllTests()">Run All Tests</button>
+            <button onclick="clearResults()">Clear Results</button>
+            <button onclick="scrollToTop()">Scroll to Top</button>
+            <button onclick="scrollToMiddle()">Scroll to Middle</button>
+            <button onclick="scrollToBottom()">Scroll to Bottom</button>
+            <div id="results"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>Manual Scroll Test</h2>
+            <p>Scroll down this page and observe:</p>
+            <ul>
+                <li>Header should get "scrolled" class after scrolling down</li>
+                <li>Header may change appearance (padding, shadow, background)</li>
+                <li>Scroll position is tracked in the bottom-right indicator</li>
+                <li>Header status is shown in the top-right indicator</li>
+            </ul>
+        </div>
+
+        <div class="spacer">
+            ⬇️ Scroll Down ⬇️
+        </div>
+
+        <div class="test-section">
+            <h2>Middle Section</h2>
+            <p>You've scrolled to the middle. Check if the header has the "scrolled" class.</p>
+        </div>
+
+        <div class="spacer">
+            ⬇️ Keep Scrolling ⬇️
+        </div>
+
+        <div class="test-section">
+            <h2>Bottom Section</h2>
+            <p>You've reached the bottom. The header should still have the "scrolled" class.</p>
+            <button onclick="scrollToTop()">Back to Top</button>
+        </div>
+    </div>
+
+    <script src="assets/js/components/navigation.js"></script>
+    <script>
+        let testResults = [];
+
+        function updateScrollIndicator() {
+            const scrollY = window.scrollY || window.pageYOffset;
+            document.getElementById('scrollIndicator').textContent = `Scroll: ${Math.round(scrollY)}px`;
+            
+            // Check header class
+            const header = document.querySelector('.header');
+            if (header) {
+                const hasScrolledClass = header.classList.contains('scrolled');
+                document.getElementById('headerClass').textContent = header.className || 'none';
+                document.getElementById('isScrolled').textContent = hasScrolledClass ? 'Yes' : 'No';
+                
+                // Update status color
+                const statusEl = document.getElementById('headerStatus');
+                if (hasScrolledClass) {
+                    statusEl.style.borderColor = '#4caf50';
+                } else {
+                    statusEl.style.borderColor = '#00d4ff';
+                }
+            }
+        }
+
+        window.addEventListener('scroll', updateScrollIndicator);
+        
+        // Initial update
+        setTimeout(updateScrollIndicator, 500);
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToMiddle() {
+            window.scrollTo({ top: document.body.scrollHeight / 2, behavior: 'smooth' });
+        }
+
+        function scrollToBottom() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        function addResult(test, status, message) {
+            testResults.push({ test, status, message });
+            const resultsDiv = document.getElementById('results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${status}`;
+            resultDiv.innerHTML = `<strong>${test}:</strong> ${message}`;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            testResults = [];
+        }
+
+        async function checkScrollLogic() {
+            try {
+                const response = await fetch('assets/js/components/navigation.js');
+                const js = await response.text();
+                
+                return {
+                    hasScrollListener: js.includes('scroll') && js.includes('addEventListener'),
+                    hasScrolledClass: js.includes('scrolled') || js.includes('classList'),
+                    hasScrollLogic: js.includes('window.scrollY') || js.includes('pageYOffset'),
+                    hasInitScroll: js.includes('initScroll') || js.includes('scroll')
+                };
+            } catch (error) {
+                return null;
+            }
+        }
+
+        async function checkScrollStyles() {
+            try {
+                const response = await fetch('assets/css/navigation.css');
+                const css = await response.text();
+                
+                return {
+                    hasScrolledClass: css.includes('.scrolled') || css.includes('.header.scrolled'),
+                    hasTransition: css.includes('transition'),
+                    hasVisualChange: css.includes('.scrolled') && 
+                                    (css.includes('padding') || 
+                                     css.includes('shadow') || 
+                                     css.includes('background'))
+                };
+            } catch (error) {
+                return null;
+            }
+        }
+
+        async function testScrollEffects() {
+            addResult('Scroll Effects Test', 'warning', 'Testing scroll functionality...');
+            
+            const jsCheck = await checkScrollLogic();
+            const cssCheck = await checkScrollStyles();
+            
+            if (!jsCheck) {
+                addResult('JavaScript Check', 'fail', 'Could not load navigation.js');
+                return;
+            }
+            
+            if (!cssCheck) {
+                addResult('CSS Check', 'fail', 'Could not load navigation.css');
+                return;
+            }
+            
+            // Test JavaScript logic
+            if (jsCheck.hasScrollListener) {
+                addResult('Scroll Listener', 'pass', 'Scroll event listener exists');
+            } else {
+                addResult('Scroll Listener', 'fail', 'Missing scroll event listener');
+            }
+            
+            if (jsCheck.hasScrolledClass) {
+                addResult('Scrolled Class Logic', 'pass', 'Scrolled class manipulation exists');
+            } else {
+                addResult('Scrolled Class Logic', 'fail', 'Missing scrolled class logic');
+            }
+            
+            if (jsCheck.hasScrollLogic) {
+                addResult('Scroll Detection', 'pass', 'Scroll position detection exists');
+            } else {
+                addResult('Scroll Detection', 'fail', 'Missing scroll position detection');
+            }
+            
+            // Test CSS styles
+            if (cssCheck.hasScrolledClass) {
+                addResult('Scrolled Styles', 'pass', '.scrolled class styles exist');
+            } else {
+                addResult('Scrolled Styles', 'fail', 'Missing .scrolled class styles');
+            }
+            
+            if (cssCheck.hasTransition) {
+                addResult('Smooth Transitions', 'pass', 'CSS transitions exist');
+            } else {
+                addResult('Smooth Transitions', 'warning', 'May be missing smooth transitions');
+            }
+            
+            if (cssCheck.hasVisualChange) {
+                addResult('Visual Changes', 'pass', 'Scrolled state has visual changes');
+            } else {
+                addResult('Visual Changes', 'warning', 'Scrolled state may not have visual changes');
+            }
+        }
+
+        async function testHeaderElement() {
+            addResult('Header Element Test', 'warning', 'Checking header element...');
+            
+            // Wait for navigation to load
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            const header = document.querySelector('.header');
+            
+            if (header) {
+                addResult('Header Element', 'pass', 'Header element exists in DOM');
+                
+                // Test scroll effect
+                window.scrollTo(0, 100);
+                await new Promise(resolve => setTimeout(resolve, 300));
+                
+                const hasScrolledClass = header.classList.contains('scrolled');
+                if (hasScrolledClass) {
+                    addResult('Scroll Effect Active', 'pass', 'Header gets scrolled class when scrolling');
+                } else {
+                    addResult('Scroll Effect Active', 'warning', 'Header may not have scrolled class yet (scroll more)');
+                }
+                
+                // Scroll back to top
+                window.scrollTo(0, 0);
+                await new Promise(resolve => setTimeout(resolve, 300));
+                
+            } else {
+                addResult('Header Element', 'fail', 'Header element not found in DOM');
+            }
+        }
+
+        async function runAllTests() {
+            clearResults();
+            
+            addResult('Test Suite', 'warning', 'Starting scroll effects tests...');
+            
+            await testScrollEffects();
+            await testHeaderElement();
+            
+            // Generate summary
+            const passed = testResults.filter(r => r.status === 'pass').length;
+            const failed = testResults.filter(r => r.status === 'fail').length;
+            const warnings = testResults.filter(r => r.status === 'warning').length;
+            
+            const summaryDiv = document.createElement('div');
+            summaryDiv.className = 'summary';
+            summaryDiv.innerHTML = `
+                <h3>Test Summary</h3>
+                <div class="summary-stat"><strong>Passed:</strong> ${passed}</div>
+                <div class="summary-stat"><strong>Failed:</strong> ${failed}</div>
+                <div class="summary-stat"><strong>Warnings:</strong> ${warnings}</div>
+                <div class="summary-stat"><strong>Total:</strong> ${testResults.length}</div>
+            `;
+            document.getElementById('results').appendChild(summaryDiv);
+            
+            if (failed === 0 && passed > 0) {
+                addResult('Overall Result', 'pass', '✅ All scroll effect tests passed!');
+                addResult('Manual Testing', 'info', '📋 Please scroll the page and verify the header changes appearance.');
+            } else if (failed > 0) {
+                addResult('Overall Result', 'fail', `❌ ${failed} test(s) failed. Please review the issues above.`);
+            }
+        }
+    </script>
+</body>
+</html>

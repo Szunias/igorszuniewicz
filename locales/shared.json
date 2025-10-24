@@ -8,7 +8,7 @@
     "nav": {
       "work": "Work",
       "about": "About",
-      "projects": "All Projects",
+      "projects": "Projects",
       "music": "Music",
       "contact": "Contact"
     },
@@ -174,7 +174,7 @@
     "nav": {
       "work": "Prace",
       "about": "O mnie",
-      "projects": "Wszystkie Projekty",
+      "projects": "Projekty",
       "music": "Muzyka",
       "contact": "Kontakt"
     },
@@ -340,7 +340,7 @@
     "nav": {
       "work": "Werk",
       "about": "Over",
-      "projects": "Alle Projecten",
+      "projects": "Projecten",
       "music": "Muziek",
       "contact": "Contact"
     },

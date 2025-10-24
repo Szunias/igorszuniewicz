@@ -25,6 +25,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
+  <!-- Navigation CSS -->
+  <link rel="stylesheet" href="../assets/css/navigation.css">
+  
   <style>
     /* === RESET === */
     *, *::before, *::after {
@@ -127,92 +130,7 @@
       z-index: 1;
     }
     
-    /* === HEADER === */
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 1.5rem 0;
-      backdrop-filter: blur(10px);
-      background: rgba(10, 14, 18, 0.8);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.3s ease;
-    }
-    
-    .header.scrolled {
-      padding: 1rem 0;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-    }
-    
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .logo {
-      font-family: 'Sora', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #fff;
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-      align-items: center;
-    }
-    
-    .nav-links a {
-      color: #9ca3af;
-      text-decoration: none;
-      font-weight: 400;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
-    }
-    
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: #60a5fa;
-    }
-    
-    /* === LANGUAGE SWITCHER === */
-    .lang-switcher {
-      display: flex;
-      gap: 0.5rem;
-      background: rgba(30, 41, 59, 0.6);
-      padding: 0.4rem;
-      border-radius: 25px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .lang-btn {
-      padding: 0.4rem 0.8rem;
-      background: transparent;
-      border: none;
-      color: #9ca3af;
-      font-size: 0.85rem;
-      font-weight: 500;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .lang-btn:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.1);
-    }
-    
-    .lang-btn.active {
-      background: linear-gradient(135deg, #60a5fa, #a78bfa);
-      color: #fff;
-    }
-    
+
     /* === PAGE === */
     .page-content {
       padding: 10rem 0 4rem;
@@ -476,10 +394,6 @@
     }
     
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      
       .container {
         padding: 0 1.5rem;
       }
@@ -620,26 +534,7 @@
     <div class="orb orb-3"></div>
   </div>
   
-  <!-- Header -->
-  <header class="header" id="header">
-    <div class="container">
-      <nav class="nav">
-        <a href="../index.html" class="logo">Igor Szuniewicz</a>
-        <ul class="nav-links">
-          <li><a href="../index.html" data-i18n="nav_home">Home</a></li>
-          <li><a href="../about.html" data-i18n="nav_about">About</a></li>
-          <li><a href="index.html" class="active" data-i18n="nav_projects">Projects</a></li>
-          <li><a href="../music.html" data-i18n="nav_music">Music</a></li>
-          <li><a href="../contact.html" data-i18n="nav_contact">Contact</a></li>
-          <li class="lang-switcher">
-            <button class="lang-btn active" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="pl">PL</button>
-            <button class="lang-btn" data-lang="nl">NL</button>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- Navigation loaded by navigation.js -->
   
   <!-- Page Content -->
   <div class="page-content">
@@ -933,6 +828,7 @@
       });
     });
   </script>
+  <script src="../assets/js/components/navigation.js"></script>
   <script src="../assets/js/components/custom-cursor.js"></script>
   <script src="../assets/js/translations.js"></script>
   

@@ -158,9 +158,14 @@
   function initTranslations() {
     loadTranslations();
     
-    // Add click handlers to language buttons
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    // Use event delegation for language buttons (works even if buttons are added dynamically)
+    document.addEventListener('click', (event) => {
+      // Check if clicked element or its parent is a language button
+      const langBtn = event.target.closest('.lang-btn');
+      if (langBtn && langBtn.dataset.lang) {
+        console.log('[translations] Language button clicked:', langBtn.dataset.lang);
+        setLanguage(langBtn.dataset.lang);
+      }
     });
   }
 })();

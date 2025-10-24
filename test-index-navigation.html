@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Index Navigation</title>
+  <link rel="stylesheet" href="assets/css/navigation.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      min-height: 200vh; /* For scroll testing */
+    }
+    .test-content {
+      padding: 150px 20px 50px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .test-section {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+    .test-result {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+    .pass {
+      background: rgba(0,255,0,0.2);
+      border: 1px solid #0f0;
+    }
+    .fail {
+      background: rgba(255,0,0,0.2);
+      border: 1px solid #f00;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-content">
+    <h1>Index.html Navigation Test</h1>
+    
+    <div class="test-section">
+      <h2>Test Results</h2>
+      <div id="test-results"></div>
+    </div>
+
+    <div class="test-section">
+      <h2>Manual Tests</h2>
+      <ul>
+        <li>✓ Check if navigation appears at the top</li>
+        <li>✓ Check if "Home" link is highlighted (active)</li>
+        <li>✓ Scroll down and check if header gets scrolled effect</li>
+        <li>✓ Resize to mobile width (&lt;768px) and test mobile menu</li>
+        <li>✓ Click hamburger menu to open mobile navigation</li>
+        <li>✓ Click overlay to close mobile menu</li>
+        <li>✓ Test language switcher buttons</li>
+      </ul>
+    </div>
+
+    <div class="test-section">
+      <h2>Scroll Test Area</h2>
+      <p>Scroll down to test the header scroll effect...</p>
+      <div style="height: 1000px; background: linear-gradient(to bottom, transparent, rgba(96,165,250,0.1));"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/components/navigation.js"></script>
+  <script>
+    // Automated tests
+    function runTests() {
+      const results = [];
+      
+      // Test 1: Navigation CSS loaded
+      const navCss = document.querySelector('link[href="assets/css/navigation.css"]');
+      results.push({
+        name: 'Navigation CSS link exists',
+        pass: !!navCss
+      });
+
+      // Test 2: Navigation JS loaded
+      results.push({
+        name: 'Navigation JS loaded',
+        pass: typeof loadNavigation === 'function'
+      });
+
+      // Wait for navigation to be injected
+      setTimeout(() => {
+        // Test 3: Header element exists
+        const header = document.querySelector('.header');
+        results.push({
+          name: 'Header element injected',
+          pass: !!header
+        });
+
+        // Test 4: Navigation links exist
+        const navLinks = document.querySelectorAll('.nav-links a');
+        results.push({
+          name: 'Navigation links exist (5 expected)',
+          pass: navLinks.length === 5
+        });
+
+        // Test 5: Mobile menu toggle exists
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        results.push({
+          name: 'Mobile menu toggle exists',
+          pass: !!mobileToggle
+        });
+
+        // Test 6: Mobile menu exists
+        const mobileMenu = document.querySelector('.mobile-menu');
+        results.push({
+          name: 'Mobile menu exists',
+          pass: !!mobileMenu
+        });
+
+        // Test 7: Mobile overlay exists
+        const overlay = document.querySelector('.mobile-menu-overlay');
+        results.push({
+          name: 'Mobile menu overlay exists',
+          pass: !!overlay
+        });
+
+        // Test 8: Language switcher exists
+        const langSwitcher = document.querySelectorAll('.lang-btn');
+        results.push({
+          name: 'Language switcher buttons exist (6 expected: 3 desktop + 3 mobile)',
+          pass: langSwitcher.length === 6
+        });
+
+        // Test 9: Active link detection
+        const activeLink = document.querySelector('.nav-links a.active');
+        results.push({
+          name: 'Active link detected',
+          pass: !!activeLink
+        });
+
+        // Test 10: Scroll effect initialization
+        window.scrollTo(0, 100);
+        setTimeout(() => {
+          const headerScrolled = header && header.classList.contains('scrolled');
+          results.push({
+            name: 'Scroll effect works (header has scrolled class)',
+            pass: headerScrolled
+          });
+
+          // Display results
+          displayResults(results);
+        }, 100);
+      }, 500);
+    }
+
+    function displayResults(results) {
+      const container = document.getElementById('test-results');
+      let html = '';
+      let passed = 0;
+      let failed = 0;
+
+      results.forEach(result => {
+        if (result.pass) {
+          passed++;
+          html += `<div class="test-result pass">✓ ${result.name}</div>`;
+        } else {
+          failed++;
+          html += `<div class="test-result fail">✗ ${result.name}</div>`;
+        }
+      });
+
+      html = `<h3>Automated Tests: ${passed} passed, ${failed} failed</h3>` + html;
+      container.innerHTML = html;
+    }
+
+    // Run tests after page load
+    window.addEventListener('load', () => {
+      setTimeout(runTests, 100);
+    });
+  </script>
+</body>
+</html>
