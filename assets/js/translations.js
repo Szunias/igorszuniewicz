@@ -29,6 +29,16 @@
       }
     });
     
+    // Update all elements with data-i18n-aria-label attribute
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+      const key = el.getAttribute('data-i18n-aria-label');
+      const translation = getNestedTranslation(window.translations[lang], key) || window.translations[lang]?.[key];
+      
+      if (translation) {
+        el.setAttribute('aria-label', translation);
+      }
+    });
+    
     // Update active state of language buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === lang);
@@ -36,6 +46,11 @@
     
     // Update HTML lang attribute
     document.documentElement.setAttribute('lang', lang);
+    
+    // Update modal content if it exists and is open
+    if (window.TrackInfoModal && typeof window.TrackInfoModal.updateLanguage === 'function') {
+      window.TrackInfoModal.updateLanguage();
+    }
     
     // Mark translations as ready and show page smoothly
     requestAnimationFrame(() => {
@@ -51,8 +66,35 @@
     });
   }
   
+  // Helper function to apply translations to all elements
+  function applyTranslations() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const translation = getNestedTranslation(window.translations[currentLang], key) || window.translations[currentLang]?.[key];
+      
+      if (translation) {
+        if (key.includes('.title') && translation.includes('<br>')) {
+          el.innerHTML = translation;
+        } else {
+          el.textContent = translation;
+        }
+      }
+    });
+    
+    // Apply aria-label translations
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+      const key = el.getAttribute('data-i18n-aria-label');
+      const translation = getNestedTranslation(window.translations[currentLang], key) || window.translations[currentLang]?.[key];
+      
+      if (translation) {
+        el.setAttribute('aria-label', translation);
+      }
+    });
+  }
+  
   // Export dla smooth navigation
   window.setLanguage = setLanguage;
+  window.applyTranslations = applyTranslations;
 
   // Detect which JSON file to load based on current page
   function getTranslationFile() {

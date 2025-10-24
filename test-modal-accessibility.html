@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Accessibility Test</title>
+    
+    <!-- Load existing styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    
+    <style>
+        body {
+            background: #0f172a;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .test-header {
+            background: rgba(236, 72, 153, 0.1);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .test-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .test-btn {
+            padding: 10px 20px;
+            background: rgba(236, 72, 153, 0.2);
+            border: 1px solid rgba(236, 72, 153, 0.5);
+            border-radius: 5px;
+            color: #ec4899;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .test-btn:hover {
+            background: rgba(236, 72, 153, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .console-output {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            max-height: 600px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        
+        .playlist-container {
+            margin-top: 30px;
+        }
+        
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .playlist-cover {
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            background: rgba(236, 72, 153, 0.2);
+        }
+        
+        .playlist-info {
+            flex: 1;
+        }
+        
+        .playlist-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .playlist-artist {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .playlist-duration {
+            color: #666;
+        }
+        
+        .playlist-info-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #ec4899;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .playlist-info-btn:hover {
+            background: rgba(236, 72, 153, 0.2);
+            border-color: rgba(236, 72, 153, 0.5);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🧪 Modal Accessibility & Responsive Test Suite</h1>
+            <p>Testing Requirements: 3.1, 3.2, 3.3, 3.4, 3.5</p>
+            <ul>
+                <li>✓ Modal layout on mobile devices (width &lt; 768px)</li>
+                <li>✓ Modal layout on desktop devices (width &gt;= 768px)</li>
+                <li>✓ Keyboard navigation (Tab, Shift+Tab, Escape)</li>
+                <li>✓ Screen reader compatibility with ARIA attributes</li>
+                <li>✓ Touch targets meet 44x44px minimum size</li>
+                <li>✓ Color contrast meets WCAG AA standards</li>
+            </ul>
+        </div>
+        
+        <div class="test-controls">
+            <button class="test-btn" onclick="runAllTests()">▶ Run All Tests</button>
+            <button class="test-btn" onclick="openTestModal()">👁 Open Modal</button>
+            <button class="test-btn" onclick="clearConsole()">🗑 Clear Console</button>
+            <button class="test-btn" onclick="simulateMobile()">📱 Simulate Mobile</button>
+            <button class="test-btn" onclick="simulateDesktop()">🖥 Simulate Desktop</button>
+        </div>
+        
+        <div class="console-output" id="console-output">
+            Console output will appear here...
+        </div>
+        
+        <div class="playlist-container">
+            <h2>Sample Playlist (for testing info buttons)</h2>
+            <div class="playlist-item">
+                <div class="playlist-cover"></div>
+                <div class="playlist-info">
+                    <div class="playlist-title">Test Track 1</div>
+                    <div class="playlist-artist">Test Artist</div>
+                </div>
+                <div class="playlist-duration">3:45</div>
+                <button class="playlist-info-btn" onclick="openTestModal()" aria-label="Track information">ℹ️</button>
+            </div>
+            <div class="playlist-item">
+                <div class="playlist-cover"></div>
+                <div class="playlist-info">
+                    <div class="playlist-title">Test Track 2</div>
+                    <div class="playlist-artist">Test Artist</div>
+                </div>
+                <div class="playlist-duration">4:20</div>
+                <button class="playlist-info-btn" onclick="openTestModal()" aria-label="Track information">ℹ️</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal will be injected here by TrackInfoModal -->
+    
+    <script>
+        // Capture console output
+        const consoleOutput = document.getElementById('console-output');
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        
+        function appendToConsole(message, type = 'log') {
+            const colors = {
+                log: '#fff',
+                error: '#ff6b6b',
+                warn: '#ffd93d'
+            };
+            const span = document.createElement('span');
+            span.style.color = colors[type];
+            span.textContent = message + '\n';
+            consoleOutput.appendChild(span);
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            appendToConsole(args.join(' '), 'log');
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            appendToConsole(args.join(' '), 'error');
+        };
+        
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            appendToConsole(args.join(' '), 'warn');
+        };
+        
+        function clearConsole() {
+            consoleOutput.innerHTML = 'Console cleared...\n';
+        }
+        
+        function openTestModal() {
+            if (window.TrackInfoModal) {
+                TrackInfoModal.open(0);
+            } else {
+                console.error('TrackInfoModal not initialized');
+            }
+        }
+        
+        function simulateMobile() {
+            console.log('Simulating mobile viewport (375px)...');
+            document.body.style.width = '375px';
+            window.dispatchEvent(new Event('resize'));
+        }
+        
+        function simulateDesktop() {
+            console.log('Simulating desktop viewport (1920px)...');
+            document.body.style.width = '100%';
+            window.dispatchEvent(new Event('resize'));
+        }
+        
+        // Mock tracks data for testing
+        window.tracks = [
+            {
+                id: 'test-1',
+                title: 'Test Track 1',
+                artist: 'Test Artist',
+                cover: 'assets/images/placeholder.jpg',
+                tags: ['electronic', 'ambient'],
+                length: 225,
+                date: '2024-01-15',
+                year: 2024,
+                desc: {
+                    en: 'This is a test track description in English.',
+                    pl: 'To jest testowy opis utworu po polsku.',
+                    nl: 'Dit is een testtrack beschrijving in het Nederlands.'
+                },
+                sources: []
+            }
+        ];
+    </script>
+    
+    <!-- Load modal implementation -->
+    <script src="assets/js/track-info-modal.js"></script>
+    
+    <!-- Load accessibility test suite -->
+    <script src="verify-modal-accessibility.js"></script>
+    
+    <script>
+        // Initialize modal when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.TrackInfoModal) {
+                TrackInfoModal.init();
+                console.log('✓ TrackInfoModal initialized');
+            } else {
+                console.error('✗ TrackInfoModal not found');
+            }
+        });
+    </script>
+</body>
+</html>

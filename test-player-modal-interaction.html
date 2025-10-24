@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player Modal Interaction Test</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+    
+    h1 {
+      color: #ec4899;
+      border-bottom: 2px solid #ec4899;
+      padding-bottom: 0.5rem;
+    }
+    
+    h2 {
+      color: #a78bfa;
+      margin-top: 2rem;
+    }
+    
+    .test-section {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .test-step {
+      background: rgba(15, 23, 42, 0.6);
+      border-left: 3px solid #ec4899;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+    
+    .test-step h3 {
+      margin-top: 0;
+      color: #fbbf24;
+      font-size: 1.1rem;
+    }
+    
+    .expected {
+      background: rgba(34, 197, 94, 0.1);
+      border-left: 3px solid #22c55e;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border-radius: 4px;
+    }
+    
+    .expected strong {
+      color: #22c55e;
+    }
+    
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .checklist li {
+      padding: 0.5rem 0;
+      padding-left: 2rem;
+      position: relative;
+    }
+    
+    .checklist li:before {
+      content: "☐";
+      position: absolute;
+      left: 0;
+      color: #ec4899;
+      font-size: 1.2rem;
+    }
+    
+    .requirements {
+      background: rgba(167, 139, 250, 0.1);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    
+    .requirements strong {
+      color: #a78bfa;
+    }
+    
+    .button {
+      display: inline-block;
+      background: linear-gradient(135deg, #ec4899, #a78bfa);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 1rem 0;
+      transition: transform 0.2s;
+    }
+    
+    .button:hover {
+      transform: scale(1.05);
+    }
+    
+    .warning {
+      background: rgba(251, 191, 36, 0.1);
+      border-left: 3px solid #fbbf24;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+    
+    .warning strong {
+      color: #fbbf24;
+    }
+    
+    code {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      color: #60a5fa;
+      font-family: 'Courier New', monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎵 Player Modal Interaction Test Guide</h1>
+  
+  <div class="requirements">
+    <strong>Requirements Being Tested:</strong>
+    <ul>
+      <li><strong>Requirement 2.2:</strong> WHILE THE Track_Info_Modal is visible, THE Music_Player SHALL continue playback without interruption</li>
+      <li><strong>Requirement 4.4:</strong> THE system SHALL maintain the current player bar functionality and styling</li>
+    </ul>
+  </div>
+
+  <div class="test-section">
+    <h2>📋 Pre-Test Setup</h2>
+    <ol>
+      <li>Open <code>music.html</code> in your browser</li>
+      <li>Ensure you have audio tracks loaded</li>
+      <li>Open browser DevTools Console (F12) to monitor for errors</li>
+      <li>Have this test guide open in a separate window/tab</li>
+    </ol>
+  </div>
+
+  <div class="test-section">
+    <h2>🧪 Test 1: Info Button Doesn't Pause Playback</h2>
+    
+    <div class="test-step">
+      <h3>Step 1: Start Playback</h3>
+      <ol>
+        <li>Click on any track in the playlist to start playback</li>
+        <li>Verify the track is playing (audio is audible)</li>
+        <li>Verify the player bar shows the play button as "⏸" (pause icon)</li>
+        <li>Verify the progress bar is moving</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Track plays normally, player bar is visible at bottom
+      </div>
+    </div>
+
+    <div class="test-step">
+      <h3>Step 2: Click Info Button</h3>
+      <ol>
+        <li>While the track is playing, click the info button (ℹ️) on any track</li>
+        <li>Observe the modal opening</li>
+        <li><strong>CRITICAL:</strong> Listen carefully - audio should continue playing</li>
+        <li>Check the player bar - play button should still show "⏸"</li>
+        <li>Check the progress bar - it should still be moving</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Modal opens, audio continues playing without interruption, player controls remain functional
+      </div>
+    </div>
+
+    <div class="test-step">
+      <h3>Step 3: Verify No Track Change</h3>
+      <ol>
+        <li>Note the current track title in the player bar</li>
+        <li>Click info button on a different track</li>
+        <li>Verify the modal shows info for the clicked track</li>
+        <li>Verify the player bar still shows the original playing track</li>
+        <li>Verify audio continues from the original track</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Info button shows track details without changing playback
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>🧪 Test 2: Modal Open/Close Doesn't Affect Audio State</h2>
+    
+    <div class="test-step">
+      <h3>Step 1: Open Modal During Playback</h3>
+      <ol>
+        <li>Ensure a track is playing</li>
+        <li>Note the current playback position (time)</li>
+        <li>Click info button to open modal</li>
+        <li>Wait 5 seconds with modal open</li>
+        <li>Verify audio continues playing throughout</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Audio plays continuously, progress bar advances normally
+      </div>
+    </div>
+
+    <div class="test-step">
+      <h3>Step 2: Close Modal via Close Button</h3>
+      <ol>
+        <li>With modal open and audio playing, click the "×" close button</li>
+        <li>Verify modal closes smoothly</li>
+        <li>Verify audio continues playing</li>
+        <li>Verify player controls remain functional</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Modal closes, audio continues without interruption
+      </div>
+    </div>
+
+    <div class="test-step">
+      <h3>Step 3: Close Modal via Backdrop Click</h3>
+      <ol>
+        <li>Open modal again (click info button)</li>
+        <li>Click on the dark backdrop area (outside modal content)</li>
+        <li>Verify modal closes</li>
+        <li>Verify audio continues playing</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Modal closes, audio continues without interruption
+      </div>
+    </div>
+
+    <div class="test-step">
+      <h3>Step 4: Close Modal via Escape Key</h3>
+      <ol>
+        <li>Open modal again</li>
+        <li>Press the <code>Escape</code> key</li>
+        <li>Verify modal closes</li>
+        <li>Verify audio continues playing</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Modal closes, audio continues without interruption
+      </div>
+    </div>
+
+    <div class="test-step">
+      <h3>Step 5: Test with Paused Audio</h3>
+      <ol>
+        <li>Pause the audio using the player controls</li>
+        <li>Open the modal</li>
+        <li>Verify audio remains paused</li>
+        <li>Close the modal</li>
+        <li>Verify audio is still paused (doesn't auto-play)</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Modal doesn't change paused state to playing
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>🧪 Test 3: Player Controls Remain Functional While Modal is Visible</h2>
+    
+    <div class="test-step">
+      <h3>Step 1: Test Play/Pause Control</h3>
+      <ol>
+        <li>Start playing a track</li>
+        <li>Open the modal</li>
+        <li>Click the play/pause button in the player bar</li>
+        <li>Verify audio pauses</li>
+        <li>Click play/pause again</li>
+        <li>Verify audio resumes</li>
+        <li>Modal should remain open throughout</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Play/pause button works normally with modal open
+      </div>
+    </div>
+
+    <div class="test-step">
+      <h3>Step 2: Test Next Track Control</h3>
+      <ol>
+        <li>With modal open and audio playing, click the next track button (⏭)</li>
+        <li>Verify the next track starts playing</li>
+        <li>Verify player bar updates with new track info</li>
+        <li>Verify modal remains open (showing info for previous track)</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Next button works, modal stays open
+      </div>
+    </div>
+
+    <div class="test-step">
+      <h3>Step 3: Test Previous Track Control</h3>
+      <ol>
+        <li>With modal open, click the previous track button (⏮)</li>
+        <li>Verify the previous track starts playing</li>
+        <li>Verify player bar updates</li>
+        <li>Verify modal remains open</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Previous button works, modal stays open
+      </div>
+    </div>
+
+    <div class="test-step">
+      <h3>Step 4: Test Progress Bar Seeking</h3>
+      <ol>
+        <li>With modal open and audio playing, click on the progress bar</li>
+        <li>Verify audio seeks to the clicked position</li>
+        <li>Verify playback continues from new position</li>
+        <li>Try dragging the progress bar handle</li>
+        <li>Verify seeking works smoothly</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Progress bar seeking works normally with modal open
+      </div>
+    </div>
+
+    <div class="test-step">
+      <h3>Step 5: Test Volume Control</h3>
+      <ol>
+        <li>With modal open, adjust the volume slider</li>
+        <li>Verify volume changes immediately</li>
+        <li>Click the volume icon to mute/unmute</li>
+        <li>Verify mute/unmute works</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Volume controls work normally with modal open
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>🧪 Test 4: Visual and Accessibility Checks</h2>
+    
+    <div class="test-step">
+      <h3>Step 1: Z-Index Layering</h3>
+      <ol>
+        <li>Open modal</li>
+        <li>Verify modal appears above the player bar</li>
+        <li>Verify player bar is still visible at the bottom</li>
+        <li>Verify you can click player controls (they're not blocked)</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Modal overlay doesn't block player bar interaction
+      </div>
+    </div>
+
+    <div class="test-step">
+      <h3>Step 2: Focus Management</h3>
+      <ol>
+        <li>Open modal</li>
+        <li>Press <code>Tab</code> key multiple times</li>
+        <li>Verify focus stays within modal (focus trap)</li>
+        <li>Verify you can tab to close button</li>
+        <li>Close modal and verify focus returns to page</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Keyboard navigation works correctly
+      </div>
+    </div>
+
+    <div class="test-step">
+      <h3>Step 3: Animation Smoothness</h3>
+      <ol>
+        <li>Open and close modal multiple times</li>
+        <li>Verify smooth fade-in/fade-out animations</li>
+        <li>Verify no visual glitches</li>
+        <li>Verify player bar animations continue (album art glow, etc.)</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> All animations work smoothly
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>🧪 Test 5: Edge Cases</h2>
+    
+    <div class="test-step">
+      <h3>Step 1: Rapid Modal Open/Close</h3>
+      <ol>
+        <li>Start playing a track</li>
+        <li>Rapidly open and close the modal 5-10 times</li>
+        <li>Verify audio continues playing throughout</li>
+        <li>Verify no errors in console</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> No audio interruption or errors
+      </div>
+    </div>
+
+    <div class="test-step">
+      <h3>Step 2: Track End During Modal</h3>
+      <ol>
+        <li>Play a track near its end</li>
+        <li>Open modal</li>
+        <li>Wait for track to end</li>
+        <li>Verify next track starts automatically</li>
+        <li>Verify modal remains open</li>
+        <li>Verify player bar updates with new track</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Auto-play next track works with modal open
+      </div>
+    </div>
+
+    <div class="test-step">
+      <h3>Step 3: Multiple Info Button Clicks</h3>
+      <ol>
+        <li>Start playing a track</li>
+        <li>Click info button on track A</li>
+        <li>Without closing modal, click info button on track B</li>
+        <li>Verify modal updates to show track B info</li>
+        <li>Verify original track continues playing</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> Modal content updates, playback unaffected
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>📱 Mobile/Responsive Testing</h2>
+    
+    <div class="warning">
+      <strong>⚠️ Note:</strong> Test on actual mobile device or use browser DevTools device emulation
+    </div>
+
+    <div class="test-step">
+      <h3>Mobile Tests</h3>
+      <ol>
+        <li>Open music.html on mobile device</li>
+        <li>Start playing a track</li>
+        <li>Tap info button</li>
+        <li>Verify modal opens and is readable</li>
+        <li>Verify audio continues playing</li>
+        <li>Tap backdrop to close</li>
+        <li>Verify player controls are accessible</li>
+        <li>Test all player controls with modal open</li>
+      </ol>
+      <div class="expected">
+        <strong>✓ Expected:</strong> All functionality works on mobile
+      </div>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h2>✅ Test Completion Checklist</h2>
+    <ul class="checklist">
+      <li>Info button opens modal without pausing playback</li>
+      <li>Modal close button doesn't affect audio state</li>
+      <li>Backdrop click closes modal without affecting audio</li>
+      <li>Escape key closes modal without affecting audio</li>
+      <li>Play/pause button works with modal open</li>
+      <li>Next/previous buttons work with modal open</li>
+      <li>Progress bar seeking works with modal open</li>
+      <li>Volume controls work with modal open</li>
+      <li>Modal doesn't block player bar interaction</li>
+      <li>Focus trap works correctly in modal</li>
+      <li>No console errors during any test</li>
+      <li>Audio continues when track ends with modal open</li>
+      <li>All tests pass on mobile/responsive view</li>
+    </ul>
+  </div>
+
+  <div class="test-section">
+    <h2>🎯 Success Criteria</h2>
+    <p>All tests must pass with the following outcomes:</p>
+    <ul>
+      <li>✅ Audio playback is NEVER interrupted by modal interactions</li>
+      <li>✅ Player controls remain fully functional when modal is visible</li>
+      <li>✅ Modal open/close operations don't change audio state</li>
+      <li>✅ Info button prevents track playback trigger</li>
+      <li>✅ No JavaScript errors in console</li>
+      <li>✅ Smooth user experience on desktop and mobile</li>
+    </ul>
+  </div>
+
+  <a href="music.html" class="button">🎵 Open Music Page to Test</a>
+
+  <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(236, 72, 153, 0.3); color: #64748b; font-size: 0.9rem;">
+    <p><strong>Test Guide for Task 6:</strong> Verify player continues during modal interaction</p>
+    <p><strong>Requirements:</strong> 2.2, 4.4</p>
+    <p><strong>Spec:</strong> .kiro/specs/music-page-enhancements/</p>
+  </div>
+</body>
+</html>
