@@ -2,6 +2,13 @@
 (function() {
   'use strict';
   
+  // Prevent multiple initializations
+  if (window.__simpleSmoothNavInitialized) {
+    console.log('Simple smooth nav already initialized, skipping');
+    return;
+  }
+  window.__simpleSmoothNavInitialized = true;
+  
   // Konfiguracja
   const CONFIG = {
     enablePreload: true
@@ -10,6 +17,10 @@
   // Cache dla stron
   const pageCache = new Map();
   let isNavigating = false;
+  
+  // Store event handlers so we can remove them if needed
+  let clickHandler = null;
+  let hoverHandler = null;
   
   // Dodaj style CSS (minimalny - tylko dla zapobiegania flashowi)
   function addStyles() {
@@ -69,8 +80,16 @@
   
   // Event listenery
   function setupEventListeners() {
+    // Remove existing handlers if they exist
+    if (clickHandler) {
+      document.removeEventListener('click', clickHandler, true);
+    }
+    if (hoverHandler) {
+      document.removeEventListener('mouseover', hoverHandler);
+    }
+    
     // Przechwytuj kliknięcia w linki
-    document.addEventListener('click', (event) => {
+    clickHandler = (event) => {
       const link = event.target.closest('a');
       if (!link) return;
       
@@ -78,12 +97,15 @@
       if (!shouldInterceptLink(href, link)) return;
       
       event.preventDefault();
+      event.stopPropagation();
       navigateToPage(href);
-    }, true);
+    };
+    
+    document.addEventListener('click', clickHandler, true);
     
     // Preload przy hover
     if (CONFIG.enablePreload) {
-      document.addEventListener('mouseover', (event) => {
+      hoverHandler = (event) => {
         const link = event.target.closest('a');
         if (!link) return;
         
@@ -91,8 +113,12 @@
         if (shouldInterceptLink(href, link)) {
           setTimeout(() => preloadPage(href), 50);
         }
-      });
+      };
+      
+      document.addEventListener('mouseover', hoverHandler);
     }
+    
+    console.log('Simple smooth nav event listeners attached');
   }
   
   // Inicjalizacja
@@ -100,11 +126,11 @@
     // Dodaj style (tylko dla preload)
     addStyles();
     
-    // Setup event listeners
+    // Setup event listeners only once
     if (document.body) {
       setupEventListeners();
     } else {
-      document.addEventListener('DOMContentLoaded', setupEventListeners);
+      document.addEventListener('DOMContentLoaded', setupEventListeners, { once: true });
     }
   }
   
@@ -115,6 +141,7 @@
   window.simpleSmoothNav = {
     navigateToPage,
     preloadPage,
-    CONFIG
+    CONFIG,
+    reinit: setupEventListeners
   };
 })();

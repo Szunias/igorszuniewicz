@@ -2,16 +2,307 @@
   "en": {
     "back": "← Back to Projects",
     "title": "Interactive Music Design",
-    "subtitle": "Music for Games — Three Wwise projects showcasing adaptive audio systems with vertical layering, horizontal re-sequencing, and extensive RTPC control."
+    "subtitle": "Music for Games — Three Wwise projects showcasing adaptive audio systems with vertical layering, horizontal re-sequencing, and extensive RTPC control.",
+    "hero": {
+      "badge": "🎵 Interactive Audio"
+    },
+    "meta_pills": {
+      "wwise": "🎼 Wwise Implementation",
+      "vertical": "📊 Vertical Layering",
+      "horizontal": "🔄 Horizontal Re-sequencing",
+      "rtpc": "🎚️ RTPC Controls",
+      "adaptive": "🎮 Adaptive Music",
+      "interactive": "🔊 Interactive Audio"
+    },
+    "audio_themes": {
+      "section_badge": "Audio Themes",
+      "section_title": "Three Interactive Soundtracks",
+      "chase": {
+        "title": "CHASE",
+        "bpm": "120 BPM",
+        "concept": "Relentless pursuit through five surreal realms with escalating horror elements.",
+        "sections": {
+          "forest": {
+            "title": "Forest Prelude",
+            "desc": "Suspenseful strings + plucked synth"
+          },
+          "mechanical": {
+            "title": "Mechanical Catacombs",
+            "desc": "Brass + rhythmic loops"
+          },
+          "cathedral": {
+            "title": "Haunted Cathedral",
+            "desc": "Ethereal horns + dissonant strings"
+          },
+          "techno": {
+            "title": "Techno-Labyrinth",
+            "desc": "Dark arps, Reese bass"
+          },
+          "liminal": {
+            "title": "Liminal Zone",
+            "desc": "Glitched alarms, horror guitar"
+          }
+        }
+      },
+      "race": {
+        "title": "RACE",
+        "bpm": "150 BPM",
+        "concept": "High-speed racing atop floating Egyptian pyramids, chased by celestial forces.",
+        "sections": {
+          "gate": {
+            "title": "Gate Prep",
+            "desc": "Bass groove + choir hints"
+          },
+          "first_lap": {
+            "title": "First Lap",
+            "desc": "Metallic bass + breakbeats"
+          },
+          "ambush": {
+            "title": "Ambush in the Sky",
+            "desc": "Layered choirs + heavy bass"
+          },
+          "final": {
+            "title": "Final Sprint",
+            "desc": "Hybrid rock + electronic"
+          }
+        }
+      },
+      "elimination": {
+        "title": "ELIMINATION",
+        "bpm": "90 BPM",
+        "concept": "Strategic opponent elimination in cyberpunk arena with advanced RTPC systems.",
+        "sections": {
+          "entrance": {
+            "title": "Arena Entrance",
+            "desc": "Ethereal pads + subtle synth"
+          },
+          "combat": {
+            "title": "Combat Escalation",
+            "desc": "Bass + drums"
+          },
+          "last_stand": {
+            "title": "Last Stand",
+            "desc": "Glitchy electronics"
+          },
+          "victory": {
+            "title": "Victory March",
+            "desc": "DOOM-style guitars"
+          }
+        }
+      }
+    },
+    "video": {
+      "section_badge": "Demonstration",
+      "section_title": "Interactive Music Showcase"
+    },
+    "footer": {
+      "composed_by": "Composed & Designed by",
+      "interactive_music": "Interactive Music for Games",
+      "copyright": "All music and Wwise implementations are original work."
+    }
   },
   "pl": {
     "back": "← Powrót do projektów",
     "title": "Interaktywny Design Muzyczny",
-    "subtitle": "Muzyka do Gier — Trzy projekty Wwise prezentujące adaptacyjne systemy audio z warstwowaniem pionowym, przesekwencjonowaniem poziomym i rozbudowaną kontrolą RTPC."
+    "subtitle": "Muzyka do Gier — Trzy projekty Wwise prezentujące adaptacyjne systemy audio z warstwowaniem pionowym, przesekwencjonowaniem poziomym i rozbudowaną kontrolą RTPC.",
+    "hero": {
+      "badge": "🎵 Interaktywne Audio"
+    },
+    "meta_pills": {
+      "wwise": "🎼 Implementacja Wwise",
+      "vertical": "📊 Warstwowanie Pionowe",
+      "horizontal": "🔄 Przesekwencjonowanie Poziome",
+      "rtpc": "🎚️ Kontrola RTPC",
+      "adaptive": "🎮 Muzyka Adaptacyjna",
+      "interactive": "🔊 Interaktywne Audio"
+    },
+    "audio_themes": {
+      "section_badge": "Motywy Audio",
+      "section_title": "Trzy Interaktywne Ścieżki Dźwiękowe",
+      "chase": {
+        "title": "POŚCIG",
+        "bpm": "120 BPM",
+        "concept": "Nieustanny pościg przez pięć surrealistycznych światów z narastającymi elementami horroru.",
+        "sections": {
+          "forest": {
+            "title": "Leśna Preludia",
+            "desc": "Napięte smyczki + szarpany syntezator"
+          },
+          "mechanical": {
+            "title": "Mechaniczne Katakumby",
+            "desc": "Instrumenty dęte + rytmiczne pętle"
+          },
+          "cathedral": {
+            "title": "Nawiedzona Katedra",
+            "desc": "Eteryczne rogi + dysonansowe smyczki"
+          },
+          "techno": {
+            "title": "Techno-Labirynt",
+            "desc": "Mroczne arpegia, bas Reese"
+          },
+          "liminal": {
+            "title": "Strefa Liminalna",
+            "desc": "Zakłócone alarmy, gitara horroru"
+          }
+        }
+      },
+      "race": {
+        "title": "WYŚCIG",
+        "bpm": "150 BPM",
+        "concept": "Szybki wyścig na szczycie unoszących się egipskich piramid, ścigany przez siły niebiańskie.",
+        "sections": {
+          "gate": {
+            "title": "Przygotowanie do Startu",
+            "desc": "Groove basowy + nuty chóru"
+          },
+          "first_lap": {
+            "title": "Pierwsze Okrążenie",
+            "desc": "Metaliczny bas + breakbeaty"
+          },
+          "ambush": {
+            "title": "Zasadzka w Niebie",
+            "desc": "Warstwowe chóry + ciężki bas"
+          },
+          "final": {
+            "title": "Finałowy Sprint",
+            "desc": "Hybrydowy rock + elektronika"
+          }
+        }
+      },
+      "elimination": {
+        "title": "ELIMINACJA",
+        "bpm": "90 BPM",
+        "concept": "Strategiczna eliminacja przeciwników na cyberpunkowej arenie z zaawansowanymi systemami RTPC.",
+        "sections": {
+          "entrance": {
+            "title": "Wejście na Arenę",
+            "desc": "Eteryczne pady + subtelny syntezator"
+          },
+          "combat": {
+            "title": "Eskalacja Walki",
+            "desc": "Bas + perkusja"
+          },
+          "last_stand": {
+            "title": "Ostatni Bastion",
+            "desc": "Zakłócona elektronika"
+          },
+          "victory": {
+            "title": "Marsz Zwycięstwa",
+            "desc": "Gitary w stylu DOOM"
+          }
+        }
+      }
+    },
+    "video": {
+      "section_badge": "Demonstracja",
+      "section_title": "Prezentacja Interaktywnej Muzyki"
+    },
+    "footer": {
+      "composed_by": "Skomponowane i zaprojektowane przez",
+      "interactive_music": "Interaktywna Muzyka do Gier",
+      "copyright": "Cała muzyka i implementacje Wwise są oryginalnymi dziełami."
+    }
   },
   "nl": {
     "back": "← Terug naar Projecten",
     "title": "Interactief Muziekontwerp",
-    "subtitle": "Muziek voor Games — Drie Wwise-projecten die adaptieve audiosystemen tonen met verticale gelaagdheid, horizontale her-sequencing en uitgebreide RTPC-controle."
+    "subtitle": "Muziek voor Games — Drie Wwise-projecten die adaptieve audiosystemen tonen met verticale gelaagdheid, horizontale her-sequencing en uitgebreide RTPC-controle.",
+    "hero": {
+      "badge": "🎵 Interactieve Audio"
+    },
+    "meta_pills": {
+      "wwise": "🎼 Wwise Implementatie",
+      "vertical": "📊 Verticale Gelaagdheid",
+      "horizontal": "🔄 Horizontale Her-sequencing",
+      "rtpc": "🎚️ RTPC Besturing",
+      "adaptive": "🎮 Adaptieve Muziek",
+      "interactive": "🔊 Interactieve Audio"
+    },
+    "audio_themes": {
+      "section_badge": "Audiothema's",
+      "section_title": "Drie Interactieve Soundtracks",
+      "chase": {
+        "title": "ACHTERVOLGING",
+        "bpm": "120 BPM",
+        "concept": "Meedogenloze achtervolging door vijf surrealistische werelden met escalerende horror-elementen.",
+        "sections": {
+          "forest": {
+            "title": "Bosprelude",
+            "desc": "Spannende strijkers + getokkel synth"
+          },
+          "mechanical": {
+            "title": "Mechanische Catacomben",
+            "desc": "Koper + ritmische loops"
+          },
+          "cathedral": {
+            "title": "Spookachtige Kathedraal",
+            "desc": "Etherische hoorns + dissonante strijkers"
+          },
+          "techno": {
+            "title": "Techno-Labyrint",
+            "desc": "Donkere arps, Reese bas"
+          },
+          "liminal": {
+            "title": "Liminale Zone",
+            "desc": "Glitchy alarmen, horror gitaar"
+          }
+        }
+      },
+      "race": {
+        "title": "RACE",
+        "bpm": "150 BPM",
+        "concept": "Snelle race bovenop zwevende Egyptische piramides, achtervolgd door hemelse krachten.",
+        "sections": {
+          "gate": {
+            "title": "Startvoorbereiding",
+            "desc": "Basgroove + kooraccenten"
+          },
+          "first_lap": {
+            "title": "Eerste Ronde",
+            "desc": "Metallische bas + breakbeats"
+          },
+          "ambush": {
+            "title": "Hinderlaag in de Lucht",
+            "desc": "Gelaagde koren + zware bas"
+          },
+          "final": {
+            "title": "Eindsprint",
+            "desc": "Hybride rock + elektronisch"
+          }
+        }
+      },
+      "elimination": {
+        "title": "ELIMINATIE",
+        "bpm": "90 BPM",
+        "concept": "Strategische tegenstander-eliminatie in cyberpunk arena met geavanceerde RTPC-systemen.",
+        "sections": {
+          "entrance": {
+            "title": "Arena Entree",
+            "desc": "Etherische pads + subtiele synth"
+          },
+          "combat": {
+            "title": "Gevechtsescalatie",
+            "desc": "Bas + drums"
+          },
+          "last_stand": {
+            "title": "Laatste Verdediging",
+            "desc": "Glitchy elektronica"
+          },
+          "victory": {
+            "title": "Overwinningsmarsch",
+            "desc": "DOOM-stijl gitaren"
+          }
+        }
+      }
+    },
+    "video": {
+      "section_badge": "Demonstratie",
+      "section_title": "Interactieve Muziek Showcase"
+    },
+    "footer": {
+      "composed_by": "Gecomponeerd & Ontworpen door",
+      "interactive_music": "Interactieve Muziek voor Games",
+      "copyright": "Alle muziek en Wwise-implementaties zijn origineel werk."
+    }
   }
 }
