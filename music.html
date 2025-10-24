@@ -507,6 +507,7 @@
       font-size: 0.75rem;
       color: #9ca3af;
       font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum";
       min-width: 40px;
       text-align: center;
     }
@@ -514,21 +515,23 @@
     .player-progress-bar {
       flex: 1;
       height: 8px;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.08);
       border-radius: 10px;
       cursor: pointer;
       position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+      overflow: visible;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 
+        inset 0 1px 3px rgba(0, 0, 0, 0.4),
+        0 1px 0 rgba(255, 255, 255, 0.05);
     }
 
     .player-progress-bar:hover {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.12);
     }
 
-    .player-progress-bar:hover .player-progress-fill::after {
-      opacity: 1;
+    .player-progress-bar:hover .player-progress-handle {
+      transform: translateY(-50%) scale(1) translateZ(0);
     }
 
     .player-progress-fill {
@@ -540,6 +543,12 @@
       box-shadow:
         0 0 20px rgba(236, 72, 153, 0.5),
         0 0 40px rgba(167, 139, 250, 0.3);
+      will-change: width;
+      transform: translateZ(0); /* Force GPU layer creation */
+    }
+
+    .player-progress-fill.dragging {
+      transition: none;
     }
 
     .player-progress-fill::before {
@@ -560,21 +569,68 @@
       }
     }
 
-    .player-progress-fill::after {
-      content: '';
+    .player-progress-handle {
       position: absolute;
       right: -8px;
       top: 50%;
-      transform: translateY(-50%);
+      transform: translateY(-50%) scale(0) translateZ(0); /* Force GPU layer creation */
       width: 16px;
       height: 16px;
       background: radial-gradient(circle, #fff, #ec4899);
       border-radius: 50%;
-      box-shadow:
-        0 0 12px rgba(236, 72, 153, 0.8),
-        0 0 20px rgba(236, 72, 153, 0.5);
+      box-shadow: 0 0 12px rgba(236, 72, 153, 0.8);
+      transition: transform 0.2s ease;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .player-progress-fill.dragging .player-progress-handle {
+      transform: translateY(-50%) scale(1) translateZ(0);
+    }
+
+    .player-progress-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: rgba(236, 72, 153, 0.2);
+      pointer-events: none;
       opacity: 0;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.15s ease;
+      will-change: width, opacity;
+      border-radius: 10px;
+      transform: translateZ(0); /* Force GPU layer creation */
+    }
+
+    .player-progress-bar:hover .player-progress-hover {
+      opacity: 1;
+    }
+
+    .player-progress-tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 0;
+      background: rgba(15, 23, 42, 0.95);
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum";
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(-50%) translateY(4px) translateZ(0); /* Force GPU layer creation */
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      white-space: nowrap;
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      z-index: 10;
+      will-change: opacity, transform;
+    }
+
+    .player-progress-bar:hover .player-progress-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0) translateZ(0);
     }
 
     /* Right: Volume */
@@ -1058,7 +1114,11 @@
         <div class="player-progress-container">
           <span class="player-time" id="player-current-time">0:00</span>
           <div class="player-progress-bar" id="player-progress-bar">
-            <div class="player-progress-fill" id="player-progress-fill"></div>
+            <div class="player-progress-fill" id="player-progress-fill">
+              <div class="player-progress-handle"></div>
+            </div>
+            <div class="player-progress-hover" id="player-progress-hover"></div>
+            <div class="player-progress-tooltip" id="player-progress-tooltip">0:00</div>
           </div>
           <span class="player-time" id="player-total-time">0:00</span>
         </div>
@@ -1083,6 +1143,11 @@
     let currentTrackIndex = 0;
     let isPlaying = false;
     let currentFilter = 'all';
+    let isDragging = false; // Track drag state for progress bar
+    let wasPlayingBeforeDrag = false; // Track playback state before drag
+    let lastTimeUpdate = 0; // Track last update timestamp
+    const TIME_UPDATE_INTERVAL = 100; // 100ms = 10 updates per second maximum
+    let hoverUpdateFrame = null; // Store animation frame ID for hover updates
 
     const audio = document.getElementById('audio-player');
     const playBtn = document.getElementById('player-play-btn');
@@ -1220,6 +1285,12 @@
       document.getElementById('player-title').textContent = track.title;
       document.getElementById('player-artist').textContent = track.artist;
 
+      // Reset progress bar state when loading new track
+      progressBar.style.cursor = 'pointer'; // Will be updated by loadedmetadata
+      progressFill.style.width = '0%';
+      currentTimeEl.textContent = '0:00';
+      totalTimeEl.textContent = '0:00';
+
       // Load audio (prefer MP3 for faster loading)
       const mp3Source = track.sources.find(s => s.type === 'audio/mpeg');
       const source = mp3Source || track.sources[0];
@@ -1230,6 +1301,12 @@
     }
 
     function play() {
+      // Validate audio source before attempting to play
+      if (!audio.src) {
+        console.warn('Cannot play: No audio source loaded');
+        return;
+      }
+      
       const playPromise = audio.play();
 
       if (playPromise !== undefined) {
@@ -1248,6 +1325,12 @@
             // Show user-friendly message
             if (error.name === 'NotAllowedError') {
               console.log('User interaction required to play audio');
+            } else if (error.name === 'NotSupportedError') {
+              console.error('Audio format not supported');
+              // Try next track
+              if (tracks.length > 1) {
+                setTimeout(() => nextTrack(), 500);
+              }
             }
           });
       }
@@ -1287,9 +1370,22 @@
     }
 
     function formatTime(seconds) {
+      // Add checks for NaN, Infinity, null, and undefined values
+      if (!seconds || isNaN(seconds) || !isFinite(seconds)) {
+        return '0:00';
+      }
+      
       const mins = Math.floor(seconds / 60);
       const secs = Math.floor(seconds % 60);
       return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+    
+    // Helper function to validate duration
+    function isValidDuration(duration) {
+      return duration && 
+             !isNaN(duration) && 
+             isFinite(duration) && 
+             duration > 0;
     }
 
     // Event listeners
@@ -1298,24 +1394,71 @@
     prevBtn.addEventListener('click', prevTrack);
 
     audio.addEventListener('loadedmetadata', () => {
-      if (!isNaN(audio.duration) && isFinite(audio.duration)) {
+      // Use isValidDuration() helper function to check for valid duration
+      if (isValidDuration(audio.duration)) {
         totalTimeEl.textContent = formatTime(audio.duration);
+        // Enable seek functionality by restoring cursor
+        progressBar.style.cursor = 'pointer';
       } else {
+        // Set totalTimeEl to '0:00' when duration is invalid
         totalTimeEl.textContent = '0:00';
+        // Disable seek functionality by setting cursor to 'not-allowed'
+        progressBar.style.cursor = 'not-allowed';
       }
     });
 
     audio.addEventListener('timeupdate', () => {
-      if (!isNaN(audio.duration) && isFinite(audio.duration) && audio.duration > 0) {
+      const now = Date.now();
+      
+      // Throttle updates to 10 per second maximum
+      if (now - lastTimeUpdate < TIME_UPDATE_INTERVAL) {
+        return;
+      }
+      lastTimeUpdate = now;
+      
+      // Skip updates when isDragging is true to prevent conflicts
+      if (isDragging) {
+        return;
+      }
+      
+      // Validate duration before updating progress
+      if (isValidDuration(audio.duration)) {
         const progress = (audio.currentTime / audio.duration) * 100;
         progressFill.style.width = progress + '%';
         currentTimeEl.textContent = formatTime(audio.currentTime);
+        // Ensure cursor is enabled for valid duration
+        progressBar.style.cursor = 'pointer';
+      } else {
+        // Disable seek functionality when duration becomes invalid
+        progressBar.style.cursor = 'not-allowed';
       }
     });
 
     // Handle audio errors
     audio.addEventListener('error', (e) => {
       console.error('Audio error:', e);
+      
+      // Clean up drag state if active
+      if (isDragging) {
+        isDragging = false;
+        progressFill.classList.remove('dragging');
+        progressFill.style.transition = ''; // Restore transitions
+        document.removeEventListener('mousemove', handleProgressBarDrag);
+        document.removeEventListener('mouseup', handleProgressBarMouseUp);
+      }
+      
+      // Reset progress bar UI to safe state
+      progressFill.style.width = '0%';
+      currentTimeEl.textContent = '0:00';
+      totalTimeEl.textContent = '0:00';
+      
+      // Disable seek functionality by setting cursor to 'not-allowed'
+      progressBar.style.cursor = 'not-allowed';
+      
+      // Hide hover elements
+      if (progressHover) progressHover.style.opacity = '0';
+      if (progressTooltip) progressTooltip.style.opacity = '0';
+      
       pause();
       const errorMessages = {
         1: 'Loading aborted',
@@ -1333,14 +1476,204 @@
     });
 
     audio.addEventListener('ended', nextTrack);
+    
+    // Add additional error handlers for edge cases
+    audio.addEventListener('stalled', () => {
+      console.warn('Audio loading stalled');
+      // Don't disable seek, but log the issue
+    });
+    
+    audio.addEventListener('suspend', () => {
+      console.log('Audio loading suspended');
+      // Normal behavior, no action needed
+    });
+    
+    audio.addEventListener('abort', () => {
+      console.warn('Audio loading aborted');
+      // Reset UI to safe state
+      progressBar.style.cursor = 'not-allowed';
+    });
 
-    // Progress bar click to seek
-    progressBar.addEventListener('click', (e) => {
-      if (!isNaN(audio.duration) && isFinite(audio.duration) && audio.duration > 0) {
+    // Drag-to-seek handlers
+    function handleProgressBarMouseDown(e) {
+      // Check for valid audio duration before allowing drag
+      if (!isValidDuration(audio.duration)) {
+        return;
+      }
+      
+      // Set isDragging to true and store playback state
+      isDragging = true;
+      wasPlayingBeforeDrag = !audio.paused;
+      
+      // Add 'dragging' class to progressFill for styling
+      progressFill.classList.add('dragging');
+      
+      // Remove CSS transitions from progressFill when drag starts for instant visual feedback
+      progressFill.style.transition = 'none';
+      
+      // Attach global mousemove and mouseup listeners
+      document.addEventListener('mousemove', handleProgressBarDrag);
+      document.addEventListener('mouseup', handleProgressBarMouseUp);
+      
+      // Handle initial position
+      handleProgressBarDrag(e);
+      
+      // Call preventDefault() to prevent text selection
+      e.preventDefault();
+    }
+    
+    function handleProgressBarDrag(e) {
+      if (!isDragging) return;
+      
+      // Calculate percentage based on mouse position relative to progress bar
+      const rect = progressBar.getBoundingClientRect();
+      const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      
+      // Update progress fill width immediately without seeking audio
+      progressFill.style.width = (percent * 100) + '%';
+      
+      // Update current time display to show preview time
+      const previewTime = percent * audio.duration;
+      currentTimeEl.textContent = formatTime(previewTime);
+    }
+    
+    function handleProgressBarMouseUp(e) {
+      if (!isDragging) return;
+      
+      // Set isDragging to false and remove 'dragging' class
+      isDragging = false;
+      progressFill.classList.remove('dragging');
+      
+      // Restore transitions when drag ends
+      progressFill.style.transition = '';
+      
+      // Remove global mousemove and mouseup listeners
+      document.removeEventListener('mousemove', handleProgressBarDrag);
+      document.removeEventListener('mouseup', handleProgressBarMouseUp);
+      
+      // Calculate final seek position and update audio.currentTime
+      const rect = progressBar.getBoundingClientRect();
+      const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      audio.currentTime = percent * audio.duration;
+      
+      // Resume playback if wasPlayingBeforeDrag is true
+      if (wasPlayingBeforeDrag) {
+        play();
+      }
+    }
+    
+    // Attach mousedown listener to progress bar
+    progressBar.addEventListener('mousedown', handleProgressBarMouseDown);
+    
+    // Add beforeunload listener to clean up drag state on page unload
+    window.addEventListener('beforeunload', () => {
+      if (isDragging) {
+        isDragging = false;
+        progressFill.classList.remove('dragging');
+        progressFill.style.transition = ''; // Restore transitions
+        document.removeEventListener('mousemove', handleProgressBarDrag);
+        document.removeEventListener('mouseup', handleProgressBarMouseUp);
+      }
+    });
+    
+    // Add visibilitychange listener to end drag when page becomes hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && isDragging) {
+        handleProgressBarMouseUp(new MouseEvent('mouseup'));
+      }
+    });
+
+    // Helper function to update progress UI immediately
+    function updateProgressUI(percent) {
+      progressFill.style.width = (percent * 100) + '%';
+    }
+
+    // Get hover elements
+    const progressHover = document.getElementById('player-progress-hover');
+    const progressTooltip = document.getElementById('player-progress-tooltip');
+
+    // Hover preview functionality
+    function handleProgressBarMouseMove(e) {
+      // Skip hover updates when dragging or audio duration is invalid
+      if (isDragging || !isValidDuration(audio.duration)) {
+        return;
+      }
+      
+      // Cancel previous frame before requesting new one to prevent queue buildup
+      if (hoverUpdateFrame) {
+        cancelAnimationFrame(hoverUpdateFrame);
+      }
+      
+      // Wrap hover update logic in requestAnimationFrame
+      hoverUpdateFrame = requestAnimationFrame(() => {
+        // Calculate hover position percentage from mouse coordinates
         const rect = progressBar.getBoundingClientRect();
         const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-        audio.currentTime = percent * audio.duration;
+        
+        // Update .player-progress-hover width to show preview position
+        progressHover.style.width = (percent * 100) + '%';
+        
+        // Calculate preview time based on hover position
+        const hoverTime = percent * audio.duration;
+        
+        // Update tooltip text with formatted time using formatTime()
+        progressTooltip.textContent = formatTime(hoverTime);
+        
+        // Position tooltip horizontally based on mouse X coordinate
+        progressTooltip.style.left = (e.clientX - rect.left) + 'px';
+      });
+    }
+
+    // Show hover elements when mouse enters progress bar
+    function handleProgressBarMouseEnter() {
+      // Ensure hover elements only appear when audio duration is valid
+      if (!isValidDuration(audio.duration)) {
+        // Ensure cursor shows not-allowed when duration is invalid
+        progressBar.style.cursor = 'not-allowed';
+        return;
       }
+      
+      // Ensure cursor is pointer when duration is valid
+      progressBar.style.cursor = 'pointer';
+      progressHover.style.opacity = '1';
+      progressTooltip.style.opacity = '1';
+    }
+
+    // Hide hover elements when mouse leaves progress bar
+    function handleProgressBarMouseLeave() {
+      progressHover.style.opacity = '0';
+      progressTooltip.style.opacity = '0';
+    }
+
+    // Attach hover event listeners to progress bar
+    progressBar.addEventListener('mousemove', handleProgressBarMouseMove);
+    progressBar.addEventListener('mouseenter', handleProgressBarMouseEnter);
+    progressBar.addEventListener('mouseleave', handleProgressBarMouseLeave);
+
+    // Enhanced click-to-seek functionality
+    progressBar.addEventListener('click', (e) => {
+      // Prevent if audio not ready - better validation using isValidDuration
+      if (!isValidDuration(audio.duration)) {
+        return;
+      }
+      
+      // Don't interfere with drag functionality
+      if (isDragging) {
+        return;
+      }
+      
+      const rect = progressBar.getBoundingClientRect();
+      const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      const newTime = percent * audio.duration;
+      
+      // Immediate visual feedback - update UI before seeking
+      updateProgressUI(percent);
+      
+      // Update current time display immediately after click
+      currentTimeEl.textContent = formatTime(newTime);
+      
+      // Seek audio
+      audio.currentTime = newTime;
     });
 
     // Volume control
