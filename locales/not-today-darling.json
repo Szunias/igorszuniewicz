@@ -194,18 +194,18 @@
       "solution_label": "Rozwiązanie:",
       "challenge1": {
         "title": "Czytelność Miksu przy 4 Graczach",
-        "problem": "Przy 4 graczach jednocześnie, dźwięki kolizji i boost'ów się nawarstwiały i powodowały maskowanie częstotliwości, przez co UI feedback był niesłyszalny.",
-        "solution": "Zaimplementowano concurrency limiting oparty na priorytetach (max 4 dźwięki kolizji jednocześnie) z inteligentnym voice stealing. Dodano EQ curves świadome częstotliwości per slot gracza (slot 1: focus 200-800Hz, slot 2: 800-2kHz, etc.) oraz sidechain ducking na crowd/ambience gdy triggują eventy UI (-6dB duck, 50ms attack, 200ms release)."
+        "problem": "Przy 4 graczach jednocześnie, dźwięki kolizji i przyspieszeń się nawarstwiały i powodowały maskowanie częstotliwości, przez co informacje zwrotne UI były niesłyszalne.",
+        "solution": "Zaimplementowano ograniczenie współbieżności oparte na priorytetach (max 4 dźwięki kolizji jednocześnie) z inteligentnym przejmowaniem głosów. Dodano krzywe EQ świadome częstotliwości dla każdego slotu gracza (slot 1: skupienie 200-800Hz, slot 2: 800-2kHz, itd.) oraz tłumienie łańcuchowe na tłumie/ambiencie gdy uruchamiają się wydarzenia UI (-6dB tłumienia, 50ms atak, 200ms zwolnienie)."
       },
       "challenge2": {
-        "title": "Popy przy Przejściach Materiałów",
-        "problem": "Gracze poruszający się między materiałami toru (asfalt → piasek → metal) powodowali słyszalne popy przez instant layer switching.",
-        "solution": "Zastąpiono instant switche systemem crossfade używając blend containers Unreala. Dodano 150ms crossfade time z equal-power curve. Detekcja materiału używa overlap sphere z 0.2s cooldown aby zapobiec szybkim przejściom."
+        "title": "Trzaski przy Przejściach Materiałów",
+        "problem": "Gracze poruszający się między materiałami toru (asfalt → piasek → metal) powodowali słyszalne trzaski przez natychmiastowe przełączanie warstw.",
+        "solution": "Zastąpiono natychmiastowe przełączenia systemem płynnych przejść używając kontenerów mieszania Unreala. Dodano 150ms czasu przejścia z krzywą równej mocy. Detekcja materiału używa sfery nakładania z 0.2s czasem odnowienia aby zapobiec szybkim przejściom."
       },
       "challenge3": {
-        "title": "Spike'i Pamięci przy Boost Sound",
-        "problem": "Oryginalny boost SFX używał 4-warstwowego systemu z 24-bit WAV, powodując 40MB spike pamięci per instancja (x4 gracze = potencjalnie 160MB spike).",
-        "solution": "Refaktor do proceduralnego MetaSounds patch: noise generator + band-pass filter sweep + pitch modulation sterowana przez boost intensity parameter. Zredukowano do <2MB per instancja przy zachowaniu sonic character. Dodano RPM-style pitch curve dla organicznego feel przyspieszenia."
+        "title": "Skoki Pamięci przy Dźwięku Przyspieszenia",
+        "problem": "Oryginalny efekt dźwiękowy przyspieszenia używał 4-warstwowego systemu z 24-bitowym WAV, powodując 40MB skoku pamięci na instancję (x4 gracze = potencjalnie 160MB skoku).",
+        "solution": "Przebudowano do proceduralnego łatka MetaSounds: generator szumu + przesuw filtru pasmowego + modulacja wysokości sterowana przez parametr intensywności przyspieszenia. Zredukowano do <2MB na instancję przy zachowaniu charakteru dźwiękowego. Dodano krzywą wysokości w stylu obrotów silnika dla organicznego wrażenia przyspieszenia."
       }
     },
     "metasounds": {
@@ -310,19 +310,19 @@
       "problem_label": "Probleem:",
       "solution_label": "Oplossing:",
       "challenge1": {
-        "title": "4-Speler Mix Helderheid",
-        "problem": "Met tot 4 gelijktijdige spelers zouden botsing- en boost-geluiden stapelen en frequentie-masking veroorzaken, waardoor UI-feedback onhoorbaar werd.",
-        "solution": "Implementeerde prioriteit-gebaseerde concurrency limiting (max 4 botsingsgeluiden tegelijk) met intelligente voice stealing. Toegevoegde frequentie-bewuste EQ curves per speler slot (slot 1: 200-800Hz focus, slot 2: 800-2kHz, etc.) en paste sidechain ducking toe op crowd/ambience wanneer UI events triggeren (-6dB duck, 50ms attack, 200ms release)."
+        "title": "Mix Helderheid met 4 Spelers",
+        "problem": "Met tot 4 gelijktijdige spelers stapelden botsings- en boost-geluiden zich op en veroorzaakten frequentie-maskering, waardoor UI-feedback onhoorbaar werd.",
+        "solution": "Implementeerde prioriteit-gebaseerde gelijktijdigheidsbeperking (max 4 botsingsgeluiden tegelijk) met intelligente stem-toewijzing. Toegevoegde frequentie-bewuste EQ curves per spelerslot (slot 1: 200-800Hz focus, slot 2: 800-2kHz, enz.) en paste zijketen-demping toe op publiek/ambiance wanneer UI gebeurtenissen activeren (-6dB demping, 50ms aanval, 200ms loslaten)."
       },
       "challenge2": {
-        "title": "Oppervlakte-overgang Pops",
-        "problem": "Spelers die tussen baanmaterialen bewogen (asfalt → zand → metaal) veroorzaakten hoorbare pops door instant layer switching.",
-        "solution": "Vervangen instant switches door crossfade systeem met Unreal's blend containers. Toegevoegd 150ms crossfade tijd met equal-power curve. Oppervlakte-detectie gebruikt overlap sphere met 0.2s cooldown om snelle overgangen te voorkomen."
+        "title": "Klikgeluiden bij Oppervlakte-overgangen",
+        "problem": "Spelers die tussen baanmaterialen bewogen (asfalt → zand → metaal) veroorzaakten hoorbare klikken door directe laagwisselingen.",
+        "solution": "Vervangen directe wisselingen door vloeiend overgangssysteem met Unreal's mengcontainers. Toegevoegd 150ms overgangtijd met gelijke-vermogen curve. Oppervlakte-detectie gebruikt overlappende sfeer met 0.2s afkoeltijd om snelle overgangen te voorkomen."
       },
       "challenge3": {
-        "title": "Boost Sound Geheugenpieken",
-        "problem": "Originele boost SFX gebruikte 4-lagen systeem met 24-bit WAV bestanden, wat 40MB geheugenpieken veroorzaakte per instantie (x4 spelers = potentieel 160MB piek).",
-        "solution": "Gerefactored naar procedurele MetaSounds patch: noise generator + band-pass filter sweep + pitch modulatie aangestuurd door boost intensity parameter. Gereduceerd naar <2MB per instantie met behoud van sonisch karakter. Toegevoegd RPM-stijl pitch curve voor organisch acceleratie gevoel."
+        "title": "Geheugenpieken bij Boost-geluid",
+        "problem": "Originele boost-geluidseffect gebruikte 4-lagen systeem met 24-bit WAV bestanden, wat 40MB geheugenpieken veroorzaakte per instantie (x4 spelers = potentieel 160MB piek).",
+        "solution": "Herbouwd naar procedurele MetaSounds patch: ruisgenerator + bandfilter sweep + toonhoogte modulatie aangestuurd door boost intensiteit parameter. Gereduceerd naar <2MB per instantie met behoud van sonisch karakter. Toegevoegd toerental-stijl toonhoogte curve voor organisch versnellingsgevoel."
       }
     },
     "metasounds": {

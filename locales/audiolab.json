@@ -4,19 +4,50 @@
     "hero": {
       "badge": "🎮 Research Project",
       "title": "Transientica: AudioLab",
-      "subtitle": "Beatbox-controlled rhythm game with real-time ML classification"
+      "subtitle": "BEATBOX RHYTHM GAME",
+      "description": "ML-powered beatbox recognition for rhythm gaming"
+    },
+    "tags": {
+      "ml": "Machine Learning",
+      "audio": "Real-time Audio",
+      "unity": "Unity Engine",
+      "python": "Python",
+      "latency": "<60ms Latency"
+    },
+    "demo": {
+      "title": "Interactive Demo",
+      "description": "Replace button presses with beatboxing. Real-time ML classification achieves sub-60ms latency with 82% accuracy for kick, snare, and hi-hat detection.",
+      "research": "Combines spectral-flux onset detection with user-trained RBF-SVM to meet competitive rhythm game timing requirements."
+    },
+    "features": {
+      "realtime": {
+        "title": "Real-time Recognition",
+        "desc": "Processes beatbox sounds in under 60ms using spectral flux detection and SVM classification"
+      },
+      "ml": {
+        "title": "ML Classification",
+        "desc": "User-trained model adapts to individual beatbox styles for kick, snare, and hi-hat sounds"
+      },
+      "lowlatency": {
+        "title": "Ultra-low Latency",
+        "desc": "OSC networking between Python and Unity maintains competitive timing standards"
+      }
     },
     "video": {
       "title": "See It in Action"
     },
     "stats": {
-      "title": "Real-time Performance Results"
+      "title": "Performance Metrics",
+      "latency": "Latency",
+      "accuracy": "Accuracy",
+      "sounds": "Sound Classes",
+      "year": "Year"
     },
     "overview": {
       "title": "Revolutionary Vocal Percussion Interface"
     },
     "tech": {
-      "title": "Technical Implementation",
+      "title": "Technology Stack",
       "audio": "Audio Processing",
       "ml": "Machine Learning",
       "osc": "OSC Communication",
@@ -24,6 +55,9 @@
     },
     "contrib": {
       "title": "Key Contributions"
+    },
+    "button": {
+      "projects": "All Projects"
     },
     "challenges": {
       "title": "Development Challenges",
@@ -51,19 +85,50 @@
     "hero": {
       "badge": "🎮 Projekt Badawczy",
       "title": "Transientica: AudioLab",
-      "subtitle": "Gra rytmiczna sterowana beatboxem z klasyfikacją ML w czasie rzeczywistym"
+      "subtitle": "GRA RYTMICZNA BEATBOX",
+      "description": "Rozpoznawanie beatboxu oparte na ML dla gier rytmicznych"
+    },
+    "tags": {
+      "ml": "Uczenie Maszynowe",
+      "audio": "Audio w Czasie Rzeczywistym",
+      "unity": "Silnik Unity",
+      "python": "Python",
+      "latency": "Opóźnienie <60ms"
+    },
+    "demo": {
+      "title": "Interaktywne Demo",
+      "description": "Zastąp naciśnięcia przycisków beatboxingiem. Klasyfikacja ML w czasie rzeczywistym osiąga opóźnienie poniżej 60ms z 82% dokładnością dla detekcji kick, snare i hi-hat.",
+      "research": "Łączy detekcję onset spectral-flux z trenowanym przez użytkownika RBF-SVM, aby spełnić wymagania czasowe konkurencyjnych gier rytmicznych."
+    },
+    "features": {
+      "realtime": {
+        "title": "Rozpoznawanie w Czasie Rzeczywistym",
+        "desc": "Przetwarza dźwięki beatboxu w czasie poniżej 60ms używając detekcji spectral flux i klasyfikacji SVM"
+      },
+      "ml": {
+        "title": "Klasyfikacja ML",
+        "desc": "Model trenowany przez użytkownika dostosowuje się do indywidualnych stylów beatboxu dla dźwięków kick, snare i hi-hat"
+      },
+      "lowlatency": {
+        "title": "Ultra-niskie Opóźnienie",
+        "desc": "Sieć OSC między Pythonem a Unity utrzymuje konkurencyjne standardy czasowe"
+      }
     },
     "video": {
       "title": "Zobacz w Akcji"
     },
     "stats": {
-      "title": "Wyniki Wydajności w Czasie Rzeczywistym"
+      "title": "Metryki Wydajności",
+      "latency": "Opóźnienie",
+      "accuracy": "Dokładność",
+      "sounds": "Klasy Dźwięków",
+      "year": "Rok"
     },
     "overview": {
       "title": "Rewolucyjny Interfejs Perkusji Wokalnej"
     },
     "tech": {
-      "title": "Implementacja Techniczna",
+      "title": "Stos Technologiczny",
       "audio": "Przetwarzanie Audio",
       "ml": "Uczenie Maszynowe",
       "osc": "Komunikacja OSC",
@@ -71,6 +136,9 @@
     },
     "contrib": {
       "title": "Kluczowe Wkłady"
+    },
+    "button": {
+      "projects": "Wszystkie Projekty"
     },
     "challenges": {
       "title": "Wyzwania Rozwoju",
@@ -98,19 +166,50 @@
     "hero": {
       "badge": "🎮 Onderzoeksproject",
       "title": "Transientica: AudioLab",
-      "subtitle": "Beatbox-gestuurde ritmegame met realtime ML-classificatie, spectrale flux-analyse en lage-latentie OSC-besturing. Vervang knopdrukken door vocale percussie."
+      "subtitle": "BEATBOX RITMESPEL",
+      "description": "ML-aangedreven beatbox herkenning voor ritmegames"
+    },
+    "tags": {
+      "ml": "Machine Learning",
+      "audio": "Realtime Audio",
+      "unity": "Unity Engine",
+      "python": "Python",
+      "latency": "<60ms Latentie"
+    },
+    "demo": {
+      "title": "Interactieve Demo",
+      "description": "Vervang knopdrukken door beatboxen. Realtime ML-classificatie bereikt sub-60ms latentie met 82% nauwkeurigheid voor kick, snare en hi-hat detectie.",
+      "research": "Combineert spectrale-flux onset detectie met door gebruiker getrainde RBF-SVM om aan competitieve ritmegame timing-eisen te voldoen."
+    },
+    "features": {
+      "realtime": {
+        "title": "Realtime Herkenning",
+        "desc": "Verwerkt beatbox geluiden in minder dan 60ms met spectrale flux detectie en SVM classificatie"
+      },
+      "ml": {
+        "title": "ML Classificatie",
+        "desc": "Door gebruiker getraind model past zich aan individuele beatbox stijlen aan voor kick, snare en hi-hat geluiden"
+      },
+      "lowlatency": {
+        "title": "Ultra-lage Latentie",
+        "desc": "OSC netwerken tussen Python en Unity handhaaft competitieve timing standaarden"
+      }
     },
     "video": {
       "title": "Zie Het in Actie"
     },
     "stats": {
-      "title": "Realtime Prestatieresultaten"
+      "title": "Prestatiemetrieken",
+      "latency": "Latentie",
+      "accuracy": "Nauwkeurigheid",
+      "sounds": "Geluidsklassen",
+      "year": "Jaar"
     },
     "overview": {
       "title": "Revolutionaire Vocale Percussie Interface"
     },
     "tech": {
-      "title": "Technische Implementatie",
+      "title": "Technologie Stack",
       "audio": "Audioverwerking",
       "ml": "Machine Learning",
       "osc": "OSC Communicatie",
@@ -118,6 +217,9 @@
     },
     "contrib": {
       "title": "Belangrijkste Bijdragen"
+    },
+    "button": {
+      "projects": "Alle Projecten"
     },
     "challenges": {
       "title": "Ontwikkelingsuitdagingen",

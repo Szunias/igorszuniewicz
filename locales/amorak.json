@@ -50,6 +50,7 @@
     },
     "technical": {
       "title": "Technical Implementation",
+      "description": "Strategic frequency architecture ensures clarity and impact. Creature sounds occupy 40-200Hz for body and presence. Environmental details fill mid-range. High frequencies reserved for tension-building textures.",
       "proximity": {
         "title": "Distance Based Mix",
         "desc": "Sound adjusts with camera distance and angle. Close ups emphasize breathing and footsteps, wide shots focus on environment and creature calls."
@@ -64,7 +65,7 @@
       }
     },
     "gallery": {
-      "title": "Visual Showcase",
+      "title": "Visual Gallery",
       "basement": "Basement Environment",
       "beast": "Beast Roar Sequence",
       "chimney": "Chimney Tension Scene",
@@ -118,6 +119,9 @@
     },
     "button": {
       "projects": "All Projects"
+    },
+    "footer": {
+      "rights": "All rights reserved"
     }
   },
   "pl": {
@@ -171,6 +175,7 @@
     },
     "technical": {
       "title": "Implementacja Techniczna",
+      "description": "Strategiczna architektura częstotliwości zapewnia klarowność i siłę oddziaływania. Dźwięki stworów zajmują zakres 40-200Hz dla ciała i obecności. Detale środowiskowe wypełniają środkowy zakres. Wysokie częstotliwości zarezerwowane dla tekstur budujących napięcie.",
       "proximity": {
         "title": "Miks Oparty na Odległości",
         "desc": "Dźwięk dostosowuje się do odległości i kąta kamery. Zbliżenia dostają oddech i kroki. Szerokie ujęcia dostają środowisko i wołania stworów. System 3D spatial."
@@ -185,7 +190,7 @@
       }
     },
     "gallery": {
-      "title": "Prezentacja Wizualna",
+      "title": "Galeria Wizualna",
       "basement": "Środowisko Piwnicy",
       "beast": "Sekwencja Ryku Bestii",
       "chimney": "Scena Napięcia przy Kominie",
@@ -197,19 +202,19 @@
       "problem_label": "Problem:",
       "solution_label": "Rozwiązanie:",
       "challenge1": {
-        "title": "Niskotonowe Stworzenie Bez Błota",
-        "problem": "Obecność bestii wymagała body 40-200Hz, ale nachodziło na environmental rumble powodując muddy mix i utratę impaktu.",
-        "solution": "Zaimplementowano frequency carving: environmental bass siedzi na 60-90Hz (sub rumble), creature body na 120-180Hz (chest punch), z notch filter na 80Hz w environment gdy creature jest on-screen. Dodano M/S processing: creature mono-centered dla focus, environment wide-stereo dla przestrzeni. Dynamic EQ boostuje creature fundamentals +3dB podczas roar peak."
+        "title": "Niskotonowe Stworzenie Bez Błota w Miksie",
+        "problem": "Obecność bestii wymagała ciała dźwiękowego 40-200Hz, ale nakładało się na dudnienie środowiska powodując mętny miks i utratę mocy.",
+        "solution": "Zastosowano wycinanie częstotliwości: bas środowiska na 60-90Hz (poddźwięk), ciało stworzenia na 120-180Hz (uderzenie w klatkę), z filtrem wycięcia na 80Hz w środowisku gdy stworzenie jest na ekranie. Dodano przetwarzanie M/S: stworzenie wycentrowane mono dla skupienia, środowisko szerokie stereo dla przestrzeni. Dynamiczny EQ wzmacnia podstawowe częstotliwości stworzenia +3dB podczas szczytu ryku."
       },
       "challenge2": {
         "title": "Realizm Przestrzenny przy Cięciach Kamery",
-        "problem": "Szybkie cięcia kamery między wide shots a close-ups powodowały dezorientujące skoki przestrzenne w ambience i creature sounds.",
-        "solution": "Zbudowano proximity-adaptive layering system: 3 warstwy ambience (distant/mid/close) z automatycznymi crossfades opartymi na metadata odległości kamery. Dodano 300ms smoothing na zmiany poziomu aby zapobiec jarring transitions. Creature breathing/footsteps mają osobną close-mic layer (aktywowaną <5m) z innym reverb send (-15dB IR time) dla intymności."
+        "problem": "Szybkie cięcia kamery między szerokimi ujęciami a zbliżeniami powodowały dezorientujące skoki przestrzenne w ambiencie i dźwiękach stworów.",
+        "solution": "Zbudowano system warstwowania adaptujący się do odległości: 3 warstwy ambientu (daleki/średni/bliski) z automatycznymi przejściami opartymi na metadanych odległości kamery. Dodano 300ms wygładzania zmian poziomu aby zapobiec gwałtownym przejściom. Oddech i kroki stworzenia mają osobną warstwę bliskiego mikrofonu (aktywowaną <5m) z innym wysyłem pogłosu (-15dB czasu IR) dla intymności."
       },
       "challenge3": {
-        "title": "Czytelność Dialogu w Gęstym Soundscape",
-        "problem": "Scena piwnicy ma warstwowe drips, creaks i creature movement—dialog był maskowany w zakresie 800Hz-3kHz.",
-        "solution": "Zastosowano dynamic ducking: gdy dialog obecny, environmental elements duckują -8dB z 100ms attack, 500ms release. Wyrzeźbiono 1-3kHz notch w ambience bed (permanent -4dB). Użyto spectral shaping na dialogu: gentle presence boost na 2.5kHz, de-essing na 6-8kHz, i HPF na 80Hz aby usunąć rumble bleed. Rezultat: dialog siedzi czysto bez brzmienia izolacji."
+        "title": "Czytelność Dialogu w Gęstym Krajobrazie Dźwiękowym",
+        "problem": "Scena piwnicy ma warstwowe kapanie, skrzypienie i ruch stworów—dialog był maskowany w zakresie 800Hz-3kHz.",
+        "solution": "Zastosowano dynamiczne tłumienie: gdy dialog obecny, elementy środowiska tłumią się -8dB z 100ms atakiem, 500ms zwolnieniem. Wyrzeźbiono wycięcie 1-3kHz w podkładzie ambientu (stałe -4dB). Użyto kształtowania widma na dialogu: delikatne wzmocnienie obecności na 2.5kHz, usuwanie sybilantów na 6-8kHz, i filtr górnoprzepustowy na 80Hz aby usunąć przeciek dudnienia. Rezultat: dialog siedzi czysto bez brzmienia izolacji."
       }
     },
     "hero": {
@@ -239,6 +244,9 @@
     },
     "button": {
       "projects": "Wszystkie Projekty"
+    },
+    "footer": {
+      "rights": "Wszelkie prawa zastrzeżone"
     }
   },
   "nl": {
@@ -292,6 +300,7 @@
     },
     "technical": {
       "title": "Technische Implementatie",
+      "description": "Strategische frequentiearchitectuur zorgt voor helderheid en impact. Wezengeluiden bezetten 40-200Hz voor body en aanwezigheid. Omgevingsdetails vullen het middenbereik. Hoge frequenties gereserveerd voor spanningsopbouwende texturen.",
       "proximity": {
         "title": "Afstand Gebaseerde Mix",
         "desc": "Geluid past aan met camera afstand en hoek. Close ups benadrukken ademhaling en voetstappen, brede shots focussen op omgeving en wezen roepen."
@@ -306,7 +315,7 @@
       }
     },
     "gallery": {
-      "title": "Visuele Showcase",
+      "title": "Visuele Galerij",
       "basement": "Kelderomgeving",
       "beast": "Beest Gebrul Sequentie",
       "chimney": "Schoorsteen Spanning Scène",
@@ -318,19 +327,19 @@
       "problem_label": "Probleem:",
       "solution_label": "Oplossing:",
       "challenge1": {
-        "title": "Wezen Low-End Zonder Troebel",
-        "problem": "Beast aanwezigheid had 40-200Hz body nodig, maar overlapte met omgevingsrommel wat troebele mix en verlies van impact veroorzaakte.",
-        "solution": "Implementeerde frequency carving: omgevingsbas zit op 60-90Hz (sub rumble), creature body op 120-180Hz (chest punch), met notch filter op 80Hz op omgeving wanneer creature on-screen is. Toegevoegd M/S processing: creature mono-gecentreerd voor focus, omgeving wide-stereo voor ruimte. Dynamic EQ boost creature fundamentals +3dB tijdens roar peak."
+        "title": "Wezen Lage Tonen Zonder Troebel Geluid",
+        "problem": "Beest aanwezigheid had 40-200Hz body nodig, maar overlapte met omgevingsgerommel wat troebele mix en verlies van impact veroorzaakte.",
+        "solution": "Implementeerde frequentie-uitsnijding: omgevingsbas zit op 60-90Hz (sub gerommel), wezen body op 120-180Hz (borst slag), met inkepingsfilter op 80Hz op omgeving wanneer wezen op scherm is. Toegevoegd M/S verwerking: wezen mono-gecentreerd voor focus, omgeving breed-stereo voor ruimte. Dynamische EQ versterkt wezen fundamentals +3dB tijdens gebrul piek."
       },
       "challenge2": {
-        "title": "Ruimtelijk Realisme bij Camera Cuts",
-        "problem": "Snelle camera cuts tussen wide shots en close-ups veroorzaakten desoriënterende ruimtelijke sprongen in ambiance en creature sounds.",
-        "solution": "Bouwde proximity-adaptive layering systeem: 3 ambiance lagen (distant/mid/close) met geautomatiseerde crossfades gebaseerd op camera afstandsmetadata. Toegevoegd 300ms smoothing op niveau wijzigingen om schokkende transities te voorkomen. Creature ademhaling/voetstappen hebben aparte close-mic laag (geactiveerd <5m) met andere reverb send (-15dB IR tijd) voor intimiteit."
+        "title": "Ruimtelijk Realisme bij Camera Overgangen",
+        "problem": "Snelle camera overgangen tussen brede shots en close-ups veroorzaakten desoriënterende ruimtelijke sprongen in ambiance en wezengeluiden.",
+        "solution": "Bouwde nabijheid-adaptief laagssysteem: 3 ambiance lagen (ver/midden/dichtbij) met geautomatiseerde overvloeiingen gebaseerd op camera afstandsmetadata. Toegevoegd 300ms afvlakking op niveauwijzigingen om schokkerige overgangen te voorkomen. Wezen ademhaling/voetstappen hebben aparte dichtbij-microfoon laag (geactiveerd <5m) met andere nagalm verzending (-15dB IR tijd) voor intimiteit."
       },
       "challenge3": {
-        "title": "Dialoog Helderheid in Dicht Soundscape",
-        "problem": "Kelderscène heeft gelaagde druppels, kraken en creature beweging—dialoog werd gemaskeerd in 800Hz-3kHz bereik.",
-        "solution": "Paste dynamic ducking toe: wanneer dialoog aanwezig, ducken omgevingselementen -8dB met 100ms attack, 500ms release. Uitgesneden 1-3kHz notch in ambiance bed (permanent -4dB). Gebruikte spectral shaping op dialoog: zachte presence boost op 2.5kHz, de-essing op 6-8kHz, en HPF op 80Hz om rumble bleed te verwijderen. Resultaat: dialoog zit helder zonder geïsoleerd te klinken."
+        "title": "Dialoog Helderheid in Dicht Geluidslandschap",
+        "problem": "Kelderscène heeft gelaagde druppels, kraken en wezenbeweging—dialoog werd gemaskeerd in 800Hz-3kHz bereik.",
+        "solution": "Paste dynamische demping toe: wanneer dialoog aanwezig, dempen omgevingselementen -8dB met 100ms aanval, 500ms loslaten. Uitgesneden 1-3kHz inkeping in ambiance bed (permanent -4dB). Gebruikte spectrale vormgeving op dialoog: zachte aanwezigheid versterking op 2.5kHz, sissers verwijderen op 6-8kHz, en hoogdoorlaatfilter op 80Hz om gerommel doorlekken te verwijderen. Resultaat: dialoog zit helder zonder geïsoleerd te klinken."
       }
     },
     "hero": {
@@ -360,6 +369,9 @@
     },
     "button": {
       "projects": "Alle Projecten"
+    },
+    "footer": {
+      "rights": "Alle rechten voorbehouden"
     }
   }
 }

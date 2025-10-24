@@ -3,6 +3,15 @@
     "back": "← Back to Projects",
     "title": "Middleware 2",
     "subtitle": "Complete Wwise audio implementation for game level, mimicking real-world production workflow with spatial audio, dynamic mixing, and Game Syncs integration.",
+    "hero": {
+      "badge": "🎮 Audio Middleware"
+    },
+    "meta": {
+      "pill1": "🏫 Digital Arts & Entertainment",
+      "pill2": "📝 Exam Assignment",
+      "pill3": "🎵 Wwise & Unreal Engine",
+      "pill4": "🔊 Audio Implementation"
+    },
     "overview": {
       "badge": "Project Overview",
       "title": "Real-World Audio Implementation",
@@ -52,12 +61,26 @@
       "badge": "Technical Approach",
       "title": "Professional Implementation",
       "text": "This project demonstrates professional Wwise implementation skills including event management, Game Sync integration, 3D audio positioning, and mix optimization. The implementation follows industry best practices for memory management and CPU efficiency. All audio assets were carefully selected and processed to create a cohesive sound palette that enhances gameplay while maintaining technical performance standards required for real-time game audio."
+    },
+    "footer": {
+      "credit": "Audio Implementation by",
+      "project": "Middleware 2 Project",
+      "copyright": "© 2025 Igor Szuniewicz. Exam assignment for Digital Arts & Entertainment."
     }
   },
   "pl": {
     "back": "← Powrót do projektów",
     "title": "Middleware 2",
     "subtitle": "Kompletna implementacja audio Wwise dla poziomu gry, naśladująca rzeczywisty workflow produkcyjny z audio przestrzennym, dynamicznym miksowaniem i integracją Game Syncs.",
+    "hero": {
+      "badge": "🎮 Audio Middleware"
+    },
+    "meta": {
+      "pill1": "🏫 Digital Arts & Entertainment",
+      "pill2": "📝 Zadanie Egzaminacyjne",
+      "pill3": "🎵 Wwise & Unreal Engine",
+      "pill4": "🔊 Implementacja Audio"
+    },
     "overview": {
       "badge": "Przegląd Projektu",
       "title": "Implementacja Audio w Praktyce",
@@ -107,12 +130,26 @@
       "badge": "Podejście Techniczne",
       "title": "Profesjonalna Implementacja",
       "text": "Ten projekt demonstruje profesjonalne umiejętności implementacji Wwise, włączając zarządzanie eventami, integrację Game Sync, pozycjonowanie audio 3D i optymalizację miksu. Implementacja przestrzega najlepszych praktyk branżowych dla zarządzania pamięcią i efektywności CPU. Wszystkie zasoby audio zostały starannie wybrane i przetworzone, aby stworzyć spójną paletę dźwiękową, która wzmacnia rozgrywkę przy jednoczesnym zachowaniu standardów wydajności technicznej wymaganych dla audio w czasie rzeczywistym."
+    },
+    "footer": {
+      "credit": "Implementacja Audio:",
+      "project": "Projekt Middleware 2",
+      "copyright": "© 2025 Igor Szuniewicz. Zadanie egzaminacyjne dla Digital Arts & Entertainment."
     }
   },
   "nl": {
     "back": "← Terug naar Projecten",
     "title": "Middleware 2",
     "subtitle": "Volledige Wwise audio-implementatie voor game level, waarbij real-world productie workflow wordt nagebootst met ruimtelijke audio, dynamische mixing en Game Syncs integratie.",
+    "hero": {
+      "badge": "🎮 Audio Middleware"
+    },
+    "meta": {
+      "pill1": "🏫 Digital Arts & Entertainment",
+      "pill2": "📝 Examenopdracht",
+      "pill3": "🎵 Wwise & Unreal Engine",
+      "pill4": "🔊 Audio Implementatie"
+    },
     "overview": {
       "badge": "Projectoverzicht",
       "title": "Real-World Audio Implementatie",
@@ -162,6 +199,11 @@
       "badge": "Technische Aanpak",
       "title": "Professionele Implementatie",
       "text": "Dit project demonstreert professionele Wwise-implementatievaardigheden, waaronder eventbeheer, Game Sync-integratie, 3D-audiopositionering en mixoptimalisatie. De implementatie volgt industriële best practices voor geheugenbeheer en CPU-efficiëntie. Alle audio-assets zijn zorgvuldig geselecteerd en verwerkt om een samenhangend geluidspalet te creëren dat de gameplay verbetert terwijl technische prestatiestandaarden worden gehandhaafd die vereist zijn voor realtime game audio."
+    },
+    "footer": {
+      "credit": "Audio Implementatie door",
+      "project": "Middleware 2 Project",
+      "copyright": "© 2025 Igor Szuniewicz. Examenopdracht voor Digital Arts & Entertainment."
     }
   }
 }

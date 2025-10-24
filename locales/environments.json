@@ -1,29 +1,167 @@
 {
   "en": {
     "back": "← Back to Projects",
-    "title": "3D Environments",
-    "subtitle": "Professional interior design, architectural modeling, and realistic material creation using Blender 3D.",
+    "hero": {
+      "badge": "🏛️ 3D Architecture",
+      "title": "3D Environments",
+      "subtitle": "Professional interior design, architectural modeling, and realistic material creation using Blender 3D."
+    },
+    "meta": {
+      "software": "📐 Software: Blender 3D",
+      "type": "🏠 Type: Interior Architecture",
+      "year": "📅 Year: 2024",
+      "style": "✨ Style: Modern Realistic"
+    },
     "video": {
       "badge": "Video Showcase",
       "title": "See the Environment in Motion"
+    },
+    "about": {
+      "badge": "About the Project",
+      "title": "Modern Interior Design",
+      "description": "This project showcases a modern interior design with realistic lighting and materials. Created in Blender 3D, the environment features detailed architectural elements, custom materials, and atmospheric lighting that brings the space to life. Every detail has been carefully crafted to create an immersive and photorealistic experience."
+    },
+    "features": {
+      "modeling": {
+        "title": "🔨 3D Modeling",
+        "item1": "Architectural layout and structure design",
+        "item2": "Detailed furniture and decoration modeling",
+        "item3": "Optimized topology for rendering efficiency",
+        "item4": "Precise measurements and scale accuracy"
+      },
+      "materials": {
+        "title": "🎨 Material Design",
+        "item1": "Realistic PBR materials with proper roughness",
+        "item2": "Custom node setups for complex surfaces",
+        "item3": "Attention to detail in texture mapping",
+        "item4": "Accurate material properties and reflections"
+      },
+      "lighting": {
+        "title": "💡 Lighting & Atmosphere",
+        "item1": "Natural and artificial light balance",
+        "item2": "Volumetric lighting effects",
+        "item3": "Mood and atmosphere creation",
+        "item4": "Realistic shadow casting and global illumination"
+      }
+    },
+    "gallery": {
+      "badge": "Project Gallery",
+      "title": "Detailed Renders & Breakdowns"
+    },
+    "footer": {
+      "created": "Created by",
+      "description": "3D Environment Design Portfolio",
+      "copyright": "© 2025 Igor Szuniewicz. All renders and designs are original work."
     }
   },
   "pl": {
-    "back": "← Powrót do projektów",
-    "title": "Środowiska 3D",
-    "subtitle": "Profesjonalny design wnętrz, modelowanie architektoniczne i tworzenie realistycznych materiałów w Blender 3D.",
+    "back": "← Powrót do Projektów",
+    "hero": {
+      "badge": "🏛️ Architektura 3D",
+      "title": "Środowiska 3D",
+      "subtitle": "Profesjonalny design wnętrz, modelowanie architektoniczne i tworzenie realistycznych materiałów w Blender 3D."
+    },
+    "meta": {
+      "software": "📐 Oprogramowanie: Blender 3D",
+      "type": "🏠 Typ: Architektura Wnętrz",
+      "year": "📅 Rok: 2024",
+      "style": "✨ Styl: Nowoczesny Realizm"
+    },
     "video": {
       "badge": "Prezentacja Wideo",
       "title": "Zobacz Środowisko w Ruchu"
+    },
+    "about": {
+      "badge": "O Projekcie",
+      "title": "Nowoczesny Design Wnętrz",
+      "description": "Ten projekt prezentuje nowoczesny design wnętrz z realistycznym oświetleniem i materiałami. Stworzony w Blender 3D, środowisko zawiera szczegółowe elementy architektoniczne, niestandardowe materiały oraz atmosferyczne oświetlenie, które ożywia przestrzeń. Każdy detal został starannie dopracowany, aby stworzyć immersyjne i fotorealistyczne doświadczenie."
+    },
+    "features": {
+      "modeling": {
+        "title": "🔨 Modelowanie 3D",
+        "item1": "Projektowanie układu architektonicznego i struktury",
+        "item2": "Szczegółowe modelowanie mebli i dekoracji",
+        "item3": "Zoptymalizowana topologia dla wydajności renderowania",
+        "item4": "Precyzyjne wymiary i dokładność skali"
+      },
+      "materials": {
+        "title": "🎨 Projektowanie Materiałów",
+        "item1": "Realistyczne materiały PBR z odpowiednią chropowatością",
+        "item2": "Niestandardowe układy węzłów dla złożonych powierzchni",
+        "item3": "Dbałość o szczegóły w mapowaniu tekstur",
+        "item4": "Dokładne właściwości materiałów i odbicia"
+      },
+      "lighting": {
+        "title": "💡 Oświetlenie i Atmosfera",
+        "item1": "Balans naturalnego i sztucznego światła",
+        "item2": "Efekty oświetlenia wolumetrycznego",
+        "item3": "Tworzenie nastroju i atmosfery",
+        "item4": "Realistyczne rzucanie cieni i globalne oświetlenie"
+      }
+    },
+    "gallery": {
+      "badge": "Galeria Projektu",
+      "title": "Szczegółowe Rendery i Analizy"
+    },
+    "footer": {
+      "created": "Stworzony przez",
+      "description": "Portfolio Projektowania Środowisk 3D",
+      "copyright": "© 2025 Igor Szuniewicz. Wszystkie rendery i projekty są oryginalnymi pracami."
     }
   },
   "nl": {
     "back": "← Terug naar Projecten",
-    "title": "3D Omgevingen",
-    "subtitle": "Professioneel interieurontwerp, architectonische modellering en realistische materiaalontwikkeling met Blender 3D.",
+    "hero": {
+      "badge": "🏛️ 3D Architectuur",
+      "title": "3D Omgevingen",
+      "subtitle": "Professioneel interieurontwerp, architectonische modellering en realistische materiaalontwikkeling met Blender 3D."
+    },
+    "meta": {
+      "software": "📐 Software: Blender 3D",
+      "type": "🏠 Type: Interieurarchitectuur",
+      "year": "📅 Jaar: 2024",
+      "style": "✨ Stijl: Modern Realistisch"
+    },
     "video": {
       "badge": "Video Showcase",
       "title": "Zie de Omgeving in Beweging"
+    },
+    "about": {
+      "badge": "Over het Project",
+      "title": "Modern Interieurontwerp",
+      "description": "Dit project toont een modern interieurontwerp met realistische verlichting en materialen. Gemaakt in Blender 3D, bevat de omgeving gedetailleerde architectonische elementen, aangepaste materialen en sfeervolle verlichting die de ruimte tot leven brengt. Elk detail is zorgvuldig uitgewerkt om een meeslepende en fotorealistische ervaring te creëren."
+    },
+    "features": {
+      "modeling": {
+        "title": "🔨 3D Modellering",
+        "item1": "Architectonische indeling en structuurontwerp",
+        "item2": "Gedetailleerde meubel- en decoratiemodellering",
+        "item3": "Geoptimaliseerde topologie voor renderefficiëntie",
+        "item4": "Nauwkeurige metingen en schaalnauwkeurigheid"
+      },
+      "materials": {
+        "title": "🎨 Materiaalontwerp",
+        "item1": "Realistische PBR-materialen met juiste ruwheid",
+        "item2": "Aangepaste node-opstellingen voor complexe oppervlakken",
+        "item3": "Aandacht voor detail in texture mapping",
+        "item4": "Nauwkeurige materiaaleigenschappen en reflecties"
+      },
+      "lighting": {
+        "title": "💡 Verlichting & Sfeer",
+        "item1": "Balans tussen natuurlijk en kunstlicht",
+        "item2": "Volumetrische verlichtingseffecten",
+        "item3": "Creatie van sfeer en ambiance",
+        "item4": "Realistische schaduwwerping en globale verlichting"
+      }
+    },
+    "gallery": {
+      "badge": "Projectgalerij",
+      "title": "Gedetailleerde Renders & Analyses"
+    },
+    "footer": {
+      "created": "Gemaakt door",
+      "description": "3D Omgevingsontwerp Portfolio",
+      "copyright": "© 2025 Igor Szuniewicz. Alle renders en ontwerpen zijn origineel werk."
     }
   }
 }

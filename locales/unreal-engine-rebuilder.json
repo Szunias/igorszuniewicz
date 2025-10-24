@@ -54,6 +54,11 @@
       "subtitle": "Download Unreal Engine Rebuilder now and streamline your development workflow.",
       "download": "Download Latest Release",
       "source": "View Source Code"
+    },
+    "footer": {
+      "created": "Created by",
+      "opensource": "Open Source on",
+      "copyright": "Free for personal and commercial use."
     }
   },
   "pl": {
@@ -111,6 +116,11 @@
       "subtitle": "Pobierz Unreal Engine Rebuilder teraz i usprawnij swój workflow developmentu.",
       "download": "Pobierz Najnowsze Wydanie",
       "source": "Zobacz Kod Źródłowy"
+    },
+    "footer": {
+      "created": "Stworzony przez",
+      "opensource": "Open Source na",
+      "copyright": "Darmowy do użytku osobistego i komercyjnego."
     }
   },
   "nl": {
@@ -168,6 +178,11 @@
       "subtitle": "Download Unreal Engine Rebuilder nu en stroomlijn je ontwikkelworkflow.",
       "download": "Download Laatste Release",
       "source": "Bekijk Broncode"
+    },
+    "footer": {
+      "created": "Gemaakt door",
+      "opensource": "Open Source op",
+      "copyright": "Gratis voor persoonlijk en commercieel gebruik."
     }
   }
 }

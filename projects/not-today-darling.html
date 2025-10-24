@@ -1211,6 +1211,72 @@
         </ul>
       </div>
     </div>
+
+    <!-- SFX System -->
+    <div class="row reverse">
+      <div class="row-visual">
+        <img src="../assets/images/projects/NotTodayPic4.png" alt="SFX System" />
+      </div>
+      <div class="row-text">
+        <h3 data-i18n="sfxSystem.title">SFX System</h3>
+        <p data-i18n="sfxSystem.desc">A parametric library: speed, track surface and cooldown windows drive layers and transients. Boost/burst has its own RPM curves and noise sweetener. Collisions use weights and thresholds to avoid spam.</p>
+        <ul>
+          <li data-i18n="sfxSystem.b1">Track materials (asphalt/sand/metal) with smooth crossfades</li>
+          <li data-i18n="sfxSystem.b2">Hazards/slip – pitch/LPF dependent on camera and speed</li>
+          <li data-i18n="sfxSystem.b3">Countdown/Start and Finish stingers as round anchors</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Mix & Dynamics -->
+    <div class="row">
+      <div class="row-visual">
+        <img src="../assets/images/projects/NotTodayPic2.png" alt="Mix & Dynamics" />
+      </div>
+      <div class="row-text">
+        <h3 data-i18n="mix.title">Mix & Dynamics</h3>
+        <p data-i18n="mix.desc">Priority‑based mix with ducking: callouts and UI sit above the bed while the crowd 'breathes' with race momentum. Submix processing reins in peaks and keeps loudness consistent during chaos.</p>
+        <ul>
+          <li data-i18n="mix.b1">Side‑chain ducking for UI/callouts over gameplay</li>
+          <li data-i18n="mix.b2">Automatic crowd/ambience rides from state and position</li>
+          <li data-i18n="mix.b3">Gain staging and reduced spectral masking</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Unreal Integration -->
+    <div class="row reverse">
+      <div class="row-visual">
+        <img src="../assets/images/projects/NotTodayPic3.png" alt="Unreal Integration" />
+      </div>
+      <div class="row-text">
+        <h3 data-i18n="integration.title">Unreal Integration</h3>
+        <p data-i18n="integration.desc">Sound Cues with parameters and Submix buses. Concurrency prevents event pile‑ups; attenuation profiles shape distance; light bus limiting stabilizes perceived loudness at scale.</p>
+        <ul>
+          <li data-i18n="integration.b1">Race state parameters + speed/camera inputs</li>
+          <li data-i18n="integration.b2">Submixes: UI, Gameplay, Ambience + limiter on Master</li>
+          <li data-i18n="integration.b3">Concurrency and collision trigger thresholds</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Technical Metrics -->
+    <div class="row">
+      <div class="row-visual">
+        <img src="../assets/images/projects/NotTodayPic1.png" alt="Technical Metrics" />
+      </div>
+      <div class="row-text">
+        <h3 data-i18n="metrics.title">Technical Metrics</h3>
+        <p data-i18n="metrics.desc">Comprehensive breakdown of audio implementation scope, performance metrics, and resource management.</p>
+        <ul>
+          <li><strong data-i18n="metrics.events">320+ audio events</strong> — <span data-i18n="metrics.events_desc">Across 12 categories: player actions, environment, UI, crowd, hazards, boost, collision, surface transitions, state changes, countdowns, finishes, and victory stingers</span></li>
+          <li><strong data-i18n="metrics.footprint">180 MB audio footprint</strong> — <span data-i18n="metrics.footprint_desc">Optimized with streaming and compression (Vorbis @ variable quality). ~450 source files processed to final assets</span></li>
+          <li><strong data-i18n="metrics.voice_count">Max 32 concurrent voices</strong> — <span data-i18n="metrics.voice_count_desc">Priority-based voice culling: UI/gameplay critical (priority 1.0) > player SFX (0.8) > crowd/ambience (0.5). Automatic stealing on overflow</span></li>
+          <li><strong data-i18n="metrics.latency">< 45ms input-to-audio</strong> — <span data-i18n="metrics.latency_desc">Maintained across all gameplay scenarios with real-time parameter modulation and MetaSounds processing</span></li>
+          <li><strong data-i18n="metrics.memory">~85 MB peak RAM usage</strong> — <span data-i18n="metrics.memory_desc">Includes loaded banks, streaming buffer, and active DSP. Managed via Unreal's audio streaming system</span></li>
+        </ul>
+      </div>
+    </div>
     
     <!-- Video Trailer -->
     <div class="row reverse">
