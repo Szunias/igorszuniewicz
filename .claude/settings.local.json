@@ -52,7 +52,13 @@
       "Bash(start \"\" \"http://localhost:8000/\")",
       "Bash(curl -s http://localhost:8000/)",
       "Bash(start \"\" \"file:///C:/Users/szuni/OneDrive/Pulpit/guwno/igorszuniewicz/index.html\")",
-      "Bash(start \"\" \"file:///C:/Users/szuni/OneDrive/Pulpit/guwno/igorszuniewicz/music.html\")"
+      "Bash(start \"\" \"file:///C:/Users/szuni/OneDrive/Pulpit/guwno/igorszuniewicz/music.html\")",
+      "Read(//c/Users/szuni/OneDrive/Pulpit/guwno/**)",
+      "Bash(bash \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\optimize-projects.sh\")",
+      "Bash(do if [[ \"$file\" != *\"backup\"* ]])",
+      "Bash([[ \"$file\" != *\"old\"* ]])",
+      "Bash(then sed -i 's|</body>|  <script src=\"\"../assets/js/performance-boost.js\"\" defer></script>\\n</body>|' \"$file\")",
+      "Bash(fi)"
     ],
     "deny": [],
     "ask": []

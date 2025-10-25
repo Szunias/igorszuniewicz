@@ -36,7 +36,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </noscript>
 
   <!-- Navigation Styles -->
   <link rel="stylesheet" href="assets/css/navigation.css">
@@ -476,7 +481,7 @@
       <div class="container">
         <picture>
           <source srcset="cv/pieknyportret_square.webp" type="image/webp">
-          <img src="cv/pieknyportret_square.png" alt="Igor Szuniewicz" class="avatar">
+          <img data-src="cv/pieknyportret_square.png" alt="Igor Szuniewicz" class="avatar lazy-img" loading="lazy" decoding="async">
         </picture>
 
         <h1 data-i18n="about_role">Audio Designer & Developer</h1>
@@ -650,8 +655,34 @@
   </main>
 
   <!-- Scripts -->
-  <script src="assets/js/components/navigation.js"></script>
-  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/components/navigation.js" defer></script>
+  <script src="assets/js/translations.js" defer></script>
+
+  <!-- Lazy load avatar image -->
+  <script>
+    (function() {
+      const lazyImg = document.querySelector('img.lazy-img[data-src]');
+      if (!lazyImg) return;
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.getAttribute('data-src');
+              img.removeAttribute('data-src');
+              img.classList.add('loaded');
+              observer.unobserve(img);
+            }
+          });
+        });
+        observer.observe(lazyImg);
+      } else {
+        lazyImg.src = lazyImg.getAttribute('data-src');
+        lazyImg.classList.add('loaded');
+      }
+    })();
+  </script>
 </body>
 
 </html>
