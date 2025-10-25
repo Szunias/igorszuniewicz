@@ -857,6 +857,33 @@
       object-fit: cover;
     }
 
+    /* Lazy loading for covers */
+    .playlist-cover img.lazy-cover:not(.loaded) {
+      background: linear-gradient(
+        90deg,
+        #1e293b 0%,
+        #2d3748 50%,
+        #1e293b 100%
+      );
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.5s ease-in-out infinite;
+    }
+
+    @keyframes skeleton-loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .playlist-cover img.lazy-cover {
+      opacity: 0;
+      transition: opacity 0.3s ease-in;
+    }
+
+    .playlist-cover img.lazy-cover.loaded {
+      opacity: 1;
+      animation: none;
+    }
+
     .playlist-info {
       flex: 1;
       min-width: 0;
@@ -1094,36 +1121,52 @@
     const trackDurations = new Map();
     const durationElements = new Map(); // Store references to duration elements
     
-    // Preload all track durations in background
+    // Preload track durations lazily - only visible tracks first
     function preloadAllDurations() {
-      tracks.forEach((track, index) => {
-        if (!trackDurations.has(index)) {
-          const tempAudio = new Audio();
-          const mp3Source = track.sources.find(s => s.type === 'audio/mpeg');
-          const source = mp3Source || track.sources[0];
-          tempAudio.preload = 'metadata';
-          
-          tempAudio.addEventListener('loadedmetadata', () => {
-            if (!isNaN(tempAudio.duration) && isFinite(tempAudio.duration)) {
-              const formattedTime = formatTime(tempAudio.duration);
-              trackDurations.set(index, formattedTime);
-              
-              // Update any visible duration elements
-              const durationEl = durationElements.get(index);
-              if (durationEl) {
-                durationEl.textContent = formattedTime;
-              }
-            }
-            tempAudio.src = '';
-          }, { once: true });
-          
-          tempAudio.addEventListener('error', () => {
-            tempAudio.src = '';
-          }, { once: true });
-          
-          tempAudio.src = source.url;
-        }
+      // First load durations for first 5 visible tracks
+      const initialBatch = tracks.slice(0, 5);
+
+      initialBatch.forEach((track, index) => {
+        preloadSingleDuration(track, index);
       });
+
+      // Load rest after a delay (progressive loading)
+      setTimeout(() => {
+        tracks.forEach((track, index) => {
+          if (index >= 5 && !trackDurations.has(index)) {
+            preloadSingleDuration(track, index);
+          }
+        });
+      }, 2000); // Wait 2s before loading rest
+    }
+
+    function preloadSingleDuration(track, index) {
+      if (!trackDurations.has(index)) {
+        const tempAudio = new Audio();
+        const mp3Source = track.sources.find(s => s.type === 'audio/mpeg');
+        const source = mp3Source || track.sources[0];
+        tempAudio.preload = 'metadata';
+
+        tempAudio.addEventListener('loadedmetadata', () => {
+          if (!isNaN(tempAudio.duration) && isFinite(tempAudio.duration)) {
+            const formattedTime = formatTime(tempAudio.duration);
+            trackDurations.set(index, formattedTime);
+
+            // Update any visible duration elements
+            const durationEl = durationElements.get(index);
+            if (durationEl) {
+              durationEl.textContent = formattedTime;
+            }
+          }
+          tempAudio.src = '';
+        }, { once: true });
+          
+        tempAudio.addEventListener('error', () => {
+          tempAudio.src = '';
+        }, { once: true });
+
+        tempAudio.src = source.url;
+      }
     }
 
     function renderPlaylist() {
@@ -1163,7 +1206,7 @@
 
         item.innerHTML = `
           <div class="playlist-cover">
-            <img src="${track.cover}" alt="${track.title}">
+            <img data-src="${track.cover}" alt="${track.title}" class="lazy-cover" loading="lazy" decoding="async">
           </div>
           <div class="playlist-info">
             <div class="playlist-track-title">${track.title}</div>
@@ -1858,6 +1901,55 @@
 
       console.log('ULTRA-DEFENSIVE header scroll effect loaded');
     })();
+  </script>
+
+  <!-- Lazy load album covers -->
+  <script>
+    // Lazy load album cover images
+    function initLazyCoverLoading() {
+      const lazyCovers = document.querySelectorAll('img.lazy-cover[data-src]');
+
+      if ('IntersectionObserver' in window) {
+        const coverObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              const src = img.getAttribute('data-src');
+
+              if (src) {
+                img.src = src;
+                img.removeAttribute('data-src');
+                img.classList.add('loaded');
+              }
+
+              coverObserver.unobserve(img);
+            }
+          });
+        }, {
+          rootMargin: '50px',
+          threshold: 0.01
+        });
+
+        lazyCovers.forEach(img => coverObserver.observe(img));
+      } else {
+        // Fallback for browsers without IntersectionObserver
+        lazyCovers.forEach(img => {
+          const src = img.getAttribute('data-src');
+          if (src) {
+            img.src = src;
+            img.classList.add('loaded');
+          }
+        });
+      }
+    }
+
+    // Initialize after playlist is rendered
+    const originalRenderPlaylist = renderPlaylist;
+    renderPlaylist = function() {
+      originalRenderPlaylist.apply(this, arguments);
+      // Small delay to ensure DOM is updated
+      setTimeout(initLazyCoverLoading, 100);
+    };
   </script>
 </body>
 

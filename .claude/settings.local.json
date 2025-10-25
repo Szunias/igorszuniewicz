@@ -44,7 +44,15 @@
       "Bash(where:*)",
       "Bash(npm --version)",
       "Bash(npm install:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(start \"\" \"C:\\Users\\szuni\\OneDrive\\Pulpit\\guwno\\igorszuniewicz\\test-lazy-loading.html\")",
+      "Bash(python -m http.server 8000 --bind 127.0.0.1)",
+      "Bash(timeout 3 bash -c 'until curl -s http://localhost:8000 > /dev/null 2>&1; do sleep 0.5; done')",
+      "Bash(start \"\" \"http://localhost:8000/index.html\")",
+      "Bash(start \"\" \"http://localhost:8000/\")",
+      "Bash(curl -s http://localhost:8000/)",
+      "Bash(start \"\" \"file:///C:/Users/szuni/OneDrive/Pulpit/guwno/igorszuniewicz/index.html\")",
+      "Bash(start \"\" \"file:///C:/Users/szuni/OneDrive/Pulpit/guwno/igorszuniewicz/music.html\")"
     ],
     "deny": [],
     "ask": []

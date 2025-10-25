@@ -22,11 +22,14 @@
   <meta http-equiv="X-Frame-Options" content="DENY" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
-  <!-- Preload language to prevent flicker -->
-  <script src="assets/js/preload-lang.js"></script>
-  
-  <!-- Smooth navigation - prevents white flash during page transitions -->
-  <script src="assets/js/simple-smooth-nav.js"></script>
+  <!-- Critical scripts only - minimal blocking -->
+  <script>
+    // Inline critical language preload to avoid extra HTTP request
+    (function() {
+      const savedLang = localStorage.getItem('preferredLanguage') || localStorage.getItem('language') || 'en';
+      document.documentElement.setAttribute('lang', savedLang);
+    })();
+  </script>
 
   <!-- Primary Meta Tags -->
   <title>Igor Szuniewicz — Audio Designer & Developer | Game Audio, Interactive Music, DSP</title>
@@ -75,18 +78,30 @@
   <!-- Preloader (must load first) -->
   <!-- <script src="assets/js/preloader.js"></script> -->
 
-  <!-- Performance: DNS prefetch -->
+  <!-- Performance: Critical resource hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
   <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
-  <!-- Google Fonts -->
+  <!-- Don't preload lazy-loaded assets - defeats the purpose -->
+
+  <!-- Google Fonts - optimized loading -->
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'"
+  >
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+  </noscript>
 
-  <!-- Shared Navigation Styles -->
+  <!-- Shared Navigation Styles - preload for instant rendering -->
+  <link rel="preload" href="assets/css/navigation.css" as="style">
   <link rel="stylesheet" href="assets/css/navigation.css">
 
   <!-- Structured Data (JSON-LD) -->
@@ -191,6 +206,17 @@
   </script>
 
   <style>
+    /* === PERFORMANCE OPTIMIZATIONS === */
+    body.is-scrolling * {
+      pointer-events: none !important;
+      animation-play-state: paused !important;
+    }
+
+    body.is-scrolling a,
+    body.is-scrolling button {
+      pointer-events: auto !important;
+    }
+
     /* === RESET === */
     *,
     *::before,
@@ -799,6 +825,47 @@
       background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     }
 
+    /* Loading skeleton for videos and images */
+    .project-image video[data-autoplay]:not(.loaded),
+    .project-image img[data-src]:not(.loaded) {
+      background: linear-gradient(
+        90deg,
+        #1e293b 0%,
+        #2d3748 50%,
+        #1e293b 100%
+      );
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.5s ease-in-out infinite;
+      min-height: 100%;
+      width: 100%;
+    }
+
+    @keyframes skeleton-loading {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
+    .project-image video.loaded,
+    .project-image img.loaded {
+      animation: none;
+    }
+
+    /* Fade in effect when media loads */
+    .project-image video[data-autoplay],
+    .project-image img.lazy-img {
+      opacity: 0;
+      transition: opacity 0.4s ease-in;
+    }
+
+    .project-image video.loaded,
+    .project-image img.loaded {
+      opacity: 1;
+    }
+
     .project-image::after {
       content: '';
       position: absolute;
@@ -819,6 +886,12 @@
       transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       z-index: 1;
+      display: block;
+    }
+
+    /* Ensure video takes space even before loading */
+    .project-image video[data-autoplay] {
+      min-height: 100%;
     }
 
     .project-card:hover .project-image img,
@@ -1363,9 +1436,9 @@
             aria-label="Not Today Darling game audio project">
             <div class="project-image">
               <span class="project-badge badge-game" data-i18n="projects.cards.not_today.badge">Game Audio</span>
-              <video autoplay loop muted playsinline aria-label="Not Today Darling gameplay preview">
-                <source src="assets/images/projects/NotTodayGIF.webm" type="video/webm">
-                <source src="assets/images/projects/NotTodayGIF.mp4" type="video/mp4">
+              <video loop muted playsinline preload="none" data-autoplay aria-label="Not Today Darling gameplay preview">
+                <source data-src="assets/images/projects/NotTodayGIF.webm" type="video/webm">
+                <source data-src="assets/images/projects/NotTodayGIF.mp4" type="video/mp4">
               </video>
             </div>
             <div class="project-content">
@@ -1381,9 +1454,9 @@
             aria-label="Amorak horror animation sound design project">
             <div class="project-image">
               <span class="project-badge badge-sound" data-i18n="projects.cards.amorak.badge">Sound Design</span>
-              <video autoplay loop muted playsinline aria-label="Amorak animation preview">
-                <source src="assets/images/projects/AmorakGIF.webm" type="video/webm">
-                <source src="assets/images/projects/AmorakGIF.mp4" type="video/mp4">
+              <video loop muted playsinline preload="none" data-autoplay aria-label="Amorak animation preview">
+                <source data-src="assets/images/projects/AmorakGIF.webm" type="video/webm">
+                <source data-src="assets/images/projects/AmorakGIF.mp4" type="video/mp4">
               </video>
             </div>
             <div class="project-content">
@@ -1397,9 +1470,9 @@
           <a href="projects/pause-and-deserve.html" class="project-card fade-in">
             <div class="project-image">
               <span class="project-badge badge-game" data-i18n="projects.cards.pause_deserve.badge">Horror Game</span>
-              <video autoplay loop muted playsinline>
-                <source src="assets/images/projects-pausedeserve/pausedeservegif.webm" type="video/webm">
-                <source src="assets/images/projects-pausedeserve/pausedeservegif.mp4" type="video/mp4">
+              <video loop muted playsinline preload="none" data-autoplay>
+                <source data-src="assets/images/projects-pausedeserve/pausedeservegif.webm" type="video/webm">
+                <source data-src="assets/images/projects-pausedeserve/pausedeservegif.mp4" type="video/mp4">
               </video>
             </div>
             <div class="project-content">
@@ -1413,9 +1486,9 @@
           <a href="projects/audiolab.html" class="project-card fade-in">
             <div class="project-image">
               <span class="project-badge badge-game" data-i18n="projects.cards.audiolab.badge">ML Audio</span>
-              <video autoplay loop muted playsinline>
-                <source src="assets/images/projects/AudioLabGif.webm" type="video/webm">
-                <source src="assets/images/projects/AudioLabGif.mp4" type="video/mp4">
+              <video loop muted playsinline preload="none" data-autoplay>
+                <source data-src="assets/images/projects/AudioLabGif.webm" type="video/webm">
+                <source data-src="assets/images/projects/AudioLabGif.mp4" type="video/mp4">
               </video>
             </div>
             <div class="project-content">
@@ -1430,8 +1503,8 @@
             aria-label="Interactive music design project">
             <div class="project-image">
               <span class="project-badge badge-music" data-i18n="projects.cards.interactive_music.badge">Music</span>
-              <img src="assets/images/projects/musicforgames.png" alt="Interactive music design with Wwise middleware"
-                itemprop="image" loading="lazy">
+              <img data-src="assets/images/projects/musicforgames.png" alt="Interactive music design with Wwise middleware"
+                itemprop="image" loading="lazy" decoding="async" class="lazy-img">
             </div>
             <div class="project-content">
               <h3 class="project-title" itemprop="name" data-i18n="projects.cards.interactive_music.title">Interactive
@@ -1446,9 +1519,9 @@
           <a href="projects/akantilado.html" class="project-card fade-in">
             <div class="project-image">
               <span class="project-badge badge-sound" data-i18n="projects.cards.akantilado.badge">Animation</span>
-              <video autoplay loop muted playsinline>
-                <source src="assets/images/projects/AkantiladoGIF.webm" type="video/webm">
-                <source src="assets/images/projects/AkantiladoGIF.mp4" type="video/mp4">
+              <video loop muted playsinline preload="none" data-autoplay>
+                <source data-src="assets/images/projects/AkantiladoGIF.webm" type="video/webm">
+                <source data-src="assets/images/projects/AkantiladoGIF.mp4" type="video/mp4">
               </video>
             </div>
             <div class="project-content">
@@ -1539,7 +1612,14 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Load navigation smoothly after critical content -->
+  <script src="assets/js/simple-smooth-nav.js" defer></script>
+  <script src="assets/js/components/navigation.js" defer></script>
+  <script src="assets/js/components/custom-cursor.js" defer></script>
+  <script src="assets/js/translations.js" defer></script>
+  <script src="assets/js/performance-boost.js" defer></script>
+
+  <!-- Main page scripts -->
   <script>
     // Simple inline translations for this page
     let translations = {};
@@ -1582,25 +1662,37 @@
       document.documentElement.setAttribute('lang', lang);
     }
 
-    // Load translations from JSON file
+    // Load translations from JSON file with caching
     async function loadTranslations() {
       try {
-        const response = await fetch('locales/index.json', { cache: 'no-store' });
+        const response = await fetch('locales/index.json', {
+          cache: 'force-cache',
+          priority: 'low'
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         translations = await response.json();
         setLanguage(currentLang);
       } catch (error) {
         console.error('Failed to load translations:', error);
+        // Fallback - page will work with default English text
       }
     }
 
-    // Init language
-    document.addEventListener('DOMContentLoaded', () => {
+    // Init language - load translations after page is interactive
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLanguage);
+    } else {
+      // DOM already loaded, defer slightly to not block rendering
+      setTimeout(initLanguage, 100);
+    }
+
+    function initLanguage() {
       loadTranslations();
 
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
       });
-    });
+    }
 
     // Single header scroll effect implementation
     function initHeaderScrollEffect() {
@@ -1625,23 +1717,34 @@
     // Initialize after DOM is ready
     document.addEventListener('DOMContentLoaded', initHeaderScrollEffect);
 
-    // Scroll reveal - optimized for earlier reveal
+    // Scroll reveal - optimized for performance and earlier reveal
     const observerOptions = {
-      threshold: 0.05, // Lower threshold = reveals earlier
-      rootMargin: '0px 0px 100px 0px' // Positive bottom margin = reveals 100px before entering viewport
+      threshold: 0.05,
+      rootMargin: '0px 0px 100px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          // Stop observing once visible to improve performance
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
-    });
+    // Lazy initialize observers after page is loaded
+    function initScrollReveal() {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initScrollReveal);
+    } else {
+      initScrollReveal();
+    }
 
     // Animated counter for stats
     const counterObserver = new IntersectionObserver((entries) => {
@@ -1687,15 +1790,16 @@
       });
     });
 
-    // Cursor glow effect
+    // Cursor glow effect - optimized with passive event listener
     let mouseX = 0, mouseY = 0;
     let cursorX = 0, cursorY = 0;
+    let rafId = null;
 
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
       document.body.classList.add('cursor-active');
-    });
+    }, { passive: true });
 
     function updateCursor() {
       cursorX += (mouseX - cursorX) * 0.1;
@@ -1709,9 +1813,15 @@
         document.body.style.setProperty('--before-top', `${cursorY - 150}px`);
       }
 
-      requestAnimationFrame(updateCursor);
+      rafId = requestAnimationFrame(updateCursor);
     }
-    updateCursor();
+
+    // Start cursor animation after page is loaded
+    if (document.readyState === 'complete') {
+      updateCursor();
+    } else {
+      window.addEventListener('load', updateCursor, { once: true });
+    }
 
     // Project card mouse tracking
     document.querySelectorAll('.project-card').forEach(card => {
@@ -1865,10 +1975,6 @@
       });
     })();
   </script>
-  <script src="assets/js/components/navigation.js"></script>
-  <script src="assets/js/components/custom-cursor.js"></script>
-  <script src="assets/js/translations.js"></script>
-  <!-- <script src="assets/js/components/enhancements.js"></script> BREAKS HEADER -->
 
 </body>
 
