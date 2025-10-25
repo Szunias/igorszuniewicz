@@ -1080,19 +1080,6 @@
 
     // Set initial volume
     audio.volume = 0.7; // 70%
-    
-    // DEBUG: Intercept currentTime setter to find what's resetting it
-    const originalCurrentTimeSetter = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'currentTime').set;
-    Object.defineProperty(audio, 'currentTime', {
-      set: function(value) {
-        console.log('currentTime setter called with:', value);
-        console.trace('currentTime setter stack trace');
-        originalCurrentTimeSetter.call(this, value);
-      },
-      get: function() {
-        return Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'currentTime').get.call(this);
-      }
-    });
 
     // Load tracks from JSON
     fetch('assets/audio/tracks.json')
@@ -1103,7 +1090,6 @@
         return res.json();
       })
       .then(data => {
-        console.log('Tracks loaded:', data.length);
         tracks = data;
         renderPlaylist();
         preloadAllDurations(); // Load all durations in background
@@ -1234,9 +1220,6 @@
     }
 
     function loadTrack(index) {
-      console.log('loadTrack() called for index:', index);
-      console.trace('loadTrack stack trace');
-      
       if (!tracks[index]) return;
 
       const track = tracks[index];
@@ -1292,7 +1275,7 @@
             playerAlbumArt.classList.remove('playing');
             // Show user-friendly message
             if (error.name === 'NotAllowedError') {
-              console.log('User interaction required to play audio');
+              
             } else if (error.name === 'NotSupportedError') {
               console.error('Audio format not supported');
               // Try next track
@@ -1445,28 +1428,16 @@
 
     audio.addEventListener('ended', nextTrack);
     
-    // Debug seeking events
-    audio.addEventListener('seeking', () => {
-      console.log('SEEKING event fired - currentTime:', audio.currentTime);
-    });
-    
-    audio.addEventListener('seeked', () => {
-      console.log('SEEKED event fired - currentTime:', audio.currentTime);
-    });
-    
     // Add additional error handlers for edge cases
     audio.addEventListener('stalled', () => {
-      console.warn('Audio loading stalled');
       // Don't disable seek, but log the issue
     });
-    
+
     audio.addEventListener('suspend', () => {
-      console.log('Audio loading suspended');
       // Normal behavior, no action needed
     });
-    
+
     audio.addEventListener('abort', () => {
-      console.warn('Audio loading aborted');
       // Reset UI to safe state
       progressBar.style.cursor = 'not-allowed';
     });
@@ -1538,9 +1509,7 @@
         const rect = progressBar.getBoundingClientRect();
         const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
         const newTime = percent * audio.duration;
-        
-        console.log('Drag seek to:', newTime, 'seconds (', Math.floor(percent * 100), '%)');
-        
+
         // Clean up drag state
         progressFill.classList.remove('dragging');
         progressFill.style.transition = '';
@@ -1562,16 +1531,12 @@
     
     // Simple click-to-seek (primary method)
     progressBar.addEventListener('click', (e) => {
-      console.log('CLICK EVENT FIRED!');
-      
       if (!isValidDuration(audio.duration)) {
-        console.log('Invalid duration, aborting');
         return;
       }
-      
+
       // If we just finished dragging, ignore the click event
       if (dragMoved) {
-        console.log('Ignoring click after drag');
         return;
       }
       
@@ -1586,10 +1551,7 @@
       const rect = progressBar.getBoundingClientRect();
       const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
       const newTime = percent * audio.duration;
-      
-      console.log('CLICK SEEK to:', newTime, 'seconds (', Math.floor(percent * 100), '%)');
-      console.log('Audio readyState:', audio.readyState);
-      
+
       // Update UI immediately
       progressFill.style.width = (percent * 100) + '%';
       currentTimeEl.textContent = formatTime(newTime);
@@ -1604,8 +1566,7 @@
       
       // Perform the seek
       audio.currentTime = newTime;
-      console.log('Seek performed - currentTime:', audio.currentTime);
-      
+
       // Resume playback if it was playing
       if (wasPlaying) {
         setTimeout(() => {
@@ -1825,7 +1786,6 @@
     function initHeaderScrollEffectFinal() {
       const header = document.getElementById('header');
       if (!header) {
-        console.warn('Header element not found for scroll effect');
         return;
       }
 
@@ -1845,8 +1805,6 @@
 
       // Call immediately to set initial state
       handleHeaderScrollFinal();
-
-      console.log('Header scroll effect initialized (final)');
     }
 
     // Initialize with multiple fallbacks
@@ -1856,7 +1814,7 @@
     setTimeout(initHeaderScrollEffectFinal, 1000);
   </script>
 
-  <!-- ULTRA-DEFENSIVE HEADER SCROLL EFFECT - NO MATTER WHAT -->
+  <!-- Header scroll effect -->
   <script>
     (function forceHeaderScroll() {
       'use strict';
@@ -1899,7 +1857,7 @@
         document.addEventListener(event, addScrollListener, { once: true, passive: true });
       });
 
-      console.log('ULTRA-DEFENSIVE header scroll effect loaded');
+      
     })();
   </script>
 

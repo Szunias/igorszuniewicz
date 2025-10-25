@@ -838,7 +838,6 @@
     function initHeaderScrollEffectFinal() {
       const header = document.getElementById('header');
       if (!header) {
-        console.warn('Header element not found for scroll effect');
         return;
       }
       
@@ -858,8 +857,6 @@
       
       // Call immediately to set initial state
       handleHeaderScrollFinal();
-      
-      console.log('Header scroll effect initialized (final)');
     }
     
     // Initialize with multiple fallbacks
@@ -911,8 +908,6 @@
       ['click', 'scroll', 'mousemove'].forEach(event => {
         document.addEventListener(event, addScrollListener, { once: true, passive: true });
       });
-      
-      console.log('ULTRA-DEFENSIVE header scroll effect loaded');
     })();
   </script>
 </body>
