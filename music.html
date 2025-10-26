@@ -698,8 +698,7 @@
       content: '▶';
       position: absolute;
       left: 1.5rem;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 1.5rem;
       width: 80px;
       height: 80px;
       display: flex;
@@ -707,7 +706,7 @@
       justify-content: center;
       background: rgba(6, 182, 212, 0.9);
       color: #fff;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       border-radius: 12px;
       opacity: 0;
       transition: opacity 0.3s ease;
@@ -720,6 +719,10 @@
     }
 
     .playlist-item.active::before {
+      content: '▶';
+    }
+    
+    .playlist-item.playing::before {
       content: '⏸';
     }
 
@@ -1205,6 +1208,7 @@
 
       // Update active playlist item
       renderPlaylist();
+      updatePlaylistPlayingState();
     }
 
     function play() {
@@ -1223,6 +1227,7 @@
             playBtn.textContent = '⏸';
             playerAlbumArt.classList.add('playing');
             playerBar.classList.add('visible');
+            updatePlaylistPlayingState();
           })
           .catch(error => {
             console.warn('Playback prevented:', error);
@@ -1248,6 +1253,7 @@
       isPlaying = false;
       playBtn.textContent = '▶';
       playerAlbumArt.classList.remove('playing');
+      updatePlaylistPlayingState();
     }
 
     function togglePlay() {
@@ -1255,6 +1261,21 @@
         pause();
       } else {
         play();
+      }
+    }
+
+    function updatePlaylistPlayingState() {
+      // Remove playing class from all items
+      document.querySelectorAll('.playlist-item').forEach(item => {
+        item.classList.remove('playing');
+      });
+      
+      // Add playing class to current track if playing
+      if (isPlaying) {
+        const currentItem = document.querySelector(`[data-track-index="${currentTrackIndex}"]`);
+        if (currentItem) {
+          currentItem.classList.add('playing');
+        }
       }
     }
 
