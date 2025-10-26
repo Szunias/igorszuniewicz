@@ -4,7 +4,9 @@
 
 [![Website](https://img.shields.io/badge/Website-igorszuniewicz.com-60a5fa?style=for-the-badge)](https://igorszuniewicz.com)
 [![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red?style=for-the-badge)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-AAA%20Ready-00ff00?style=for-the-badge)](PORTFOLIO_IMPROVEMENTS.md)
+[![Status](https://img.shields.io/badge/Status-AAA%20Ready-00ff00?style=for-the-badge)](#)
+[![Contributing](https://img.shields.io/badge/Contributing-Welcome-green?style=for-the-badge)](CONTRIBUTING.md)
+[![Documentation](https://img.shields.io/badge/Documentation-Complete-blue?style=for-the-badge)](docs/)
 
 ---
 
@@ -43,21 +45,35 @@ igorszuniewicz/
 ├── 📧 contact.html               # Contact page
 │
 ├── 🎨 projects/                  # Project pages
-│   ├── ray-animation.html        # ⭐ Featured: Ray Animation project
+│   ├── index.html                # Projects overview
+│   ├── akantilado.html           # Animation sound design
+│   ├── amorak.html               # Horror sound design
+│   ├── audiolab.html             # ML audio classification
 │   ├── audioq.html               # AudioQ plugin
-│   └── index.html                # Projects overview
+│   └── ...                       # Additional projects
 │
 ├── 🖼️ assets/                    # Static assets
 │   ├── css/                      # Stylesheets
-│   ├── js/                       # JavaScript
+│   ├── js/                       # JavaScript modules
 │   ├── images/                   # Images & photos
-│   └── icons/                    # Favicons & icons
+│   ├── icons/                    # Favicons & icons
+│   ├── fonts/                    # Font files
+│   └── sass/                     # SCSS source files
+│
+├── 🌐 locales/                   # Translation files
+│   ├── en/                       # English translations
+│   ├── pl/                       # Polish translations
+│   └── nl/                       # Dutch translations
 │
 ├── 📚 docs/                      # Documentation
-│   ├── guides/                   # Technical guides
-│   └── notes/                    # Development notes
+│   └── technical/                # Technical guides
+│       ├── DEVELOPMENT.md        # Development guide
+│       ├── DEPLOYMENT.md         # Deployment guide
+│       └── ...                   # Additional docs
 │
-└── 🗃️ _archive/                  # Old files & backups
+├── 📄 CONTRIBUTING.md            # Contribution guidelines
+├── 📄 CHANGELOG.md               # Version history
+└── 📄 README.md                  # This file
 ```
 
 ---
@@ -115,22 +131,39 @@ Beatbox-controlled rhythm game using machine learning.
 
 ## 🛠️ Tech Stack
 
-### Frontend
+### Frontend Technologies
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![SCSS](https://img.shields.io/badge/SCSS-CF649A?style=flat-square&logo=sass&logoColor=white)
 
-### Design
-- **Typography:** Google Fonts (Poppins, Work Sans, DM Sans)
-- **Graphics:** SVG icons and optimized images
-- **Animations:** CSS3 transitions and keyframes
+### Design System
+- **Typography:** Google Fonts (Poppins, Sora)
+- **Icons:** Font Awesome 6
+- **Graphics:** SVG icons and optimized WebP/PNG images
+- **Animations:** CSS3 transitions, keyframes, and scroll effects
 
-### Architecture
-- ✅ Vanilla JavaScript (no frameworks)
-- ✅ Semantic HTML5
-- ✅ Modern CSS (Grid, Flexbox, Custom Properties)
-- ✅ Progressive Enhancement
-- ✅ Mobile-First Design
+### Architecture & Performance
+- ✅ **Vanilla JavaScript** (no frameworks for optimal performance)
+- ✅ **Semantic HTML5** with proper accessibility
+- ✅ **Modern CSS** (Grid, Flexbox, Custom Properties)
+- ✅ **Progressive Enhancement** (works without JavaScript)
+- ✅ **Mobile-First Responsive Design**
+- ✅ **Lazy Loading** for images and content
+- ✅ **Performance Optimized** (Core Web Vitals compliant)
+
+### Internationalization
+- ✅ **Multi-language Support** (EN/PL/NL)
+- ✅ **Dynamic Language Switching**
+- ✅ **Localized Content** for all pages
+- ✅ **RTL Support Ready**
+
+### SEO & Accessibility
+- ✅ **Structured Data** (JSON-LD Schema.org)
+- ✅ **Open Graph** and Twitter Cards
+- ✅ **WCAG 2.1 AA** compliant
+- ✅ **Keyboard Navigation** support
+- ✅ **Screen Reader** compatible
 
 ---
 
@@ -173,17 +206,36 @@ Portfolio now demonstrates:
 ✅ Professional maturity with audio philosophy  
 ✅ Industry-standard terminology throughout  
 
-**See full details:** [PORTFOLIO_IMPROVEMENTS.md](PORTFOLIO_IMPROVEMENTS.md)
+**See full details:** [Changelog](CHANGELOG.md)
 
 ---
 
 ## 📚 Documentation
 
-Comprehensive docs available in [`/docs`](docs/):
+Comprehensive documentation available in [`/docs`](docs/):
 
-- 📖 [**Technical Guides**](docs/guides/) - How-tos and troubleshooting
-- 📝 [**Development Notes**](docs/notes/) - Process documentation
-- 🔧 [**Background Fix Guide**](docs/guides/BACKGROUND-FIX-GUIDE.md) - CSS override solutions
+### 📖 Technical Documentation
+- [**Development Guide**](docs/technical/DEVELOPMENT.md) - Complete development setup and architecture
+- [**Deployment Guide**](docs/technical/DEPLOYMENT.md) - Deployment options and best practices
+- [**SEO Optimizations**](docs/technical/SEO-OPTIMIZATIONS.md) - SEO implementation details
+- [**Translation System**](docs/technical/TRANSLATION_SYSTEM.md) - i18n implementation guide
+
+### 📋 Project Documentation
+- [**Contributing Guidelines**](CONTRIBUTING.md) - How to contribute to this project
+- [**Changelog**](CHANGELOG.md) - Version history and updates
+- [**Background Fix Guide**](docs/technical/BACKGROUND-FIX-GUIDE.md) - CSS override solutions
+
+### 🚀 Quick Start
+```bash
+# Clone the repository
+git clone https://github.com/Szunias/igorszuniewicz.git
+cd igorszuniewicz
+
+# Open in browser (no build process required)
+open index.html
+# or use a local server
+python -m http.server 8000
+```
 
 ---
 
