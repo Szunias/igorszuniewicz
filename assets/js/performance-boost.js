@@ -35,8 +35,8 @@
 
               // Play when loaded
               video.addEventListener('loadeddata', () => {
-                video.play().catch(e => {
-                  console.log('Video autoplay prevented:', e);
+                video.play().catch(() => {
+                  // Autoplay prevented by browser
                 });
               }, { once: true });
             } else if (video.paused) {
@@ -249,6 +249,4 @@
 
   // Start initialization
   init();
-
-  console.log('[Performance Boost] ✅ Optimizations loaded');
 })();

@@ -713,8 +713,11 @@
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) {
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
@@ -724,84 +727,5 @@
   <script src="assets/js/components/navigation.js" defer></script>
   <script src="assets/js/components/custom-cursor.js" defer></script>
   <script src="assets/js/translations.js" defer></script>
-  
-  <!-- Header scroll effect - must be AFTER all other scripts -->
-  <script>
-    // Header scroll effect (final implementation - loaded last to avoid conflicts)
-    function initHeaderScrollEffectFinal() {
-      const header = document.getElementById('header');
-      if (!header) {
-        return;
-      }
-      
-      function handleHeaderScrollFinal() {
-        if (window.scrollY > 50) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
-      }
-      
-      // Remove ALL existing scroll listeners (brute force approach)
-      window.removeEventListener('scroll', handleHeaderScrollFinal);
-      
-      // Add our listener with highest priority
-      window.addEventListener('scroll', handleHeaderScrollFinal, { passive: true });
-      
-      // Call immediately to set initial state
-      handleHeaderScrollFinal();
-    }
-    
-    // Initialize with multiple fallbacks
-    initHeaderScrollEffectFinal();
-    setTimeout(initHeaderScrollEffectFinal, 100);
-    setTimeout(initHeaderScrollEffectFinal, 500);
-    setTimeout(initHeaderScrollEffectFinal, 1000);
-  </script>
-  
-  <!-- ULTRA-DEFENSIVE HEADER SCROLL EFFECT - NO MATTER WHAT -->
-  <script>
-    (function forceHeaderScroll() {
-      'use strict';
-      
-      let isScrolling = false;
-      
-      function ultimateHeaderHandler() {
-        if (isScrolling) return;
-        isScrolling = true;
-        
-        setTimeout(() => {
-          const header = document.getElementById('header');
-          if (header) {
-            if (window.scrollY > 50) {
-              header.classList.add('scrolled');
-            } else {
-              header.classList.remove('scrolled');
-            }
-          }
-          isScrolling = false;
-        }, 0);
-      }
-      
-      // Force add listener multiple times
-      function addScrollListener() {
-        window.removeEventListener('scroll', ultimateHeaderHandler);
-        window.addEventListener('scroll', ultimateHeaderHandler, { passive: true });
-        ultimateHeaderHandler(); // Call once immediately
-      }
-      
-      // Add listener now and with timeouts
-      addScrollListener();
-      setTimeout(addScrollListener, 100);
-      setTimeout(addScrollListener, 500);
-      setTimeout(addScrollListener, 1000);
-      setTimeout(addScrollListener, 2000);
-      
-      // Also add on user interactions
-      ['click', 'scroll', 'mousemove'].forEach(event => {
-        document.addEventListener(event, addScrollListener, { once: true, passive: true });
-      });
-    })();
-  </script>
 </body>
 </html>
