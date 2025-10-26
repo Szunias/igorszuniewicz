@@ -1,2 +1,0 @@
-Aivent 1.0.1
-New added: Ticket style 2 (tickets-2.html)
