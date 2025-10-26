@@ -995,12 +995,12 @@
     const trackDurations = new Map();
     const durationElements = new Map(); // Store references to duration elements
 
-    // Lazy load album cover images
-    function initLazyCoverLoading() {
-      const lazyCovers = document.querySelectorAll('img.lazy-cover[data-src]');
+    // Global IntersectionObserver for lazy loading album covers (reusable)
+    let globalCoverObserver = null;
 
-      if ('IntersectionObserver' in window) {
-        const coverObserver = new IntersectionObserver((entries) => {
+    function getOrCreateCoverObserver() {
+      if (!globalCoverObserver && 'IntersectionObserver' in window) {
+        globalCoverObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               const img = entry.target;
@@ -1012,15 +1012,24 @@
                 img.classList.add('loaded');
               }
 
-              coverObserver.unobserve(img);
+              globalCoverObserver.unobserve(img);
             }
           });
         }, {
           rootMargin: '50px',
           threshold: 0.01
         });
+      }
+      return globalCoverObserver;
+    }
 
-        lazyCovers.forEach(img => coverObserver.observe(img));
+    // Lazy load album cover images
+    function initLazyCoverLoading() {
+      const lazyCovers = document.querySelectorAll('img.lazy-cover[data-src]');
+
+      const observer = getOrCreateCoverObserver();
+      if (observer) {
+        lazyCovers.forEach(img => observer.observe(img));
       } else {
         // Fallback for browsers without IntersectionObserver
         lazyCovers.forEach(img => {
@@ -1059,7 +1068,15 @@
         const source = track.sources[0];
         tempAudio.preload = 'metadata';
 
+        // Timeout cleanup to prevent memory leaks
+        const cleanupTimeout = setTimeout(() => {
+          if (tempAudio.src) {
+            tempAudio.src = '';
+          }
+        }, 10000); // 10 second timeout
+
         tempAudio.addEventListener('loadedmetadata', () => {
+          clearTimeout(cleanupTimeout);
           if (!isNaN(tempAudio.duration) && isFinite(tempAudio.duration)) {
             const formattedTime = formatTime(tempAudio.duration);
             trackDurations.set(index, formattedTime);
@@ -1072,8 +1089,9 @@
           }
           tempAudio.src = '';
         }, { once: true });
-          
+
         tempAudio.addEventListener('error', () => {
+          clearTimeout(cleanupTimeout);
           tempAudio.src = '';
         }, { once: true });
 
@@ -1096,6 +1114,10 @@
         const globalIndex = tracks.indexOf(track);
         const item = document.createElement('div');
         item.className = 'playlist-item';
+        item.setAttribute('data-track-index', globalIndex);
+        item.setAttribute('role', 'button');
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('aria-label', `Play ${track.title} by ${track.artist}`);
         if (globalIndex === currentTrackIndex) item.classList.add('active');
 
         const durationEl = document.createElement('div');
@@ -1128,19 +1150,6 @@
         `;
 
         item.appendChild(durationEl);
-
-        item.addEventListener('click', () => {
-          // If clicking currently playing track, toggle play/pause
-          if (globalIndex === currentTrackIndex && audio.src) {
-            togglePlay();
-          } else {
-            // Load and play new track
-            currentTrackIndex = globalIndex;
-            loadTrack(currentTrackIndex);
-            play();
-          }
-        });
-
         playlist.appendChild(item);
       });
 
@@ -1647,6 +1656,39 @@
         currentFilter = tag.dataset.filter;
         renderPlaylist();
       });
+    });
+
+    // Event delegation for playlist items (prevents memory leaks)
+    const playlistContainer = document.getElementById('playlist');
+
+    function handlePlaylistItemActivation(target) {
+      const item = target.closest('.playlist-item');
+      if (!item) return;
+
+      const globalIndex = parseInt(item.getAttribute('data-track-index'));
+      if (isNaN(globalIndex)) return;
+
+      // If clicking currently playing track, toggle play/pause
+      if (globalIndex === currentTrackIndex && audio.src) {
+        togglePlay();
+      } else {
+        // Load and play new track
+        currentTrackIndex = globalIndex;
+        loadTrack(currentTrackIndex);
+        play();
+      }
+    }
+
+    playlistContainer.addEventListener('click', (e) => {
+      handlePlaylistItemActivation(e.target);
+    });
+
+    // Keyboard navigation for playlist items
+    playlistContainer.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handlePlaylistItemActivation(e.target);
+      }
     });
 
     // Header scroll effect (unified across all pages) - defensive implementation
