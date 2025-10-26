@@ -140,6 +140,11 @@
     if (path.includes('projects/')) {
       return 'projects.json';
     }
+    
+    // Special case for projects/index.html
+    if (path === '/projects/' || path === '/projects/index.html') {
+      return 'projects.json';
+    }
 
     return fileMap[filename] || 'shared.json';
   }
@@ -148,10 +153,12 @@
   async function loadTranslations() {
     try {
       const translationFile = getTranslationFile();
-
+      
       // Try different paths based on current location
       let response;
-      const basePaths = ['locales/', '../locales/', '../../locales/'];
+      const basePaths = window.location.pathname.includes('projects/') 
+        ? ['../locales/', 'locales/', '../../locales/']  // For projects page, try ../locales/ first
+        : ['locales/', '../locales/', '../../locales/'];  // For other pages, try locales/ first
 
       for (const basePath of basePaths) {
         try {
