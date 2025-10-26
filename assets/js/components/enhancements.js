@@ -639,7 +639,7 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('scroll', markVisibleNow, { passive: true });
 
   // Language switcher (PL/NL/EN) + lightweight i18n + toast
-  const LANG_KEY='site-lang';
+  const LANG_KEY='language';
   const toggleBtn = document.getElementById('lang-toggle');
   const menu = document.querySelector('.lang-switch .lang-menu');
   const label = document.getElementById('lang-label');

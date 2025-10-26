@@ -2,7 +2,7 @@
 import { translatePage } from './i18n/translate.js';
 
 function getLang(){
-  const stored = (typeof localStorage!=='undefined' && localStorage.getItem('site-lang')) || '';
+  const stored = (typeof localStorage!=='undefined' && localStorage.getItem('language')) || '';
   const fromHtml = document.documentElement.getAttribute('lang') || '';
   const cand = (stored || fromHtml || 'en').toLowerCase();
   return /^(en|pl|nl)$/.test(cand) ? cand : 'en';

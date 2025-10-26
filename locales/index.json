@@ -1,5 +1,10 @@
 {
   "en": {
+    "nav_home": "Home",
+    "nav_about": "About",
+    "nav_projects": "Projects",
+    "nav_music": "Music",
+    "nav_contact": "Contact",
     "nav": {
       "home": "Home",
       "work": "Work",
@@ -10,7 +15,7 @@
     },
     "hero": {
       "label": "Audio Designer & Developer",
-      "title": "Interactive <span class=\"highlight-sound\">Sound</span><br>for Modern Games",
+      "title": "Interactive <span class='highlight-sound'>Sound</span><br>for Modern Games",
       "description": "I make interactive music for games, design sounds for animations, and build audio tools.",
       "cta1": "View My Work",
       "cta_cv": "CV",
@@ -77,6 +82,11 @@
     }
   },
   "pl": {
+    "nav_home": "Strona główna",
+    "nav_about": "O mnie",
+    "nav_projects": "Projekty",
+    "nav_music": "Muzyka",
+    "nav_contact": "Kontakt",
     "nav": {
       "home": "Strona główna",
       "work": "Projekty",
@@ -87,7 +97,7 @@
     },
     "hero": {
       "label": "Audio Designer & Developer",
-      "title": "Interaktywny <span class=\"highlight-sound\">Dźwięk</span><br>dla Nowoczesnych Gier",
+      "title": "Interaktywny <span class='highlight-sound'>Dźwięk</span><br>dla Nowoczesnych Gier",
       "description": "Robię interaktywną muzykę do gier, projektuję dźwięki do animacji i buduję narzędzia audio.",
       "cta1": "Zobacz Moje Prace",
       "cta_cv": "CV",
@@ -154,6 +164,11 @@
     }
   },
   "nl": {
+    "nav_home": "Home",
+    "nav_about": "Over",
+    "nav_projects": "Projecten",
+    "nav_music": "Muziek",
+    "nav_contact": "Contact",
     "nav": {
       "home": "Home",
       "work": "Werk",
@@ -164,7 +179,7 @@
     },
     "hero": {
       "label": "Audio Designer & Developer",
-      "title": "Interactief <span class=\"highlight-sound\">Geluid</span><br>voor Moderne Games",
+      "title": "Interactief <span class='highlight-sound'>Geluid</span><br>voor Moderne Games",
       "description": "Ik maak interactieve muziek voor games, ontwerp geluiden voor animaties en bouw audio tools.",
       "cta1": "Bekijk Mijn Werk",
       "cta_cv": "CV",

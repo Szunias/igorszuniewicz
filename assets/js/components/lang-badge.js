@@ -20,7 +20,7 @@
   }
 
   function setLang(lang){
-    try { localStorage.setItem('site-lang', lang); } catch(_){ }
+    try { localStorage.setItem('language', lang); } catch(_){ }
     // If translatePage() is present, translate in-place; else reload
     if (typeof window.translatePage === 'function') {
       window.translatePage(lang);

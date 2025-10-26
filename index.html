@@ -26,7 +26,7 @@
   <script>
     // Inline critical language preload to avoid extra HTTP request
     (function() {
-      const savedLang = localStorage.getItem('preferredLanguage') || localStorage.getItem('language') || 'en';
+      const savedLang = localStorage.getItem('language') || 'en';
       document.documentElement.setAttribute('lang', savedLang);
     })();
   </script>
@@ -1570,8 +1570,8 @@
     let translations = {};
 
     // Language switcher with localStorage key compatible with enhancements.js
-    const LANG_KEY = 'preferredLanguage';
-    let currentLang = localStorage.getItem(LANG_KEY) || localStorage.getItem('language') || 'en';
+    const LANG_KEY = 'language';
+    let currentLang = localStorage.getItem(LANG_KEY) || 'en';
 
     // Helper function to get nested translation value
     function getNestedTranslation(obj, path) {
@@ -1581,7 +1581,6 @@
     function setLanguage(lang) {
       currentLang = lang;
       localStorage.setItem(LANG_KEY, lang);
-      localStorage.setItem('language', lang); // Keep backwards compatibility
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
