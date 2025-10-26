@@ -52,6 +52,14 @@
       window.TrackInfoModal.updateLanguage();
     }
     
+    // Refresh music list if present
+    if (typeof window.refreshMusicList === 'function') {
+      console.log('[translations] Calling refreshMusicList...');
+      window.refreshMusicList();
+    } else {
+      console.log('[translations] refreshMusicList not available');
+    }
+    
     // Mark translations as ready and show page smoothly
     requestAnimationFrame(() => {
       document.documentElement.classList.add('translations-ready');

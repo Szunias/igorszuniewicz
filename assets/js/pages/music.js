@@ -1070,5 +1070,35 @@
       }
     startMarquee(r1, -1); startMarquee(r2, 1);
     }
+
+  // Expose function to refresh list when language changes
+  window.refreshMusicList = function() {
+    console.log('[refreshMusicList] Called! Updating music descriptions...');
+    try {
+      render();
+      markPlayingCard();
+      
+      // Update modal if it's open
+      if (modalNode && modalNode.classList.contains('open')) {
+        console.log('[refreshMusicList] Modal is open, updating...');
+        const modalTitle = modalNode.querySelector('.mm-title')?.textContent;
+        const currentTrack = view.find(t => t.title === modalTitle);
+        if (currentTrack) {
+          const lang = document.documentElement.getAttribute('lang') || document.documentElement.dataset.lang || 'en';
+          console.log('[refreshMusicList] Updating modal to language:', lang);
+          const desc = (typeof currentTrack.desc === 'string') ? currentTrack.desc : (currentTrack.desc ? (currentTrack.desc[lang] || currentTrack.desc['en'] || '') : '');
+          const descEl = modalNode.querySelector('.mm-desc');
+          if (descEl && desc) {
+            descEl.textContent = desc;
+            console.log('[refreshMusicList] Modal description updated:', desc.substring(0, 50) + '...');
+          }
+        }
+      } else {
+        console.log('[refreshMusicList] No modal open');
+      }
+    } catch(e) {
+      console.error('Error refreshing music list:', e);
+    }
+  };
 })();
 

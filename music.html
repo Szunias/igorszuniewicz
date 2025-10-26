@@ -1754,6 +1754,12 @@
         }
       });
     });
+
+    // Expose function for translations.js to call when language changes
+    window.refreshMusicList = function() {
+      console.log('[music.html] Refreshing playlist for language change...');
+      renderPlaylist();
+    };
   </script>
   <script src="assets/js/components/navigation.js"></script>
   <script src="assets/js/components/custom-cursor.js"></script>
