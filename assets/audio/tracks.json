@@ -22,10 +22,6 @@
       {
         "url": "assets/audio/tracks/caplanetechno.mp3",
         "type": "audio/mpeg"
-      },
-      {
-        "url": "assets/audio/tracks/caplanetechno.wav",
-        "type": "audio/wav"
       }
     ]
   },
@@ -50,10 +46,6 @@
       {
         "url": "assets/audio/tracks/Igor Szuniewicz - Astrophonic Dance.mp3",
         "type": "audio/mpeg"
-      },
-      {
-        "url": "assets/audio/tracks/Igor Szuniewicz - Astrophonic Dance.wav",
-        "type": "audio/wav"
       }
     ]
   },
@@ -78,10 +70,6 @@
       {
         "url": "assets/audio/tracks/trans2.mp3",
         "type": "audio/mpeg"
-      },
-      {
-        "url": "assets/audio/tracks/trans2.wav",
-        "type": "audio/wav"
       }
     ]
   },
@@ -107,10 +95,6 @@
       {
         "url": "assets/audio/tracks/ThatsItIgorSzuniewicz.mp3",
         "type": "audio/mpeg"
-      },
-      {
-        "url": "assets/audio/tracks/ThatsItIgorSzuniewicz.wav",
-        "type": "audio/wav"
       }
     ]
   },
@@ -135,10 +119,6 @@
       {
         "url": "assets/audio/tracks/gnosienne1.mp3",
         "type": "audio/mpeg"
-      },
-      {
-        "url": "assets/audio/tracks/gnosienne1.wav",
-        "type": "audio/wav"
       }
     ]
   },
@@ -163,10 +143,6 @@
       {
         "url": "assets/audio/tracks/syncopationsnew.mp3",
         "type": "audio/mpeg"
-      },
-      {
-        "url": "assets/audio/tracks/syncopationsnew.wav",
-        "type": "audio/wav"
       }
     ]
   },
@@ -186,10 +162,6 @@
       {
         "url": "assets/audio/tracks/Cage.mp3",
         "type": "audio/mpeg"
-      },
-      {
-        "url": "assets/audio/tracks/Cage.wav",
-        "type": "audio/wav"
       }
     ],
     "desc": {
