@@ -39,6 +39,16 @@
       }
     });
     
+    // Update all elements with data-i18n-placeholder attribute
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      const translation = getNestedTranslation(window.translations[lang], key) || window.translations[lang]?.[key];
+      
+      if (translation) {
+        el.setAttribute('placeholder', translation);
+      }
+    });
+    
     // Update active state of language buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === lang);
@@ -93,6 +103,16 @@
       
       if (translation) {
         el.setAttribute('aria-label', translation);
+      }
+    });
+    
+    // Apply placeholder translations
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      const translation = getNestedTranslation(window.translations[currentLang], key) || window.translations[currentLang]?.[key];
+      
+      if (translation) {
+        el.setAttribute('placeholder', translation);
       }
     });
   }
