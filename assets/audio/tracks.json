@@ -22,10 +22,6 @@
       {
         "url": "assets/audio/tracks/caplanetechno.m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/caplanetechno.mp3",
-        "type": "audio/mpeg"
       }
     ]
   },
@@ -50,10 +46,6 @@
       {
         "url": "assets/audio/tracks/Igor Szuniewicz - Astrophonic Dance.m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/Igor Szuniewicz - Astrophonic Dance.mp3",
-        "type": "audio/mpeg"
       }
     ]
   },
@@ -78,10 +70,6 @@
       {
         "url": "assets/audio/tracks/trans2.m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/trans2.mp3",
-        "type": "audio/mpeg"
       }
     ]
   },
@@ -107,10 +95,6 @@
       {
         "url": "assets/audio/tracks/ThatsItIgorSzuniewicz.m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/ThatsItIgorSzuniewicz.mp3",
-        "type": "audio/mpeg"
       }
     ]
   },
@@ -135,10 +119,6 @@
       {
         "url": "assets/audio/tracks/gnosienne1.m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/gnosienne1.mp3",
-        "type": "audio/mpeg"
       }
     ]
   },
@@ -163,10 +143,6 @@
       {
         "url": "assets/audio/tracks/syncopationsnew.m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/syncopationsnew.mp3",
-        "type": "audio/mpeg"
       }
     ]
   },
@@ -186,10 +162,6 @@
       {
         "url": "assets/audio/tracks/Cage.m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/Cage.mp3",
-        "type": "audio/mpeg"
       }
     ],
     "desc": {
@@ -214,10 +186,6 @@
       {
         "url": "assets/audio/tracks/Igor Szuniewicz - Cathedral Of Time.m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/Igor Szuniewicz - Cathedral Of Time.mp3",
-        "type": "audio/mpeg"
       }
     ],
     "desc": {
@@ -242,10 +210,6 @@
       {
         "url": "assets/audio/tracks/Igor-Szuniewicz-Inflow.m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/Igor-Szuniewicz-Inflow.mp3",
-        "type": "audio/mpeg"
       }
     ],
     "desc": {
@@ -270,10 +234,6 @@
       {
         "url": "assets/audio/tracks/EdgeOfLife.m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/EdgeOfLife.mp3",
-        "type": "audio/mpeg"
       }
     ],
     "desc": {
@@ -297,10 +257,6 @@
       {
         "url": "assets/audio/tracks/RayCreditsTheme.m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/RayCreditsTheme.mp3",
-        "type": "audio/mpeg"
       }
     ],
     "desc": {
@@ -324,10 +280,6 @@
       {
         "url": "assets/audio/tracks/RichterMainTheme.m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/RichterMainTheme.mp3",
-        "type": "audio/mpeg"
       }
     ],
     "desc": {
@@ -351,10 +303,6 @@
       {
         "url": "assets/audio/tracks/RunMainTheme.m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/RunMainTheme.mp3",
-        "type": "audio/mpeg"
       }
     ],
     "desc": {
@@ -378,10 +326,6 @@
       {
         "url": "assets/audio/tracks/XianClashMainTheme.m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/XianClashMainTheme.mp3",
-        "type": "audio/mpeg"
       }
     ],
     "desc": {
@@ -406,10 +350,6 @@
       {
         "url": "assets/audio/tracks/psy(2).m4a",
         "type": "audio/mp4"
-      },
-      {
-        "url": "assets/audio/tracks/psy(2).mp3",
-        "type": "audio/mpeg"
       }
     ],
     "desc": {
