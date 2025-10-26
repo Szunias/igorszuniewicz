@@ -25,6 +25,15 @@
   <meta name="description"
     content="Music catalog by Igor Szuniewicz — Film scores, electronic music, and original compositions." />
 
+  <!-- Resource Hints for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="preload" href="assets/css/main.css" as="style">
+  <link rel="preload" href="assets/js/components/navigation.js" as="script">
+  <link rel="preload" href="assets/js/translations.js" as="script">
+
   <!-- Preload language to prevent flicker -->
   <script src="assets/js/preload-lang.js"></script>
 
@@ -857,6 +866,9 @@
 </head>
 
 <body>
+  <!-- Skip to main content for keyboard users -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+  
   <!-- Background -->
   <div class="bg-gradient"></div>
   <div class="bg-grid"></div>
@@ -869,7 +881,8 @@
   <!-- Navigation loaded by navigation.js -->
 
   <!-- Page Content -->
-  <div class="page-content">
+  <main id="main">
+    <div class="page-content">
     <div class="container">
       <div class="page-header">
         <h1 class="page-title" data-i18n="page_title">Music Catalog</h1>
@@ -897,7 +910,8 @@
         <!-- Populated by JavaScript -->
       </div>
     </div>
-  </div>
+    </div>
+  </main>
 
   <!-- Modern Player Bar -->
   <div class="player-bar" id="player-bar">
@@ -905,7 +919,7 @@
       <!-- Left: Track Info -->
       <div class="player-track-info">
         <div class="player-album-art" id="player-album-art">
-          <img id="player-cover" src="assets/images/covers/project5.png" alt="Album Art">
+          <img id="player-cover" src="assets/images/covers/project5.png" alt="Album Art" width="64" height="64" loading="eager" decoding="async">
         </div>
         <div class="player-info">
           <div class="player-title" id="player-title">Select a track</div>
@@ -1145,7 +1159,7 @@
 
         item.innerHTML = `
           <div class="playlist-cover">
-            <img data-src="${track.cover}" alt="${track.title}" class="lazy-cover" loading="lazy" decoding="async">
+            <img data-src="${track.cover}" alt="${track.title}" class="lazy-cover" loading="lazy" decoding="async" width="60" height="60">
           </div>
           <div class="playlist-info">
             <div class="playlist-track-title">${track.title}</div>

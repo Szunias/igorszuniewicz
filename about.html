@@ -26,6 +26,15 @@
   <title>About — Igor Szuniewicz</title>
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
 
+  <!-- Resource Hints for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="preload" href="assets/css/main.css" as="style">
+  <link rel="preload" href="assets/js/components/navigation.js" as="script">
+  <link rel="preload" href="assets/js/translations.js" as="script">
+
   <!-- Preload language to prevent flicker -->
   <script src="assets/js/preload-lang.js"></script>
 
@@ -476,6 +485,9 @@
 </head>
 
 <body>
+  <!-- Skip to main content for keyboard users -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+  
   <div class="bg-gradient"></div>
 
   <!-- Navigation loaded by navigation.js -->
@@ -486,7 +498,7 @@
       <div class="container">
         <picture>
           <source srcset="cv/pieknyportret_square.webp" type="image/webp">
-          <img data-src="cv/pieknyportret_square.png" alt="Igor Szuniewicz" class="avatar lazy-img" loading="lazy" decoding="async">
+          <img data-src="cv/pieknyportret_square.png" alt="Igor Szuniewicz" class="avatar lazy-img" loading="lazy" decoding="async" width="200" height="200">
         </picture>
 
         <h1 data-i18n="about_role">Audio Designer & Developer</h1>

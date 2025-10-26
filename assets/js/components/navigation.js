@@ -2,7 +2,6 @@
 // Usage: Include this script in your HTML and call loadNavigation()
 
 function loadNavigation() {
-  console.log('🚀 Loading navigation...');
   const nav = `
     <!-- Header -->
     <header class="header" id="header">
@@ -57,20 +56,15 @@ function loadNavigation() {
   }
   
   document.body.insertAdjacentHTML('afterbegin', nav);
-  console.log('✅ Navigation HTML inserted');
 
   // Set active link based on current page
   setActiveLink();
-  console.log('✅ Active link set');
 
   // Initialize mobile menu
   initMobileMenu();
-  console.log('✅ Mobile menu initialized');
 
   // Initialize scroll effect
   initScrollEffect();
-  console.log('✅ Scroll effect initialized');
-  console.log('🎉 Navigation fully loaded!');
 }
 
 // Determine relative path based on current location
@@ -122,14 +116,52 @@ function initScrollEffect() {
   const header = document.getElementById('header');
   if (!header) return;
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+  // Throttled scroll handler to improve performance
+  let scrollTimeout;
+  const handleScroll = () => {
+    if (scrollTimeout) {
+      clearTimeout(scrollTimeout);
     }
-  });
+    scrollTimeout = setTimeout(() => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }, 10);
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  
+  // Store reference for cleanup
+  window._scrollHandler = handleScroll;
 }
+
+// Cleanup function to prevent memory leaks
+function cleanupNavigation() {
+  // Remove scroll event listener
+  if (window._scrollHandler) {
+    window.removeEventListener('scroll', window._scrollHandler);
+    window._scrollHandler = null;
+  }
+  
+  // Remove mobile menu event listeners
+  const toggle = document.querySelector('.mobile-menu-toggle');
+  const overlay = document.querySelector('.mobile-menu-overlay');
+  
+  if (toggle) {
+    toggle.replaceWith(toggle.cloneNode(true)); // Remove all event listeners
+  }
+  if (overlay) {
+    overlay.replaceWith(overlay.cloneNode(true)); // Remove all event listeners
+  }
+}
+
+// Add cleanup on page unload
+window.addEventListener('beforeunload', cleanupNavigation);
+
+// Expose cleanup function globally
+window.cleanupNavigation = cleanupNavigation;
 
 // Auto-load - always wait for DOM to be ready
 if (document.readyState === 'loading') {

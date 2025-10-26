@@ -43,6 +43,15 @@
   <link rel="canonical" href="https://igorszuniewicz.com/" />
   <meta name="theme-color" content="#000000" />
 
+  <!-- Resource Hints for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="preload" href="assets/css/main.css" as="style">
+  <link rel="preload" href="assets/js/components/navigation.js" as="script">
+  <link rel="preload" href="assets/js/translations.js" as="script">
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Igor Szuniewicz" />
@@ -1271,6 +1280,9 @@
 </head>
 
 <body>
+  <!-- Skip to main content for keyboard users -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+  
   <!-- Background -->
   <div class="bg-gradient"></div>
   <div class="bg-grid"></div>
@@ -1448,8 +1460,8 @@
             aria-label="Interactive music design project">
             <div class="project-image">
               <span class="project-badge badge-music" data-i18n="projects.cards.interactive_music.badge">Music</span>
-              <img data-src="assets/images/projects/musicforgames.png" alt="Interactive music design with Wwise middleware"
-                itemprop="image" loading="lazy" decoding="async" class="lazy-img">
+              <img data-src="assets/images/projects/musicforgames.png" alt="Interactive music design with Wwise middleware" loading="lazy" decoding="async" width="400" height="300"
+                itemprop="image" class="lazy-img">
             </div>
             <div class="project-content">
               <h3 class="project-title" itemprop="name" data-i18n="projects.cards.interactive_music.title">Interactive

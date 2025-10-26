@@ -4,7 +4,6 @@
   
   // Prevent multiple initializations
   if (window.__simpleSmoothNavInitialized) {
-    console.log('Simple smooth nav already initialized, skipping');
     return;
   }
   window.__simpleSmoothNavInitialized = true;
@@ -101,27 +100,21 @@
     
     // Przechwytuj kliknięcia w linki
     clickHandler = (event) => {
-      console.log('[simple-smooth-nav] Click detected on:', event.target);
-      
       // Nie przechwytuj kliknięć w przyciski języka
       if (isLanguageButton(event.target)) {
-        console.log('[simple-smooth-nav] ✓ Language button clicked, ignoring (no preventDefault)');
         return;
       }
       
       const link = event.target.closest('a');
       if (!link) {
-        console.log('[simple-smooth-nav] Not a link, ignoring');
         return;
       }
       
       const href = link.getAttribute('href');
       if (!shouldInterceptLink(href, link)) {
-        console.log('[simple-smooth-nav] Link should not be intercepted:', href);
         return;
       }
       
-      console.log('[simple-smooth-nav] ⚡ Intercepting navigation to:', href);
       event.preventDefault();
       event.stopPropagation();
       navigateToPage(href);
@@ -143,8 +136,6 @@
       
       document.addEventListener('mouseover', hoverHandler);
     }
-    
-    console.log('Simple smooth nav event listeners attached');
   }
   
   // Inicjalizacja

@@ -237,9 +237,33 @@
   const isScoped = !!overrideUrl;
   const tracksUrl = overrideUrl ? overrideUrl : ((location.protocol === 'file:') ? 'assets/audio/tracks.json' : ('assets/audio/tracks.json?v=' + __ts__));
   fetch(tracksUrl, { cache: 'no-store' })
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(data => {
-      tracks = Array.isArray(data) ? data : (Array.isArray(data.tracks) ? data.tracks : []);
+      // Validate and normalize track data
+      const rawTracks = Array.isArray(data) ? data : (Array.isArray(data.tracks) ? data.tracks : []);
+      
+      // Filter out invalid tracks
+      tracks = rawTracks.filter(track => {
+        return track && 
+               typeof track.title === 'string' && 
+               track.title.trim() !== '' &&
+               (track.file || (track.sources && Array.isArray(track.sources) && track.sources.length > 0));
+      });
+      
+      // Log warning if some tracks were filtered out
+      if (tracks.length < rawTracks.length) {
+        console.warn(`Filtered out ${rawTracks.length - tracks.length} invalid tracks`);
+      }
+      
+      if (tracks.length === 0) {
+        throw new Error('No valid tracks found in data');
+      }
+      
       // Ensure every track is matchable by the "All" filter and normalize tags
       tracks.forEach(function(t){
         const baseTags = Array.isArray(t.tags) ? t.tags : [];
@@ -249,6 +273,17 @@
     })
     .catch(error => {
       console.error('Error loading track data:', error);
+      
+      // Show user-friendly error message
+      if (listEl) {
+        listEl.innerHTML = `
+          <div class="error-message" style="text-align: center; padding: 2rem; color: #ff6b6b;">
+            <h3>Unable to load music</h3>
+            <p>There was a problem loading the music catalog. Please try refreshing the page.</p>
+          </div>
+        `;
+      }
+      
       // Fallback for scoped pages: do NOT load full music catalog
       if (isScoped){
         const fallbackScoped = [
@@ -817,7 +852,7 @@
           }
         });
       }
-    } catch(_) { console.log('Media Session API not supported'); }
+    } catch(_) { /* Media Session API not supported */ }
 
     // update mini timelines fill/labels
     try {
@@ -1071,30 +1106,72 @@
     startMarquee(r1, -1); startMarquee(r2, 1);
     }
 
+  // Cleanup function to prevent memory leaks
+  function cleanup() {
+    // Clean up audio event listeners
+    if (audio) {
+      audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      audio.removeEventListener('timeupdate', handleTimeUpdate);
+      audio.removeEventListener('ended', handleEnded);
+      audio.removeEventListener('error', handleError);
+      audio.removeEventListener('canplay', handleCanPlay);
+      audio.removeEventListener('waiting', handleWaiting);
+      audio.removeEventListener('playing', handlePlaying);
+      audio.removeEventListener('pause', handlePause);
+      audio.removeEventListener('volumechange', handleVolumeChange);
+    }
+    
+    // Clean up progress bar event listeners
+    if (pbSeek) {
+      pbSeek.removeEventListener('mousedown', handleProgressBarMouseDown);
+      pbSeek.removeEventListener('click', handleProgressBarClick);
+      pbSeek.removeEventListener('mouseenter', handleProgressBarMouseEnter);
+      pbSeek.removeEventListener('mouseleave', handleProgressBarMouseLeave);
+    }
+    
+    // Clean up global event listeners
+    document.removeEventListener('mousemove', handleProgressBarMouseMove);
+    document.removeEventListener('mouseup', handleProgressBarMouseUp);
+    
+    // Clean up any existing intervals/timeouts
+    if (window.musicPlayerInterval) {
+      clearInterval(window.musicPlayerInterval);
+      window.musicPlayerInterval = null;
+    }
+    
+    // Clean up marquee animations
+    const marqueeStrips = document.querySelectorAll('.marquee-strip');
+    marqueeStrips.forEach(strip => {
+      if (strip.__marqueeRunning) {
+        strip.__marqueeRunning = false;
+      }
+    });
+  }
+  
+  // Add cleanup on page unload
+  window.addEventListener('beforeunload', cleanup);
+  
+  // Expose cleanup function globally
+  window.cleanupMusicPlayer = cleanup;
+
   // Expose function to refresh list when language changes
   window.refreshMusicList = function() {
-    console.log('[refreshMusicList] Called! Updating music descriptions...');
     try {
       render();
       markPlayingCard();
       
       // Update modal if it's open
       if (modalNode && modalNode.classList.contains('open')) {
-        console.log('[refreshMusicList] Modal is open, updating...');
         const modalTitle = modalNode.querySelector('.mm-title')?.textContent;
         const currentTrack = view.find(t => t.title === modalTitle);
         if (currentTrack) {
           const lang = document.documentElement.getAttribute('lang') || document.documentElement.dataset.lang || 'en';
-          console.log('[refreshMusicList] Updating modal to language:', lang);
           const desc = (typeof currentTrack.desc === 'string') ? currentTrack.desc : (currentTrack.desc ? (currentTrack.desc[lang] || currentTrack.desc['en'] || '') : '');
           const descEl = modalNode.querySelector('.mm-desc');
           if (descEl && desc) {
             descEl.textContent = desc;
-            console.log('[refreshMusicList] Modal description updated:', desc.substring(0, 50) + '...');
           }
         }
-      } else {
-        console.log('[refreshMusicList] No modal open');
       }
     } catch(e) {
       console.error('Error refreshing music list:', e);

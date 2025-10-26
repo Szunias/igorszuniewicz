@@ -54,10 +54,7 @@
     
     // Refresh music list if present
     if (typeof window.refreshMusicList === 'function') {
-      console.log('[translations] Calling refreshMusicList...');
       window.refreshMusicList();
-    } else {
-      console.log('[translations] refreshMusicList not available');
     }
     
     // Mark translations as ready and show page smoothly
@@ -149,10 +146,31 @@
         throw new Error(`Failed to load translations from ${translationFile}`);
       }
 
-      window.translations = await response.json();
+      const translationData = await response.json();
+      
+      // Validate translation data structure
+      if (!translationData || typeof translationData !== 'object') {
+        throw new Error('Invalid translation data format');
+      }
+
+      window.translations = translationData;
       setLanguage(currentLang);
     } catch (error) {
       console.error('Failed to load translations:', error);
+      
+      // Fallback: create minimal translation structure
+      window.translations = {
+        en: { error: 'Translation loading failed' },
+        pl: { error: 'Błąd ładowania tłumaczeń' },
+        nl: { error: 'Vertaling laden mislukt' }
+      };
+      
+      // Still try to set the language with fallback
+      try {
+        setLanguage(currentLang);
+      } catch (fallbackError) {
+        console.error('Failed to set fallback language:', fallbackError);
+      }
     }
   }
 
@@ -171,7 +189,6 @@
       // Check if clicked element or its parent is a language button
       const langBtn = event.target.closest('.lang-btn');
       if (langBtn && langBtn.dataset.lang) {
-        console.log('[translations] Language button clicked:', langBtn.dataset.lang);
         setLanguage(langBtn.dataset.lang);
       }
     });
