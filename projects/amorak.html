@@ -876,51 +876,438 @@
     
     /* === RESPONSIVE === */
     @media (max-width: 768px) {
-      .back-button {
+      .content {
+        padding: 1.5rem;
+      }
+      
+      .back-button, .lang-switcher {
         top: 1rem;
         left: 1rem;
+        right: 1rem;
+      }
+      
+      .lang-switcher {
+        right: 1rem;
+        left: auto;
+        gap: 0.4rem;
+        padding: 0.4rem;
+      }
+      
+      .lang-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+      }
+      
+      .back-button {
         padding: 0.6rem 1.2rem;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        gap: 0.6rem;
       }
       
       .hero {
-        padding: 4rem 0 2rem;
+        padding: 3rem 0 2rem;
+        margin-bottom: 2rem;
       }
       
       .hero h1 {
-        font-size: 3rem;
+        font-size: clamp(2.5rem, 8vw, 3rem);
+        margin-bottom: 0.75rem;
+      }
+      
+      .hero .subtitle-small {
+        font-size: 0.5em;
+        margin-top: 0.6rem;
+      }
+      
+      .hero .subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+      
+      .tags {
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+      }
+      
+      .tags span {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        border-radius: 20px;
       }
       
       .row, .row.reverse {
         flex-direction: column;
-        gap: 2rem;
-        margin: 3rem 0;
+        gap: 1.5rem;
+        margin: 2.5rem 0;
       }
       
       .row-text h3 {
-        font-size: 1.8rem;
+        font-size: clamp(1.5rem, 6vw, 1.8rem);
+        margin-bottom: 0.75rem;
+        padding-left: 0.75rem;
+      }
+      
+      .row-text p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+      }
+      
+      .row-text li {
+        font-size: 0.85rem;
+        padding: 0.5rem 0 0.5rem 1.5rem;
       }
       
       .stats h3, .gallery h3 {
-        font-size: 2rem;
+        font-size: clamp(1.75rem, 6vw, 2rem);
+        margin-bottom: 2rem;
       }
       
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+      
+      .stat-card {
+        padding: 1.75rem 1.25rem;
+        border-radius: 10px;
+      }
+      
+      .stat-value {
+        font-size: 2.5rem;
+        margin-bottom: 0.4rem;
+      }
+      
+      .stat-label {
+        font-size: 0.8rem;
+      }
+      
+      .challenge-cards-amorak {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      
+      .challenge-card-amorak {
+        padding: 1.5rem;
+        border-radius: 12px;
+      }
+      
+      .challenge-icon-amorak {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+      }
+      
+      .challenge-card-amorak h4 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      
+      .challenge-content-amorak p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+      }
+      
+      .challenge-label-amorak {
+        font-size: 0.75rem;
+        margin-bottom: 0.4rem;
       }
       
       .gallery-grid {
         grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      
+      .gallery-item img {
+        height: 200px;
+      }
+      
+      .button {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
       }
     }
     
     @media (max-width: 480px) {
+      .content {
+        padding: 1rem;
+      }
+      
+      .back-button, .lang-switcher {
+        top: 0.75rem;
+        left: 0.75rem;
+        right: 0.75rem;
+      }
+      
+      .lang-switcher {
+        right: 0.75rem;
+        left: auto;
+        gap: 0.3rem;
+        padding: 0.3rem;
+      }
+      
+      .lang-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+      }
+      
+      .back-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        gap: 0.5rem;
+      }
+      
+      .hero {
+        padding: 2.5rem 0 1.75rem;
+        margin-bottom: 1.5rem;
+      }
+      
       .hero h1 {
-        font-size: 2.2rem;
+        font-size: clamp(2rem, 8vw, 2.2rem);
+        margin-bottom: 0.6rem;
+      }
+      
+      .hero .subtitle-small {
+        font-size: 0.45em;
+        margin-top: 0.5rem;
+      }
+      
+      .hero .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.25rem;
+        line-height: 1.5;
+      }
+      
+      .tags {
+        gap: 0.6rem;
+        margin-top: 1.25rem;
+      }
+      
+      .tags span {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        border-radius: 18px;
+      }
+      
+      .row, .row.reverse {
+        gap: 1.25rem;
+        margin: 2rem 0;
+      }
+      
+      .row-text h3 {
+        font-size: clamp(1.25rem, 6vw, 1.5rem);
+        margin-bottom: 0.6rem;
+        padding-left: 0.6rem;
+      }
+      
+      .row-text p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+      }
+      
+      .row-text li {
+        font-size: 0.8rem;
+        padding: 0.4rem 0 0.4rem 1.25rem;
+      }
+      
+      .stats h3, .gallery h3 {
+        font-size: clamp(1.5rem, 6vw, 1.75rem);
+        margin-bottom: 1.5rem;
       }
       
       .stats-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .stat-card {
+        padding: 1.5rem 1rem;
+        border-radius: 8px;
+      }
+      
+      .stat-value {
+        font-size: 2.2rem;
+        margin-bottom: 0.3rem;
+      }
+      
+      .stat-label {
+        font-size: 0.75rem;
+      }
+      
+      .challenge-card-amorak {
+        padding: 1.25rem;
+        border-radius: 10px;
+      }
+      
+      .challenge-icon-amorak {
+        font-size: 1.75rem;
+        margin-bottom: 0.6rem;
+      }
+      
+      .challenge-card-amorak h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+      }
+      
+      .challenge-content-amorak p {
+        font-size: 0.8rem;
+        line-height: 1.5;
+      }
+      
+      .challenge-label-amorak {
+        font-size: 0.7rem;
+        margin-bottom: 0.3rem;
+      }
+      
+      .gallery-item img {
+        height: 180px;
+      }
+      
+      .button {
+        padding: 0.7rem 1.75rem;
+        font-size: 0.85rem;
+      }
+    }
+    
+    @media (max-width: 374px) {
+      .content {
+        padding: 0.75rem;
+      }
+      
+      .back-button, .lang-switcher {
+        top: 0.5rem;
+        left: 0.5rem;
+        right: 0.5rem;
+      }
+      
+      .lang-switcher {
+        right: 0.5rem;
+        left: auto;
+        gap: 0.25rem;
+        padding: 0.25rem;
+      }
+      
+      .lang-btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.65rem;
+      }
+      
+      .back-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.7rem;
+        gap: 0.4rem;
+      }
+      
+      .hero {
+        padding: 2rem 0 1.5rem;
+        margin-bottom: 1.25rem;
+      }
+      
+      .hero h1 {
+        font-size: clamp(1.75rem, 8vw, 2rem);
+        margin-bottom: 0.5rem;
+      }
+      
+      .hero .subtitle-small {
+        font-size: 0.4em;
+        margin-top: 0.4rem;
+      }
+      
+      .hero .subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+      }
+      
+      .tags {
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+      
+      .tags span {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.7rem;
+        border-radius: 15px;
+      }
+      
+      .row, .row.reverse {
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      
+      .row-text h3 {
+        font-size: clamp(1rem, 6vw, 1.25rem);
+        margin-bottom: 0.5rem;
+        padding-left: 0.5rem;
+      }
+      
+      .row-text p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+      }
+      
+      .row-text li {
+        font-size: 0.75rem;
+        padding: 0.35rem 0 0.35rem 1rem;
+      }
+      
+      .stats h3, .gallery h3 {
+        font-size: clamp(1.25rem, 6vw, 1.5rem);
+        margin-bottom: 1.25rem;
+      }
+      
+      .stats-grid {
+        gap: 0.8rem;
+      }
+      
+      .stat-card {
+        padding: 1.25rem 0.8rem;
+        border-radius: 6px;
+      }
+      
+      .stat-value {
+        font-size: 2rem;
+        margin-bottom: 0.25rem;
+      }
+      
+      .stat-label {
+        font-size: 0.7rem;
+      }
+      
+      .challenge-card-amorak {
+        padding: 1rem;
+        border-radius: 8px;
+      }
+      
+      .challenge-icon-amorak {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .challenge-card-amorak h4 {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+      }
+      
+      .challenge-content-amorak p {
+        font-size: 0.75rem;
+        line-height: 1.4;
+      }
+      
+      .challenge-label-amorak {
+        font-size: 0.65rem;
+        margin-bottom: 0.25rem;
+      }
+      
+      .gallery-item img {
+        height: 160px;
+      }
+      
+      .button {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.8rem;
       }
     }
     

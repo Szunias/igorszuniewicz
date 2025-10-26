@@ -393,31 +393,35 @@
     /* === RESPONSIVE === */
     @media (max-width: 1024px) {
       .projects-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.25rem;
       }
     }
     
     @media (max-width: 768px) {
       .container {
-        padding: 0 1.5rem;
+        padding: 0 1.25rem;
+      }
+      
+      .page-content {
+        padding: 8rem 0 3rem;
       }
       
       .page-title {
-        font-size: clamp(2.5rem, 8vw, 3.5rem);
+        font-size: clamp(2rem, 8vw, 2.75rem);
       }
       
       .page-description {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
       
       .projects-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.25rem;
       }
       
       .project-card {
-        border-radius: 20px;
+        border-radius: 18px;
       }
       
       .project-image {
@@ -425,106 +429,182 @@
       }
       
       .project-content {
-        padding: 1.5rem;
-      }
-      
-      .project-title {
-        font-size: 1.35rem;
-      }
-      
-      .project-description {
-        font-size: 0.9rem;
-      }
-      
-      .filters {
-        gap: 0.75rem;
-        margin-bottom: 2rem;
-      }
-      
-      .filter-btn {
-        padding: 0.65rem 1.2rem;
-        font-size: 0.85rem;
-      }
-      
-      .coming-soon-text {
-        font-size: 1rem;
-        padding: 0.65rem 1.2rem;
-      }
-      
-      .coming-soon-subtitle {
-        font-size: 0.8rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 1rem;
-      }
-      
-      .page-title {
-        font-size: clamp(2rem, 10vw, 2.5rem);
-        margin-bottom: 0.75rem;
-      }
-      
-      .page-description {
-        font-size: 1rem;
-        margin-bottom: 1.5rem;
-      }
-      
-      .filters {
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-      }
-      
-      .filter-btn {
-        padding: 0.6rem 1rem;
-        font-size: 0.8rem;
-        border-radius: 20px;
-      }
-      
-      .projects-grid {
-        gap: 1.25rem;
-      }
-      
-      .project-card {
-        border-radius: 16px;
-      }
-      
-      .project-content {
         padding: 1.25rem;
       }
       
       .project-title {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
       }
       
       .project-description {
-        font-size: 0.875rem;
-        line-height: 1.6;
+        font-size: 0.85rem;
       }
       
-      .project-badge {
-        top: 0.75rem;
-        right: 0.75rem;
-        padding: 0.4rem 0.8rem;
-        font-size: 0.7rem;
-        border-radius: 16px;
+      .filters {
+        gap: 0.6rem;
+        margin-bottom: 1.75rem;
+      }
+      
+      .filter-btn {
+        padding: 0.6rem 1.1rem;
+        font-size: 0.8rem;
       }
       
       .coming-soon-text {
-        font-size: 0.9rem;
-        padding: 0.6rem 1rem;
-        border-radius: 10px;
+        font-size: 0.95rem;
+        padding: 0.6rem 1.1rem;
       }
       
       .coming-soon-subtitle {
         font-size: 0.75rem;
       }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 0.875rem;
+      }
+      
+      .page-content {
+        padding: 7rem 0 2.5rem;
+      }
+      
+      .page-title {
+        font-size: clamp(1.5rem, 8vw, 2rem);
+        margin-bottom: 0.6rem;
+      }
+      
+      .page-description {
+        font-size: 0.9rem;
+        margin-bottom: 1.25rem;
+      }
+      
+      .filters {
+        gap: 0.4rem;
+        margin-bottom: 1.25rem;
+      }
+      
+      .filter-btn {
+        padding: 0.5rem 0.85rem;
+        font-size: 0.75rem;
+        border-radius: 18px;
+      }
+      
+      .projects-grid {
+        gap: 1rem;
+      }
+      
+      .project-card {
+        border-radius: 14px;
+      }
+      
+      .project-content {
+        padding: 1rem;
+      }
+      
+      .project-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+      }
+      
+      .project-description {
+        font-size: 0.8rem;
+        line-height: 1.5;
+      }
+      
+      .project-badge {
+        top: 0.65rem;
+        right: 0.65rem;
+        padding: 0.35rem 0.7rem;
+        font-size: 0.65rem;
+        border-radius: 14px;
+      }
+      
+      .coming-soon-text {
+        font-size: 0.85rem;
+        padding: 0.55rem 0.9rem;
+        border-radius: 8px;
+      }
+      
+      .coming-soon-subtitle {
+        font-size: 0.7rem;
+      }
       
       /* Touch-friendly hover states */
       .project-card:active {
         transform: scale(0.98);
+      }
+    }
+
+    /* === VERY SMALL MOBILE (320px-374px) === */
+    @media (max-width: 374px) {
+      .container {
+        padding: 0 0.75rem;
+      }
+      
+      .page-content {
+        padding: 6rem 0 2rem;
+      }
+      
+      .page-title {
+        font-size: clamp(1.25rem, 8vw, 1.5rem);
+        margin-bottom: 0.5rem;
+      }
+      
+      .page-description {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+      }
+      
+      .filters {
+        gap: 0.3rem;
+        margin-bottom: 1rem;
+      }
+      
+      .filter-btn {
+        padding: 0.45rem 0.75rem;
+        font-size: 0.7rem;
+        border-radius: 16px;
+      }
+      
+      .projects-grid {
+        gap: 0.75rem;
+      }
+      
+      .project-card {
+        border-radius: 12px;
+      }
+      
+      .project-content {
+        padding: 0.875rem;
+      }
+      
+      .project-title {
+        font-size: 1rem;
+        margin-bottom: 0.35rem;
+      }
+      
+      .project-description {
+        font-size: 0.75rem;
+        line-height: 1.4;
+      }
+      
+      .project-badge {
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.6rem;
+        border-radius: 12px;
+      }
+      
+      .coming-soon-text {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+        border-radius: 6px;
+      }
+      
+      .coming-soon-subtitle {
+        font-size: 0.65rem;
       }
     }
   </style>

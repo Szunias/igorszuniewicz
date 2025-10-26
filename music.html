@@ -829,29 +829,73 @@
 
     /* === RESPONSIVE === */
     @media (max-width: 768px) {
+      .container {
+        padding: 0 1.25rem;
+      }
+
+      .page-content {
+        padding: 8rem 0 3rem;
+      }
+
+      .page-title {
+        font-size: clamp(2rem, 8vw, 2.75rem);
+      }
+
+      .page-description {
+        font-size: 1rem;
+      }
+
       .now-playing {
         flex-direction: column;
+        gap: 1.5rem;
       }
 
       .album-art {
         width: 100%;
         height: 200px;
+        border-radius: 16px;
       }
 
       .playlist-header {
         flex-direction: column;
         align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .playlist-title {
+        font-size: 1.5rem;
+      }
+
+      .filter-tags {
+        gap: 0.5rem;
+      }
+
+      .filter-tag {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        border-radius: 20px;
       }
 
       .playlist-item {
         grid-template-columns: auto 1fr;
         gap: 1rem;
         padding: 1rem;
+        border-radius: 12px;
       }
 
       .playlist-cover {
         width: 60px;
         height: 60px;
+        border-radius: 8px;
+      }
+
+      .playlist-track-title {
+        font-size: 1rem;
+      }
+
+      .playlist-track-artist {
+        font-size: 0.85rem;
       }
 
       .playlist-track-desc {
@@ -863,6 +907,159 @@
         justify-self: end;
         align-self: end;
         font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 0.875rem;
+      }
+
+      .page-content {
+        padding: 7rem 0 2.5rem;
+      }
+
+      .page-title {
+        font-size: clamp(1.5rem, 8vw, 2rem);
+        margin-bottom: 0.75rem;
+      }
+
+      .page-description {
+        font-size: 0.9rem;
+      }
+
+      .now-playing {
+        gap: 1.25rem;
+      }
+
+      .album-art {
+        height: 180px;
+        border-radius: 12px;
+      }
+
+      .playlist-header {
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .playlist-title {
+        font-size: 1.25rem;
+      }
+
+      .filter-tags {
+        gap: 0.4rem;
+      }
+
+      .filter-tag {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.75rem;
+        border-radius: 18px;
+      }
+
+      .playlist-item {
+        gap: 0.75rem;
+        padding: 0.875rem;
+        border-radius: 10px;
+      }
+
+      .playlist-cover {
+        width: 50px;
+        height: 50px;
+        border-radius: 6px;
+      }
+
+      .playlist-track-title {
+        font-size: 0.95rem;
+      }
+
+      .playlist-track-artist {
+        font-size: 0.8rem;
+      }
+
+      .playlist-track-desc {
+        font-size: 0.75rem;
+        line-height: 1.4;
+      }
+
+      .playlist-duration {
+        font-size: 0.75rem;
+      }
+    }
+
+    /* === VERY SMALL MOBILE (320px-374px) === */
+    @media (max-width: 374px) {
+      .container {
+        padding: 0 0.75rem;
+      }
+
+      .page-content {
+        padding: 6rem 0 2rem;
+      }
+
+      .page-title {
+        font-size: clamp(1.25rem, 8vw, 1.5rem);
+        margin-bottom: 0.6rem;
+      }
+
+      .page-description {
+        font-size: 0.85rem;
+      }
+
+      .now-playing {
+        gap: 1rem;
+      }
+
+      .album-art {
+        height: 160px;
+        border-radius: 10px;
+      }
+
+      .playlist-header {
+        gap: 0.6rem;
+        margin-bottom: 1rem;
+      }
+
+      .playlist-title {
+        font-size: 1.1rem;
+      }
+
+      .filter-tags {
+        gap: 0.3rem;
+      }
+
+      .filter-tag {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+        border-radius: 16px;
+      }
+
+      .playlist-item {
+        gap: 0.6rem;
+        padding: 0.75rem;
+        border-radius: 8px;
+      }
+
+      .playlist-cover {
+        width: 45px;
+        height: 45px;
+        border-radius: 6px;
+      }
+
+      .playlist-track-title {
+        font-size: 0.9rem;
+      }
+
+      .playlist-track-artist {
+        font-size: 0.75rem;
+      }
+
+      .playlist-track-desc {
+        font-size: 0.7rem;
+        line-height: 1.3;
+      }
+
+      .playlist-duration {
+        font-size: 0.7rem;
       }
     }
   </style>

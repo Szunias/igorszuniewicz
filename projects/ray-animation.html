@@ -846,51 +846,546 @@
     
     /* === RESPONSIVE === */
     @media (max-width: 768px) {
-      .back-button {
+      .content {
+        padding: 1.5rem;
+      }
+      
+      .back-button, .lang-switcher {
         top: 1rem;
         left: 1rem;
+        right: 1rem;
+      }
+      
+      .lang-switcher {
+        right: 1rem;
+        left: auto;
+        gap: 0.4rem;
+        padding: 0.4rem;
+      }
+      
+      .lang-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+      }
+      
+      .back-button {
         padding: 0.6rem 1.2rem;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        gap: 0.6rem;
       }
       
       .hero {
-        padding: 4rem 0 2rem;
+        padding: 3rem 0 1.5rem;
       }
       
       .hero h1 {
-        font-size: 3rem;
+        font-size: clamp(2.5rem, 8vw, 3rem);
+        margin-bottom: 0.75rem;
+      }
+      
+      .hero .subtitle-small {
+        font-size: 0.5em;
+        margin-top: 0.6rem;
+        letter-spacing: 0.15em;
+      }
+      
+      .hero .subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+      
+      .tags {
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+      }
+      
+      .tags span {
+        padding: 0.5rem 1.1rem;
+        font-size: 0.8rem;
+        border-radius: 20px;
       }
       
       .row, .row.reverse {
         flex-direction: column;
-        gap: 2rem;
-        margin: 3rem 0;
+        gap: 1.5rem;
+        margin: 2.5rem 0;
       }
       
       .row-text h3 {
-        font-size: 1.8rem;
+        font-size: clamp(1.5rem, 6vw, 1.8rem);
+        margin-bottom: 0.75rem;
+        padding-left: 0.75rem;
       }
       
-      .stats h3, .gallery h3 {
-        font-size: 2rem;
+      .row-text p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+      }
+      
+      .row-text li {
+        padding: 0.5rem 0 0.5rem 1.5rem;
+        font-size: 0.85rem;
+        line-height: 1.6;
+      }
+      
+      .audio-player {
+        width: 180px;
+        height: 180px;
+        margin: 1.25rem auto;
+      }
+      
+      .audio-player .inner {
+        inset: 15px;
+      }
+      
+      .audio-player button {
+        width: 80px;
+        height: 80px;
+      }
+      
+      .audio-player button .tri {
+        border-left: 22px solid #0a0a0a;
+        border-top: 14px solid transparent;
+        border-bottom: 14px solid transparent;
+        margin-left: 2px;
+      }
+      
+      .audio-player button.paused .tri::before,
+      .audio-player button.paused .tri::after {
+        width: 5px;
+        height: 20px;
+      }
+      
+      .audio-player button.paused .tri::before {
+        left: -6px;
+      }
+      
+      .audio-player button.paused .tri::after {
+        left: 3px;
+      }
+      
+      .stats {
+        margin: 3rem 0;
+      }
+      
+      .stats h3 {
+        font-size: clamp(1.75rem, 6vw, 2rem);
+        margin-bottom: 2rem;
       }
       
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+      }
+      
+      .stat-card {
+        padding: 1.75rem 1.25rem;
+        border-radius: 10px;
+      }
+      
+      .stat-value {
+        font-size: 2.5rem;
+        margin-bottom: 0.4rem;
+      }
+      
+      .stat-label {
+        font-size: 0.8rem;
+      }
+      
+      .gallery {
+        margin: 3rem 0;
+      }
+      
+      .gallery h3 {
+        font-size: clamp(1.75rem, 6vw, 2rem);
+        margin-bottom: 2rem;
       }
       
       .gallery-grid {
         grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      
+      .gallery-item img {
+        height: 200px;
+      }
+      
+      .button-container {
+        margin: 3rem 0;
+      }
+      
+      .button {
+        padding: 0.9rem 2rem;
+        font-size: 0.9rem;
+      }
+      
+      .footer {
+        padding: 2rem 0;
+        margin-top: 3rem;
+        font-size: 0.85rem;
       }
     }
     
     @media (max-width: 480px) {
+      .content {
+        padding: 1rem;
+      }
+      
+      .back-button, .lang-switcher {
+        top: 0.75rem;
+        left: 0.75rem;
+        right: 0.75rem;
+      }
+      
+      .lang-switcher {
+        right: 0.75rem;
+        left: auto;
+        gap: 0.3rem;
+        padding: 0.3rem;
+      }
+      
+      .lang-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+      }
+      
+      .back-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        gap: 0.5rem;
+      }
+      
+      .hero {
+        padding: 2.5rem 0 1.25rem;
+      }
+      
       .hero h1 {
-        font-size: 2.2rem;
+        font-size: clamp(2rem, 8vw, 2.5rem);
+        margin-bottom: 0.6rem;
+      }
+      
+      .hero .subtitle-small {
+        font-size: 0.45em;
+        margin-top: 0.5rem;
+        letter-spacing: 0.1em;
+      }
+      
+      .hero .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.25rem;
+        line-height: 1.5;
+      }
+      
+      .tags {
+        gap: 0.6rem;
+        margin-top: 1.25rem;
+      }
+      
+      .tags span {
+        padding: 0.4rem 0.9rem;
+        font-size: 0.75rem;
+        border-radius: 16px;
+      }
+      
+      .row, .row.reverse {
+        gap: 1.25rem;
+        margin: 2rem 0;
+      }
+      
+      .row-text h3 {
+        font-size: clamp(1.25rem, 6vw, 1.5rem);
+        margin-bottom: 0.6rem;
+        padding-left: 0.6rem;
+      }
+      
+      .row-text p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+      }
+      
+      .row-text li {
+        padding: 0.4rem 0 0.4rem 1.25rem;
+        font-size: 0.8rem;
+        line-height: 1.5;
+      }
+      
+      .audio-player {
+        width: 160px;
+        height: 160px;
+        margin: 1rem auto;
+      }
+      
+      .audio-player .inner {
+        inset: 12px;
+      }
+      
+      .audio-player button {
+        width: 70px;
+        height: 70px;
+      }
+      
+      .audio-player button .tri {
+        border-left: 18px solid #0a0a0a;
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        margin-left: 2px;
+      }
+      
+      .audio-player button.paused .tri::before,
+      .audio-player button.paused .tri::after {
+        width: 4px;
+        height: 18px;
+      }
+      
+      .audio-player button.paused .tri::before {
+        left: -5px;
+      }
+      
+      .audio-player button.paused .tri::after {
+        left: 2px;
+      }
+      
+      .stats {
+        margin: 2.5rem 0;
+      }
+      
+      .stats h3 {
+        font-size: clamp(1.5rem, 6vw, 1.75rem);
+        margin-bottom: 1.5rem;
       }
       
       .stats-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .stat-card {
+        padding: 1.5rem 1rem;
+        border-radius: 8px;
+      }
+      
+      .stat-value {
+        font-size: 2rem;
+        margin-bottom: 0.3rem;
+      }
+      
+      .stat-label {
+        font-size: 0.75rem;
+      }
+      
+      .gallery {
+        margin: 2.5rem 0;
+      }
+      
+      .gallery h3 {
+        font-size: clamp(1.5rem, 6vw, 1.75rem);
+        margin-bottom: 1.5rem;
+      }
+      
+      .gallery-grid {
+        gap: 1rem;
+      }
+      
+      .gallery-item img {
+        height: 180px;
+      }
+      
+      .button-container {
+        margin: 2.5rem 0;
+      }
+      
+      .button {
+        padding: 0.8rem 1.75rem;
+        font-size: 0.85rem;
+      }
+      
+      .footer {
+        padding: 1.75rem 0;
+        margin-top: 2.5rem;
+        font-size: 0.8rem;
+      }
+    }
+    
+    @media (max-width: 374px) {
+      .content {
+        padding: 0.75rem;
+      }
+      
+      .back-button, .lang-switcher {
+        top: 0.5rem;
+        left: 0.5rem;
+        right: 0.5rem;
+      }
+      
+      .lang-switcher {
+        right: 0.5rem;
+        left: auto;
+        gap: 0.25rem;
+        padding: 0.25rem;
+      }
+      
+      .lang-btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.65rem;
+      }
+      
+      .back-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.7rem;
+        gap: 0.4rem;
+      }
+      
+      .hero {
+        padding: 2rem 0 1rem;
+      }
+      
+      .hero h1 {
+        font-size: clamp(1.75rem, 8vw, 2rem);
+        margin-bottom: 0.5rem;
+      }
+      
+      .hero .subtitle-small {
+        font-size: 0.4em;
+        margin-top: 0.4rem;
+        letter-spacing: 0.08em;
+      }
+      
+      .hero .subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+      }
+      
+      .tags {
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+      
+      .tags span {
+        padding: 0.35rem 0.8rem;
+        font-size: 0.7rem;
+        border-radius: 14px;
+      }
+      
+      .row, .row.reverse {
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      
+      .row-text h3 {
+        font-size: clamp(1.1rem, 6vw, 1.25rem);
+        margin-bottom: 0.5rem;
+        padding-left: 0.5rem;
+      }
+      
+      .row-text p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+      }
+      
+      .row-text li {
+        padding: 0.3rem 0 0.3rem 1rem;
+        font-size: 0.75rem;
+        line-height: 1.4;
+      }
+      
+      .audio-player {
+        width: 140px;
+        height: 140px;
+        margin: 0.8rem auto;
+      }
+      
+      .audio-player .inner {
+        inset: 10px;
+      }
+      
+      .audio-player button {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .audio-player button .tri {
+        border-left: 16px solid #0a0a0a;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        margin-left: 1px;
+      }
+      
+      .audio-player button.paused .tri::before,
+      .audio-player button.paused .tri::after {
+        width: 3px;
+        height: 16px;
+      }
+      
+      .audio-player button.paused .tri::before {
+        left: -4px;
+      }
+      
+      .audio-player button.paused .tri::after {
+        left: 1px;
+      }
+      
+      .stats {
+        margin: 2rem 0;
+      }
+      
+      .stats h3 {
+        font-size: clamp(1.25rem, 6vw, 1.5rem);
+        margin-bottom: 1.25rem;
+      }
+      
+      .stats-grid {
+        gap: 0.8rem;
+      }
+      
+      .stat-card {
+        padding: 1.25rem 0.8rem;
+        border-radius: 6px;
+      }
+      
+      .stat-value {
+        font-size: 1.75rem;
+        margin-bottom: 0.25rem;
+      }
+      
+      .stat-label {
+        font-size: 0.7rem;
+      }
+      
+      .gallery {
+        margin: 2rem 0;
+      }
+      
+      .gallery h3 {
+        font-size: clamp(1.25rem, 6vw, 1.5rem);
+        margin-bottom: 1.25rem;
+      }
+      
+      .gallery-grid {
+        gap: 0.8rem;
+      }
+      
+      .gallery-item img {
+        height: 160px;
+      }
+      
+      .button-container {
+        margin: 2rem 0;
+      }
+      
+      .button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.8rem;
+      }
+      
+      .footer {
+        padding: 1.5rem 0;
+        margin-top: 2rem;
+        font-size: 0.75rem;
       }
     }
     

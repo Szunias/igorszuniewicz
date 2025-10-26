@@ -452,33 +452,436 @@
 
     /* === RESPONSIVE === */
     @media (max-width: 768px) {
+      .container {
+        padding: 0 1.25rem !important;
+      }
+
       .hero {
-        padding: 8rem 0 3rem;
+        padding: 7rem 0 2.5rem;
+      }
+
+      .avatar {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+        margin-bottom: 0.75rem;
+      }
+
+      .hero .subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
       }
 
       .value-props {
         grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+
+      .value-card {
+        padding: 1.25rem;
+        border-radius: 10px;
+      }
+
+      .value-card h3 {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .value-card p {
+        font-size: 0.9rem;
+      }
+
+      .skills-section {
+        padding: 2.5rem 0;
+      }
+
+      .section-title {
+        font-size: clamp(1.75rem, 6vw, 2.25rem);
+        margin-bottom: 2rem;
       }
 
       .skills-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .skill-category {
+        padding: 1.5rem;
+        border-radius: 16px;
+      }
+
+      .skill-category h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      .skill-tags {
+        gap: 0.5rem;
+      }
+
+      .skill-tag {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        border-radius: 12px;
       }
 
       .stats {
         flex-direction: column;
-        gap: 2rem;
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+        margin: 1.5rem 0;
+      }
+
+      .stat-number {
+        font-size: 2.25rem;
+      }
+
+      .stat-label {
+        font-size: 0.8rem;
       }
 
       .timeline {
-        padding-left: 2rem;
+        padding-left: 1.5rem;
       }
 
       .timeline-dot {
-        left: -2rem;
+        left: -1.5rem;
+        width: 12px;
+        height: 12px;
+      }
+
+      .timeline-item {
+        margin-bottom: 2rem;
+        padding-left: 1.5rem;
+      }
+
+      .timeline-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-item p {
+        font-size: 0.9rem;
       }
 
       .philosophy-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .philosophy-card {
+        padding: 1.5rem;
+        border-radius: 16px;
+      }
+
+      .philosophy-number {
+        font-size: 2.25rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .philosophy-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .philosophy-card p {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem !important;
+      }
+
+      .hero {
+        padding: 6rem 0 2rem;
+      }
+
+      .avatar {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 1.25rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        margin-bottom: 0.6rem;
+      }
+
+      .hero .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.25rem;
+        line-height: 1.5;
+      }
+
+      .value-props {
+        gap: 0.75rem;
+        margin: 1.25rem 0;
+      }
+
+      .value-card {
+        padding: 1rem;
+        border-radius: 8px;
+      }
+
+      .value-card h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.35rem;
+      }
+
+      .value-card p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+
+      .skills-section {
+        padding: 2rem 0;
+      }
+
+      .section-title {
+        font-size: clamp(1.5rem, 6vw, 1.75rem);
+        margin-bottom: 1.5rem;
+      }
+
+      .skills-grid {
+        gap: 1.25rem;
+        margin-top: 1.5rem;
+      }
+
+      .skill-category {
+        padding: 1.25rem;
+        border-radius: 12px;
+      }
+
+      .skill-category h3 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .skill-tags {
+        gap: 0.4rem;
+      }
+
+      .skill-tag {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.75rem;
+        border-radius: 10px;
+      }
+
+      .stats {
+        gap: 1.25rem;
+        padding: 1.25rem 0;
+        margin: 1.25rem 0;
+      }
+
+      .stat-number {
+        font-size: 1.75rem;
+      }
+
+      .stat-label {
+        font-size: 0.75rem;
+      }
+
+      .timeline {
+        padding-left: 1.25rem;
+      }
+
+      .timeline-dot {
+        left: -1.25rem;
+        width: 10px;
+        height: 10px;
+      }
+
+      .timeline-item {
+        margin-bottom: 1.5rem;
+        padding-left: 1.25rem;
+      }
+
+      .timeline-item h3 {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .timeline-item p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+
+      .philosophy-grid {
+        gap: 1.25rem;
+      }
+
+      .philosophy-card {
+        padding: 1.25rem;
+        border-radius: 12px;
+      }
+
+      .philosophy-number {
+        font-size: 1.75rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .philosophy-card h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .philosophy-card p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+      }
+    }
+
+    /* === VERY SMALL MOBILE (320px-374px) === */
+    @media (max-width: 374px) {
+      .container {
+        padding: 0 0.75rem !important;
+      }
+
+      .hero {
+        padding: 5.5rem 0 1.75rem;
+      }
+
+      .avatar {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 1rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.25rem, 6vw, 1.5rem);
+        margin-bottom: 0.5rem;
+      }
+
+      .hero .subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+      }
+
+      .value-props {
+        gap: 0.6rem;
+        margin: 1rem 0;
+      }
+
+      .value-card {
+        padding: 0.875rem;
+        border-radius: 6px;
+      }
+
+      .value-card h3 {
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .value-card p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+      }
+
+      .skills-section {
+        padding: 1.75rem 0;
+      }
+
+      .section-title {
+        font-size: clamp(1.25rem, 6vw, 1.5rem);
+        margin-bottom: 1.25rem;
+      }
+
+      .skills-grid {
+        gap: 1rem;
+        margin-top: 1.25rem;
+      }
+
+      .skill-category {
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      .skill-category h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .skill-tags {
+        gap: 0.3rem;
+      }
+
+      .skill-tag {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+        border-radius: 8px;
+      }
+
+      .stats {
+        gap: 1rem;
+        padding: 1rem 0;
+        margin: 1rem 0;
+      }
+
+      .stat-number {
+        font-size: 1.5rem;
+      }
+
+      .stat-label {
+        font-size: 0.7rem;
+      }
+
+      .timeline {
+        padding-left: 1rem;
+      }
+
+      .timeline-dot {
+        left: -1rem;
+        width: 8px;
+        height: 8px;
+      }
+
+      .timeline-item {
+        margin-bottom: 1.25rem;
+        padding-left: 1rem;
+      }
+
+      .timeline-item h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.35rem;
+      }
+
+      .timeline-item p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+      }
+
+      .philosophy-grid {
+        gap: 1rem;
+      }
+
+      .philosophy-card {
+        padding: 1rem;
+        border-radius: 10px;
+      }
+
+      .philosophy-number {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .philosophy-card h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.4rem;
+      }
+
+      .philosophy-card p {
+        font-size: 0.8rem;
+        line-height: 1.4;
       }
     }
   </style>
