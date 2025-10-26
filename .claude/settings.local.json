@@ -2,7 +2,20 @@
   "permissions": {
     "allow": [
       "Bash(node -e:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(ffmpeg:*)",
+      "Bash(/c/ffmpeg/ffmpeg-n8.0-latest-win64-lgpl-8.0/bin/ffmpeg -version)",
+      "Bash(export FFMPEG=\"/c/ffmpeg/ffmpeg-n8.0-latest-win64-lgpl-8.0/bin/ffmpeg\":*)",
+      "Bash(for mp3 in assets/audio/tracks/*.mp3)",
+      "Bash(do m4a=\"$mp3%.mp3.m4a\")",
+      "Bash(\"$FFMPEG\" -i \"$mp3\" -c:a aac -b:a 256k -movflags +faststart \"$m4a\" -y)",
+      "Bash(done)",
+      "Bash(FFMPEG=\"/c/ffmpeg/ffmpeg-n8.0-latest-win64-lgpl-8.0/bin/ffmpeg\")",
+      "Bash(\"$FFMPEG\" -i \"assets/audio/tracks/Cage.mp3\" -c:a aac -b:a 256k -movflags +faststart \"assets/audio/tracks/Cage.m4a\" -y)",
+      "Bash(/c/ffmpeg/ffmpeg-n8.0-latest-win64-lgpl-8.0/bin/ffmpeg:*)",
+      "Bash(awk:*)"
     ],
     "deny": [],
     "ask": []

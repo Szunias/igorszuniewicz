@@ -20,6 +20,10 @@
     },
     "sources": [
       {
+        "url": "assets/audio/tracks/caplanetechno.m4a",
+        "type": "audio/mp4"
+      },
+      {
         "url": "assets/audio/tracks/caplanetechno.mp3",
         "type": "audio/mpeg"
       }
@@ -44,6 +48,10 @@
     },
     "sources": [
       {
+        "url": "assets/audio/tracks/Igor Szuniewicz - Astrophonic Dance.m4a",
+        "type": "audio/mp4"
+      },
+      {
         "url": "assets/audio/tracks/Igor Szuniewicz - Astrophonic Dance.mp3",
         "type": "audio/mpeg"
       }
@@ -67,6 +75,10 @@
       "nl": "Donkere techno — Splice vocals, beat van Arturia Analog Lab 5 en Pigments. 130 BPM, kick en bas in lage registers."
     },
     "sources": [
+      {
+        "url": "assets/audio/tracks/trans2.m4a",
+        "type": "audio/mp4"
+      },
       {
         "url": "assets/audio/tracks/trans2.mp3",
         "type": "audio/mpeg"
@@ -93,6 +105,10 @@
     },
     "sources": [
       {
+        "url": "assets/audio/tracks/ThatsItIgorSzuniewicz.m4a",
+        "type": "audio/mp4"
+      },
+      {
         "url": "assets/audio/tracks/ThatsItIgorSzuniewicz.mp3",
         "type": "audio/mpeg"
       }
@@ -116,6 +132,10 @@
       "nl": "Metal cover van Satie. 8-snarige gitaar in drop C, ambient pads, 60 BPM. Minimalistische melodie + zware riffs."
     },
     "sources": [
+      {
+        "url": "assets/audio/tracks/gnosienne1.m4a",
+        "type": "audio/mp4"
+      },
       {
         "url": "assets/audio/tracks/gnosienne1.mp3",
         "type": "audio/mpeg"
@@ -141,6 +161,10 @@
     },
     "sources": [
       {
+        "url": "assets/audio/tracks/syncopationsnew.m4a",
+        "type": "audio/mp4"
+      },
+      {
         "url": "assets/audio/tracks/syncopationsnew.mp3",
         "type": "audio/mpeg"
       }
@@ -159,6 +183,10 @@
     "date": "2025-02-15",
     "year": 2025,
     "sources": [
+      {
+        "url": "assets/audio/tracks/Cage.m4a",
+        "type": "audio/mp4"
+      },
       {
         "url": "assets/audio/tracks/Cage.mp3",
         "type": "audio/mpeg"
@@ -184,6 +212,10 @@
     "year": 2024,
     "sources": [
       {
+        "url": "assets/audio/tracks/Igor Szuniewicz - Cathedral Of Time.m4a",
+        "type": "audio/mp4"
+      },
+      {
         "url": "assets/audio/tracks/Igor Szuniewicz - Cathedral Of Time.mp3",
         "type": "audio/mpeg"
       }
@@ -207,6 +239,10 @@
     "date": "2024-03-01",
     "year": 2024,
     "sources": [
+      {
+        "url": "assets/audio/tracks/Igor-Szuniewicz-Inflow.m4a",
+        "type": "audio/mp4"
+      },
       {
         "url": "assets/audio/tracks/Igor-Szuniewicz-Inflow.mp3",
         "type": "audio/mpeg"
@@ -232,6 +268,10 @@
     "year": 2024,
     "sources": [
       {
+        "url": "assets/audio/tracks/EdgeOfLife.m4a",
+        "type": "audio/mp4"
+      },
+      {
         "url": "assets/audio/tracks/EdgeOfLife.mp3",
         "type": "audio/mpeg"
       }
@@ -254,6 +294,10 @@
     "date": "2024-04-01",
     "year": 2024,
     "sources": [
+      {
+        "url": "assets/audio/tracks/RayCreditsTheme.m4a",
+        "type": "audio/mp4"
+      },
       {
         "url": "assets/audio/tracks/RayCreditsTheme.mp3",
         "type": "audio/mpeg"
@@ -278,6 +322,10 @@
     "year": 2024,
     "sources": [
       {
+        "url": "assets/audio/tracks/RichterMainTheme.m4a",
+        "type": "audio/mp4"
+      },
+      {
         "url": "assets/audio/tracks/RichterMainTheme.mp3",
         "type": "audio/mpeg"
       }
@@ -300,6 +348,10 @@
     "date": "2024-01-01",
     "year": 2024,
     "sources": [
+      {
+        "url": "assets/audio/tracks/RunMainTheme.m4a",
+        "type": "audio/mp4"
+      },
       {
         "url": "assets/audio/tracks/RunMainTheme.mp3",
         "type": "audio/mpeg"
@@ -324,6 +376,10 @@
     "year": 2023,
     "sources": [
       {
+        "url": "assets/audio/tracks/XianClashMainTheme.m4a",
+        "type": "audio/mp4"
+      },
+      {
         "url": "assets/audio/tracks/XianClashMainTheme.mp3",
         "type": "audio/mpeg"
       }
@@ -347,6 +403,10 @@
     "date": "2023-11-01",
     "year": 2023,
     "sources": [
+      {
+        "url": "assets/audio/tracks/psy(2).m4a",
+        "type": "audio/mp4"
+      },
       {
         "url": "assets/audio/tracks/psy(2).mp3",
         "type": "audio/mpeg"
