@@ -1436,7 +1436,7 @@
   <!-- Demo Reel Section -->
   <section id="demo-reel" class="demo-reel-section">
     <div class="container">
-      <div class="demo-reel-container fade-in">
+      <div class="demo-reel-container">
         <div class="demo-reel-badge" data-i18n="demo_reel.badge">🎬 Audio Showcase</div>
         <h2 class="demo-reel-title" data-i18n="demo_reel.title">Demo Reel</h2>
         <p class="demo-reel-description" data-i18n="demo_reel.description">
@@ -1444,37 +1444,32 @@
           work. Highlighting real-time DSP, middleware integration, and adaptive soundscapes.
         </p>
 
-        <!-- Placeholder for Demo Reel Video/Player -->
+        <!-- Video Player -->
         <div class="demo-reel-player" id="demo-reel-player">
-          <div class="coming-soon-badge" data-i18n="demo_reel.coming_soon">Coming Soon</div>
-          <div class="demo-reel-placeholder">
-            <div class="demo-reel-icon">🎵</div>
-            <div class="demo-reel-placeholder-text" data-i18n="demo_reel.placeholder_title">Demo Reel In Production
-            </div>
-            <p class="demo-reel-placeholder-note" data-i18n="demo_reel.placeholder_note">
-              A comprehensive 2-3 minute audio showcase featuring game audio implementation,
-              sound design breakdowns, and middleware workflow demonstrations.
-            </p>
+          <div class="vimeo-wrapper">
+            <iframe 
+              src="https://player.vimeo.com/video/1131121335?badge=0&autopause=0&player_id=0&app_id=58479" 
+              frameborder="0" 
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+              style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+              title="Showreel"
+            ></iframe>
           </div>
-
-          <!-- Replace placeholder with embedded video when ready:
-          <video controls width="100%" height="100%">
-            <source src="assets/videos/demo-reel.mp4" type="video/mp4">
-            <source src="assets/videos/demo-reel.webm" type="video/webm">
-            Your browser does not support the video tag.
-          </video>
-          -->
-
-          <!-- Or use YouTube/Vimeo embed:
-          <iframe 
-            width="100%" 
-            height="100%" 
-            src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
-          -->
+          <script src="https://player.vimeo.com/api/player.js"></script>
+          
+          <!-- Fallback for local video if Vimeo fails -->
+          <noscript>
+            <video 
+              class="showreel-video-fallback" 
+              controls
+              preload="auto"
+              poster="assets/images/covers/nottoday.jpg"
+              style="width: 100% !important; max-width: 100% !important; height: auto !important;"
+            >
+              <source src="assets/videos/Showreel.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </noscript>
         </div>
       </div>
     </div>
@@ -2032,6 +2027,9 @@
       // Mobile lang switcher sync with main - handled by event delegation above
     })();
   </script>
+
+  <!-- Custom Video Player Script - Disabled, using native controls -->
+  <!-- <script src="assets/js/custom-video-player.js" defer></script> -->
 
 </body>
 
