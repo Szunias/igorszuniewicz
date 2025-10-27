@@ -40,7 +40,7 @@
       this.setupCustomMetrics();
       this.scheduleReporting();
 
-      console.log('Performance monitoring initialized');
+      // Performance monitoring initialized
     },
 
     setupWebVitalsMonitoring: function() {
@@ -64,7 +64,7 @@
 
           this.observers.lcp.observe({ entryTypes: ['largest-contentful-paint'] });
         } catch (e) {
-          console.warn('LCP observer not supported');
+          // LCP observer not supported
         }
 
         // First Input Delay (FID)
@@ -85,7 +85,7 @@
 
           this.observers.fid.observe({ entryTypes: ['first-input'] });
         } catch (e) {
-          console.warn('FID observer not supported');
+          // FID observer not supported
         }
 
         // Cumulative Layout Shift (CLS)
@@ -115,7 +115,7 @@
 
           this.observers.cls.observe({ entryTypes: ['layout-shift'] });
         } catch (e) {
-          console.warn('CLS observer not supported');
+          // CLS observer not supported
         }
       }
 
@@ -192,7 +192,7 @@
 
           this.observers.resource.observe({ entryTypes: ['resource'] });
         } catch (e) {
-          console.warn('Resource observer not supported');
+          // Resource observer not supported
         }
       }
     },
@@ -218,7 +218,7 @@
 
           this.observers.navigation.observe({ entryTypes: ['navigation'] });
         } catch (e) {
-          console.warn('Navigation observer not supported');
+          // Navigation observer not supported
         }
       }
     },

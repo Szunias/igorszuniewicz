@@ -258,7 +258,7 @@
       });
     }
     
-    console.log('Smart prefetch system initialized');
+    // Smart prefetch system initialized
   }
   
   // Initialize when DOM is ready

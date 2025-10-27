@@ -92,7 +92,7 @@
       if (dashboardEl) dashboardEl.style.display = 'block';
 
     } catch (error) {
-      console.error('Analytics loading error:', error);
+      // Analytics loading error occurred
 
       // Show error state
       if (loadingEl) loadingEl.style.display = 'none';

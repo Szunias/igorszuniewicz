@@ -20,7 +20,7 @@
       // Auto-enable performance mode if FPS drops below 45
       if (currentFPS < 45 && !document.body.classList.contains('fps-boost')) {
         document.body.classList.add('fps-boost');
-        console.log('Auto-enabled fps-boost mode due to low FPS:', currentFPS);
+        // Auto-enabled fps-boost mode due to low FPS
       }
     }
     requestAnimationFrame(measureFPS);
@@ -236,7 +236,7 @@
       return;
     }
 
-    console.log('🚀 Initializing scroll performance optimizations...');
+    // Initializing scroll performance optimizations
 
     initializeEventListeners();
     setupVisibilityObserver();
@@ -256,7 +256,7 @@
       reducedMotionActive: document.body.classList.contains('reduced-motion')
     });
 
-    console.log('✅ Scroll optimizations initialized');
+    // Scroll optimizations initialized
   }
 
   // Auto-initialize

@@ -257,7 +257,7 @@
       
       // Log warning if some tracks were filtered out
       if (tracks.length < rawTracks.length) {
-        console.warn(`Filtered out ${rawTracks.length - tracks.length} invalid tracks`);
+        // Filtered out invalid tracks
       }
       
       if (tracks.length === 0) {
@@ -272,7 +272,7 @@
       initPlayer(tracks);
     })
     .catch(error => {
-      console.error('Error loading track data:', error);
+      // Error loading track data
       
       // Show user-friendly error message
       if (listEl) {
@@ -425,7 +425,7 @@
                 audio.addEventListener('loadeddata', () => {
                   audio.currentTime = currentTime;
                   if (wasPlaying) {
-                    audio.play().catch(err => console.error('Playback error:', err));
+                    audio.play().catch(() => {});
                   }
                 }, { once: true });
               }
@@ -1174,7 +1174,7 @@
         }
       }
     } catch(e) {
-      console.error('Error refreshing music list:', e);
+      // Error refreshing music list
     }
   };
 })();

@@ -82,12 +82,9 @@
   <!-- Web App Manifest -->
   <link rel="manifest" href="manifest.json">
 
-  <!-- Preloader (must load first) -->
-  <!-- <script src="assets/js/preloader.js"></script> -->
+  <!-- Preloader removed for production -->
 
   <!-- Performance: Critical resource hints -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
   <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
@@ -736,6 +733,7 @@
       padding: 2px;
       background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(167, 139, 250, 0.2));
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       opacity: 0;
@@ -1511,7 +1509,7 @@
             </div>
           </a>
 
-          <!-- Amorak        <!-- Amorak -->
+          <!-- Amorak -->
           <a href="projects/amorak.html" class="project-card fade-in"
             aria-label="Amorak horror animation sound design project">
             <div class="project-image">
@@ -1711,7 +1709,7 @@
           }
         } else if (translation != null) {
           // If translation is not a string (e.g. nested object), skip gracefully
-          console.warn('Missing string translation for', key, 'in', lang);
+          // Missing string translation
         }
       });
 
@@ -1734,7 +1732,7 @@
         translations = await response.json();
         setLanguage(currentLang);
       } catch (error) {
-        console.error('Failed to load translations:', error);
+        // Failed to load translations
         // Fallback - page will work with default English text
       }
     }

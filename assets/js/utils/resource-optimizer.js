@@ -45,7 +45,7 @@
     },
 
     enableDataSaver: function() {
-      console.log('Data saver mode enabled');
+      // Data saver mode enabled
 
       // Disable non-essential animations
       const style = document.createElement('style');
@@ -172,9 +172,9 @@
       navigator.serviceWorker.register('/sw.js', {
         scope: '/'
       }).then(registration => {
-        console.log('ServiceWorker registered:', registration.scope);
+        // ServiceWorker registered successfully
       }).catch(error => {
-        console.log('ServiceWorker registration failed:', error);
+        // ServiceWorker registration failed
       });
     },
 
@@ -207,7 +207,7 @@
               this.injectCachedResource(url, content);
             } catch (e) {
               // Storage quota exceeded, fallback to normal loading
-              console.warn('localStorage quota exceeded, using normal loading');
+              // Storage quota exceeded, using normal loading
             }
           })
           .catch(() => {
@@ -297,7 +297,7 @@
         const slowResources = resources.filter(r => r.duration > 1000);
 
         if (slowResources.length > 0) {
-          console.warn('Slow loading resources:', slowResources);
+          // Slow loading resources detected
         }
 
         // Log largest contentful paint
@@ -305,7 +305,7 @@
           new PerformanceObserver(list => {
             const entries = list.getEntries();
             const lcp = entries[entries.length - 1];
-            console.log('LCP:', lcp.startTime);
+            // LCP measurement recorded
           }).observe({ entryTypes: ['largest-contentful-paint'] });
         }
       }, 1000);

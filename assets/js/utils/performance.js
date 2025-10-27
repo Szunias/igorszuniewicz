@@ -71,7 +71,7 @@
       const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768;
       
       if (isSlowConnection || isMobile) {
-        console.log('Prefetching disabled: slow connection or mobile device');
+        // Prefetching disabled: slow connection or mobile device
         return;
       }
 
@@ -137,7 +137,7 @@
         this.createInvisiblePreload(href);
       }
 
-      console.log('Prefetching:', href);
+      // Prefetching resource
     },
 
     supportsDNSPrefetch: function() {
@@ -291,7 +291,7 @@
       domCache: domOptimizer
     };
 
-    console.log('Performance optimizations initialized');
+    // Performance optimizations initialized
   }
 
   // Start initialization

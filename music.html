@@ -1206,7 +1206,7 @@
         }
       })
       .catch(err => {
-        console.error('Error loading tracks:', err);
+        // Error loading tracks
         document.getElementById('playlist').innerHTML = '<p style="color: #ef4444; text-align: center; padding: 2rem;">Failed to load tracks. Error: ' + err.message + '</p>';
       });
 
@@ -1411,7 +1411,7 @@
     function play() {
       // Validate audio source before attempting to play
       if (!audio.src) {
-        console.warn('Cannot play: No audio source loaded');
+        // Cannot play: No audio source loaded
         return;
       }
       
@@ -1427,7 +1427,7 @@
             updatePlaylistPlayingState();
           })
           .catch(error => {
-            console.warn('Playback prevented:', error);
+            // Playback prevented
             isPlaying = false;
             playBtn.textContent = '▶';
             playerAlbumArt.classList.remove('playing');
@@ -1435,7 +1435,7 @@
             if (error.name === 'NotAllowedError') {
               
             } else if (error.name === 'NotSupportedError') {
-              console.error('Audio format not supported');
+              // Audio format not supported
               // Try next track
               if (tracks.length > 1) {
                 setTimeout(() => nextTrack(), 500);
@@ -1561,7 +1561,7 @@
 
     // Handle audio errors
     audio.addEventListener('error', (e) => {
-      console.error('Audio error:', e);
+      // Audio error occurred
       
       // Clean up drag state if active
       if (isDragging) {
@@ -1592,7 +1592,7 @@
         4: 'Audio format not supported'
       };
       const errorMsg = errorMessages[audio.error?.code] || 'Unknown error';
-      console.error('Audio playback error:', errorMsg);
+      // Audio playback error
 
       // Try next track if current one fails
       if (tracks.length > 1) {
@@ -1716,8 +1716,7 @@
       
       // Check if seekable range is available FIRST
       if (audio.seekable.length === 0 || (audio.seekable.length > 0 && audio.seekable.end(0) === 0)) {
-        console.warn('Cannot seek: audio not buffered. Seekable end:', audio.seekable.length > 0 ? audio.seekable.end(0) : 'N/A');
-        console.warn('This may be due to server not supporting HTTP Range Requests');
+        // Cannot seek: audio not buffered
         // Don't show alert, just log - it's annoying
         return;
       }
@@ -1744,7 +1743,7 @@
       // Resume playback if it was playing
       if (wasPlaying) {
         setTimeout(() => {
-          audio.play().catch(err => console.warn('Resume play failed:', err));
+          audio.play().catch(() => {});
         }, 50);
       }
     });
@@ -1994,7 +1993,7 @@
 
     // Expose function for translations.js to call when language changes
     window.refreshMusicList = function() {
-      console.log('[music.html] Refreshing playlist for language change...');
+      // Refreshing playlist for language change
       renderPlaylist();
     };
   </script>

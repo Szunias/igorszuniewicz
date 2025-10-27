@@ -224,7 +224,7 @@
             updateUrl(url);
 
         } catch (error) {
-            console.error('Navigation error:', error);
+            // Navigation error occurred
             // Fallback do standardowej nawigacji
             window.location.href = url;
         } finally {
@@ -496,7 +496,7 @@
         try {
             await loadPage(url);
         } catch (error) {
-            console.warn('Preload failed for:', url, error);
+            // Preload failed for URL
         }
     }
 

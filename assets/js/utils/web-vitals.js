@@ -280,7 +280,7 @@
 
     // Log to console in development
     if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-      console.log('Web Vitals Report:', report);
+      // Web Vitals Report (development only)
     }
   }
 

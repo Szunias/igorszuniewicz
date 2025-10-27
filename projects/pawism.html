@@ -643,7 +643,7 @@
         const response = await fetch('../locales/pawism.json');
         translations = await response.json();
       } catch (error) {
-        console.error('Failed to load translations:', error);
+        // Failed to load translations
         translations = {
 en: {}, pl: {}, nl: {}
         };

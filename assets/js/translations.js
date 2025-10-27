@@ -183,7 +183,7 @@
       window.translations = translationData;
       setLanguage(currentLang);
     } catch (error) {
-      console.error('Failed to load translations:', error);
+      // Translation loading failed - using fallback
       
       // Fallback: create minimal translation structure
       window.translations = {
@@ -196,7 +196,7 @@
       try {
         setLanguage(currentLang);
       } catch (fallbackError) {
-        console.error('Failed to set fallback language:', fallbackError);
+        // Fallback language setting failed
       }
     }
   }

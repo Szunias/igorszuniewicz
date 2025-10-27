@@ -56,9 +56,7 @@
       // Check for font-display support
       this.supportsFontDisplay = CSS.supports && CSS.supports('font-display', 'swap');
 
-      console.log('Font support:', {
-        nativeLoading: this.supportsNativeFontLoading,
-        variableFonts: this.supportsVariableFonts,
+      // Font support detected
         fontDisplay: this.supportsFontDisplay
       });
     },
@@ -132,7 +130,7 @@
 
       document.head.appendChild(link);
 
-      console.log('Preloading font:', family, weight);
+      // Preloading font
     },
 
     setupFontLoadingStrategy: function() {
@@ -238,7 +236,7 @@
     },
 
     onFontLoaded: function(family, weight) {
-      console.log('Font loaded:', family, weight);
+      // Font loaded successfully
 
       // Update CSS classes for progressive enhancement
       document.documentElement.classList.add(`font-${family.toLowerCase().replace(/\s+/g, '-')}-${weight}-loaded`);
@@ -248,14 +246,14 @@
     },
 
     onFontFailed: function(family, weight, error) {
-      console.warn('Font failed to load:', family, weight, error);
+      // Font failed to load
 
       // Ensure fallback fonts are applied
       document.documentElement.classList.add('fonts-fallback');
     },
 
     onFontLoadingTimeout: function() {
-      console.warn('Font loading timeout reached');
+      // Font loading timeout reached
 
       // Apply fallback class
       document.documentElement.classList.add('fonts-timeout');
@@ -275,7 +273,7 @@
 
       if (allCriticalLoaded) {
         document.documentElement.classList.add('critical-fonts-loaded');
-        console.log('All critical fonts loaded');
+        // All critical fonts loaded
       }
     },
 

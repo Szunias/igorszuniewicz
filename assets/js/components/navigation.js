@@ -51,7 +51,7 @@ function loadNavigation() {
 
   // Insert navigation at the beginning of body
   if (!document.body) {
-    console.error('❌ document.body is null! Cannot load navigation.');
+    // Navigation cannot load - document.body is null
     return;
   }
   

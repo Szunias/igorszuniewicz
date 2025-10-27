@@ -62,7 +62,7 @@
   setTimeout(() => {
     if (!document.documentElement.classList.contains('translations-ready')) {
       document.documentElement.classList.add('translations-ready');
-      console.warn('Translations timeout - showing page anyway');
+      // Translations timeout - showing page anyway
     }
   }, 200);
 })();

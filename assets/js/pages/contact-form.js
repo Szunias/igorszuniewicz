@@ -94,7 +94,7 @@
       }
     })
     .catch(error => {
-      console.error('Web3Forms Error:', error);
+      // Web3Forms Error occurred
       showStatus('An error occurred while sending. Please try again later.', 'error');
     })
     .finally(() => {
@@ -125,7 +125,7 @@
       
       localStorage.setItem('contact_messages', JSON.stringify(messages));
     } catch (e) {
-      console.warn('Could not save message locally:', e);
+      // Could not save message locally
     }
   }
 

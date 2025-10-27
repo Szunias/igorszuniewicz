@@ -69,7 +69,7 @@
         init() {
             // DISABLED - Use CSS-only parallax instead for better performance
             // Parallax is now handled by CSS with transform: translateZ()
-            console.log('Parallax: Using CSS-only mode for performance');
+            // Parallax: Using CSS-only mode for performance
         }
     }
 

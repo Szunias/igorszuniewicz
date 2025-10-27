@@ -50,7 +50,7 @@
       firebaseInitialized = true;
       return true;
     } catch (error) {
-      console.warn('Firebase initialization failed:', error);
+      // Firebase initialization failed
       return false;
     }
   }
@@ -124,7 +124,7 @@
       localStorage.setItem(FALLBACK_KEY, String(total));
       return total;
     } catch (error) {
-      console.warn('Failed to read visit count:', error);
+      // Failed to read visit count
       const cached = localStorage.getItem(FALLBACK_KEY);
       return cached ? parseInt(cached, 10) : BASE_COUNT;
     }
@@ -166,7 +166,7 @@
       return total;
 
     } catch (error) {
-      console.warn('Failed to increment visit count:', error);
+      // Failed to increment visit count
       const cached = localStorage.getItem(FALLBACK_KEY);
       return cached ? parseInt(cached, 10) : BASE_COUNT;
     }
@@ -227,7 +227,7 @@
       }, 2500);
 
     } catch (error) {
-      console.warn('Visit counter error:', error);
+      // Visit counter error occurred
       // Ensure we still show something useful if everything fails
       const cached = localStorage.getItem(FALLBACK_KEY);
       const fallback = cached ? parseInt(cached, 10) : BASE_COUNT;
