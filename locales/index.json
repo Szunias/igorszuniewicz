@@ -24,7 +24,7 @@
     "demo_reel": {
       "badge": "🎬 Audio Showcase",
       "title": "Demo Reel",
-      "description": "Examples of my work - game audio, sound effects, music that reacts to gameplay, and technical projects.",
+      "description": "Examples of my work: game audio, sound effects, music that reacts to gameplay, and technical projects.",
       "coming_soon": "Coming Soon",
       "placeholder_title": "Demo Reel In Production",
       "placeholder_note": "A 2-3 minute video showing my game audio work, sound design process, and how I use audio tools."
@@ -102,7 +102,7 @@
     "hero": {
       "label": "Audio Designer & Developer",
       "title": "Interaktywny <span class='highlight-sound'>Dźwięk</span><br>dla Nowoczesnych Gier",
-      "description": "Robię interaktywną muzykę do gier, projektuję dźwięki do animacji i buduję narzędzia audio.",
+      "description": "Tworzę interaktywną muzykę do gier, projektuję dźwięki do animacji i buduję narzędzia audio.",
       "cta1": "Zobacz Moje Prace",
       "cta_cv": "CV",
       "cta2": "Skontaktuj Się"
@@ -110,7 +110,7 @@
     "demo_reel": {
       "badge": "🎬 Prezentacja Audio",
       "title": "Demo Reel",
-      "description": "Przykłady mojej pracy - audio do gier, efekty dźwiękowe, muzyka reagująca na rozgrywkę i projekty techniczne.",
+      "description": "Moje prace: audio do gier, efekty dźwiękowe, muzyka reagująca na rozgrywkę i projekty techniczne.",
       "coming_soon": "Wkrótce",
       "placeholder_title": "Demo Reel w Produkcji",
       "placeholder_note": "2-3 minutowe wideo pokazujące moją pracę z audio do gier, proces sound designu i jak używam narzędzi audio."
@@ -118,18 +118,18 @@
     "projects": {
       "label": "Wybrane Prace",
       "title": "Wybrane Projekty",
-      "description": "Starannie wybrane najnowsze prace obejmujące audio dla gier, sound design i interaktywną muzykę.",
+      "description": "Najnowsze prace: audio do gier, sound design i interaktywna muzyka.",
       "viewall": "Wszystkie Projekty",
       "cards": {
         "not_today": {
           "badge": "Audio do gier",
           "title": "Not Today, Darling!",
-          "description": "Retro-inspirowana implementacja audio do chaotycznej wieloosobowej gry wyścigowej."
+          "description": "Retro audio do chaotycznych wyścigów multiplayer."
         },
         "amorak": {
           "badge": "Sound design",
           "title": "Amorak",
-          "description": "Atmosferyczne pejzaże dźwiękowe i audio postaci do horroru animowanego."
+          "description": "Atmosferyczne dźwięki i audio postaci do horroru animowanego."
         },
         "pause_deserve": {
           "badge": "Gra grozy",
@@ -144,7 +144,7 @@
         "interactive_music": {
           "badge": "Muzyka",
           "title": "Projektowanie muzyki interaktywnej",
-          "description": "Adaptacyjne systemy audio z wertykalnym warstwowaniem w Wwise."
+          "description": "Systemy audio z warstwowaniem w Wwise."
         },
         "akantilado": {
           "badge": "Animacja",
@@ -196,7 +196,7 @@
     "demo_reel": {
       "badge": "🎬 Audio Showcase",
       "title": "Demo Reel",
-      "description": "Voorbeelden van mijn werk - game audio, geluidseffecten, muziek die reageert op gameplay en technische projecten.",
+      "description": "Mijn werk: game audio, geluidseffecten, muziek die reageert op gameplay en technische projecten.",
       "coming_soon": "Binnenkort",
       "placeholder_title": "Demo Reel in Productie",
       "placeholder_note": "Een 2-3 minuten video die mijn game audio werk, geluidsontwerp proces en hoe ik audio tools gebruik laat zien."
@@ -204,18 +204,18 @@
     "projects": {
       "label": "Uitgelicht Werk",
       "title": "Geselecteerde Projecten",
-      "description": "Een selectie van recent werk spanning game audio, geluidsontwerp en interactieve muziek.",
+      "description": "Recent werk: game audio, geluidsontwerp en interactieve muziek.",
       "viewall": "Alle Projecten",
       "cards": {
         "not_today": {
           "badge": "Game-audio",
           "title": "Not Today, Darling!",
-          "description": "Retro-geïnspireerde audio-implementatie voor chaotische multiplayer-racegame."
+          "description": "Retro audio voor chaotische multiplayer racing."
         },
         "amorak": {
           "badge": "Sounddesign",
           "title": "Amorak",
-          "description": "Atmosferische soundscapes en creature-audio voor horroranimatie."
+          "description": "Atmosferische geluiden en creature-audio voor horroranimatie."
         },
         "pause_deserve": {
           "badge": "Horrorgame",
@@ -230,7 +230,7 @@
         "interactive_music": {
           "badge": "Muziek",
           "title": "Interactive Music Design",
-          "description": "Adaptieve audiosystemen met verticale lagen in Wwise."
+          "description": "Audiosystemen met lagen in Wwise."
         },
         "akantilado": {
           "badge": "Animatie",

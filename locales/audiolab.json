@@ -97,21 +97,21 @@
     },
     "demo": {
       "title": "Interaktywne Demo",
-      "description": "Zastąp naciśnięcia przycisków beatboxingiem. Klasyfikacja ML w czasie rzeczywistym osiąga opóźnienie poniżej 60ms z 82% dokładnością dla detekcji kick, snare i hi-hat.",
-      "research": "Łączy detekcję onset spectral-flux z trenowanym przez użytkownika RBF-SVM, aby spełnić wymagania czasowe konkurencyjnych gier rytmicznych."
+      "description": "Zastąp naciśnięcia przycisków beatboxingiem. ML w czasie rzeczywistym osiąga opóźnienie poniżej 60ms z 82% dokładnością dla kick, snare i hi-hat.",
+      "research": "Łączy detekcję spectral-flux z trenowanym przez użytkownika RBF-SVM, aby spełnić wymagania gier rytmicznych."
     },
     "features": {
       "realtime": {
         "title": "Rozpoznawanie w Czasie Rzeczywistym",
-        "desc": "Przetwarza dźwięki beatboxu w czasie poniżej 60ms używając detekcji spectral flux i klasyfikacji SVM"
+        "desc": "Przetwarza dźwięki beatboxu w czasie poniżej 60ms używając spectral flux i SVM"
       },
       "ml": {
         "title": "Klasyfikacja ML",
-        "desc": "Model trenowany przez użytkownika dostosowuje się do indywidualnych stylów beatboxu dla dźwięków kick, snare i hi-hat"
+        "desc": "Model trenowany przez użytkownika dostosowuje się do stylów beatboxu dla kick, snare i hi-hat"
       },
       "lowlatency": {
         "title": "Ultra-niskie Opóźnienie",
-        "desc": "Sieć OSC między Pythonem a Unity utrzymuje konkurencyjne standardy czasowe"
+        "desc": "OSC między Pythonem a Unity utrzymuje standardy czasowe"
       }
     },
     "video": {
@@ -178,21 +178,21 @@
     },
     "demo": {
       "title": "Interactieve Demo",
-      "description": "Vervang knopdrukken door beatboxen. Realtime ML-classificatie bereikt sub-60ms latentie met 82% nauwkeurigheid voor kick, snare en hi-hat detectie.",
-      "research": "Combineert spectrale-flux onset detectie met door gebruiker getrainde RBF-SVM om aan competitieve ritmegame timing-eisen te voldoen."
+      "description": "Vervang knopdrukken door beatboxen. Realtime ML bereikt sub-60ms latentie met 82% nauwkeurigheid voor kick, snare en hi-hat.",
+      "research": "Combineert spectrale-flux detectie met door gebruiker getrainde RBF-SVM om aan ritmegame timing-eisen te voldoen."
     },
     "features": {
       "realtime": {
         "title": "Realtime Herkenning",
-        "desc": "Verwerkt beatbox geluiden in minder dan 60ms met spectrale flux detectie en SVM classificatie"
+        "desc": "Verwerkt beatbox geluiden in minder dan 60ms met spectrale flux en SVM"
       },
       "ml": {
         "title": "ML Classificatie",
-        "desc": "Door gebruiker getraind model past zich aan individuele beatbox stijlen aan voor kick, snare en hi-hat geluiden"
+        "desc": "Door gebruiker getraind model past zich aan beatbox stijlen aan voor kick, snare en hi-hat"
       },
       "lowlatency": {
         "title": "Ultra-lage Latentie",
-        "desc": "OSC netwerken tussen Python en Unity handhaaft competitieve timing standaarden"
+        "desc": "OSC tussen Python en Unity handhaaft timing standaarden"
       }
     },
     "video": {

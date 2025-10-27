@@ -19,7 +19,7 @@
       "desc": "Watch the complete single player gameplay walkthrough. This video showcases complete gameplay and all game mechanics."
     },
     "role": {
-      "title": "Role — Audio",
+      "title": "Role: Audio",
       "desc": "Made all the sounds, hooked them up in Unreal, mixed everything. Gameplay SFX, UI, crowd reactions. Stays clear during chaos."
     },
     "gameplay": {
@@ -119,7 +119,7 @@
   "pl": {
     "back": "Powrót do projektów",
     "tagline": "🏁 Wyścig z czasem. Przechytrz babcie. Wygraj wszystko!",
-    "subtitle": "Chaotyczna wieloosobowa gra platformowa, gdzie strategia spotyka się z szybkością",
+    "subtitle": "Chaotyczna gra wieloosobowa, gdzie strategia spotyka się z szybkością",
     "meta": {
       "school": "Digital Arts and Entertainment",
       "released": "Wydano: 25 maja 2025",
@@ -136,14 +136,14 @@
       "desc": "Zobacz pełne przejście gry w trybie single player. Ten materiał pokazuje kompletną rozgrywkę oraz wszystkie mechaniki gameplayu."
     },
     "role": {
-      "title": "Rola — Audio",
-      "desc": "Zrobiłem wszystkie dźwięki, podpiąłem w Unreal, zmiksowałem. SFX gameplay, UI, reakcje tłumu. Czytelne nawet w chaosie."
+      "title": "Rola: Audio",
+      "desc": "Zrobiłem wszystkie dźwięki, podpiąłem w Unreal, zmiksowałem. SFX gameplay, UI, reakcje tłumu. Wszystko czytelne nawet w chaosie."
     },
     "gameplay": {
       "title": "Gameplay Highlights",
       "li1": "Dźwięki reagują na to co robisz",
       "li2": "Czysty miks z 1-4 graczami",
-      "li3": "Niewchodzące w drogę warstwy dynamiczne przy intensywnych momentach"
+      "li3": "Warstwy dynamiczne, które nie przeszkadzają w intensywnych momentach"
     },
     "audioDirection": {
       "title": "Kierunek Audio",
@@ -253,7 +253,7 @@
       "desc": "Bekijk de volledige single player gameplay walkthrough. Deze video toont volledige gameplay en alle game mechanics."
     },
     "role": {
-      "title": "Rol — Audio",
+      "title": "Rol: Audio",
       "desc": "Verantwoordelijk voor geluidseffecten, implementatie en mixing: gameplay SFX-palet, UI, crowd/ambience lagen en integratie en in-engine mix voor duidelijkheid tijdens snelle actie. Systeem reageert op race-staten en speler-evenementen."
     },
     "gameplay": {

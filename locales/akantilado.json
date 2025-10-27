@@ -1,7 +1,7 @@
 {
   "en": {
     "back": "Back to Projects",
-    "title": "Akantilado — Sound Design",
+    "title": "Akantilado: Sound Design",
     "tagline": "Jungle adventure where two cats race for treasure. Sound design tells the story of how love beats greed.",
     "meta": {
       "role": {
@@ -105,7 +105,7 @@
   },
   "pl": {
     "back": "Powrót do projektów",
-    "title": "Akantilado — Sound Design",
+    "title": "Akantilado: Sound Design",
     "tagline": "Przygoda w dżungli gdzie dwa koty ścigają się o skarb. Sound design opowiada jak miłość wygrywa z chciwością.",
     "meta": {
       "role": {
@@ -118,7 +118,7 @@
       },
       "characters": {
         "label": "Postacie",
-        "value": "Dwa Stworzenia Przypominające Koty"
+        "value": "Dwa Koty"
       },
       "theme": {
         "label": "Temat",
@@ -146,7 +146,7 @@
         "resolution_desc": "Delikatny akcent, miękkie głosy, spokój wraca. To tyle"
       },
       "jungle": {
-        "title": "Robienie Prawdziwej Dżungli",
+        "title": "Tworzenie Prawdziwej Dżungli",
         "desc": "Liście szelezczą, odległe wołania, woda płynie, wiatr w drzewach. Warstwowe nagrania sprawiają że żyje.",
         "layered_title": "Naturalne Warstwy",
         "layered_desc": "Liście, wołania, woda. Buduje vibe dżungli",
@@ -170,7 +170,7 @@
       "title": "Jak To Zrobiłem",
       "foley": {
         "title": "Custom Foley",
-        "desc": "Zrobiłem foley dla kotów. Kroki łap, wspinaczka, rośliny. Nagrane żeby pasowały jak się ruszają."
+        "desc": "Zrobiłem foley dla kotów. Kroki łap, wspinaczka, rośliny. Nagrane żeby pasowały do ich ruchów."
       },
       "environmental": {
         "title": "Warstwowe Strefy",
@@ -209,7 +209,7 @@
   },
   "nl": {
     "back": "Terug naar Projecten",
-    "title": "Akantilado — Sound Design",
+    "title": "Akantilado: Sound Design",
     "tagline": "Jungle avontuur waar twee katten racen voor schat. Sound design vertelt hoe liefde hebzucht verslaat.",
     "meta": {
       "role": {
@@ -222,7 +222,7 @@
       },
       "characters": {
         "label": "Personages",
-        "value": "Twee Kat-achtige Wezens"
+        "value": "Twee Katten"
       },
       "theme": {
         "label": "Thema",
@@ -250,7 +250,7 @@
         "resolution_desc": "Zachte accent, zachte stemmen, vrede keert terug. Dat is het"
       },
       "jungle": {
-        "title": "Echte Jungle Maken",
+        "title": "Echte Jungle Creëren",
         "desc": "Bladeren ritselen, verre roepen, water stroomt, wind door bomen. Gelaagde opnames maken het levend.",
         "layered_title": "Natuurlijke Lagen",
         "layered_desc": "Bladeren, roepen, water. Bouwt jungle vibe",
@@ -274,7 +274,7 @@
       "title": "Hoe Het Gemaakt Is",
       "foley": {
         "title": "Aangepaste Foley",
-        "desc": "Maakte foley voor katten. Poten stappen, klimmen, planten. Opgenomen om te passen bij beweging."
+        "desc": "Maakte foley voor katten. Poten stappen, klimmen, planten. Opgenomen om te passen bij hun bewegingen."
       },
       "environmental": {
         "title": "Gelaagde Zones",

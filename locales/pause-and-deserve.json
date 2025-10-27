@@ -53,7 +53,7 @@
       },
       "world": {
         "title": "Dynamic Environment",
-        "desc": "The nightmare landscape shifts as time progresses—walls close in, pathways change, and lighting dims."
+        "desc": "The nightmare landscape shifts as time progresses: walls close in, pathways change, and lighting dims."
       },
       "score": {
         "title": "Survival Challenge",
@@ -104,7 +104,7 @@
     },
     "audio_system": {
       "title": "Dynamiczne Audio",
-      "desc": "Wszystko reaguje w czasie rzeczywistym. Wciśniesz pauzę i czas się wykrzywia. Śmierć przyspiesza, audio robi się intensywniejsze. Poruszasz się i reverb się zmienia.",
+      "desc": "Wszystko reaguje w czasie rzeczywistym. Wciśniesz pauzę i czas się wykrzywia. Śmierć przyspiesza, audio robi się intensywniejsze. Poruszasz się i reverb się zmienia z przestrzenią.",
       "pause_title": "Efekt Zamrożenia Czasu",
       "pause_desc": "Kiedy pauzujesz, wszystko zwalnia. Obniżenie tonu, długie ogony reverbu, cała ta zabawa",
       "threat_title": "Rosnące Napięcie",
@@ -114,7 +114,7 @@
     },
     "tension": {
       "title": "Gry z Głową",
-      "desc": "Basy które czujesz bardziej niż słyszysz. Fałszywe dźwięki które cię mylą. Cisza która sprawia że nagłe hałasy biją mocniej. Wszystko żebyś był na skraju.",
+      "desc": "Basy które czujesz bardziej niż słyszysz. Fałszywe dźwięki które cię mylą. Cisza która sprawia że nagłe hałasy biją mocniej. Wszystko żebyś był na skraju paranoi.",
       "subbass_title": "Czujesz Strach",
       "subbass_desc": "Niskie częstotliwości których ledwo słyszysz ale czujesz w klatce. Niepokoi cię bez powodu",
       "silence_title": "Cisza Straszy",
@@ -133,7 +133,7 @@
       },
       "world": {
         "title": "Dynamiczne środowisko",
-        "desc": "Koszmarny krajobraz zmienia się wraz z upływem czasu—ściany zbliżają się, ścieżki się zmieniają, a oświetlenie przygasa."
+        "desc": "Koszmarny krajobraz zmienia się wraz z upływem czasu: ściany zbliżają się, ścieżki się zmieniają, a oświetlenie przygasa."
       },
       "score": {
         "title": "Wyzwanie przetrwania",
@@ -146,7 +146,7 @@
     },
     "tech": {
       "title": "Narzędzia Audio",
-      "desc": "Zrobione w Wwise do kontroli audio w czasie rzeczywistym. Wszystko reaguje na dystans, prędkość, stan gracza. Wszystko miksowane w locie."
+      "desc": "Zrobione w Wwise do kontroli audio w czasie rzeczywistym. Wszystko reaguje na dystans, prędkość, stan gracza. Wszystko miksowane na bieżąco."
     },
     "gallery": {
       "title": "Galeria rozwoju",
@@ -184,7 +184,7 @@
     },
     "audio_system": {
       "title": "Dynamische Audio",
-      "desc": "Alles reageert in real time. Druk op pauze en tijd vervormt. De Dood versnelt, audio wordt intenser. Beweeg rond en reverb verandert.",
+      "desc": "Alles reageert in real time. Druk op pauze en tijd vervormt. De Dood versnelt, audio wordt intenser. Beweeg rond en reverb verandert met de ruimte.",
       "pause_title": "Tijd Bevries Effect",
       "pause_desc": "Als je pauzeert, vertraagt alles. Pitch drops, lange reverb staarten, het hele ding",
       "threat_title": "Escalerende Spanning",
@@ -213,7 +213,7 @@
       },
       "world": {
         "title": "Dynamische Omgeving",
-        "desc": "Het nachtmerrie landschap verschuift terwijl de tijd verstrijkt—muren komen dichterbij, paden veranderen en de verlichting dimt."
+        "desc": "Het nachtmerrie landschap verschuift terwijl de tijd verstrijkt: muren komen dichterbij, paden veranderen en de verlichting dimt."
       },
       "score": {
         "title": "Survival Uitdaging",

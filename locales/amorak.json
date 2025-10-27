@@ -1,7 +1,7 @@
 {
   "en": {
     "back": "Back to Projects",
-    "title": "Amorak — Sound Design",
+    "title": "Amorak: Sound Design",
     "tagline": "Horror short film. Built the world through sound. Each creature has its own voice.",
     "meta": {
       "role": {
@@ -88,7 +88,7 @@
       },
       "challenge3": {
         "title": "Dialogue Clarity in Dense Soundscape",
-        "problem": "Basement scene has layered drips, creaks, and creature movement—dialogue was getting masked in 800Hz-3kHz range.",
+        "problem": "Basement scene has layered drips, creaks, and creature movement: dialogue was getting masked in 800Hz-3kHz range.",
         "solution": "Applied dynamic ducking: when dialogue present, environmental elements duck -8dB with 100ms attack, 500ms release. Carved 1-3kHz notch in ambience bed (permanent -4dB). Used spectral shaping on dialogue: gentle presence boost at 2.5kHz, de-essing at 6-8kHz, and HPF at 80Hz to remove rumble bleed. Result: dialogue sits clearly without sounding isolated."
       }
     },
@@ -126,7 +126,7 @@
   },
   "pl": {
     "back": "Powrót do projektów",
-    "title": "Amorak — Sound Design",
+    "title": "Amorak: Sound Design",
     "tagline": "Krótki horror. Zbudowałem świat przez dźwięk. Każdy stwór ma swój głos.",
     "meta": {
       "role": {
@@ -213,7 +213,7 @@
       },
       "challenge3": {
         "title": "Czytelność Dialogu w Gęstym Krajobrazie Dźwiękowym",
-        "problem": "Scena piwnicy ma warstwowe kapanie, skrzypienie i ruch stworów—dialog był maskowany w zakresie 800Hz-3kHz.",
+        "problem": "Scena piwnicy ma warstwowe kapanie, skrzypienie i ruch stworów: dialog był maskowany w zakresie 800Hz-3kHz.",
         "solution": "Zastosowano dynamiczne tłumienie: gdy dialog obecny, elementy środowiska tłumią się -8dB z 100ms atakiem, 500ms zwolnieniem. Wyrzeźbiono wycięcie 1-3kHz w podkładzie ambientu (stałe -4dB). Użyto kształtowania widma na dialogu: delikatne wzmocnienie obecności na 2.5kHz, usuwanie sybilantów na 6-8kHz, i filtr górnoprzepustowy na 80Hz aby usunąć przeciek dudnienia. Rezultat: dialog siedzi czysto bez brzmienia izolacji."
       }
     },
@@ -251,7 +251,7 @@
   },
   "nl": {
     "back": "Terug naar Projecten",
-    "title": "Amorak — Sound Design",
+    "title": "Amorak: Sound Design",
     "tagline": "Horror korte film. Bouwde de wereld door geluid. Elk wezen heeft zijn eigen stem.",
     "meta": {
       "role": {
@@ -338,7 +338,7 @@
       },
       "challenge3": {
         "title": "Dialoog Helderheid in Dicht Geluidslandschap",
-        "problem": "Kelderscène heeft gelaagde druppels, kraken en wezenbeweging—dialoog werd gemaskeerd in 800Hz-3kHz bereik.",
+        "problem": "Kelderscène heeft gelaagde druppels, kraken en wezenbeweging: dialoog werd gemaskeerd in 800Hz-3kHz bereik.",
         "solution": "Paste dynamische demping toe: wanneer dialoog aanwezig, dempen omgevingselementen -8dB met 100ms aanval, 500ms loslaten. Uitgesneden 1-3kHz inkeping in ambiance bed (permanent -4dB). Gebruikte spectrale vormgeving op dialoog: zachte aanwezigheid versterking op 2.5kHz, sissers verwijderen op 6-8kHz, en hoogdoorlaatfilter op 80Hz om gerommel doorlekken te verwijderen. Resultaat: dialoog zit helder zonder geïsoleerd te klinken."
       }
     },

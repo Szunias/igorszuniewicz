@@ -20,8 +20,8 @@
       "badge": "Background",
       "title": "The Problem",
       "p1": "During my work with Unreal Engine and Wwise audio middleware, I encountered a recurring issue: after certain project operations or version updates, <strong>Wwise plugin references would break</strong>, causing audio systems to fail and requiring manual intervention to restore functionality.",
-      "p2": "The manual fix involved navigating through project files, editing configuration files, and carefully restoring plugin settings—a process that could take hours and was prone to human error. This was particularly challenging for students and junior developers learning the engine.",
-      "p3": "To solve this workflow bottleneck, I <strong>developed the core automation logic as Windows batch scripts</strong>, designing the workflow and implementing the file manipulation logic myself. Once the functionality was proven and stable, I collaborated with <strong>AI development tools to refine and transform the batch scripts into a modern Python application</strong> with a polished GUI interface, better error handling, and cross-platform compatibility—demonstrating effective use of modern development workflows to enhance accessibility for the broader developer community."
+      "p2": "The manual fix involved navigating through project files, editing configuration files, and carefully restoring plugin settings: a process that could take hours and was prone to human error. This was particularly challenging for students and junior developers learning the engine.",
+      "p3": "To solve this workflow bottleneck, I <strong>developed the core automation logic as Windows batch scripts</strong>, designing the workflow and implementing the file manipulation logic myself. Once the functionality was proven and stable, I collaborated with <strong>AI development tools to refine and transform the batch scripts into a modern Python application</strong> with a polished GUI interface, better error handling, and cross-platform compatibility: demonstrating effective use of modern development workflows to enhance accessibility for the broader developer community."
     },
     "journey": {
       "badge": "Development Journey",
@@ -33,7 +33,7 @@
       },
       "phase2": {
         "title": "Phase 2: AI-Assisted Refinement",
-        "desc": "Using modern AI development tools, the proven batch script functionality was transformed into a Python application with a graphical interface, improved error handling, and better maintainability—leveraging AI to accelerate the GUI development process."
+        "desc": "Using modern AI development tools, the proven batch script functionality was transformed into a Python application with a graphical interface, improved error handling, and better maintainability: leveraging AI to accelerate the GUI development process."
       },
       "phase3": {
         "title": "Best of Both Worlds",
@@ -50,7 +50,7 @@
       },
       "f2": {
         "title": "One-Click Restoration",
-        "desc": "Complete plugin reference restoration with a single command. No manual file editing, no complex configurations—just fast, reliable results."
+        "desc": "Complete plugin reference restoration with a single command. No manual file editing, no complex configurations: just fast, reliable results."
       },
       "f3": {
         "title": "Safe Operations",
@@ -102,8 +102,8 @@
       "badge": "Tło",
       "title": "Problem",
       "p1": "Podczas pracy z Unreal Engine i middleware audio Wwise napotkałem powtarzający się problem: po niektórych operacjach na projekcie lub aktualizacjach wersji <strong>referencje pluginu Wwise się psuły</strong>, powodując awarie systemów audio i wymagając ręcznej interwencji do przywrócenia funkcjonalności.",
-      "p2": "Ręczna naprawa wymagała nawigacji przez pliki projektu, edycji plików konfiguracyjnych i ostrożnego przywracania ustawień pluginu—proces który mógł trwać godzinami i był podatny na błędy. Było to szczególnie trudne dla studentów i junior deweloperów uczących się silnika.",
-      "p3": "Aby rozwiązać ten problem w workflow, <strong>samodzielnie stworzyłem podstawową logikę automatyzacji jako skrypty batch systemu Windows</strong>, projektując workflow i implementując logikę manipulacji plikami. Gdy funkcjonalność została sprawdzona i stabilna, współpracowałem z <strong>narzędziami AI do udoskonalenia i transformacji skryptów batch w nowoczesną aplikację Python</strong> z dopracowanym interfejsem GUI, lepszą obsługą błędów i kompatybilnością cross-platform—demonstrując efektywne wykorzystanie nowoczesnych workflow development do zwiększenia dostępności dla szerszej społeczności deweloperów."
+      "p2": "Ręczna naprawa wymagała nawigacji przez pliki projektu, edycji plików konfiguracyjnych i ostrożnego przywracania ustawień pluginu: proces który mógł trwać godzinami i był podatny na błędy. Było to szczególnie trudne dla studentów i junior deweloperów uczących się silnika.",
+      "p3": "Aby rozwiązać ten problem w workflow, <strong>samodzielnie stworzyłem podstawową logikę automatyzacji jako skrypty batch systemu Windows</strong>, projektując workflow i implementując logikę manipulacji plikami. Gdy funkcjonalność została sprawdzona i stabilna, współpracowałem z <strong>narzędziami AI do udoskonalenia i transformacji skryptów batch w nowoczesną aplikację Python</strong> z dopracowanym interfejsem GUI, lepszą obsługą błędów i kompatybilnością cross-platform: demonstrując efektywne wykorzystanie nowoczesnych workflow development do zwiększenia dostępności dla szerszej społeczności deweloperów."
     },
     "journey": {
       "badge": "Podróż Rozwojowa",
@@ -115,7 +115,7 @@
       },
       "phase2": {
         "title": "Faza 2: Udoskonalenie Wspomagane AI",
-        "desc": "Używając nowoczesnych narzędzi AI development, sprawdzona funkcjonalność skryptów batch została przekształcona w aplikację Python z interfejsem graficznym, ulepszoną obsługą błędów i lepszą łatwością utrzymania—wykorzystując AI do przyspieszenia procesu rozwoju GUI."
+        "desc": "Używając nowoczesnych narzędzi AI development, sprawdzona funkcjonalność skryptów batch została przekształcona w aplikację Python z interfejsem graficznym, ulepszoną obsługą błędów i lepszą łatwością utrzymania: wykorzystując AI do przyspieszenia procesu rozwoju GUI."
       },
       "phase3": {
         "title": "Najlepsze z Obu Światów",
@@ -132,7 +132,7 @@
       },
       "f2": {
         "title": "Naprawa Jednym Kliknięciem",
-        "desc": "Kompletne przywrócenie referencji pluginu jednym poleceniem. Bez ręcznej edycji plików, bez skomplikowanych konfiguracji—po prostu szybkie, niezawodne rezultaty."
+        "desc": "Kompletne przywrócenie referencji pluginu jednym poleceniem. Bez ręcznej edycji plików, bez skomplikowanych konfiguracji: po prostu szybkie, niezawodne rezultaty."
       },
       "f3": {
         "title": "Bezpieczne Operacje",
@@ -184,8 +184,8 @@
       "badge": "Achtergrond",
       "title": "Het Probleem",
       "p1": "Tijdens mijn werk met Unreal Engine en Wwise audio middleware kwam ik een terugkerend probleem tegen: na bepaalde projectoperaties of versie-updates <strong>braken Wwise plugin-referenties</strong>, waardoor audiosystemen faalden en handmatige interventie vereist was om functionaliteit te herstellen.",
-      "p2": "De handmatige fix vereiste navigeren door projectbestanden, bewerken van configuratiebestanden en zorgvuldig herstellen van plugin-instellingen—een proces dat uren kon duren en gevoelig was voor menselijke fouten. Dit was bijzonder uitdagend voor studenten en junior ontwikkelaars die de engine leerden.",
-      "p3": "Om dit workflow-knelpunt op te lossen, <strong>ontwikkelde ik de kernautomatiseringslogica als Windows batch-scripts</strong>, waarbij ik de workflow ontwierp en de bestandsmanipulatielogica zelf implementeerde. Toen de functionaliteit bewezen en stabiel was, werkte ik samen met <strong>AI-ontwikkeltools om de batch-scripts te verfijnen en te transformeren naar een moderne Python-applicatie</strong> met een gepolijste GUI-interface, betere foutafhandeling en cross-platform compatibiliteit—waarmee effectief gebruik van moderne ontwikkelworkflows werd gedemonstreerd om toegankelijkheid voor de bredere ontwikkelaarsgemeenschap te verbeteren."
+      "p2": "De handmatige fix vereiste navigeren door projectbestanden, bewerken van configuratiebestanden en zorgvuldig herstellen van plugin-instellingen: een proces dat uren kon duren en gevoelig was voor menselijke fouten. Dit was bijzonder uitdagend voor studenten en junior ontwikkelaars die de engine leerden.",
+      "p3": "Om dit workflow-knelpunt op te lossen, <strong>ontwikkelde ik de kernautomatiseringslogica als Windows batch-scripts</strong>, waarbij ik de workflow ontwierp en de bestandsmanipulatielogica zelf implementeerde. Toen de functionaliteit bewezen en stabiel was, werkte ik samen met <strong>AI-ontwikkeltools om de batch-scripts te verfijnen en te transformeren naar een moderne Python-applicatie</strong> met een gepolijste GUI-interface, betere foutafhandeling en cross-platform compatibiliteit: waarmee effectief gebruik van moderne ontwikkelworkflows werd gedemonstreerd om toegankelijkheid voor de bredere ontwikkelaarsgemeenschap te verbeteren."
     },
     "journey": {
       "badge": "Ontwikkelingsreis",
@@ -197,7 +197,7 @@
       },
       "phase2": {
         "title": "Fase 2: AI-Ondersteunde Verfijning",
-        "desc": "Met behulp van moderne AI-ontwikkeltools werd de bewezen batch-scriptfunctionaliteit getransformeerd naar een Python-applicatie met een grafische interface, verbeterde foutafhandeling en betere onderhoudbaarheid—waarbij AI werd ingezet om het GUI-ontwikkelingsproces te versnellen."
+        "desc": "Met behulp van moderne AI-ontwikkeltools werd de bewezen batch-scriptfunctionaliteit getransformeerd naar een Python-applicatie met een grafische interface, verbeterde foutafhandeling en betere onderhoudbaarheid: waarbij AI werd ingezet om het GUI-ontwikkelingsproces te versnellen."
       },
       "phase3": {
         "title": "Het Beste van Beide Werelden",
@@ -214,7 +214,7 @@
       },
       "f2": {
         "title": "Herstel met Één Klik",
-        "desc": "Volledig herstel van plugin-referenties met één commando. Geen handmatige bestandsbewerking, geen complexe configuraties—gewoon snelle, betrouwbare resultaten."
+        "desc": "Volledig herstel van plugin-referenties met één commando. Geen handmatige bestandsbewerking, geen complexe configuraties: gewoon snelle, betrouwbare resultaten."
       },
       "f3": {
         "title": "Veilige Operaties",

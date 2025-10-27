@@ -97,7 +97,7 @@
     "nav_music": "Muzyka",
     "nav_contact": "Kontakt",
     "projects_page_title": "Wszystkie Projekty",
-    "projects_page_subtitle": "Kompleksowa kolekcja prac z zakresu projektowania audio obejmująca implementację w grach, sound design, interaktywną muzykę i narzędzia deweloperskie.",
+    "projects_page_subtitle": "Prace z audio - implementacja w grach, sound design, interaktywna muzyka i narzędzia deweloperskie.",
     "projects_filter_all": "Wszystkie",
     "projects_filter_game": "Audio do gier",
     "projects_filter_sound": "Sound design",
@@ -117,7 +117,7 @@
       "amorak": {
         "badge": "Sound design",
         "title": "Amorak",
-        "description": "Soundscapy horroru i dźwięki stworów."
+        "description": "Dźwięki horroru i stworów."
       },
       "pause_deserve": {
         "badge": "Gra grozy",
@@ -132,7 +132,7 @@
       "interactive_music": {
         "badge": "Muzyka",
         "title": "Projektowanie muzyki interaktywnej",
-        "description": "Adaptacyjna muzyka z wertykalnym warstwowaniem w Wwise."
+        "description": "Muzyka z warstwowaniem w Wwise."
       },
       "akantilado": {
         "badge": "Animacja",
@@ -147,7 +147,7 @@
       "plugin_suite": {
         "badge": "Wtyczka VST",
         "title": "Audio Plugin Suite",
-        "description": "Autorskie wtyczki VST do przestrzennego przetwarzania audio 3D."
+        "description": "Wtyczki VST do przestrzennego audio 3D."
       },
       "audioq": {
         "badge": "Wtyczka VST",
@@ -188,7 +188,7 @@
     "nav_music": "Muziek",
     "nav_contact": "Contact",
     "projects_page_title": "Alle Projecten",
-    "projects_page_subtitle": "Een uitgebreide verzameling audiodesign-werk met game-implementatie, sounddesign, interactieve muziek en development tools.",
+    "projects_page_subtitle": "Audiodesign-werk - game-implementatie, sounddesign, interactieve muziek en development tools.",
     "projects_filter_all": "Alle",
     "projects_filter_game": "Game-audio",
     "projects_filter_sound": "Sounddesign",
@@ -208,7 +208,7 @@
       "amorak": {
         "badge": "Sounddesign",
         "title": "Amorak",
-        "description": "Horror soundscapes en creature geluiden."
+        "description": "Horror geluiden en creature audio."
       },
       "pause_deserve": {
         "badge": "Horrorgame",
@@ -223,7 +223,7 @@
       "interactive_music": {
         "badge": "Muziek",
         "title": "Interactive Music Design",
-        "description": "Adaptieve muziek met verticale lagen in Wwise."
+        "description": "Muziek met lagen in Wwise."
       },
       "akantilado": {
         "badge": "Animatie",
