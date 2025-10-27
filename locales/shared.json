@@ -14,8 +14,8 @@
     },
     "hero": {
       "label": "Audio Designer & Developer",
-      "title": "Crafting Immersive<br>Audio Experiences",
-      "description": "Interactive music systems, sound design for animation & games, and innovative audio tools.",
+      "title": "Interactive Sound<br>for Modern Games",
+      "description": "Game audio implementation in Wwise/FMOD. Sound design for animation. Real-time audio tools that solve production problems.",
       "cta1": "View My Work",
       "cta2": "Get In Touch"
     },
@@ -74,7 +74,7 @@
     "about_stat_languages": "Languages Fluent",
     "contact_badge": "Available for Projects",
     "contact_title": "Let's Create Together",
-    "contact_subtitle": "I typically respond within 24–48 hours. Let's discuss your project.",
+    "contact_subtitle": "24-48h response time. Available for game audio, tool development, and middleware integration.",
     "contact_form_title": "Send a Message",
     "contact_form_name": "Your Name",
     "contact_form_email": "Email Address",
@@ -180,8 +180,8 @@
     },
     "hero": {
       "label": "Audio Designer & Developer",
-      "title": "Tworzenie Immersyjnych<br>Doświadczeń Audio",
-      "description": "Interaktywne systemy muzyczne, sound design dla animacji i gier oraz innowacyjne narzędzia audio.",
+      "title": "Interaktywny Dźwięk<br>dla Nowoczesnych Gier",
+      "description": "Implementacja audio do gier w Wwise/FMOD. Sound design do animacji. Narzędzia audio w czasie rzeczywistym rozwiązujące problemy produkcyjne.",
       "cta1": "Zobacz Moje Prace",
       "cta2": "Skontaktuj Się"
     },
@@ -240,7 +240,7 @@
     "about_stat_languages": "Języki Biegle",
     "contact_badge": "Dostępny do Projektów",
     "contact_title": "Twórzmy Razem",
-    "contact_subtitle": "Zazwyczaj odpowiadam w ciągu 24–48 godzin. Porozmawiajmy o Twoim projekcie.",
+    "contact_subtitle": "Czas odpowiedzi 24-48h. Dostępny do audio do gier, rozwoju narzędzi i integracji middleware.",
     "contact_form_title": "Wyślij Wiadomość",
     "contact_form_name": "Twoje Imię",
     "contact_form_email": "Adres Email",
@@ -346,8 +346,8 @@
     },
     "hero": {
       "label": "Audio Designer & Developer",
-      "title": "Het Creëren van Meeslepende<br>Audio Ervaringen",
-      "description": "Interactieve muzieksystemen, geluidsontwerp voor animatie & games, en innovatieve audio tools.",
+      "title": "Interactief Geluid<br>voor Moderne Games",
+      "description": "Game audio implementatie in Wwise/FMOD. Sound design voor animatie. Real-time audio tools die productieproblemen oplossen.",
       "cta1": "Bekijk Mijn Werk",
       "cta2": "Neem Contact Op"
     },
@@ -406,7 +406,7 @@
     "about_stat_languages": "Talen Vloeiend",
     "contact_badge": "Beschikbaar voor Projecten",
     "contact_title": "Laten we samen maken",
-    "contact_subtitle": "Ik reageer meestal binnen 24–48 uur. Laten we uw project bespreken.",
+    "contact_subtitle": "24-48h responstijd. Beschikbaar voor game audio, tool ontwikkeling en middleware integratie.",
     "contact_form_title": "Stuur een Bericht",
     "contact_form_name": "Uw Naam",
     "contact_form_email": "E-mailadres",

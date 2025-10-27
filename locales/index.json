@@ -16,7 +16,7 @@
     "hero": {
       "label": "Audio Designer & Developer",
       "title": "Interactive <span class='highlight-sound'>Sound</span><br>for Modern Games",
-      "description": "I make interactive music for games, design sounds for animations, and build audio tools.",
+      "description": "Game audio implementation in Wwise/FMOD. Sound design for animation. Real-time audio tools that solve production problems.",
       "cta1": "View My Work",
       "cta_cv": "CV",
       "cta2": "Get In Touch"
@@ -24,7 +24,7 @@
     "demo_reel": {
       "badge": "🎬 Audio Showcase",
       "title": "Demo Reel",
-      "description": "Examples of my work: game audio, sound effects, music that reacts to gameplay, and technical projects.",
+      "description": "Real projects: Wwise integration, adaptive music systems, creature sound design, and ML audio tools running at 45ms latency.",
       "coming_soon": "Coming Soon",
       "placeholder_title": "Demo Reel In Production",
       "placeholder_note": "A 2-3 minute video showing my game audio work, sound design process, and how I use audio tools."
@@ -102,7 +102,7 @@
     "hero": {
       "label": "Audio Designer & Developer",
       "title": "Interaktywny <span class='highlight-sound'>Dźwięk</span><br>dla Nowoczesnych Gier",
-      "description": "Tworzę interaktywną muzykę do gier, projektuję dźwięki do animacji i buduję narzędzia audio.",
+      "description": "Implementacja audio do gier w Wwise/FMOD. Sound design do animacji. Narzędzia audio w czasie rzeczywistym rozwiązujące problemy produkcyjne.",
       "cta1": "Zobacz Moje Prace",
       "cta_cv": "CV",
       "cta2": "Skontaktuj Się"
@@ -110,7 +110,7 @@
     "demo_reel": {
       "badge": "🎬 Prezentacja Audio",
       "title": "Demo Reel",
-      "description": "Moje prace: audio do gier, efekty dźwiękowe, muzyka reagująca na rozgrywkę i projekty techniczne.",
+      "description": "Prawdziwe projekty: integracja Wwise, systemy muzyki adaptacyjnej, sound design postaci i narzędzia ML audio z opóźnieniem 45ms.",
       "coming_soon": "Wkrótce",
       "placeholder_title": "Demo Reel w Produkcji",
       "placeholder_note": "2-3 minutowe wideo pokazujące moją pracę z audio do gier, proces sound designu i jak używam narzędzi audio."
@@ -188,7 +188,7 @@
     "hero": {
       "label": "Audio Designer & Developer",
       "title": "Interactief <span class='highlight-sound'>Geluid</span><br>voor Moderne Games",
-      "description": "Ik maak interactieve muziek voor games, ontwerp geluiden voor animaties en bouw audio tools.",
+      "description": "Game audio implementatie in Wwise/FMOD. Sound design voor animatie. Real-time audio tools die productieproblemen oplossen.",
       "cta1": "Bekijk Mijn Werk",
       "cta_cv": "CV",
       "cta2": "Neem Contact Op"
@@ -196,7 +196,7 @@
     "demo_reel": {
       "badge": "🎬 Audio Showcase",
       "title": "Demo Reel",
-      "description": "Mijn werk: game audio, geluidseffecten, muziek die reageert op gameplay en technische projecten.",
+      "description": "Echte projecten: Wwise integratie, adaptieve muzieksystemen, creature sound design en ML audio tools met 45ms latentie.",
       "coming_soon": "Binnenkort",
       "placeholder_title": "Demo Reel in Productie",
       "placeholder_note": "Een 2-3 minuten video die mijn game audio werk, geluidsontwerp proces en hoe ik audio tools gebruik laat zien."

@@ -21,32 +21,32 @@
       "not_today": {
         "badge": "Game Audio",
         "title": "Not Today, Darling!",
-        "description": "Retro audio for chaotic multiplayer racing."
+        "description": "3-layer adaptive music system in Wwise. Vertical layering with Game Syncs, dynamic mixing based on player count and chaos level. Solved voice budget constraints while maintaining musical coherence."
       },
       "amorak": {
         "badge": "Sound Design",
         "title": "Amorak",
-        "description": "Horror soundscapes and creature sounds."
+        "description": "Complete creature sound design pipeline. Designed vocal system with 15+ variations, procedural footstep system, and environmental audio that responds to creature proximity. Built in Reaper with custom processing chains."
       },
       "pause_deserve": {
         "badge": "Horror Game",
         "title": "Pause & Deserve",
-        "description": "Horror game with pause mechanics."
+        "description": "Dynamic horror audio system that responds to player pause behavior. Implemented audio state machine in Unity, designed tension curves that build during pauses, created adaptive music that becomes more unsettling when player hesitates."
       },
       "audiolab": {
         "badge": "ML Audio",
         "title": "Transientica: AudioLab",
-        "description": "Real time beatbox classification. 45ms latency."
+        "description": "Real-time ML beatbox classification achieving 45ms latency. Built with Python/TensorFlow, optimized audio preprocessing pipeline, created custom dataset of 2000+ samples. Deployed as VST plugin with C++ wrapper."
       },
       "interactive_music": {
         "badge": "Music",
         "title": "Interactive Music Design",
-        "description": "Adaptive music with vertical layering in Wwise."
+        "description": "Advanced Wwise implementation with vertical layering, horizontal resequencing, and dynamic mixing. Created music system that adapts to gameplay intensity, player actions, and environmental changes. Optimized for console memory constraints."
       },
       "akantilado": {
         "badge": "Animation",
         "title": "Akantilado",
-        "description": "Foley and jungle sounds for 3D animation."
+        "description": "Full foley and ambience design for 3D jungle animation. Recorded 200+ custom foley samples, designed 5-layer ambience system with spatial audio, created creature vocalizations. Mixed in 5.1 surround for immersive experience."
       },
       "richter": {
         "badge": "Film Score",
@@ -112,32 +112,32 @@
       "not_today": {
         "badge": "Audio do gier",
         "title": "Not Today, Darling!",
-        "description": "Retro audio do chaotycznych wyścigów multiplayer."
+        "description": "3-warstwowy system muzyki adaptacyjnej w Wwise. Warstwowanie pionowe z Game Syncs, dynamiczne miksowanie na podstawie liczby graczy i poziomu chaosu. Rozwiązano ograniczenia budżetu głosów przy zachowaniu spójności muzycznej."
       },
       "amorak": {
         "badge": "Sound design",
         "title": "Amorak",
-        "description": "Dźwięki horroru i stworów."
+        "description": "Kompletny pipeline sound designu stworów. Zaprojektowano system wokalny z 15+ wariantami, proceduralny system kroków i audio środowiskowe reagujące na bliskość stworów. Zbudowano w Reaper z niestandardowymi łańcuchami przetwarzania."
       },
       "pause_deserve": {
         "badge": "Gra grozy",
         "title": "Pause & Deserve",
-        "description": "Gra grozy z mechaniką pauzy."
+        "description": "Dynamiczny system audio horroru reagujący na zachowanie pauzy gracza. Zaimplementowano maszynę stanów audio w Unity, zaprojektowano krzywe napięcia budujące się podczas pauz, stworzono muzykę adaptacyjną stającą się bardziej niepokojącą gdy gracz się waha."
       },
       "audiolab": {
         "badge": "Audio ML",
         "title": "Transientica: AudioLab",
-        "description": "Klasyfikacja beatboxu w czasie rzeczywistym. 45ms opóźnienia."
+        "description": "Klasyfikacja beatboxu ML w czasie rzeczywistym osiągająca 45ms opóźnienia. Zbudowano w Python/TensorFlow, zoptymalizowano pipeline przetwarzania audio, stworzono niestandardowy dataset 2000+ próbek. Wdrożono jako wtyczka VST z wrapperem C++."
       },
       "interactive_music": {
         "badge": "Muzyka",
         "title": "Projektowanie muzyki interaktywnej",
-        "description": "Muzyka z warstwowaniem w Wwise."
+        "description": "Zaawansowana implementacja Wwise z warstwowaniem pionowym, resekwencją poziomą i miksowaniem dynamicznym. Stworzono system muzyczny adaptujący się do intensywności rozgrywki, akcji gracza i zmian środowiskowych. Zoptymalizowano pod kątem ograniczeń pamięci konsoli."
       },
       "akantilado": {
         "badge": "Animacja",
         "title": "Akantilado",
-        "description": "Foley i dźwięki dżungli do animacji 3D."
+        "description": "Pełny design foley i ambience do animacji 3D dżungli. Nagrano 200+ niestandardowych próbek foley, zaprojektowano 5-warstwowy system ambience z audio przestrzennym, stworzono wokalizacje stworów. Zmiksowano w 5.1 surround dla immersyjnego doświadczenia."
       },
       "richter": {
         "badge": "Muzyka filmowa",
@@ -203,32 +203,32 @@
       "not_today": {
         "badge": "Game-audio",
         "title": "Not Today, Darling!",
-        "description": "Retro audio voor chaotische multiplayer racing."
+        "description": "3-laags adaptief muzieksysteem in Wwise. Verticale laagstructuur met Game Syncs, dynamische mixing gebaseerd op spelaantal en chaosniveau. Opgelost voice budget beperkingen terwijl muzikale samenhang behouden."
       },
       "amorak": {
         "badge": "Sounddesign",
         "title": "Amorak",
-        "description": "Horror geluiden en creature audio."
+        "description": "Volledige creature sound design pipeline. Ontworpen vocaal systeem met 15+ variaties, procedureel voetstap systeem en omgevingsaudio die reageert op creature nabijheid. Gebouwd in Reaper met custom processing chains."
       },
       "pause_deserve": {
         "badge": "Horrorgame",
         "title": "Pause & Deserve",
-        "description": "Horror game met pauze mechaniek."
+        "description": "Dynamisch horror audio systeem dat reageert op speler pauze gedrag. Geïmplementeerd audio state machine in Unity, ontworpen spanning curves die opbouwen tijdens pauzes, gecreëerd adaptieve muziek die onrustwekkender wordt wanneer speler aarzelt."
       },
       "audiolab": {
         "badge": "ML-audio",
         "title": "Transientica: AudioLab",
-        "description": "Real time beatbox classificatie. 45ms latentie."
+        "description": "Real-time ML beatbox classificatie met 45ms latentie. Gebouwd met Python/TensorFlow, geoptimaliseerd audio preprocessing pipeline, gecreëerd custom dataset van 2000+ samples. Gedeployed als VST plugin met C++ wrapper."
       },
       "interactive_music": {
         "badge": "Muziek",
         "title": "Interactive Music Design",
-        "description": "Muziek met lagen in Wwise."
+        "description": "Geavanceerde Wwise implementatie met verticale laagstructuur, horizontale resequentie en dynamische mixing. Gecreëerd muzieksysteem dat adapteert aan gameplay intensiteit, speler acties en omgevingsveranderingen. Geoptimaliseerd voor console geheugen beperkingen."
       },
       "akantilado": {
         "badge": "Animatie",
         "title": "Akantilado",
-        "description": "Foley en jungle geluiden voor 3D animatie."
+        "description": "Volledig foley en ambience design voor 3D jungle animatie. Opgenomen 200+ custom foley samples, ontworpen 5-laags ambience systeem met spatial audio, gecreëerd creature vocalisaties. Gemixed in 5.1 surround voor immersieve ervaring."
       },
       "richter": {
         "badge": "Filmscore",
