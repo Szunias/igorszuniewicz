@@ -25,23 +25,45 @@
             // Load video sources if not already loaded
             if (!video.classList.contains('loaded')) {
               const sources = video.querySelectorAll('source[data-src]');
+              
+              // Check if sources exist before processing
+              if (sources.length === 0) {
+                console.warn('No video sources found for video:', video);
+                videoObserver.unobserve(video);
+                return;
+              }
+
               sources.forEach(source => {
-                source.src = source.getAttribute('data-src');
-                source.removeAttribute('data-src');
+                const src = source.getAttribute('data-src');
+                if (src) {
+                  source.src = src;
+                  source.removeAttribute('data-src');
+                } else {
+                  console.warn('Empty data-src attribute found for video source:', source);
+                }
               });
 
-              video.load();
               video.classList.add('loaded');
 
-              // Play when loaded
+              // Add error handling for video loading
+              video.addEventListener('error', (e) => {
+                console.error('Video loading error:', e);
+                videoObserver.unobserve(video);
+              }, { once: true });
+
               video.addEventListener('loadeddata', () => {
-                video.play().catch(() => {
-                  // Autoplay prevented by browser
+                video.play().catch((error) => {
+                  // Autoplay prevented by browser or other error
+                  console.log('Video autoplay prevented:', error.message);
                 });
               }, { once: true });
+
+              video.load();
             } else if (video.paused) {
               // Already loaded, just play
-              video.play().catch(() => {});
+              video.play().catch((error) => {
+                console.log('Video play failed:', error.message);
+              });
             }
 
             // Stop observing this video after loading
@@ -58,11 +80,18 @@
       // Fallback for browsers without IntersectionObserver
       videos.forEach(video => {
         const sources = video.querySelectorAll('source[data-src]');
-        sources.forEach(source => {
-          source.src = source.getAttribute('data-src');
-        });
-        video.load();
-        video.play().catch(() => {});
+        if (sources.length > 0) {
+          sources.forEach(source => {
+            const src = source.getAttribute('data-src');
+            if (src) {
+              source.src = src;
+            }
+          });
+          video.load();
+          video.play().catch((error) => {
+            console.log('Video play failed in fallback:', error.message);
+          });
+        }
       });
     }
   }
@@ -83,22 +112,12 @@
   }
 
   /**
-   * Optimize scroll event listeners
+   * Optimize scroll event listeners - removed dangerous prototype override
+   * Modern browsers already handle passive scrolling efficiently
    */
   function optimizeScrollListeners() {
-    // Add passive flag to all scroll listeners for better performance
-    const originalAddEventListener = EventTarget.prototype.addEventListener;
-
-    EventTarget.prototype.addEventListener = function(type, listener, options) {
-      if (type === 'scroll' || type === 'wheel' || type === 'touchmove') {
-        if (typeof options === 'object' && options.passive === undefined) {
-          options.passive = true;
-        } else if (typeof options === 'undefined' || typeof options === 'boolean') {
-          options = { passive: true, capture: options || false };
-        }
-      }
-      return originalAddEventListener.call(this, type, listener, options);
-    };
+    // This function is kept for compatibility but no longer modifies prototypes
+    // All scroll listeners in the codebase already use { passive: true }
   }
 
   /**

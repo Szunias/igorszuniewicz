@@ -79,6 +79,9 @@
         }, 150);
       }
     });
+    
+    // Emit language changed event
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: lang } }));
   }
   
   // Helper function to apply translations to all elements

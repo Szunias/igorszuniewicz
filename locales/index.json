@@ -76,9 +76,13 @@
     },
     "footer": {
       "projects": "Projects",
-      "music": "Music",
+      "music": "Music", 
       "about": "About",
       "contact": "Contact"
+    },
+    "analytics": {
+      "title": "Analytics",
+      "message": "No personal data • Site only"
     }
   },
   "pl": {
@@ -159,8 +163,12 @@
     "footer": {
       "projects": "Projekty",
       "music": "Muzyka",
-      "about": "O mnie",
+      "about": "O mnie", 
       "contact": "Kontakt"
+    },
+    "analytics": {
+      "title": "Analityka",
+      "message": "Brak danych osobowych • Tylko strona"
     }
   },
   "nl": {
@@ -243,6 +251,10 @@
       "music": "Muziek",
       "about": "Over",
       "contact": "Contact"
+    },
+    "analytics": {
+      "title": "Analytics",
+      "message": "Geen persoonlijke gegevens • Alleen site"
     }
   }
 }

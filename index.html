@@ -1751,15 +1751,20 @@
     function initLanguage() {
       loadTranslations();
 
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+      // Use event delegation for better performance and memory management
+      document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('lang-btn')) {
+          setLanguage(e.target.dataset.lang);
+        }
       });
     }
 
     // Single header scroll effect implementation
+    let headerScrollInitialized = false;
+    
     function initHeaderScrollEffect() {
       const header = document.getElementById('header');
-      if (!header) return;
+      if (!header || headerScrollInitialized) return;
 
       function handleHeaderScroll() {
         if (window.scrollY > 50) {
@@ -1769,8 +1774,9 @@
         }
       }
 
-      // Add the scroll listener
+      // Add the scroll listener only once
       window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+      headerScrollInitialized = true;
 
       // Call once immediately to set correct initial state
       handleHeaderScroll();
@@ -2003,24 +2009,17 @@
         // DON'T manipulate document.body.style.overflow - this breaks header!
       }
 
-      if (toggle) {
-        toggle.addEventListener('click', () => {
+      // Use event delegation for mobile menu interactions
+      document.addEventListener('click', (e) => {
+        if (e.target === toggle) {
           if (menu && menu.classList.contains('active')) {
             closeMobileMenu();
           } else {
             openMobileMenu();
           }
-        });
-      }
-
-      if (overlay) {
-        overlay.addEventListener('click', closeMobileMenu);
-      }
-
-      menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        } else if (e.target === overlay || e.target.closest('.mobile-menu a')) {
           closeMobileMenu();
-        });
+        }
       });
 
       // Close on escape key
@@ -2030,14 +2029,7 @@
         }
       });
 
-      // Mobile lang switcher sync with main
-      document.querySelectorAll('.mobile-lang-switcher .lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          if (window.setLanguage) {
-            window.setLanguage(btn.dataset.lang);
-          }
-        });
-      });
+      // Mobile lang switcher sync with main - handled by event delegation above
     })();
   </script>
 

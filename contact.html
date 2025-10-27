@@ -53,7 +53,6 @@
   
   <!-- Smooth navigation - MUST load early to prevent white flash -->
   <script src="assets/js/simple-smooth-nav.js"></script>
-  <script src="assets/js/analytics.js" defer></script>
   
   <!-- Google Fonts - Optimized -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1061,27 +1060,33 @@
   
   <!-- Scripts -->
   <script>
-    // Header scroll effect (unified across all pages) - defensive implementation
+    // Header scroll effect (unified across all pages) - fixed to prevent duplicates
+    let headerScrollInitialized = false;
+    let headerScrollHandler = null;
+    
     function initHeaderScrollEffect() {
       const header = document.getElementById('header');
-      if (!header) return;
+      if (!header || headerScrollInitialized) return;
       
       // Remove any existing scroll listeners to avoid duplicates
-      window.removeEventListener('scroll', handleHeaderScroll);
+      if (headerScrollHandler) {
+        window.removeEventListener('scroll', headerScrollHandler);
+      }
       
-      function handleHeaderScroll() {
+      headerScrollHandler = function handleHeaderScroll() {
         if (window.scrollY > 50) {
           header.classList.add('scrolled');
         } else {
           header.classList.remove('scrolled');
         }
-      }
+      };
       
-      // Add the scroll listener
-      window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+      // Add the scroll listener only once
+      window.addEventListener('scroll', headerScrollHandler, { passive: true });
+      headerScrollInitialized = true;
       
       // Call once immediately to set correct initial state
-      handleHeaderScroll();
+      headerScrollHandler();
     }
     
     // Initialize immediately
