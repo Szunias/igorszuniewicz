@@ -878,7 +878,7 @@
     audio.src = new URL(first.url, location.href).toString();
     audio.load();
     loadMeta(i);
-    const playNow = ()=> audio.play().catch((err)=>{ showPlayerToast('Cannot play audio'); console.error(err); });
+    const playNow = ()=> audio.play().catch((err)=>{ showPlayerToast('Cannot play audio'); if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') console.error(err); });
     if (audio.readyState >= 2) playNow();
     else {
       const onCanPlay = ()=>{ audio.removeEventListener('canplay', onCanPlay); playNow(); };

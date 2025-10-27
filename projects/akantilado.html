@@ -650,7 +650,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
-  <meta name="description" content="Akantilado — sound design for 3D animation by Igor Szuniewicz" />
+  <meta name="description" content="Akantilado — immersive sound design for 3D jungle animation featuring foley, ambience, and character audio. Professional audio storytelling by Igor Szuniewicz." />
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1760,7 +1760,7 @@
     <section>
       <h2 data-i18n="philosophy.title">Jungle Audio Design</h2>
       <p data-i18n="philosophy.jungle.desc">Rustling leaves, distant calls, flowing water, wind through trees. Layered natural recordings make the jungle feel alive and real.</p>
-      <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play sample - Jungle Ambience"></div>
+      <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play jungle ambience sample featuring layered natural elements, rustling leaves, distant calls, and flowing water"></div>
       <div class="grid">
         <div class="grid-item">
           <h4 data-i18n="philosophy.jungle.layered_title">Layered Natural Elements</h4>
@@ -1781,7 +1781,7 @@
     <section>
       <h2 data-i18n="philosophy.character.title">Character Audio & Movement</h2>
       <p data-i18n="philosophy.character.desc">Each cat has its own voice and movement sounds. Orange is determined, pink is graceful. Their voices evolve from competitive to caring.</p>
-      <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play sample - Character Sounds"></div>
+      <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play character audio sample featuring distinct cat creature vocalizations, movement foley, and emotional evolution from competitive to caring"></div>
       <div class="grid">
         <div class="grid-item">
           <h4 data-i18n="philosophy.character.personalities_title">Distinct Personalities</h4>
@@ -1802,7 +1802,7 @@
     <section>
       <h2 data-i18n="philosophy.emotional.title">Emotional Audio Arc</h2>
       <p data-i18n="philosophy.emotional.desc">Audio mirrors the emotional journey. Playful energy turns into tension, then resolves into something tender. Each phase uses soundscapes to guide you through the transformation.</p>
-      <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play sample - Emotional Journey"></div>
+      <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play emotional audio journey sample showing transition from playful chase through tension to heartfelt resolution"></div>
       <div class="grid">
         <div class="grid-item">
           <h4 data-i18n="philosophy.emotional.chase_title">Playful Chase Phase</h4>
@@ -1822,7 +1822,7 @@
     <!-- Technical Audio Implementation -->
     <section>
       <h2 data-i18n="technical.title">Technical Sound Design</h2>
-      <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play sample - Technical Demo"></div>
+      <div class="audio-player" data-audio="../assets/audio/tracks/placeholder.wav" aria-label="Play technical sound design demo showcasing custom foley library, multi-zone ambience, and seamless audio transitions"></div>
       <div class="grid">
         <div class="grid-item">
           <h4 data-i18n="technical.foley.title">Custom Foley Library</h4>
@@ -1941,7 +1941,7 @@
       function bindPlayer(el){
         const src = el.getAttribute('data-audio') || '../assets/audio/tracks/placeholder.wav';
         const btn = document.createElement('button');
-        btn.setAttribute('aria-label','Play sample');
+        btn.setAttribute('aria-label','Play audio sample');
         const inner = document.createElement('div'); inner.className='inner';
         const tri = document.createElement('div'); tri.className='tri';
         btn.appendChild(tri); inner.appendChild(btn); el.appendChild(inner);

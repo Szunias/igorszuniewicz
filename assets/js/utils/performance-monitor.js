@@ -501,12 +501,14 @@
 
     // Performance debugging tools
     debugPerformance: function() {
-      console.group('Performance Debug Report');
-      console.log('Core Web Vitals:', this.metrics.vitals);
-      console.log('Resource Performance:', this.metrics.resources);
-      console.log('Navigation Timing:', this.metrics.navigation);
-      console.log('Custom Metrics:', this.metrics.custom);
-      console.groupEnd();
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.group('Performance Debug Report');
+        console.log('Core Web Vitals:', this.metrics.vitals);
+        console.log('Resource Performance:', this.metrics.resources);
+        console.log('Navigation Timing:', this.metrics.navigation);
+        console.log('Custom Metrics:', this.metrics.custom);
+        console.groupEnd();
+      }
 
       return this.getMetrics();
     }
