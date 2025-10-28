@@ -3,7 +3,7 @@
     "back": "Back to Projects",
     "wip_badge": "Work in Progress",
     "title": "Pause & Deserve",
-    "tagline": "First-person survival game with psychological horror elements and strategic pause mechanics.",
+    "tagline": "Survival horror game where pausing time has consequences.",
     "gameplay": {
       "title": "Sound is Everything",
       "desc": "You hear Death getting closer. The world reacts when you freeze time. Every footstep builds tension. That's the game."
@@ -83,7 +83,7 @@
     "back": "Powrót do projektów",
     "wip_badge": "W trakcie realizacji",
     "title": "Pause & Deserve",
-    "tagline": "Gra survivalowa FPP z elementami psychologicznego horroru i strategiczną mechaniką pauzy.",
+    "tagline": "Survival horror game gdzie pauza ma konsekwencje.",
     "gameplay": {
       "title": "Dźwięk to Wszystko",
       "desc": "Słyszysz jak Śmierć się zbliża. Świat reaguje kiedy zamrażasz czas. Każdy krok buduje napięcie. To jest ta gra."
@@ -163,7 +163,7 @@
     "back": "Terug naar Projecten",
     "wip_badge": "In ontwikkeling",
     "title": "Pause & Deserve",
-    "tagline": "First-person survival game met psychologische horror elementen en strategische pauze mechanica.",
+    "tagline": "Survival horror game waar pauze consequenties heeft.",
     "gameplay": {
       "title": "Geluid is Alles",
       "desc": "Je hoort de Dood dichterbij komen. De wereld reageert als je tijd bevriest. Elke voetstap bouwt spanning. Dat is de game."

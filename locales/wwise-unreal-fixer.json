@@ -4,7 +4,7 @@
     "hero": {
       "badge": "🎓 Built for Students & Developers",
       "title": "Wwise Unreal<br>Engine Fixer",
-      "subtitle": "Automated solution for restoring Wwise integration in Unreal Engine projects. One click to fix missing plugin references and restore audio functionality.",
+      "subtitle": "Restores Wwise integration in Unreal Engine. One click fixes missing plugin references and audio.",
       "download": "Download Now",
       "github": "View on GitHub"
     },
@@ -19,25 +19,25 @@
     "problem": {
       "badge": "Background",
       "title": "The Problem",
-      "p1": "During my work with Unreal Engine and Wwise audio middleware, I encountered a recurring issue: after certain project operations or version updates, <strong>Wwise plugin references would break</strong>, causing audio systems to fail and requiring manual intervention to restore functionality.",
-      "p2": "The manual fix involved navigating through project files, editing configuration files, and carefully restoring plugin settings: a process that could take hours and was prone to human error. This was particularly challenging for students and junior developers learning the engine.",
-      "p3": "To solve this workflow bottleneck, I <strong>developed the core automation logic as Windows batch scripts</strong>, designing the workflow and implementing the file manipulation logic myself. Once the functionality was proven and stable, I collaborated with <strong>AI development tools to refine and transform the batch scripts into a modern Python application</strong> with a polished GUI interface, better error handling, and cross-platform compatibility: demonstrating effective use of modern development workflows to enhance accessibility for the broader developer community."
+      "p1": "Wwise plugin references break after version updates. Audio fails. Manual fix takes hours, lots of file editing.",
+      "p2": "Built this to automate it. One click fixes everything.",
+      "p3": ""
     },
     "journey": {
-      "badge": "Development Journey",
-      "title": "From Concept to Application",
-      "subtitle": "A two-phase approach combining manual scripting with AI-assisted refinement",
+      "badge": "What It Does",
+      "title": "Auto-Fix Wwise",
+      "subtitle": "Saves hours of manual file editing",
       "phase1": {
-        "title": "Phase 1: Manual Development",
-        "desc": "I personally wrote the original Windows batch scripts, designing the automation workflow, implementing file system operations, and debugging the core functionality. This phase established the proven logic and workflow."
+        "title": "Detects Issues",
+        "desc": "Scans project files and finds broken Wwise references."
       },
       "phase2": {
-        "title": "Phase 2: AI-Assisted Refinement",
-        "desc": "Using modern AI development tools, the proven batch script functionality was transformed into a Python application with a graphical interface, improved error handling, and better maintainability: leveraging AI to accelerate the GUI development process."
+        "title": "Fixes Everything",
+        "desc": "Restores plugin settings, updates configs, rebuilds references. All automatic."
       },
       "phase3": {
-        "title": "Best of Both Worlds",
-        "desc": "This hybrid approach combines hands-on problem-solving with efficient use of modern development tools. The result: robust functionality from manual development enhanced with professional polish from AI assistance."
+        "title": "Creates Backup",
+        "desc": "Backs up your project first. Safe to use."
       }
     },
     "features": {
@@ -46,27 +46,27 @@
       "subtitle": "Everything you need to restore Wwise integration quickly and reliably",
       "f1": {
         "title": "Smart Detection",
-        "desc": "Automatically identifies Wwise integration issues in your Unreal Engine project and determines the required fixes without manual inspection."
+        "desc": "Finds Wwise issues in your project automatically. No manual checking needed."
       },
       "f2": {
         "title": "One-Click Restoration",
-        "desc": "Complete plugin reference restoration with a single command. No manual file editing, no complex configurations: just fast, reliable results."
+        "desc": "Fixes everything with one command. No manual file editing. Fast and works."
       },
       "f3": {
         "title": "Safe Operations",
-        "desc": "Automatic backup creation before making changes ensures you can always revert if needed. Your project data remains protected throughout the process."
+        "desc": "Auto-backs up before fixing. You can always revert if needed. Project stays protected."
       },
       "f4": {
         "title": "Detailed Logging",
-        "desc": "Comprehensive operation logs document every step of the restoration process, making troubleshooting and verification straightforward."
+        "desc": "Logs every step. Easy to troubleshoot and verify what happened."
       },
       "f5": {
         "title": "Precision Fixes",
-        "desc": "Targets specific configuration files and plugin references without affecting other project settings. Surgical precision for maximum reliability."
+        "desc": "Only touches plugin references and configs. Leaves everything else alone."
       },
       "f6": {
         "title": "Production Ready",
-        "desc": "Built from real-world workflow challenges, tested in production environments. Originally designed to help students and developers save time, now reliable enough for professional game development pipelines."
+        "desc": "Built for real workflows, tested in production. Works for students and pro teams."
       }
     },
     "tech": {
@@ -86,7 +86,7 @@
     "hero": {
       "badge": "🎓 Stworzone dla Studentów i Deweloperów",
       "title": "Wwise Unreal<br>Engine Fixer",
-      "subtitle": "Automatyczne rozwiązanie do przywracania integracji Wwise w projektach Unreal Engine. Jedno kliknięcie naprawia brakujące referencje pluginów i przywraca funkcjonalność audio.",
+      "subtitle": "Przywraca integrację Wwise w Unreal Engine. Jedno kliknięcie naprawia brakujące referencje pluginów i audio.",
       "download": "Pobierz Teraz",
       "github": "Zobacz na GitHub"
     },
@@ -101,25 +101,25 @@
     "problem": {
       "badge": "Tło",
       "title": "Problem",
-      "p1": "Podczas pracy z Unreal Engine i middleware audio Wwise napotkałem powtarzający się problem: po niektórych operacjach na projekcie lub aktualizacjach wersji <strong>referencje pluginu Wwise się psuły</strong>, powodując awarie systemów audio i wymagając ręcznej interwencji do przywrócenia funkcjonalności.",
-      "p2": "Ręczna naprawa wymagała nawigacji przez pliki projektu, edycji plików konfiguracyjnych i ostrożnego przywracania ustawień pluginu: proces który mógł trwać godzinami i był podatny na błędy. Było to szczególnie trudne dla studentów i junior deweloperów uczących się silnika.",
-      "p3": "Aby rozwiązać ten problem w workflow, <strong>samodzielnie stworzyłem podstawową logikę automatyzacji jako skrypty batch systemu Windows</strong>, projektując workflow i implementując logikę manipulacji plikami. Gdy funkcjonalność została sprawdzona i stabilna, współpracowałem z <strong>narzędziami AI do udoskonalenia i transformacji skryptów batch w nowoczesną aplikację Python</strong> z dopracowanym interfejsem GUI, lepszą obsługą błędów i kompatybilnością cross-platform: demonstrując efektywne wykorzystanie nowoczesnych workflow development do zwiększenia dostępności dla szerszej społeczności deweloperów."
+      "p1": "Referencje pluginu Wwise psują się po aktualizacjach. Audio pada. Ręczna naprawa to godziny edycji plików.",
+      "p2": "Zrobiłem to żeby to zautomatyzować. Jedno kliknięcie naprawia wszystko.",
+      "p3": ""
     },
     "journey": {
-      "badge": "Podróż Rozwojowa",
-      "title": "Od Koncepcji do Aplikacji",
-      "subtitle": "Dwufazowe podejście łączące ręczne skryptowanie z udoskonaleniem wspomaganym AI",
+      "badge": "Co Robi",
+      "title": "Auto-Naprawa Wwise",
+      "subtitle": "Oszczędza godziny ręcznej edycji plików",
       "phase1": {
-        "title": "Faza 1: Rozwój Manualny",
-        "desc": "Osobiście napisałem oryginalne skrypty batch Windows, projektując workflow automatyzacji, implementując operacje na systemie plików i debugując podstawową funkcjonalność. Ta faza ustanowiła sprawdzoną logikę i workflow."
+        "title": "Wykrywa Problemy",
+        "desc": "Skanuje pliki projektu i znajduje zepsute referencje Wwise."
       },
       "phase2": {
-        "title": "Faza 2: Udoskonalenie Wspomagane AI",
-        "desc": "Używając nowoczesnych narzędzi AI development, sprawdzona funkcjonalność skryptów batch została przekształcona w aplikację Python z interfejsem graficznym, ulepszoną obsługą błędów i lepszą łatwością utrzymania: wykorzystując AI do przyspieszenia procesu rozwoju GUI."
+        "title": "Naprawia Wszystko",
+        "desc": "Przywraca ustawienia pluginu, aktualizuje configi, przebudowuje referencje. Automatycznie."
       },
       "phase3": {
-        "title": "Najlepsze z Obu Światów",
-        "desc": "To hybrydowe podejście łączy praktyczne rozwiązywanie problemów z efektywnym wykorzystaniem nowoczesnych narzędzi development. Rezultat: solidna funkcjonalność z manualnego developmentu wzbogacona profesjonalnym wykończeniem dzięki asystencji AI."
+        "title": "Tworzy Backup",
+        "desc": "Najpierw backupuje projekt. Bezpieczne w użyciu."
       }
     },
     "features": {
@@ -128,27 +128,27 @@
       "subtitle": "Wszystko czego potrzebujesz do szybkiego i niezawodnego przywrócenia integracji Wwise",
       "f1": {
         "title": "Inteligentne Wykrywanie",
-        "desc": "Automatycznie identyfikuje problemy integracji Wwise w projekcie Unreal Engine i określa wymagane poprawki bez ręcznej inspekcji."
+        "desc": "Znajduje problemy Wwise w projekcie automatycznie. Bez ręcznego sprawdzania."
       },
       "f2": {
         "title": "Naprawa Jednym Kliknięciem",
-        "desc": "Kompletne przywrócenie referencji pluginu jednym poleceniem. Bez ręcznej edycji plików, bez skomplikowanych konfiguracji: po prostu szybkie, niezawodne rezultaty."
+        "desc": "Naprawia wszystko jednym poleceniem. Bez ręcznej edycji. Szybko i działa."
       },
       "f3": {
         "title": "Bezpieczne Operacje",
-        "desc": "Automatyczne tworzenie backupu przed wprowadzeniem zmian zapewnia możliwość cofnięcia w razie potrzeby. Dane projektu pozostają chronione przez cały proces."
+        "desc": "Auto-backupuje przed naprawą. Możesz zawsze cofnąć. Projekt chroniony."
       },
       "f4": {
         "title": "Szczegółowe Logowanie",
-        "desc": "Kompleksowe logi operacji dokumentują każdy krok procesu przywracania, ułatwiając troubleshooting i weryfikację."
+        "desc": "Loguje każdy krok. Łatwo sprawdzić co się stało."
       },
       "f5": {
         "title": "Precyzyjne Poprawki",
-        "desc": "Celuje w konkretne pliki konfiguracyjne i referencje pluginów nie wpływając na inne ustawienia projektu. Chirurgiczna precyzja dla maksymalnej niezawodności."
+        "desc": "Dotyka tylko referencji pluginu i configów. Reszta nietknięta."
       },
       "f6": {
         "title": "Gotowe do Produkcji",
-        "desc": "Zbudowane na podstawie rzeczywistych wyzwań workflow, przetestowane w środowiskach produkcyjnych. Pierwotnie zaprojektowane by pomóc studentom i deweloperom zaoszczędzić czas, teraz wystarczająco niezawodne dla profesjonalnych pipeline rozwoju gier."
+        "desc": "Zbudowane dla prawdziwych workflow, testowane w produkcji. Działa dla studentów i pro teamów."
       }
     },
     "tech": {
@@ -168,7 +168,7 @@
     "hero": {
       "badge": "🎓 Gemaakt voor Studenten & Ontwikkelaars",
       "title": "Wwise Unreal<br>Engine Fixer",
-      "subtitle": "Geautomatiseerde oplossing voor het herstellen van Wwise-integratie in Unreal Engine-projecten. Één klik om ontbrekende plugin-referenties te repareren en audiofunctionaliteit te herstellen.",
+      "subtitle": "Herstelt Wwise-integratie in Unreal Engine. Eén klik repareert ontbrekende plugin-referenties en audio.",
       "download": "Nu Downloaden",
       "github": "Bekijk op GitHub"
     },
@@ -183,25 +183,25 @@
     "problem": {
       "badge": "Achtergrond",
       "title": "Het Probleem",
-      "p1": "Tijdens mijn werk met Unreal Engine en Wwise audio middleware kwam ik een terugkerend probleem tegen: na bepaalde projectoperaties of versie-updates <strong>braken Wwise plugin-referenties</strong>, waardoor audiosystemen faalden en handmatige interventie vereist was om functionaliteit te herstellen.",
-      "p2": "De handmatige fix vereiste navigeren door projectbestanden, bewerken van configuratiebestanden en zorgvuldig herstellen van plugin-instellingen: een proces dat uren kon duren en gevoelig was voor menselijke fouten. Dit was bijzonder uitdagend voor studenten en junior ontwikkelaars die de engine leerden.",
-      "p3": "Om dit workflow-knelpunt op te lossen, <strong>ontwikkelde ik de kernautomatiseringslogica als Windows batch-scripts</strong>, waarbij ik de workflow ontwierp en de bestandsmanipulatielogica zelf implementeerde. Toen de functionaliteit bewezen en stabiel was, werkte ik samen met <strong>AI-ontwikkeltools om de batch-scripts te verfijnen en te transformeren naar een moderne Python-applicatie</strong> met een gepolijste GUI-interface, betere foutafhandeling en cross-platform compatibiliteit: waarmee effectief gebruik van moderne ontwikkelworkflows werd gedemonstreerd om toegankelijkheid voor de bredere ontwikkelaarsgemeenschap te verbeteren."
+      "p1": "Wwise plugin referenties breken na versie-updates. Audio faalt. Handmatige fix kost uren bestandsbewerking.",
+      "p2": "Bouwde dit om het te automatiseren. Een klik fixt alles.",
+      "p3": ""
     },
     "journey": {
-      "badge": "Ontwikkelingsreis",
-      "title": "Van Concept naar Applicatie",
-      "subtitle": "Een tweefasenaanpak die handmatig scripten combineert met AI-ondersteunde verfijning",
+      "badge": "Wat Het Doet",
+      "title": "Auto-Fix Wwise",
+      "subtitle": "Bespaart uren handmatige bestandsbewerking",
       "phase1": {
-        "title": "Fase 1: Handmatige Ontwikkeling",
-        "desc": "Ik schreef persoonlijk de originele Windows batch-scripts, ontwierp de automatiseringsworkflow, implementeerde bestandssysteemoperaties en debugde de kernfunctionaliteit. Deze fase legde de bewezen logica en workflow vast."
+        "title": "Detecteert Problemen",
+        "desc": "Scant projectbestanden en vindt gebroken Wwise referenties."
       },
       "phase2": {
-        "title": "Fase 2: AI-Ondersteunde Verfijning",
-        "desc": "Met behulp van moderne AI-ontwikkeltools werd de bewezen batch-scriptfunctionaliteit getransformeerd naar een Python-applicatie met een grafische interface, verbeterde foutafhandeling en betere onderhoudbaarheid: waarbij AI werd ingezet om het GUI-ontwikkelingsproces te versnellen."
+        "title": "Fixt Alles",
+        "desc": "Herstelt plugin instellingen, update configs, herbouwt referenties. Allemaal automatisch."
       },
       "phase3": {
-        "title": "Het Beste van Beide Werelden",
-        "desc": "Deze hybride aanpak combineert hands-on probleemoplossing met efficiënt gebruik van moderne ontwikkeltools. Het resultaat: robuuste functionaliteit van handmatige ontwikkeling verrijkt met professionele afwerking door AI-assistentie."
+        "title": "Maakt Backup",
+        "desc": "Backed eerst je project up. Veilig om te gebruiken."
       }
     },
     "features": {
@@ -210,27 +210,27 @@
       "subtitle": "Alles wat je nodig hebt om Wwise-integratie snel en betrouwbaar te herstellen",
       "f1": {
         "title": "Slimme Detectie",
-        "desc": "Identificeert automatisch Wwise-integratieproblemen in je Unreal Engine-project en bepaalt de vereiste fixes zonder handmatige inspectie."
+        "desc": "Vindt Wwise problemen in je project automatisch. Geen handmatige controle nodig."
       },
       "f2": {
         "title": "Herstel met Één Klik",
-        "desc": "Volledig herstel van plugin-referenties met één commando. Geen handmatige bestandsbewerking, geen complexe configuraties: gewoon snelle, betrouwbare resultaten."
+        "desc": "Fixt alles met één commando. Geen handmatige bewerking. Snel en werkt."
       },
       "f3": {
         "title": "Veilige Operaties",
-        "desc": "Automatische back-upcreatie voordat wijzigingen worden aangebracht zorgt ervoor dat je altijd kunt terugkeren indien nodig. Je projectgegevens blijven beschermd tijdens het hele proces."
+        "desc": "Auto-backed up voor het fixen. Je kan altijd terug. Project blijft beschermd."
       },
       "f4": {
         "title": "Gedetailleerde Logging",
-        "desc": "Uitgebreide operatielogs documenteren elke stap van het herstelproces, waardoor troubleshooting en verificatie eenvoudig worden."
+        "desc": "Logt elke stap. Makkelijk te checken wat er gebeurde."
       },
       "f5": {
         "title": "Precisie Fixes",
-        "desc": "Richt zich op specifieke configuratiebestanden en plugin-referenties zonder andere projectinstellingen te beïnvloeden. Chirurgische precisie voor maximale betrouwbaarheid."
+        "desc": "Raakt alleen plugin referenties en configs. Rest blijft ongewijzigd."
       },
       "f6": {
         "title": "Productie Klaar",
-        "desc": "Gebouwd vanuit echte workflow-uitdagingen, getest in productieomgevingen. Oorspronkelijk ontworpen om studenten en ontwikkelaars tijd te besparen, nu betrouwbaar genoeg voor professionele game-ontwikkelingspipelines."
+        "desc": "Gebouwd voor echte workflows, getest in productie. Werkt voor studenten en pro teams."
       }
     },
     "tech": {

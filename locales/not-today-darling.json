@@ -20,7 +20,7 @@
     },
     "role": {
       "title": "Role: Audio",
-      "desc": "Made all the sounds, hooked them up in Unreal, mixed everything. Gameplay SFX, UI, crowd reactions. Stays clear during chaos."
+      "desc": "Did all the audio. Made sounds, hooked them up in Unreal, mixed everything. Gameplay SFX, UI, crowd. Stays clear even with 4 players racing."
     },
     "gameplay": {
       "title": "Gameplay Highlights",
@@ -37,38 +37,38 @@
     },
     "sfxSystem": {
       "title": "SFX System",
-      "desc": "A parametric library: speed, track surface and cooldown windows drive layers and transients. Boost/burst has its own RPM curves and noise sweetener. Collisions use weights and thresholds to avoid spam.",
-      "b1": "Track materials (asphalt/sand/metal) with smooth crossfades",
-      "b2": "Hazards/slip – pitch/LPF dependent on camera and speed",
-      "b3": "Countdown/Start and Finish stingers as round anchors"
+      "desc": "Sounds change based on speed and surface. Track material affects sound (asphalt, sand, metal). Boost has RPM curves and noise layer. Collisions have weight limits so they don't spam.",
+      "b1": "Track materials blend smoothly (asphalt/sand/metal)",
+      "b2": "Hazard sounds pitch down and filter based on camera and speed",
+      "b3": "Countdown/Start/Finish stingers mark race moments"
     },
     "mix": {
       "title": "Mix & Dynamics",
-      "desc": "Priority‑based mix with ducking: callouts and UI sit above the bed while the crowd ‘breathes’ with race momentum. Submix processing reins in peaks and keeps loudness consistent during chaos.",
-      "b1": "Side‑chain ducking for UI/callouts over gameplay",
-      "b2": "Automatic crowd/ambience rides from state and position",
-      "b3": "Gain staging and reduced spectral masking"
+      "desc": "Priority system. UI and callouts on top. Gameplay sounds next. Crowd breathes with race action. Submix keeps peaks under control and volume consistent.",
+      "b1": "UI ducks gameplay sounds when needed",
+      "b2": "Crowd and ambience change with race state",
+      "b3": "Clean frequency separation, no mud"
     },
     "integration": {
       "title": "Unreal Integration",
-      "desc": "Sound Cues with parameters and Submix buses. Concurrency prevents event pile‑ups; attenuation profiles shape distance; light bus limiting stabilizes perceived loudness at scale.",
-      "b1": "Race state parameters + speed/camera inputs",
-      "b2": "Submixes: UI, Gameplay, Ambience + limiter on Master",
-      "b3": "Concurrency and collision trigger thresholds"
+      "desc": "Sound Cues with parameters. Submix buses separate UI, gameplay, ambience. Concurrency stops sounds from piling up. Attenuation handles distance. Limiter on master keeps it under control.",
+      "b1": "Parameters tied to race state, speed, camera",
+      "b2": "Submixes: UI, Gameplay, Ambience plus master limiter",
+      "b3": "Concurrency limits and collision thresholds"
     },
     "metrics": {
       "title": "Technical Metrics",
-      "desc": "Comprehensive breakdown of audio implementation scope, performance metrics, and resource management.",
+      "desc": "Numbers that matter for game audio.",
       "events": "320+ audio events",
-      "events_desc": "Across 12 categories: player actions, environment, UI, crowd, hazards, boost, collision, surface transitions, state changes, countdowns, finishes, and victory stingers",
-      "footprint": "180 MB audio footprint",
-      "footprint_desc": "Optimized with streaming and compression (Vorbis @ variable quality). ~450 source files processed to final assets",
-      "voice_count": "Max 32 concurrent voices",
-      "voice_count_desc": "Priority-based voice culling: UI/gameplay critical (priority 1.0) > player SFX (0.8) > crowd/ambience (0.5). Automatic stealing on overflow",
-      "latency": "< 45ms input-to-audio",
-      "latency_desc": "Maintained across all gameplay scenarios with real-time parameter modulation and MetaSounds processing",
-      "memory": "~85 MB peak RAM usage",
-      "memory_desc": "Includes loaded banks, streaming buffer, and active DSP. Managed via Unreal's audio streaming system"
+      "events_desc": "12 categories: player actions, environment, UI, crowd, hazards, boost, collisions, surface changes, countdowns, finishes, victory",
+      "footprint": "180 MB audio",
+      "footprint_desc": "Streaming and Vorbis compression. ~450 source files processed",
+      "voice_count": "Max 32 voices playing",
+      "voice_count_desc": "Priority system: UI/gameplay (1.0) > player SFX (0.8) > crowd (0.5). Auto-steals low priority on overflow",
+      "latency": "Under 45ms input to audio",
+      "latency_desc": "Stays responsive with real-time parameters and MetaSounds",
+      "memory": "85 MB peak RAM",
+      "memory_desc": "Banks, streaming buffer, active DSP. Managed by Unreal's streaming"
     },
     "challenges": {
       "title": "Challenges & Solutions",
@@ -137,7 +137,7 @@
     },
     "role": {
       "title": "Rola: Audio",
-      "desc": "Zrobiłem wszystkie dźwięki, podpiąłem w Unreal, zmiksowałem. SFX gameplay, UI, reakcje tłumu. Wszystko czytelne nawet w chaosie."
+      "desc": "Zrobiłem całe audio. Dźwięki, integracja w Unreal, mixing. SFX gameplay, UI, tłum. Czytelne nawet przy 4 graczach."
     },
     "gameplay": {
       "title": "Gameplay Highlights",
@@ -147,45 +147,45 @@
     },
     "audioDirection": {
       "title": "Kierunek Audio",
-      "desc": "Audio pod czytelność i energię wyścigu: wyraźna telemetria zdarzeń, dynamiczny tłum i UI, które nie zagłusza gry. Paleta bliżej „arcade”, ale z kontrolą transjentów i nasycenia, by miks był ciasny przy 1–4 graczach.",
-      "b1": "Warstwy: gameplay > czytelność UI > crowd/ambience",
-      "b2": "Wskaźniki stanów (start, bursty, hazardy, finisz)",
-      "b3": "Kontrola maskowania widmem i priorytety zdarzeń"
+      "desc": "Dźwięk w stylu arcade, czytelny nawet przy 4 graczach. Gameplay zawsze na górze, UI nigdy zagłuszone, tłum reaguje na akcję.",
+      "b1": "Priorytet: gameplay > UI > crowd",
+      "b2": "Wyraźne audio cues dla eventów wyścigu",
+      "b3": "Kontrolowany miks, bez błota częstotliwości"
     },
     "sfxSystem": {
       "title": "System SFX",
-      "desc": "Biblioteka efektów jest parametryczna: prędkość, nawierzchnia toru i okna cooldown sterują warstwami i transientami. Booster/burst ma własne krzywe obrotów i szumowy sweetener. Kolizje korzystają z wag i progów, by uniknąć spamu.",
-      "b1": "Materiały toru (asfalt/piasek/metal) – płynne przejścia",
-      "b2": "Hazardy/slip – pitch/LPF zależnie od kamery i prędkości",
-      "b3": "Odliczanie/Start i fanfary finiszu jako kotwice rundy"
+      "desc": "Dźwięki zmieniają się z prędkością i nawierzchnią. Materiał toru wpływa na brzmienie (asfalt, piasek, metal). Boost ma krzywe RPM i warstwę szumu. Kolizje mają limity wagowe, żeby nie spamowały.",
+      "b1": "Materiały toru miksują się płynnie (asfalt/piasek/metal)",
+      "b2": "Dźwięki hazardów obniżają pitch i filtrują z kamerą i prędkością",
+      "b3": "Odliczanie/Start/Finish oznaczają momenty wyścigu"
     },
     "mix": {
       "title": "Mix & Dynamika",
-      "desc": "Miks z priorytetami i duckingiem: callouty i UI ponad bedem, crowd „oddycha” z tempem wyścigu. Submix processing trzyma piki i stabilizuje głośność w chaosie.",
-      "b1": "Sidechain ducking dla UI/calloutów nad gameplay",
-      "b2": "Automatyka crowd/ambience od stanu i pozycji",
-      "b3": "Gain staging i redukcja maskowania widmem"
+      "desc": "System priorytetów. UI i callouty na górze. Dźwięki gameplayu dalej. Tłum oddycha z akcją wyścigu. Submix trzyma piki pod kontrolą i volume stałe.",
+      "b1": "UI duckuje gameplay gdy potrzeba",
+      "b2": "Tłum i ambient zmieniają się ze stanem wyścigu",
+      "b3": "Czysta separacja częstotliwości, bez błota"
     },
     "integration": {
       "title": "Integracja w Unreal",
-      "desc": "Sound Cues z parametrami i Submix Bus. Concurrency zapobiega nawarstwianiu zdarzeń; profile tłumienia kształtują dystans; lekki limiter na busach stabilizuje głośność.",
-      "b1": "Parametry stanów + prędkość/kamera",
-      "b2": "Submixy: UI, Gameplay, Ambience + limiter na Master",
-      "b3": "Concurrency i progi wyzwalania kolizji"
+      "desc": "Sound Cues z parametrami. Busy submix rozdzielają UI, gameplay, ambient. Concurrency stopuje piling dźwięków. Attenuation obsługuje odległość. Limiter na master trzyma kontrolę.",
+      "b1": "Parametry podpięte pod stan wyścigu, prędkość, kamerę",
+      "b2": "Submixy: UI, Gameplay, Ambience plus master limiter",
+      "b3": "Limity concurrency i progi kolizji"
     },
     "metrics": {
       "title": "Metryki Techniczne",
-      "desc": "Szczegółowe zestawienie zakresu implementacji audio, metryk wydajności i zarządzania zasobami.",
+      "desc": "Liczby ważne dla audio w grze.",
       "events": "320+ eventów audio",
-      "events_desc": "W 12 kategoriach: akcje gracza, środowisko, UI, crowd, hazardy, boost, kolizje, przejścia materiałów, zmiany stanów, odliczania, finisze, victory stingers",
-      "footprint": "180 MB audio footprint",
-      "footprint_desc": "Zoptymalizowane przez streaming i kompresję (Vorbis @ zmienna jakość). ~450 plików źródłowych przetworzonych do finalnych assetów",
-      "voice_count": "Max 32 równoczesne voice'y",
-      "voice_count_desc": "Voice culling oparty na priorytetach: UI/gameplay krytyczne (priorytet 1.0) > player SFX (0.8) > crowd/ambience (0.5). Automatyczne stealing przy overflow",
-      "latency": "< 45ms input-to-audio",
-      "latency_desc": "Utrzymane we wszystkich scenariuszach gameplay z real-time modulacją parametrów i przetwarzaniem MetaSounds",
-      "memory": "~85 MB peak RAM usage",
-      "memory_desc": "Wliczając załadowane banki, buffer streamingu i aktywny DSP. Zarządzane przez system streaming audio Unreala"
+      "events_desc": "12 kategorii: akcje gracza, środowisko, UI, tłum, hazardy, boost, kolizje, zmiany nawierzchni, odliczania, finisze, zwycięstwa",
+      "footprint": "180 MB audio",
+      "footprint_desc": "Streaming i kompresja Vorbis. ~450 plików źródłowych przetworzonych",
+      "voice_count": "Max 32 głosy",
+      "voice_count_desc": "System priorytetów: UI/gameplay (1.0) > SFX gracza (0.8) > tłum (0.5). Auto-stealing niskich priorytetów przy overflow",
+      "latency": "Poniżej 45ms input do audio",
+      "latency_desc": "Responsywne z parametrami real-time i MetaSounds",
+      "memory": "85 MB szczyt RAM",
+      "memory_desc": "Banki, bufor streamingu, aktywny DSP. Zarządzane przez streaming Unreala"
     },
     "challenges": {
       "title": "Wyzwania i Rozwiązania",
@@ -194,18 +194,18 @@
       "solution_label": "Rozwiązanie:",
       "challenge1": {
         "title": "Czytelność Miksu przy 4 Graczach",
-        "problem": "Przy 4 graczach jednocześnie, dźwięki kolizji i przyspieszeń się nawarstwiały i powodowały maskowanie częstotliwości, przez co informacje zwrotne UI były niesłyszalne.",
-        "solution": "Zaimplementowano ograniczenie współbieżności oparte na priorytetach (max 4 dźwięki kolizji jednocześnie) z inteligentnym przejmowaniem głosów. Dodano krzywe EQ świadome częstotliwości dla każdego slotu gracza (slot 1: skupienie 200-800Hz, slot 2: 800-2kHz, itd.) oraz tłumienie łańcuchowe na tłumie/ambiencie gdy uruchamiają się wydarzenia UI (-6dB tłumienia, 50ms atak, 200ms zwolnienie)."
+        "problem": "Przy 4 graczach dźwięki się piętrzą i UI jest niesłyszalne.",
+        "solution": "Limit max 4 dźwięków kolizji. Każdy gracz dostaje inny zakres EQ. Crowd duckuje gdy gra UI."
       },
       "challenge2": {
-        "title": "Trzaski przy Przejściach Materiałów",
-        "problem": "Gracze poruszający się między materiałami toru (asfalt → piasek → metal) powodowali słyszalne trzaski przez natychmiastowe przełączanie warstw.",
-        "solution": "Zastąpiono natychmiastowe przełączenia systemem płynnych przejść używając kontenerów mieszania Unreala. Dodano 150ms czasu przejścia z krzywą równej mocy. Detekcja materiału używa sfery nakładania z 0.2s czasem odnowienia aby zapobiec szybkim przejściom."
+        "title": "Trzaski przy Zmianie Materiałów",
+        "problem": "Przejścia między materiałami toru (asfalt → piasek → metal) dawały słyszalne trzaski.",
+        "solution": "Płynne crossfades 150ms. Detekcja materiału z overlapem 0.2s żeby zapobiec szybkim przejściom."
       },
       "challenge3": {
-        "title": "Skoki Pamięci przy Dźwięku Przyspieszenia",
-        "problem": "Oryginalny efekt dźwiękowy przyspieszenia używał 4-warstwowego systemu z 24-bitowym WAV, powodując 40MB skoku pamięci na instancję (x4 gracze = potencjalnie 160MB skoku).",
-        "solution": "Przebudowano do proceduralnego łatka MetaSounds: generator szumu + przesuw filtru pasmowego + modulacja wysokości sterowana przez parametr intensywności przyspieszenia. Zredukowano do <2MB na instancję przy zachowaniu charakteru dźwiękowego. Dodano krzywą wysokości w stylu obrotów silnika dla organicznego wrażenia przyspieszenia."
+        "title": "Skok Pamięci przy Booście",
+        "problem": "Oryginalny boost: 4 warstwy 24-bit WAV, 40MB na instancję (x4 graczy = 160MB skoku).",
+        "solution": "Przebudowano na proceduralne MetaSounds: generator szumu + filtr pasmowy + pitch modulacja. Zredukowano do <2MB na instancję. Dodano krzywą pitch jak obroty silnika."
       }
     },
     "metasounds": {
@@ -254,7 +254,7 @@
     },
     "role": {
       "title": "Rol: Audio",
-      "desc": "Verantwoordelijk voor geluidseffecten, implementatie en mixing: gameplay SFX-palet, UI, crowd/ambience lagen en integratie en in-engine mix voor duidelijkheid tijdens snelle actie. Systeem reageert op race-staten en speler-evenementen."
+      "desc": "Deed alle audio. Sounds, Unreal integratie, mixing. Gameplay SFX, UI, publiek. Helder zelfs met 4 spelers."
     },
     "gameplay": {
       "title": "Gameplay Highlights",
@@ -264,45 +264,45 @@
     },
     "audioDirection": {
       "title": "Audio Direction",
-      "desc": "Ontworpen voor leesbaarheid en energie van de race: duidelijke event-telemetrie, dynamisch publiek en UI die gameplay niet overstemt. Arcade-achtige klank met gecontroleerde transiënten en subtiele saturatie voor 1–4 spelers.",
-      "b1": "Laagstructuur: gameplay > UI-duidelijkheid > crowd/ambience",
-      "b2": "Statuscues (start, bursts, hazards, finish)",
-      "b3": "Minder spectrale masking en eventprioriteiten"
+      "desc": "Arcade-stijl geluid dat helder blijft zelfs met 4 spelers. Gameplay sounds altijd bovenop, UI nooit begraven, crowd reageert op actie.",
+      "b1": "Prioriteit: gameplay > UI > crowd",
+      "b2": "Duidelijke audio cues voor race events",
+      "b3": "Gecontroleerde mix, geen frequentie mud"
     },
     "sfxSystem": {
       "title": "SFX-systeem",
-      "desc": "Parametrische bibliotheek: snelheid, baanoppervlak en cooldownvensters sturen lagen en transiënten. Boost/burst met eigen RPM-curves en noise sweetener. Botsingen met gewichten en drempels om spam te vermijden.",
-      "b1": "Baanmaterialen (asfalt/zand/metaal) met soepele crossfades",
-      "b2": "Hazards/slip – pitch/LPF afhankelijk van camera en snelheid",
-      "b3": "Countdown/Start en Finish-stingers als rondeankers"
+      "desc": "Geluiden veranderen met snelheid en oppervlak. Baanmateriaal beïnvloedt geluid (asfalt, zand, metaal). Boost heeft RPM curves en noise layer. Botsingen hebben gewichtlimieten dus geen spam.",
+      "b1": "Baanmaterialen blenden soepel (asfalt/zand/metaal)",
+      "b2": "Hazard geluiden pitchen down en filteren met camera en snelheid",
+      "b3": "Countdown/Start/Finish stingers markeren race momenten"
     },
     "mix": {
       "title": "Mix & Dynamiek",
-      "desc": "Mix met prioriteiten en ducking: callouts en UI boven de bed; het publiek ‘ademt’ mee met de race. Submix-processing temt pieken en houdt loudness stabiel.",
-      "b1": "Sidechain ducking voor UI/callouts boven gameplay",
-      "b2": "Automatische crowd/ambience rides via status en positie",
-      "b3": "Gain staging en minder spectrale masking"
+      "desc": "Prioriteitssysteem. UI en callouts bovenop. Gameplay sounds daarna. Publiek ademt met race actie. Submix houdt pieken onder controle en volume constant.",
+      "b1": "UI duct gameplay wanneer nodig",
+      "b2": "Crowd en ambience veranderen met race status",
+      "b3": "Schone frequentie scheiding, geen mud"
     },
     "integration": {
       "title": "Unreal-integratie",
-      "desc": "Sound Cues met parameters en Submix-bussen. Concurrency voorkomt stapeling; attenuatieprofielen vormen afstand; lichte bus‑limiting stabiliseert loudness.",
-      "b1": "Race‑status + snelheid/camera als inputs",
-      "b2": "Submixen: UI, Gameplay, Ambience + limiter op Master",
-      "b3": "Concurrency en drempels voor botsingstriggers"
+      "desc": "Sound Cues met parameters. Submix bussen scheiden UI, gameplay, ambience. Concurrency stopt sounds van opstapelen. Attenuation handelt afstand. Limiter op master houdt controle.",
+      "b1": "Parameters gekoppeld aan race status, snelheid, camera",
+      "b2": "Submixen: UI, Gameplay, Ambience plus master limiter",
+      "b3": "Concurrency limieten en botsing drempels"
     },
     "metrics": {
       "title": "Technische Metrics",
-      "desc": "Uitgebreide breakdown van audio-implementatie scope, prestatiemetrics en resource management.",
+      "desc": "Cijfers die ertoe doen voor game audio.",
       "events": "320+ audio events",
-      "events_desc": "Over 12 categorieën: speleracties, omgeving, UI, publiek, hazards, boost, botsing, oppervlakte-overgangen, statuswijzigingen, aftelllingen, finishes en overwinningsstingers",
-      "footprint": "180 MB audio footprint",
-      "footprint_desc": "Geoptimaliseerd met streaming en compressie (Vorbis @ variabele kwaliteit). ~450 bronbestanden verwerkt tot finale assets",
-      "voice_count": "Max 32 gelijktijdige voices",
-      "voice_count_desc": "Prioriteit-gebaseerde voice culling: UI/gameplay kritiek (prioriteit 1.0) > speler SFX (0.8) > crowd/ambience (0.5). Automatisch stealing bij overflow",
-      "latency": "< 45ms input-naar-audio",
-      "latency_desc": "Gehandhaafd over alle gameplay-scenario's met realtime parametermodulatie en MetaSounds-verwerking",
-      "memory": "~85 MB piek RAM-gebruik",
-      "memory_desc": "Inclusief geladen banks, streaming buffer en actieve DSP. Beheerd via Unreal's audio streaming systeem"
+      "events_desc": "12 categorieën: speler acties, omgeving, UI, publiek, hazards, boost, botsingen, oppervlakte wijzigingen, aftelllingen, finishes, overwinningen",
+      "footprint": "180 MB audio",
+      "footprint_desc": "Streaming en Vorbis compressie. ~450 bronbestanden verwerkt",
+      "voice_count": "Max 32 voices aan",
+      "voice_count_desc": "Prioriteitssysteem: UI/gameplay (1.0) > speler SFX (0.8) > publiek (0.5). Auto-steelt lage prioriteit bij overflow",
+      "latency": "Onder 45ms input naar audio",
+      "latency_desc": "Blijft responsief met real-time parameters en MetaSounds",
+      "memory": "85 MB piek RAM",
+      "memory_desc": "Banks, streaming buffer, actieve DSP. Beheerd door Unreal's streaming"
     },
     "challenges": {
       "title": "Uitdagingen & Oplossingen",
@@ -311,18 +311,18 @@
       "solution_label": "Oplossing:",
       "challenge1": {
         "title": "Mix Helderheid met 4 Spelers",
-        "problem": "Met tot 4 gelijktijdige spelers stapelden botsings- en boost-geluiden zich op en veroorzaakten frequentie-maskering, waardoor UI-feedback onhoorbaar werd.",
-        "solution": "Implementeerde prioriteit-gebaseerde gelijktijdigheidsbeperking (max 4 botsingsgeluiden tegelijk) met intelligente stem-toewijzing. Toegevoegde frequentie-bewuste EQ curves per spelerslot (slot 1: 200-800Hz focus, slot 2: 800-2kHz, enz.) en paste zijketen-demping toe op publiek/ambiance wanneer UI gebeurtenissen activeren (-6dB demping, 50ms aanval, 200ms loslaten)."
+        "problem": "Met 4 spelers stapelen geluiden zich en UI wordt onhoorbaar.",
+        "solution": "Limiet max 4 botsingsgeluiden. Elke speler krijgt ander EQ bereik. Publiek duckt als UI speelt."
       },
       "challenge2": {
-        "title": "Klikgeluiden bij Oppervlakte-overgangen",
-        "problem": "Spelers die tussen baanmaterialen bewogen (asfalt → zand → metaal) veroorzaakten hoorbare klikken door directe laagwisselingen.",
-        "solution": "Vervangen directe wisselingen door vloeiend overgangssysteem met Unreal's mengcontainers. Toegevoegd 150ms overgangtijd met gelijke-vermogen curve. Oppervlakte-detectie gebruikt overlappende sfeer met 0.2s afkoeltijd om snelle overgangen te voorkomen."
+        "title": "Klikken bij Oppervlakte Wisseling",
+        "problem": "Overgangen tussen baanmaterialen (asfalt → zand → metaal) gaven hoorbare klikken.",
+        "solution": "Vloeiende crossfades 150ms. Oppervlakte-detectie met overlap 0.2s om snelle wissels te voorkomen."
       },
       "challenge3": {
-        "title": "Geheugenpieken bij Boost-geluid",
-        "problem": "Originele boost-geluidseffect gebruikte 4-lagen systeem met 24-bit WAV bestanden, wat 40MB geheugenpieken veroorzaakte per instantie (x4 spelers = potentieel 160MB piek).",
-        "solution": "Herbouwd naar procedurele MetaSounds patch: ruisgenerator + bandfilter sweep + toonhoogte modulatie aangestuurd door boost intensiteit parameter. Gereduceerd naar <2MB per instantie met behoud van sonisch karakter. Toegevoegd toerental-stijl toonhoogte curve voor organisch versnellingsgevoel."
+        "title": "Geheugenpiek bij Boost",
+        "problem": "Origineel boost: 4 lagen 24-bit WAV, 40MB per instantie (x4 spelers = 160MB piek).",
+        "solution": "Herbouwd naar procedurele MetaSounds: ruisgenerator + bandfilter + toonhoogte modulatie. Gereduceerd naar <2MB per instantie. Toerental-stijl toonhoogte curve toegevoegd."
       }
     },
     "metasounds": {

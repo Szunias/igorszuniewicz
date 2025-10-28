@@ -5,7 +5,7 @@
       "badge": "🎵 Audio Plugin",
       "brandMain": "AUDIO<span style=\"color: #ff6ea9;\">Q</span>",
       "brandTagline": "Advanced Audio Sampler",
-      "subtitle": "JUCE-based audio sampler with granular synthesis, tremolo effects, and professional DSP processing. Perfect for music producers and sound designers.",
+      "subtitle": "JUCE audio sampler with granular synthesis, tremolo, and DSP. For music producers and sound designers.",
       "downloadPlugin": "Download Plugin",
       "viewGithub": "View on GitHub"
     },
@@ -25,31 +25,31 @@
       "subtitle": "Everything you need for creative sound manipulation",
       "f1": {
         "title": "Drag & Drop Loading",
-        "desc": "Seamlessly load audio files (WAV, AIFF, MP3) with intuitive drag-and-drop interface. Instant waveform visualization and playback control."
+        "desc": "Load audio files (WAV, AIFF, MP3) by dragging them in. Waveform shows up instantly."
       },
       "f2": {
         "title": "Granular Synthesis",
-        "desc": "Advanced granular synthesis mode for textural manipulation. Control grain size, random playback, and crossfade transitions for unique sound design."
+        "desc": "Granular mode for textures. Control grain size, random playback, crossfade. Good for sound design."
       },
       "f3": {
         "title": "Custom Tremolo Effect",
-        "desc": "Manual DSP implementation with LFO calculation and per-sample amplitude modulation. Full control over rate and depth parameters."
+        "desc": "Manual DSP tremolo. LFO and amplitude modulation. Control rate and depth."
       },
       "f4": {
         "title": "Filter System",
-        "desc": "High/Low-pass filtering with real-time parameter control. Frequency range from 20Hz to 20kHz for precise tonal shaping."
+        "desc": "High/Low-pass filters with real-time control. 20Hz to 20kHz range."
       },
       "f5": {
         "title": "Built-in Compressor",
-        "desc": "Professional compressor with full parameter automation. Control threshold, ratio, attack, and release for dynamic range management."
+        "desc": "Compressor with threshold, ratio, attack, release. Full automation."
       },
       "f6": {
         "title": "Advanced Looping",
-        "desc": "User-defined loop regions with tempo adjustment (20-300 BPM). Perfect for creating rhythmic patterns and sustained textures."
+        "desc": "Set loop regions, adjust tempo (20-300 BPM). Good for rhythmic patterns and textures."
       },
       "f7": {
         "title": "Dual Waveform Display",
-        "desc": "Offline and real-time waveform visualization. Monitor your audio processing with professional-grade visual feedback."
+        "desc": "Offline and real-time waveform visualization. Monitor your audio processing visually."
       },
       "f8": {
         "title": "Volume Safety System",
@@ -81,7 +81,7 @@
       "badge": "🎵 Plugin Audio",
       "brandMain": "AUDIO<span style=\"color: #ff6ea9;\">Q</span>",
       "brandTagline": "Zaawansowany Sampler Audio",
-      "subtitle": "Sampler audio oparty na JUCE z syntezą granularną, efektami tremolo i profesjonalnym przetwarzaniem DSP. Idealny dla producentów muzycznych i sound designerów.",
+      "subtitle": "Sampler audio JUCE z syntezą granularną, tremolo i DSP. Dla producentów muzycznych i sound designerów.",
       "downloadPlugin": "Pobierz Plugin",
       "viewGithub": "Zobacz na GitHub"
     },
@@ -101,31 +101,31 @@
       "subtitle": "Wszystko czego potrzebujesz do kreatywnej manipulacji dźwiękiem",
       "f1": {
         "title": "Ładowanie Przeciągnij i Upuść",
-        "desc": "Bezproblemowe ładowanie plików audio (WAV, AIFF, MP3) z intuicyjnym interfejsem przeciągnij-upuść. Natychmiastowa wizualizacja przebiegu i kontrola odtwarzania."
+        "desc": "Ładuj pliki audio (WAV, AIFF, MP3) przeciągając je. Przebieg pokazuje się od razu."
       },
       "f2": {
         "title": "Synteza Granularna",
-        "desc": "Zaawansowany tryb syntezy granularnej do manipulacji teksturami. Kontroluj rozmiar ziaren, losowe odtwarzanie i przejścia crossfade dla unikalnego sound designu."
+        "desc": "Tryb granularny do tekstur. Kontroluj rozmiar ziaren, losowe odtwarzanie, crossfade. Dobry do sound designu."
       },
       "f3": {
         "title": "Niestandardowy Efekt Tremolo",
-        "desc": "Manualna implementacja DSP z kalkulacją LFO i modulacją amplitudy dla każdej próbki. Pełna kontrola nad parametrami tempa i głębokości."
+        "desc": "Manualny DSP tremolo. LFO i modulacja amplitudy. Kontrola tempa i głębokości."
       },
       "f4": {
         "title": "System Filtrów",
-        "desc": "Filtrowanie górnoprzepustowe/dolnoprzepustowe z kontrolą parametrów w czasie rzeczywistym. Zakres częstotliwości od 20Hz do 20kHz dla precyzyjnego kształtowania tonalnego."
+        "desc": "Filtry High/Low-pass z kontrolą real-time. Zakres 20Hz do 20kHz."
       },
       "f5": {
         "title": "Wbudowany Kompresor",
-        "desc": "Profesjonalny kompresor z pełną automatyzacją parametrów. Kontroluj próg, współczynnik, atak i zwolnienie dla zarządzania zakresem dynamicznym."
+        "desc": "Kompresor z threshold, ratio, attack, release. Pełna automatyzacja."
       },
       "f6": {
         "title": "Zaawansowane Zapętlanie",
-        "desc": "Regiony pętli definiowane przez użytkownika z dostosowaniem tempa (20-300 BPM). Idealny do tworzenia wzorów rytmicznych i podtrzymywanych tekstur."
+        "desc": "Ustaw regiony loop, dostosuj tempo (20-300 BPM). Dobre do rytmicznych patternów i tekstur."
       },
       "f7": {
         "title": "Podwójny Wyświetlacz Przebiegu",
-        "desc": "Wizualizacja przebiegu offline i w czasie rzeczywistym. Monitoruj przetwarzanie audio z profesjonalną wizualną informacją zwrotną."
+        "desc": "Wizualizacja przebiegu offline i w czasie rzeczywistym. Monitoruj przetwarzanie audio wizualnie."
       },
       "f8": {
         "title": "System Bezpieczeństwa Głośności",
@@ -157,7 +157,7 @@
       "badge": "🎵 Audio Plugin",
       "brandMain": "AUDIO<span style=\"color: #ff6ea9;\">Q</span>",
       "brandTagline": "Geavanceerde Audio Sampler",
-      "subtitle": "JUCE-gebaseerde audio sampler met granulaire synthese, tremolo-effecten en professionele DSP-verwerking. Perfect voor muziekproducers en sound designers.",
+      "subtitle": "JUCE audio sampler met granulaire synthese, tremolo en DSP. Voor muziekproducers en sound designers.",
       "downloadPlugin": "Download Plugin",
       "viewGithub": "Bekijk op GitHub"
     },
@@ -177,31 +177,31 @@
       "subtitle": "Alles wat je nodig hebt voor creatieve geluidmanipulatie",
       "f1": {
         "title": "Drag & Drop Laden",
-        "desc": "Naadloos audiobestanden laden (WAV, AIFF, MP3) met intuïtieve drag-and-drop interface. Direct golfvormvisualisatie en afspeelbediening."
+        "desc": "Laad audiobestanden (WAV, AIFF, MP3) door ze erin te slepen. Golfvorm verschijnt direct."
       },
       "f2": {
         "title": "Granulaire Synthese",
-        "desc": "Geavanceerde granulaire synthesemodus voor textuurmanipulatie. Beheer korrelgrootte, willekeurige afspelen en crossfade-overgangen voor uniek geluidsontwerp."
+        "desc": "Granulaire modus voor texturen. Beheer korrelgrootte, willekeurig afspelen, crossfade. Goed voor geluidsontwerp."
       },
       "f3": {
         "title": "Aangepast Tremolo Effect",
-        "desc": "Handmatige DSP-implementatie met LFO-berekening en per-sample amplitudemodulatie. Volledige controle over snelheid- en diepteparameters."
+        "desc": "Handmatige DSP tremolo. LFO en amplitudemodulatie. Beheer snelheid en diepte."
       },
       "f4": {
         "title": "Filtersysteem",
-        "desc": "Hoog/laag-doorlaatfiltering met real-time parametercontrole. Frequentiebereik van 20Hz tot 20kHz voor nauwkeurige tonale vorming."
+        "desc": "High/Low-pass filters met real-time controle. 20Hz tot 20kHz bereik."
       },
       "f5": {
         "title": "Ingebouwde Compressor",
-        "desc": "Professionele compressor met volledige parameterautomatisering. Beheer drempel, ratio, attack en release voor dynamisch bereidsbeheer."
+        "desc": "Compressor met drempel, ratio, attack, release. Volledige automatisering."
       },
       "f6": {
         "title": "Geavanceerd Loopen",
-        "desc": "Door gebruiker gedefinieerde loop-regio's met tempo-aanpassing (20-300 BPM). Perfect voor het creëren van ritmische patronen en aanhoudende texturen."
+        "desc": "Stel loop-regio's in, pas tempo aan (20-300 BPM). Goed voor ritmische patronen en texturen."
       },
       "f7": {
         "title": "Dubbele Golfvormweergave",
-        "desc": "Offline en real-time golfvormvisualisatie. Monitor je audioverwerking met professionele visuele feedback."
+        "desc": "Offline en real-time golfvormvisualisatie. Monitor je audioverwerking visueel."
       },
       "f8": {
         "title": "Volume Veiligheidssysteem",

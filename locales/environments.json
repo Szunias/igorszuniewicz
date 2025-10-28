@@ -4,7 +4,7 @@
     "hero": {
       "badge": "🏛️ 3D Architecture",
       "title": "3D Environments",
-      "subtitle": "Professional interior design, architectural modeling, and realistic material creation using Blender 3D."
+      "subtitle": "Interior design and architectural modeling in Blender 3D. Realistic materials and lighting."
     },
     "meta": {
       "software": "📐 Software: Blender 3D",
@@ -19,7 +19,7 @@
     "about": {
       "badge": "About the Project",
       "title": "Modern Interior Design",
-      "description": "This project showcases a modern interior design with realistic lighting and materials. Created in Blender 3D, the environment features detailed architectural elements, custom materials, and atmospheric lighting that brings the space to life. Every detail has been carefully crafted to create an immersive and photorealistic experience."
+      "description": "Modern interior design with realistic lighting and materials. Created in Blender 3D. Detailed architecture, custom materials, atmospheric lighting."
     },
     "features": {
       "modeling": {
@@ -59,7 +59,7 @@
     "hero": {
       "badge": "🏛️ Architektura 3D",
       "title": "Środowiska 3D",
-      "subtitle": "Profesjonalny design wnętrz, modelowanie architektoniczne i tworzenie realistycznych materiałów w Blender 3D."
+      "subtitle": "Projektowanie wnętrz i modelowanie architektoniczne w Blender 3D. Realistyczne materiały i oświetlenie."
     },
     "meta": {
       "software": "📐 Oprogramowanie: Blender 3D",
@@ -74,7 +74,7 @@
     "about": {
       "badge": "O Projekcie",
       "title": "Nowoczesny Design Wnętrz",
-      "description": "Ten projekt prezentuje nowoczesny design wnętrz z realistycznym oświetleniem i materiałami. Stworzony w Blender 3D, środowisko zawiera szczegółowe elementy architektoniczne, niestandardowe materiały oraz atmosferyczne oświetlenie, które ożywia przestrzeń. Każdy detal został starannie dopracowany, aby stworzyć immersyjne i fotorealistyczne doświadczenie."
+      "description": "Nowoczesny design wnętrz z realistycznym oświetleniem i materiałami. Stworzony w Blender 3D. Szczegółowa architektura, custom materiały, atmosferyczne światło."
     },
     "features": {
       "modeling": {
@@ -114,7 +114,7 @@
     "hero": {
       "badge": "🏛️ 3D Architectuur",
       "title": "3D Omgevingen",
-      "subtitle": "Professioneel interieurontwerp, architectonische modellering en realistische materiaalontwikkeling met Blender 3D."
+      "subtitle": "Interieurontwerp en architecturale modellering in Blender 3D. Realistische materialen en belichting."
     },
     "meta": {
       "software": "📐 Software: Blender 3D",
@@ -129,7 +129,7 @@
     "about": {
       "badge": "Over het Project",
       "title": "Modern Interieurontwerp",
-      "description": "Dit project toont een modern interieurontwerp met realistische verlichting en materialen. Gemaakt in Blender 3D, bevat de omgeving gedetailleerde architectonische elementen, aangepaste materialen en sfeervolle verlichting die de ruimte tot leven brengt. Elk detail is zorgvuldig uitgewerkt om een meeslepende en fotorealistische ervaring te creëren."
+      "description": "Modern interieurontwerp met realistische verlichting en materialen. Gemaakt in Blender 3D. Gedetailleerde architectuur, custom materialen, sfeervolle belichting."
     },
     "features": {
       "modeling": {
