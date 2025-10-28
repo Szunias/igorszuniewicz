@@ -16,7 +16,7 @@
     "hero": {
       "label": "Audio Designer & Developer",
       "title": "Interactive <span class='highlight-sound'>Sound</span><br>for Modern Games",
-      "description": "Game audio implementation in Wwise/FMOD. Sound design for animation. Real-time audio tools that solve production problems.",
+      "description": "Interactive music in Wwise/FMOD. Sound design for games and animation. Audio tools that actually work in production.",
       "cta1": "View My Work",
       "cta_cv": "CV",
       "cta2": "Get In Touch"
@@ -24,7 +24,7 @@
     "demo_reel": {
       "badge": "🎬 Audio Showcase",
       "title": "Demo Reel",
-      "description": "Real projects: Wwise integration, adaptive music systems, creature sound design, and ML audio tools running at 45ms latency.",
+      "description": "Work I've shipped: Wwise integration for multiplayer racing, horror sound design, ML beatbox tool (45ms latency), adaptive music systems.",
       "coming_soon": "Coming Soon",
       "placeholder_title": "Demo Reel In Production",
       "placeholder_note": "A 2-3 minute video showing my game audio work, sound design process, and how I use audio tools."
@@ -32,7 +32,7 @@
     "projects": {
       "label": "Featured Work",
       "title": "Selected Projects",
-      "description": "A curated selection of recent work spanning game audio, sound design, and interactive music.",
+      "description": "Recent projects across game audio, sound design, and interactive music systems.",
       "viewall": "View All Projects",
       "cards": {
         "not_today": {
@@ -102,7 +102,7 @@
     "hero": {
       "label": "Audio Designer & Developer",
       "title": "Interaktywny <span class='highlight-sound'>Dźwięk</span><br>dla Nowoczesnych Gier",
-      "description": "Implementacja audio do gier w Wwise/FMOD. Sound design do animacji. Narzędzia audio w czasie rzeczywistym rozwiązujące problemy produkcyjne.",
+      "description": "Interaktywna muzyka w Wwise/FMOD. Sound design do gier i animacji. Narzędzia audio które działają w produkcji.",
       "cta1": "Zobacz Moje Prace",
       "cta_cv": "CV",
       "cta2": "Skontaktuj Się"
@@ -110,7 +110,7 @@
     "demo_reel": {
       "badge": "🎬 Prezentacja Audio",
       "title": "Demo Reel",
-      "description": "Prawdziwe projekty: integracja Wwise, systemy muzyki adaptacyjnej, sound design postaci i narzędzia ML audio z opóźnieniem 45ms.",
+      "description": "Wypuszczone projekty: integracja Wwise do wyścigów multiplayer, sound design horroru, narzędzie ML beatbox (45ms opóźnienia), systemy adaptacyjnej muzyki.",
       "coming_soon": "Wkrótce",
       "placeholder_title": "Demo Reel w Produkcji",
       "placeholder_note": "2-3 minutowe wideo pokazujące moją pracę z audio do gier, proces sound designu i jak używam narzędzi audio."
@@ -118,7 +118,7 @@
     "projects": {
       "label": "Wybrane Prace",
       "title": "Wybrane Projekty",
-      "description": "Najnowsze prace: audio do gier, sound design i interaktywna muzyka.",
+      "description": "Ostatnie projekty z audio do gier, sound designu i systemów interaktywnej muzyki.",
       "viewall": "Wszystkie Projekty",
       "cards": {
         "not_today": {
@@ -188,7 +188,7 @@
     "hero": {
       "label": "Audio Designer & Developer",
       "title": "Interactief <span class='highlight-sound'>Geluid</span><br>voor Moderne Games",
-      "description": "Game audio implementatie in Wwise/FMOD. Sound design voor animatie. Real-time audio tools die productieproblemen oplossen.",
+      "description": "Interactieve muziek in Wwise/FMOD. Sound design voor games en animatie. Audio tools die echt werken in productie.",
       "cta1": "Bekijk Mijn Werk",
       "cta_cv": "CV",
       "cta2": "Neem Contact Op"
@@ -196,7 +196,7 @@
     "demo_reel": {
       "badge": "🎬 Audio Showcase",
       "title": "Demo Reel",
-      "description": "Echte projecten: Wwise integratie, adaptieve muzieksystemen, creature sound design en ML audio tools met 45ms latentie.",
+      "description": "Uitgebracht werk: Wwise integratie voor multiplayer racing, horror sound design, ML beatbox tool (45ms latency), adaptieve muziek.",
       "coming_soon": "Binnenkort",
       "placeholder_title": "Demo Reel in Productie",
       "placeholder_note": "Een 2-3 minuten video die mijn game audio werk, geluidsontwerp proces en hoe ik audio tools gebruik laat zien."
@@ -204,7 +204,7 @@
     "projects": {
       "label": "Uitgelicht Werk",
       "title": "Geselecteerde Projecten",
-      "description": "Recent werk: game audio, geluidsontwerp en interactieve muziek.",
+      "description": "Recente projecten van game audio, sound design en interactieve muzieksystemen.",
       "viewall": "Alle Projecten",
       "cards": {
         "not_today": {
