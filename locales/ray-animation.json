@@ -3,17 +3,18 @@
     "back": "Back to Projects",
     "hero": {
       "subtitle": "MUSIC COMPOSITION",
-      "description": "Complete musical composition for 3D animation project."
+      "description": "Disco-inspired score for 3D animated short. Created at DAE, inspired by the breathtaking Grotten Van Han cave."
     },
     "tags": {
-      "role": "Replacement Composer",
+      "role": "Composer",
       "style": "Disco-inspired",
-      "location": "Ghent, Belgium",
-      "type": "Animation Score"
+      "school": "DAE Howest",
+      "type": "Final Group Project",
+      "inspiration": "Grotten Van Han Cave"
     },
     "showcase": {
       "title": "Project Showcase",
-      "description": "When the original composer from Ghent couldn't deliver, I stepped in to create the entire soundtrack from scratch. The result is a funky disco-inspired score that brings the animation to life with catchy melodies and vibrant energy.",
+      "description": "Final group project at DAE. Our team visited Grotten Van Han cave—those visuals stuck with us and shaped the whole film. I composed the disco-inspired soundtrack that drives the story. Team: Minh Thao Trinh (Character Art), Andra-Mihaela Popa (Rigging), Jolien Vansteenkiste (Animation), Joe Frackiewicz (Simulation), Jeffrey Vandenameel (Lighting/Environment/Compositing), Tijn Valcke (Sound Design).",
       "list1": "Complete original score composition",
       "list2": "Disco-inspired musical themes",
       "list3": "Character-driven harmonic progression",
@@ -49,17 +50,18 @@
     "back": "Powrót do projektów",
     "hero": {
       "subtitle": "KOMPOZYCJA MUZYCZNA",
-      "description": "Kompletna kompozycja muzyczna do projektu animacji 3D."
+      "description": "Muzyka inspirowana disco do krótkiego filmu animowanego 3D. Stworzone w DAE, zainspirowane zapierającą dech w piersiach jaskinią Grotten Van Han."
     },
     "tags": {
-      "role": "Zastępczy Kompozytor",
+      "role": "Kompozytor",
       "style": "Inspirowane disco",
-      "location": "Gandawa, Belgia",
-      "type": "Muzyka do Animacji"
+      "school": "DAE Howest",
+      "type": "Finalny Projekt Grupowy",
+      "inspiration": "Jaskinia Grotten Van Han"
     },
     "showcase": {
       "title": "Prezentacja Projektu",
-      "description": "Kiedy oryginalny kompozytor z Gandawy nie mógł dostarczyć muzyki, przejąłem projekt i stworzyłem całą ścieżkę od zera. Wyszło funky disco, które ożywia animację chwytliwymi melodiami i energią.",
+      "description": "Finalny projekt grupowy w DAE. Nasz zespół odwiedził jaskinię Grotten Van Han—te widoki zostały z nami i ukształtowały cały film. Skomponowałem ścieżkę dźwiękową inspirowaną disco, która napędza historię. Zespół: Minh Thao Trinh (Character Art), Andra-Mihaela Popa (Rigging), Jolien Vansteenkiste (Animacja), Joe Frackiewicz (Symulacje), Jeffrey Vandenameel (Lighting/Environment/Compositing), Tijn Valcke (Sound Design).",
       "list1": "Kompletna oryginalna kompozycja",
       "list2": "Motywy muzyczne inspirowane disco",
       "list3": "Progresje harmoniczne oparte na emocjach",
@@ -95,17 +97,18 @@
     "back": "Terug naar Projecten",
     "hero": {
       "subtitle": "MUZIEKCOMPOSITIE",
-      "description": "Volledige muziekcompositie voor 3D-animatieproject."
+      "description": "Disco-geïnspireerde score voor 3D geanimeerde korte film. Gemaakt bij DAE, geïnspireerd door de adembenemende Grotten Van Han grot."
     },
     "tags": {
-      "role": "Vervangende Componist",
+      "role": "Componist",
       "style": "Disco-geïnspireerd",
-      "location": "Gent, België",
-      "type": "Animatiemuziek"
+      "school": "DAE Howest",
+      "type": "Eindproject Groep",
+      "inspiration": "Grotten Van Han Grot"
     },
     "showcase": {
       "title": "Projectpresentatie",
-      "description": "Toen de originele componist uit Gent niet kon leveren, nam ik het over en maakte de hele soundtrack vanaf nul. Het resultaat is een funky disco-score die de animatie tot leven brengt met catchy melodieën en energie.",
+      "description": "Eindproject bij DAE. Ons team bezocht de Grotten Van Han grot—die beelden bleven bij ons en vormden de hele film. Ik componeerde de disco-geïnspireerde soundtrack die het verhaal aandrijft. Team: Minh Thao Trinh (Character Art), Andra-Mihaela Popa (Rigging), Jolien Vansteenkiste (Animatie), Joe Frackiewicz (Simulatie), Jeffrey Vandenameel (Lighting/Environment/Compositing), Tijn Valcke (Sound Design).",
       "list1": "Volledige originele scorecompositie",
       "list2": "Disco-geïnspireerde muzikale thema's",
       "list3": "Karaktergedreven harmonische progressie",

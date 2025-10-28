@@ -2,7 +2,7 @@
   "en": {
     "back": "Back to Projects",
     "title": "Akantilado: Sound Design",
-    "tagline": "Jungle adventure where two cats race for treasure. Sound design tells the story of how love beats greed.",
+    "tagline": "Ancient Mayan relic awakens in the jungle, drawing two mythical creatures into conflict. Sound design tells the story of choice between greed and compassion.",
     "meta": {
       "role": {
         "label": "Role",
@@ -14,11 +14,19 @@
       },
       "characters": {
         "label": "Characters",
-        "value": "Two Cat Creatures"
+        "value": "Two Mythical Creatures"
       },
       "theme": {
         "label": "Theme",
-        "value": "Love vs Greed"
+        "value": "Choice & Sacrifice"
+      },
+      "year": {
+        "label": "Year",
+        "value": "2024 | 12-week production"
+      },
+      "team": {
+        "label": "Team",
+        "value": "DAE Howest Kortrijk"
       }
     },
     "showcase": {
@@ -27,7 +35,7 @@
     },
     "overview": {
       "title": "How Sound Tells the Story",
-      "desc": "Jungle comes alive through audio. Foley, voices, ambience. They guide you from competition to sacrifice. Sound matters as much as picture."
+      "desc": "When an ancient Mayan relic activates, sound ripples through the jungle. Two creatures emerge, drawn to its power. Audio guides you through their conflict—from curiosity to tension to the moment of choice. Created in 12 weeks at DAE Howest with a team of student artists."
     },
     "philosophy": {
       "title": "Jungle Audio Design",
@@ -106,7 +114,7 @@
   "pl": {
     "back": "Powrót do projektów",
     "title": "Akantilado: Sound Design",
-    "tagline": "Przygoda w dżungli gdzie dwa koty ścigają się o skarb. Sound design opowiada jak miłość wygrywa z chciwością.",
+    "tagline": "Starożytny relik Majów budzi się w dżungli, wciągając dwa mityczne stworzenia w konflikt. Sound design opowiada historię wyboru między chciwością a współczuciem.",
     "meta": {
       "role": {
         "label": "Rola",
@@ -118,11 +126,19 @@
       },
       "characters": {
         "label": "Postacie",
-        "value": "Dwa Koty"
+        "value": "Dwa Mityczne Stworzenia"
       },
       "theme": {
         "label": "Temat",
-        "value": "Miłość kontra Chciwość"
+        "value": "Wybór i Poświęcenie"
+      },
+      "year": {
+        "label": "Rok",
+        "value": "2024 | Produkcja 12 tygodni"
+      },
+      "team": {
+        "label": "Zespół",
+        "value": "DAE Howest Kortrijk"
       }
     },
     "showcase": {
@@ -131,7 +147,7 @@
     },
     "overview": {
       "title": "Jak Dźwięk Opowiada Historię",
-      "desc": "Dżungla ożywa przez audio. Foley, głosy, ambient. Prowadzą cię od rywalizacji do poświęcenia. Dźwięk liczy się tak samo jak obraz."
+      "desc": "Gdy starożytny relik Majów się aktywuje, dźwięk rozchodzi się przez dżunglę. Dwa stworzenia wyłaniają się, przyciągnięte jego mocą. Audio prowadzi cię przez ich konflikt—od ciekawości przez napięcie do momentu wyboru. Stworzone w 12 tygodni w DAE Howest z zespołem studentów sztuki."
     },
     "philosophy": {
       "title": "Design Audio Dżungli",
@@ -210,7 +226,7 @@
   "nl": {
     "back": "Terug naar Projecten",
     "title": "Akantilado: Sound Design",
-    "tagline": "Jungle avontuur waar twee katten racen voor schat. Sound design vertelt hoe liefde hebzucht verslaat.",
+    "tagline": "Oude Maya relikwie ontwaakt in de jungle, trekt twee mythische wezens in conflict. Sound design vertelt het verhaal van keuze tussen hebzucht en mededogen.",
     "meta": {
       "role": {
         "label": "Rol",
@@ -222,11 +238,19 @@
       },
       "characters": {
         "label": "Personages",
-        "value": "Twee Katten"
+        "value": "Twee Mythische Wezens"
       },
       "theme": {
         "label": "Thema",
-        "value": "Liefde vs Hebzucht"
+        "value": "Keuze & Opoffering"
+      },
+      "year": {
+        "label": "Jaar",
+        "value": "2024 | 12-weken productie"
+      },
+      "team": {
+        "label": "Team",
+        "value": "DAE Howest Kortrijk"
       }
     },
     "showcase": {
@@ -235,7 +259,7 @@
     },
     "overview": {
       "title": "Hoe Geluid Vertelt",
-      "desc": "Jungle komt tot leven door audio. Foley, stemmen, ambiance. Ze leiden je van competitie naar opoffering. Geluid telt net zo veel als beeld."
+      "desc": "Wanneer een oude Maya relikwie activeert, rimpelt geluid door de jungle. Twee wezens komen tevoorschijn, aangetrokken door zijn kracht. Audio leidt je door hun conflict—van nieuwsgierigheid naar spanning naar het moment van keuze. Gemaakt in 12 weken bij DAE Howest met een team van student-kunstenaars."
     },
     "philosophy": {
       "title": "Jungle Audio Design",
