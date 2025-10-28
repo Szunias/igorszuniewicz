@@ -1,0 +1,258 @@
+{
+  "en": {
+    "back": "Back to Projects",
+    "title": "Shadow Frames",
+    "subtitle": "Audio Design",
+    "tagline": "Horror game where sound is survival.",
+    "production_notice": "🎮 IN PRODUCTION  •  Prototype Complete  •  Full Audio System Coming Soon",
+    "meta": {
+      "role": {
+        "label": "Role",
+        "value": "Sound Designer & Audio Lead"
+      },
+      "setting": {
+        "label": "Setting",
+        "value": "1960s Irish Pub"
+      },
+      "era": {
+        "label": "Era",
+        "value": "Analog Horror"
+      },
+      "engine": {
+        "label": "Engine",
+        "value": "Unreal Engine 5"
+      }
+    },
+    "video": {
+      "title": "First Look: Prototype Menu",
+      "desc": "Early concept from the prototype phase. Final version coming soon."
+    },
+    "music": {
+      "title": "Menu Music Concept",
+      "desc": "Our composer's vision for the main menu atmosphere.",
+      "subtitle": "Shadow Frames Menu Theme"
+    },
+    "overview": {
+      "title": "The Concept",
+      "desc": "1960s Irish pub. Black and white. You have a Polaroid camera. Strange things happen. Sound tells you everything. If you mute the game, you can't play. That's the idea."
+    },
+    "philosophy": {
+      "title": "Audio Design Approach",
+      "dread_title": "Constant Tension",
+      "dread_desc": "No jumpscares. Just dread building from drones and distant sounds you can't identify.",
+      "analog_title": "1960s Authentic",
+      "analog_desc": "Polaroid clicks, vinyl crackle, tube radio static. Everything period accurate.",
+      "ambiguity_title": "Sonic Uncertainty",
+      "ambiguity_desc": "Familiar sounds twisted just enough to make you question what you're hearing."
+    },
+    "anomaly": {
+      "title": "Anomaly System",
+      "desc": "Three audio stages guide investigation.",
+      "alert": "Alert: Something changed somewhere",
+      "hint": "Hint: Directional sound points you there",
+      "presence": "Presence: It waits until you capture it"
+    },
+    "camera": {
+      "title": "Polaroid Mechanics",
+      "desc": "Your only defense. Also your biggest vulnerability.",
+      "raise": "Raise camera: tunnel hearing, lose awareness",
+      "shutter": "Take photo: blind and deaf for 5 seconds",
+      "reload": "Reload film: can't move for 5 seconds",
+      "empty": "Empty click: you're defenseless"
+    },
+    "enemy": {
+      "title": "The Presence",
+      "desc": "Something's with you in the pub. Invisible. Audio only.",
+      "footsteps": "Footsteps that stop when you look",
+      "whispers": "Irish Gaelic voices you can't understand",
+      "drone": "Sub-bass that grows with your mistakes"
+    },
+    "technical": {
+      "title": "Tech Stack",
+      "engine": "Wwise 2024.1 + Unreal Engine 5.4.4",
+      "audio": "HRTF spatial audio, dynamic RTPCs, environmental zones",
+      "tools": "Reaper DAW, Waves J37, PaulXStretch, Valhalla FreqEcho",
+      "performance": "Sub 5% CPU, optimized streaming"
+    },
+    "status": {
+      "title": "Current Status",
+      "proto": "✓ Prototype Complete",
+      "production": "◉ Week 1 of Production",
+      "coming": "◯ Full Audio Implementation"
+    },
+    "button": {
+      "projects": "All Projects"
+    }
+  },
+  "pl": {
+    "back": "Powrót do projektów",
+    "title": "Shadow Frames",
+    "subtitle": "Audio Design",
+    "tagline": "Gra grozy gdzie dźwięk to przetrwanie.",
+    "production_notice": "🎮 W PRODUKCJI  •  Prototyp Ukończony  •  Pełny System Audio Wkrótce",
+    "meta": {
+      "role": {
+        "label": "Rola",
+        "value": "Sound Designer & Audio Lead"
+      },
+      "setting": {
+        "label": "Miejsce",
+        "value": "Irlandzki Pub z lat 60."
+      },
+      "era": {
+        "label": "Era",
+        "value": "Horror Analogowy"
+      },
+      "engine": {
+        "label": "Silnik",
+        "value": "Unreal Engine 5"
+      }
+    },
+    "video": {
+      "title": "Pierwszy Rzut Oka: Prototyp Menu",
+      "desc": "Wczesny koncept z fazy prototypu. Finalna wersja wkrótce."
+    },
+    "music": {
+      "title": "Koncept Muzyki Menu",
+      "desc": "Wizja naszej kompozytorki atmosfery głównego menu.",
+      "subtitle": "Motyw Menu Shadow Frames"
+    },
+    "overview": {
+      "title": "Koncept",
+      "desc": "Irlandzki pub z lat 60. Czarno-biały. Masz aparat Polaroid. Dzieją się dziwne rzeczy. Dźwięk mówi wszystko. Wycisz grę, nie możesz grać. Taki pomysł."
+    },
+    "philosophy": {
+      "title": "Podejście do Audio Design",
+      "dread_title": "Stałe Napięcie",
+      "dread_desc": "Zero jumpscare'ów. Tylko narastający niepokój z dronów i odległych dźwięków których nie zidentyfikujesz.",
+      "analog_title": "Autentyczność lat 60.",
+      "analog_desc": "Kliknięcia Polaroida, trzaski winylu, szum lampowego radia. Wszystko z epoki.",
+      "ambiguity_title": "Soniczna Niepewność",
+      "ambiguity_desc": "Znajome dźwięki przekręcone na tyle by kwestionować co słyszysz."
+    },
+    "anomaly": {
+      "title": "System Anomalii",
+      "desc": "Trzy etapy audio prowadzą śledztwo.",
+      "alert": "Alert: Coś się gdzieś zmieniło",
+      "hint": "Wskazówka: Dźwięk kierunkowy wskazuje miejsce",
+      "presence": "Obecność: Czeka aż ją schwytasz"
+    },
+    "camera": {
+      "title": "Mechanika Polaroida",
+      "desc": "Twoja jedyna obrona. Też największa słabość.",
+      "raise": "Podniesienie aparatu: tunelowy słuch, utrata świadomości",
+      "shutter": "Zdjęcie: ślepy i głuchy przez 5 sekund",
+      "reload": "Przeładowanie: nie możesz się ruszyć przez 5 sekund",
+      "empty": "Puste kliknięcie: jesteś bezbronny"
+    },
+    "enemy": {
+      "title": "Obecność",
+      "desc": "Coś jest z tobą w pubie. Niewidzialne. Tylko audio.",
+      "footsteps": "Kroki które zatrzymują się gdy patrzysz",
+      "whispers": "Irlandzkie gaelickie głosy których nie rozumiesz",
+      "drone": "Sub-bas narastający z twoimi błędami"
+    },
+    "technical": {
+      "title": "Stos Techniczny",
+      "engine": "Wwise 2024.1 + Unreal Engine 5.4.4",
+      "audio": "HRTF audio przestrzenne, dynamiczne RTPC, strefy środowiskowe",
+      "tools": "Reaper DAW, Waves J37, PaulXStretch, Valhalla FreqEcho",
+      "performance": "Poniżej 5% CPU, zoptymalizowany streaming"
+    },
+    "status": {
+      "title": "Aktualny Status",
+      "proto": "✓ Prototyp Ukończony",
+      "production": "◉ Tydzień 1 Produkcji",
+      "coming": "◯ Pełna Implementacja Audio"
+    },
+    "button": {
+      "projects": "Wszystkie Projekty"
+    }
+  },
+  "nl": {
+    "back": "Terug naar Projecten",
+    "title": "Shadow Frames",
+    "subtitle": "Audio Design",
+    "tagline": "Horror game waar geluid overleving is.",
+    "production_notice": "🎮 IN PRODUCTIE  •  Prototype Compleet  •  Volledig Audio Systeem Binnenkort",
+    "meta": {
+      "role": {
+        "label": "Rol",
+        "value": "Sound Designer & Audio Lead"
+      },
+      "setting": {
+        "label": "Setting",
+        "value": "Ierse Pub Jaren 60"
+      },
+      "era": {
+        "label": "Era",
+        "value": "Analoge Horror"
+      },
+      "engine": {
+        "label": "Engine",
+        "value": "Unreal Engine 5"
+      }
+    },
+    "video": {
+      "title": "Eerste Blik: Prototype Menu",
+      "desc": "Vroeg concept uit de prototype fase. Finale versie komt binnenkort."
+    },
+    "music": {
+      "title": "Menu Muziek Concept",
+      "desc": "Onze componist's visie voor de hoofdmenu atmosfeer.",
+      "subtitle": "Shadow Frames Menu Thema"
+    },
+    "overview": {
+      "title": "Het Concept",
+      "desc": "Ierse pub uit de jaren 60. Zwart-wit. Je hebt een Polaroid camera. Vreemde dingen gebeuren. Geluid vertelt alles. Dempen betekent niet kunnen spelen. Dat is het idee."
+    },
+    "philosophy": {
+      "title": "Audio Design Aanpak",
+      "dread_title": "Constante Spanning",
+      "dread_desc": "Geen jumpscares. Alleen opbouwende angst van drones en verre geluiden die je niet kunt identificeren.",
+      "analog_title": "Jaren 60 Authentiek",
+      "analog_desc": "Polaroid clicks, vinyl gekraak, tube radio static. Alles periode accuraat.",
+      "ambiguity_title": "Sonische Onzekerheid",
+      "ambiguity_desc": "Vertrouwde geluiden net genoeg verdraaid om te twijfelen aan wat je hoort."
+    },
+    "anomaly": {
+      "title": "Anomalie Systeem",
+      "desc": "Drie audio fasen leiden onderzoek.",
+      "alert": "Waarschuwing: Ergens iets veranderd",
+      "hint": "Hint: Directioneel geluid wijst je erheen",
+      "presence": "Aanwezigheid: Het wacht tot je het vastlegt"
+    },
+    "camera": {
+      "title": "Polaroid Mechanica",
+      "desc": "Je enige verdediging. Ook je grootste kwetsbaarheid.",
+      "raise": "Camera optillen: tunnel horen, bewustzijn verliezen",
+      "shutter": "Foto maken: blind en doof voor 5 seconden",
+      "reload": "Film herladen: kan niet bewegen voor 5 seconden",
+      "empty": "Lege klik: je bent weerloos"
+    },
+    "enemy": {
+      "title": "De Aanwezigheid",
+      "desc": "Iets is met je in de pub. Onzichtbaar. Alleen audio.",
+      "footsteps": "Voetstappen die stoppen wanneer je kijkt",
+      "whispers": "Ierse Gaelic stemmen die je niet begrijpt",
+      "drone": "Sub-bass die groeit met je fouten"
+    },
+    "technical": {
+      "title": "Tech Stack",
+      "engine": "Wwise 2024.1 + Unreal Engine 5.4.4",
+      "audio": "HRTF ruimtelijke audio, dynamische RTPCs, omgevingszones",
+      "tools": "Reaper DAW, Waves J37, PaulXStretch, Valhalla FreqEcho",
+      "performance": "Onder 5% CPU, geoptimaliseerde streaming"
+    },
+    "status": {
+      "title": "Huidige Status",
+      "proto": "✓ Prototype Compleet",
+      "production": "◉ Week 1 van Productie",
+      "coming": "◯ Volledige Audio Implementatie"
+    },
+    "button": {
+      "projects": "Alle Projecten"
+    }
+  }
+}
+

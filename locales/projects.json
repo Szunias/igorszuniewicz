@@ -18,6 +18,11 @@
         "title": "Ray Animation",
         "description": "Funky credits music. Groovy and bright."
       },
+      "shadow_frames": {
+        "badge": "In Progress",
+        "title": "Shadow Frames",
+        "description": "Audio-driven horror game. Prototype done, now in production."
+      },
       "not_today": {
         "badge": "Game Audio",
         "title": "Not Today, Darling!",
@@ -109,6 +114,11 @@
         "title": "Ray Animation",
         "description": "Funkowa muzyka do napisów. Groovy i jasna."
       },
+      "shadow_frames": {
+        "badge": "W Produkcji",
+        "title": "Shadow Frames",
+        "description": "Gra grozy z audio jako mechaniką. Prototyp ukończony, teraz produkcja."
+      },
       "not_today": {
         "badge": "Audio do gier",
         "title": "Not Today, Darling!",
@@ -199,6 +209,11 @@
         "badge": "Animatie",
         "title": "Ray Animation",
         "description": "Funky credits muziek. Groovy en helder."
+      },
+      "shadow_frames": {
+        "badge": "In Productie",
+        "title": "Shadow Frames",
+        "description": "Audio-gedreven horror game. Prototype klaar, nu in productie."
       },
       "not_today": {
         "badge": "Game-audio",
