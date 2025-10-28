@@ -5,18 +5,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <meta name="theme-color" content="#000000" />
-  
+
   <!-- CRITICAL: Prevent white flash - inline styles load FIRST -->
   <style>
-    html{
-      color-scheme:dark;
+    html {
+      color-scheme: dark;
       background:
         radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0.1) 40%, transparent 70%),
         radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.35) 0%, rgba(139, 92, 246, 0.08) 40%, transparent 70%),
         radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.25) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 80%),
         #000 !important;
     }
-    body{margin:0;padding:0}
+
+    body {
+      margin: 0;
+      padding: 0
+    }
   </style>
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
@@ -24,7 +28,7 @@
   <!-- Critical scripts only - minimal blocking -->
   <script>
     // Inline critical language preload to avoid extra HTTP request
-    (function() {
+    (function () {
       const savedLang = localStorage.getItem('language') || 'en';
       document.documentElement.setAttribute('lang', savedLang);
     })();
@@ -95,15 +99,11 @@
   <!-- Google Fonts - optimized loading -->
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-    media="print"
-    onload="this.media='all'"
-  >
+    rel="stylesheet" media="print" onload="this.media='all'">
   <noscript>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    >
+      rel="stylesheet">
   </noscript>
 
   <!-- Shared Navigation Styles - preload for instant rendering -->
@@ -354,7 +354,7 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 8rem 0 4rem;
+      padding: 8rem 0 2rem;
       position: relative;
       z-index: 1;
     }
@@ -482,9 +482,10 @@
 
     /* === DEMO REEL SECTION === */
     .demo-reel-section {
-      padding: 8rem 0 6rem;
+      padding: 6rem 0 6rem;
       position: relative;
       background: radial-gradient(ellipse at center, rgba(96, 165, 250, 0.03) 0%, transparent 70%);
+      margin-top: -2rem;
     }
 
     .demo-reel-container {
@@ -780,12 +781,10 @@
     /* Loading skeleton for videos and images */
     .project-image video[data-autoplay]:not(.loaded),
     .project-image img[data-src]:not(.loaded) {
-      background: linear-gradient(
-        90deg,
-        #1e293b 0%,
-        #2d3748 50%,
-        #1e293b 100%
-      );
+      background: linear-gradient(90deg,
+          #1e293b 0%,
+          #2d3748 50%,
+          #1e293b 100%);
       background-size: 200% 100%;
       animation: skeleton-loading 1.5s ease-in-out infinite;
       min-height: 100%;
@@ -796,6 +795,7 @@
       0% {
         background-position: 200% 0;
       }
+
       100% {
         background-position: -200% 0;
       }
@@ -1381,7 +1381,7 @@
 <body>
   <!-- Skip to main content for keyboard users -->
   <a href="#main" class="skip-link">Skip to main content</a>
-  
+
   <!-- Background -->
   <div class="bg-gradient"></div>
   <div class="bg-grid"></div>
@@ -1430,7 +1430,7 @@
   <!-- Demo Reel Section -->
   <section id="demo-reel" class="demo-reel-section">
     <div class="container">
-      <div class="demo-reel-container">
+      <div class="demo-reel-container fade-in">
         <div class="demo-reel-badge" data-i18n="demo_reel.badge">🎬 Audio Showcase</div>
         <h2 class="demo-reel-title" data-i18n="demo_reel.title">Demo Reel</h2>
         <p class="demo-reel-description" data-i18n="demo_reel.description">
@@ -1441,25 +1441,27 @@
         <!-- Video Player -->
         <div class="demo-reel-player" id="demo-reel-player">
           <div class="vimeo-wrapper">
-            <iframe 
-              src="https://player.vimeo.com/video/1131121335?badge=0&autopause=0&player_id=0&app_id=58479" 
-              frameborder="0" 
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
-              style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-              title="Showreel"
-            ></iframe>
+            <iframe id="vimeo-iframe"
+              src="https://player.vimeo.com/video/1131121335?badge=0&autopause=0&player_id=0&app_id=58479&controls=1&title=0&byline=0&portrait=0"
+              frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+              style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;outline:none;"
+              title="Showreel"></iframe>
           </div>
           <script src="https://player.vimeo.com/api/player.js"></script>
-          
+          <script>
+            // Force iframe position after Vimeo player loads
+            window.addEventListener('load', function () {
+              const iframe = document.getElementById('vimeo-iframe');
+              if (iframe) {
+                iframe.style.cssText = 'position:absolute!important;top:-2px!important;left:-2px!important;width:calc(100% + 4px)!important;height:calc(100% + 4px)!important;border:none!important;outline:none!important;';
+              }
+            });
+          </script>
+
           <!-- Fallback for local video if Vimeo fails -->
           <noscript>
-            <video 
-              class="showreel-video-fallback" 
-              controls
-              preload="auto"
-              poster="assets/images/covers/nottoday.jpg"
-              style="width: 100% !important; max-width: 100% !important; height: auto !important;"
-            >
+            <video class="showreel-video-fallback" controls preload="auto" poster="assets/images/covers/nottoday.jpg"
+              style="width: 100% !important; max-width: 100% !important; height: auto !important;">
               <source src="assets/videos/Showreel.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -1487,7 +1489,8 @@
             aria-label="Not Today Darling game audio project">
             <div class="project-image">
               <span class="project-badge badge-game" data-i18n="projects.cards.not_today.badge">Game Audio</span>
-              <video loop muted playsinline preload="none" data-autoplay aria-label="Not Today Darling chaotic multiplayer racing gameplay with retro-inspired audio implementation and dynamic sound effects">
+              <video loop muted playsinline preload="none" data-autoplay
+                aria-label="Not Today Darling chaotic multiplayer racing gameplay with retro-inspired audio implementation and dynamic sound effects">
                 <source data-src="assets/images/projects/NotTodayGIF.webm" type="video/webm">
                 <source data-src="assets/images/projects/NotTodayGIF.mp4" type="video/mp4">
               </video>
@@ -1505,7 +1508,8 @@
             aria-label="Amorak horror animation sound design project">
             <div class="project-image">
               <span class="project-badge badge-sound" data-i18n="projects.cards.amorak.badge">Sound Design</span>
-              <video loop muted playsinline preload="none" data-autoplay aria-label="Amorak horror animation preview showcasing atmospheric soundscapes, creature audio design, and immersive audio storytelling">
+              <video loop muted playsinline preload="none" data-autoplay
+                aria-label="Amorak horror animation preview showcasing atmospheric soundscapes, creature audio design, and immersive audio storytelling">
                 <source data-src="assets/images/projects/AmorakGIF.webm" type="video/webm">
                 <source data-src="assets/images/projects/AmorakGIF.mp4" type="video/mp4">
               </video>
@@ -1521,7 +1525,8 @@
           <a href="projects/pause-and-deserve.html" class="project-card fade-in">
             <div class="project-image">
               <span class="project-badge badge-game" data-i18n="projects.cards.pause_deserve.badge">Horror Game</span>
-              <video loop muted playsinline preload="none" data-autoplay aria-label="Pause & Deserve psychological horror game with strategic pause mechanics and immersive audio design">
+              <video loop muted playsinline preload="none" data-autoplay
+                aria-label="Pause & Deserve psychological horror game with strategic pause mechanics and immersive audio design">
                 <source data-src="assets/images/projects-pausedeserve/pausedeservegif.webm" type="video/webm">
                 <source data-src="assets/images/projects-pausedeserve/pausedeservegif.mp4" type="video/mp4">
               </video>
@@ -1537,7 +1542,8 @@
           <a href="projects/audiolab.html" class="project-card fade-in">
             <div class="project-image">
               <span class="project-badge badge-game" data-i18n="projects.cards.audiolab.badge">ML Audio</span>
-              <video loop muted playsinline preload="none" data-autoplay aria-label="Transientica AudioLab real-time ML beatbox classification demo with 45ms latency and advanced audio processing">
+              <video loop muted playsinline preload="none" data-autoplay
+                aria-label="Transientica AudioLab real-time ML beatbox classification demo with 45ms latency and advanced audio processing">
                 <source data-src="assets/images/projects/AudioLabGif.webm" type="video/webm">
                 <source data-src="assets/images/projects/AudioLabGif.mp4" type="video/mp4">
               </video>
@@ -1554,8 +1560,9 @@
             aria-label="Interactive music design project">
             <div class="project-image">
               <span class="project-badge badge-music" data-i18n="projects.cards.interactive_music.badge">Music</span>
-              <img data-src="assets/images/projects/musicforgames.png" alt="Interactive music design interface showing Wwise middleware integration with adaptive audio layers and real-time parameter control" loading="lazy" decoding="async" width="400" height="300"
-                itemprop="image" class="lazy-img">
+              <img data-src="assets/images/projects/musicforgames.png"
+                alt="Interactive music design interface showing Wwise middleware integration with adaptive audio layers and real-time parameter control"
+                loading="lazy" decoding="async" width="400" height="300" itemprop="image" class="lazy-img">
             </div>
             <div class="project-content">
               <h3 class="project-title" itemprop="name" data-i18n="projects.cards.interactive_music.title">Interactive
@@ -1570,7 +1577,8 @@
           <a href="projects/akantilado.html" class="project-card fade-in">
             <div class="project-image">
               <span class="project-badge badge-sound" data-i18n="projects.cards.akantilado.badge">Animation</span>
-              <video loop muted playsinline preload="none" data-autoplay aria-label="Akantilado 3D jungle animation with complete foley work, character audio, and immersive environmental sound design">
+              <video loop muted playsinline preload="none" data-autoplay
+                aria-label="Akantilado 3D jungle animation with complete foley work, character audio, and immersive environmental sound design">
                 <source data-src="assets/images/projects/AkantiladoGIF.webm" type="video/webm">
                 <source data-src="assets/images/projects/AkantiladoGIF.mp4" type="video/mp4">
               </video>
@@ -1750,7 +1758,7 @@
 
     // Single header scroll effect implementation
     let headerScrollInitialized = false;
-    
+
     function initHeaderScrollEffect() {
       const header = document.getElementById('header');
       if (!header || headerScrollInitialized) return;
@@ -1778,7 +1786,7 @@
     function initScrollReveal() {
       const observerOptions = {
         threshold: 0.05,
-        rootMargin: '0px 0px 100px 0px'
+        rootMargin: '0px 0px -100px 0px'
       };
 
       const observer = new IntersectionObserver((entries) => {
