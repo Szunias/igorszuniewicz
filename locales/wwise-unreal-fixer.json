@@ -83,169 +83,169 @@
     }
   },
   "pl": {
-    "back": "Powrót do Projektów",
+    "back": "Powrót do projektów",
     "hero": {
-      "badge": "🎓 Stworzone dla Deweloperów",
+      "badge": "🎓 Stworzone dla deweloperów",
       "title": "Wwise Unreal<br>Engine Fixer",
       "subtitle": "Przywraca integrację Wwise w Unreal Engine. Jedno kliknięcie naprawia brakujące referencje pluginów i audio.",
-      "download": "Pobierz Teraz",
+      "download": "Pobierz teraz",
       "github": "Zobacz na GitHub",
       "year": "2024"
     },
     "stats": {
       "value1": "Godziny",
-      "label1": "Zaoszczędzonego Czasu Troubleshootingu",
-      "value2": "1-Klik",
-      "label2": "Kompletna Naprawa",
+      "label1": "Zaoszczędzonego czasu troubleshootingu",
+      "value2": "1 klik",
+      "label2": "Kompletna naprawa",
       "value3": "100%",
-      "label3": "Pokrycie Automatyzacji"
+      "label3": "Pokrycie automatyzacji"
     },
     "problem": {
       "badge": "Tło",
       "title": "Problem",
       "p1": "Referencje pluginu Wwise psują się po aktualizacjach. Audio pada. Ręczna naprawa to godziny edycji plików.",
-      "p2": "Zrobiłem to żeby to zautomatyzować. Jedno kliknięcie naprawia wszystko.",
+      "p2": "Zrobiłem to, żeby to zautomatyzować. Jedno kliknięcie naprawia wszystko.",
       "p3": ""
     },
     "journey": {
-      "badge": "Co Robi",
-      "title": "Auto-Naprawa Wwise",
+      "badge": "Co robi",
+      "title": "Auto-naprawa Wwise",
       "subtitle": "Oszczędza godziny ręcznej edycji plików",
       "phase1": {
-        "title": "Wykrywa Problemy",
+        "title": "Wykrywa problemy",
         "desc": "Skanuje pliki projektu i znajduje zepsute referencje Wwise."
       },
       "phase2": {
-        "title": "Naprawia Wszystko",
+        "title": "Naprawia wszystko",
         "desc": "Przywraca ustawienia pluginu, aktualizuje configi, przebudowuje referencje. Automatycznie."
       },
       "phase3": {
-        "title": "Tworzy Backup",
+        "title": "Tworzy backup",
         "desc": "Najpierw backupuje projekt. Bezpieczne w użyciu."
       }
     },
     "features": {
-      "badge": "Kluczowe Funkcje",
-      "title": "Potężna Automatyzacja",
-      "subtitle": "Wszystko czego potrzebujesz do szybkiego i niezawodnego przywrócenia integracji Wwise",
+      "badge": "Kluczowe funkcje",
+      "title": "Potężna automatyzacja",
+      "subtitle": "Wszystko, czego potrzebujesz do szybkiego i niezawodnego przywrócenia integracji Wwise",
       "f1": {
-        "title": "Inteligentne Wykrywanie",
+        "title": "Inteligentne wykrywanie",
         "desc": "Znajduje problemy Wwise w projekcie automatycznie. Bez ręcznego sprawdzania."
       },
       "f2": {
-        "title": "Naprawa Jednym Kliknięciem",
+        "title": "Naprawa jednym kliknięciem",
         "desc": "Naprawia wszystko jednym poleceniem. Bez ręcznej edycji. Szybko i działa."
       },
       "f3": {
-        "title": "Bezpieczne Operacje",
+        "title": "Bezpieczne operacje",
         "desc": "Auto-backupuje przed naprawą. Możesz zawsze cofnąć. Projekt chroniony."
       },
       "f4": {
-        "title": "Szczegółowe Logowanie",
-        "desc": "Loguje każdy krok. Łatwo sprawdzić co się stało."
+        "title": "Szczegółowe logowanie",
+        "desc": "Loguje każdy krok. Łatwo sprawdzić, co się stało."
       },
       "f5": {
-        "title": "Precyzyjne Poprawki",
+        "title": "Precyzyjne poprawki",
         "desc": "Dotyka tylko referencji pluginu i configów. Reszta nietknięta."
       },
       "f6": {
-        "title": "Gotowe do Produkcji",
+        "title": "Gotowe do produkcji",
         "desc": "Zbudowane dla prawdziwych workflow, testowane w produkcji. Działa dla studentów i pro teamów."
       }
     },
     "tech": {
       "badge": "Technologia",
-      "title": "Stos Rozwojowy",
-      "subtitle": "Manualne: Batch Scripting + Windows APIs | Wspomagane AI: Python GUI + Obsługa Błędów"
+      "title": "Stos rozwojowy",
+      "subtitle": "Manualne: Batch Scripting + Windows APIs | Wspomagane AI: Python GUI + obsługa błędów"
     },
     "cta": {
-      "title": "Zacznij Oszczędzać Czas Już Dziś",
+      "title": "Zacznij oszczędzać czas już dziś",
       "subtitle": "Pobierz Wwise Unreal Engine Fixer i wyeliminuj ręczny troubleshooting ze swojego workflow.",
-      "download": "Pobierz Najnowsze Wydanie",
-      "source": "Zobacz Kod Źródłowy"
+      "download": "Pobierz najnowsze wydanie",
+      "source": "Zobacz kod źródłowy"
     }
   },
   "nl": {
-    "back": "Terug naar Projecten",
+    "back": "Terug naar projecten",
     "hero": {
-      "badge": "🎓 Gemaakt voor Ontwikkelaars",
+      "badge": "🎓 Gemaakt voor ontwikkelaars",
       "title": "Wwise Unreal<br>Engine Fixer",
-      "subtitle": "Herstelt Wwise-integratie in Unreal Engine. Eén klik repareert ontbrekende plugin-referenties en audio.",
-      "download": "Nu Downloaden",
+      "subtitle": "Herstelt Wwise-integratie in Unreal Engine. Eén klik repareert ontbrekende pluginreferenties en audio.",
+      "download": "Nu downloaden",
       "github": "Bekijk op GitHub",
       "year": "2024"
     },
     "stats": {
       "value1": "Uren",
-      "label1": "Troubleshooting Tijd Bespaard",
-      "value2": "1-Klik",
-      "label2": "Volledig Herstel",
+      "label1": "Troubleshooting tijd bespaard",
+      "value2": "1-klik",
+      "label2": "Volledig herstel",
       "value3": "100%",
-      "label3": "Automatisering Dekking"
+      "label3": "Automatiseringsdekking"
     },
     "problem": {
       "badge": "Achtergrond",
-      "title": "Het Probleem",
-      "p1": "Wwise plugin referenties breken na versie-updates. Audio faalt. Handmatige fix kost uren bestandsbewerking.",
-      "p2": "Bouwde dit om het te automatiseren. Een klik fixt alles.",
+      "title": "Het probleem",
+      "p1": "Wwise-pluginreferenties breken na versie-updates. Audio faalt. Handmatige fix kost uren bestandsbewerking.",
+      "p2": "Bouwde dit om het te automatiseren. Eén klik fixt alles.",
       "p3": ""
     },
     "journey": {
-      "badge": "Wat Het Doet",
-      "title": "Auto-Fix Wwise",
+      "badge": "Wat het doet",
+      "title": "Auto-fix Wwise",
       "subtitle": "Bespaart uren handmatige bestandsbewerking",
       "phase1": {
-        "title": "Detecteert Problemen",
-        "desc": "Scant projectbestanden en vindt gebroken Wwise referenties."
+        "title": "Detecteert problemen",
+        "desc": "Scant projectbestanden en vindt gebroken Wwise-referenties."
       },
       "phase2": {
-        "title": "Fixt Alles",
-        "desc": "Herstelt plugin instellingen, update configs, herbouwt referenties. Allemaal automatisch."
+        "title": "Fixt alles",
+        "desc": "Herstelt plugin-instellingen, update configs, herbouwt referenties. Allemaal automatisch."
       },
       "phase3": {
-        "title": "Maakt Backup",
-        "desc": "Backed eerst je project up. Veilig om te gebruiken."
+        "title": "Maakt back-up",
+        "desc": "Back-upt eerst je project. Veilig om te gebruiken."
       }
     },
     "features": {
-      "badge": "Belangrijkste Functies",
-      "title": "Krachtige Automatisering",
+      "badge": "Belangrijkste functies",
+      "title": "Krachtige automatisering",
       "subtitle": "Alles wat je nodig hebt om Wwise-integratie snel en betrouwbaar te herstellen",
       "f1": {
-        "title": "Slimme Detectie",
-        "desc": "Vindt Wwise problemen in je project automatisch. Geen handmatige controle nodig."
+        "title": "Slimme detectie",
+        "desc": "Vindt Wwise-problemen in je project automatisch. Geen handmatige controle nodig."
       },
       "f2": {
-        "title": "Herstel met Één Klik",
+        "title": "Herstel met één klik",
         "desc": "Fixt alles met één commando. Geen handmatige bewerking. Snel en werkt."
       },
       "f3": {
-        "title": "Veilige Operaties",
-        "desc": "Auto-backed up voor het fixen. Je kan altijd terug. Project blijft beschermd."
+        "title": "Veilige operaties",
+        "desc": "Auto-back-up voor het fixen. Je kunt altijd terug. Project blijft beschermd."
       },
       "f4": {
-        "title": "Gedetailleerde Logging",
+        "title": "Gedetailleerde logging",
         "desc": "Logt elke stap. Makkelijk te checken wat er gebeurde."
       },
       "f5": {
-        "title": "Precisie Fixes",
-        "desc": "Raakt alleen plugin referenties en configs. Rest blijft ongewijzigd."
+        "title": "Precisie-fixes",
+        "desc": "Raakt alleen pluginreferenties en configs. Rest blijft ongewijzigd."
       },
       "f6": {
-        "title": "Productie Klaar",
-        "desc": "Gebouwd voor echte workflows, getest in productie. Werkt voor studenten en pro teams."
+        "title": "Productie-klaar",
+        "desc": "Gebouwd voor echte workflows, getest in productie. Werkt voor studenten en pro-teams."
       }
     },
     "tech": {
       "badge": "Technologie",
       "title": "Ontwikkelstack",
-      "subtitle": "Handmatig: Batch Scripting + Windows APIs | AI-Ondersteund: Python GUI + Foutafhandeling"
+      "subtitle": "Handmatig: Batch scripting + Windows API's | AI-ondersteund: Python GUI + foutafhandeling"
     },
     "cta": {
-      "title": "Begin Vandaag Tijd te Besparen",
+      "title": "Begin vandaag tijd te besparen",
       "subtitle": "Download Wwise Unreal Engine Fixer en elimineer handmatige troubleshooting uit je workflow.",
-      "download": "Download Laatste Release",
-      "source": "Bekijk Broncode"
+      "download": "Download laatste release",
+      "source": "Bekijk broncode"
     }
   }
 }

@@ -103,45 +103,45 @@
   },
   "pl": {
     "back": "← Powrót do projektów",
-    "title": "Interaktywny Design Muzyczny",
+    "title": "Interaktywny design muzyczny",
     "subtitle": "Trzy projekty muzyczne Wwise. Warstwowanie pionowe, re-sequencing poziomy, kontrola RTPC.",
     "hero": {
-      "badge": "🎵 Interaktywne Audio"
+      "badge": "🎵 Interaktywne audio"
     },
     "meta_pills": {
       "wwise": "🎼 Implementacja Wwise",
-      "vertical": "📊 Warstwowanie Pionowe",
-      "horizontal": "🔄 Przesekwencjonowanie Poziome",
+      "vertical": "📊 Warstwowanie pionowe",
+      "horizontal": "🔄 Re-sequencing poziomy",
       "rtpc": "🎚️ Kontrola RTPC",
-      "adaptive": "🎮 Muzyka Adaptacyjna",
-      "interactive": "🔊 Interaktywne Audio"
+      "adaptive": "🎮 Muzyka adaptacyjna",
+      "interactive": "🔊 Interaktywne audio"
     },
     "audio_themes": {
-      "section_badge": "Motywy Audio",
-      "section_title": "Trzy Interaktywne Ścieżki Dźwiękowe",
+      "section_badge": "Motywy audio",
+      "section_title": "Trzy interaktywne ścieżki dźwiękowe",
       "chase": {
         "title": "POŚCIG",
         "bpm": "120 BPM",
         "concept": "Nieustanny pościg przez pięć surrealistycznych światów z narastającymi elementami horroru.",
         "sections": {
           "forest": {
-            "title": "Leśna Preludia",
+            "title": "Leśna preludia",
             "desc": "Napięte smyczki + szarpany syntezator"
           },
           "mechanical": {
-            "title": "Mechaniczne Katakumby",
+            "title": "Mechaniczne katakumby",
             "desc": "Instrumenty dęte + rytmiczne pętle"
           },
           "cathedral": {
-            "title": "Nawiedzona Katedra",
+            "title": "Nawiedzona katedra",
             "desc": "Eteryczne rogi + dysonansowe smyczki"
           },
           "techno": {
-            "title": "Techno-Labirynt",
+            "title": "Techno-labirynt",
             "desc": "Mroczne arpegia, bas Reese"
           },
           "liminal": {
-            "title": "Strefa Liminalna",
+            "title": "Strefa liminalna",
             "desc": "Zakłócone alarmy, gitara horroru"
           }
         }
@@ -152,19 +152,19 @@
         "concept": "Szybki wyścig na szczycie unoszących się egipskich piramid, ścigany przez siły niebiańskie.",
         "sections": {
           "gate": {
-            "title": "Przygotowanie do Startu",
+            "title": "Przygotowanie do startu",
             "desc": "Groove basowy + nuty chóru"
           },
           "first_lap": {
-            "title": "Pierwsze Okrążenie",
+            "title": "Pierwsze okrążenie",
             "desc": "Metaliczny bas + breakbeaty"
           },
           "ambush": {
-            "title": "Zasadzka w Niebie",
+            "title": "Zasadzka w niebie",
             "desc": "Warstwowe chóry + ciężki bas"
           },
           "final": {
-            "title": "Finałowy Sprint",
+            "title": "Finałowy sprint",
             "desc": "Hybrydowy rock + elektronika"
           }
         }
@@ -175,19 +175,19 @@
         "concept": "Strategiczna eliminacja przeciwników na cyberpunkowej arenie z zaawansowanymi systemami RTPC.",
         "sections": {
           "entrance": {
-            "title": "Wejście na Arenę",
+            "title": "Wejście na arenę",
             "desc": "Eteryczne pady + subtelny syntezator"
           },
           "combat": {
-            "title": "Eskalacja Walki",
+            "title": "Eskalacja walki",
             "desc": "Bas + perkusja"
           },
           "last_stand": {
-            "title": "Ostatni Bastion",
+            "title": "Ostatni bastion",
             "desc": "Zakłócona elektronika"
           },
           "victory": {
-            "title": "Marsz Zwycięstwa",
+            "title": "Marsz zwycięstwa",
             "desc": "Gitary w stylu DOOM"
           }
         }
@@ -195,32 +195,32 @@
     },
     "video": {
       "section_badge": "Demonstracja",
-      "section_title": "Prezentacja Interaktywnej Muzyki"
+      "section_title": "Prezentacja interaktywnej muzyki"
     },
     "footer": {
       "composed_by": "Skomponowane i zaprojektowane przez",
-      "interactive_music": "Interaktywna Muzyka do Gier",
+      "interactive_music": "Interaktywna muzyka do gier",
       "copyright": "Cała muzyka i implementacje Wwise są oryginalnymi dziełami."
     }
   },
   "nl": {
-    "back": "← Terug naar Projecten",
-    "title": "Interactief Muziekontwerp",
-    "subtitle": "Drie Wwise muziekprojecten. Verticale gelaagdheid, horizontale re-sequencing, RTPC-controle.",
+    "back": "← Terug naar projecten",
+    "title": "Interactief muziekontwerp",
+    "subtitle": "Drie Wwise-muziekprojecten. Verticale gelaagdheid, horizontale re-sequencing, RTPC-controle.",
     "hero": {
-      "badge": "🎵 Interactieve Audio"
+      "badge": "🎵 Interactieve audio"
     },
     "meta_pills": {
-      "wwise": "🎼 Wwise Implementatie",
-      "vertical": "📊 Verticale Gelaagdheid",
-      "horizontal": "🔄 Horizontale Her-sequencing",
-      "rtpc": "🎚️ RTPC Besturing",
-      "adaptive": "🎮 Adaptieve Muziek",
-      "interactive": "🔊 Interactieve Audio"
+      "wwise": "🎼 Wwise-implementatie",
+      "vertical": "📊 Verticale gelaagdheid",
+      "horizontal": "🔄 Horizontale re-sequencing",
+      "rtpc": "🎚️ RTPC-besturing",
+      "adaptive": "🎮 Adaptieve muziek",
+      "interactive": "🔊 Interactieve audio"
     },
     "audio_themes": {
       "section_badge": "Audiothema's",
-      "section_title": "Drie Interactieve Soundtracks",
+      "section_title": "Drie interactieve soundtracks",
       "chase": {
         "title": "ACHTERVOLGING",
         "bpm": "120 BPM",
@@ -297,11 +297,11 @@
     },
     "video": {
       "section_badge": "Demonstratie",
-      "section_title": "Interactieve Muziek Showcase"
+      "section_title": "Interactieve muziek showcase"
     },
     "footer": {
-      "composed_by": "Gecomponeerd & Ontworpen door",
-      "interactive_music": "Interactieve Muziek voor Games",
+      "composed_by": "Gecomponeerd & ontworpen door",
+      "interactive_music": "Interactieve muziek voor games",
       "copyright": "Alle muziek en Wwise-implementaties zijn origineel werk."
     }
   }

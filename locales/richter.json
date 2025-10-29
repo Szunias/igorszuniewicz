@@ -1,4 +1,4 @@
-﻿{
+{
   "en": {
     "back": "Back to Projects",
     "hero": {
@@ -40,77 +40,77 @@
   "pl": {
     "back": "Powrót do projektów",
     "hero": {
-      "badge": "Sound Design",
+      "badge": "Sound design",
       "title": "RICHTER",
       "subtitle": "Kompletny soundscape do krótkiego filmu. Oryginalne nagrania, synteza, kreatywne foley. Zrobione z ograniczonym sprzętem."
     },
     "video": {
-      "badge": "Prezentacja Projektu",
-      "title": "Film z Sound Designem"
+      "badge": "Prezentacja projektu",
+      "title": "Film z sound designem"
     },
     "overview": {
       "badge": "Przegląd",
-      "title": "Oryginalny Sound Design",
+      "title": "Oryginalny sound design",
       "desc": "Zrobiłem kompletny soundscape do krótkometrażówki Richter. Bez bibliotek dźwięków. Tylko nagrania terenowe, synthy i kreatywne warstwowanie. Zbudowałem immersyjny świat audio z ograniczonym sprzętem.",
-      "field_title": "Nagrania Terenowe",
-      "field_desc": "Nagrałem ambience i tekstury z Zoom H6 chodząc po mieście. Każdy dźwięk oryginalny.",
-      "synth_title": "Synteza Dźwięku",
+      "field_title": "Nagrania terenowe",
+      "field_desc": "Nagrałem ambience i tekstury z Zoom H6, chodząc po mieście. Każdy dźwięk oryginalny.",
+      "synth_title": "Synteza dźwięku",
       "synth_desc": "Użyłem Vital, ReaSynth, TAL Noisemaker do dronów, riserów, alarmów. Synthy dodają napięcia.",
-      "foley_title": "Kreatywne Foley",
-      "foley_desc": "Zrobiłem kroki, uderzenia, ruchy od zera. Warstwowane i przetworzone żeby pasowały.",
-      "mix_title": "Dynamiczny Miks",
+      "foley_title": "Kreatywne foley",
+      "foley_desc": "Zrobiłem kroki, uderzenia, ruchy od zera. Warstwowane i przetworzone, żeby pasowały.",
+      "mix_title": "Dynamiczny miks",
       "mix_desc": "Zbalansowałem dialogi, efekty, ambient. Automatyzacja volume i EQ dla emocjonalnego flow."
     },
     "technical": {
-      "badge": "Szczegóły Techniczne",
-      "title": "Podejście Produkcyjne",
-      "desc": "Pracowałem w Reaperze z ograniczonym sprzętem nagraniowym. Skupiłem się na kreatywnym przetwarzaniu i warstwowaniu. Użyłem EQ, kompresji, reverbu żeby kształtować dźwięki. Automatyzacja miksu dla dynamicznego storytellingu. Udowodniłem że nie potrzebujesz drogich bibliotek żeby to zadziałało."
+      "badge": "Szczegóły techniczne",
+      "title": "Podejście produkcyjne",
+      "desc": "Pracowałem w Reaperze z ograniczonym sprzętem nagraniowym. Skupiłem się na kreatywnym przetwarzaniu i warstwowaniu. Użyłem EQ, kompresji, reverbu, żeby kształtować dźwięki. Automatyzacja miksu dla dynamicznego storytellingu. Udowodniłem, że nie potrzebujesz drogich bibliotek, żeby to zadziałało."
     },
     "tools": {
-      "badge": "Użyte Narzędzia",
-      "title": "Oprogramowanie i Sprzęt"
+      "badge": "Użyte narzędzia",
+      "title": "Oprogramowanie i sprzęt"
     },
     "gallery": {
-      "badge": "Za Kulisami",
-      "title": "Galeria Produkcji"
+      "badge": "Za kulisami",
+      "title": "Galeria produkcji"
     }
   },
   "nl": {
-    "back": "Terug naar Projecten",
+    "back": "Terug naar projecten",
     "hero": {
-      "badge": "Sound Design",
+      "badge": "Sound design",
       "title": "RICHTER",
       "subtitle": "Complete soundscape voor korte film. Originele opnames, synthese, creatieve foley. Gemaakt met beperkte gear."
     },
     "video": {
-      "badge": "Project Showcase",
-      "title": "Film met Sound Design"
+      "badge": "Project showcase",
+      "title": "Film met sound design"
     },
     "overview": {
       "badge": "Overzicht",
-      "title": "Origineel Sound Design",
-      "desc": "Maakte complete soundscape voor korte film Richter. Geen sound libraries. Alleen veld opnames, synths en creatieve lagen. Bouwde immersieve audio wereld met beperkte apparatuur.",
-      "field_title": "Veld Opname",
-      "field_desc": "Vastgelegd ambiances en texturen met Zoom H6 tijdens wandelen. Elk geluid is origineel.",
-      "synth_title": "Geluid Synthese",
+      "title": "Origineel sound design",
+      "desc": "Maakte complete soundscape voor korte film Richter. Geen sound libraries. Alleen veldopnames, synths en creatieve lagen. Bouwde immersieve audiowereld met beperkte apparatuur.",
+      "field_title": "Veldopname",
+      "field_desc": "Vastgelegd ambiances en texturen met Zoom H6 tijdens het wandelen. Elk geluid is origineel.",
+      "synth_title": "Geluidsynthese",
       "synth_desc": "Gebruikte Vital, ReaSynth, TAL Noisemaker voor drones, risers, alarmen. Synths voegen spanning toe.",
-      "foley_title": "Creatieve Foley",
+      "foley_title": "Creatieve foley",
       "foley_desc": "Maakte voetstappen, impacts, bewegingen vanaf nul. Gelaagd en verwerkt om te passen.",
-      "mix_title": "Dynamische Mix",
+      "mix_title": "Dynamische mix",
       "mix_desc": "Balanceerde dialoog, effecten, ambiance. Geautomatiseerde volume en EQ voor emotionele flow."
     },
     "technical": {
-      "badge": "Technische Details",
-      "title": "Productie Aanpak",
-      "desc": "Werkte in Reaper met beperkte opname gear. Focuste op creatieve verwerking en lagen. Gebruikte EQ, compressie, reverb om geluiden te vormen. Geautomatiseerde mix voor dynamisch verhaal vertellen. Bewees dat je geen dure libraries nodig hebt."
+      "badge": "Technische details",
+      "title": "Productieaanpak",
+      "desc": "Werkte in Reaper met beperkte opnamegear. Focuste op creatieve verwerking en lagen. Gebruikte EQ, compressie, reverb om geluiden te vormen. Geautomatiseerde mix voor dynamisch verhaal vertellen. Bewees dat je geen dure libraries nodig hebt."
     },
     "tools": {
-      "badge": "Gebruikte Tools",
-      "title": "Software & Hardware"
+      "badge": "Gebruikte tools",
+      "title": "Software & hardware"
     },
     "gallery": {
-      "badge": "Achter de Schermen",
-      "title": "Productie Galerij"
+      "badge": "Achter de schermen",
+      "title": "Productiegalerij"
     }
   }
 }

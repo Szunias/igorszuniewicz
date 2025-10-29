@@ -163,58 +163,78 @@
       },
       "team": {
         "label": "Zespół",
-        "value": "Studio Animacji 3D"
+        "value": "Studio animacji 3D"
       },
       "scope": {
         "label": "Zakres",
-        "value": "Kompletne Audio"
+        "value": "Kompletne audio"
       },
       "year": {
         "label": "Rok",
         "value": "2024"
       }
     },
+    "context": {
+      "title": "Kontekst projektu",
+      "type_label": "Typ",
+      "type_value": "Studencki projekt animacji",
+      "institution_label": "Instytucja",
+      "institution_value": "DAE Belgia",
+      "year_label": "Rok",
+      "year_value": "2024",
+      "duration_label": "Czas trwania",
+      "duration_value": "4 tygodnie",
+      "team_label": "Współpraca",
+      "team_value": "Zespół animacji 3D",
+      "role_label": "Moja rola",
+      "role_value": "Sound Designer (Solo)",
+      "responsibilities_title": "Obowiązki",
+      "resp1": "Sound design stworów",
+      "resp2": "Ambience środowiskowy",
+      "resp3": "Miks audio przestrzennego",
+      "resp4": "Foley i SFX"
+    },
     "showcase": {
-      "title": "Oglądaj ze Dźwiękiem",
-      "description": "Dźwięk buduje horror. Warczenia stworów, warstwy środowiska, detale przestrzenne skalują się z obrazem.",
+      "title": "Oglądaj ze dźwiękiem",
+      "description": "Dźwięk buduje horror. Warczenia stworów, warstwy środowiska, detale przestrzenne – wszystko skaluje się z tym, co widzisz.",
       "list1": "Unikalne dźwięki stworów",
       "list2": "Warstwowe środowisko",
-      "list3": "Spatial audio mix",
+      "list3": "Miks audio przestrzennego",
       "list4": "Skaluje się z bliskością"
     },
     "overview": {
       "title": "Podejście",
-      "desc": "Zbudowałem świat przez dźwięk. Każdy stwór ma unikalne audio. Warstwy środowiska skalują się z odległością kamery. Miks pozostaje czysty wspierając historię."
+      "desc": "Zbudowałem świat przez dźwięk. Każdy stwór ma unikalne audio. Warstwy środowiska skalują się z odległością kamery. Miks pozostaje czysty, wspierając historię."
     },
     "approach": {
-      "title": "Podejście do Sound Designu",
+      "title": "Podejście do sound designu",
       "creatures": {
-        "title": "Dźwięki Stworów",
-        "desc": "Każdy stwór brzmi inaczej: organiczne tekstury, przetworzone dźwięki zwierząt, synth bass. Obecność bestii przez niskie dudnienia które rosną z bliskością. Niepokojące nawet poza ekranem."
+        "title": "Dźwięki stworów",
+        "desc": "Każdy stwór brzmi inaczej: organiczne tekstury, przetworzone dźwięki zwierząt, synth bass. Obecność bestii przez niskie dudnienia, które rosną z bliskością. Niepokojące nawet poza ekranem."
       },
       "environment": {
-        "title": "Warstwy Środowiska",
-        "desc": "Piwnica ma warstwowe dźwięki: kapanie wody, skrzypienie drewna, odległe echa, brzęczenie elektryczne. Zmienia się z pozycją kamery żeby tworzyć głębię i kierować uwagę."
+        "title": "Warstwy środowiska",
+        "desc": "Piwnica ma warstwowe dźwięki: kapanie wody, skrzypienie drewna, odległe echa, brzęczenie elektryczne. Zmienia się z pozycją kamery, tworząc głębię i kierując uwagę."
       },
       "narrative": {
-        "title": "Wspieranie Historii",
-        "desc": "Dźwięk podąża za emocjami. Napięcie buduje się dysharmonijnymi elementami, momenty odprężenia używają reverbu i przestrzeni. Praca z częstotliwościami i dynamiką trzyma to czysto."
+        "title": "Wspieranie historii",
+        "desc": "Dźwięk podąża za emocjami. Napięcie buduje się dysharmonijnymi elementami, momenty odprężenia używają reverbu i przestrzeni. Praca z częstotliwościami i dynamiką utrzymuje klarowność."
       }
     },
     "technical": {
-      "title": "Implementacja Techniczna",
+      "title": "Implementacja techniczna",
       "description": "Strategiczna architektura częstotliwości zapewnia klarowność i siłę oddziaływania. Dźwięki stworów zajmują zakres 40-200Hz dla ciała i obecności. Detale środowiskowe wypełniają środkowy zakres. Wysokie częstotliwości zarezerwowane dla tekstur budujących napięcie.",
       "proximity": {
-        "title": "Miks Oparty na Odległości",
-        "desc": "Dźwięk dostosowuje się do odległości i kąta kamery. Zbliżenia dostają oddech i kroki. Szerokie ujęcia dostają środowisko i wołania stworów. System 3D spatial."
+        "title": "Miks oparty na odległości",
+        "desc": "Dźwięk dostosowuje się do odległości i kąta kamery. Zbliżenia podkreślają oddech i kroki. Szerokie ujęcia skupiają się na środowisku i wołaniach stworów."
       },
       "frequency": {
-        "title": "Praca z Częstotliwościami",
-        "desc": "Stwory siedzą na 40-200Hz dla ciała i obecności. Środowisko wypełnia środek, wysokie dla napięcia i detali. Wszystko pozostaje czyste."
+        "title": "Praca z częstotliwościami",
+        "desc": "Stwory zajmują zakres 40-200Hz dla ciała i obecności. Środowisko wypełnia środek, wysokie częstotliwości dla napięcia i detali. Wszystko pozostaje czyste."
       },
       "layering": {
-        "title": "Budowanie Warstw",
-        "desc": "Zaczyna minimalnie, dodaje złożoność jak napięcie rośnie. Trzyma cię w napięciu bez zagłuszania dialogu."
+        "title": "Budowanie warstw",
+        "desc": "Zaczyna minimalnie, dodaje złożoność, jak napięcie rośnie. Trzyma cię w napięciu bez zagłuszania dialogu."
       }
     },
     "gallery": {
@@ -278,9 +298,9 @@
     }
   },
   "nl": {
-    "back": "Terug naar Projecten",
+    "back": "Terug naar projecten",
     "title": "Amorak: Sound Design",
-    "tagline": "Horror korte film. Bouwde de wereld door geluid. Elk wezen heeft zijn eigen stem.",
+    "tagline": "Horrorfilm. De wereld gebouwd door geluid. Elk wezen heeft z'n eigen stem.",
     "meta": {
       "role": {
         "label": "Rol",
@@ -303,75 +323,95 @@
         "value": "2024"
       }
     },
+    "context": {
+      "title": "Projectcontext",
+      "type_label": "Type",
+      "type_value": "Studentenanimatieproject",
+      "institution_label": "Instelling",
+      "institution_value": "DAE België",
+      "year_label": "Jaar",
+      "year_value": "2024",
+      "duration_label": "Duur",
+      "duration_value": "4 weken",
+      "team_label": "Samenwerking",
+      "team_value": "3D Animatieteam",
+      "role_label": "Mijn rol",
+      "role_value": "Sound Designer (Solo)",
+      "responsibilities_title": "Verantwoordelijkheden",
+      "resp1": "Creature sound design",
+      "resp2": "Omgevingsambiance",
+      "resp3": "Ruimtelijke audiomix",
+      "resp4": "Foley & SFX"
+    },
     "showcase": {
-      "title": "Kijk Met Geluid",
-      "description": "Geluid bouwt de horror. Wezen gegroms, omgevingslagen, ruimtelijke details schalen met wat je ziet.",
-      "list1": "Unieke wezen geluiden",
+      "title": "Kijk met geluid",
+      "description": "Geluid bouwt de horror op. Wezengerommel, omgevingslagen, ruimtelijke details schalen mee met wat je ziet.",
+      "list1": "Unieke wezengeluiden",
       "list2": "Gelaagde omgeving",
-      "list3": "Ruimtelijke audio mix",
+      "list3": "Ruimtelijke audiomix",
       "list4": "Schaalt met nabijheid"
     },
     "overview": {
-      "title": "De Aanpak",
-      "desc": "Bouwde de wereld door geluid. Elk wezen heeft unieke audio. Omgevingslagen schalen met camera afstand. Mix blijft helder terwijl het verhaal ondersteunt."
+      "title": "De aanpak",
+      "desc": "De wereld gebouwd door geluid. Elk wezen heeft unieke audio. Omgevingslagen schalen mee met de cameraafstand. Mix blijft helder terwijl het het verhaal ondersteunt."
     },
     "approach": {
-      "title": "Sound Design Aanpak",
+      "title": "Sound design aanpak",
       "creatures": {
-        "title": "Wezen Geluiden",
-        "desc": "Elk wezen klinkt anders: organische texturen, verwerkte dierengeluiden, synth bass. Beest aanwezigheid door lage rommels die sterker worden dichtbij. Verontrustend zelfs off screen."
+        "title": "Wezengeluiden",
+        "desc": "Elk wezen klinkt anders: organische texturen, verwerkte dierengeluiden, synth bass. De aanwezigheid van het beest door laag gerommel dat sterker wordt als het dichtbij komt. Verontrustend, zelfs off-screen."
       },
       "environment": {
         "title": "Omgevingslagen",
-        "desc": "Kelder heeft gelaagde geluiden: druppelend water, krakend hout, verre echo's, elektrisch zoemen. Verandert met camerapositie om diepte te creëren en aandacht te leiden."
+        "desc": "De kelder heeft gelaagde geluiden: druppelend water, krakend hout, verre echo's, elektrisch gezoem. Verandert mee met de camerapositie om diepte te creëren en aandacht te leiden."
       },
       "narrative": {
-        "title": "Verhaal Ondersteunen",
-        "desc": "Geluid volgt emoties. Spanning bouwt met dissonante elementen, release momenten gebruiken reverb en ruimte. Frequentie werk en dynamiek houden het helder."
+        "title": "Het verhaal ondersteunen",
+        "desc": "Geluid volgt de emoties. Spanning bouwt op met dissonante elementen, release-momenten gebruiken reverb en ruimte. Frequentiewerk en dynamiek houden het helder."
       }
     },
     "technical": {
-      "title": "Technische Implementatie",
-      "description": "Strategische frequentiearchitectuur zorgt voor helderheid en impact. Wezengeluiden bezetten 40-200Hz voor body en aanwezigheid. Omgevingsdetails vullen het middenbereik. Hoge frequenties gereserveerd voor spanningsopbouwende texturen.",
+      "title": "Technische implementatie",
+      "description": "Strategische frequentiearchitectuur zorgt voor helderheid en impact. Wezengeluiden zitten in 40-200Hz voor body en aanwezigheid. Omgevingsdetails vullen het middenbereik. Hoge frequenties gereserveerd voor spanningsopbouwende texturen.",
       "proximity": {
-        "title": "Afstand Gebaseerde Mix",
-        "desc": "Geluid past aan met camera afstand en hoek. Close ups benadrukken ademhaling en voetstappen, brede shots focussen op omgeving en wezen roepen."
+        "title": "Afstandsgebaseerde mix",
+        "desc": "Geluid past zich aan op basis van cameraafstand en -hoek. Close-ups benadrukken ademhaling en voetstappen, brede shots focussen op omgeving en wezenroepen."
       },
       "frequency": {
-        "title": "Frequentie Werk",
-        "desc": "Wezens zitten op 40-200Hz voor body en aanwezigheid. Omgeving vult mid bereik. Hoge voor spanning en details. Houdt alles helder."
+        "title": "Frequentiewerk",
+        "desc": "Wezens zitten op 40-200Hz voor body en aanwezigheid. Omgeving vult het midbereik. Hoge frequenties voor spanning en details. Houdt alles helder."
       },
       "layering": {
-        "title": "Lagen Bouwen",
-        "desc": "Begint minimaal, voegt complexiteit toe als spanning groeit. Houdt je betrokken zonder dialoog te overspoelen."
+        "title": "Lagen opbouwen",
+        "desc": "Begint minimaal, voegt complexiteit toe als de spanning groeit. Houdt je betrokken zonder de dialoog te overspoelen."
       }
     },
     "gallery": {
-      "title": "Visuele Galerij",
+      "title": "Visuele galerij",
       "basement": "Kelderomgeving",
-      "beast": "Beest Gebrul Sequentie",
-      "chimney": "Schoorsteen Spanning Scène",
-      "creature": "Wezen Perspectief",
-      "character": "Karakter Focus Shot"
+      "beast": "Beestgebrulsequentie",
+      "chimney": "Spanningsscène bij de schoorsteen",
+      "creature": "Wezenperspectief",
+      "character": "Karakterfocusshot"
     },
     "challenges": {
-      "title": "Technische Uitdagingen",
+      "title": "Technische uitdagingen",
       "problem_label": "Probleem:",
       "solution_label": "Oplossing:",
       "challenge1": {
-        "title": "Wezen Bas Zonder Troebel",
-        "problem": "Beest heeft lage tonen nodig maar vocht met omgevingsgerommel. Mix werd troebel, impact weg.",
-        "solution": "Frequenties uitgesneden. Omgeving op 60-90Hz, wezen op 120-180Hz. Notch filter op 80Hz als wezen op scherm. Wezen mono centraal, omgeving breed stereo. Dynamische EQ boost wezen +3dB tijdens gebrül."
+        "title": "Wezenbass zonder troebel geluid",
+        "problem": "Het beest heeft lage tonen nodig maar die vochten met het omgevingsgerommel. Mix werd troebel, impact verdween.",
+        "solution": "Frequenties uitgesneden. Omgeving op 60-90Hz, wezen op 120-180Hz. Notch filter op 80Hz als het wezen op scherm is. Wezen mono centraal, omgeving breed stereo. Dynamische EQ boost wezen +3dB tijdens gebrul."
       },
       "challenge2": {
-        "title": "Ruimtelijk Realisme bij Snelle Cuts",
-        "problem": "Camera springt tussen breed en close-ups maakte ambiance raar. Ruimtelijke sprongen voelden verkeerd.",
-        "solution": "3-laags ambiance systeem (ver/midden/dichtbij) met auto crossfades op camera afstand. 300ms smoothing op level wijzigingen. Wezen ademhaling en voetstappen krijgen dichtbij-mic laag onder 5m met kortere nagalm voor intimiteit."
+        "title": "Ruimtelijk realisme bij snelle cuts",
+        "problem": "Camera springt tussen breed en close-ups, maakte ambiance raar. Ruimtelijke sprongen voelden verkeerd.",
+        "solution": "3-laags ambiancesysteem (ver/midden/dichtbij) met auto-crossfades op cameraafstand. 300ms smoothing op levelwijzigingen. Wezenadamhaling en voetstappen krijgen dichtbij-miclaag onder 5m met kortere nagalm voor intimiteit."
       },
       "challenge3": {
-        "title": "Dialoog Helderheid",
+        "title": "Dialooghelderheid",
         "problem": "Kelderscène is dicht. Druppels, kraken, wezen beweegt. Dialoog gemaskeerd rond 1-3kHz.",
-        "solution": "Dynamische ducking. Als dialoog speelt, omgeving duckt -8dB (100ms attack, 500ms release). Uitgesneden 1-3kHz notch in ambiance permanent. Geboost dialoog op 2.5kHz, de-essed highs, cut gerommel onder 80Hz. Dialoog helder zonder geïsoleerd te klinken."
+        "solution": "Dynamische ducking. Als dialoog speelt, duckt omgeving -8dB (100ms attack, 500ms release). Permanent 1-3kHz notch uitgesneden in ambiance. Dialoog geboost op 2.5kHz, highs de-essed, gerommel onder 80Hz weggesneden. Dialoog helder zonder geïsoleerd te klinken."
       }
     },
     "hero": {
@@ -400,7 +440,7 @@
       "description": "De kelderomgeving gebruikt gelaagde ambient texturen - druppelend water, krakend hout, verre echo's en subtiele elektrische zoemen. Deze elementen reageren dynamisch op camerapositie, waardoor diepte en ruimtelijk bewustzijn ontstaat."
     },
     "button": {
-      "projects": "Alle Projecten"
+      "projects": "Alle projecten"
     },
     "footer": {
       "rights": "Alle rechten voorbehouden"

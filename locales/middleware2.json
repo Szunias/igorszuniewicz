@@ -77,70 +77,70 @@
     },
     "meta": {
       "pill1": "🏫 Digital Arts & Entertainment",
-      "pill2": "📝 Integracja Audio w Grze",
+      "pill2": "📝 Integracja audio w grze",
       "pill3": "🎵 Wwise & Unreal Engine",
-      "pill4": "🔊 Implementacja Audio"
+      "pill4": "🔊 Implementacja audio"
     },
     "overview": {
-      "badge": "Przegląd Projektu",
-      "title": "Implementacja Audio w Praktyce",
-      "text": "Zadanie egzaminacyjne odzwierciedlające prawdziwą produkcję. Dostałem działający build z Menu i First Level. Eventy i parametry już zaimplementowane. Moje zadanie: zaimplementować całe audio żeby ukończyć rozgrywkę używając best practices Wwise."
+      "badge": "Przegląd projektu",
+      "title": "Implementacja audio w praktyce",
+      "text": "Zadanie egzaminacyjne odzwierciedlające prawdziwą produkcję. Dostałem działający build z menu i pierwszym poziomem. Eventy i parametry już zaimplementowane. Moje zadanie: zaimplementować całe audio, żeby ukończyć rozgrywkę, używając najlepszych praktyk Wwise."
     },
     "objectives": {
-      "badge": "Cele Implementacji",
-      "title": "Cele Projektu"
+      "badge": "Cele implementacji",
+      "title": "Cele projektu"
     },
     "obj1": {
-      "title": "Czysta Struktura Projektu",
+      "title": "Czysta struktura projektu",
       "item1": "Przestrzeganie najlepszych praktyk struktury projektu Wwise",
       "item2": "Optymalizacja wykorzystania pamięci i CPU",
       "item3": "Utrzymanie zorganizowanej hierarchii zasobów"
     },
     "obj2": {
-      "title": "Implementacja Techniczna",
+      "title": "Implementacja techniczna",
       "item1": "Implementacja wszystkich dostarczonych eventów",
       "item2": "Konfiguracja poprawnej spacjalizacji dla dźwięków w świecie gry",
       "item3": "Konfiguracja orientacji i ustawień atenuacji",
       "item4": "Zastosowanie reverbu z użyciem dostarczonych Game Syncs"
     },
     "obj3": {
-      "title": "Jakość Audio Design",
+      "title": "Jakość audio design",
       "item1": "Stworzenie spójnej palety dźwiękowej",
-      "item2": "Zapewnienie poprawności i zapętlenia dźwięków tam gdzie potrzeba",
+      "item2": "Zapewnienie poprawności i zapętlenia dźwięków tam, gdzie potrzeba",
       "item3": "Unikanie problemów z synchronizacją i obcinaniem dźwięków",
       "item4": "Zapobieganie powtarzalnym dźwiękom poprzez wariacje"
     },
     "features": {
-      "badge": "Cechy Implementacji",
-      "title": "Kluczowe Cechy Techniczne"
+      "badge": "Cechy implementacji",
+      "title": "Kluczowe cechy techniczne"
     },
     "feat1": {
-      "title": "Audio Przestrzenne",
+      "title": "Audio przestrzenne",
       "desc": "Audio 3D z opadaniem odległości i pozycjonowaniem. Dźwięki dochodzą z właściwych miejsc w świecie gry."
     },
     "feat2": {
-      "title": "Dynamiczny Miks",
+      "title": "Dynamiczny miks",
       "desc": "Miks adaptuje się do rozgrywki. Ważne dźwięki pozostają czytelne, tło zostaje w tle."
     },
     "feat3": {
       "title": "Integracja Game Syncs",
-      "desc": "Reverb zmienia się z lokacją. Parametry audio reagują na stan gry. Wszystko odpowiada na to co się dzieje."
+      "desc": "Reverb zmienia się z lokacją. Parametry audio reagują na stan gry. Wszystko odpowiada na to, co się dzieje."
     },
     "technical": {
-      "badge": "Podejście Techniczne",
+      "badge": "Podejście techniczne",
       "title": "Implementacja Wwise",
-      "text": "Zarządzanie eventami, integracja Game Sync, pozycjonowanie 3D, optymalizacja miksu. Best practices dla pamięci i CPU. Spójny dźwięk w standardach real-time."
+      "text": "Zarządzanie eventami, integracja Game Sync, pozycjonowanie 3D, optymalizacja miksu. Najlepsze praktyki dla pamięci i CPU. Spójny dźwięk w standardach real-time."
     },
     "footer": {
-      "credit": "Implementacja Audio:",
+      "credit": "Implementacja audio:",
       "project": "Projekt Middleware 2",
       "copyright": "© 2025 Igor Szuniewicz. Zadanie egzaminacyjne dla Digital Arts & Entertainment."
     }
   },
   "nl": {
-    "back": "← Terug naar Projecten",
+    "back": "← Terug naar projecten",
     "title": "Middleware 2",
-    "subtitle": "Volledige Wwise audio-implementatie voor game level met ruimtelijke audio, dynamische mixing en Game Syncs integratie.",
+    "subtitle": "Volledige Wwise-audio-implementatie voor gamelevel met ruimtelijke audio, dynamische mixing en Game Syncs-integratie.",
     "hero": {
       "badge": "🎮 Audio Middleware"
     },
@@ -152,24 +152,24 @@
     },
     "overview": {
       "badge": "Projectoverzicht",
-      "title": "Real-World Audio Implementatie",
-      "text": "Examenopdracht die echte productie weerspiegelt. Kreeg werkende game build met Menu en First Level. Events en parameters al geïmplementeerd. Mijn taak: alle audio implementeren om gameplay ervaring af te maken met Wwise best practices."
+      "title": "Real-world audio-implementatie",
+      "text": "Examenopdracht die echte productie weerspiegelt. Kreeg een werkende gamebuild met menu en eerste level. Events en parameters al geïmplementeerd. Mijn taak: alle audio implementeren om de gameplay-ervaring af te maken met Wwise best practices."
     },
     "objectives": {
       "badge": "Implementatiedoelen",
       "title": "Projectdoelstellingen"
     },
     "obj1": {
-      "title": "Nette Projectstructuur",
-      "item1": "Volg best practices voor Wwise projectstructuur",
+      "title": "Nette projectstructuur",
+      "item1": "Volg best practices voor Wwise-projectstructuur",
       "item2": "Optimaliseer geheugen- en CPU-gebruik",
-      "item3": "Onderhoud georganiseerde asset hiërarchie"
+      "item3": "Onderhoud georganiseerde assethiërarchie"
     },
     "obj2": {
-      "title": "Technische Implementatie",
+      "title": "Technische implementatie",
       "item1": "Implementeer alle geleverde events",
       "item2": "Stel correcte spatialisatie in voor in-world geluiden",
-      "item3": "Configureer oriëntatie en attenuatie-instellingen",
+      "item3": "Configureer oriëntatie- en attenuatie-instellingen",
       "item4": "Pas reverb toe met behulp van geleverde Game Syncs"
     },
     "obj3": {
@@ -181,28 +181,28 @@
     },
     "features": {
       "badge": "Implementatiekenmerken",
-      "title": "Belangrijkste Technische Kenmerken"
+      "title": "Belangrijkste technische kenmerken"
     },
     "feat1": {
-      "title": "Ruimtelijke Audio",
-      "desc": "3D audio met afstand falloff en positionering. Geluiden komen van waar ze zouden moeten in de game wereld."
+      "title": "Ruimtelijke audio",
+      "desc": "3D-audio met distance falloff en positionering. Geluiden komen van waar ze horen in de gamewereld."
     },
     "feat2": {
-      "title": "Dynamische Mix",
-      "desc": "Mix past zich aan gameplay aan. Belangrijke geluiden blijven helder, achtergrond blijft op de achtergrond."
+      "title": "Dynamische mix",
+      "desc": "Mix past zich aan aan de gameplay. Belangrijke geluiden blijven helder, achtergrond blijft op de achtergrond."
     },
     "feat3": {
-      "title": "Game Syncs Integratie",
-      "desc": "Reverb verandert met locatie. Audio parameters reageren op game status. Alles reageert op wat er gebeurt."
+      "title": "Game Syncs-integratie",
+      "desc": "Reverb verandert met locatie. Audioparameters reageren op gamestatus. Alles reageert op wat er gebeurt."
     },
     "technical": {
-      "badge": "Technische Aanpak",
-      "title": "Wwise Implementatie",
-      "text": "Eventbeheer, Game Sync-integratie, 3D-positionering, mixoptimalisatie. Best practices voor geheugen en CPU. Samenhangend geluid dat realtime standards haalt."
+      "badge": "Technische aanpak",
+      "title": "Wwise-implementatie",
+      "text": "Eventbeheer, Game Sync-integratie, 3D-positionering, mixoptimalisatie. Best practices voor geheugen en CPU. Samenhangend geluid dat realtime-standaarden haalt."
     },
     "footer": {
-      "credit": "Audio Implementatie door",
-      "project": "Middleware 2 Project",
+      "credit": "Audio-implementatie door",
+      "project": "Middleware 2-project",
       "copyright": "© 2025 Igor Szuniewicz. Examenopdracht voor Digital Arts & Entertainment."
     }
   }

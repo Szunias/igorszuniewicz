@@ -77,13 +77,13 @@
     }
   },
   "pl": {
-    "back": "← Powrót do Projektów",
+    "back": "← Powrót do projektów",
     "hero": {
-      "badge": "🎵 Plugin Audio",
+      "badge": "🎵 Plugin audio",
       "brandMain": "AUDIO<span style=\"color: #ff6ea9;\">Q</span>",
-      "brandTagline": "Zaawansowany Sampler Audio",
+      "brandTagline": "Zaawansowany sampler audio",
       "subtitle": "Sampler audio JUCE z syntezą granularną, tremolo i DSP. Dla producentów muzycznych i sound designerów.",
-      "downloadPlugin": "Pobierz Plugin",
+      "downloadPlugin": "Pobierz plugin",
       "viewGithub": "Zobacz na GitHub",
       "year": "2024"
     },
@@ -93,126 +93,126 @@
       "value2": "W czasie rzeczywistym",
       "label2": "Przetwarzanie",
       "value3": "VST/AU",
-      "label3": "Obsługa Formatów",
+      "label3": "Obsługa formatów",
       "value4": "Darmowy",
       "label4": "Open Source"
     },
     "features": {
-      "badge": "Kluczowe Funkcje",
-      "title": "Profesjonalne Przetwarzanie Audio",
-      "subtitle": "Wszystko czego potrzebujesz do kreatywnej manipulacji dźwiękiem",
+      "badge": "Kluczowe funkcje",
+      "title": "Profesjonalne przetwarzanie audio",
+      "subtitle": "Wszystko, czego potrzebujesz do kreatywnej manipulacji dźwiękiem",
       "f1": {
-        "title": "Ładowanie Przeciągnij i Upuść",
-        "desc": "Ładuj pliki audio (WAV, AIFF, MP3) przeciągając je. Przebieg pokazuje się od razu."
+        "title": "Ładowanie przeciągnij i upuść",
+        "desc": "Ładuj pliki audio (WAV, AIFF, MP3) przeciągając je. Przebieg pokazuje się natychmiast."
       },
       "f2": {
-        "title": "Synteza Granularna",
-        "desc": "Tryb granularny do tekstur. Kontroluj rozmiar ziaren, losowe odtwarzanie, crossfade. Dobry do sound designu."
+        "title": "Synteza granularna",
+        "desc": "Tryb granularny do tekstur. Kontroluj rozmiar ziaren, losowe odtwarzanie, crossfade. Świetne do sound designu."
       },
       "f3": {
-        "title": "Niestandardowy Efekt Tremolo",
+        "title": "Niestandardowy efekt tremolo",
         "desc": "Manualny DSP tremolo. LFO i modulacja amplitudy. Kontrola tempa i głębokości."
       },
       "f4": {
-        "title": "System Filtrów",
-        "desc": "Filtry High/Low-pass z kontrolą real-time. Zakres 20Hz do 20kHz."
+        "title": "System filtrów",
+        "desc": "Filtry high/low-pass z kontrolą w czasie rzeczywistym. Zakres 20Hz do 20kHz."
       },
       "f5": {
-        "title": "Wbudowany Kompresor",
+        "title": "Wbudowany kompresor",
         "desc": "Kompresor z threshold, ratio, attack, release. Pełna automatyzacja."
       },
       "f6": {
-        "title": "Zaawansowane Zapętlanie",
-        "desc": "Ustaw regiony loop, dostosuj tempo (20-300 BPM). Dobre do rytmicznych patternów i tekstur."
+        "title": "Zaawansowane zapętlanie",
+        "desc": "Ustaw regiony loop, dostosuj tempo (20-300 BPM). Świetne do rytmicznych patternów i tekstur."
       },
       "f7": {
-        "title": "Podwójny Wyświetlacz Przebiegu",
+        "title": "Podwójny wyświetlacz przebiegu",
         "desc": "Wizualizacja przebiegu offline i w czasie rzeczywistym. Monitoruj przetwarzanie audio wizualnie."
       },
       "f8": {
-        "title": "System Bezpieczeństwa Głośności",
-        "desc": "Wbudowana ochrona przed szczytami z automatyczną detekcją. Zapobiega uszkodzeniu audio dzięki inteligentnemu monitorowaniu głośności i alertom bezpieczeństwa."
+        "title": "System bezpieczeństwa głośności",
+        "desc": "Wbudowana ochrona przed szczytami z automatyczną detekcją. Zapobiega uszkodzeniu audio dzięki inteligentnemu monitorowaniu głośności i alertom."
       },
       "f9": {
-        "title": "Pełna Automatyzacja",
+        "title": "Pełna automatyzacja",
         "desc": "AudioProcessorValueTreeState dla kompletnej automatyzacji parametrów. Wszystkie kontrolki mogą być automatyzowane w DAW dla dynamicznych występów."
       }
     },
     "demo": {
       "badge": "Demo",
-      "title": "Zobacz AudioQ w Akcji"
+      "title": "Zobacz AudioQ w akcji"
     },
     "tech": {
       "badge": "Technologia",
-      "title": "Zbudowany ze Standardami Branżowymi"
+      "title": "Zbudowany ze standardami branżowymi"
     },
     "cta": {
-      "title": "Gotowy Stworzyć Niesamowite Dźwięki?",
+      "title": "Gotowy stworzyć niesamowite dźwięki?",
       "subtitle": "Pobierz AudioQ teraz i odkryj profesjonalny sampling audio oraz syntezę granularną.",
-      "download": "Pobierz Najnowsze Wydanie",
-      "source": "Zobacz Kod Źródłowy"
+      "download": "Pobierz najnowsze wydanie",
+      "source": "Zobacz kod źródłowy"
     }
   },
   "nl": {
-    "back": "← Terug naar Projecten",
+    "back": "← Terug naar projecten",
     "hero": {
-      "badge": "🎵 Audio Plugin",
+      "badge": "🎵 Audio-plugin",
       "brandMain": "AUDIO<span style=\"color: #ff6ea9;\">Q</span>",
-      "brandTagline": "Geavanceerde Audio Sampler",
-      "subtitle": "JUCE audio sampler met granulaire synthese, tremolo en DSP. Voor muziekproducers en sound designers.",
-      "downloadPlugin": "Download Plugin",
+      "brandTagline": "Geavanceerde audiosampler",
+      "subtitle": "JUCE-audiosampler met granulaire synthese, tremolo en DSP. Voor muziekproducenten en sound designers.",
+      "downloadPlugin": "Download plugin",
       "viewGithub": "Bekijk op GitHub",
       "year": "2024"
     },
     "stats": {
       "value1": "10+",
-      "label1": "DSP Effecten",
-      "value2": "Real-time",
+      "label1": "DSP-effecten",
+      "value2": "Realtime",
       "label2": "Verwerking",
       "value3": "VST/AU",
-      "label3": "Formaat Ondersteuning",
+      "label3": "Formaatondersteuning",
       "value4": "Gratis",
-      "label4": "Open Source"
+      "label4": "Open source"
     },
     "features": {
-      "badge": "Belangrijkste Functies",
-      "title": "Professionele Audioverwerking",
+      "badge": "Belangrijkste functies",
+      "title": "Professionele audioverwerking",
       "subtitle": "Alles wat je nodig hebt voor creatieve geluidmanipulatie",
       "f1": {
-        "title": "Drag & Drop Laden",
-        "desc": "Laad audiobestanden (WAV, AIFF, MP3) door ze erin te slepen. Golfvorm verschijnt direct."
+        "title": "Drag & drop laden",
+        "desc": "Laad audiobestanden (WAV, AIFF, MP3) door ze erin te slepen. Golfvorm verschijnt meteen."
       },
       "f2": {
-        "title": "Granulaire Synthese",
-        "desc": "Granulaire modus voor texturen. Beheer korrelgrootte, willekeurig afspelen, crossfade. Goed voor geluidsontwerp."
+        "title": "Granulaire synthese",
+        "desc": "Granulaire modus voor texturen. Beheer korrelgrootte, willekeurig afspelen, crossfade. Ideaal voor geluidsontwerp."
       },
       "f3": {
-        "title": "Aangepast Tremolo Effect",
-        "desc": "Handmatige DSP tremolo. LFO en amplitudemodulatie. Beheer snelheid en diepte."
+        "title": "Custom tremolo-effect",
+        "desc": "Handmatige DSP-tremolo. LFO en amplitudemodulatie. Beheer snelheid en diepte."
       },
       "f4": {
         "title": "Filtersysteem",
-        "desc": "High/Low-pass filters met real-time controle. 20Hz tot 20kHz bereik."
+        "desc": "High/low-pass filters met realtime controle. Bereik van 20Hz tot 20kHz."
       },
       "f5": {
-        "title": "Ingebouwde Compressor",
-        "desc": "Compressor met drempel, ratio, attack, release. Volledige automatisering."
+        "title": "Ingebouwde compressor",
+        "desc": "Compressor met threshold, ratio, attack en release. Volledige automatisering."
       },
       "f6": {
-        "title": "Geavanceerd Loopen",
-        "desc": "Stel loop-regio's in, pas tempo aan (20-300 BPM). Goed voor ritmische patronen en texturen."
+        "title": "Geavanceerd loopen",
+        "desc": "Stel loop-regio's in, pas tempo aan (20-300 BPM). Ideaal voor ritmische patronen en texturen."
       },
       "f7": {
-        "title": "Dubbele Golfvormweergave",
-        "desc": "Offline en real-time golfvormvisualisatie. Monitor je audioverwerking visueel."
+        "title": "Dubbele golfvormweergave",
+        "desc": "Offline en realtime golfvormvisualisatie. Monitor je audioverwerking visueel."
       },
       "f8": {
-        "title": "Volume Veiligheidssysteem",
+        "title": "Volumeveiligheidssysteem",
         "desc": "Ingebouwde piekbescherming met automatische detectie. Voorkomt audiobeschadiging met slimme volumemonitoring en veiligheidswaarschuwingen."
       },
       "f9": {
-        "title": "Volledige Automatisering",
-        "desc": "AudioProcessorValueTreeState voor complete parameterautomatisering. Alle bedieningselementen kunnen worden geautomatiseerd in je DAW voor dynamische uitvoeringen."
+        "title": "Volledige automatisering",
+        "desc": "AudioProcessorValueTreeState voor complete parameterautomatisering. Alle bedieningselementen kunnen geautomatiseerd worden in je DAW voor dynamische uitvoeringen."
       }
     },
     "demo": {

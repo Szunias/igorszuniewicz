@@ -59,74 +59,74 @@
     }
   },
   "pl": {
-    "back": "← Powrót do Projektów",
+    "back": "← Powrót do projektów",
     "hero": {
-      "badge": "🎮 Projekt Game Jam",
+      "badge": "🎮 Projekt game jam",
       "title": "Paw-ism",
       "subtitle": "Jesteś ambitnym kotem realizującym plany. Nie daj się złapać przez sprzątaczkę. Zrobione w 2 dni dla Unwrap Jam 2025.",
       "play": "Graj na itch.io"
     },
     "stats": {
-      "value1": "2 Dni",
-      "label1": "Czas Tworzenia",
+      "value1": "2 dni",
+      "label1": "Czas tworzenia",
       "value2": "7",
-      "label2": "Członków Zespołu",
+      "label2": "Członków zespołu",
       "value3": "Thriller",
       "label3": "Gatunek"
     },
     "story": {
       "badge": "Koncepcja",
-      "title": "Złowieszczy Plan Kota",
-      "subtitle": "Zbieraj myszy, poruszaj się na roombie i wykonaj swój plan zanim zostaniesz złapany.",
+      "title": "Złowieszczy plan kota",
+      "subtitle": "Zbieraj myszy, poruszaj się na roombie i wykonaj swój plan, zanim zostaniesz złapany.",
       "f1": {
-        "title": "Zbierz Myszy",
+        "title": "Zbierz myszy",
         "desc": "Zbieraj myszy z dziur w ścianach, będąc czujnym na ruchy sprzątaczki."
       },
       "f2": {
-        "title": "Użyj Roomby",
+        "title": "Użyj roomby",
         "desc": "Wskocz na roombę i używaj jej jako narzędzia lub do szybszego poruszania się po środowisku."
       },
       "f3": {
-        "title": "Wykonaj Swój Plan",
+        "title": "Wykonaj swój plan",
         "desc": "Gdy wszystko się ułoży, pozostaje tylko jedna rzecz do zrobienia... Zrealizuj swój złowieszczy cel."
       }
     },
     "role": {
-      "badge": "Mój Wkład",
-      "title": "Sound Design",
+      "badge": "Mój wkład",
+      "title": "Sound design",
       "subtitle": "Byłem odpowiedzialny za stworzenie kompletnego krajobrazu audio dla tego napiętego doświadczenia thrillera.",
       "f1": {
-        "title": "Atmosfera Ambientowa",
+        "title": "Atmosfera ambientowa",
         "desc": "Stworzyłem niepokojące ambientowe soundscape'y, które budują napięcie i wzmacniają atmosferę thrillera przez całą rozgrywkę."
       },
       "f2": {
-        "title": "Interaktywne Efekty Dźwiękowe",
+        "title": "Interaktywne efekty dźwiękowe",
         "desc": "Zaprojektowałem responsywne efekty dźwiękowe dla ruchów kota, zbierania myszy, interakcji z roombą i stanów wykrycia."
       },
       "f3": {
-        "title": "Implementacja Audio",
+        "title": "Implementacja audio",
         "desc": "Zaimplementowałem dynamiczne systemy audio w Unreal Engine, reagujące na wydarzenia w grze i działania gracza."
       }
     },
     "team": {
       "badge": "Zespół",
-      "title": "Wspólne Tworzenie",
+      "title": "Wspólne tworzenie",
       "subtitle": "Utalentowany zespół 7 deweloperów, artystów i sound designerów ożywił Paw-ism w 48 godzin.",
       "role1": "Programiści",
       "role2": "Artyści",
-      "role3": "Sound Design"
+      "role3": "Sound design"
     }
   },
   "nl": {
-    "back": "← Terug naar Projecten",
+    "back": "← Terug naar projecten",
     "hero": {
-      "badge": "🎮 Game Jam Project",
+      "badge": "🎮 Game jam project",
       "title": "Paw-ism",
       "subtitle": "Je bent een ambitieuze kat die plannen uitvoert. Word niet betrapt door de schoonmaakster. Gemaakt in 2 dagen voor Unwrap Jam 2025.",
       "play": "Speel op itch.io"
     },
     "stats": {
-      "value1": "2 Dagen",
+      "value1": "2 dagen",
       "label1": "Ontwikkelingstijd",
       "value2": "7",
       "label2": "Teamleden",
@@ -134,46 +134,46 @@
       "label3": "Genre"
     },
     "story": {
-      "badge": "Het Concept",
-      "title": "Het Sinistere Plan van een Kat",
+      "badge": "Het concept",
+      "title": "Het sinistere plan van een kat",
       "subtitle": "Verzamel muizen, navigeer de roomba en voer je plan uit voordat je wordt betrapt.",
       "f1": {
-        "title": "Verzamel Muizen",
+        "title": "Verzamel muizen",
         "desc": "Verzamel muizen uit de gaten in de muren terwijl je alert blijft op de bewegingen van de schoonmaakster."
       },
       "f2": {
-        "title": "Gebruik de Roomba",
-        "desc": "Spring op de roomba en gebruik deze als een hulpmiddel of om sneller door de omgeving te bewegen."
+        "title": "Gebruik de roomba",
+        "desc": "Spring op de roomba en gebruik hem als hulpmiddel of om sneller door de omgeving te bewegen."
       },
       "f3": {
-        "title": "Voer Je Plan Uit",
-        "desc": "Zodra alles op zijn plaats valt, blijft er maar één ding over om te doen... Voltooi je sinistere doelstelling."
+        "title": "Voer je plan uit",
+        "desc": "Zodra alles op z'n plaats valt, blijft er maar één ding over om te doen... Voltooi je sinistere doelstelling."
       }
     },
     "role": {
-      "badge": "Mijn Bijdrage",
-      "title": "Sound Design",
+      "badge": "Mijn bijdrage",
+      "title": "Sound design",
       "subtitle": "Ik was verantwoordelijk voor het creëren van het complete audiolandschap voor deze spannende thriller-ervaring.",
       "f1": {
-        "title": "Ambient Sfeer",
+        "title": "Ambient sfeer",
         "desc": "Creëerde griezelige ambient soundscapes die spanning opbouwen en de thriller-sfeer versterken tijdens het spelen."
       },
       "f2": {
         "title": "Interactieve SFX",
-        "desc": "Ontwierp responsieve geluidseffecten voor kattenbewegingen, muizenverzameling, roomba-interacties en detectietoestanden."
+        "desc": "Ontwierp responsieve geluidseffecten voor kattenbewegingen, muizenverzameling, roomba-interacties en detectiestatussen."
       },
       "f3": {
-        "title": "Audio Implementatie",
+        "title": "Audio-implementatie",
         "desc": "Implementeerde dynamische audiosystemen in Unreal Engine om te reageren op gameplay-gebeurtenissen en speleracties."
       }
     },
     "team": {
-      "badge": "Het Team",
-      "title": "Gezamenlijke Creatie",
+      "badge": "Het team",
+      "title": "Gezamenlijke creatie",
       "subtitle": "Een getalenteerd team van 7 ontwikkelaars, kunstenaars en sound designers bracht Paw-ism tot leven in 48 uur.",
       "role1": "Programmeurs",
       "role2": "Kunstenaars",
-      "role3": "Sound Design"
+      "role3": "Sound design"
     }
   }
 }

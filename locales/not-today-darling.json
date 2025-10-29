@@ -148,9 +148,9 @@
       "modes": "Tryby: Lokalny multiplayer (1–4)"
     },
     "context": {
-      "title": "Kontekst Projektu",
+      "title": "Kontekst projektu",
       "type_label": "Typ",
-      "type_value": "Projekt Studencki",
+      "type_value": "Projekt studencki",
       "institution_label": "Uczelnia",
       "institution_value": "DAE Belgia",
       "year_label": "Rok",
@@ -160,35 +160,35 @@
       "team_label": "Wielkość zespołu",
       "team_value": "8 deweloperów",
       "role_label": "Moja rola",
-      "role_value": "Audio Designer (Solo)",
+      "role_value": "Audio designer (solo)",
       "responsibilities_title": "Obowiązki",
-      "resp1": "Sound Design",
-      "resp2": "Implementacja Audio (MetaSounds)",
-      "resp3": "Miksowanie i Mastering",
-      "resp4": "Kierowanie Voice-overem"
+      "resp1": "Sound design",
+      "resp2": "Implementacja audio (MetaSounds)",
+      "resp3": "Miksowanie i mastering",
+      "resp4": "Kierowanie voice-overem"
     },
     "video": {
       "title": "🎬 Obejrzyj trailer",
       "description": "Wyścig z czasem. Przechytrz babcie. Wygraj wszystko! Ta chaotyczna gra wieloosobowa łączy szybką akcję z przemyślaną strategią."
     },
     "walkthrough": {
-      "title": "🎮 Single Player Walkthrough",
-      "desc": "Zobacz pełne przejście gry w trybie single player. Ten materiał pokazuje kompletną rozgrywkę oraz wszystkie mechaniki gameplayu."
+      "title": "🎮 Przejście single player",
+      "desc": "Zobacz pełne przejście gry w trybie single player. Ten materiał pokazuje kompletną rozgrywkę oraz wszystkie mechaniki."
     },
     "role": {
       "title": "Rola: Audio",
       "desc": "Zrobiłem całe audio. Dźwięki, integracja w Unreal, mixing. SFX gameplay, UI, tłum. Czytelne nawet przy 4 graczach."
     },
     "gameplay": {
-      "title": "Gameplay Highlights",
-      "li1": "Dźwięki reagują na to co robisz",
+      "title": "Gameplay highlights",
+      "li1": "Dźwięki reagują na to, co robisz",
       "li2": "Czysty miks z 1-4 graczami",
       "li3": "Warstwy dynamiczne, które nie przeszkadzają w intensywnych momentach"
     },
     "audioDirection": {
-      "title": "Kierunek Audio",
+      "title": "Kierunek audio",
       "desc": "Dźwięk w stylu arcade, czytelny nawet przy 4 graczach. Gameplay zawsze na górze, UI nigdy zagłuszone, tłum reaguje na akcję.",
-      "b1": "Priorytet: gameplay > UI > crowd",
+      "b1": "Priorytet: gameplay > UI > tłum",
       "b2": "Wyraźne audio cues dla eventów wyścigu",
       "b3": "Kontrolowany miks, bez błota częstotliwości"
     },
@@ -197,12 +197,12 @@
       "desc": "Dźwięki zmieniają się z prędkością i nawierzchnią. Materiał toru wpływa na brzmienie (asfalt, piasek, metal). Boost ma krzywe RPM i warstwę szumu. Kolizje mają limity wagowe, żeby nie spamowały.",
       "b1": "Materiały toru miksują się płynnie (asfalt/piasek/metal)",
       "b2": "Dźwięki hazardów obniżają pitch i filtrują z kamerą i prędkością",
-      "b3": "Odliczanie/Start/Finish oznaczają momenty wyścigu"
+      "b3": "Odliczanie/start/finish oznaczają momenty wyścigu"
     },
     "mix": {
-      "title": "Mix & Dynamika",
-      "desc": "System priorytetów. UI i callouty na górze. Dźwięki gameplayu dalej. Tłum oddycha z akcją wyścigu. Submix trzyma piki pod kontrolą i volume stałe.",
-      "b1": "UI duckuje gameplay gdy potrzeba",
+      "title": "Mix i dynamika",
+      "desc": "System priorytetów. UI i callouty na górze. Dźwięki gameplay dalej. Tłum oddycha z akcją wyścigu. Submix trzyma piki pod kontrolą i głośność stałą.",
+      "b1": "UI duckuje gameplay, gdy potrzeba",
       "b2": "Tłum i ambient zmieniają się ze stanem wyścigu",
       "b3": "Czysta separacja częstotliwości, bez błota"
     },
@@ -210,11 +210,11 @@
       "title": "Integracja w Unreal",
       "desc": "Sound Cues z parametrami. Busy submix rozdzielają UI, gameplay, ambient. Concurrency stopuje piling dźwięków. Attenuation obsługuje odległość. Limiter na master trzyma kontrolę.",
       "b1": "Parametry podpięte pod stan wyścigu, prędkość, kamerę",
-      "b2": "Submixy: UI, Gameplay, Ambience plus master limiter",
+      "b2": "Submixy: UI, gameplay, ambience plus master limiter",
       "b3": "Limity concurrency i progi kolizji"
     },
     "metrics": {
-      "title": "Metryki Techniczne",
+      "title": "Metryki techniczne",
       "desc": "Liczby ważne dla audio w grze.",
       "events": "320+ eventów audio",
       "events_desc": "12 kategorii: akcje gracza, środowisko, UI, tłum, hazardy, boost, kolizje, zmiany nawierzchni, odliczania, finisze, zwycięstwa",
@@ -222,30 +222,30 @@
       "footprint_desc": "Streaming i kompresja Vorbis. ~450 plików źródłowych przetworzonych",
       "voice_count": "Max 32 głosy",
       "voice_count_desc": "System priorytetów: UI/gameplay (1.0) > SFX gracza (0.8) > tłum (0.5). Auto-stealing niskich priorytetów przy overflow",
-      "latency": "Poniżej 45ms input do audio",
-      "latency_desc": "Responsywne z parametrami real-time i MetaSounds",
+      "latency": "Poniżej 45ms od input do audio",
+      "latency_desc": "Responsywne z parametrami w czasie rzeczywistym i MetaSounds",
       "memory": "85 MB szczyt RAM",
       "memory_desc": "Banki, bufor streamingu, aktywny DSP. Zarządzane przez streaming Unreala"
     },
     "challenges": {
-      "title": "Wyzwania i Rozwiązania",
+      "title": "Wyzwania i rozwiązania",
       "desc": "Realne problemy napotkane podczas developmentu i zaimplementowane rozwiązania techniczne.",
       "problem_label": "Problem:",
       "solution_label": "Rozwiązanie:",
       "challenge1": {
-        "title": "Czytelność Miksu przy 4 Graczach",
+        "title": "Czytelność miksu przy 4 graczach",
         "problem": "Przy 4 graczach dźwięki się piętrzą i UI jest niesłyszalne.",
-        "solution": "Limit max 4 dźwięków kolizji. Każdy gracz dostaje inny zakres EQ. Crowd duckuje gdy gra UI."
+        "solution": "Limit max 4 dźwięków kolizji. Każdy gracz dostaje inny zakres EQ. Tłum duckuje, gdy gra UI."
       },
       "challenge2": {
-        "title": "Trzaski przy Zmianie Materiałów",
+        "title": "Trzaski przy zmianie materiałów",
         "problem": "Przejścia między materiałami toru (asfalt → piasek → metal) dawały słyszalne trzaski.",
-        "solution": "Płynne crossfades 150ms. Detekcja materiału z overlapem 0.2s żeby zapobiec szybkim przejściom."
+        "solution": "Płynne crossfades 150ms. Detekcja materiału z overlapem 0.2s, żeby zapobiec szybkim przejściom."
       },
       "challenge3": {
-        "title": "Skok Pamięci przy Booście",
+        "title": "Skok pamięci przy booście",
         "problem": "Oryginalny boost: 4 warstwy 24-bit WAV, 40MB na instancję (x4 graczy = 160MB skoku).",
-        "solution": "Przebudowano na proceduralne MetaSounds: generator szumu + filtr pasmowy + pitch modulacja. Zredukowano do <2MB na instancję. Dodano krzywą pitch jak obroty silnika."
+        "solution": "Przebudowano na proceduralne MetaSounds: generator szumu + filtr pasmowy + modulacja pitch. Zredukowano do <2MB na instancję. Dodano krzywą pitch jak obroty silnika."
       }
     },
     "metasounds": {
@@ -270,13 +270,13 @@
       "sizes": "Windows build (1.0 GB), Linux build (967 MB)"
     },
     "button": {
-      "projects": "Wszystkie Projekty"
+      "projects": "Wszystkie projekty"
     }
   },
   "nl": {
-    "back": "Terug naar Projecten",
-    "tagline": "🏁 Ren tegen de tijd. Slim af je oma's. Win groot!",
-    "subtitle": "Een chaotische multiplayer side-scroller waar strategie snelheid ontmoet",
+    "back": "Terug naar projecten",
+    "tagline": "🏁 Race tegen de tijd. Slim je oma's af. Win groot!",
+    "subtitle": "Een chaotische multiplayer side-scroller waar strategie en snelheid samenkomen",
     "meta": {
       "school": "Digital Arts and Entertainment",
       "released": "Voltooid: mei 2025",
@@ -314,20 +314,20 @@
     },
     "role": {
       "title": "Rol: Audio",
-      "desc": "Deed alle audio. Sounds, Unreal integratie, mixing. Gameplay SFX, UI, publiek. Helder zelfs met 4 spelers."
+      "desc": "Deed alle audio. Geluiden, Unreal-integratie, mixing. Gameplay-SFX, UI, publiek. Helder zelfs met 4 spelers."
     },
     "gameplay": {
-      "title": "Gameplay Highlights",
+      "title": "Gameplay highlights",
       "li1": "Responsieve SFX gekoppeld aan speleracties en obstakels",
-      "li2": "Mix hiërarchie geoptimaliseerd voor duidelijkheid (1–4 spelers)",
+      "li2": "Mixhiërarchie geoptimaliseerd voor duidelijkheid (1–4 spelers)",
       "li3": "Niet-opdringerige dynamische lagen tijdens intense momenten"
     },
     "audioDirection": {
-      "title": "Audio Direction",
-      "desc": "Arcade-stijl geluid dat helder blijft zelfs met 4 spelers. Gameplay sounds altijd bovenop, UI nooit begraven, crowd reageert op actie.",
-      "b1": "Prioriteit: gameplay > UI > crowd",
-      "b2": "Duidelijke audio cues voor race events",
-      "b3": "Gecontroleerde mix, geen frequentie mud"
+      "title": "Audio direction",
+      "desc": "Arcade-stijl geluid dat helder blijft zelfs met 4 spelers. Gameplaygeluiden altijd bovenop, UI nooit begraven, publiek reageert op actie.",
+      "b1": "Prioriteit: gameplay > UI > publiek",
+      "b2": "Duidelijke audiocues voor race-events",
+      "b3": "Gecontroleerde mix, geen frequentietroebel"
     },
     "sfxSystem": {
       "title": "SFX-systeem",
@@ -407,7 +407,7 @@
       "sizes": "Windows build (1.0 GB), Linux build (967 MB)"
     },
     "button": {
-      "projects": "Alle Projecten"
+      "projects": "Alle projecten"
     }
   }
 }

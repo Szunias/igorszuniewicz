@@ -83,75 +83,75 @@
     }
   },
   "pl": {
-    "nav_home": "Strona główna",
+    "nav_home": "Start",
     "nav_about": "O mnie",
     "nav_projects": "Projekty",
     "nav_music": "Muzyka",
     "nav_contact": "Kontakt",
     "nav": {
-      "home": "Strona główna",
-      "work": "Projekty",
+      "home": "Start",
+      "work": "Prace",
       "about": "O mnie",
-      "projects": "Wszystkie Projekty",
+      "projects": "Wszystkie projekty",
       "music": "Muzyka",
       "contact": "Kontakt"
     },
     "hero": {
       "label": "Audio Designer & Developer",
       "title": "Interaktywny <span class='highlight-sound'>Dźwięk</span><br>dla Nowoczesnych Gier",
-      "description": "Interaktywna muzyka w Wwise/FMOD. Sound design do gier i animacji. Narzędzia audio które działają w produkcji.",
-      "cta1": "Zobacz Moje Prace",
+      "description": "Muzyka interaktywna w Wwise/FMOD. Sound design dla gier i animacji. Narzędzia audio, które naprawdę działają.",
+      "cta1": "Zobacz prace",
       "cta_cv": "CV",
-      "cta2": "Skontaktuj Się"
+      "cta2": "Napisz do mnie"
     },
     "demo_reel": {
       "badge": "🎬 Prezentacja Audio",
       "title": "Demo Reel",
-      "description": "Ostatnie prace: integracja Wwise do wyścigów multiplayer, sound design horroru, narzędzie ML beatbox (45ms opóźnienia), systemy adaptacyjnej muzyki."
+      "description": "Najnowsze projekty: integracja Wwise dla gry wyścigowej multiplayer, sound design do horroru, narzędzie ML do beatboxu (45ms latencji), systemy muzyki adaptacyjnej."
     },
     "projects": {
       "label": "Wybrane Prace",
       "title": "Wybrane Projekty",
-      "description": "Ostatnie projekty z audio do gier, sound designu i systemów interaktywnej muzyki.",
-      "viewall": "Wszystkie Projekty",
+      "description": "Najnowsze projekty z zakresu audio do gier, sound designu i systemów muzyki interaktywnej.",
+      "viewall": "Wszystkie projekty",
       "cards": {
         "not_today": {
           "badge": "Audio do gier",
           "title": "Not Today, Darling!",
-          "description": "Retro audio do chaotycznych wyścigów multiplayer."
+          "description": "Audio w stylu retro do chaotycznej gry wyścigowej multiplayer."
         },
         "amorak": {
           "badge": "Sound design",
           "title": "Amorak",
-          "description": "Atmosferyczne dźwięki i audio postaci do horroru animowanego."
+          "description": "Atmosferyczne soundscapy i dźwięki stworów do animacji grozy."
         },
         "pause_deserve": {
           "badge": "Gra grozy",
           "title": "Pause & Deserve",
-          "description": "Psychologiczny horror z mechaniką strategicznych pauz."
+          "description": "Horror psychologiczny z mechaniką strategicznej pauzy."
         },
         "audiolab": {
           "badge": "Audio ML",
           "title": "Transientica: AudioLab",
-          "description": "Klasyfikacja beatboxu w czasie rzeczywistym z opóźnieniem 45 ms."
+          "description": "Klasyfikacja beatboxu w czasie rzeczywistym z latencją 45ms."
         },
         "interactive_music": {
           "badge": "Muzyka",
-          "title": "Projektowanie muzyki interaktywnej",
-          "description": "Systemy audio z warstwowaniem w Wwise."
+          "title": "Projektowanie Muzyki Interaktywnej",
+          "description": "Systemy adaptacyjne z warstwowaniem pionowym w Wwise."
         },
         "akantilado": {
           "badge": "Animacja",
           "title": "Akantilado",
-          "description": "Kompletny foley i leśny ambience do animacji 3D."
+          "description": "Kompletny foley i dżunglowy ambience dla animacji 3D."
         }
       }
     },
     "stats": {
       "label": "W Liczbach",
-      "title": "Doświadczenie & Wpływ",
-      "projects": "Ukończone Projekty",
-      "tools": "Zbudowane Narzędzia",
+      "title": "Doświadczenie i Realizacje",
+      "projects": "Zrealizowanych Projektów",
+      "tools": "Stworzonych Narzędzi",
       "languages": "Języki"
     },
     "footer": {
@@ -162,7 +162,7 @@
     },
     "analytics": {
       "title": "Analityka",
-      "message": "Brak danych osobowych • Tylko strona"
+      "message": "Bez danych osobowych • Tylko statystyki strony"
     }
   },
   "nl": {
@@ -175,65 +175,65 @@
       "home": "Home",
       "work": "Werk",
       "about": "Over",
-      "projects": "Alle Projecten",
+      "projects": "Alle projecten",
       "music": "Muziek",
       "contact": "Contact"
     },
     "hero": {
       "label": "Audio Designer & Developer",
       "title": "Interactief <span class='highlight-sound'>Geluid</span><br>voor Moderne Games",
-      "description": "Interactieve muziek in Wwise/FMOD. Sound design voor games en animatie. Audio tools die echt werken in productie.",
-      "cta1": "Bekijk Mijn Werk",
+      "description": "Interactieve muziek in Wwise/FMOD. Sound design voor games en animatie. Audio tools die écht werken.",
+      "cta1": "Bekijk mijn werk",
       "cta_cv": "CV",
-      "cta2": "Neem Contact Op"
+      "cta2": "Neem contact op"
     },
     "demo_reel": {
       "badge": "🎬 Audio Showcase",
       "title": "Demo Reel",
-      "description": "Recent werk: Wwise integratie voor multiplayer racing, horror sound design, ML beatbox tool (45ms latency), adaptieve muziek."
+      "description": "Recent werk: Wwise-integratie voor multiplayer racegame, horror sound design, ML beatbox tool (45ms latency), adaptieve muzieksystemen."
     },
     "projects": {
       "label": "Uitgelicht Werk",
       "title": "Geselecteerde Projecten",
-      "description": "Recente projecten van game audio, sound design en interactieve muzieksystemen.",
-      "viewall": "Alle Projecten",
+      "description": "Recente projecten op het gebied van game audio, sound design en interactieve muzieksystemen.",
+      "viewall": "Alle projecten",
       "cards": {
         "not_today": {
-          "badge": "Game-audio",
+          "badge": "Game audio",
           "title": "Not Today, Darling!",
-          "description": "Retro audio voor chaotische multiplayer racing."
+          "description": "Retro-geïnspireerde audio voor chaotische multiplayer racegame."
         },
         "amorak": {
-          "badge": "Sounddesign",
+          "badge": "Sound design",
           "title": "Amorak",
-          "description": "Atmosferische geluiden en creature-audio voor horroranimatie."
+          "description": "Atmosferische soundscapes en creature audio voor horroranimatie."
         },
         "pause_deserve": {
-          "badge": "Horrorgame",
+          "badge": "Horror game",
           "title": "Pause & Deserve",
           "description": "Psychologische horrorgame met strategische pauzemechaniek."
         },
         "audiolab": {
-          "badge": "ML-audio",
+          "badge": "ML audio",
           "title": "Transientica: AudioLab",
-          "description": "Realtime beatboxclassificatie met 45 ms latentie."
+          "description": "Realtime beatbox classificatie met 45ms latency."
         },
         "interactive_music": {
           "badge": "Muziek",
           "title": "Interactive Music Design",
-          "description": "Audiosystemen met lagen in Wwise."
+          "description": "Adaptieve audiosystemen met vertical layering in Wwise."
         },
         "akantilado": {
           "badge": "Animatie",
           "title": "Akantilado",
-          "description": "Volledige foley en jungle-ambience voor 3D-animatie."
+          "description": "Complete foley en jungle ambience voor 3D-animatie."
         }
       }
     },
     "stats": {
       "label": "In Cijfers",
       "title": "Ervaring & Impact",
-      "projects": "Voltooide Projecten",
+      "projects": "Afgeronde Projecten",
       "tools": "Gebouwde Tools",
       "languages": "Talen"
     },
@@ -245,7 +245,7 @@
     },
     "analytics": {
       "title": "Analytics",
-      "message": "Geen persoonlijke gegevens • Alleen site"
+      "message": "Geen persoonlijke data • Alleen site"
     }
   }
 }

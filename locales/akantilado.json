@@ -137,111 +137,126 @@
       },
       "setting": {
         "label": "Miejsce",
-        "value": "Przygoda w Dżungli"
+        "value": "Przygoda w dżungli"
       },
       "characters": {
         "label": "Postacie",
-        "value": "Dwa Mityczne Stworzenia"
+        "value": "Dwa mityczne stworzenia"
       },
       "theme": {
         "label": "Temat",
-        "value": "Wybór i Poświęcenie"
+        "value": "Wybór i poświęcenie"
       },
       "year": {
         "label": "Rok",
-        "value": "2024 | Produkcja 12 tygodni"
+        "value": "2024 | 12 tygodni produkcji"
       },
       "team": {
         "label": "Zespół",
         "value": "DAE Howest Kortrijk"
       }
     },
+    "context": {
+      "title": "Kontekst projektu",
+      "type_label": "Typ",
+      "type_value": "Studencki projekt animacji",
+      "institution_label": "Instytucja",
+      "institution_value": "Howest DAE",
+      "year_label": "Rok",
+      "year_value": "2024",
+      "duration_label": "Czas trwania",
+      "duration_value": "4 miesiące",
+      "role_label": "Moja rola",
+      "role_value": "Sound Designer",
+      "collaboration_title": "Współpraca",
+      "collaboration_desc": "Współpracowałem z kompozytorem Noah Bots z Konserwatorium w Gandawie przy muzyce, zajmując się całym sound designem, foley i miksem przestrzennym."
+    },
     "showcase": {
-      "title": "Oglądaj ze Dźwiękiem",
-      "desc": "Dźwięk opowiada historię. Zaczyna się wesoło, robi się napięte, kończy wzruszająco. Każdy dźwięk się liczy."
+      "title": "Oglądaj ze dźwiękiem",
+      "desc": "Dźwięk opowiada historię. Zaczyna się wesoło, robi się napięte, kończy wzruszająco. Każdy dźwięk ma znaczenie."
     },
     "overview": {
-      "title": "Jak Dźwięk Opowiada Historię",
-      "desc": "Starożytny relik Majów się aktywuje i dźwięk rozchodzi się przez dżunglę. Dwa stworzenia się pojawiają, przyciągnięte jego mocą. Audio prowadzi przez cały ich konflikt. Ciekawość, potem napięcie, potem wybór. Zrobione w 12 tygodni w DAE Howest z zespołem artystów."
+      "title": "Jak dźwięk opowiada historię",
+      "desc": "Starożytny relik Majów aktywuje się i dźwięk rozchodzi się przez dżunglę. Pojawiają się dwa stworzenia, przyciągnięte jego mocą. Audio prowadzi przez cały ich konflikt. Ciekawość, potem napięcie, potem wybór. Zrobione w 12 tygodni w DAE Howest z zespołem artystów."
     },
     "philosophy": {
-      "title": "Design Audio Dżungli",
+      "title": "Audio design dżungli",
       "emotional": {
-        "title": "Podróż Emocjonalna",
-        "desc": "Audio podąża za emocjami. Wesoło robi się napięte, potem delikatne. Soundscapy cię prowadzą.",
+        "title": "Podróż emocjonalna",
+        "desc": "Audio podąża za emocjami. Wesoło robi się napięte, potem delikatne. Soundscape'y prowadzą cię przez całość.",
         "chase_title": "Pościg",
-        "chase_desc": "Rytmy w górę, lekkie foley, jasne dźwięki. Energia rywalizacji",
+        "chase_desc": "Żywe rytmy, lekkie foley, jasne dźwięki. Energia rywalizacji",
         "tension_title": "Kryzys",
-        "tension_desc": "Niskie dudnienia, rzadkie dźwięki, wiatr. Moment na urwisku",
-        "resolution_title": "Miłość Wygrywa",
+        "tension_desc": "Niskie dudnienia, rzadkie dźwięki, wiatr. Moment na krawędzi urwiska",
+        "resolution_title": "Miłość wygrywa",
         "resolution_desc": "Delikatny akcent, miękkie głosy, spokój wraca. To tyle"
       },
       "jungle": {
-        "title": "Tworzenie Prawdziwej Dżungli",
-        "desc": "Liście szelezczą, odległe wołania, woda płynie, wiatr w drzewach. Warstwowe nagrania sprawiają że żyje.",
-        "layered_title": "Naturalne Warstwy",
-        "layered_desc": "Liście, wołania, woda. Buduje vibe dżungli",
-        "spatial_title": "Spatial Mix",
+        "title": "Tworzenie prawdziwej dżungli",
+        "desc": "Liście szelezczą, odległe wołania, woda płynie, wiatr w drzewach. Warstwowe nagrania sprawiają, że żyje.",
+        "layered_title": "Naturalne warstwy",
+        "layered_desc": "Liście, wołania, woda. Buduje klimat dżungli",
+        "spatial_title": "Miks przestrzenny",
         "spatial_desc": "Dźwięk porusza się z kamerą i akcją",
-        "organic_title": "Prawdziwe Nagrania",
-        "organic_desc": "Nagrania terenowe zachowane naturalne"
+        "organic_title": "Prawdziwe nagrania",
+        "organic_desc": "Nagrania terenowe zachowane naturalnie"
       },
       "character": {
-        "title": "Dźwięki Postaci",
+        "title": "Dźwięki postaci",
         "desc": "Każdy kot brzmi inaczej. Pomarańczowy zdecydowany, różowy gracjalny. Głosy zmieniają się z konkurencyjnych na troskliwe.",
-        "personalities_title": "Różne Głosy",
+        "personalities_title": "Różne głosy",
         "personalities_desc": "Każdy kot ma unikalny pitch, ton, ekspresję",
-        "foley_title": "Dźwięki Ruchu",
+        "foley_title": "Dźwięki ruchu",
         "foley_desc": "Kroki łap, rośliny, wspinaczka. Zrobione dla każdego kota",
-        "evolution_title": "Zmiana Głosu",
+        "evolution_title": "Zmiana głosu",
         "evolution_desc": "Od konkurencyjnych do troskliwych"
       }
     },
     "technical": {
-      "title": "Jak To Zrobiłem",
+      "title": "Jak to zrobiłem",
       "foley": {
-        "title": "Custom Foley",
-        "desc": "Zrobiłem foley dla kotów. Kroki łap, wspinaczka, rośliny. Nagrane żeby pasowały do ich ruchów."
+        "title": "Niestandardowe foley",
+        "desc": "Zrobiłem foley dla kotów-stworzeń. Kroki łap, wspinaczka, rośliny. Nagrane tak, żeby pasowały do ich ruchów."
       },
       "environmental": {
-        "title": "Warstwowe Strefy",
-        "desc": "Dżungla w warstwach. Korona, grunt, odległość. Miks zmienia się z kamerą. Wspiera historię bez zagłuszania."
+        "title": "Warstwowe strefy",
+        "desc": "Dżungla w warstwach. Korona drzew, grunt, odległość. Miks zmienia się z kamerą. Wspiera historię bez zagłuszania."
       },
       "emotional": {
-        "title": "Gładkie Zmiany",
-        "desc": "Dźwięk przechodzi między pościgiem, napięciem, rozwiązaniem. Złota kula ma swój dźwięk połysku."
+        "title": "Płynne przejścia",
+        "desc": "Dźwięk przechodzi między pościgiem, napięciem, rozwiązaniem. Złota kula ma swój charakterystyczny dźwięk połysku."
       }
     },
     "scenes": {
-      "title": "Kluczowe Momenty Audio",
+      "title": "Kluczowe momenty audio",
       "chase": {
-        "title": "Wielki Pościg",
-        "desc": "Łapy uderzają o ziemię, ciężki oddech, dżungla robi się głośniejsza. Złota kula pulsuje i wszystko zaczyna brzmieć jak muzyka. Czysta rywalizacja."
+        "title": "Wielki pościg",
+        "desc": "Łapy uderzają o ziemię, ciężki oddech, dżungla robi się głośniejsza. Złota kula pulsuje i wszystko zaczyna brzmieć muzycznie. Czysta rywalizacja."
       },
       "cliff": {
-        "title": "Kryzys na Krawędzi Urwiska",
+        "title": "Kryzys na krawędzi urwiska",
         "desc": "Wieje wiatr, echa dobiegają z dołu. Jeden kot spada i krzyczy. Drugi stoi na krawędzi. Ratować go czy wziąć kulę? Ten moment ciszy jest brutalny."
       },
       "love": {
-        "title": "Triumf Miłości",
+        "title": "Triumf miłości",
         "desc": "Następuje wybór. Mały muzyczny akcent, ciche głosy, ulga. Dźwięki dżungli wracają. Miłość wygrywa."
       }
     },
     "gallery": {
-      "title": "Wizualna Podróż",
-      "jungle_top": "Widok Korony Dżungli",
-      "jungle_ground": "Perspektywa z Poziomu Gruntu",
-      "orange_ball": "Misja Pomarańczowego Stworzenia",
-      "pink_creature": "Postać Różowego Stworzenia"
+      "title": "Wizualna podróż",
+      "jungle_top": "Widok korony dżungli",
+      "jungle_ground": "Perspektywa z poziomu gruntu",
+      "orange_ball": "Misja pomarańczowego stworzenia",
+      "pink_creature": "Postać różowego stworzenia"
     },
     "button": {
-      "projects": "Wszystkie Projekty"
+      "projects": "Wszystkie projekty"
     }
   },
   "nl": {
-    "back": "Terug naar Projecten",
+    "back": "Terug naar projecten",
     "title": "Akantilado: Sound Design",
-    "tagline": "Oude Maya relikwie ontwaakt in de jungle, trekt twee mythische wezens in conflict. Sound design vertelt het verhaal van keuze tussen hebzucht en mededogen.",
+    "tagline": "Een oude Maya-relikwie ontwaakt in de jungle en trekt twee mythische wezens in een conflict. Sound design vertelt het verhaal van een keuze tussen hebzucht en mededogen.",
     "meta": {
       "role": {
         "label": "Rol",
@@ -268,86 +283,101 @@
         "value": "DAE Howest Kortrijk"
       }
     },
+    "context": {
+      "title": "Projectcontext",
+      "type_label": "Type",
+      "type_value": "Studentenanimatieproject",
+      "institution_label": "Instelling",
+      "institution_value": "Howest DAE",
+      "year_label": "Jaar",
+      "year_value": "2024",
+      "duration_label": "Duur",
+      "duration_value": "4 maanden",
+      "role_label": "Mijn rol",
+      "role_value": "Sound Designer",
+      "collaboration_title": "Samenwerking",
+      "collaboration_desc": "Werkte samen met componist Noah Bots van het Conservatorium Gent voor de muzikale score, terwijl ik alle sound design, foley en ruimtelijke audiomixing deed."
+    },
     "showcase": {
-      "title": "Kijk Met Geluid Aan",
-      "desc": "Geluid vertelt het verhaal. Begint speels, wordt gespannen, eindigt hartverwarmend. Elk geluid telt."
+      "title": "Kijk met geluid aan",
+      "desc": "Geluid vertelt hier het verhaal. Begint speels, wordt gespannen, eindigt hartverwarmend. Elk geluid telt."
     },
     "overview": {
-      "title": "Hoe Geluid Vertelt",
-      "desc": "Een oude Maya relikwie activeert en geluid rimpelt door de jungle. Twee wezens verschijnen, aangetrokken door zijn kracht. Audio neemt je mee door hun hele conflict. Nieuwsgierigheid, dan spanning, dan de keuze. Gemaakt in 12 weken bij DAE Howest met een team van kunstenaars."
+      "title": "Hoe geluid het verhaal vertelt",
+      "desc": "Een oude Maya-relikwie activeert en geluid rimpelt door de jungle. Twee wezens verschijnen, aangetrokken door de kracht ervan. Audio neemt je mee door hun hele conflict. Nieuwsgierigheid, dan spanning, dan de keuze. Gemaakt in 12 weken bij DAE Howest met een team kunstenaars."
     },
     "philosophy": {
-      "title": "Jungle Audio Design",
+      "title": "Jungle audio design",
       "emotional": {
-        "title": "De Emotionele Reis",
-        "desc": "Audio volgt de emoties. Speels wordt gespannen, dan teder. Soundscapes leiden je erdoor.",
-        "chase_title": "De Achtervolging",
-        "chase_desc": "Opgewekte ritmes, lichte foley, heldere geluiden. Competitie energie",
-        "tension_title": "De Crisis",
-        "tension_desc": "Lage rommelingen, schaarse geluiden, wind. Klif rand moment",
-        "resolution_title": "Liefde Wint",
-        "resolution_desc": "Zachte accent, zachte stemmen, vrede keert terug. Dat is het"
+        "title": "De emotionele reis",
+        "desc": "Audio volgt de emoties. Speels wordt gespannen, dan teder. Soundscapes leiden je erdoorheen.",
+        "chase_title": "De achtervolging",
+        "chase_desc": "Opgewekte ritmes, lichte foley, heldere geluiden. Competitieve energie",
+        "tension_title": "De crisis",
+        "tension_desc": "Lage gerommel, schaarse geluiden, wind. Moment op de rand van de klif",
+        "resolution_title": "Liefde wint",
+        "resolution_desc": "Zachte sting, zachte stemmen, vrede keert terug. Dat is het"
       },
       "jungle": {
-        "title": "Echte Jungle Creëren",
-        "desc": "Bladeren ritselen, verre roepen, water stroomt, wind door bomen. Gelaagde opnames maken het levend.",
-        "layered_title": "Natuurlijke Lagen",
-        "layered_desc": "Bladeren, roepen, water. Bouwt jungle vibe",
-        "spatial_title": "Ruimtelijke Mix",
-        "spatial_desc": "Geluid beweegt met camera en actie",
-        "organic_title": "Echte Opnames",
-        "organic_desc": "Veld opnames natuurlijk gehouden"
+        "title": "Een echte jungle creëren",
+        "desc": "Ritselende bladeren, verre roepen, stromend water, wind door de bomen. Gelaagde opnames maken het levend.",
+        "layered_title": "Natuurlijke lagen",
+        "layered_desc": "Bladeren, roepen, water. Bouwt de jungle-vibe op",
+        "spatial_title": "Ruimtelijke mix",
+        "spatial_desc": "Geluid beweegt mee met camera en actie",
+        "organic_title": "Echte opnames",
+        "organic_desc": "Veldopnames natuurlijk gehouden"
       },
       "character": {
-        "title": "Karakter Geluiden",
-        "desc": "Elke kat klinkt anders. Oranje vastberaden, roze sierlijk. Stemmen veranderen van competitief naar zorgzaam.",
-        "personalities_title": "Verschillende Stemmen",
-        "personalities_desc": "Elke kat heeft unieke pitch, toon, expressie",
-        "foley_title": "Bewegings Geluiden",
-        "foley_desc": "Poten stappen, planten, klimmen. Gemaakt voor elke kat",
-        "evolution_title": "Stem Veranderingen",
+        "title": "Karaktergeluiden",
+        "desc": "Elke kat klinkt anders. Oranje is vastberaden, roze is sierlijk. Stemmen veranderen van competitief naar zorgzaam.",
+        "personalities_title": "Verschillende stemmen",
+        "personalities_desc": "Elke kat heeft een unieke pitch, toon en expressie",
+        "foley_title": "Bewegingsgeluiden",
+        "foley_desc": "Potenstappen, planten, klimmen. Gemaakt voor elke kat",
+        "evolution_title": "Stemveranderingen",
         "evolution_desc": "Van competitief naar zorgzaam"
       }
     },
     "technical": {
-      "title": "Hoe Het Gemaakt Is",
+      "title": "Hoe het gemaakt is",
       "foley": {
-        "title": "Aangepaste Foley",
-        "desc": "Maakte foley voor katten. Poten stappen, klimmen, planten. Opgenomen om te passen bij hun bewegingen."
+        "title": "Custom foley",
+        "desc": "Foley gemaakt voor de katten. Potenstappen, klimmen, planten. Opgenomen om te passen bij hun bewegingen."
       },
       "environmental": {
-        "title": "Gelaagde Zones",
-        "desc": "Jungle in lagen. Bladerdak, grond, afstand. Mix verandert met camera. Ondersteunt verhaal zonder overspoelen."
+        "title": "Gelaagde zones",
+        "desc": "Jungle in lagen. Bladerdak, grond, afstand. Mix verandert mee met de camera. Ondersteunt het verhaal zonder te overspoelen."
       },
       "emotional": {
-        "title": "Soepele Veranderingen",
-        "desc": "Geluid verschuift tussen achtervolging, spanning, oplossing. Gouden bol heeft eigen schitter geluid."
+        "title": "Vloeiende overgangen",
+        "desc": "Geluid verschuift tussen achtervolging, spanning en oplossing. De gouden bol heeft z'n eigen schittergeluid."
       }
     },
     "scenes": {
-      "title": "Belangrijke Audio Momenten",
+      "title": "Belangrijke audiomomenten",
       "chase": {
-        "title": "De Grote Achtervolging",
-        "desc": "Poten raken de grond, zwaar ademhalen, jungle wordt luider. De gouden bol pulseert en alles begint muzikaal te klinken. Pure competitie."
+        "title": "De grote achtervolging",
+        "desc": "Poten raken de grond, zwaar ademhalen, de jungle wordt luider. De gouden bol pulseert en alles begint muzikaal te klinken. Pure competitie."
       },
       "cliff": {
-        "title": "De Klif Rand Crisis",
-        "desc": "Wind waait, echo's komen van beneden. Eén kat valt en schreeuwt. De andere staat daar. Hem redden of de bol pakken? Dat moment van stilte is heftig."
+        "title": "Crisis op de rand van de klif",
+        "desc": "Wind waait, echo's komen van beneden. Eén kat valt en schreeuwt. De andere staat daar. Redden of de bol pakken? Dat moment van stilte is heftig."
       },
       "love": {
-        "title": "Triomf van Liefde",
-        "desc": "De keuze gebeurt. Kleine muzikale sting, zachte stemmen, opluchting. Jungle geluiden komen terug. Liefde wint."
+        "title": "Triomf van de liefde",
+        "desc": "De keuze wordt gemaakt. Kleine muzikale sting, zachte stemmen, opluchting. Junglegeluiden komen terug. Liefde wint."
       }
     },
     "gallery": {
-      "title": "Visuele Reis",
-      "jungle_top": "Jungle Bladerdak Uitzicht",
-      "jungle_ground": "Grondniveau Perspectief",
-      "orange_ball": "Oranje Wezen's Zoektocht",
-      "pink_creature": "Roze Wezen Karakter"
+      "title": "Visuele reis",
+      "jungle_top": "Uitzicht op het bladerdak",
+      "jungle_ground": "Perspectief vanaf de grond",
+      "orange_ball": "Zoektocht van het oranje wezen",
+      "pink_creature": "Het roze wezen"
     },
     "button": {
-      "projects": "Alle Projecten"
+      "projects": "Alle projecten"
     }
   }
 }

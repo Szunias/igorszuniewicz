@@ -87,7 +87,7 @@
   "pl": {
     "back": "Powrót do projektów",
     "title": "Pause & Deserve",
-    "tagline": "Survival horror game gdzie pauza ma konsekwencje.",
+    "tagline": "Survival horror, gdzie pauza ma konsekwencje.",
     "meta": {
       "year": {
         "label": "Rok",
@@ -95,42 +95,42 @@
       }
     },
     "gameplay": {
-      "title": "Dźwięk to Wszystko",
-      "desc": "Słyszysz jak Śmierć się zbliża. Świat reaguje kiedy zamrażasz czas. Każdy krok buduje napięcie. To jest ta gra."
+      "title": "Dźwięk to wszystko",
+      "desc": "Słyszysz, jak Śmierć się zbliża. Świat reaguje, kiedy zamrażasz czas. Każdy krok buduje napięcie. To jest ta gra."
     },
     "overview": {
-      "title": "Filozofia Sound Designu",
-      "desc": "Horror w tej grze to to co słyszysz. Kroki Śmierci robią się głośniejsze jak się zbliża. Środowisko jęczy i pęka kiedy zamrażasz czas. Każda warstwa dźwięku trzyma cię w napięciu."
+      "title": "Filozofia sound designu",
+      "desc": "Horror w tej grze to to, co słyszysz. Kroki Śmierci robią się głośniejsze, jak się zbliża. Środowisko jęczy i pęka, kiedy zamrażasz czas. Każda warstwa dźwięku trzyma cię w napięciu."
     },
     "soundscape": {
-      "title": "Budowanie Atmosfery",
-      "desc": "Ciemne drony, odległe krzyki, twoje kroki. To wszystko tworzy przytłaczające uczucie. Ale nigdy nie zagłusza tego co musisz usłyszeć.",
-      "oppressive_title": "Zawsze Niepokojące",
+      "title": "Budowanie atmosfery",
+      "desc": "Ciemne drony, odległe krzyki, twoje kroki. To wszystko tworzy przytłaczające uczucie. Ale nigdy nie zagłusza tego, co musisz usłyszeć.",
+      "oppressive_title": "Zawsze niepokojące",
       "oppressive_desc": "Niskie drony, dalekie krzyki, dziwne tekstury. Nigdy nie daje ci odpocząć",
-      "proximity_title": "Śmierć Nadchodzi",
-      "proximity_desc": "Dźwięki robią się intensywniejsze jak Śmierć się zbliża. Serce zaczyna walić jak jest naprawdę blisko",
-      "environmental_title": "Świat Reaguje",
+      "proximity_title": "Śmierć nadchodzi",
+      "proximity_desc": "Dźwięki robią się intensywniejsze, jak Śmierć się zbliża. Serce zaczyna walić, jak jest naprawdę blisko",
+      "environmental_title": "Świat reaguje",
       "environmental_desc": "Ściany się ruszają, echa się zmieniają, przestrzeń się zmienia. Słyszysz wszystko"
     },
     "audio_system": {
-      "title": "Dynamiczne Audio",
+      "title": "Dynamiczne audio",
       "desc": "Wszystko reaguje w czasie rzeczywistym. Wciśniesz pauzę i czas się wykrzywia. Śmierć przyspiesza, audio robi się intensywniejsze. Poruszasz się i reverb się zmienia z przestrzenią.",
-      "pause_title": "Efekt Zamrożenia Czasu",
+      "pause_title": "Efekt zamrożenia czasu",
       "pause_desc": "Kiedy pauzujesz, wszystko zwalnia. Obniżenie tonu, długie ogony reverbu, cała ta zabawa",
-      "threat_title": "Rosnące Napięcie",
+      "threat_title": "Rosnące napięcie",
       "threat_desc": "Im bliżej Śmierć, tym bardziej intensywne. Prędkość też ma znaczenie",
       "spatial_title": "Pozycjonowanie 3D",
-      "spatial_desc": "Możesz śledzić Śmierć tylko po dźwięku. Kroki mówią ci dokładnie gdzie jest"
+      "spatial_desc": "Możesz śledzić Śmierć tylko po dźwięku. Kroki mówią ci dokładnie, gdzie jest"
     },
     "tension": {
-      "title": "Gry z Głową",
-      "desc": "Basy które czujesz bardziej niż słyszysz. Fałszywe dźwięki które cię mylą. Cisza która sprawia że nagłe hałasy biją mocniej. Wszystko żebyś był na skraju paranoi.",
-      "subbass_title": "Czujesz Strach",
-      "subbass_desc": "Niskie częstotliwości których ledwo słyszysz ale czujesz w klatce. Niepokoi cię bez powodu",
-      "silence_title": "Cisza Straszy",
-      "silence_desc": "Ciche momenty sprawiają że nagłe dźwięki biją mocniej. Nigdy się nie przyzwyczaisz",
-      "misdirection_title": "Nie Ufaj Niczemu",
-      "misdirection_desc": "Fałszywe kroki i mylące dźwięki. Nigdy nie wiesz co jest prawdziwe"
+      "title": "Gry z głową",
+      "desc": "Basy, które czujesz bardziej niż słyszysz. Fałszywe dźwięki, które cię mylą. Cisza, która sprawia, że nagłe hałasy biją mocniej. Wszystko, żebyś był na skraju paranoi.",
+      "subbass_title": "Czujesz strach",
+      "subbass_desc": "Niskie częstotliwości, których ledwo słyszysz, ale czujesz w klatce. Niepokoi cię bez powodu",
+      "silence_title": "Cisza straszy",
+      "silence_desc": "Ciche momenty sprawiają, że nagłe dźwięki biją mocniej. Nigdy się nie przyzwyczaisz",
+      "misdirection_title": "Nie ufaj niczemu",
+      "misdirection_desc": "Fałszywe kroki i mylące dźwięki. Nigdy nie wiesz, co jest prawdziwe"
     },
     "mechanics": {
       "chase": {
@@ -155,7 +155,7 @@
       "desc": "Ten projekt skupia się na tworzeniu immersyjnego napięcia poprzez perspektywę pierwszoosobową, inteligentne zachowanie AI i design dźwięku wzmacniający atmosferę psychologicznego horroru. Rozwój kładzie nacisk na szybkie prototypowanie i iteracyjny design oparty na feedbacku z playtestów."
     },
     "tech": {
-      "title": "Narzędzia Audio",
+      "title": "Narzędzia audio",
       "desc": "Zrobione w Wwise do kontroli audio w czasie rzeczywistym. Wszystko reaguje na dystans, prędkość, stan gracza. Wszystko miksowane na bieżąco."
     },
     "gallery": {
@@ -166,13 +166,13 @@
       "key": "Elementy interaktywne"
     },
     "button": {
-      "projects": "Wszystkie Projekty"
+      "projects": "Wszystkie projekty"
     }
   },
   "nl": {
-    "back": "Terug naar Projecten",
+    "back": "Terug naar projecten",
     "title": "Pause & Deserve",
-    "tagline": "Survival horror game waar pauze consequenties heeft.",
+    "tagline": "Survival horrorgame waar pauze consequenties heeft.",
     "meta": {
       "year": {
         "label": "Jaar",
@@ -180,8 +180,8 @@
       }
     },
     "gameplay": {
-      "title": "Geluid is Alles",
-      "desc": "Je hoort de Dood dichterbij komen. De wereld reageert als je tijd bevriest. Elke voetstap bouwt spanning. Dat is de game."
+      "title": "Geluid is alles",
+      "desc": "Je hoort de Dood dichterbij komen. De wereld reageert als je de tijd bevriest. Elke voetstap bouwt spanning op. Dat is de game."
     },
     "overview": {
       "title": "Sound Design Filosofie",
@@ -251,7 +251,7 @@
       "key": "Interactieve Elementen"
     },
     "button": {
-      "projects": "Alle Projecten"
+      "projects": "Alle projecten"
     }
   }
 }

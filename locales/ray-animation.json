@@ -3,22 +3,22 @@
     "back": "Back to Projects",
     "hero": {
       "subtitle": "MUSIC COMPOSITION",
-      "description": "Disco-inspired score for 3D animated short. Created at DAE, inspired by the breathtaking Grotten Van Han cave."
+      "description": "Disco-inspired score for 3D animated short. Created at DAE, inspired by Grotten Van Han cave."
     },
     "tags": {
       "role": "Composer",
       "style": "Disco-inspired",
       "school": "DAE Howest",
-      "type": "Final Group Project",
+      "type": "Music for graduation film",
       "inspiration": "Grotten Van Han Cave"
     },
     "showcase": {
-      "title": "Project Showcase",
-      "description": "Final group project at DAE. Our team visited Grotten Van Han cave and those visuals stuck with us. They shaped the whole film. I composed the disco soundtrack that drives the story. Team: Minh Thao Trinh (Character Art), Andra-Mihaela Popa (Rigging), Jolien Vansteenkiste (Animation), Joe Frackiewicz (Simulation), Jeffrey Vandenameel (Lighting/Environment/Compositing), Tijn Valcke (Sound Design).",
-      "list1": "Full original score composition",
-      "list2": "Disco-inspired themes and grooves",
-      "list3": "Emotional harmonic storytelling",
-      "list4": "Mixed and mastered to completion"
+      "title": "About",
+      "description": "Graduation project by a DAE team. They visited Grotten Van Han cave and those visuals inspired them. I composed the disco music for it. Team: Minh Thao Trinh (Character Art), Andra-Mihaela Popa (Rigging), Jolien Vansteenkiste (Animation), Joe Frackiewicz (Simulation), Jeffrey Vandenameel (Lighting/Environment/Compositing), Tijn Valcke (Sound Design).",
+      "list1": "Original music",
+      "list2": "70s disco vibes",
+      "list3": "Melodies matching the film mood",
+      "list4": "Mixed and mastered"
     },
     "details": {
       "title": "Project Details",
@@ -28,16 +28,16 @@
       "year": "Year"
     },
     "bassRhythm": {
-      "title": "Bass & Rhythm Foundation",
-      "description": "Funky disco bass with tight drums. This groove drives the whole thing. Slap bass plus rhythm guitar for that 70s dance floor vibe."
+      "title": "Bass & Rhythm",
+      "description": "Funky bass and tight drums. Slap bass plus rhythm guitar - 70s vibes."
     },
     "synthsStrings": {
-      "title": "Synths & String Layers",
-      "description": "Retro synths and strings adding color and feeling. Bright analog leads and warm orchestral sounds building through the track."
+      "title": "Synths & Strings",
+      "description": "Retro synths and strings add color. Bright leads and warm orchestral sounds."
     },
     "finalMix": {
-      "title": "Complete Mix",
-      "description": "Everything together and mastered. Bass, drums, synths, strings, melodies. Big cinematic disco sound synced with the animation."
+      "title": "Final Mix",
+      "description": "Everything together. Bass, drums, synths, strings, melodies. Synced with the animation."
     },
     "gallery": {
       "title": "Visual Gallery"
@@ -50,69 +50,69 @@
     "back": "Powrót do projektów",
     "hero": {
       "subtitle": "KOMPOZYCJA MUZYCZNA",
-      "description": "Muzyka inspirowana disco do krótkiego filmu animowanego 3D. Stworzone w DAE, zainspirowane zapierającą dech w piersiach jaskinią Grotten Van Han."
+      "description": "Muzyka inspirowana disco do krótkiego filmu 3D. Stworzone w DAE, zainspirowane jaskinią Grotten Van Han."
     },
     "tags": {
       "role": "Kompozytor",
       "style": "Inspirowane disco",
       "school": "DAE Howest",
-      "type": "Finalny Projekt Grupowy",
+      "type": "Projekt dyplomowy (muzyka)",
       "inspiration": "Jaskinia Grotten Van Han"
     },
     "showcase": {
-      "title": "Prezentacja Projektu",
-      "description": "Finalny projekt grupowy w DAE. Nasz zespół odwiedził jaskinię Grotten Van Han i te widoki zostały z nami. Ukształtowały cały film. Skomponowałem ścieżkę disco, która napędza historię. Zespół: Minh Thao Trinh (Character Art), Andra-Mihaela Popa (Rigging), Jolien Vansteenkiste (Animacja), Joe Frackiewicz (Symulacje), Jeffrey Vandenameel (Lighting/Environment/Compositing), Tijn Valcke (Sound Design).",
-      "list1": "Pełna oryginalna kompozycja",
-      "list2": "Motywy i groove'y inspirowane disco",
-      "list3": "Emocjonalne opowiadanie harmonią",
-      "list4": "Zmikowane i zmasterowane do końca"
+      "title": "O projekcie",
+      "description": "Projekt dyplomowy zespołu z DAE. Byli w jaskini Grotten Van Han i te widoki ich zainspirowały. Zrobiłem do tego muzykę disco. Zespół: Minh Thao Trinh (Character Art), Andra-Mihaela Popa (Rigging), Jolien Vansteenkiste (Animacja), Joe Frackiewicz (Symulacje), Jeffrey Vandenameel (Lighting/Environment/Compositing), Tijn Valcke (Sound Design).",
+      "list1": "Oryginalna muzyka",
+      "list2": "Disco z lat 70",
+      "list3": "Melodie pod nastrój filmu",
+      "list4": "Gotowy miks"
     },
     "details": {
-      "title": "Szczegóły Projektu",
+      "title": "Szczegóły projektu",
       "duration": "Czas trwania",
       "original": "Oryginalna",
       "style": "Styl",
       "year": "Rok"
     },
     "bassRhythm": {
-      "title": "Fundament Basu i Rytmu",
-      "description": "Funky bas disco z ostrą perkusją. Ten groove ciągnie całość. Slap bass plus gitara rytmiczna dają parkiet lat 70."
+      "title": "Bas i rytm",
+      "description": "Funky bas i ostra perkusja. Slap bass plus gitara - lata 70."
     },
     "synthsStrings": {
-      "title": "Warstwy Synthów i Smyczków",
-      "description": "Retro synthy i smyczki dodające koloru i uczuć. Jasne analogowe leady i ciepłe orkiestrowe brzmienia budujące przez cały kawałek."
+      "title": "Synthy i smyczki",
+      "description": "Retro synthy i smyczki dodają koloru. Jasne leady i ciepłe orkiestrowe brzmienia."
     },
     "finalMix": {
-      "title": "Kompletny Miks",
-      "description": "Wszystko razem i zmasterowane. Bas, perkusja, synthy, smyczki, melodie. Duże kinematograficzne brzmienie disco zsynchronizowane z animacją."
+      "title": "Gotowy miks",
+      "description": "Wszystko razem. Bas, perkusja, synthy, smyczki, melodie. Zsynchronizowane z animacją."
     },
     "gallery": {
-      "title": "Galeria Wizualna"
+      "title": "Galeria wizualna"
     },
     "button": {
-      "projects": "Wszystkie Projekty"
+      "projects": "Wszystkie projekty"
     }
   },
   "nl": {
-    "back": "Terug naar Projecten",
+    "back": "Terug naar projecten",
     "hero": {
       "subtitle": "MUZIEKCOMPOSITIE",
-      "description": "Disco-geïnspireerde score voor 3D geanimeerde korte film. Gemaakt bij DAE, geïnspireerd door de adembenemende Grotten Van Han grot."
+      "description": "Disco-geïnspireerde muziek voor 3D-geanimeerde korte film. Gemaakt bij DAE, geïnspireerd door de Grotten van Han."
     },
     "tags": {
       "role": "Componist",
       "style": "Disco-geïnspireerd",
       "school": "DAE Howest",
-      "type": "Eindproject Groep",
-      "inspiration": "Grotten Van Han Grot"
+      "type": "Muziek voor afstudeerfilm",
+      "inspiration": "Grotten van Han"
     },
     "showcase": {
-      "title": "Projectpresentatie",
-      "description": "Eindproject bij DAE. Ons team bezocht de Grotten Van Han grot en die beelden bleven bij ons. Ze vormden de hele film. Ik componeerde de disco soundtrack die het verhaal drijft. Team: Minh Thao Trinh (Character Art), Andra-Mihaela Popa (Rigging), Jolien Vansteenkiste (Animatie), Joe Frackiewicz (Simulatie), Jeffrey Vandenameel (Lighting/Environment/Compositing), Tijn Valcke (Sound Design).",
-      "list1": "Volledige originele scorecompositie",
-      "list2": "Disco-geïnspireerde thema's en grooves",
-      "list3": "Emotioneel harmonisch verhaal",
-      "list4": "Gemixt en gemastered tot voltooiing"
+      "title": "Over",
+      "description": "Afstudeerproject van een DAE-team. Ze bezochten de Grotten van Han en die beelden inspireerden ze. Ik componeerde de discomuziek ervoor. Team: Minh Thao Trinh (Character Art), Andra-Mihaela Popa (Rigging), Jolien Vansteenkiste (Animatie), Joe Frackiewicz (Simulatie), Jeffrey Vandenameel (Lighting/Environment/Compositing), Tijn Valcke (Sound Design).",
+      "list1": "Originele muziek",
+      "list2": "Jaren 70 disco",
+      "list3": "Melodieën passend bij de film",
+      "list4": "Gemixt en gemastered"
     },
     "details": {
       "title": "Projectdetails",
@@ -122,22 +122,22 @@
       "year": "Jaar"
     },
     "bassRhythm": {
-      "title": "Bas & Ritme Fundament",
-      "description": "Funky disco bas met strakke drums. Deze groove drijft het hele ding. Slap bass plus ritmegitaar voor die jaren 70 dansvloer vibe."
+      "title": "Bas & Ritme",
+      "description": "Funky bas en strakke drums. Slap bass plus ritmegitaar - jaren 70 vibes."
     },
     "synthsStrings": {
-      "title": "Synth & Strijklagen",
-      "description": "Retro synths en strijkers die kleur en gevoel toevoegen. Heldere analoge leads en warme orkestrale klanken die door de track opbouwen."
+      "title": "Synths & Strijkers",
+      "description": "Retro synths en strijkers voegen kleur toe. Heldere leads en warme orkestrale klanken."
     },
     "finalMix": {
-      "title": "Complete Mix",
-      "description": "Alles samen en gemastered. Bas, drums, synths, strijkers, melodieën. Groot cinematografisch disco geluid gesynchroniseerd met de animatie."
+      "title": "Finale Mix",
+      "description": "Alles samen. Bas, drums, synths, strijkers, melodieën. Gesynchroniseerd met de animatie."
     },
     "gallery": {
       "title": "Visuele Galerij"
     },
     "button": {
-      "projects": "Alle Projecten"
+      "projects": "Alle projecten"
     }
   }
 }

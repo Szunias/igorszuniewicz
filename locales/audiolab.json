@@ -95,94 +95,107 @@
     }
   },
   "pl": {
-    "back": "Powrót do Projektów",
+    "back": "Powrót do projektów",
     "hero": {
-      "badge": "🎮 Projekt Badawczy",
+      "badge": "🎮 Projekt badawczy",
       "title": "Transientica: AudioLab",
       "subtitle": "GRA RYTMICZNA BEATBOX",
       "description": "Rozpoznawanie beatboxu oparte na ML dla gier rytmicznych",
       "year": "2024"
     },
     "tags": {
-      "ml": "Uczenie Maszynowe",
-      "audio": "Audio w Czasie Rzeczywistym",
-      "unity": "Silnik Unity",
+      "ml": "Machine Learning",
+      "audio": "Audio w czasie rzeczywistym",
+      "unity": "Unity Engine",
       "python": "Python",
       "latency": "Opóźnienie <60ms"
     },
+    "context": {
+      "title": "Kontekst projektu",
+      "type_label": "Typ",
+      "type_value": "Studencki projekt badawczy",
+      "institution_label": "Instytucja",
+      "institution_value": "Howest DAE",
+      "year_label": "Rok",
+      "year_value": "2025",
+      "duration_label": "Czas trwania",
+      "duration_value": "5 miesięcy",
+      "role_label": "Moja rola",
+      "role_value": "Audio Programmer & Designer"
+    },
     "demo": {
-      "title": "Interaktywne Demo",
+      "title": "Interaktywne demo",
       "description": "Zamień przyciski na beatboxing. ML klasyfikuje dźwięki w poniżej 60ms. 82% dokładności dla kick, snare, hi-hat.",
       "research": "Spectral-flux plus wytrenowany model SVM. Wystarczająco szybkie dla gier rytmicznych."
     },
     "features": {
       "realtime": {
-        "title": "Rozpoznawanie w Czasie Rzeczywistym",
-        "desc": "Przetwarza dźwięki beatboxu w czasie poniżej 60ms używając spectral flux i SVM"
+        "title": "Rozpoznawanie w czasie rzeczywistym",
+        "desc": "Przetwarza dźwięki beatboxu w czasie poniżej 60ms, używając spectral flux i klasyfikacji SVM"
       },
       "ml": {
         "title": "Klasyfikacja ML",
-        "desc": "Model trenowany przez użytkownika dostosowuje się do stylów beatboxu dla kick, snare i hi-hat"
+        "desc": "Model trenowany przez użytkownika dostosowuje się do indywidualnych stylów beatboxu dla kick, snare i hi-hat"
       },
       "lowlatency": {
-        "title": "Ultra-niskie Opóźnienie",
-        "desc": "OSC między Pythonem a Unity utrzymuje standardy czasowe"
+        "title": "Ultra-niskie opóźnienie",
+        "desc": "Komunikacja OSC między Pythonem a Unity utrzymuje konkurencyjne standardy czasowe"
       }
     },
     "video": {
-      "title": "Zobacz w Akcji"
+      "title": "Zobacz w akcji"
     },
     "stats": {
-      "title": "Metryki Wydajności",
+      "title": "Metryki wydajności",
       "latency": "Opóźnienie",
       "accuracy": "Dokładność",
-      "sounds": "Klasy Dźwięków",
+      "sounds": "Klasy dźwięków",
       "year": "Rok"
     },
     "overview": {
-      "title": "Interfejs Perkusji Wokalnej"
+      "title": "Interfejs perkusji wokalnej"
     },
     "tech": {
-      "title": "Stos Technologiczny",
-      "audio": "Przetwarzanie Audio",
-      "ml": "Uczenie Maszynowe",
+      "title": "Stos technologiczny",
+      "audio": "Przetwarzanie audio",
+      "ml": "Machine Learning",
       "osc": "Komunikacja OSC",
-      "engine": "Silnik Gry"
+      "engine": "Silnik gry"
     },
     "contrib": {
-      "title": "Kluczowe Wkłady"
+      "title": "Kluczowe wkłady"
     },
     "button": {
-      "projects": "Wszystkie Projekty"
+      "projects": "Wszystkie projekty"
     },
     "challenges": {
-      "title": "Wyzwania Rozwoju",
+      "title": "Wyzwania rozwojowe",
       "problem_label": "Problem:",
       "solution_label": "Rozwiązanie:",
       "challenge1": {
-        "title": "Zejście Poniżej 50ms Latencji",
+        "title": "Zejście poniżej 50ms opóźnienia",
         "problem": "Pierwsza wersja miała 180ms lag. Audio, features, ML, sieć, gra. Za wolne.",
-        "solution": "Optymalizacja pipeline. Mniejsze okno FFT (512 sampli, 11ms). Circular buffer zabija I/O blocking. Lekkie SVM (2ms vs 15ms neural net). UDP dla OSC. Doszło do 45ms z 92% accuracy."
+        "solution": "Optymalizacja pipeline. Mniejsze okno FFT (512 sampli, 11ms). Circular buffer eliminuje I/O blocking. Lekkie SVM (2ms vs 15ms neural net). UDP dla OSC. Udało się zejść do 45ms z 92% dokładnością."
       },
       "challenge2": {
-        "title": "Kick vs Snare",
-        "problem": "Kick i snare brzmią podobnie. Oba mają transjenty i szum. Dużo błędnych trafień.",
-        "solution": "Dodano więcej features. Spectral centroid (kick niżej, snare wyżej). Zero-crossing rate (snare ma więcej wysokich). Kształt envelope (kick ostry, snare trwały). Osobne modele dla solo vs patterns. Z 78% do 92% accuracy."
+        "title": "Kick vs snare",
+        "problem": "Kick i snare brzmią podobnie. Oba mają transjenty i szum. Dużo błędnych klasyfikacji.",
+        "solution": "Dodano więcej cech. Spectral centroid (kick niżej, snare wyżej). Zero-crossing rate (snare ma więcej wysokich). Kształt envelope (kick ostry, snare trwały). Osobne modele dla solo vs patterns. Z 78% do 92% dokładności."
       },
       "challenge3": {
-        "title": "Bez Dropoutów Audio",
+        "title": "Bez dropoutów audio",
         "problem": "Ciężkie ML powodowało buffer underruns na słabych CPU. Kliknięcia i pominięte dźwięki.",
-        "solution": "Rozdzielono audio i ML na osobne wątki. Lock-free ringbuffer między nimi. Audio na wysokim priorytecie, nigdy nie blokuje. ML na worker thread. Jeśli ML za długo, skip tę klatkę. Lepiej pominąć jeden dźwięk niż dropout audio."
+        "solution": "Rozdzielono audio i ML na osobne wątki. Lock-free ringbuffer między nimi. Audio na wysokim priorytecie, nigdy nie blokuje. ML na worker thread. Jeśli ML trwa za długo, pomijamy tę klatkę. Lepiej pominąć jeden dźwięk niż mieć dropout audio."
       }
     }
   },
   "nl": {
-    "back": "Terug naar Projecten",
+    "back": "Terug naar projecten",
     "hero": {
       "badge": "🎮 Onderzoeksproject",
       "title": "Transientica: AudioLab",
-      "subtitle": "BEATBOX RITMESPEL",
-      "description": "ML-aangedreven beatbox herkenning voor ritmegames",
+      "subtitle": "BEATBOX RITMEGAME",
+      "description": "ML-aangedreven beatboxherkenning voor ritmegames",
       "year": "2024"
     },
     "tags": {
@@ -192,27 +205,40 @@
       "python": "Python",
       "latency": "<60ms Latentie"
     },
+    "context": {
+      "title": "Projectcontext",
+      "type_label": "Type",
+      "type_value": "Studentenonderzoeksproject",
+      "institution_label": "Instelling",
+      "institution_value": "Howest DAE",
+      "year_label": "Jaar",
+      "year_value": "2025",
+      "duration_label": "Duur",
+      "duration_value": "5 maanden",
+      "role_label": "Mijn rol",
+      "role_value": "Audio Programmer & Designer"
+    },
     "demo": {
-      "title": "Interactieve Demo",
-      "description": "Vervang knopdrukken door beatboxen. ML classificeert geluiden in onder 60ms. 82% nauwkeurigheid voor kick, snare, hi-hat.",
-      "research": "Spectrale-flux plus getraind SVM model. Snel genoeg voor ritmegames."
+      "title": "Interactieve demo",
+      "description": "Vervang knopdrukken door beatboxen. ML classificeert geluiden in minder dan 60ms. 82% nauwkeurigheid voor kick, snare en hi-hat.",
+      "research": "Spectral-flux onset detection plus getraind SVM-model. Snel genoeg voor ritmegames."
     },
     "features": {
       "realtime": {
-        "title": "Realtime Herkenning",
-        "desc": "Verwerkt beatbox geluiden in minder dan 60ms met spectrale flux en SVM"
+        "title": "Realtime herkenning",
+        "desc": "Verwerkt beatboxgeluiden in minder dan 60ms met spectral flux detection en SVM-classificatie"
       },
       "ml": {
-        "title": "ML Classificatie",
-        "desc": "Door gebruiker getraind model past zich aan beatbox stijlen aan voor kick, snare en hi-hat"
+        "title": "ML-classificatie",
+        "desc": "Door de gebruiker getraind model dat zich aanpast aan individuele beatboxstijlen voor kick, snare en hi-hat"
       },
       "lowlatency": {
-        "title": "Ultra-lage Latentie",
-        "desc": "OSC tussen Python en Unity handhaaft timing standaarden"
+        "title": "Ultra-lage latentie",
+        "desc": "OSC-netwerking tussen Python en Unity handhaaft competitieve timingstandaarden"
       }
     },
     "video": {
-      "title": "Zie Het in Actie"
+      "title": "Zie het in actie"
     },
     "stats": {
       "title": "Prestatiemetrieken",
@@ -222,39 +248,39 @@
       "year": "Jaar"
     },
     "overview": {
-      "title": "Vocale Percussie Interface"
+      "title": "Vocale percussie-interface"
     },
     "tech": {
-      "title": "Technologie Stack",
+      "title": "Technologiestack",
       "audio": "Audioverwerking",
       "ml": "Machine Learning",
-      "osc": "OSC Communicatie",
-      "engine": "Game Engine"
+      "osc": "OSC-communicatie",
+      "engine": "Game engine"
     },
     "contrib": {
-      "title": "Belangrijkste Bijdragen"
+      "title": "Belangrijkste bijdragen"
     },
     "button": {
-      "projects": "Alle Projecten"
+      "projects": "Alle projecten"
     },
     "challenges": {
       "title": "Ontwikkelingsuitdagingen",
       "problem_label": "Probleem:",
       "solution_label": "Oplossing:",
       "challenge1": {
-        "title": "Onder 50ms Latentie Komen",
+        "title": "Onder de 50ms latentie komen",
         "problem": "Eerste versie had 180ms lag. Audio in, features, ML, netwerk, game. Te traag.",
-        "solution": "Pipeline geoptimaliseerd. Kleiner FFT window (512 samples, 11ms). Circular buffer doodt I/O blocking. Lichtgewicht SVM (2ms vs 15ms neural net). UDP voor OSC. Kwam naar 45ms met 92% accuracy."
+        "solution": "Pipeline geoptimaliseerd. Kleiner FFT-window (512 samples, 11ms). Circular buffer elimineert I/O-blocking. Lichtgewicht SVM (2ms vs 15ms neural net). UDP voor OSC. Kwam uit op 45ms met 92% nauwkeurigheid."
       },
       "challenge2": {
-        "title": "Kick vs Snare",
-        "problem": "Kick en snare klinken vergelijkbaar. Beide hebben transiënten en ruis. Veel verkeerde treffers.",
-        "solution": "Meer features toegevoegd. Spectral centroid (kick lager, snare hoger). Zero-crossing rate (snare heeft meer highs). Envelope vorm (kick scherp, snare sustained). Aparte modellen voor solo vs patronen. Van 78% naar 92% accuracy."
+        "title": "Kick vs snare",
+        "problem": "Kick en snare klinken vergelijkbaar. Beide hebben transiënten en ruis. Veel verkeerde classificaties.",
+        "solution": "Meer features toegevoegd. Spectral centroid (kick lager, snare hoger). Zero-crossing rate (snare heeft meer highs). Envelope-vorm (kick scherp, snare sustained). Aparte modellen voor solo vs patronen. Van 78% naar 92% nauwkeurigheid."
       },
       "challenge3": {
-        "title": "Geen Audio Dropouts",
+        "title": "Geen audio-dropouts",
         "problem": "Zware ML veroorzaakte buffer underruns op zwakke CPU's. Klikken en gemiste geluiden.",
-        "solution": "Audio en ML threads gescheiden. Lock-free ringbuffer ertussen. Audio op hoge prioriteit, blokkeert nooit. ML op worker thread. Als ML te lang duurt, skip dat frame. Beter één geluid missen dan audio dropout."
+        "solution": "Audio en ML-threads gescheiden. Lock-free ringbuffer ertussen. Audio op hoge prioriteit, blokkeert nooit. ML op worker thread. Als ML te lang duurt, skip dat frame. Beter één geluid missen dan een audio-dropout."
       }
     }
   }

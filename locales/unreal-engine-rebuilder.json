@@ -63,61 +63,61 @@
     }
   },
   "pl": {
-    "back": "Powrót do Projektów",
+    "back": "Powrót do projektów",
     "hero": {
-      "badge": "✨ Darmowe Narzędzie Deweloperskie",
+      "badge": "✨ Darmowe narzędzie deweloperskie",
       "title": "Unreal Engine<br>Rebuilder",
       "subtitle": "Automatyzacja utrzymania projektów UE. Czyszczenie, rebuild i backup jednym kliknięciem. Oszczędzasz 5-10 minut na build i odzyskujesz gigabajty miejsca na dysku.",
-      "download": "Pobierz Teraz",
+      "download": "Pobierz teraz",
       "github": "Zobacz na GitHub",
       "year": "2024"
     },
     "stats": {
       "value1": "5-10",
-      "label1": "Minut Zaoszczędzonych na Build",
+      "label1": "Minut zaoszczędzonych na build",
       "value2": "5-50 GB",
-      "label2": "Odzyskanej Przestrzeni Dyskowej",
+      "label2": "Odzyskanej przestrzeni dyskowej",
       "value3": "100%",
-      "label3": "Pokrycie Automatyzacji"
+      "label3": "Pokrycie automatyzacji"
     },
     "features": {
-      "badge": "Kluczowe Funkcje",
-      "title": "Wszystko Czego Potrzebujesz",
+      "badge": "Kluczowe funkcje",
+      "title": "Wszystko, czego potrzebujesz",
       "subtitle": "Automatyzuje wszystko dla deweloperów Unreal Engine",
       "f1": {
-        "title": "Całkowite Czyszczenie Rebuildu",
+        "title": "Całkowite czyszczenie rebuildu",
         "desc": "Usuwa Binaries/Intermediate/Saved. Regeneruje rozwiązanie VS. Kompiluje ze śledzeniem czasu."
       },
       "f2": {
-        "title": "Automatyczne Backupy",
-        "desc": "Backup projektu jednym klikiem. Archiwizuje Source/Config/Content/Plugins z kompresją i timestampami."
+        "title": "Automatyczne backupy",
+        "desc": "Backup projektu jednym kliknięciem. Archiwizuje Source/Config/Content/Plugins z kompresją i timestampami."
       },
       "f3": {
-        "title": "Zarządzanie Dyskiem",
+        "title": "Zarządzanie dyskiem",
         "desc": "Pokazuje rozmiary folderów. Czyszczenie DDC zwalnia gigabajty. Statystyki przed/po."
       },
       "f4": {
-        "title": "Inteligentne Wykrywanie",
+        "title": "Inteligentne wykrywanie",
         "desc": "Znajduje instalacje UE automatycznie. Skanuje dyski i Registry. Wspiera UE 4.x i 5.x."
       },
       "f5": {
-        "title": "Profesjonalne Logowanie",
+        "title": "Profesjonalne logowanie",
         "desc": "Loguje każdą operację z timestampami. Auto-usuwa logi starsze niż 30 dni. Szczegółowe błędy."
       },
       "f6": {
-        "title": "Nowoczesny Interfejs",
-        "desc": "Ciemny motyw z oknem bez ramek. Kolorowe przyciski. Konsola real-time z zielonym tekstem."
+        "title": "Nowoczesny interfejs",
+        "desc": "Ciemny motyw z oknem bez ramek. Kolorowe przyciski. Konsola w czasie rzeczywistym z zielonym tekstem."
       }
     },
     "tech": {
       "badge": "Technologia",
-      "title": "Zbudowane z Nowoczesnymi Narzędziami"
+      "title": "Zbudowane z nowoczesnymi narzędziami"
     },
     "cta": {
-      "title": "Gotowy Zaoszczędzić Czas?",
+      "title": "Gotowy zaoszczędzić czas?",
       "subtitle": "Pobierz Unreal Engine Rebuilder teraz i usprawnij swój workflow developmentu.",
-      "download": "Pobierz Najnowsze Wydanie",
-      "source": "Zobacz Kod Źródłowy"
+      "download": "Pobierz najnowsze wydanie",
+      "source": "Zobacz kod źródłowy"
     },
     "footer": {
       "created": "Stworzony przez",
@@ -126,65 +126,65 @@
     }
   },
   "nl": {
-    "back": "Terug naar Projecten",
+    "back": "Terug naar projecten",
     "hero": {
-      "badge": "✨ Gratis Ontwikkelaarstool",
+      "badge": "✨ Gratis ontwikkelaarstool",
       "title": "Unreal Engine<br>Rebuilder",
       "subtitle": "Automatiseer UE-projectonderhoud. Schoon, herbouw en back-up met één klik. Bespaar 5-10 minuten per build en win gigabytes schijfruimte terug.",
-      "download": "Nu Downloaden",
+      "download": "Nu downloaden",
       "github": "Bekijk op GitHub",
       "year": "2024"
     },
     "stats": {
       "value1": "5-10",
-      "label1": "Minuten Bespaard Per Build",
+      "label1": "Minuten bespaard per build",
       "value2": "5-50 GB",
-      "label2": "Schijfruimte Teruggewonnen",
+      "label2": "Schijfruimte teruggewonnen",
       "value3": "100%",
-      "label3": "Automatisering Dekking"
+      "label3": "Automatiseringsdekking"
     },
     "features": {
-      "badge": "Belangrijkste Functies",
-      "title": "Alles Wat Je Nodig Hebt",
+      "badge": "Belangrijkste functies",
+      "title": "Alles wat je nodig hebt",
       "subtitle": "Automatiseert alles voor Unreal Engine-ontwikkelaars",
       "f1": {
-        "title": "Totale Rebuild Schoonmaak",
-        "desc": "Verwijdert Binaries/Intermediate/Saved. Regenereert VS oplossing. Compileert met time tracking."
+        "title": "Totale rebuild-schoonmaak",
+        "desc": "Verwijdert Binaries/Intermediate/Saved. Regenereert VS-oplossing. Compileert met time tracking."
       },
       "f2": {
-        "title": "Geautomatiseerde Back-ups",
-        "desc": "Project backup met één klik. Archiveert Source/Config/Content/Plugins met compressie en timestamps."
+        "title": "Geautomatiseerde back-ups",
+        "desc": "Projectback-up met één klik. Archiveert Source/Config/Content/Plugins met compressie en timestamps."
       },
       "f3": {
         "title": "Schijfbeheer",
-        "desc": "Toont mapgroottes. DDC cleaning maakt gigabytes vrij. Voor/na stats."
+        "desc": "Toont mapgroottes. DDC-cleaning maakt gigabytes vrij. Voor/na stats."
       },
       "f4": {
-        "title": "Intelligente Detectie",
-        "desc": "Vindt UE installaties automatisch. Scant drives en Registry. Ondersteunt UE 4.x en 5.x."
+        "title": "Intelligente detectie",
+        "desc": "Vindt UE-installaties automatisch. Scant drives en Registry. Ondersteunt UE 4.x en 5.x."
       },
       "f5": {
-        "title": "Professionele Logging",
+        "title": "Professionele logging",
         "desc": "Logt elke operatie met timestamps. Auto-verwijdert logs ouder dan 30 dagen. Gedetailleerde foutmeldingen."
       },
       "f6": {
-        "title": "Moderne Interface",
-        "desc": "Donker thema met randloos venster. Kleurgecodeerde knoppen. Real-time console met groene terminaltekst."
+        "title": "Moderne interface",
+        "desc": "Donker thema met randloos venster. Kleurgecodeerde knoppen. Realtime console met groene terminaltekst."
       }
     },
     "tech": {
       "badge": "Technologie",
-      "title": "Gebouwd Met Moderne Tools"
+      "title": "Gebouwd met moderne tools"
     },
     "cta": {
-      "title": "Klaar om Tijd te Besparen?",
+      "title": "Klaar om tijd te besparen?",
       "subtitle": "Download Unreal Engine Rebuilder nu en stroomlijn je ontwikkelworkflow.",
-      "download": "Download Laatste Release",
-      "source": "Bekijk Broncode"
+      "download": "Download laatste release",
+      "source": "Bekijk broncode"
     },
     "footer": {
       "created": "Gemaakt door",
-      "opensource": "Open Source op",
+      "opensource": "Open source op",
       "copyright": "Gratis voor persoonlijk en commercieel gebruik."
     }
   }

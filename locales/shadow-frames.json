@@ -102,9 +102,9 @@
   "pl": {
     "back": "Powrót do projektów",
     "title": "Shadow Frames",
-    "subtitle": "Audio Design",
-    "tagline": "Gra grozy gdzie dźwięk to przetrwanie.",
-    "production_notice": "🎮 W PRODUKCJI  •  Prototyp Ukończony  •  Pełny System Audio Wkrótce",
+    "subtitle": "Audio design",
+    "tagline": "Gra grozy, gdzie dźwięk to przetrwanie.",
+    "production_notice": "🎮 2024  •  Prototyp ukończony",
     "meta": {
       "role": {
         "label": "Rola",
@@ -112,38 +112,53 @@
       },
       "setting": {
         "label": "Miejsce",
-        "value": "Irlandzki Pub z lat 60."
+        "value": "Irlandzki pub z lat 60."
       },
       "era": {
         "label": "Era",
-        "value": "Horror Analogowy"
+        "value": "Horror analogowy"
       },
       "engine": {
         "label": "Silnik",
         "value": "Unreal Engine 5"
       }
     },
+    "context": {
+      "title": "Kontekst projektu",
+      "type_label": "Typ",
+      "type_value": "Projekt międzyinstytucjonalny",
+      "institution_label": "Instytucja wiodąca",
+      "institution_value": "Howest DAE",
+      "year_label": "Rok",
+      "year_value": "2025 - obecnie",
+      "role_label": "Moja rola",
+      "role_value": "Sound Designer & Audio Implementer",
+      "collaboration_title": "Współpraca międzyinstytucjonalna",
+      "collab1": "RITCS (Royal Institute for Theatre, Cinema and Sound) — Narrative Design",
+      "collab2": "Konserwatorium w Gandawie — Kompozycja muzyczna",
+      "collab3": "Howest DAE — Game Development & Implementacja audio"
+    },
     "video": {
-      "title": "Pierwszy Rzut Oka: Prototyp Menu",
-      "desc": "Wczesny koncept z fazy prototypu. Finalna wersja wkrótce."
+      "title": "Pierwszy rzut oka: Prototyp menu",
+      "desc": "Prototyp menu z fazy rozwoju."
     },
     "music": {
-      "title": "Koncept Muzyki Menu",
+      "title": "Koncept muzyki menu",
       "desc": "Wizja naszej kompozytorki atmosfery głównego menu.",
-      "subtitle": "Motyw Menu Shadow Frames"
+      "subtitle": "Motyw menu Shadow Frames"
     },
     "overview": {
       "title": "Koncept",
       "desc": "Irlandzki pub z lat 60. Czarno-biały. Masz aparat Polaroid. Dzieją się dziwne rzeczy. Dźwięk mówi wszystko. Wycisz grę, nie możesz grać. Taki pomysł."
     },
     "philosophy": {
-      "title": "Podejście do Audio Design",
-      "dread_title": "Stałe Napięcie",
-      "dread_desc": "Zero jumpscare'ów. Tylko narastający niepokój z dronów i odległych dźwięków których nie zidentyfikujesz.",
+      "title": "Podejście do audio design",
+      "dread_title": "Stałe napięcie",
+      "dread_desc": "Zero jumpscare'ów. Tylko narastający niepokój z dronów i odległych dźwięków, których nie zidentyfikujesz.",
       "analog_title": "Autentyczność lat 60.",
       "analog_desc": "Kliknięcia Polaroida, trzaski winylu, szum lampowego radia. Wszystko z epoki.",
-      "ambiguity_title": "Soniczna Niepewność",
-      "ambiguity_desc": "Znajome dźwięki przekręcone na tyle by kwestionować co słyszysz."
+      "ambiguity_title": "Soniczna niepewność",
+      "ambiguity_desc": "Znajome dźwięki przekręcone na tyle, by kwestionować, co słyszysz."
     },
     "anomaly": {
       "title": "System Anomalii",
@@ -168,28 +183,28 @@
       "drone": "Sub-bas narastający z twoimi błędami"
     },
     "technical": {
-      "title": "Stos Techniczny",
+      "title": "Stos techniczny",
       "engine": "Wwise 2024.1 + Unreal Engine 5.4.4",
       "audio": "HRTF audio przestrzenne, dynamiczne RTPC, strefy środowiskowe",
       "tools": "Reaper DAW, Waves J37, PaulXStretch, Valhalla FreqEcho",
       "performance": "Poniżej 5% CPU, zoptymalizowany streaming"
     },
     "status": {
-      "title": "Aktualny Status",
-      "proto": "✓ Prototyp Ukończony",
-      "production": "◉ Tydzień 1 Produkcji",
-      "coming": "◯ Pełna Implementacja Audio"
+      "title": "Aktualny status",
+      "proto": "✓ Prototyp ukończony",
+      "production": "◉ Tydzień 1 produkcji",
+      "coming": "◯ Pełna implementacja audio"
     },
     "button": {
-      "projects": "Wszystkie Projekty"
+      "projects": "Wszystkie projekty"
     }
   },
   "nl": {
-    "back": "Terug naar Projecten",
+    "back": "Terug naar projecten",
     "title": "Shadow Frames",
-    "subtitle": "Audio Design",
-    "tagline": "Horror game waar geluid overleving is.",
-    "production_notice": "🎮 2024  •  Prototype Compleet",
+    "subtitle": "Audio design",
+    "tagline": "Horrorgame waar geluid overleving is.",
+    "production_notice": "🎮 2024  •  Prototype compleet",
     "meta": {
       "role": {
         "label": "Rol",
@@ -208,65 +223,80 @@
         "value": "Unreal Engine 5"
       }
     },
+    "context": {
+      "title": "Projectcontext",
+      "type_label": "Type",
+      "type_value": "Multi-institutioneel project",
+      "institution_label": "Leidende instelling",
+      "institution_value": "Howest DAE",
+      "year_label": "Jaar",
+      "year_value": "2025 - heden",
+      "role_label": "Mijn rol",
+      "role_value": "Sound Designer & Audio Implementer",
+      "collaboration_title": "Multi-institutionele samenwerking",
+      "collab1": "RITCS (Royal Institute for Theatre, Cinema and Sound) — Narrative Design",
+      "collab2": "Conservatorium Gent — Muziekcompositie",
+      "collab3": "Howest DAE — Game Development & Audio-implementatie"
+    },
     "video": {
-      "title": "Eerste Blik: Prototype Menu",
+      "title": "Eerste blik: Prototype menu",
       "desc": "Prototype menu uit ontwikkelingsfase."
     },
     "music": {
-      "title": "Menu Muziek Concept",
-      "desc": "Onze componist's visie voor de hoofdmenu atmosfeer.",
-      "subtitle": "Shadow Frames Menu Thema"
+      "title": "Menumuziek concept",
+      "desc": "Onze componist's visie voor de hoofdmenu-atmosfeer.",
+      "subtitle": "Shadow Frames menuthema"
     },
     "overview": {
-      "title": "Het Concept",
-      "desc": "Ierse pub uit de jaren 60. Zwart-wit. Je hebt een Polaroid camera. Vreemde dingen gebeuren. Geluid vertelt alles. Dempen betekent niet kunnen spelen. Dat is het idee."
+      "title": "Het concept",
+      "desc": "Ierse pub uit de jaren 60. Zwart-wit. Je hebt een Polaroid-camera. Vreemde dingen gebeuren. Geluid vertelt alles. Dempen betekent niet kunnen spelen. Dat is het idee."
     },
     "philosophy": {
-      "title": "Audio Design Aanpak",
-      "dread_title": "Constante Spanning",
+      "title": "Audio design aanpak",
+      "dread_title": "Constante spanning",
       "dread_desc": "Geen jumpscares. Alleen opbouwende angst van drones en verre geluiden die je niet kunt identificeren.",
-      "analog_title": "Jaren 60 Authentiek",
-      "analog_desc": "Polaroid clicks, vinyl gekraak, tube radio static. Alles periode accuraat.",
-      "ambiguity_title": "Sonische Onzekerheid",
+      "analog_title": "Jaren 60 authentiek",
+      "analog_desc": "Polaroid-clicks, vinylgekraak, tube radio static. Alles periode-accuraat.",
+      "ambiguity_title": "Sonische onzekerheid",
       "ambiguity_desc": "Vertrouwde geluiden net genoeg verdraaid om te twijfelen aan wat je hoort."
     },
     "anomaly": {
-      "title": "Anomalie Systeem",
-      "desc": "Drie audio fasen leiden onderzoek.",
-      "alert": "Waarschuwing: Ergens iets veranderd",
+      "title": "Anomaliesysteem",
+      "desc": "Drie audiofasen leiden het onderzoek.",
+      "alert": "Waarschuwing: Ergens is iets veranderd",
       "hint": "Hint: Directioneel geluid wijst je erheen",
       "presence": "Aanwezigheid: Het wacht tot je het vastlegt"
     },
     "camera": {
-      "title": "Polaroid Mechanica",
+      "title": "Polaroid-mechanica",
       "desc": "Je enige verdediging. Ook je grootste kwetsbaarheid.",
-      "raise": "Camera optillen: tunnel horen, bewustzijn verliezen",
+      "raise": "Camera optillen: tunnelhoren, bewustzijn verliezen",
       "shutter": "Foto maken: blind en doof voor 5 seconden",
       "reload": "Film herladen: kan niet bewegen voor 5 seconden",
       "empty": "Lege klik: je bent weerloos"
     },
     "enemy": {
-      "title": "De Aanwezigheid",
+      "title": "De aanwezigheid",
       "desc": "Iets is met je in de pub. Onzichtbaar. Alleen audio.",
-      "footsteps": "Voetstappen die stoppen wanneer je kijkt",
-      "whispers": "Ierse Gaelic stemmen die je niet begrijpt",
+      "footsteps": "Voetstappen die stoppen als je kijkt",
+      "whispers": "Ierse Gaelic-stemmen die je niet begrijpt",
       "drone": "Sub-bass die groeit met je fouten"
     },
     "technical": {
-      "title": "Tech Stack",
+      "title": "Tech stack",
       "engine": "Wwise 2024.1 + Unreal Engine 5.4.4",
-      "audio": "HRTF ruimtelijke audio, dynamische RTPCs, omgevingszones",
+      "audio": "HRTF ruimtelijke audio, dynamische RTPC's, omgevingszones",
       "tools": "Reaper DAW, Waves J37, PaulXStretch, Valhalla FreqEcho",
       "performance": "Onder 5% CPU, geoptimaliseerde streaming"
     },
     "status": {
-      "title": "Huidige Status",
-      "proto": "✓ Prototype Compleet",
-      "production": "◉ Week 1 van Productie",
-      "coming": "◯ Volledige Audio Implementatie"
+      "title": "Huidige status",
+      "proto": "✓ Prototype compleet",
+      "production": "◉ Week 1 van productie",
+      "coming": "◯ Volledige audio-implementatie"
     },
     "button": {
-      "projects": "Alle Projecten"
+      "projects": "Alle projecten"
     }
   }
 }
