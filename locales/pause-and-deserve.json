@@ -1,9 +1,14 @@
 {
   "en": {
     "back": "Back to Projects",
-    "wip_badge": "Work in Progress",
     "title": "Pause & Deserve",
     "tagline": "Survival horror game where pausing time has consequences.",
+    "meta": {
+      "year": {
+        "label": "Year",
+        "value": "2024"
+      }
+    },
     "gameplay": {
       "title": "Sound is Everything",
       "desc": "You hear Death getting closer. The world reacts when you freeze time. Every footstep builds tension. That's the game."
@@ -81,9 +86,14 @@
   },
   "pl": {
     "back": "Powrót do projektów",
-    "wip_badge": "W trakcie realizacji",
     "title": "Pause & Deserve",
     "tagline": "Survival horror game gdzie pauza ma konsekwencje.",
+    "meta": {
+      "year": {
+        "label": "Rok",
+        "value": "2024"
+      }
+    },
     "gameplay": {
       "title": "Dźwięk to Wszystko",
       "desc": "Słyszysz jak Śmierć się zbliża. Świat reaguje kiedy zamrażasz czas. Każdy krok buduje napięcie. To jest ta gra."
@@ -161,9 +171,14 @@
   },
   "nl": {
     "back": "Terug naar Projecten",
-    "wip_badge": "In ontwikkeling",
     "title": "Pause & Deserve",
     "tagline": "Survival horror game waar pauze consequenties heeft.",
+    "meta": {
+      "year": {
+        "label": "Jaar",
+        "value": "2024"
+      }
+    },
     "gameplay": {
       "title": "Geluid is Alles",
       "desc": "Je hoort de Dood dichterbij komen. De wereld reageert als je tijd bevriest. Elke voetstap bouwt spanning. Dat is de game."

@@ -5,7 +5,8 @@
       "badge": "🎮 Research Project",
       "title": "Transientica: AudioLab",
       "subtitle": "BEATBOX RHYTHM GAME",
-      "description": "ML-powered beatbox recognition for rhythm gaming"
+      "description": "ML-powered beatbox recognition for rhythm gaming",
+      "year": "2024"
     },
     "tags": {
       "ml": "Machine Learning",
@@ -86,7 +87,8 @@
       "badge": "🎮 Projekt Badawczy",
       "title": "Transientica: AudioLab",
       "subtitle": "GRA RYTMICZNA BEATBOX",
-      "description": "Rozpoznawanie beatboxu oparte na ML dla gier rytmicznych"
+      "description": "Rozpoznawanie beatboxu oparte na ML dla gier rytmicznych",
+      "year": "2024"
     },
     "tags": {
       "ml": "Uczenie Maszynowe",
@@ -167,7 +169,8 @@
       "badge": "🎮 Onderzoeksproject",
       "title": "Transientica: AudioLab",
       "subtitle": "BEATBOX RITMESPEL",
-      "description": "ML-aangedreven beatbox herkenning voor ritmegames"
+      "description": "ML-aangedreven beatbox herkenning voor ritmegames",
+      "year": "2024"
     },
     "tags": {
       "ml": "Machine Learning",

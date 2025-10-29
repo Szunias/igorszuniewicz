@@ -24,10 +24,7 @@
     "demo_reel": {
       "badge": "🎬 Audio Showcase",
       "title": "Demo Reel",
-      "description": "Work I've shipped: Wwise integration for multiplayer racing, horror sound design, ML beatbox tool (45ms latency), adaptive music systems.",
-      "coming_soon": "Coming Soon",
-      "placeholder_title": "Demo Reel In Production",
-      "placeholder_note": "A 2-3 minute video showing my game audio work, sound design process, and how I use audio tools."
+      "description": "Recent work: Wwise integration for multiplayer racing, horror sound design, ML beatbox tool (45ms latency), adaptive music systems."
     },
     "projects": {
       "label": "Featured Work",
@@ -110,10 +107,7 @@
     "demo_reel": {
       "badge": "🎬 Prezentacja Audio",
       "title": "Demo Reel",
-      "description": "Wypuszczone projekty: integracja Wwise do wyścigów multiplayer, sound design horroru, narzędzie ML beatbox (45ms opóźnienia), systemy adaptacyjnej muzyki.",
-      "coming_soon": "Wkrótce",
-      "placeholder_title": "Demo Reel w Produkcji",
-      "placeholder_note": "2-3 minutowe wideo pokazujące moją pracę z audio do gier, proces sound designu i jak używam narzędzi audio."
+      "description": "Ostatnie prace: integracja Wwise do wyścigów multiplayer, sound design horroru, narzędzie ML beatbox (45ms opóźnienia), systemy adaptacyjnej muzyki."
     },
     "projects": {
       "label": "Wybrane Prace",
@@ -196,10 +190,7 @@
     "demo_reel": {
       "badge": "🎬 Audio Showcase",
       "title": "Demo Reel",
-      "description": "Uitgebracht werk: Wwise integratie voor multiplayer racing, horror sound design, ML beatbox tool (45ms latency), adaptieve muziek.",
-      "coming_soon": "Binnenkort",
-      "placeholder_title": "Demo Reel in Productie",
-      "placeholder_note": "Een 2-3 minuten video die mijn game audio werk, geluidsontwerp proces en hoe ik audio tools gebruik laat zien."
+      "description": "Recent werk: Wwise integratie voor multiplayer racing, horror sound design, ML beatbox tool (45ms latency), adaptieve muziek."
     },
     "projects": {
       "label": "Uitgelicht Werk",

@@ -2,11 +2,12 @@
   "en": {
     "back": "Back to Projects",
     "hero": {
-      "badge": "🎓 Built for Students & Developers",
+      "badge": "🎓 Built for Developers",
       "title": "Wwise Unreal<br>Engine Fixer",
       "subtitle": "Restores Wwise integration in Unreal Engine. One click fixes missing plugin references and audio.",
       "download": "Download Now",
-      "github": "View on GitHub"
+      "github": "View on GitHub",
+      "year": "2024"
     },
     "stats": {
       "value1": "Hours",
@@ -84,11 +85,12 @@
   "pl": {
     "back": "Powrót do Projektów",
     "hero": {
-      "badge": "🎓 Stworzone dla Studentów i Deweloperów",
+      "badge": "🎓 Stworzone dla Deweloperów",
       "title": "Wwise Unreal<br>Engine Fixer",
       "subtitle": "Przywraca integrację Wwise w Unreal Engine. Jedno kliknięcie naprawia brakujące referencje pluginów i audio.",
       "download": "Pobierz Teraz",
-      "github": "Zobacz na GitHub"
+      "github": "Zobacz na GitHub",
+      "year": "2024"
     },
     "stats": {
       "value1": "Godziny",
@@ -166,11 +168,12 @@
   "nl": {
     "back": "Terug naar Projecten",
     "hero": {
-      "badge": "🎓 Gemaakt voor Studenten & Ontwikkelaars",
+      "badge": "🎓 Gemaakt voor Ontwikkelaars",
       "title": "Wwise Unreal<br>Engine Fixer",
       "subtitle": "Herstelt Wwise-integratie in Unreal Engine. Eén klik repareert ontbrekende plugin-referenties en audio.",
       "download": "Nu Downloaden",
-      "github": "Bekijk op GitHub"
+      "github": "Bekijk op GitHub",
+      "year": "2024"
     },
     "stats": {
       "value1": "Uren",

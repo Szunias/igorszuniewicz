@@ -46,7 +46,7 @@
       "interactive_music": {
         "badge": "Music",
         "title": "Interactive Music Design",
-        "description": "Wwise music system with vertical layering and dynamic mixing. Adapts to gameplay intensity and player actions. Optimized for console memory."
+        "description": "Wwise music system with vertical layering and dynamic mixing. Adapts to gameplay intensity and player actions. Memory-optimized implementation."
       },
       "akantilado": {
         "badge": "Animation",
@@ -142,7 +142,7 @@
       "interactive_music": {
         "badge": "Muzyka",
         "title": "Projektowanie muzyki interaktywnej",
-        "description": "System muzyczny Wwise z warstwowaniem pionowym i miksowaniem dynamicznym. Adaptuje się do intensywności rozgrywki i akcji gracza. Zoptymalizowano pod konsolę."
+        "description": "System muzyczny Wwise z warstwowaniem pionowym i miksowaniem dynamicznym. Adaptuje się do intensywności rozgrywki i akcji gracza. Implementacja zoptymalizowana pamięciowo."
       },
       "akantilado": {
         "badge": "Animacja",
@@ -238,7 +238,7 @@
       "interactive_music": {
         "badge": "Muziek",
         "title": "Interactive Music Design",
-        "description": "Wwise muzieksysteem met verticale laagstructuur en dynamische mixing. Adapteert aan gameplay intensiteit en speler acties. Geoptimaliseerd voor console geheugen."
+        "description": "Wwise muzieksysteem met verticale laagstructuur en dynamische mixing. Adapteert aan gameplay intensiteit en speler acties. Geheugen-geoptimaliseerde implementatie."
       },
       "akantilado": {
         "badge": "Animatie",
