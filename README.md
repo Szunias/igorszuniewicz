@@ -248,7 +248,7 @@ python -m http.server 8000
 - 💻 **Audio Programming** (Python, C#, Blueprints, real-time DSP)
 - 🎚️ **Technical Audio** (mixing, HDR, voice management, memory optimization)
 
-**Location:** Belgium, West Flanders 🇧🇪  
+**Location:** Kortrijk, Belgium 🇧🇪  
 **Education:** Digital Arts & Entertainment — Game Development (Audio)  
 **Tools:** Wwise, FMOD, Unreal Engine 5, Unity, Reaper, Python, MetaSounds
 

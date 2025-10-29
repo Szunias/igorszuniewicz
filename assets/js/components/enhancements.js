@@ -822,7 +822,7 @@ document.addEventListener('DOMContentLoaded', function() {
     contact_form_submit: { pl: 'Wyślij wiadomość', nl: 'Verzend bericht', en: 'Send Message' },
     contact_info_email: { pl: 'Email', nl: 'E-mail', en: 'Email' },
     contact_info_location: { pl: 'Lokalizacja', nl: 'Locatie', en: 'Location' },
-    contact_info_location_value: { pl: 'Belgia, Zachodnia Flandria', nl: 'België, West-Vlaanderen', en: 'Belgium, West Flanders' },
+    contact_info_location_value: { pl: 'Kortrijk, Belgia', nl: 'Kortrijk, België', en: 'Kortrijk, Belgium' },
     contact_info_response: { pl: 'Czas odpowiedzi', nl: 'Reactietijd', en: 'Response Time' },
     contact_info_response_value: { pl: '24–48 godzin', nl: '24-48 uur', en: '24–48 hours' },
     contact_social_github: { pl: 'GitHub', nl: 'GitHub', en: 'GitHub' },

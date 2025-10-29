@@ -126,7 +126,7 @@ export const I18N = {
   contact_info_title: { en: 'Direct Contact', pl: 'Bezpośredni Kontakt', nl: 'Direct Contact' },
   contact_info_email: { en: 'Email', pl: 'Email', nl: 'E-mail' },
   contact_info_location: { en: 'Location', pl: 'Lokalizacja', nl: 'Locatie' },
-  contact_info_location_value: { en: 'Belgium, West Flanders', pl: 'Belgia, Flandria Zachodnia', nl: 'België, West-Vlaanderen' },
+  contact_info_location_value: { en: 'Kortrijk, Belgium', pl: 'Kortrijk, Belgia', nl: 'Kortrijk, België' },
   contact_info_response: { en: 'Response Time', pl: 'Czas Odpowiedzi', nl: 'Responstijd' },
   contact_info_response_value: { en: '24–48 hours', pl: '24–48 godzin', nl: '24–48 uur' },
   contact_social_title: { en: 'Connect Online', pl: 'Połącz się Online', nl: 'Verbind Online' },
