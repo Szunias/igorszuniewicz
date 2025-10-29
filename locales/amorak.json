@@ -2,7 +2,7 @@
   "en": {
     "back": "Back to Projects",
     "title": "Amorak: Sound Design",
-    "tagline": "Horror short film. Built the world through sound. Each creature has its own voice.",
+    "tagline": "Horror animation about a man who outsmarts a beast. Creature roar layered from lion, elephant, tiger, and hippo sounds.",
     "meta": {
       "role": {
         "label": "Role",
@@ -46,35 +46,35 @@
       "resp4": "Foley & SFX"
     },
     "showcase": {
-      "title": "Watch With Sound",
-      "description": "Sound builds the horror. Creature growls, environment layers, spatial details all scale with what you see.",
-      "list1": "Unique creature sounds",
-      "list2": "Layered environment",
-      "list3": "Spatial audio mix",
-      "list4": "Scales with proximity"
+      "title": "The Film",
+      "description": "This is a horror teaser about a man who outsmarts a beast. He hears it coming, sets a trap in his basement, and waits. When the creature comes down the stairs, the trapdoor slams shut behind it. I designed all the audio: the layered creature roars (lion, elephant, tiger, hippo), basement ambience (dripping water, chains, rats), spatial mixing, and foley work.",
+      "list1": "Creature roar layered from lion, elephant, tiger, hippo",
+      "list2": "Basement atmosphere with chains, rats, and dripping water",
+      "list3": "Spatial audio that follows the camera",
+      "list4": "Custom foley for every movement"
     },
     "overview": {
-      "title": "The Approach",
-      "desc": "Built the world through sound. Each creature has unique audio, environment layers scale with camera distance. Mix stays clear while supporting the story."
+      "title": "The Story",
+      "desc": "A man is carving wood when he hears thunder and sees something through the window. He runs to the basement. The beast breaks in, searches the house. The man hides with an axe. When the beast descends the stairs into the basement, a trapdoor slams shut—it's a trap. The film ends with an apple rolling to his feet. He won."
     },
     "approach": {
       "title": "Sound Design Approach",
       "creatures": {
-        "title": "Creature Sounds",
-        "desc": "Each creature sounds different: organic textures, processed animal sounds, synth bass. Beast presence through low rumbles that get stronger when close. Unsettling even off screen."
+        "title": "The Beast's Roar",
+        "desc": "I layered roars from lions, elephants, tigers, and hippos, then processed and pitched them down to create something massive and terrifying. The low rumbles (40-120Hz) give it physical presence, while the mid-range snarls add aggression. The sound changes based on distance and camera angle to maintain spatial realism."
       },
       "environment": {
-        "title": "Environment Layers",
-        "desc": "Basement has layered sounds: dripping water, creaking wood, distant echoes, electrical hums. Changes with camera position to create depth and guide attention."
+        "title": "Basement Atmosphere",
+        "desc": "The basement needed to feel claustrophobic and threatening. I built layers of dripping water, creaking wood, rattling chains, and scurrying rats. Thunder rumbles outside. Each element is placed spatially to create depth. The upstairs sounds more open by comparison."
       },
       "narrative": {
-        "title": "Supporting Story",
-        "desc": "Sound follows emotions. Tension builds with discordant elements, release moments use reverb and space. Frequency work and dynamics keep it clear."
+        "title": "Supporting the Story",
+        "desc": "The sound follows the emotional arc. It starts quiet with the man carving. Thunder builds tension. The door smash is violent and shocking. Heavy footsteps upstairs create dread. Silence when the man hides. The trapdoor slam is the payoff. The rolling apple is the victory moment - subtle but satisfying."
       }
     },
     "technical": {
-      "title": "Technical Implementation",
-      "description": "Strategic frequency architecture ensures clarity and impact. Creature sounds occupy 40-200Hz for body and presence. Environmental details fill mid-range. High frequencies reserved for tension-building textures.",
+      "title": "How It's Built",
+      "description": "Everything has its own frequency space so nothing fights. Beast sits at 40-200Hz for that chest-rumbling presence. Environment fills the mid-range. High frequencies are for tension and detail.",
       "proximity": {
         "title": "Distance Based Mix",
         "desc": "Sound adjusts with camera distance and angle. Close ups emphasize breathing and footsteps, wide shots focus on environment and creature calls."
@@ -118,7 +118,7 @@
     },
     "hero": {
       "subtitle": "SOUND DESIGN",
-      "description": "World-building through immersive audio design and creature sound signatures"
+      "description": "Complete sound design for a horror teaser about a man who traps a beast in his basement"
     },
     "tags": {
       "role": "Sound Designer",
@@ -134,12 +134,12 @@
       "year": "Year"
     },
     "creature": {
-      "title": "Creature Audio Design",
-      "description": "Each creature has a unique sonic identity built from organic textures, processed animal vocalizations, and synthesized sub-frequencies. The beast's presence is felt through low-frequency rumbles that scale with proximity."
+      "title": "The Beast's Roar",
+      "description": "I layered lion, elephant, tiger, and hippo roars, then pitched them down to sound massive and terrifying. The low rumbles give it physical weight. You feel it in your chest before you see it."
     },
     "environment": {
-      "title": "Environmental Soundscapes",
-      "description": "The basement environment uses layered ambient textures - dripping water, creaking wood, distant echoes, and subtle electrical hums. These elements dynamically respond to camera position, creating depth and spatial awareness."
+      "title": "Basement Atmosphere",
+      "description": "The basement feels claustrophobic and threatening. Dripping water. Creaking wood. Chains rattling. Rats scurrying. Thunder rumbles outside. Each sound is placed in 3D space so you know exactly where everything is."
     },
     "button": {
       "projects": "All Projects"
@@ -151,7 +151,7 @@
   "pl": {
     "back": "Powrót do projektów",
     "title": "Amorak: Sound Design",
-    "tagline": "Krótki horror. Zbudowałem świat przez dźwięk. Każdy stwór ma swój głos.",
+    "tagline": "Animacja grozy o człowieku, który przechytrza bestię. Ryk stwora złożony z dźwięków lwa, słonia, tygrysa i hipopotama.",
     "meta": {
       "role": {
         "label": "Rola",
@@ -195,35 +195,35 @@
       "resp4": "Foley i SFX"
     },
     "showcase": {
-      "title": "Oglądaj ze dźwiękiem",
-      "description": "Dźwięk buduje horror. Warczenia stworów, warstwy środowiska, detale przestrzenne – wszystko skaluje się z tym, co widzisz.",
-      "list1": "Unikalne dźwięki stworów",
-      "list2": "Warstwowe środowisko",
-      "list3": "Miks audio przestrzennego",
-      "list4": "Skaluje się z bliskością"
+      "title": "Film",
+      "description": "Horror teaser o człowieku, który przechytrza bestię. Słyszy że nadchodzi, ustawia pułapkę w piwnicy i czeka. Gdy stwór schodzi po schodach, klapka zatrzaskuje się za nim. Zaprojektowałem całe audio: warstwowe ryki (lew, słoń, tygrys, hipopotam), ambience piwnicy (kapanie wody, łańcuchy, szczury), miks przestrzenny i foley.",
+      "list1": "Warstwowy ryk (lew, słoń, tygrys, hipopotam)",
+      "list2": "Ambience piwnicy (łańcuchy, szczury, kapanie)",
+      "list3": "Miks przestrzenny za kamerą",
+      "list4": "Foley do każdej akcji"
     },
     "overview": {
-      "title": "Podejście",
-      "desc": "Zbudowałem świat przez dźwięk. Każdy stwór ma unikalne audio. Warstwy środowiska skalują się z odległością kamery. Miks pozostaje czysty, wspierając historię."
+      "title": "Historia",
+      "desc": "Mężczyzna struga drewno, słyszy grzmot i widzi coś przez okno. Ucieka do piwnicy. Bestia wchodzi, przeszukuje dom. Człowiek chowa się z toporem. Gdy bestia schodzi po schodach do piwnicy, klapka zatrzaskuje się—to pułapka. Film kończy się jabłkiem toczącym się pod jego stopy. Wygrał."
     },
     "approach": {
       "title": "Podejście do sound designu",
       "creatures": {
-        "title": "Dźwięki stworów",
-        "desc": "Każdy stwór brzmi inaczej: organiczne tekstury, przetworzone dźwięki zwierząt, synth bass. Obecność bestii przez niskie dudnienia, które rosną z bliskością. Niepokojące nawet poza ekranem."
+        "title": "Ryk bestii",
+        "desc": "Warstwowy ryk lwa, słonia, tygrysa, hipopotama. Przetworzone i spitchowane, żeby brzmiało masywnie. Niskie dudnienia (40-120Hz) dla ciała, środkowe pasmo dla agresji. Zmienia się z odległością i kątem kamery."
       },
       "environment": {
-        "title": "Warstwy środowiska",
-        "desc": "Piwnica ma warstwowe dźwięki: kapanie wody, skrzypienie drewna, odległe echa, brzęczenie elektryczne. Zmienia się z pozycją kamery, tworząc głębię i kierując uwagę."
+        "title": "Ambience piwnicy",
+        "desc": "Kapanie wody, skrzypienie drewna, brzęk łańcuchów, biegające szczury. Grzmoty na zewnątrz. Każda warstwa umieszczona przestrzennie. Piwnica brzmi klaustrofobicznie, góra bardziej otwarta."
       },
       "narrative": {
-        "title": "Wspieranie historii",
-        "desc": "Dźwięk podąża za emocjami. Napięcie buduje się dysharmonijnymi elementami, momenty odprężenia używają reverbu i przestrzeni. Praca z częstotliwościami i dynamiką utrzymuje klarowność."
+        "title": "Za historią",
+        "desc": "Cicha struganie na początku. Grzmot buduje napięcie. Wyważenie drzwi jest brutalne. Kroki bestii ciężkie na górze. Cisza gdy człowiek się chowa. Trzask klapki to payoff. Toczące się jabłko to moment zwycięstwa."
       }
     },
     "technical": {
-      "title": "Implementacja techniczna",
-      "description": "Strategiczna architektura częstotliwości zapewnia klarowność i siłę oddziaływania. Dźwięki stworów zajmują zakres 40-200Hz dla ciała i obecności. Detale środowiskowe wypełniają środkowy zakres. Wysokie częstotliwości zarezerwowane dla tekstur budujących napięcie.",
+      "title": "Jak To Jest Zbudowane",
+      "description": "Każdy element ma swoją przestrzeń częstotliwościową, nic się nie gryzie. Bestia siedzi na 40-200Hz - czujesz to w klatce. Środowisko wypełnia środek. Wysokie częstotliwości to napięcie i detale.",
       "proximity": {
         "title": "Miks oparty na odległości",
         "desc": "Dźwięk dostosowuje się do odległości i kąta kamery. Zbliżenia podkreślają oddech i kroki. Szerokie ujęcia skupiają się na środowisku i wołaniach stworów."
@@ -267,7 +267,7 @@
     },
     "hero": {
       "subtitle": "SOUND DESIGN",
-      "description": "Budowanie świata przez immersyjny design dźwięku i sygnatury stworów"
+      "description": "Kompletny sound design do horroru o człowieku, który złapał bestię w pułapkę w piwnicy"
     },
     "tags": {
       "role": "Sound Designer",
@@ -283,12 +283,12 @@
       "year": "Rok"
     },
     "creature": {
-      "title": "Design Audio Stworów",
-      "description": "Każdy stwór ma unikalną tożsamość dźwiękową zbudowaną z organicznych tekstur, przetworzonych wokalizacji zwierząt i syntezowanych sub-częstotliwości. Obecność bestii jest odczuwalna przez niskofrequencyjne dudnienie skalujące się z bliskością."
+      "title": "Ryk Bestii",
+      "description": "Złożyłem w warstwy ryk lwa, słonia, tygrysa i hipopotama, potem spitchowałem w dół żeby brzmiało masywnie i przerażająco. Niskie dudnienie daje fizyczną masę. Czujesz to w klatce piersiowej zanim zobaczysz."
     },
     "environment": {
-      "title": "Soundscapy Środowiskowe",
-      "description": "Środowisko piwnicy używa warstwowych tekstur ambient - kapiąca woda, skrzypiące drewno, odległe echa i subtelne elektryczne brzęczenie. Te elementy dynamicznie reagują na pozycję kamery, tworząc głębię i świadomość przestrzenną."
+      "title": "Atmosfera Piwnicy",
+      "description": "Piwnica brzmi klaustrofobicznie i groźnie. Kapanie wody. Skrzypienie drewna. Brzęk łańcuchów. Biegające szczury. Grzmoty na zewnątrz. Każdy dźwięk jest umieszczony w przestrzeni 3D, wiesz dokładnie gdzie co jest."
     },
     "button": {
       "projects": "Wszystkie Projekty"
@@ -300,7 +300,7 @@
   "nl": {
     "back": "Terug naar projecten",
     "title": "Amorak: Sound Design",
-    "tagline": "Horrorfilm. De wereld gebouwd door geluid. Elk wezen heeft z'n eigen stem.",
+    "tagline": "Horror animatie. Man vs beest in kelderval. Gelaagd gebrul van leeuw, olifant, tijger, nijlpaard.",
     "meta": {
       "role": {
         "label": "Rol",
@@ -344,35 +344,35 @@
       "resp4": "Foley & SFX"
     },
     "showcase": {
-      "title": "Kijk met geluid",
-      "description": "Geluid bouwt de horror op. Wezengerommel, omgevingslagen, ruimtelijke details schalen mee met wat je ziet.",
-      "list1": "Unieke wezengeluiden",
-      "list2": "Gelaagde omgeving",
-      "list3": "Ruimtelijke audiomix",
-      "list4": "Schaalt met nabijheid"
+      "title": "De Film",
+      "description": "Dit is een horror teaser over een man die een beest te slim af is. Hij hoort het aankomen, zet een val in zijn kelder en wacht. Wanneer het wezen de trap afkomt, slaat de valdeur achter hem dicht. Ik ontwierp alle audio: gelaagde wezengebrullen (leeuw, olifant, tijger, nijlpaard), kelderambiance (druppelend water, kettingen, ratten), ruimtelijke mixing en foley.",
+      "list1": "Gelaagd gebrul (leeuw, olifant, tijger, nijlpaard)",
+      "list2": "Kelderambiance (kettingen, ratten, druppels)",
+      "list3": "Ruimtelijke mix volgt camera",
+      "list4": "Foley voor elke actie"
     },
     "overview": {
-      "title": "De aanpak",
-      "desc": "De wereld gebouwd door geluid. Elk wezen heeft unieke audio. Omgevingslagen schalen mee met de cameraafstand. Mix blijft helder terwijl het het verhaal ondersteunt."
+      "title": "Het verhaal",
+      "desc": "Een man snijdt hout, hoort donder en ziet iets door het raam. Hij rent naar de kelder. Het beest breekt binnen, doorzoekt het huis. De man verstopt zich met een bijl. Wanneer het beest de trap naar de kelder afdaalt, slaat een valdeur dicht—het is een val. De film eindigt met een appel die naar zijn voeten rolt. Hij won."
     },
     "approach": {
       "title": "Sound design aanpak",
       "creatures": {
-        "title": "Wezengeluiden",
-        "desc": "Elk wezen klinkt anders: organische texturen, verwerkte dierengeluiden, synth bass. De aanwezigheid van het beest door laag gerommel dat sterker wordt als het dichtbij komt. Verontrustend, zelfs off-screen."
+        "title": "Beestgebrul",
+        "desc": "Gelaagd gebrul van leeuw, olifant, tijger, nijlpaard. Verwerkt en gepitcht om massief te klinken. Lage gerommel (40-120Hz) voor body, mid-range voor agressie. Verandert met afstand en camerahoek."
       },
       "environment": {
-        "title": "Omgevingslagen",
-        "desc": "De kelder heeft gelaagde geluiden: druppelend water, krakend hout, verre echo's, elektrisch gezoem. Verandert mee met de camerapositie om diepte te creëren en aandacht te leiden."
+        "title": "Kelderambiance",
+        "desc": "Druppelend water, krakend hout, rammelende kettingen, rennende ratten. Donder buiten. Elke laag ruimtelijk geplaatst. Kelder klinkt claustrofobisch, boven meer open."
       },
       "narrative": {
-        "title": "Het verhaal ondersteunen",
-        "desc": "Geluid volgt de emoties. Spanning bouwt op met dissonante elementen, release-momenten gebruiken reverb en ruimte. Frequentiewerk en dynamiek houden het helder."
+        "title": "Het verhaal volgen",
+        "desc": "Stil snijden aan het begin. Donder bouwt spanning. Deur kapot slaan is gewelddadig. Beestvoetstappen zwaar boven. Stilte als man zich verstopt. Valdeur dichtslaan is de payoff. Rollende appel is het overwinningsmoment."
       }
     },
     "technical": {
-      "title": "Technische implementatie",
-      "description": "Strategische frequentiearchitectuur zorgt voor helderheid en impact. Wezengeluiden zitten in 40-200Hz voor body en aanwezigheid. Omgevingsdetails vullen het middenbereik. Hoge frequenties gereserveerd voor spanningsopbouwende texturen.",
+      "title": "Hoe Het Gebouwd Is",
+      "description": "Alles heeft zijn eigen frequentieruimte zodat niets vecht. Beest zit op 40-200Hz voor die borsttrillende aanwezigheid. Omgeving vult het midbereik. Hoge frequenties zijn voor spanning en detail.",
       "proximity": {
         "title": "Afstandsgebaseerde mix",
         "desc": "Geluid past zich aan op basis van cameraafstand en -hoek. Close-ups benadrukken ademhaling en voetstappen, brede shots focussen op omgeving en wezenroepen."
@@ -416,7 +416,7 @@
     },
     "hero": {
       "subtitle": "SOUND DESIGN",
-      "description": "Wereldcreatie door meeslepend audiodesign en wezen geluidssignaturen"
+      "description": "Complete sound design voor een horror teaser over een man die een beest in zijn kelder vangt"
     },
     "tags": {
       "role": "Sound Designer",
@@ -432,12 +432,12 @@
       "year": "Jaar"
     },
     "creature": {
-      "title": "Wezen Audio Design",
-      "description": "Elk wezen heeft een unieke sonische identiteit gebouwd uit organische texturen, verwerkte dierlijke vocalisaties en gesynthetiseerde sub-frequenties. De aanwezigheid van het beest wordt gevoeld door laagfrequente gerommel dat schaalt met nabijheid."
+      "title": "Het Beestgebrul",
+      "description": "Ik heb leeuw-, olifant-, tijger- en nijlpaardgebrullen gelaagd en vervolgens gepitcht om massief en angstaanjagend te klinken. Het lage gerommel geeft het fysiek gewicht. Je voelt het in je borst voordat je het ziet."
     },
     "environment": {
-      "title": "Omgevingssoundscapes",
-      "description": "De kelderomgeving gebruikt gelaagde ambient texturen - druppelend water, krakend hout, verre echo's en subtiele elektrische zoemen. Deze elementen reageren dynamisch op camerapositie, waardoor diepte en ruimtelijk bewustzijn ontstaat."
+      "title": "Kelderambiance",
+      "description": "De kelder klinkt claustrofobisch en dreigend. Druppelend water. Krakend hout. Rammelende kettingen. Rennende ratten. Donder buiten. Elk geluid is in 3D-ruimte geplaatst, je weet precies waar alles is."
     },
     "button": {
       "projects": "Alle projecten"

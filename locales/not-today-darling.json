@@ -79,8 +79,8 @@
     "metrics": {
       "title": "Technical Metrics",
       "desc": "Numbers that matter for game audio.",
-      "events": "320+ audio events",
-      "events_desc": "12 categories: player actions, environment, UI, crowd, hazards, boost, collisions, surface changes, countdowns, finishes, victory",
+      "events": "~70 audio events",
+      "events_desc": "Player actions, environment, UI, crowd, hazards, boost, collisions, surface changes, race markers",
       "footprint": "180 MB audio",
       "footprint_desc": "Streaming and Vorbis compression. ~450 source files processed",
       "voice_count": "Max 32 voices playing",
@@ -216,8 +216,8 @@
     "metrics": {
       "title": "Metryki techniczne",
       "desc": "Liczby ważne dla audio w grze.",
-      "events": "320+ eventów audio",
-      "events_desc": "12 kategorii: akcje gracza, środowisko, UI, tłum, hazardy, boost, kolizje, zmiany nawierzchni, odliczania, finisze, zwycięstwa",
+      "events": "~70 eventów audio",
+      "events_desc": "Akcje gracza, środowisko, UI, tłum, hazardy, boost, kolizje, zmiany nawierzchni, markery wyścigu",
       "footprint": "180 MB audio",
       "footprint_desc": "Streaming i kompresja Vorbis. ~450 plików źródłowych przetworzonych",
       "voice_count": "Max 32 głosy",
@@ -353,8 +353,8 @@
     "metrics": {
       "title": "Technische Metrics",
       "desc": "Cijfers die ertoe doen voor game audio.",
-      "events": "320+ audio events",
-      "events_desc": "12 categorieën: speler acties, omgeving, UI, publiek, hazards, boost, botsingen, oppervlakte wijzigingen, aftelllingen, finishes, overwinningen",
+      "events": "~70 audio events",
+      "events_desc": "Speler acties, omgeving, UI, publiek, hazards, boost, botsingen, oppervlakte wijzigingen, race markers",
       "footprint": "180 MB audio",
       "footprint_desc": "Streaming en Vorbis compressie. ~450 bronbestanden verwerkt",
       "voice_count": "Max 32 voices aan",

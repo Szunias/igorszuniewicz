@@ -50,24 +50,24 @@
     "mechanics": {
       "chase": {
         "title": "Relentless Chase",
-        "desc": "Death uses advanced pathfinding to navigate obstacles and adapts to your movements, creating an ever-present threat."
+        "desc": "Death hunts you down. It navigates around obstacles and learns your patterns. It's always there."
       },
       "pause": {
         "title": "Strategic Pause",
-        "desc": "Temporarily freeze Death's movement to create escape opportunities. Each use has a cooldown and makes Death faster."
+        "desc": "Freeze Death for a few seconds to escape. But there's a cooldown, and it makes Death faster next time."
       },
       "world": {
         "title": "Dynamic Environment",
-        "desc": "The nightmare landscape shifts as time progresses: walls close in, pathways change, and lighting dims."
+        "desc": "The world shifts over time. Walls close in, paths change, lights dim. Nowhere is safe for long."
       },
       "score": {
         "title": "Survival Challenge",
-        "desc": "Endless survival game that tracks your best times and tests both reflexes and strategic thinking."
+        "desc": "See how long you can survive. The game tracks your best times and pushes you to think fast."
       }
     },
     "design": {
       "title": "Design Philosophy",
-      "desc": "This project focuses on creating immersive tension through first-person perspective, intelligent AI behavior, and audio design that enhances the psychological horror atmosphere. The development emphasizes rapid prototyping and iterative design based on playtesting feedback."
+      "desc": "Make you feel trapped. First-person view so you can't see behind you. AI that hunts smart, not cheap. Audio that gets in your head. Built through fast prototyping and lots of playtesting."
     },
     "tech": {
       "title": "Audio Tools",
@@ -135,24 +135,24 @@
     "mechanics": {
       "chase": {
         "title": "Nieustanna pogoń",
-        "desc": "Śmierć używa zaawansowanego pathfindingu do omijania przeszkód i dostosowuje się do twoich ruchów, tworząc ciągle obecne zagrożenie."
+        "desc": "Śmierć cię poluje. Omija przeszkody i uczy się twoich schematów. Zawsze tam jest."
       },
       "pause": {
         "title": "Strategiczna pauza",
-        "desc": "Tymczasowo zamroź ruch Śmierci aby stworzyć okazje do ucieczki. Każde użycie ma czas odnowienia i sprawia że Śmierć jest szybsza."
+        "desc": "Zamroź Śmierć na kilka sekund żeby uciec. Ale jest cooldown i sprawia że Śmierć jest szybsza następnym razem."
       },
       "world": {
         "title": "Dynamiczne środowisko",
-        "desc": "Koszmarny krajobraz zmienia się wraz z upływem czasu: ściany zbliżają się, ścieżki się zmieniają, a oświetlenie przygasa."
+        "desc": "Świat się zmienia z czasem. Ściany się zamykają, ścieżki się zmieniają, światło zgasa. Nigdzie nie jest bezpiecznie na długo."
       },
       "score": {
         "title": "Wyzwanie przetrwania",
-        "desc": "Nieskończona gra survivalowa, która śledzi twoje najlepsze czasy i testuje zarówno refleks jak i strategiczne myślenie."
+        "desc": "Zobacz jak długo przetrwasz. Gra śledzi twoje najlepsze czasy i zmusza cię do szybkiego myślenia."
       }
     },
     "design": {
       "title": "Filozofia projektu",
-      "desc": "Ten projekt skupia się na tworzeniu immersyjnego napięcia poprzez perspektywę pierwszoosobową, inteligentne zachowanie AI i design dźwięku wzmacniający atmosferę psychologicznego horroru. Rozwój kładzie nacisk na szybkie prototypowanie i iteracyjny design oparty na feedbacku z playtestów."
+      "desc": "Sprawić żebyś czuł się w pułapce. FPP więc nie widzisz za sobą. AI które poluje sprytnie, nie tanio. Audio które wchodzi ci do głowy. Zbudowane przez szybkie prototypowanie i dużo playtestów."
     },
     "tech": {
       "title": "Narzędzia audio",
@@ -220,24 +220,24 @@
     "mechanics": {
       "chase": {
         "title": "Meedogenloze Achtervolging",
-        "desc": "De Dood gebruikt geavanceerde pathfinding om obstakels te navigeren en past zich aan aan jouw bewegingen, wat een constant aanwezige dreiging creëert."
+        "desc": "De Dood jaagt je op. Het navigeert rond obstakels en leert je patronen. Het is er altijd."
       },
       "pause": {
         "title": "Strategische Pauze",
-        "desc": "Bevries tijdelijk de beweging van de Dood om ontsnappingsmogelijkheden te creëren. Elk gebruik heeft een cooldown en maakt de Dood sneller."
+        "desc": "Bevries de Dood voor een paar seconden om te ontsnappen. Maar er is een cooldown en het maakt de Dood sneller de volgende keer."
       },
       "world": {
         "title": "Dynamische Omgeving",
-        "desc": "Het nachtmerrie landschap verschuift terwijl de tijd verstrijkt: muren komen dichterbij, paden veranderen en de verlichting dimt."
+        "desc": "De wereld verschuift in de loop der tijd. Muren sluiten, paden veranderen, lichten dimmen. Nergens is lang veilig."
       },
       "score": {
         "title": "Survival Uitdaging",
-        "desc": "Eindeloze survival game die je beste tijden bijhoudt en zowel reflexen als strategisch denken test."
+        "desc": "Kijk hoe lang je kunt overleven. De game houdt je beste tijden bij en dwingt je snel te denken."
       }
     },
     "design": {
       "title": "Design Filosofie",
-      "desc": "Dit project richt zich op het creëren van meeslepende spanning door first-person perspectief, intelligent AI gedrag en audio design dat de psychologische horror atmosfeer versterkt. De ontwikkeling legt de nadruk op snel prototypen en iteratief design gebaseerd op playtesting feedback."
+      "desc": "Je laten voelen dat je vast zit. First-person dus je ziet niet achter je. AI die slim jaagt, niet goedkoop. Audio dat in je hoofd kruipt. Gebouwd door snel prototypen en veel playtesting."
     },
     "tech": {
       "title": "Audio Tools",

@@ -3,7 +3,7 @@
     "back": "Back to Projects",
     "hero": {
       "subtitle": "MUSIC COMPOSITION",
-      "description": "Disco-inspired score for 3D animated short. Created at DAE, inspired by Grotten Van Han cave."
+      "description": "Original disco-funk score for a 3D animated graduation film. Full composition, arrangement, and mixing."
     },
     "tags": {
       "role": "Composer",
@@ -13,12 +13,12 @@
       "inspiration": "Grotten Van Han Cave"
     },
     "showcase": {
-      "title": "About",
-      "description": "Graduation project by a DAE team. They visited Grotten Van Han cave and those visuals inspired them. I composed the disco music for it. Team: Minh Thao Trinh (Character Art), Andra-Mihaela Popa (Rigging), Jolien Vansteenkiste (Animation), Joe Frackiewicz (Simulation), Jeffrey Vandenameel (Lighting/Environment/Compositing), Tijn Valcke (Sound Design).",
-      "list1": "Original music",
-      "list2": "70s disco vibes",
-      "list3": "Melodies matching the film mood",
-      "list4": "Mixed and mastered"
+      "title": "The Project",
+      "description": "Graduation film about a clay golem dancing to disco in a cave. The original composer couldn't deliver, so I stepped in last minute to compose the full score. The music is adaptive—it starts and stops as the golem appears, syncs to his dance moves, and breaks down into distorted cassette effects when he reaches the light and freezes. I also created custom musical themes for each crew member's credits.",
+      "list1": "Music synced to picture and character movement",
+      "list2": "Adaptive scoring (music starts/stops dynamically)",
+      "list3": "Creative sound design (distortion, tape slowdown effects)",
+      "list4": "Custom themes for credits sequence"
     },
     "details": {
       "title": "Project Details",
@@ -50,7 +50,7 @@
     "back": "Powrót do projektów",
     "hero": {
       "subtitle": "KOMPOZYCJA MUZYCZNA",
-      "description": "Muzyka inspirowana disco do krótkiego filmu 3D. Stworzone w DAE, zainspirowane jaskinią Grotten Van Han."
+      "description": "Oryginalna muzyka disco-funk do animowanego filmu dyplomowego. Pełna kompozycja, aranżacja i miks."
     },
     "tags": {
       "role": "Kompozytor",
@@ -61,11 +61,11 @@
     },
     "showcase": {
       "title": "O projekcie",
-      "description": "Projekt dyplomowy zespołu z DAE. Byli w jaskini Grotten Van Han i te widoki ich zainspirowały. Zrobiłem do tego muzykę disco. Zespół: Minh Thao Trinh (Character Art), Andra-Mihaela Popa (Rigging), Jolien Vansteenkiste (Animacja), Joe Frackiewicz (Symulacje), Jeffrey Vandenameel (Lighting/Environment/Compositing), Tijn Valcke (Sound Design).",
-      "list1": "Oryginalna muzyka",
-      "list2": "Disco z lat 70",
-      "list3": "Melodie pod nastrój filmu",
-      "list4": "Gotowy miks"
+      "description": "Film dyplomowy o glinianym golemie tańczącym do disco w jaskini. Oryginalny kompozytor nie dostarczył, więc wskoczyłem w ostatniej chwili żeby skomponować całą muzykę. Muzyka jest adaptywna—startuje i stopuje gdy golem się pojawia, synchronizuje się z jego ruchami, a pod koniec rozpada się w zniekształcone efekty kasety gdy dociera do światła i zastyga. Stworzyłem też osobne motywy muzyczne dla napisów każdego członka ekipy.",
+      "list1": "Muzyka zsynchronizowana z obrazem i ruchem postaci",
+      "list2": "Adaptive scoring (muzyka startuje/stopuje dynamicznie)",
+      "list3": "Kreatywny sound design (zniekształcenia, efekt zwalniającej taśmy)",
+      "list4": "Osobne motywy dla napisów końcowych"
     },
     "details": {
       "title": "Szczegóły projektu",
@@ -97,7 +97,7 @@
     "back": "Terug naar projecten",
     "hero": {
       "subtitle": "MUZIEKCOMPOSITIE",
-      "description": "Disco-geïnspireerde muziek voor 3D-geanimeerde korte film. Gemaakt bij DAE, geïnspireerd door de Grotten van Han."
+      "description": "Originele disco-funk score voor een 3D-geanimeerde afstudeerfilm. Volledige compositie, arrangement en mixing."
     },
     "tags": {
       "role": "Componist",
@@ -107,12 +107,12 @@
       "inspiration": "Grotten van Han"
     },
     "showcase": {
-      "title": "Over",
-      "description": "Afstudeerproject van een DAE-team. Ze bezochten de Grotten van Han en die beelden inspireerden ze. Ik componeerde de discomuziek ervoor. Team: Minh Thao Trinh (Character Art), Andra-Mihaela Popa (Rigging), Jolien Vansteenkiste (Animatie), Joe Frackiewicz (Simulatie), Jeffrey Vandenameel (Lighting/Environment/Compositing), Tijn Valcke (Sound Design).",
-      "list1": "Originele muziek",
-      "list2": "Jaren 70 disco",
-      "list3": "Melodieën passend bij de film",
-      "list4": "Gemixt en gemastered"
+      "title": "Het Project",
+      "description": "Afstudeerfilm over een kleigolem die danst op disco in een grot. De originele componist kon niet leveren, dus sprong ik op het laatste moment in om de volledige score te componeren. De muziek is adaptief—het start en stopt als de golem verschijnt, synchroniseert met zijn dansbewegingen, en breekt af in vervormde cassette-effecten wanneer hij het licht bereikt en bevriest. Ik creëerde ook custom muzikale thema's voor de credits van elk teamlid.",
+      "list1": "Muziek gesynchroniseerd met beeld en karakterbeweging",
+      "list2": "Adaptieve scoring (muziek start/stopt dynamisch)",
+      "list3": "Creatief sound design (vervorming, tape slowdown effecten)",
+      "list4": "Custom thema's voor credits"
     },
     "details": {
       "title": "Projectdetails",

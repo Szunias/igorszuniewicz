@@ -29,22 +29,22 @@
       "role_value": "Audio Programmer & Designer"
     },
     "demo": {
-      "title": "Interactive Demo",
-      "description": "Replace button presses with beatboxing. ML classifies sounds in under 60ms. 82% accuracy for kick, snare, hi-hat.",
-      "research": "Spectral-flux onset detection plus trained SVM model. Fast enough for rhythm games."
+      "title": "What It Does",
+      "description": "Play rhythm games with your mouth. Beatbox kick/snare/hi-hat sounds, ML recognizes them in under 60ms. 82% accuracy.",
+      "research": "Uses spectral-flux to detect onsets, then SVM classifies the sound type. Fast enough to feel instant."
     },
     "features": {
       "realtime": {
         "title": "Real-time Recognition",
-        "desc": "Processes beatbox sounds in under 60ms using spectral flux detection and SVM classification"
+        "desc": "Under 60ms from sound to game response. Spectral flux finds the onset, SVM classifies it"
       },
       "ml": {
-        "title": "ML Classification",
-        "desc": "User-trained model adapts to individual beatbox styles for kick, snare, and hi-hat sounds"
+        "title": "Personalized Training",
+        "desc": "Train it on your beatbox style. Works for different voices, different techniques"
       },
       "lowlatency": {
-        "title": "Ultra-low Latency",
-        "desc": "OSC networking between Python and Unity maintains competitive timing standards"
+        "title": "Low Latency Pipeline",
+        "desc": "Python processes audio, sends to Unity via OSC. Fast enough for competitive rhythm games"
       }
     },
     "video": {
@@ -124,22 +124,22 @@
       "role_value": "Audio Programmer & Designer"
     },
     "demo": {
-      "title": "Interaktywne demo",
-      "description": "Zamień przyciski na beatboxing. ML klasyfikuje dźwięki w poniżej 60ms. 82% dokładności dla kick, snare, hi-hat.",
-      "research": "Spectral-flux plus wytrenowany model SVM. Wystarczająco szybkie dla gier rytmicznych."
+      "title": "Co to robi",
+      "description": "Graj w gry rytmiczne ustami. Beatboxuj kick/snare/hi-hat, ML je rozpoznaje w poniżej 60ms. 82% dokładności.",
+      "research": "Używa spectral-flux do detekcji onsetów, potem SVM klasyfikuje typ dźwięku. Wystarczająco szybkie żeby czuć się instant."
     },
     "features": {
       "realtime": {
         "title": "Rozpoznawanie w czasie rzeczywistym",
-        "desc": "Przetwarza dźwięki beatboxu w czasie poniżej 60ms, używając spectral flux i klasyfikacji SVM"
+        "desc": "Poniżej 60ms od dźwięku do reakcji gry. Spectral flux znajduje onset, SVM klasyfikuje"
       },
       "ml": {
-        "title": "Klasyfikacja ML",
-        "desc": "Model trenowany przez użytkownika dostosowuje się do indywidualnych stylów beatboxu dla kick, snare i hi-hat"
+        "title": "Spersonalizowany trening",
+        "desc": "Trenuj na swoim stylu beatboxu. Działa dla różnych głosów, różnych technik"
       },
       "lowlatency": {
-        "title": "Ultra-niskie opóźnienie",
-        "desc": "Komunikacja OSC między Pythonem a Unity utrzymuje konkurencyjne standardy czasowe"
+        "title": "Pipeline z niskim opóźnieniem",
+        "desc": "Python przetwarza audio, wysyła do Unity przez OSC. Wystarczająco szybkie dla competitive rhythm games"
       }
     },
     "video": {
@@ -219,22 +219,22 @@
       "role_value": "Audio Programmer & Designer"
     },
     "demo": {
-      "title": "Interactieve demo",
-      "description": "Vervang knopdrukken door beatboxen. ML classificeert geluiden in minder dan 60ms. 82% nauwkeurigheid voor kick, snare en hi-hat.",
-      "research": "Spectral-flux onset detection plus getraind SVM-model. Snel genoeg voor ritmegames."
+      "title": "Wat het doet",
+      "description": "Speel ritmegames met je mond. Beatbox kick/snare/hi-hat geluiden, ML herkent ze in minder dan 60ms. 82% nauwkeurigheid.",
+      "research": "Gebruikt spectral-flux om onsets te detecteren, dan SVM classificeert het geluidstype. Snel genoeg om instant te voelen."
     },
     "features": {
       "realtime": {
         "title": "Realtime herkenning",
-        "desc": "Verwerkt beatboxgeluiden in minder dan 60ms met spectral flux detection en SVM-classificatie"
+        "desc": "Onder 60ms van geluid naar game-reactie. Spectral flux vindt de onset, SVM classificeert"
       },
       "ml": {
-        "title": "ML-classificatie",
-        "desc": "Door de gebruiker getraind model dat zich aanpast aan individuele beatboxstijlen voor kick, snare en hi-hat"
+        "title": "Gepersonaliseerde training",
+        "desc": "Train het op jouw beatboxstijl. Werkt voor verschillende stemmen, verschillende technieken"
       },
       "lowlatency": {
-        "title": "Ultra-lage latentie",
-        "desc": "OSC-netwerking tussen Python en Unity handhaaft competitieve timingstandaarden"
+        "title": "Lage latentie pipeline",
+        "desc": "Python verwerkt audio, stuurt naar Unity via OSC. Snel genoeg voor competitieve ritmegames"
       }
     },
     "video": {
