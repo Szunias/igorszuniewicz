@@ -174,7 +174,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 For questions about specific versions or changes:
 
-- **Email**: szunio2004@gmail.com
+- **Email**: igorszuniewiczwork@gmail.com
 - **GitHub Issues**: [Create an issue](https://github.com/Szunias/igorszuniewicz/issues)
 - **LinkedIn**: [Igor Szuniewicz](https://www.linkedin.com/in/igor-szuniewicz-a6877a2a3)
 

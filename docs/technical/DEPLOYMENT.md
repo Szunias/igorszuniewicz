@@ -451,7 +451,7 @@ find backups/ -name "backup_*.tar.gz" -mtime +7 -delete
 
 For deployment issues:
 
-- **Email**: szunio2004@gmail.com
+- **Email**: igorszuniewiczwork@gmail.com
 - **GitHub Issues**: [Create an issue](https://github.com/Szunias/igorszuniewicz/issues)
 - **Documentation**: [Technical Docs](docs/technical/)
 

@@ -25,6 +25,26 @@
         "value": "2024"
       }
     },
+    "context": {
+      "title": "Project Context",
+      "type_label": "Type",
+      "type_value": "Student Animation Project",
+      "institution_label": "Institution",
+      "institution_value": "DAE Belgium",
+      "year_label": "Year",
+      "year_value": "2023",
+      "duration_label": "Duration",
+      "duration_value": "4 weeks",
+      "team_label": "Collaboration",
+      "team_value": "3D Animation Team",
+      "role_label": "My Role",
+      "role_value": "Sound Designer (Solo)",
+      "responsibilities_title": "Responsibilities",
+      "resp1": "Creature Sound Design",
+      "resp2": "Environmental Ambience",
+      "resp3": "Spatial Audio Mixing",
+      "resp4": "Foley & SFX"
+    },
     "showcase": {
       "title": "Watch With Sound",
       "description": "Sound builds the horror. Creature growls, environment layers, spatial details all scale with what you see.",

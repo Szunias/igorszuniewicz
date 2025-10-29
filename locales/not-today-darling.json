@@ -10,6 +10,26 @@
       "engine": "Engine: Unreal Engine",
       "modes": "Modes: Local multiplayer (1–4)"
     },
+    "context": {
+      "title": "Project Context",
+      "type_label": "Type",
+      "type_value": "Student Project",
+      "institution_label": "Institution",
+      "institution_value": "DAE Belgium",
+      "year_label": "Year",
+      "year_value": "2024-2025",
+      "duration_label": "Duration",
+      "duration_value": "12 weeks",
+      "team_label": "Team Size",
+      "team_value": "8 developers",
+      "role_label": "My Role",
+      "role_value": "Audio Designer (Solo)",
+      "responsibilities_title": "Responsibilities",
+      "resp1": "Sound Design",
+      "resp2": "Audio Implementation (MetaSounds)",
+      "resp3": "Mixing & Mastering",
+      "resp4": "Voiceover Direction"
+    },
     "video": {
       "title": "🎬 Watch the Madness Unfold",
       "description": "Race against time. Outsmart your grannies. Win big! This chaotic multiplayer game combines fast-paced action with strategic thinking."
@@ -127,6 +147,26 @@
       "engine": "Silnik: Unreal Engine",
       "modes": "Tryby: Lokalny multiplayer (1–4)"
     },
+    "context": {
+      "title": "Kontekst Projektu",
+      "type_label": "Typ",
+      "type_value": "Projekt Studencki",
+      "institution_label": "Uczelnia",
+      "institution_value": "DAE Belgia",
+      "year_label": "Rok",
+      "year_value": "2024-2025",
+      "duration_label": "Czas trwania",
+      "duration_value": "12 tygodni",
+      "team_label": "Wielkość zespołu",
+      "team_value": "8 deweloperów",
+      "role_label": "Moja rola",
+      "role_value": "Audio Designer (Solo)",
+      "responsibilities_title": "Obowiązki",
+      "resp1": "Sound Design",
+      "resp2": "Implementacja Audio (MetaSounds)",
+      "resp3": "Miksowanie i Mastering",
+      "resp4": "Kierowanie Voice-overem"
+    },
     "video": {
       "title": "🎬 Obejrzyj trailer",
       "description": "Wyścig z czasem. Przechytrz babcie. Wygraj wszystko! Ta chaotyczna gra wieloosobowa łączy szybką akcję z przemyślaną strategią."
@@ -243,6 +283,26 @@
       "platforms": "Platforms: Windows, Linux",
       "engine": "Engine: Unreal Engine",
       "modes": "Modi: Lokale multiplayer (1–4)"
+    },
+    "context": {
+      "title": "Projectcontext",
+      "type_label": "Type",
+      "type_value": "Studentenproject",
+      "institution_label": "Instelling",
+      "institution_value": "DAE België",
+      "year_label": "Jaar",
+      "year_value": "2024-2025",
+      "duration_label": "Duur",
+      "duration_value": "12 weken",
+      "team_label": "Teamgrootte",
+      "team_value": "8 ontwikkelaars",
+      "role_label": "Mijn rol",
+      "role_value": "Audio Designer (Solo)",
+      "responsibilities_title": "Verantwoordelijkheden",
+      "resp1": "Geluidsontwerp",
+      "resp2": "Audio-implementatie (MetaSounds)",
+      "resp3": "Mixen & Mastering",
+      "resp4": "Voice-over Regie"
     },
     "video": {
       "title": "🎬 Bekijk de waanzin",

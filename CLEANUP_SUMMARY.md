@@ -208,7 +208,7 @@ igorszuniewicz/
 
 For questions about the cleanup or project structure:
 
-- **Email**: szunio2004@gmail.com
+- **Email**: igorszuniewiczwork@gmail.com
 - **GitHub**: [@Szunias](https://github.com/Szunias)
 - **LinkedIn**: [Igor Szuniewicz](https://www.linkedin.com/in/igor-szuniewicz-a6877a2a3)
 

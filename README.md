@@ -172,7 +172,7 @@ Beatbox-controlled rhythm game using machine learning.
 || Feature | Description | Impact |
 ||---------|-------------|--------|
 || 🎬 **Demo Reel** | Placeholder section ready for showcase video | First thing hiring managers see |
-|| 🔊 **Technical Skills** | Proficiency matrix with percentages (Wwise 85%, Unreal 85%, Reaper 95%) | No guessing — instant clarity |
+|| 🔊 **Technical Skills** | Proficiency matrix with clear levels (Expert, Advanced, Intermediate) | No guessing — instant clarity |
 || 📊 **Project Metrics** | Concrete numbers: events, memory, latency, voice counts | Shows scale and technical depth |
 || 🔧 **Challenges** | 9 real-world problems + technical solutions | Demonstrates problem-solving |
 || 🎨 **Audio Philosophy** | 4 core principles: clarity, technical foundation, layering, collaboration | Professional maturity |
@@ -248,7 +248,7 @@ python -m http.server 8000
 - 💻 **Audio Programming** (Python, C#, Blueprints, real-time DSP)
 - 🎚️ **Technical Audio** (mixing, HDR, voice management, memory optimization)
 
-**Location:** Netherlands 🇳🇱  
+**Location:** Belgium, West Flanders 🇧🇪  
 **Education:** Digital Arts & Entertainment — Game Development (Audio)  
 **Tools:** Wwise, FMOD, Unreal Engine 5, Unity, Reaper, Python, MetaSounds
 

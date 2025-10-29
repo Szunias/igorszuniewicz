@@ -480,6 +480,92 @@
       box-shadow: 0 6px 25px rgba(139, 69, 19, 0.4);
     }
     
+    /* === PROJECT CONTEXT === */
+    .project-context {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: rgba(139, 69, 19, 0.05);
+      border: 1px solid rgba(139, 69, 19, 0.2);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .project-context h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: #cd853f;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    
+    .context-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .context-item {
+      padding: 1rem;
+      background: rgba(139, 69, 19, 0.05);
+      border-radius: 8px;
+      border-left: 3px solid #8b4513;
+    }
+    
+    .context-label {
+      font-size: 0.85rem;
+      color: #cd853f;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .context-value {
+      font-size: 1rem;
+      color: #e0e6ed;
+      line-height: 1.6;
+    }
+    
+    .context-responsibilities {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(139, 69, 19, 0.2);
+    }
+    
+    .context-responsibilities h4 {
+      font-size: 1rem;
+      color: #cd853f;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .context-responsibilities ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.5rem;
+    }
+    
+    .context-responsibilities li {
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      position: relative;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+    
+    .context-responsibilities li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #8b4513;
+      font-weight: bold;
+    }
+    
     /* === CONTENT ROW === */
     .row {
       display: flex;
@@ -1392,6 +1478,46 @@
         <span data-i18n="tags.style">Atmospheric Horror</span>
         <span data-i18n="tags.team">3D Animation Studio</span>
         <span data-i18n="tags.type">Complete Audio Pass</span>
+      </div>
+    </section>
+    
+    <!-- Project Context -->
+    <section class="project-context">
+      <h3 data-i18n="context.title">Project Context</h3>
+      <div class="context-grid">
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.type_label">Type</div>
+          <div class="context-value" data-i18n="context.type_value">Student Animation Project</div>
+        </div>
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.institution_label">Institution</div>
+          <div class="context-value" data-i18n="context.institution_value">DAE Belgium</div>
+        </div>
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.year_label">Year</div>
+          <div class="context-value" data-i18n="context.year_value">2023</div>
+        </div>
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.duration_label">Duration</div>
+          <div class="context-value" data-i18n="context.duration_value">4 weeks</div>
+        </div>
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.team_label">Collaboration</div>
+          <div class="context-value" data-i18n="context.team_value">3D Animation Team</div>
+        </div>
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.role_label">My Role</div>
+          <div class="context-value" data-i18n="context.role_value">Sound Designer (Solo)</div>
+        </div>
+      </div>
+      <div class="context-responsibilities">
+        <h4 data-i18n="context.responsibilities_title">Responsibilities</h4>
+        <ul>
+          <li data-i18n="context.resp1">Creature Sound Design</li>
+          <li data-i18n="context.resp2">Environmental Ambience</li>
+          <li data-i18n="context.resp3">Spatial Audio Mixing</li>
+          <li data-i18n="context.resp4">Foley & SFX</li>
+        </ul>
       </div>
     </section>
     

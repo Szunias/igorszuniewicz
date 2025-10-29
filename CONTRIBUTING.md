@@ -293,7 +293,7 @@ Currently no automated tests, but consider adding:
 
 For questions about contributing:
 
-- **Email**: szunio2004@gmail.com
+- **Email**: igorszuniewiczwork@gmail.com
 - **LinkedIn**: [Igor Szuniewicz](https://www.linkedin.com/in/igor-szuniewicz-a6877a2a3)
 - **GitHub**: [@Szunias](https://github.com/Szunias)
 
