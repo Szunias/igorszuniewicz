@@ -640,6 +640,18 @@
         font-size: 0.65rem;
       }
     }
+
+    /* === ANIMATIONS === */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 
   <!-- Structured Data (JSON-LD) -->
@@ -707,7 +719,7 @@
   <!-- Page Content -->
   <div class="page-content">
     <div class="container">
-      <div class="page-header">
+      <div class="page-header fade-in">
         <h1 class="page-title" data-i18n="projects_page_title">All Projects</h1>
         <p class="page-description" data-i18n="projects_page_subtitle">
           Game audio, sound design, interactive music systems, and audio development tools.
@@ -722,7 +734,7 @@
         </div>
       </div>
       
-      <div class="projects-grid">
+      <div class="projects-grid fade-in">
         <!-- Ray Animation -->
         <a href="ray-animation.html" class="project-card" data-category="sound">
           <div class="project-image">

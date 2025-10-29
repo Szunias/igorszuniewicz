@@ -768,6 +768,18 @@
       }
     }
 
+    /* === ANIMATIONS === */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* === VERY SMALL MOBILE (320px-374px) === */
     @media (max-width: 374px) {
       .container {
@@ -1023,7 +1035,7 @@
           deliver production-ready solutions.</p>
 
         <!-- Value Propositions -->
-        <div class="value-props">
+        <div class="value-props fade-in">
           <div class="value-card">
             <h3 data-i18n="value_systems_title">Interactive Systems</h3>
             <p data-i18n="value_systems_desc">Built adaptive music systems and dynamic audio engines that respond to gameplay in real-time</p>
@@ -1042,7 +1054,7 @@
 
     <!-- Stats -->
     <section class="container">
-      <div class="stats">
+      <div class="stats fade-in">
         <div class="stat-item">
           <span class="stat-number">12+</span>
           <span class="stat-label" data-i18n="stat_projects">Shipped Projects</span>
@@ -1061,9 +1073,9 @@
     <!-- Skills Section -->
     <section class="skills-section">
       <div class="container">
-        <h2 class="section-title" data-i18n="about_tech_title">Technical Expertise</h2>
+        <h2 class="section-title fade-in" data-i18n="about_tech_title">Technical Expertise</h2>
         
-        <div class="skills-grid">
+        <div class="skills-grid fade-in">
           <!-- Game Audio -->
           <div class="skill-category">
             <h3 data-i18n="tech_middleware_title">Game Audio</h3>
@@ -1103,9 +1115,9 @@
     <!-- Journey Timeline -->
     <section class="timeline-section">
       <div class="container">
-        <h2 class="section-title" data-i18n="about_journey_title">Journey</h2>
+        <h2 class="section-title fade-in" data-i18n="about_journey_title">Journey</h2>
 
-        <div class="timeline">
+        <div class="timeline fade-in">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
@@ -1140,9 +1152,9 @@
     <!-- Philosophy Section -->
     <section class="philosophy-section">
       <div class="container">
-        <h2 class="section-title">Design Philosophy</h2>
+        <h2 class="section-title fade-in">Design Philosophy</h2>
 
-        <div class="philosophy-grid">
+        <div class="philosophy-grid fade-in">
           <div class="philosophy-card">
             <div class="philosophy-number">01</div>
             <h3 data-i18n="principle_clarity_title">Clarity First, Always</h3>
@@ -1178,6 +1190,37 @@
   <!-- Scripts -->
   <script src="assets/js/components/navigation.js" defer></script>
   <script src="assets/js/translations.js" defer></script>
+
+  <!-- Scroll reveal animations -->
+  <script>
+    // Scroll reveal - optimized for performance and earlier reveal
+    function initScrollReveal() {
+      const observerOptions = {
+        threshold: 0.05,
+        rootMargin: '0px 0px -100px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Stop observing once visible to improve performance
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initScrollReveal);
+    } else {
+      initScrollReveal();
+    }
+  </script>
 
   <!-- Lazy load avatar image -->
   <script>

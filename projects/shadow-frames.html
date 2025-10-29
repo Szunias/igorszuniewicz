@@ -313,6 +313,92 @@
       box-shadow: 0 10px 30px rgba(255, 165, 0, 0.2);
     }
     
+    /* === PROJECT CONTEXT === */
+    .project-context {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .project-context h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    
+    .context-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .context-item {
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+      border-left: 3px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .context-label {
+      font-size: 0.85rem;
+      color: rgba(255, 165, 0, 0.8);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .context-value {
+      font-size: 1rem;
+      color: #e0e6ed;
+      line-height: 1.6;
+    }
+    
+    .context-collaboration {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .context-collaboration h4 {
+      font-size: 1rem;
+      color: rgba(255, 165, 0, 0.8);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .context-collaboration ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 0.5rem;
+    }
+    
+    .context-collaboration li {
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      position: relative;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+    
+    .context-collaboration li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: rgba(255, 165, 0, 0.8);
+      font-weight: bold;
+    }
+    
     /* === VIDEO SECTION === */
     .video-section {
       margin: 4rem 0;
@@ -577,6 +663,37 @@
     <div class="production-notice" data-i18n="production_notice">
       🎮 IN PRODUCTION  •  Prototype Complete  •  Full Audio System Coming Soon
     </div>
+    
+    <!-- Project Context -->
+    <section class="project-context">
+      <h3 data-i18n="context.title">Project Context</h3>
+      <div class="context-grid">
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.type_label">Type</div>
+          <div class="context-value" data-i18n="context.type_value">Multi-Institutional Project</div>
+        </div>
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.institution_label">Lead Institution</div>
+          <div class="context-value" data-i18n="context.institution_value">Howest DAE</div>
+        </div>
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.year_label">Year</div>
+          <div class="context-value" data-i18n="context.year_value">2025 - Present</div>
+        </div>
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.role_label">My Role</div>
+          <div class="context-value" data-i18n="context.role_value">Sound Designer & Audio Implementer</div>
+        </div>
+      </div>
+      <div class="context-collaboration">
+        <h4 data-i18n="context.collaboration_title">Multi-Institutional Collaboration</h4>
+        <ul>
+          <li data-i18n="context.collab1">RITCS (Royal Institute for Theatre, Cinema and Sound) — Narrative Design</li>
+          <li data-i18n="context.collab2">Ghent Conservatory — Music Composition</li>
+          <li data-i18n="context.collab3">Howest DAE — Game Development & Audio Implementation</li>
+        </ul>
+      </div>
+    </section>
     
     <!-- Video -->
     <div class="video-section">

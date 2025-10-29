@@ -14,8 +14,12 @@
 
 
 
+
+
+
 - [ ] 2. Remove/Protect Personal Contact Information
-- [ ] 2.1 Set up professional email domain
+- [x] 2.1 Set up professional email domain
+
   - Register email: igor@igorszuniewicz.com or contact@igorszuniewicz.com
   - Configure email forwarding to personal Gmail
 
@@ -24,9 +28,12 @@
 
 - [ ] 2.2 Update email across all files
   - Replace szunio2004@gmail.com with professional email (igor@igorszuniewicz.com or igorszuniewiczwork@gmail.com) in cv/igor-cv-dark.html
+
   - Update contact.html with new email
   - Update all structured data (JSON-LD) with new email
   - Update all locale files (locales/*.json) with new email
+
+
 
   - Update README.md with new email
   - Note: Current working email is igorszuniewiczwork@gmail.com (not szunio2004@gmail.com shown on website)
@@ -35,10 +42,12 @@
 
 
 
+
 - [ ] 2.3 Remove phone number from public pages
   - Remove phone number from cv/igor-cv-dark.html footer
   - Add "Available upon request" note if phone contact is needed
   - _Requirements: 1.2, 1.4_
+
 
 
 - [ ] 3. Fix Demo Reel Placeholder Issue
@@ -50,19 +59,24 @@
 
 
 
+
   - If replacing: gather video/audio content for actual demo reel
   - _Requirements: 2.1, 2.2, 2.4_
 
 - [ ] 3.2 Implement demo reel fix
   - Remove or replace demo reel section in index.html
 
+
+
   - Update locale files (locales/index.json) to remove demo reel translations if section removed
   - Add prominent CTAs to featured projects instead
   - Test that homepage flows better without placeholder
   - _Requirements: 2.1, 2.3, 2.4, 2.5_
 
+
 - [ ] 4. Fix Unverifiable Technical Claims
 - [x] 4.1 Replace skill percentages with levels
+
 
 
 
@@ -76,7 +90,9 @@
 
 
 
-- [ ] 4.2 Add context to technical metrics
+
+- [x] 4.2 Add context to technical metrics
+
   - Update "320+ audio events" to "320+ audio events across 12 categories (vehicles, UI, environment, etc.)"
   - Update "45ms latency" to "45ms end-to-end latency (measured from audio input to game response)"
 

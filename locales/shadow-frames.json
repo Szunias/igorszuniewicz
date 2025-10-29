@@ -23,6 +23,21 @@
         "value": "Unreal Engine 5"
       }
     },
+    "context": {
+      "title": "Project Context",
+      "type_label": "Type",
+      "type_value": "Multi-Institutional Project",
+      "institution_label": "Lead Institution",
+      "institution_value": "Howest DAE",
+      "year_label": "Year",
+      "year_value": "2025 - Present",
+      "role_label": "My Role",
+      "role_value": "Sound Designer & Audio Implementer",
+      "collaboration_title": "Multi-Institutional Collaboration",
+      "collab1": "RITCS (Royal Institute for Theatre, Cinema and Sound) — Narrative Design",
+      "collab2": "Ghent Conservatory — Music Composition",
+      "collab3": "Howest DAE — Game Development & Audio Implementation"
+    },
     "video": {
       "title": "First Look: Prototype Menu",
       "desc": "Prototype menu from development phase."

@@ -29,6 +29,21 @@
         "value": "DAE Howest Kortrijk"
       }
     },
+    "context": {
+      "title": "Project Context",
+      "type_label": "Type",
+      "type_value": "Student Animation Project",
+      "institution_label": "Institution",
+      "institution_value": "Howest DAE",
+      "year_label": "Year",
+      "year_value": "2024",
+      "duration_label": "Duration",
+      "duration_value": "4 months",
+      "role_label": "My Role",
+      "role_value": "Sound Designer",
+      "collaboration_title": "Collaboration",
+      "collaboration_desc": "Worked with composer Noah Bots from Ghent Conservatory for the musical score, while handling all sound design, foley, and spatial audio mixing."
+    },
     "showcase": {
       "title": "Watch With Sound On",
       "desc": "Sound tells the story here. Starts playful, gets tense, ends heartfelt. Every sound matters."

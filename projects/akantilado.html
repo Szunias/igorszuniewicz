@@ -949,6 +949,86 @@
       transform: scale(1.02);
     }
     
+    /* === PROJECT CONTEXT === */
+    .project-context {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: rgba(139, 69, 19, 0.05);
+      border: 1px solid rgba(139, 69, 19, 0.2);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .project-context h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: #cd853f;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    
+    .context-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .context-item {
+      padding: 1rem;
+      background: rgba(139, 69, 19, 0.05);
+      border-radius: 8px;
+      border-left: 3px solid #8b4513;
+    }
+    
+    .context-label {
+      font-size: 0.85rem;
+      color: #cd853f;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+    
+    .context-value {
+      font-size: 1rem;
+      color: #e0e6ed;
+      line-height: 1.6;
+    }
+    
+    .context-collaboration {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(139, 69, 19, 0.2);
+    }
+    
+    .context-collaboration h4 {
+      font-size: 1rem;
+      color: #cd853f;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .context-collaboration p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    
+    .context-collaboration p::before {
+      content: '♪';
+      position: absolute;
+      left: 0;
+      color: #cd853f;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
     /* === SECTION === */
     section {
       margin: 5rem 0;
@@ -1739,6 +1819,37 @@
       </div>
       <h1 data-i18n="title">Akantilado: Sound Design</h1>
       <p class="tagline" data-i18n="tagline">A heartwarming jungle adventure where love triumphs over greed through immersive audio storytelling.</p>
+    </section>
+    
+    <!-- Project Context -->
+    <section class="project-context">
+      <h3 data-i18n="context.title">Project Context</h3>
+      <div class="context-grid">
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.type_label">Type</div>
+          <div class="context-value" data-i18n="context.type_value">Student Animation Project</div>
+        </div>
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.institution_label">Institution</div>
+          <div class="context-value" data-i18n="context.institution_value">Howest DAE</div>
+        </div>
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.year_label">Year</div>
+          <div class="context-value" data-i18n="context.year_value">2024</div>
+        </div>
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.duration_label">Duration</div>
+          <div class="context-value" data-i18n="context.duration_value">4 months</div>
+        </div>
+        <div class="context-item">
+          <div class="context-label" data-i18n="context.role_label">My Role</div>
+          <div class="context-value" data-i18n="context.role_value">Sound Designer</div>
+        </div>
+      </div>
+      <div class="context-collaboration">
+        <h4 data-i18n="context.collaboration_title">Collaboration</h4>
+        <p data-i18n="context.collaboration_desc">Worked with composer Noah Bots from Ghent Conservatory for the musical score, while handling all sound design, foley, and spatial audio mixing.</p>
+      </div>
     </section>
     
     <!-- Video Context -->
