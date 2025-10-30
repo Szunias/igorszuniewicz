@@ -112,42 +112,42 @@
       "ray": {
         "badge": "Animacja",
         "title": "Ray Animation",
-        "description": "Funkowa muzyka do napisów końcowych. Groovy i energetyczna."
+        "description": "Funkowa muzyka do napisów końcowych. Rytmiczna i energetyczna."
       },
       "shadow_frames": {
         "badge": "W produkcji",
         "title": "Shadow Frames",
-        "description": "Horror sterowany dźwiękiem. Prototyp gotowy, teraz pełna produkcja."
+        "description": "Gra grozy sterowana dźwiękiem. Prototyp gotowy, teraz pełna produkcja."
       },
       "not_today": {
         "badge": "Audio do gier",
         "title": "Not Today, Darling!",
-        "description": "3-warstwowa muzyka adaptacyjna w Wwise. Warstwy reagują na liczbę graczy i intensywność wyścigu. Spójna muzyka przy ostrych limitach głosów."
+        "description": "3-warstwowa muzyka adaptacyjna w Wwise. Warstwy reagują na liczbę graczy i intensywność wyścigu. Spójna muzyka przy ograniczonej liczbie kanałów dźwiękowych."
       },
       "amorak": {
         "badge": "Sound design",
         "title": "Amorak",
-        "description": "Sound design stwora. 15+ wariacji wokalnych, proceduralne kroki, audio środowiskowe reagujące na bliskość. Zrealizowane w Reaper."
+        "description": "Projektowanie dźwięku stworów. 15+ wariacji wokalnych, proceduralne kroki, audio środowiskowe reagujące na odległość. Zrealizowane w Reaper."
       },
       "pause_deserve": {
         "badge": "Gra grozy",
         "title": "Pause & Deserve",
-        "description": "Horror, który obserwuje jak pauzujesz. Maszyna stanów audio w Unity. Napięcie rośnie podczas pauz, muzyka staje się bardziej niepokojąca gdy się wahasz."
+        "description": "Gra grozy, która analizuje sposób używania pauzy. Maszyna stanów audio w Unity. Napięcie rośnie podczas pauz, muzyka staje się bardziej niepokojąca gdy się wahasz."
       },
       "audiolab": {
         "badge": "Audio ML",
         "title": "Transientica: AudioLab",
-        "description": "Klasyfikacja beatboxu ML w czasie rzeczywistym. Opóźnienie 45ms. Python/TensorFlow, zoptymalizowany pipeline, dataset 2000+ sampli."
+        "description": "Klasyfikacja dźwięków beatboxu z użyciem uczenia maszynowego w czasie rzeczywistym. Opóźnienie 45ms. Python/TensorFlow, zoptymalizowany potok przetwarzania, zbiór danych 2000+ sampli."
       },
       "interactive_music": {
         "badge": "Muzyka",
         "title": "Muzyka interaktywna",
-        "description": "System muzyczny w Wwise z warstwowaniem pionowym i dynamicznym miksem. Reaguje na intensywność rozgrywki i akcje gracza. Zoptymalizowany pod kątem pamięci."
+        "description": "System muzyczny w Wwise z warstwowaniem pionowym i dynamicznym miksem. Reaguje na intensywność rozgrywki i akcje gracza. Zoptymalizowany pod kątem zużycia pamięci."
       },
       "akantilado": {
         "badge": "Animacja",
         "title": "Akantilado",
-        "description": "Foley i ambience do animacji 3D dżungli. 200+ własnych sampli, 5-warstwowy ambience przestrzenny, wokalizacje stworów. Miks w 5.1 surround."
+        "description": "Dźwięki Foley i atmosfera do animacji 3D dżungli. 200+ własnych sampli, 5-warstwowa przestrzenna atmosfera, wokalizacje stworów. Miks w 5.1 surround."
       },
       "richter": {
         "badge": "Muzyka filmowa",
@@ -172,7 +172,7 @@
       "pawism": {
         "badge": "Game jam",
         "title": "Paw-ism",
-        "description": "Thriller stworzony w 2 dni. Grasz ambitnym kotem."
+        "description": "Thriller stworzony w 2 dni. Wcielasz się w ambitnego kota."
       },
       "middleware": {
         "badge": "Middleware",
@@ -182,7 +182,7 @@
       "ue_rebuilder": {
         "badge": "Narzędzie",
         "title": "Unreal Engine Rebuilder",
-        "description": "Automatyczne buildy dla Unreal Engine."
+        "description": "Automatyczna kompilacja dla Unreal Engine."
       },
       "wwise_fixer": {
         "badge": "Narzędzie",
@@ -208,12 +208,12 @@
       "ray": {
         "badge": "Animatie",
         "title": "Ray Animation",
-        "description": "Funky creditsmuziek. Groovy en energiek."
+        "description": "Funky muziek voor de aftiteling. Ritmisch en energiek."
       },
       "shadow_frames": {
         "badge": "In productie",
         "title": "Shadow Frames",
-        "description": "Audio-driven horror game. Prototype klaar, nu in productie."
+        "description": "Horrorspel gestuurd door audio. Prototype klaar, nu in productie."
       },
       "not_today": {
         "badge": "Game audio",
@@ -223,17 +223,17 @@
       "amorak": {
         "badge": "Sound design",
         "title": "Amorak",
-        "description": "Creature sound design. 15+ vocale variaties, procedurele voetstappen, omgevingsaudio die reageert op nabijheid. Gemaakt in Reaper."
+        "description": "Geluidsontwerp voor wezens. 15+ vocale variaties, procedurele voetstappen, omgevingsaudio die reageert op nabijheid. Gemaakt in Reaper."
       },
       "pause_deserve": {
         "badge": "Horror game",
         "title": "Pause & Deserve",
-        "description": "Horror audio die observeert hoe je pauzeer. Audio state machine in Unity. Spanning bouwt op tijdens pauzes, muziek wordt onrustiger wanneer je aarzelt."
+        "description": "Horror audio systeem dat observeert hoe je pauzeert. Audio state machine in Unity. Spanning bouwt op tijdens pauzes, muziek wordt onrustiger wanneer je aarzelt."
       },
       "audiolab": {
         "badge": "ML audio",
         "title": "Transientica: AudioLab",
-        "description": "Real-time ML beatbox classificatie. 45ms latency. Python/TensorFlow, geoptimaliseerde pipeline, 2000+ sample dataset."
+        "description": "Real-time ML beatbox classificatie. 45ms latentie. Python/TensorFlow, geoptimaliseerde pipeline, 2000+ sample dataset."
       },
       "interactive_music": {
         "badge": "Muziek",
@@ -243,7 +243,7 @@
       "akantilado": {
         "badge": "Animatie",
         "title": "Akantilado",
-        "description": "Foley en ambience voor 3D jungle-animatie. 200+ custom samples, 5-laags spatial ambience, creature-vocalisaties. Gemixt in 5.1 surround."
+        "description": "Foley en omgevingsgeluiden voor 3D jungle-animatie. 200+ custom samples, 5-laags spatial ambience, creature-vocalisaties. Gemixt in 5.1 surround."
       },
       "richter": {
         "badge": "Filmscore",
@@ -268,7 +268,7 @@
       "pawism": {
         "badge": "Game jam",
         "title": "Paw-ism",
-        "description": "Thriller gemaakt in 2 dagen. Speel als ambitieuze kat."
+        "description": "Thriller gemaakt in 2 dagen. Speel als een ambitieuze kat."
       },
       "middleware": {
         "badge": "Middleware",

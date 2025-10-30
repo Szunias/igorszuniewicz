@@ -123,7 +123,7 @@
         "amorak": {
           "badge": "Sound design",
           "title": "Amorak",
-          "description": "Atmosferyczne soundscapy i dźwięki stworów do animacji grozy."
+          "description": "Atmosferyczne pejzaże dźwiękowe i efekty dźwiękowe stworów do animacji grozy."
         },
         "pause_deserve": {
           "badge": "Gra grozy",
@@ -133,17 +133,17 @@
         "audiolab": {
           "badge": "Audio ML",
           "title": "Transientica: AudioLab",
-          "description": "Klasyfikacja beatboxu w czasie rzeczywistym z latencją 45ms."
+          "description": "Klasyfikacja dźwięków beatboxu w czasie rzeczywistym z opóźnieniem 45ms."
         },
         "interactive_music": {
           "badge": "Muzyka",
-          "title": "Projektowanie Muzyki Interaktywnej",
+          "title": "Projektowanie muzyki interaktywnej",
           "description": "Systemy adaptacyjne z warstwowaniem pionowym w Wwise."
         },
         "akantilado": {
           "badge": "Animacja",
           "title": "Akantilado",
-          "description": "Kompletny foley i dżunglowy ambience dla animacji 3D."
+          "description": "Kompletny dźwięk Foley i atmosfera dżungli dla animacji 3D."
         }
       }
     },
@@ -206,7 +206,7 @@
         "amorak": {
           "badge": "Sound design",
           "title": "Amorak",
-          "description": "Atmosferische soundscapes en creature audio voor horroranimatie."
+          "description": "Atmosferische geluidslandschappen en creature-geluiden voor horroranimatie."
         },
         "pause_deserve": {
           "badge": "Horror game",
@@ -220,13 +220,13 @@
         },
         "interactive_music": {
           "badge": "Muziek",
-          "title": "Interactive Music Design",
-          "description": "Adaptieve audiosystemen met vertical layering in Wwise."
+          "title": "Interactieve Muziek",
+          "description": "Adaptieve audiosystemen met verticale lagen in Wwise."
         },
         "akantilado": {
           "badge": "Animatie",
           "title": "Akantilado",
-          "description": "Complete foley en jungle ambience voor 3D-animatie."
+          "description": "Complete foley-geluiden en jungle-omgevingsgeluiden voor 3D-animatie."
         }
       }
     },

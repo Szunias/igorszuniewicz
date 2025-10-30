@@ -50,7 +50,7 @@
     "back": "Powrót do projektów",
     "hero": {
       "subtitle": "KOMPOZYCJA MUZYCZNA",
-      "description": "Oryginalna muzyka disco-funk do animowanego filmu dyplomowego. Pełna kompozycja, aranżacja i miks."
+      "description": "Oryginalna muzyka w stylu disco-funk do animowanego filmu dyplomowego. Pełna kompozycja, aranżacja i miksowanie."
     },
     "tags": {
       "role": "Kompozytor",
@@ -76,15 +76,15 @@
     },
     "bassRhythm": {
       "title": "Bas i rytm",
-      "description": "Funky bas i ostra perkusja. Slap bass plus gitara - lata 70."
+      "description": "Funkowy bas i ostra perkusja. Slap bass plus gitara rytmiczna - klimat lat 70."
     },
     "synthsStrings": {
       "title": "Synthy i smyczki",
-      "description": "Retro synthy i smyczki dodają koloru. Jasne leady i ciepłe orkiestrowe brzmienia."
+      "description": "Retro syntezatory i smyczki dodają koloru. Jasne leady i ciepłe orkiestrowe brzmienia."
     },
     "finalMix": {
       "title": "Gotowy miks",
-      "description": "Wszystko razem. Bas, perkusja, synthy, smyczki, melodie. Zsynchronizowane z animacją."
+      "description": "Wszystko razem. Bas, perkusja, syntezatory, smyczki, melodie. Zsynchronizowane z animacją."
     },
     "gallery": {
       "title": "Galeria wizualna"
@@ -97,7 +97,7 @@
     "back": "Terug naar projecten",
     "hero": {
       "subtitle": "MUZIEKCOMPOSITIE",
-      "description": "Originele disco-funk score voor een 3D-geanimeerde afstudeerfilm. Volledige compositie, arrangement en mixing."
+      "description": "Originele disco-funk score voor een 3D-geanimeerde afstudeerfilm. Volledige compositie, arrangement en mixage."
     },
     "tags": {
       "role": "Componist",
@@ -108,7 +108,7 @@
     },
     "showcase": {
       "title": "Het Project",
-      "description": "Afstudeerfilm over een kleigolem die danst op disco in een grot. De originele componist kon niet leveren, dus sprong ik op het laatste moment in om de volledige score te componeren. De muziek is adaptief—het start en stopt als de golem verschijnt, synchroniseert met zijn dansbewegingen, en breekt af in vervormde cassette-effecten wanneer hij het licht bereikt en bevriest. Ik creëerde ook custom muzikale thema's voor de credits van elk teamlid.",
+      "description": "Afstudeerfilm over een kleigolem die danst op disco in een grot. De originele componist kon niet leveren, dus sprong ik op het laatste moment in om de volledige score te componeren. De muziek is adaptief—het start en stopt als de golem verschijnt, synchroniseert met zijn dansbewegingen, en breekt af in vervormde cassette-effecten wanneer hij het licht bereikt en bevriest. Ik creëerde ook op maat gemaakte muziekthema's voor de credits van elk teamlid.",
       "list1": "Muziek gesynchroniseerd met beeld en karakterbeweging",
       "list2": "Adaptieve scoring (muziek start/stopt dynamisch)",
       "list3": "Creatief sound design (vervorming, tape slowdown effecten)",

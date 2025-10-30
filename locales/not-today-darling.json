@@ -177,82 +177,82 @@
     },
     "role": {
       "title": "Rola: Audio",
-      "desc": "Zrobiłem całe audio. Dźwięki, integracja w Unreal, mixing. SFX gameplay, UI, tłum. Czytelne nawet przy 4 graczach."
+      "desc": "Wykonałem całość audio. Dźwięki, integracja w Unreal, miksowanie. SFX rozgrywki, interfejsu, tłum. Czytelne nawet przy 4 graczach."
     },
     "gameplay": {
-      "title": "Gameplay highlights",
+      "title": "Najważniejsze elementy rozgrywki",
       "li1": "Dźwięki reagują na to, co robisz",
       "li2": "Czysty miks z 1-4 graczami",
       "li3": "Warstwy dynamiczne, które nie przeszkadzają w intensywnych momentach"
     },
     "audioDirection": {
-      "title": "Kierunek audio",
+      "title": "Kierownictwo dźwięku",
       "desc": "Dźwięk w stylu arcade, czytelny nawet przy 4 graczach. Gameplay zawsze na górze, UI nigdy zagłuszone, tłum reaguje na akcję.",
       "b1": "Priorytet: gameplay > UI > tłum",
-      "b2": "Wyraźne audio cues dla eventów wyścigu",
-      "b3": "Kontrolowany miks, bez błota częstotliwości"
+      "b2": "Wyraźne sygnały audio dla wydarzeń wyścigu",
+      "b3": "Kontrolowany miks, bez zanieczyszczeń częstotliwościowych"
     },
     "sfxSystem": {
       "title": "System SFX",
-      "desc": "Dźwięki zmieniają się z prędkością i nawierzchnią. Materiał toru wpływa na brzmienie (asfalt, piasek, metal). Boost ma krzywe RPM i warstwę szumu. Kolizje mają limity wagowe, żeby nie spamowały.",
+      "desc": "Dźwięki zmieniają się z prędkością i nawierzchnią. Materiał toru wpływa na brzmienie (asfalt, piasek, metal). Boost ma krzywe obrotów i warstwę szumu. Kolizje mają limity wagowe, aby nie powtarzały się nadmiernie.",
       "b1": "Materiały toru miksują się płynnie (asfalt/piasek/metal)",
-      "b2": "Dźwięki hazardów obniżają pitch i filtrują z kamerą i prędkością",
+      "b2": "Dźwięki przeszkód obniżają tonację i filtrują z kamerą i prędkością",
       "b3": "Odliczanie/start/finish oznaczają momenty wyścigu"
     },
     "mix": {
       "title": "Mix i dynamika",
-      "desc": "System priorytetów. UI i callouty na górze. Dźwięki gameplay dalej. Tłum oddycha z akcją wyścigu. Submix trzyma piki pod kontrolą i głośność stałą.",
+      "desc": "System priorytetów. Interfejs i komunikaty na górze. Dźwięki rozgrywki poniżej. Tłum oddycha z akcją wyścigu. Submix utrzymuje piki pod kontrolą i głośność stałą.",
       "b1": "UI duckuje gameplay, gdy potrzeba",
-      "b2": "Tłum i ambient zmieniają się ze stanem wyścigu",
-      "b3": "Czysta separacja częstotliwości, bez błota"
+      "b2": "Tłum i atmosfera zmieniają się ze stanem wyścigu",
+      "b3": "Czysta separacja częstotliwości, bez zanieczyszczeń"
     },
     "integration": {
       "title": "Integracja w Unreal",
-      "desc": "Sound Cues z parametrami. Busy submix rozdzielają UI, gameplay, ambient. Concurrency stopuje piling dźwięków. Attenuation obsługuje odległość. Limiter na master trzyma kontrolę.",
+      "desc": "Sound Cues z parametrami. Pętle submix rozdzielają interfejs, rozgrywkę, atmosferę. Concurrency zapobiega nakładaniu się dźwięków. Attenuation obsługuje odległość. Limiter na master utrzymuje kontrolę.",
       "b1": "Parametry podpięte pod stan wyścigu, prędkość, kamerę",
-      "b2": "Submixy: UI, gameplay, ambience plus master limiter",
-      "b3": "Limity concurrency i progi kolizji"
+      "b2": "Submixy: interfejs, rozgrywka, atmosfera plus master limiter",
+      "b3": "Limity współbieżności i progi kolizji"
     },
     "metrics": {
       "title": "Metryki techniczne",
-      "desc": "Liczby ważne dla audio w grze.",
+      "desc": "Liczby istotne dla audio w grze.",
       "events": "~70 eventów audio",
-      "events_desc": "Akcje gracza, środowisko, UI, tłum, hazardy, boost, kolizje, zmiany nawierzchni, markery wyścigu",
+      "events_desc": "Akcje gracza, środowisko, interfejs, tłum, przeszkody, boost, kolizje, zmiany nawierzchni, znaczniki wyścigu",
       "footprint": "180 MB audio",
       "footprint_desc": "Streaming i kompresja Vorbis. ~450 plików źródłowych przetworzonych",
       "voice_count": "Max 32 głosy",
-      "voice_count_desc": "System priorytetów: UI/gameplay (1.0) > SFX gracza (0.8) > tłum (0.5). Auto-stealing niskich priorytetów przy overflow",
-      "latency": "Poniżej 45ms od input do audio",
+      "voice_count_desc": "System priorytetów: interfejs/rozgrywka (1.0) > SFX gracza (0.8) > tłum (0.5). Automatyczne przejmowanie niskich priorytetów przy przeciążeniu",
+      "latency": "Poniżej 45ms od wejścia do dźwięku",
       "latency_desc": "Responsywne z parametrami w czasie rzeczywistym i MetaSounds",
-      "memory": "85 MB szczyt RAM",
+      "memory": "85 MB szczytowe zużycie RAM",
       "memory_desc": "Banki, bufor streamingu, aktywny DSP. Zarządzane przez streaming Unreala"
     },
     "challenges": {
       "title": "Wyzwania i rozwiązania",
-      "desc": "Realne problemy napotkane podczas developmentu i zaimplementowane rozwiązania techniczne.",
+      "desc": "Rzeczywiste problemy napotkane podczas tworzenia i zaimplementowane rozwiązania techniczne.",
       "problem_label": "Problem:",
       "solution_label": "Rozwiązanie:",
       "challenge1": {
         "title": "Czytelność miksu przy 4 graczach",
-        "problem": "Przy 4 graczach dźwięki się piętrzą i UI jest niesłyszalne.",
-        "solution": "Limit max 4 dźwięków kolizji. Każdy gracz dostaje inny zakres EQ. Tłum duckuje, gdy gra UI."
+        "problem": "Przy 4 graczach dźwięki się nakładają i interfejs jest niesłyszalny.",
+        "solution": "Limit maksymalnie 4 dźwięków kolizji. Każdy gracz dostaje inny zakres korekcji EQ. Tłum jest wyciszany, gdy odtwarzany jest interfejs."
       },
       "challenge2": {
         "title": "Trzaski przy zmianie materiałów",
-        "problem": "Przejścia między materiałami toru (asfalt → piasek → metal) dawały słyszalne trzaski.",
+        "problem": "Przejścia między materiałami toru (asfalt → piasek → metal) powodowały słyszalne trzaski.",
         "solution": "Płynne crossfades 150ms. Detekcja materiału z overlapem 0.2s, żeby zapobiec szybkim przejściom."
       },
       "challenge3": {
         "title": "Skok pamięci przy booście",
-        "problem": "Oryginalny boost: 4 warstwy 24-bit WAV, 40MB na instancję (x4 graczy = 160MB skoku).",
-        "solution": "Przebudowano na proceduralne MetaSounds: generator szumu + filtr pasmowy + modulacja pitch. Zredukowano do <2MB na instancję. Dodano krzywą pitch jak obroty silnika."
+        "problem": "Oryginalny boost: 4 warstwy 24-bit WAV, 40MB na instancję (x4 graczy = 160MB skoku pamięci).",
+        "solution": "Przebudowano na proceduralne MetaSounds: generator szumu + filtr pasmowy + modulacja tonacji. Zredukowano do <2MB na instancję. Dodano krzywą tonacji jak obroty silnika."
       }
     },
     "metasounds": {
       "title": "MetaSounds",
-      "desc": "Cały system audio zbudowany w MetaSounds – nowoczesnym systemie proceduralno-parametrycznym w Unreal Engine. Pozwala na reaktywny, modularny sound design reagujący na gameplay w czasie rzeczywistym.",
+      "desc": "Cały system audio zbudowany w MetaSounds – nowoczesnym systemie proceduralno-parametrycznym w Unreal Engine. Pozwala na reaktywny, modularny sound design reagujący na rozgrywkę w czasie rzeczywistym.",
       "b1": "Proceduralne warstwy zależne od prędkości i stanu gry",
-      "b2": "Parametryczne kontrolery dla pitch/filtrów/modulacji",
+      "b2": "Parametryczne kontrolery dla tonacji/filtrów/modulacji",
       "b3": "Modularne patche umożliwiające szybkie iteracje"
     },
     "player": {
@@ -317,44 +317,44 @@
       "desc": "Deed alle audio. Geluiden, Unreal-integratie, mixing. Gameplay-SFX, UI, publiek. Helder zelfs met 4 spelers."
     },
     "gameplay": {
-      "title": "Gameplay highlights",
+      "title": "Gameplay hoogtepunten",
       "li1": "Responsieve SFX gekoppeld aan speleracties en obstakels",
       "li2": "Mixhiërarchie geoptimaliseerd voor duidelijkheid (1–4 spelers)",
       "li3": "Niet-opdringerige dynamische lagen tijdens intense momenten"
     },
     "audioDirection": {
-      "title": "Audio direction",
+      "title": "Audio regie",
       "desc": "Arcade-stijl geluid dat helder blijft zelfs met 4 spelers. Gameplaygeluiden altijd bovenop, UI nooit begraven, publiek reageert op actie.",
       "b1": "Prioriteit: gameplay > UI > publiek",
-      "b2": "Duidelijke audiocues voor race-events",
-      "b3": "Gecontroleerde mix, geen frequentietroebel"
+      "b2": "Duidelijke audio-signalen voor race-evenementen",
+      "b3": "Gecontroleerde mix, geen frequentie-vervuiling"
     },
     "sfxSystem": {
       "title": "SFX-systeem",
       "desc": "Geluiden veranderen met snelheid en oppervlak. Baanmateriaal beïnvloedt geluid (asfalt, zand, metaal). Boost heeft RPM curves en noise layer. Botsingen hebben gewichtlimieten dus geen spam.",
       "b1": "Baanmaterialen blenden soepel (asfalt/zand/metaal)",
-      "b2": "Hazard geluiden pitchen down en filteren met camera en snelheid",
+      "b2": "Obstakel geluiden pitchen down en filteren met camera en snelheid",
       "b3": "Countdown/Start/Finish stingers markeren race momenten"
     },
     "mix": {
       "title": "Mix & Dynamiek",
       "desc": "Prioriteitssysteem. UI en callouts bovenop. Gameplay sounds daarna. Publiek ademt met race actie. Submix houdt pieken onder controle en volume constant.",
       "b1": "UI duct gameplay wanneer nodig",
-      "b2": "Crowd en ambience veranderen met race status",
-      "b3": "Schone frequentie scheiding, geen mud"
+      "b2": "Publiek en omgevingsgeluid veranderen met race status",
+      "b3": "Schone frequentie scheiding, geen vervuiling"
     },
     "integration": {
       "title": "Unreal-integratie",
-      "desc": "Sound Cues met parameters. Submix bussen scheiden UI, gameplay, ambience. Concurrency stopt sounds van opstapelen. Attenuation handelt afstand. Limiter op master houdt controle.",
+      "desc": "Sound Cues met parameters. Submix bussen scheiden UI, gameplay, omgevingsgeluid. Concurrency stopt sounds van opstapelen. Attenuation handelt afstand. Limiter op master houdt controle.",
       "b1": "Parameters gekoppeld aan race status, snelheid, camera",
-      "b2": "Submixen: UI, Gameplay, Ambience plus master limiter",
-      "b3": "Concurrency limieten en botsing drempels"
+      "b2": "Submixen: UI, Gameplay, Omgevingsgeluid plus master limiter",
+      "b3": "Concurrency limieten en botsing drempels",
     },
     "metrics": {
       "title": "Technische Metrics",
-      "desc": "Cijfers die ertoe doen voor game audio.",
+      "desc": "Cijfers die belangrijk zijn voor game audio.",
       "events": "~70 audio events",
-      "events_desc": "Speler acties, omgeving, UI, publiek, hazards, boost, botsingen, oppervlakte wijzigingen, race markers",
+      "events_desc": "Speler acties, omgeving, UI, publiek, obstakels, boost, botsingen, oppervlakte wijzigingen, race markers",
       "footprint": "180 MB audio",
       "footprint_desc": "Streaming en Vorbis compressie. ~450 bronbestanden verwerkt",
       "voice_count": "Max 32 voices aan",
@@ -371,11 +371,11 @@
       "solution_label": "Oplossing:",
       "challenge1": {
         "title": "Mix Helderheid met 4 Spelers",
-        "problem": "Met 4 spelers stapelen geluiden zich en UI wordt onhoorbaar.",
+        "problem": "Met 4 spelers stapelen geluiden zich op en UI wordt onhoorbaar.",
         "solution": "Limiet max 4 botsingsgeluiden. Elke speler krijgt ander EQ bereik. Publiek duckt als UI speelt."
       },
       "challenge2": {
-        "title": "Klikken bij Oppervlakte Wisseling",
+        "title": "Klikken bij Oppervlak Wisseling",
         "problem": "Overgangen tussen baanmaterialen (asfalt → zand → metaal) gaven hoorbare klikken.",
         "solution": "Vloeiende crossfades 150ms. Oppervlakte-detectie met overlap 0.2s om snelle wissels te voorkomen."
       },
