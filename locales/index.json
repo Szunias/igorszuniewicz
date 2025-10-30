@@ -19,7 +19,11 @@
       "description": "Interactive music in Wwise/FMOD. Sound design for games and animation. Audio tools that actually work in production.",
       "cta1": "View My Work",
       "cta_cv": "CV",
-      "cta2": "Get In Touch"
+      "cta2": "Get In Touch",
+      "cv_pdf": "Download PDF",
+      "cv_pdf_desc": "Clean, professional format",
+      "cv_web": "View Interactive Resume",
+      "cv_web_desc": "Portfolio style with visuals"
     },
     "demo_reel": {
       "badge": "🎬 Audio Showcase",
@@ -102,7 +106,11 @@
       "description": "Muzyka interaktywna w Wwise/FMOD. Sound design dla gier i animacji. Narzędzia audio, które sprawdzają się w produkcji.",
       "cta1": "Zobacz portfolio",
       "cta_cv": "CV",
-      "cta2": "Skontaktuj się"
+      "cta2": "Skontaktuj się",
+      "cv_pdf": "Pobierz PDF",
+      "cv_pdf_desc": "Czysty, profesjonalny format",
+      "cv_web": "Zobacz interaktywne CV",
+      "cv_web_desc": "Styl portfolio z wizualizacjami"
     },
     "demo_reel": {
       "badge": "🎬 Pokaz Audio",
@@ -185,7 +193,11 @@
       "description": "Interactieve muziek in Wwise/FMOD. Sound design voor games en animatie. Audio tools die echt werken in productie.",
       "cta1": "Bekijk portfolio",
       "cta_cv": "CV",
-      "cta2": "Neem contact op"
+      "cta2": "Neem contact op",
+      "cv_pdf": "Download PDF",
+      "cv_pdf_desc": "Schoon, professioneel formaat",
+      "cv_web": "Bekijk interactief CV",
+      "cv_web_desc": "Portfolio stijl met visuals"
     },
     "demo_reel": {
       "badge": "🎬 Audio Showreel",
