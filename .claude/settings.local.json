@@ -15,7 +15,8 @@
       "Bash(FFMPEG=\"/c/ffmpeg/ffmpeg-n8.0-latest-win64-lgpl-8.0/bin/ffmpeg\")",
       "Bash(\"$FFMPEG\" -i \"assets/audio/tracks/Cage.mp3\" -c:a aac -b:a 256k -movflags +faststart \"assets/audio/tracks/Cage.m4a\" -y)",
       "Bash(/c/ffmpeg/ffmpeg-n8.0-latest-win64-lgpl-8.0/bin/ffmpeg:*)",
-      "Bash(awk:*)"
+      "Bash(awk:*)",
+      "Read(//c/Users/szuni/OneDrive/Pulpit/CV/**)"
     ],
     "deny": [],
     "ask": []
