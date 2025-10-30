@@ -25,10 +25,10 @@ p{ color: var(--pro-text-dim); }
 
 /* Cards */
 .post, .project-card, .contact-card, .about-card, #cv-section .box{
-  background: var(--pro-card) !important;
-  border: 1px solid var(--pro-border) !important;
-  border-radius: var(--pro-radius) !important;
-  box-shadow: var(--pro-shadow) !important;
+  background: var(--pro-card);
+  border: 1px solid var(--pro-border);
+  border-radius: var(--pro-radius);
+  box-shadow: var(--pro-shadow);
 }
 
 /* Buttons */
@@ -36,7 +36,7 @@ p{ color: var(--pro-text-dim); }
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   height: 44px; padding: 0 16px; border-radius: 12px;
   background: linear-gradient(90deg,var(--pro-accent),var(--pro-accent-2));
-  color: #07131a !important; border: none;
+  color: #07131a; border: none;
   font-weight: 900; letter-spacing: .4px; text-transform: uppercase;
   box-shadow: 0 10px 26px rgba(24,191,239,0.28);
 }
@@ -44,15 +44,15 @@ p{ color: var(--pro-text-dim); }
 
 /* Ghost (outline) variant used in hero secondary CTA */
 .hero-cta .button:not(.primary){
-  background: transparent; color: var(--pro-text) !important;
+  background: transparent; color: var(--pro-text);
   border: 2px solid rgba(255,255,255,0.85);
   box-shadow: none;
 }
-.hero-cta .button:not(.primary):hover{ border-color: var(--pro-accent); color: #fff !important; }
+.hero-cta .button:not(.primary):hover{ border-color: var(--pro-accent); color: #fff; }
 
 /* Lists in education / about */
-#cv-section .box ul li, .about-card ul li{ color: var(--pro-text) !important; }
-#cv-section .box ul li strong, .about-card ul li strong{ color: #fff !important; }
+#cv-section .box ul li, .about-card ul li{ color: var(--pro-text); }
+#cv-section .box ul li strong, .about-card ul li strong{ color: #fff; }
 
 /* Project cards grid polish */
 .projects-grid{ gap: 20px; }
@@ -86,14 +86,14 @@ p{ color: var(--pro-text-dim); }
 }
 
 /* Background: simplify to a clean, professional base */
-html, body { background: #0b141a !important; }
+html, body { background: #0b141a; }
 
 /* Remove previous decorative overlays */
 body::before,
 body::after {
   content: none !important;
-  background: none !important;
-  animation: none !important;
+  background: none;
+  animation: none;
 }
 
 /* Quiet the extra background elements for a cleaner look */
@@ -101,7 +101,7 @@ body::after {
 .bg-waves,
 .bg-eq,
 .bg-glow {
-  display: none !important;
+  display: none;
 }
 
 /* Striped Tech - Dynamic & Modern */
@@ -165,7 +165,7 @@ body::after {
   height: 40px; padding: 0 16px; border-radius: 999px;
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.12);
-  color: var(--pro-text) !important; backdrop-filter: blur(6px);
+  color: var(--pro-text); backdrop-filter: blur(6px);
   transition: background .25s ease, border-color .25s ease, transform .15s ease;
 }
 .section-pills a:hover{
