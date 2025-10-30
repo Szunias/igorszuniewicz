@@ -4,16 +4,31 @@
   <style>
     /* CRITICAL: Load immediately before anything else */
     html, body {
-      background: 
-        linear-gradient(180deg, rgba(18, 6, 7, 0.75) 0%, rgba(27, 9, 11, 0.80) 60%, rgba(36, 9, 10, 0.85) 100%),
-        url('../assets/images/projects-pausedeserve/backgroun/bgpause.jpg') center/cover no-repeat !important;
+      background:
+        linear-gradient(180deg, rgba(18, 6, 7, 0.75) 0%, rgba(27, 9, 11, 0.80) 60%, rgba(36, 9, 10, 0.85) 100%);
       margin: 0;
       padding: 0;
+      /* Optimized background loading */
+      background-image: linear-gradient(180deg, rgba(18, 6, 7, 0.75) 0%, rgba(27, 9, 11, 0.80) 60%, rgba(36, 9, 10, 0.85) 100%);
     }
+    
+    /* Optimized background image loading */
+    body.bg-loaded {
+      background-image:
+        linear-gradient(180deg, rgba(18, 6, 7, 0.75) 0%, rgba(27, 9, 11, 0.80) 60%, rgba(36, 9, 10, 0.85) 100%),
+        url('../assets/images/projects-pausedeserve/backgroun/bgpausedeserve.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      will-change: transform;
+    }
+    
     /* Hide content until fully loaded */
     .content {
       opacity: 0;
       transition: opacity 0.3s ease;
+      will-change: opacity;
     }
     body.loaded .content {
       opacity: 1;
@@ -33,6 +48,7 @@
       justify-content: center;
       animation: horrorFadeOut 1.75s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       pointer-events: none;
+      will-change: opacity, visibility;
     }
     
     @keyframes horrorFadeOut {
@@ -49,13 +65,13 @@
       overflow: hidden;
     }
     
-    /* Individual flame */
+    /* Individual flame - optimized */
     .flame {
       position: absolute;
       bottom: -50px;
       width: 40px;
       height: 150px;
-      background: linear-gradient(to top, 
+      background: linear-gradient(to top,
         rgba(255, 60, 0, 0.9) 0%,
         rgba(255, 120, 0, 0.7) 30%,
         rgba(255, 180, 0, 0.4) 60%,
@@ -63,6 +79,7 @@
       border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
       filter: blur(5px);
       animation: flameRise 2s ease-in-out infinite;
+      will-change: transform, opacity;
     }
     
     @keyframes flameRise {
@@ -147,7 +164,7 @@
     .blood-drip:nth-child(2) { left: 50%; animation-delay: 1.5s; width: 3px; }
     .blood-drip:nth-child(3) { left: 70%; animation-delay: 1.8s; }
     
-    /* Vignette pulse */
+    /* Vignette pulse - optimized */
     .vignette {
       position: absolute;
       top: 0;
@@ -156,6 +173,7 @@
       height: 100%;
       background: radial-gradient(circle at center, transparent 0%, rgba(139, 0, 0, 0.3) 70%, #000 100%);
       animation: vignettePulse 2s ease-in-out infinite;
+      will-change: opacity;
     }
     
     @keyframes vignettePulse {
@@ -185,13 +203,27 @@
     html, body {
       width: 100%;
       height: 100%;
-      background: 
-        linear-gradient(180deg, rgba(18, 6, 7, 0.75) 0%, rgba(27, 9, 11, 0.80) 60%, rgba(36, 9, 10, 0.85) 100%),
-        url('../assets/images/projects-pausedeserve/backgroun/bgpause.jpg') center/cover no-repeat;
+      background:
+        linear-gradient(180deg, rgba(18, 6, 7, 0.75) 0%, rgba(27, 9, 11, 0.80) 60%, rgba(36, 9, 10, 0.85) 100%);
       color: #f0d0d0;
       font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
       scroll-behavior: smooth;
+      /* Performance optimizations */
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+    
+    /* Background image loaded state */
+    body.bg-loaded {
+      background-image:
+        linear-gradient(180deg, rgba(18, 6, 7, 0.75) 0%, rgba(27, 9, 11, 0.80) 60%, rgba(36, 9, 10, 0.85) 100%),
+        url('../assets/images/projects-pausedeserve/backgroun/bgpausedeserve.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
     }
     
     /* === CONTENT WRAPPER === */
@@ -430,13 +462,14 @@
     }
     
     .video-container:hover {
-      box-shadow: 
+      box-shadow:
         0 35px 90px rgba(0,0,0,1),
         0 0 60px rgba(255, 50, 50, 0.5),
         0 0 0 1px rgba(255, 80, 80, 0.5),
         inset 0 0 80px rgba(0, 0, 0, 0.6);
       border-color: rgba(255, 80, 80, 0.6);
       transform: scale(1.01) translateY(-5px);
+      will-change: transform, box-shadow;
     }
     
     .video-container iframe {
@@ -470,6 +503,7 @@
       height: auto;
       border-radius: 20px;
       transition: transform 0.4s ease;
+      will-change: transform;
     }
     
     .hero-image:hover img {
@@ -572,10 +606,11 @@
       background: linear-gradient(135deg, rgba(30, 5, 10, 0.85) 0%, rgba(40, 10, 15, 0.75) 100%);
       border-color: rgba(255, 80, 80, 0.5);
       transform: translateY(-8px) scale(1.02);
-      box-shadow: 
+      box-shadow:
         0 20px 50px rgba(0, 0, 0, 0.8),
         0 0 30px rgba(255, 50, 50, 0.3),
         inset 0 0 40px rgba(255, 30, 30, 0.1);
+      will-change: transform, box-shadow;
     }
     
     .mechanic-card h4 {
@@ -618,9 +653,10 @@
       transform: translateY(-8px) scale(1.05);
       background: linear-gradient(135deg, rgba(25, 5, 8, 0.8) 0%, rgba(35, 10, 13, 0.7) 100%);
       border-color: rgba(255, 80, 80, 0.6);
-      box-shadow: 
+      box-shadow:
         0 15px 45px rgba(0, 0, 0, 0.8),
         0 0 30px rgba(255, 50, 50, 0.3);
+      will-change: transform, box-shadow;
     }
     
     .tech-item img {
@@ -678,8 +714,9 @@
       width: 100%;
       height: 250px;
       object-fit: cover;
-      transition: all 0.4s ease;
+      transition: transform 0.4s ease, filter 0.4s ease;
       filter: brightness(0.85) contrast(1.1);
+      will-change: transform, filter;
     }
     
     .gallery-item:hover img {
@@ -850,6 +887,40 @@
     .audio-player[data-audio*="placeholder.wav"] {
       display: none !important;
     }
+    
+    /* Performance optimizations */
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Optimize scrolling performance */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      overflow-x: hidden;
+      /* Enable hardware acceleration */
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+    
+    /* Optimize animations */
+    .mechanic-card, .gallery-item, .tech-item, .video-container {
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+    
+    /* Lazy loading placeholder */
+    img.lazy {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    img.lazy.loaded {
+      opacity: 1;
+    }
   </style>
 </head>
 <body style="margin:0;padding:0;">
@@ -1002,11 +1073,11 @@
       <h2 data-i18n="tech.title">Audio Technology</h2>
       <div class="tech-stack">
         <div class="tech-item">
-          <img src="../assets/images/projects-pausedeserve/wwise_logo_rgb-77Awrfoo.png" alt="Wwise" />
+          <img data-src="../assets/images/projects-pausedeserve/wwise_logo_rgb-77Awrfoo.png" alt="Wwise" class="lazy" />
           <span>Wwise Audio Middleware</span>
         </div>
         <div class="tech-item">
-          <img src="../assets/images/projects-pausedeserve/Unreal_Engine-Logo.wine.png" alt="Unreal Engine" />
+          <img data-src="../assets/images/projects-pausedeserve/Unreal_Engine-Logo.wine.png" alt="Unreal Engine" class="lazy" />
           <span>Unreal Engine Integration</span>
         </div>
       </div>
@@ -1267,14 +1338,50 @@
     })();
   </script>
   
-  <!-- Scroll Reveal Animation Script -->
+  <!-- Optimized Performance Script -->
   <script>
+    // Optimized background image loading
+    function loadBackgroundImage() {
+      const img = new Image();
+      img.src = '../assets/images/projects-pausedeserve/backgroun/bgpausedeserve.jpeg';
+      img.onload = () => {
+        document.body.classList.add('bg-loaded');
+      };
+    }
+    
     // Remove preload state
     window.addEventListener('load', () => {
       document.body.classList.add('loaded');
+      loadBackgroundImage();
     });
     
-    // Smooth scroll reveal
+    // Lazy loading for images
+    function setupLazyLoading() {
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              img.onload = () => {
+                img.classList.add('loaded');
+              };
+              img.classList.remove('lazy');
+              imageObserver.unobserve(img);
+            }
+          }
+        });
+      }, {
+        rootMargin: '50px 0px',
+        threshold: 0.01
+      });
+      
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+      });
+    }
+    
+    // Smooth scroll reveal with performance optimizations
     const observerOptions = {
       threshold: 0.15,
       rootMargin: '0px 0px -100px 0px'
@@ -1284,6 +1391,8 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          // Stop observing once visible
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
@@ -1295,13 +1404,19 @@
         document.body.classList.add('loaded');
       }, 100);
       
+      // Start background image loading
+      loadBackgroundImage();
+      
+      // Setup lazy loading
+      setupLazyLoading();
+      
       const sections = document.querySelectorAll('section, .video-section, .hero-image');
       sections.forEach(section => observer.observe(section));
       
-      // Stagger animation for cards
+      // Stagger animation for cards with reduced delay
       const cards = document.querySelectorAll('.mechanic-card, .gallery-item, .tech-item');
       cards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 0.08}s`;
+        card.style.transitionDelay = `${index * 0.05}s`; // Reduced from 0.08s
       });
     });
   </script>
