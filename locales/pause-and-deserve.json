@@ -2,7 +2,7 @@
   "en": {
     "back": "Back to Projects",
     "title": "Pause & Deserve",
-    "tagline": "Survival horror game where pausing time has consequences.",
+    "tagline": "A psychological horror experience where every pause comes with a price.",
     "meta": {
       "year": {
         "label": "Year",
@@ -10,68 +10,68 @@
       }
     },
     "gameplay": {
-      "title": "Sound is Everything",
-      "desc": "You hear Death getting closer. The world reacts when you freeze time. Every footstep builds tension. That's the game."
+      "title": "Sound is Your Only Guide",
+      "desc": "Listen carefully - Death is getting closer. The world shifts when you freeze time. Every footstep makes your heart race. That's the essence of the game."
     },
     "overview": {
-      "title": "Sound Design Philosophy",
-      "desc": "The horror in this game comes from what you hear. Death's footsteps get louder as it closes in. The environment shifts and groans when you freeze time. Every sound layer works together to keep you on edge."
+      "title": "Creating Horror Through Sound",
+      "desc": "What you can't see will haunt you. Death's footsteps grow louder as it hunts you down. The environment groans and transforms when you pause. Every sound is designed to keep you on the edge of your seat."
     },
     "soundscape": {
-      "title": "Building Atmosphere",
-      "desc": "Dark drones, distant screams, your own footsteps. It all creates this oppressive feeling. But it never drowns out what you need to hear.",
-      "oppressive_title": "Always Unsettling",
-      "oppressive_desc": "Low drones, distant screams, weird textures. Never lets you relax",
-      "proximity_title": "Death is Coming",
-      "proximity_desc": "Sounds get more intense as Death closes in. Your heartbeat starts pounding when it's really close",
-      "environmental_title": "The World Reacts",
-      "environmental_desc": "Walls moving, echoes changing, space shifting. You hear everything"
+      "title": "Crafting the Atmosphere",
+      "desc": "Deep drones echo through the darkness, distant screams pierce the silence, and your own footsteps betray your position. It creates an oppressive feeling without drowning out the crucial sounds you need to hear.",
+      "oppressive_title": "Constant Unease",
+      "oppressive_desc": "Low-frequency drones, distant cries, and unsettling textures that never let you feel safe",
+      "proximity_title": "Death Approaches",
+      "proximity_desc": "Audio intensity rises as Death gets closer. Your own heartbeat pounds when danger is near",
+      "environmental_title": "A Living World",
+      "environmental_desc": "Walls shift, echoes change, spaces transform. Every environmental change has its own sound"
     },
     "audio_system": {
-      "title": "Dynamic Audio",
-      "desc": "Everything reacts in real time. Hit pause and time warps with pitch shifts. Death speeds up, audio gets more intense. Move around and reverb changes with the space.",
-      "pause_title": "Time Freeze Effect",
-      "pause_desc": "When you pause, everything slows down. Pitch drops, long reverb tails, the whole thing",
-      "threat_title": "Escalating Tension",
-      "threat_desc": "The closer Death gets, the more intense it becomes. Speed matters too",
-      "spatial_title": "3D Positioning",
-      "spatial_desc": "You can track Death by sound alone. Footsteps tell you exactly where it is"
+      "title": "Reactive Audio System",
+      "desc": "Every action triggers a sound response. Pause time and hear reality warp. Death speeds up and the audio becomes frantic. Move through different spaces and hear the acoustics change around you.",
+      "pause_title": "Time Manipulation Effects",
+      "pause_desc": "When you pause, time stretches and distorts. Pitch shifts downward, reverb extends, creating an otherworldly experience",
+      "threat_title": "Dynamic Intensity",
+      "threat_desc": "Audio escalates with Death's proximity and speed. The closer and faster it gets, the more chaotic the soundscape becomes",
+      "spatial_title": "3D Audio Positioning",
+      "spatial_desc": "Track Death's location through sound alone. Footsteps and environmental cues tell you exactly where danger lurks"
     },
     "tension": {
-      "title": "Messing With Your Head",
-      "desc": "Bass frequencies you feel more than hear. Fake sounds that make you second guess everything. Silence that makes sudden noises hit way harder. All designed to keep you paranoid.",
-      "subbass_title": "Feel the Dread",
-      "subbass_desc": "Low frequencies you barely hear but feel in your chest. Makes you uneasy without knowing why",
-      "silence_title": "Silence is Scary",
-      "silence_desc": "Quiet moments make sudden sounds hit harder. You never get used to it",
-      "misdirection_title": "Trust Nothing",
-      "misdirection_desc": "Fake footsteps and misleading sounds. You never know what's real"
+      "title": "Psychological Warfare",
+      "desc": "Sub-bass frequencies that you feel more than hear. Deceptive sounds that make you question reality. Strategic silence that makes sudden noises terrifying. Every element designed to mess with your mind.",
+      "subbass_title": "Physical Dread",
+      "subbass_desc": "Ultra-low frequencies you barely notice but feel in your chest, creating unease you can't explain",
+      "silence_title": "The Sound of Fear",
+      "silence_desc": "Quiet moments amplify sudden sounds, keeping you constantly on edge and never desensitized",
+      "misdirection_title": "Sensory Deception",
+      "misdirection_desc": "False footsteps and misleading audio cues that make you question what's real and what's imagined"
     },
     "mechanics": {
       "chase": {
-        "title": "Relentless Chase",
-        "desc": "Death hunts you down. It navigates around obstacles and learns your patterns. It's always there."
+        "title": "The Hunter",
+        "desc": "Death relentlessly pursues you through the shifting landscape. It learns your patterns and adapts its strategy. You can never truly escape."
       },
       "pause": {
-        "title": "Strategic Pause",
-        "desc": "Freeze Death for a few seconds to escape. But there's a cooldown, and it makes Death faster next time."
+        "title": "The Price of Time",
+        "desc": "Freeze Death temporarily to buy yourself precious seconds. But each use comes with a cost - Death becomes faster and more aggressive afterward."
       },
       "world": {
-        "title": "Dynamic Environment",
-        "desc": "The world shifts over time. Walls close in, paths change, lights dim. Nowhere is safe for long."
+        "title": "Shifting Reality",
+        "desc": "The environment is never static. Walls close in, paths rearrange, lights flicker and die. Safety is always temporary."
       },
       "score": {
-        "title": "Survival Challenge",
-        "desc": "See how long you can survive. The game tracks your best times and pushes you to think fast."
+        "title": "How Long Can You Last?",
+        "desc": "Test your survival instincts. The game tracks your longest runs and challenges you to outthink, outmaneuver, and outlast Death itself."
       }
     },
     "design": {
       "title": "Design Philosophy",
-      "desc": "Make you feel trapped. First-person view so you can't see behind you. AI that hunts smart, not cheap. Audio that gets in your head. Built through fast prototyping and lots of playtesting."
+      "desc": "We wanted to create true claustrophobia. First-person perspective means you can't see what's behind you. An AI that hunts intelligently rather than cheaply. Audio that gets inside your head. Built through rapid prototyping and extensive player testing."
     },
     "tech": {
-      "title": "Audio Tools",
-      "desc": "Built with Wwise for real time audio control. Everything responds to distance, speed, player state. All mixed on the fly."
+      "title": "Audio Technology",
+      "desc": "Powered by Wwise for real-time audio control. Every sound responds to distance, speed, and player state. All mixed dynamically to create the perfect horror experience."
     },
     "gallery": {
       "title": "Development Gallery",
@@ -80,14 +80,15 @@
       "corridor": "The Red Corridor",
       "key": "Interactive Elements"
     },
+    "wip_badge": "Work in Progress",
     "button": {
-      "projects": "Projekty"
+      "projects": "All Projects"
     }
   },
   "pl": {
     "back": "Powrót do projektów",
     "title": "Pause & Deserve",
-    "tagline": "Survival horror, gdzie pauza ma konsekwencje.",
+    "tagline": "Doświadczenie horroru psychologicznego, w którym każda pauza ma swoją cenę.",
     "meta": {
       "year": {
         "label": "Rok",
@@ -95,68 +96,68 @@
       }
     },
     "gameplay": {
-      "title": "Dźwięk to wszystko",
-      "desc": "Słyszysz, jak Śmierć się zbliża. Świat reaguje, kiedy zamrażasz czas. Każdy krok buduje napięcie. To jest ta gra."
+      "title": "Dźwięk to twój jedyny przewodnik",
+      "desc": "Słuchaj uważnie - Śmierć się zbliża. Świat zmienia się, gdy zamrażasz czas. Każdy krok przyśpiesza bicie twojego serca. To istota tej gry."
     },
     "overview": {
-      "title": "Filozofia sound designu",
-      "desc": "Horror w tej grze to to, co słyszysz. Kroki Śmierci robią się głośniejsze, jak się zbliża. Środowisko jęczy i pęka, kiedy zamrażasz czas. Każda warstwa dźwięku trzyma cię w napięciu."
+      "title": "Tworzenie horroru przez dźwięk",
+      "desc": "To, czego nie widzisz, będzie cię prześladować. Kroki Śmierci stają się głośniejsze, gdy cię poluje. Otoczenie jęczy i transformuje się, gdy używasz pauzy. Każdy dźwięk zaprojektowano, by trzymać cię w napięciu."
     },
     "soundscape": {
-      "title": "Budowanie atmosfery",
-      "desc": "Ciemne drony, odległe krzyki, twoje kroki. To wszystko tworzy przytłaczające uczucie. Ale nigdy nie zagłusza tego, co musisz usłyszeć.",
-      "oppressive_title": "Zawsze niepokojące",
-      "oppressive_desc": "Niskie drony, dalekie krzyki, dziwne tekstury. Nigdy nie daje ci odpocząć",
-      "proximity_title": "Śmierć nadchodzi",
-      "proximity_desc": "Dźwięki robią się intensywniejsze, jak Śmierć się zbliża. Serce zaczyna walić, jak jest naprawdę blisko",
-      "environmental_title": "Świat reaguje",
-      "environmental_desc": "Ściany się ruszają, echa się zmieniają, przestrzeń się zmienia. Słyszysz wszystko"
+      "title": "Kreowanie atmosfery",
+      "desc": "Głębokie drony odbijają się w ciemności, odległe krzyki przecinają ciszę, a twoje własne kroki zdradzają twoją pozycję. To tworzy przytłaczające uczucie, nie zagłuszając kluczowych dźwięków, które musisz usłyszeć.",
+      "oppressive_title": "Stały niepokój",
+      "oppressive_desc": "Niskoczęstotliwościowe drony, odległe okrzyki i niepokojące tekstury, które nigdy nie pozwalają ci czuć się bezpiecznie",
+      "proximity_title": "Nadchodząca Śmierć",
+      "proximity_desc": "Intensywność dźwięku rośnie, gdy Śmierć się zbliża. Twoje własne serce wali, gdy niebezpieczeństwo jest blisko",
+      "environmental_title": "Żyjący świat",
+      "environmental_desc": "Ściany się przesuwają, echa się zmieniają, przestrzenie transformują się. Każda zmiana otoczenia ma swój własny dźwięk"
     },
     "audio_system": {
-      "title": "Dynamiczne audio",
-      "desc": "Wszystko reaguje w czasie rzeczywistym. Wciśniesz pauzę i czas się wykrzywia. Śmierć przyspiesza, audio robi się intensywniejsze. Poruszasz się i reverb się zmienia z przestrzenią.",
-      "pause_title": "Efekt zamrożenia czasu",
-      "pause_desc": "Kiedy pauzujesz, wszystko zwalnia. Obniżenie tonu, długie ogony reverbu, cała ta zabawa",
-      "threat_title": "Rosnące napięcie",
-      "threat_desc": "Im bliżej Śmierć, tym bardziej intensywne. Prędkość też ma znaczenie",
-      "spatial_title": "Pozycjonowanie 3D",
-      "spatial_desc": "Możesz śledzić Śmierć tylko po dźwięku. Kroki mówią ci dokładnie, gdzie jest"
+      "title": "Reaktywny system audio",
+      "desc": "Każda akcja wywołuje reakcję dźwiękową. Zatrzymaj czas i usłysz, jak realność się wypacza. Śmierć przyspiesza, a dźwięk staje się chaotyczny. Przesuwaj się przez różne przestrzenie i słuchaj, jak zmienia się akustyka wokół ciebie.",
+      "pause_title": "Efekty manipulacji czasem",
+      "pause_desc": "Gdy pauzujesz, czas się rozciąga i zniekształca. Ton przesuwa się w dół, pogłos się wydłuża, tworząc nadprzyrodzone doświadczenie",
+      "threat_title": "Dynamiczna intensywność",
+      "threat_desc": "Dźwięk eskaluje wraz z bliskością i prędkością Śmierci. Im bliżej i szybciej się zbliża, tym bardziej chaotyczna staje się ścieżka dźwiękowa",
+      "spatial_title": "Pozycjonowanie dźwięku 3D",
+      "spatial_desc": "Śledź lokalizację Śmierci tylko za pomocą dźwięku. Kroki i wskazówki środowiskowe mówią ci dokładnie, gdzie czai się niebezpieczeństwo"
     },
     "tension": {
-      "title": "Gry z głową",
-      "desc": "Basy, które czujesz bardziej niż słyszysz. Fałszywe dźwięki, które cię mylą. Cisza, która sprawia, że nagłe hałasy biją mocniej. Wszystko, żebyś był na skraju paranoi.",
-      "subbass_title": "Czujesz strach",
-      "subbass_desc": "Niskie częstotliwości, których ledwo słyszysz, ale czujesz w klatce. Niepokoi cię bez powodu",
-      "silence_title": "Cisza straszy",
-      "silence_desc": "Ciche momenty sprawiają, że nagłe dźwięki biją mocniej. Nigdy się nie przyzwyczaisz",
-      "misdirection_title": "Nie ufaj niczemu",
-      "misdirection_desc": "Fałszywe kroki i mylące dźwięki. Nigdy nie wiesz, co jest prawdziwe"
+      "title": "Wojna psychologiczna",
+      "desc": "Sub-basowe częstotliwości, które czujesz bardziej niż słyszysz. Zmyślające dźwięki, które sprawiają, że wątpisz w rzeczywistość. Strategiczna cisza, która sprawia, że nagłe hałasy są przerażające. Każdy element zaprojektowano, by manipulować twoim umysłem.",
+      "subbass_title": "Fizyczny lęk",
+      "subbass_desc": "Ultra-niskie częstotliwości, których ledwo zauważasz, ale czujesz w klatce piersiowej, tworząc niepokój, którego nie możesz wyjaśnić",
+      "silence_title": "Dźwięk strachu",
+      "silence_desc": "Ciche momenty wzmacniają nagłe dźwięki, utrzymując cię w stałym napięciu i zapobiegając przyzwyczajeniu się",
+      "misdirection_title": "Zmysłowe oszustwo",
+      "misdirection_desc": "Fałszywe kroki i mylące wskazówki dźwiękowe, które sprawiają, że zastanawiasz się, co jest prawdziwe, a co wyobrażone"
     },
     "mechanics": {
       "chase": {
-        "title": "Nieustanna pogoń",
-        "desc": "Śmierć cię poluje. Omija przeszkody i uczy się twoich schematów. Zawsze tam jest."
+        "title": "Łowca",
+        "desc": "Śmierć bezlitośnie ściga cię przez zmieniający się krajobraz. Uczy się twoich wzorców i adaptuje swoją strategię. Nigdy naprawdę nie możesz uciec."
       },
       "pause": {
-        "title": "Strategiczna pauza",
-        "desc": "Zamroź Śmierć na kilka sekund żeby uciec. Ale jest cooldown i sprawia że Śmierć jest szybsza następnym razem."
+        "title": "Cena czasu",
+        "desc": "Zamroź Śmierć tymczasowo, by zyskać cenne sekundy. Ale każde użycie ma swoją cenę - Śmierć staje się szybsza i bardziej agresywna potem."
       },
       "world": {
-        "title": "Dynamiczne środowisko",
-        "desc": "Świat się zmienia z czasem. Ściany się zamykają, ścieżki się zmieniają, światło zgasa. Nigdzie nie jest bezpiecznie na długo."
+        "title": "Zmienna rzeczywistość",
+        "desc": "Otoczenie nigdy nie jest statyczne. Ściany się zamykają, ścieżki się rearranżują, światła migoczą i gasną. Bezpieczeństwo jest zawsze tymczasowe."
       },
       "score": {
-        "title": "Wyzwanie przetrwania",
-        "desc": "Zobacz jak długo przetrwasz. Gra śledzi twoje najlepsze czasy i zmusza cię do szybkiego myślenia."
+        "title": "Jak długo przetrwasz?",
+        "desc": "Przetestuj swoje instynkty przetrwania. Gra śledzi twoje najdłuższe próby i wyzwala cię, byś outthinkował, outmanewrował i outlastował samą Śmierć."
       }
     },
     "design": {
-      "title": "Filozofia projektu",
-      "desc": "Sprawić żebyś czuł się w pułapce. FPP więc nie widzisz za sobą. AI które poluje sprytnie, nie tanio. Audio które wchodzi ci do głowy. Zbudowane przez szybkie prototypowanie i dużo playtestów."
+      "title": "Filozofia projektowania",
+      "desc": "Chcieliśmy stworzyć prawdziwą klaustrofobię. Perspektywa pierwszej osoby oznacza, że nie widzisz, co jest za tobą. AI, które poluje inteligentnie, a nie tanio. Dźwięk, który wnika do twojej głowy. Zbudowane przez szybkie prototypowanie i obszerne testowanie graczy."
     },
     "tech": {
-      "title": "Narzędzia audio",
-      "desc": "Zrobione w Wwise do kontroli audio w czasie rzeczywistym. Wszystko reaguje na dystans, prędkość, stan gracza. Wszystko miksowane na bieżąco."
+      "title": "Technologia audio",
+      "desc": "Napędzane przez Wwise do kontroli dźwięku w czasie rzeczywistym. Każdy dźwięk reaguje na odległość, prędkość i stan gracza. Wszystko miksowane dynamicznie, by stworzyć idealne doświadczenie horroru."
     },
     "gallery": {
       "title": "Galeria rozwoju",
@@ -165,14 +166,15 @@
       "corridor": "Czerwony korytarz",
       "key": "Elementy interaktywne"
     },
+    "wip_badge": "W toku",
     "button": {
-      "projects": "Projekty"
+      "projects": "Wszystkie projekty"
     }
   },
   "nl": {
     "back": "Terug naar projecten",
     "title": "Pause & Deserve",
-    "tagline": "Survival horrorgame waar pauze consequenties heeft.",
+    "tagline": "Een psychologische horrorervaring waarbij elke pauze een prijs heeft.",
     "meta": {
       "year": {
         "label": "Jaar",
@@ -180,78 +182,79 @@
       }
     },
     "gameplay": {
-      "title": "Geluid is alles",
-      "desc": "Je hoort de Dood dichterbij komen. De wereld reageert als je de tijd bevriest. Elke voetstap bouwt spanning op. Dat is de game."
+      "title": "Geluid is je enige gids",
+      "desc": "Luister goed - de Dood komt dichterbij. De wereld verandert als je de tijd bevriest. Elke voetstap laat je hart sneller kloppen. Dat is de essentie van het spel."
     },
     "overview": {
-      "title": "Sound Design Filosofie",
-      "desc": "De horror in deze game is wat je hoort. De Dood's voetstappen worden luider als het dichterbij komt. De omgeving kreunt en kraakt als je tijd bevriest. Elke geluidslaag houdt je op scherp."
+      "title": "Horror creëren door geluid",
+      "desc": "Wat je niet ziet, zal je achtervolgen. De voetstappen van de Dood worden luider terwijl het je opjaagt. De omgeving kreunt en transformeert als je pauzeert. Elk geluid is ontworpen om je op het puntje van je stoel te houden."
     },
     "soundscape": {
-      "title": "Atmosfeer Bouwen",
-      "desc": "Donkere drones, verre schreeuwen, je eigen voetstappen. Het creëert dit beklemmende gevoel. Maar het overspoelt nooit wat je moet horen.",
-      "oppressive_title": "Altijd Verontrustend",
-      "oppressive_desc": "Lage drones, verre schreeuwen, rare texturen. Laat je nooit ontspannen",
-      "proximity_title": "De Dood Komt",
-      "proximity_desc": "Geluiden worden intenser als de Dood dichterbij komt. Je hart begint te bonzen als het echt dichtbij is",
-      "environmental_title": "De Wereld Reageert",
-      "environmental_desc": "Muren bewegen, echo's veranderen, ruimte verschuift. Je hoort alles"
+      "title": "Atmosfeer creëren",
+      "desc": "Diepe drones echoën door de duisternis, verre kreten doorbreken de stilte, en je eigen voetstappen verraden je positie. Het creëert een benauwd gevoel zonder de cruciale geluiden te overstemmen die je moet horen.",
+      "oppressive_title": "Constante onrust",
+      "oppressive_desc": "Lagfrequente drones, verre kreten en onrustige texturen die je nooit laten voelen alsof je veilig bent",
+      "proximity_title": "De Dood nadert",
+      "proximity_desc": "Geluidsintensiteit neemt toe als de Dood dichterbij komt. Je eigen hart bonkt als gevaar nabij is",
+      "environmental_title": "Een levende wereld",
+      "environmental_desc": "Muren verschuiven, echo's veranderen, ruimtes transformeren. Elke omgevingsverandering heeft zijn eigen geluid"
     },
     "audio_system": {
-      "title": "Dynamische Audio",
-      "desc": "Alles reageert in real time. Druk op pauze en tijd vervormt. De Dood versnelt, audio wordt intenser. Beweeg rond en reverb verandert met de ruimte.",
-      "pause_title": "Tijd Bevries Effect",
-      "pause_desc": "Als je pauzeert, vertraagt alles. Pitch drops, lange reverb staarten, het hele ding",
-      "threat_title": "Escalerende Spanning",
-      "threat_desc": "Hoe dichterbij de Dood komt, hoe intenser het wordt. Snelheid telt ook mee",
-      "spatial_title": "3D Positionering",
-      "spatial_desc": "Je kunt de Dood alleen op geluid volgen. Voetstappen vertellen je precies waar het is"
+      "title": "Reactief audiosysteem",
+      "desc": "Elke actie triggert een geluidsreactie. Pauzeer de tijd en hoor hoe de realiteit vervormt. De Dood versnelt en het geluid wordt chaotisch. Beweeg door verschillende ruimtes en hoor hoe de akoestiek om je heen verandert.",
+      "pause_title": "Tijdmanipulatie-effecten",
+      "pause_desc": "Als je pauzeert, rekt de tijd uit en vervormt. Toonhoogte daalt, galm wordt langer, wat een bovennatuurlijke ervaring creëert",
+      "threat_title": "Dynamische intensiteit",
+      "threat_desc": "Geluid escaleert met de nabijheid en snelheid van de Dood. Hoe dichterbij en sneller het komt, hoe chaotischer het geluidslandschap wordt",
+      "spatial_title": "3D-geluidspositionering",
+      "spatial_desc": "Volg de locatie van de Dood alleen door geluid. Voetstappen en omgevingshints vertellen je precies waar gevaar schuilt"
     },
     "tension": {
-      "title": "Met Je Hoofd Spelen",
-      "desc": "Bass frequenties die je meer voelt dan hoort. Nep geluiden die je doen twijfelen. Stilte die plotselinge geluiden harder laat aankomen. Alles om je paranoïde te houden.",
-      "subbass_title": "Voel de Angst",
-      "subbass_desc": "Lage frequenties die je nauwelijks hoort maar voelt in je borst. Maakt je onrustig zonder reden",
-      "silence_title": "Stilte is Eng",
-      "silence_desc": "Stille momenten maken plotselinge geluiden harder. Je went er nooit aan",
-      "misdirection_title": "Vertrouw Niets",
-      "misdirection_desc": "Nep voetstappen en misleidende geluiden. Je weet nooit wat echt is"
+      "title": "Psychologische oorlogsvoering",
+      "desc": "Sub-basfrequenties die je meer voelt dan hoort. Misleidende geluiden die je aan het twijfelen brengen. Strategische stilte die plotselinge geluiden angstaanjagend maakt. Elk element ontworpen om met je hoofd te spelen.",
+      "subbass_title": "Fysieke angst",
+      "subbass_desc": "Ultra-lage frequenties die je nauwelijks opmerkt maar voelt in je borst, wat onrust creëert die je niet kunt verklaren",
+      "silence_title": "Het geluid van angst",
+      "silence_desc": "Stille momenten versterken plotselinge geluiden, waardoor je constant alert blijft en nooit ongevoelig wordt",
+      "misdirection_title": "Zintuiglijke misleiding",
+      "misdirection_desc": "Valse voetstappen en misleidende geluidshints die je laten twijfelen aan wat echt is en wat ingebeeld"
     },
     "mechanics": {
       "chase": {
-        "title": "Meedogenloze Achtervolging",
-        "desc": "De Dood jaagt je op. Het navigeert rond obstakels en leert je patronen. Het is er altijd."
+        "title": "De Jager",
+        "desc": "De Dood jaagt je onverbiddelijk na door het verschuivende landschap. Het leert je patronen en past zijn strategie aan. Je kunt nooit echt ontsnappen."
       },
       "pause": {
-        "title": "Strategische Pauze",
-        "desc": "Bevries de Dood voor een paar seconden om te ontsnappen. Maar er is een cooldown en het maakt de Dood sneller de volgende keer."
+        "title": "De prijs van tijd",
+        "desc": "Bevries de Dood tijdelijk om jezelf kostbare seconden te geven. Maar elk gebruik heeft een prijs - de Dood wordt sneller en agressiever achteraf."
       },
       "world": {
-        "title": "Dynamische Omgeving",
-        "desc": "De wereld verschuift in de loop der tijd. Muren sluiten, paden veranderen, lichten dimmen. Nergens is lang veilig."
+        "title": "Verschuivende realiteit",
+        "desc": "De omgeving is nooit statisch. Muren sluiten zich, paden herschikken zich, lichten flikkeren en doven. Veiligheid is altijd tijdelijk."
       },
       "score": {
-        "title": "Survival Uitdaging",
-        "desc": "Kijk hoe lang je kunt overleven. De game houdt je beste tijden bij en dwingt je snel te denken."
+        "title": "Hoe lang kun je volhouden?",
+        "desc": "Test je overlevingsinstincten. Het spel houdt je langste pogingen bij en daagt je uit om de Dood te overtreffen, te slim af te zijn en langer vol te houden dan de Dood zelf."
       }
     },
     "design": {
-      "title": "Design Filosofie",
-      "desc": "Je laten voelen dat je vast zit. First-person dus je ziet niet achter je. AI die slim jaagt, niet goedkoop. Audio dat in je hoofd kruipt. Gebouwd door snel prototypen en veel playtesting."
+      "title": "Ontwerpfilosofie",
+      "desc": "We wilden echte claustrofobie creëren. Eerste-persoon perspectief betekent dat je niet kunt zien wat achter je is. Een AI die slim jaagt, niet goedkoop. Audio dat in je hoofd kruipt. Gebouwd door snelle prototyping en uitgebreid spelertesten."
     },
     "tech": {
-      "title": "Audio Tools",
-      "desc": "Gebouwd met Wwise voor real time audio controle. Alles reageert op afstand, snelheid, speler staat. Alles live gemixt."
+      "title": "Audiotechnologie",
+      "desc": "Aangedreven door Wwise voor real-time audiobesturing. Elk geluid reageert op afstand, snelheid en spelerstatus. Alles dynamisch gemixt om de perfecte horrorervaring te creëren."
     },
     "gallery": {
       "title": "Ontwikkelingsgalerij",
       "death": "De Dood nadert",
-      "bushes": "Nachtmerrie Landschap",
-      "corridor": "De Rode Corridor",
+      "bushes": "Nachtmerrielandschap",
+      "corridor": "De Rode Gang",
       "key": "Interactieve Elementen"
     },
+    "wip_badge": "In ontwikkeling",
     "button": {
-      "projects": "Projecten"
+      "projects": "Alle Projecten"
     }
   }
 }
