@@ -81,7 +81,7 @@
       "key": "Interactive Elements"
     },
     "button": {
-      "projects": "All Projects"
+      "projects": "Projekty"
     }
   },
   "pl": {
@@ -166,7 +166,7 @@
       "key": "Elementy interaktywne"
     },
     "button": {
-      "projects": "Wszystkie projekty"
+      "projects": "Projekty"
     }
   },
   "nl": {
@@ -251,7 +251,7 @@
       "key": "Interactieve Elementen"
     },
     "button": {
-      "projects": "Alle projecten"
+      "projects": "Projecten"
     }
   }
 }

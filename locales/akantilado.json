@@ -250,7 +250,7 @@
       "pink_creature": "Postać różowego stworzenia"
     },
     "button": {
-      "projects": "Wszystkie projekty"
+      "projects": "Projekty"
     }
   },
   "nl": {
@@ -377,7 +377,7 @@
       "pink_creature": "Het roze wezen"
     },
     "button": {
-      "projects": "Alle projecten"
+      "projects": "Projecten"
     }
   }
 }

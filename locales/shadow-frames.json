@@ -96,7 +96,7 @@
       "coming": "◯ Full Audio Implementation"
     },
     "button": {
-      "projects": "All Projects"
+      "projects": "Projekty"
     }
   },
   "pl": {
@@ -196,7 +196,7 @@
       "coming": "◯ Pełna implementacja audio"
     },
     "button": {
-      "projects": "Wszystkie projekty"
+      "projects": "Projekty"
     }
   },
   "nl": {
@@ -296,7 +296,7 @@
       "coming": "◯ Volledige audio-implementatie"
     },
     "button": {
-      "projects": "Alle projecten"
+      "projects": "Projecten"
     }
   }
 }

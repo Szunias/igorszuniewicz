@@ -37,7 +37,7 @@
     "nav": {
       "work": "Projekty",
       "about": "O mnie",
-      "projects": "Wszystkie Projekty",
+      "projects": "Projekty",
       "contact": "Kontakt"
     },
     "hero": {
@@ -71,7 +71,7 @@
     "nav": {
       "work": "Werk",
       "about": "Over",
-      "projects": "Alle Projecten",
+      "projects": "Projecten",
       "contact": "Contact"
     },
     "hero": {

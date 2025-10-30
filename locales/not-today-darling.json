@@ -133,7 +133,7 @@
       "sizes": "Windows build (1.0 GB), Linux build (967 MB)"
     },
     "button": {
-      "projects": "All Projects"
+      "projects": "Projekty"
     }
   },
   "pl": {
@@ -270,7 +270,7 @@
       "sizes": "Windows build (1.0 GB), Linux build (967 MB)"
     },
     "button": {
-      "projects": "Wszystkie projekty"
+      "projects": "Projekty"
     }
   },
   "nl": {
@@ -348,7 +348,7 @@
       "desc": "Sound Cues met parameters. Submix bussen scheiden UI, gameplay, omgevingsgeluid. Concurrency stopt sounds van opstapelen. Attenuation handelt afstand. Limiter op master houdt controle.",
       "b1": "Parameters gekoppeld aan race status, snelheid, camera",
       "b2": "Submixen: UI, Gameplay, Omgevingsgeluid plus master limiter",
-      "b3": "Concurrency limieten en botsing drempels",
+      "b3": "Concurrency limieten en botsing drempels"
     },
     "metrics": {
       "title": "Technische Metrics",
@@ -407,7 +407,7 @@
       "sizes": "Windows build (1.0 GB), Linux build (967 MB)"
     },
     "button": {
-      "projects": "Alle projecten"
+      "projects": "Projecten"
     }
   }
 }
