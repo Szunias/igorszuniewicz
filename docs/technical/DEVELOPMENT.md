@@ -36,7 +36,8 @@ igorszuniewicz/
 │   └── ...
 ├── 🖼️ assets/                 # Static assets
 │   ├── css/                   # Stylesheets
-│   │   ├── main.css           # Main stylesheet
+│   │   ├── main.css           # Import hub for core theme styles
+│   │   ├── main/              # Modularized core stylesheet segments
 │   │   ├── navigation.css     # Navigation styles
 │   │   ├── components/        # Component styles
 │   │   └── pages/             # Page-specific styles
@@ -76,7 +77,8 @@ The project uses a custom CSS architecture based on:
 
 ```
 assets/css/
-├── main.css                   # Main stylesheet
+├── main.css                   # Import hub for core theme styles
+├── main/                      # Modularized core stylesheet segments
 ├── navigation.css             # Navigation component
 ├── components/                # Reusable components
 │   ├── buttons.css

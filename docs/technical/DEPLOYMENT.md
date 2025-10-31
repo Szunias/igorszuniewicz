@@ -141,6 +141,8 @@ This guide covers deployment options and best practices for the Igor Szuniewicz 
   ```bash
   # Minify CSS (if using build process)
   cleancss -o assets/css/main.min.css assets/css/main.css
+  # When using @import, remember to inline modules:
+  # cleancss --inline all -o assets/css/main.min.css assets/css/main.css
   ```
 
 - [ ] **JavaScript Minification**
