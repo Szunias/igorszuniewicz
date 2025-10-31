@@ -2177,8 +2177,16 @@
         toggle.setAttribute('aria-expanded', dropdown.classList.contains('active'));
       });
 
-      // Close dropdown when clicking outside
+      // Close dropdown when clicking outside (but not on links inside)
       document.addEventListener('click', (e) => {
+        // If clicking a link inside dropdown, let it work and close dropdown
+        if (e.target.closest('.cv-dropdown-item')) {
+          dropdown.classList.remove('active');
+          toggle.setAttribute('aria-expanded', 'false');
+          return;
+        }
+        
+        // If clicking outside dropdown, close it
         if (!dropdown.contains(e.target)) {
           dropdown.classList.remove('active');
           toggle.setAttribute('aria-expanded', 'false');
