@@ -15,19 +15,19 @@
       critical: ['critical.css', 'performance.js'],
       high: ['main.css', 'main.js'],
       medium: [
-        'custom/media-player.css',
-        'custom/foundations.css',
-        'custom/navigation.css',
-        'custom/content-sections.css',
-        'custom/engagement-and-projects.css',
-        'custom/music-experience.css',
-        'custom/contact.css',
-        'custom/professional-profile.css',
-        'custom/interactive-visuals.css',
-        'custom/genre-carousel.css',
+        'custom/core/foundations.css',
+        'custom/components/navigation.css',
+        'custom/components/media-player.css',
+        'custom/components/music-experience.css',
+        'custom/components/genre-carousel.css',
+        'custom/patterns/content-sections.css',
+        'custom/patterns/engagement-and-projects.css',
+        'custom/patterns/interactive-visuals.css',
+        'custom/patterns/professional-profile.css',
+        'custom/pages/contact.css',
         'pro-theme.css'
       ],
-      low: ['fontawesome-all.min.css', 'noscript.css']
+      low: ['fontawesome-all.min.css', 'global/noscript.css']
     },
 
     // Connection and device info

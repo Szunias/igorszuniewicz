@@ -18,7 +18,7 @@ docs/
 ### Technical Guides (`guides/`)
 
 - **BACKGROUND-FIX-GUIDE.md** - How to fix background override issues in project pages
-  - Explains the CSS conflict caused by `assets/css/custom/interactive-visuals.css`
+  - Explains the CSS conflict caused by `assets/css/custom/patterns/interactive-visuals.css`
   - Step-by-step solution for adding custom backgrounds
   - Working example: `ray-animation.html`
 

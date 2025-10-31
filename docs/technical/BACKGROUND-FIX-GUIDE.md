@@ -2,7 +2,7 @@
 
 ## Problem
 
-The modular stylesheet `assets/css/custom/interactive-visuals.css` defines a global rule in the **"Disable theme's built-in background layer"** section:
+The modular stylesheet `assets/css/custom/patterns/interactive-visuals.css` defines a global rule in the **"Disable theme's built-in background layer"** section:
 
 ```css
 #wrapper > .bg {
