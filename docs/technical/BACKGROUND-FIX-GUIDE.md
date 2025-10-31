@@ -2,12 +2,12 @@
 
 ## Problem
 
-The main CSS file `custom-styles.css` contains a global rule at **line 3821**:
+The modular stylesheet `assets/css/custom/interactive-visuals.css` defines a global rule in the **"Disable theme's built-in background layer"** section:
 
 ```css
-#wrapper > .bg { 
-  display: none !important; 
-  background: none !important; 
+#wrapper > .bg {
+  display: none !important;
+  background: none !important;
 }
 ```
 
@@ -36,7 +36,7 @@ Place the background element **outside** of `#wrapper`, as a direct child of `<b
 Use strong selectors with `!important` to override the global rule:
 
 ```css
-/* High specificity selector to override custom-styles.css line 3821 */
+/* High specificity selector to override the interactive-visuals background lock */
 body .custom-background,
 .custom-background {
   display: block !important;

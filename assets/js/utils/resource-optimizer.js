@@ -14,7 +14,19 @@
     priorities: {
       critical: ['critical.css', 'performance.js'],
       high: ['main.css', 'main.js'],
-      medium: ['custom-styles.css', 'pro-theme.css'],
+      medium: [
+        'custom/media-player.css',
+        'custom/foundations.css',
+        'custom/navigation.css',
+        'custom/content-sections.css',
+        'custom/engagement-and-projects.css',
+        'custom/music-experience.css',
+        'custom/contact.css',
+        'custom/professional-profile.css',
+        'custom/interactive-visuals.css',
+        'custom/genre-carousel.css',
+        'pro-theme.css'
+      ],
       low: ['fontawesome-all.min.css', 'noscript.css']
     },
 
