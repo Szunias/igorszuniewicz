@@ -81,10 +81,23 @@ function getRelativePath() {
 function setActiveLink() {
   const path = window.location.pathname;
   const links = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
-  
+
+  let target;
+  if (path.includes('/projects/')) {
+    target = 'projects/index.html';
+  } else {
+    let file = path.substring(path.lastIndexOf('/') + 1);
+    if (!file) {
+      file = 'index.html';
+    }
+    target = file;
+  }
+
   links.forEach(link => {
     const href = link.getAttribute('href');
-    if (href && path.includes(href.replace('../', ''))) {
+    if (!href) return;
+    const normalized = href.replace('../', '');
+    if (normalized === target) {
       link.classList.add('active');
     }
   });
