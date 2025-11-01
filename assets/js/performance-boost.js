@@ -135,13 +135,16 @@
       if (href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
       if (link.hasAttribute('target')) return;
 
-      // Prefetch the page
+      const url = new URL(href, window.location.origin);
+      if (url.origin !== window.location.origin) return;
+      if (url.pathname.endsWith('.zip') || url.pathname.endsWith('.pdf')) return;
+
       const prefetchLink = document.createElement('link');
       prefetchLink.rel = 'prefetch';
-      prefetchLink.href = href;
+      prefetchLink.href = url.pathname + url.search;
       document.head.appendChild(prefetchLink);
 
-      prefetched.add(href);
+      prefetched.add(prefetchLink.href);
     }, { passive: true });
   }
 
@@ -226,6 +229,89 @@
   }
 
   /**
+   * Inject Breadcrumb structured data for SEO
+   */
+  function injectBreadcrumbStructuredData() {
+    if (document.querySelector('script[data-schema="breadcrumbs"]')) {
+      return; // already injected
+    }
+
+    const pathname = window.location.pathname.replace(/index\.html$/i, '');
+    const segments = pathname.split('/').filter(Boolean);
+    if (segments.length === 0) {
+      return; // homepage - no breadcrumb needed
+    }
+
+    const origin = window.location.origin;
+    const items = [{
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: origin + '/'
+    }];
+
+    const LABELS = {
+      '/projects/': 'Projects',
+      '/about.html': 'About',
+      '/music.html': 'Music',
+      '/contact.html': 'Contact',
+      '/cv/igor-cv-dark.html': 'CV'
+    };
+
+    let accumulated = '';
+    segments.forEach((segment) => {
+      accumulated += '/' + segment;
+      const isFile = segment.includes('.');
+      const urlPath = isFile ? accumulated : accumulated + '/';
+
+      let label = LABELS[urlPath] || LABELS[segment];
+      if (!label && !isFile) {
+        // Avoid creating breadcrumbs for directories without dedicated pages
+        return;
+      }
+      if (!label && isFile) {
+        const ogTitle = document.querySelector('meta[property="og:title"]')?.content;
+        const fallbackTitle = ogTitle || document.title || segment;
+        label = fallbackTitle.split('|')[0].split('—')[0].trim();
+      } else if (!label) {
+        label = segment.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      }
+
+      if (!label) {
+        return;
+      }
+
+      const url = origin + urlPath;
+      if (items.some(item => item.item === url)) {
+        return;
+      }
+
+      items.push({
+        '@type': 'ListItem',
+        position: items.length + 1,
+        name: label,
+        item: url
+      });
+    });
+
+    if (items.length <= 1) {
+      return;
+    }
+
+    const data = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.dataset.schema = 'breadcrumbs';
+    script.textContent = JSON.stringify(data);
+    document.head.appendChild(script);
+  }
+
+  /**
    * Initialize all optimizations
    */
   function init() {
@@ -250,6 +336,7 @@
       optimizeImages();
       setupLinkPrefetch();
       reduceMotionDuringScroll();
+      injectBreadcrumbStructuredData();
     }, { timeout: 2000 });
   }
 

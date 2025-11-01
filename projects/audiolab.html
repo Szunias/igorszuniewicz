@@ -1478,12 +1478,46 @@
         card.style.transitionDelay = `${index * 0.1}s`;
       });
       
-      const featureCards = document.querySelectorAll('.feature-card');
-      featureCards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 0.1}s`;
-      });
-    });
-  </script>
-  <script src="../assets/js/performance-boost.js" defer></script>
+  const featureCards = document.querySelectorAll('.feature-card');
+  featureCards.forEach((card, index) => {
+    card.style.transitionDelay = `${index * 0.1}s`;
+  });
+});
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "@id": "https://igorszuniewicz.com/projects/audiolab.html#creativework",
+  "name": "AudioLab - Machine Learning Beatbox Recognition",
+  "url": "https://igorszuniewicz.com/projects/audiolab.html",
+  "headline": "ML-powered beatbox recognition for rhythm gaming",
+  "description": "AudioLab replaces controller inputs with real-time beatbox detection. A user-trained SVM classifier recognises kick, snare and hi-hat with sub-60ms latency for competitive rhythm games.",
+  "datePublished": "2025-01-27",
+  "inLanguage": ["en", "pl", "nl"],
+  "image": "https://igorszuniewicz.com/assets/images/projects/AudioLabGif.jpg",
+  "keywords": ["Machine Learning", "Beatbox", "Audio Programming", "Unity", "Python"],
+  "genre": ["Game Audio", "Interactive Music", "Machine Learning"],
+  "timeRequired": "PT5M",
+  "creator": { "@id": "https://igorszuniewicz.com/#person" },
+  "isPartOf": { "@id": "https://igorszuniewicz.com/#portfolio" },
+  "about": [
+    { "@type": "Thing", "name": "Real-time audio" },
+    { "@type": "Thing", "name": "Rhythm games" }
+  ],
+  "workExample": [
+    {
+      "@type": "VideoObject",
+      "name": "AudioLab interactive demo",
+      "description": "Beatbox-controlled gameplay footage",
+      "contentUrl": "https://igorszuniewicz.com/assets/images/projects/AudioLabGif.mp4",
+      "thumbnailUrl": "https://igorszuniewicz.com/assets/images/projects/AudioLabGif.jpg",
+      "encodingFormat": "video/mp4",
+      "uploadDate": "2025-01-27"
+    }
+  ]
+}
+</script>
+<script src="../assets/js/performance-boost.js" defer></script>
 </body>
 </html>
