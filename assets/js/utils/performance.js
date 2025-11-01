@@ -179,7 +179,7 @@
 
     prefetchCriticalResources: function() {
       // Prefetch common pages that users are likely to visit
-      const criticalPages = ['about.html', 'projects/index.html', 'music.html', 'contact.html'];
+      const criticalPages = ['/about.html', '/projects/', '/music.html', '/contact.html'];
       
       const self = this;
       const requestIdleCallback = window.requestIdleCallback || function(cb) {

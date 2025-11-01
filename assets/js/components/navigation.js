@@ -7,13 +7,13 @@ function loadNavigation() {
     <header class="header" id="header">
       <div class="container">
         <nav class="nav">
-          <a href="${getRelativePath()}index.html" class="logo">Igor Szuniewicz</a>
+          <a href="/" class="logo">Igor Szuniewicz</a>
           <ul class="nav-links">
-            <li><a href="${getRelativePath()}index.html" data-i18n="nav_home">Home</a></li>
-            <li><a href="${getRelativePath()}about.html" data-i18n="nav_about">About</a></li>
-            <li><a href="${getRelativePath()}projects/index.html" data-i18n="nav_projects">Projects</a></li>
-            <li><a href="${getRelativePath()}music.html" data-i18n="nav_music">Music</a></li>
-            <li><a href="${getRelativePath()}contact.html" data-i18n="nav_contact">Contact</a></li>
+            <li><a href="/" data-i18n="nav_home">Home</a></li>
+            <li><a href="/about.html" data-i18n="nav_about">About</a></li>
+            <li><a href="/projects/" data-i18n="nav_projects">Projects</a></li>
+            <li><a href="/music.html" data-i18n="nav_music">Music</a></li>
+            <li><a href="/contact.html" data-i18n="nav_contact">Contact</a></li>
             <li class="lang-switcher">
               <button class="lang-btn active" data-lang="en">EN</button>
               <button class="lang-btn" data-lang="pl">PL</button>
@@ -35,11 +35,11 @@ function loadNavigation() {
     <!-- Mobile Menu -->
     <div class="mobile-menu">
       <ul class="mobile-nav-links">
-        <li><a href="${getRelativePath()}index.html" data-i18n="nav_home">Home</a></li>
-        <li><a href="${getRelativePath()}about.html" data-i18n="nav_about">About</a></li>
-        <li><a href="${getRelativePath()}projects/index.html" data-i18n="nav_projects">Projects</a></li>
-        <li><a href="${getRelativePath()}music.html" data-i18n="nav_music">Music</a></li>
-        <li><a href="${getRelativePath()}contact.html" data-i18n="nav_contact">Contact</a></li>
+        <li><a href="/" data-i18n="nav_home">Home</a></li>
+        <li><a href="/about.html" data-i18n="nav_about">About</a></li>
+        <li><a href="/projects/" data-i18n="nav_projects">Projects</a></li>
+        <li><a href="/music.html" data-i18n="nav_music">Music</a></li>
+        <li><a href="/contact.html" data-i18n="nav_contact">Contact</a></li>
       </ul>
       <div class="mobile-lang-switcher">
         <button class="lang-btn active" data-lang="en">EN</button>
@@ -67,40 +67,47 @@ function loadNavigation() {
   initScrollEffect();
 }
 
-// Determine relative path based on current location
-function getRelativePath() {
-  const path = window.location.pathname;
-  // If in projects folder, go up one level
-  if (path.includes('/projects/')) {
-    return '../';
-  }
-  return '';
-}
-
 // Set active class on current page link
 function setActiveLink() {
-  const path = window.location.pathname;
+  const path = normalizePath(window.location.pathname);
   const links = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
-
-  let target;
-  if (path.includes('/projects/')) {
-    target = 'projects/index.html';
-  } else {
-    let file = path.substring(path.lastIndexOf('/') + 1);
-    if (!file) {
-      file = 'index.html';
-    }
-    target = file;
-  }
 
   links.forEach(link => {
     const href = link.getAttribute('href');
-    if (!href) return;
-    const normalized = href.replace('../', '');
-    if (normalized === target) {
+    if (!href || href.startsWith('http')) return;
+
+    const targetPath = normalizePath(href);
+    const isProjectsLink = targetPath === '/projects';
+
+    if (isProjectsLink) {
+      if (path === '/projects' || path.startsWith('/projects/')) {
+        link.classList.add('active');
+      }
+      return;
+    }
+
+    if (targetPath === path) {
       link.classList.add('active');
     }
   });
+}
+
+function normalizePath(value) {
+  if (!value) return '/';
+  let pathname = value;
+
+  try {
+    pathname = new URL(value, window.location.origin).pathname;
+  } catch (error) {
+    // value was likely already a pathname – keep as-is
+  }
+
+  pathname = pathname.replace(/index\.html$/i, '');
+  if (pathname.endsWith('/') && pathname !== '/') {
+    pathname = pathname.slice(0, -1);
+  }
+
+  return pathname || '/';
 }
 
 // Initialize mobile menu toggle

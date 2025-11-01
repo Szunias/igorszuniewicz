@@ -134,9 +134,11 @@ body.richter-theme .bg-gradient {
   .explore-more { display: none; }
 
   /* Keep only top section pills with proper labeling */
-  #intro .section-pills a[href="projects/index.html"] span:after { content: " (All)"; }
+  #intro .section-pills a[href="projects/index.html"] span:after,
+  #intro .section-pills a[href="/projects/"] span:after { content: " (All)"; }
 
   /* Simplify main navigation on mobile */
+  #nav .links li a[href="/"],
   #nav .links li a[href="index.html"],
   #nav .links li a[href="extras.html"] {
     display: none;

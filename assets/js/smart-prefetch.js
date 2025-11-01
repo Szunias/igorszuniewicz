@@ -24,6 +24,24 @@
   
   // Check if prefetch is supported
   const supportsPrefetch = document.createElement('link').relList?.supports?.('prefetch');
+
+  function normalizePath(value) {
+    if (!value) return '/';
+    let pathname = value;
+
+    try {
+      pathname = new URL(value, window.location.origin).pathname;
+    } catch (error) {
+      // Already a pathname
+    }
+
+    pathname = pathname.replace(/index\.html$/i, '');
+    if (pathname.endsWith('/') && pathname !== '/') {
+      pathname = pathname.slice(0, -1);
+    }
+
+    return pathname || '/';
+  }
   
   /**
    * Get translation file for a given page URL
@@ -215,24 +233,25 @@
   function prefetchCriticalPages() {
     // Prefetch main navigation pages immediately
     const criticalPages = [
-      'index.html',
-      'about.html',
-      'projects/index.html',
-      'music.html',
-      'contact.html'
+      '/',
+      '/about.html',
+      '/projects/',
+      '/music.html',
+      '/contact.html'
     ];
     
-    // Get current page
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPath = normalizePath(window.location.pathname);
     
     // Prefetch other pages (not current)
     criticalPages.forEach(page => {
-      if (!page.includes(currentPath)) {
-        setTimeout(() => {
-          const url = page.includes('/') ? page : page;
-          prefetchUrl(url, 'low');
-        }, 2000); // Wait 2s after page load
+      const targetPath = normalizePath(page);
+      if (targetPath === currentPath) {
+        return;
       }
+      
+      setTimeout(() => {
+        prefetchUrl(page, 'low');
+      }, 2000); // Wait 2s after page load
     });
   }
   

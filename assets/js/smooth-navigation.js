@@ -520,7 +520,7 @@
 
     // Preload krytycznych stron
     function preloadCriticalPages() {
-        const criticalPages = ['index.html', 'about.html', 'projects/index.html'];
+        const criticalPages = ['/', '/about.html', '/projects/'];
 
         criticalPages.forEach(page => {
             if (page !== currentUrl) {

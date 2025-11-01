@@ -139,7 +139,7 @@
       popularPages: [
         { page: '/music.html', views: Math.floor(baseVisitors * 0.6), avgTime: '4:32', bounceRate: '25%' },
         { page: '/index.html', views: Math.floor(baseVisitors * 0.8), avgTime: '2:15', bounceRate: '45%' },
-        { page: '/projects/index.html', views: Math.floor(baseVisitors * 0.4), avgTime: '3:22', bounceRate: '35%' },
+        { page: '/projects/', views: Math.floor(baseVisitors * 0.4), avgTime: '3:22', bounceRate: '35%' },
         { page: '/about.html', views: Math.floor(baseVisitors * 0.3), avgTime: '2:45', bounceRate: '40%' },
         { page: '/contact.html', views: Math.floor(baseVisitors * 0.2), avgTime: '1:30', bounceRate: '60%' }
       ],

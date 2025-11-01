@@ -2,9 +2,9 @@ import { I18N } from './dictionary.js';
 
 export function translatePage(lang){
   // Nav links by href
-  document.querySelectorAll('#nav a[href$="index.html"], #nav a[href$="../index.html"]').forEach(a=> a.textContent = I18N.nav_home[lang]);
+  document.querySelectorAll('#nav a[href="/"], #nav a[href$="index.html"], #nav a[href$="../index.html"]').forEach(a=> a.textContent = I18N.nav_home[lang]);
   document.querySelectorAll('#nav a[href$="about.html"]').forEach(a=> a.textContent = I18N.nav_about[lang]);
-  document.querySelectorAll('#nav a[href*="projects/index.html"]').forEach((a) => {
+  document.querySelectorAll('#nav a[href="/projects/"], #nav a[href*="projects/index.html"]').forEach((a) => {
     const text = a.textContent.trim().toLowerCase();
     const isAll = /all|wszystkie|alle|projecten/.test(text) || a.closest('.links')?.children?.length<=2;
     a.textContent = isAll ? I18N.nav_all[lang] : I18N.nav_projects[lang];
@@ -74,7 +74,8 @@ export function translatePage(lang){
   }
 
   // Projects index page
-  if (location.pathname.endsWith('/projects/index.html') || location.pathname.endsWith('projects/index.html')){
+  const projectsIndexPaths = ['/projects/', '/projects/index.html'];
+  if (projectsIndexPaths.some(path => location.pathname.endsWith(path) || location.pathname === path)){
     const filter3DBtn = document.querySelector('[data-filter="3d-design"]');
     if (filter3DBtn && I18N.filter_3d_design) {
       filter3DBtn.textContent = I18N.filter_3d_design[lang];
