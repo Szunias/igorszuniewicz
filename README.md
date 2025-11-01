@@ -263,6 +263,18 @@ Want to work together? Get in touch!
 
 ---
 
+## 🔄 Regenerating the XML sitemap
+
+Whenever you add or update a page, regenerate `sitemap.xml` so search engines stay in sync:
+
+```bash
+node scripts/generate-sitemap.js
+```
+
+The script collects canonical URLs from every HTML file, applies sensible priorities, and overwrites the sitemap automatically.
+
+---
+
 ## 📄 License
 
 © **Igor Szuniewicz 2025**. All rights reserved.

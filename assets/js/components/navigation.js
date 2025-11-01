@@ -56,6 +56,7 @@ function loadNavigation() {
   }
   
   document.body.insertAdjacentHTML('afterbegin', nav);
+  setupSkipLink();
 
   // Set active link based on current page
   setActiveLink();
@@ -108,6 +109,50 @@ function normalizePath(value) {
   }
 
   return pathname || '/';
+}
+
+function setupSkipLink() {
+  const targetId = ensureMainTargetId();
+  if (!targetId) return;
+
+  if (document.querySelector('.skip-nav')) {
+    return; // Skip link already exists
+  }
+
+  const skipLink = document.createElement('a');
+  skipLink.href = `#${targetId}`;
+  skipLink.className = 'skip-link';
+  skipLink.textContent = 'Skip to main content';
+  document.body.insertAdjacentElement('afterbegin', skipLink);
+}
+
+function ensureMainTargetId() {
+  const main = document.querySelector('main');
+  if (main) {
+    if (!main.id) {
+      main.id = 'main-content';
+    }
+    return main.id;
+  }
+
+  const fallback =
+    document.querySelector('[role="main"]') ||
+    document.getElementById('smooth-nav-container') ||
+    document.querySelector('section');
+
+  if (!fallback) {
+    return null;
+  }
+
+  if (!fallback.id) {
+    fallback.id = 'main-content';
+  }
+
+  if (!fallback.hasAttribute('tabindex')) {
+    fallback.setAttribute('tabindex', '-1');
+  }
+
+  return fallback.id;
 }
 
 // Initialize mobile menu toggle

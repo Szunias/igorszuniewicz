@@ -2,14 +2,41 @@
 (function() {
   'use strict';
   
-  // Get saved language immediately (synchronous)
-  const savedLang = localStorage.getItem('language') || 'en';
+  // Supported language codes
+  const SUPPORTED_LANGS = new Set(['en', 'pl', 'nl']);
+  const DEFAULT_LANG = 'en';
+
+  // Read language from localStorage first
+  let savedLang = localStorage.getItem('language') || DEFAULT_LANG;
+  let languageFromQuery = false;
+
+  // Check for ?lang= override in the URL
+  try {
+    const currentUrl = new URL(window.location.href);
+    const queryLang = currentUrl.searchParams.get('lang');
+
+    if (queryLang && SUPPORTED_LANGS.has(queryLang)) {
+      savedLang = queryLang;
+      languageFromQuery = true;
+      localStorage.setItem('language', queryLang);
+
+      // Remove the lang parameter to avoid duplicate URLs in search engines
+      currentUrl.searchParams.delete('lang');
+      const cleanUrl = currentUrl.pathname + currentUrl.search + currentUrl.hash;
+      if (window.history && typeof window.history.replaceState === 'function') {
+        window.history.replaceState({}, document.title, cleanUrl || '/');
+      }
+    }
+  } catch (error) {
+    // Ignore URL parsing errors (very old browsers / malformed URLs)
+  }
   
   // Set HTML lang attribute immediately
   document.documentElement.setAttribute('lang', savedLang);
   
   // Store the language for translations.js to use
   window.__preloadedLang = savedLang;
+  window.__languageFromQuery = languageFromQuery;
   
   // Inject critical inline CSS to hide content until translations load
   // Using opacity instead of visibility for smoother transition
